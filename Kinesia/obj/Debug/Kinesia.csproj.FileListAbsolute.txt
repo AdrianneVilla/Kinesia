@@ -1,0 +1,15 @@
+D:\repos\Kinesia\Kinesia\bin\Debug\Kinesia.exe.config
+D:\repos\Kinesia\Kinesia\bin\Debug\Kinesia.exe
+D:\repos\Kinesia\Kinesia\bin\Debug\Kinesia.pdb
+D:\repos\Kinesia\Kinesia\obj\Debug\Kinesia.csproj.AssemblyReference.cache
+D:\repos\Kinesia\Kinesia\obj\Debug\Kinesia.Form1.resources
+D:\repos\Kinesia\Kinesia\obj\Debug\Kinesia.Properties.Resources.resources
+D:\repos\Kinesia\Kinesia\obj\Debug\Kinesia.csproj.GenerateResource.cache
+D:\repos\Kinesia\Kinesia\obj\Debug\Kinesia.csproj.CoreCompileInputs.cache
+D:\repos\Kinesia\Kinesia\obj\Debug\Kinesia.exe
+D:\repos\Kinesia\Kinesia\obj\Debug\Kinesia.pdb
+D:\repos\Kinesia\Kinesia\obj\Debug\Kinesia.Components.RJTextBox.resources
+D:\repos\Kinesia\Kinesia\obj\Debug\Kinesia.Components.Header.resources
+D:\repos\Kinesia\Kinesia\obj\Debug\Kinesia.Dashboard.resources
+D:\repos\Kinesia\Kinesia\obj\Debug\Kinesia.Components.Sidebar.resources
+D:\repos\Kinesia\Kinesia\obj\Debug\Kinesia.Components.DashboardPage.resources
