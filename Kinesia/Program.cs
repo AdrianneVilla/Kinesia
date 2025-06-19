@@ -1,4 +1,5 @@
 ﻿using Kinesia.Components;
+using Kinesia.Patients;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,5 +25,6 @@ namespace Kinesia
     public class PageObjects
     {
         public static DashboardPage dashboardPage;
+        public static PatientsPage patientsPage;
     }
 }

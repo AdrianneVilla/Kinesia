@@ -39,11 +39,11 @@
             this.ContentsPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.ContentsPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ContentsPanel.Location = new System.Drawing.Point(275, 75);
             this.ContentsPanel.Name = "ContentsPanel";
             this.ContentsPanel.Size = new System.Drawing.Size(918, 602);
             this.ContentsPanel.TabIndex = 2;
-            this.ContentsPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // sidebar1
             // 
@@ -55,7 +55,6 @@
             this.sidebar1.Name = "sidebar1";
             this.sidebar1.Size = new System.Drawing.Size(269, 620);
             this.sidebar1.TabIndex = 1;
-            this.sidebar1.Load += new System.EventHandler(this.sidebar1_Load);
             // 
             // header1
             // 
@@ -78,6 +77,8 @@
             this.Controls.Add(this.sidebar1);
             this.Controls.Add(this.header1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.HelpButton = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Dashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = " ";
@@ -91,6 +92,6 @@
 
         private Components.Header header1;
         private Components.Sidebar sidebar1;
-        private System.Windows.Forms.Panel ContentsPanel;
+        public System.Windows.Forms.Panel ContentsPanel;
     }
 }

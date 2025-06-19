@@ -13,26 +13,19 @@ namespace Kinesia
 {
     public partial class Dashboard : Form
     {
-        
+        public string selectedButton;
+  
         public Dashboard()
         {
             InitializeComponent();
-        }
-
-        private void sidebar1_Load(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
         }
 
         private void Dashboard_Load(object sender, EventArgs e)
         {
             PageObjects.dashboardPage = new DashboardPage();
             ContentsPanel.Controls.Add(PageObjects.dashboardPage);
+            GC.Collect();
         }
+
     }
 }

@@ -27,9 +27,9 @@ namespace Kinesia
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.usernameLabel = new System.Windows.Forms.Label();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.header1 = new Kinesia.Components.Header();
             this.panelBorder1 = new WindowsFormsApp2.CustomButton.PanelBorder();
             this.passwordTxt = new CustomControls.RJControls.RJTextBox();
@@ -56,6 +56,17 @@ namespace Kinesia
             this.flowLayoutPanel3.Size = new System.Drawing.Size(386, 512);
             this.flowLayoutPanel3.TabIndex = 1;
             // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = global::Kinesia.Properties.Resources.large_logo;
+            this.pictureBox4.Location = new System.Drawing.Point(15, 90);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(15, 90, 3, 25);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(353, 179);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox4.TabIndex = 0;
+            this.pictureBox4.TabStop = false;
+            // 
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -81,17 +92,6 @@ namespace Kinesia
             this.usernameLabel.Size = new System.Drawing.Size(91, 26);
             this.usernameLabel.TabIndex = 4;
             this.usernameLabel.Text = "Username";
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Image = global::Kinesia.Properties.Resources.large_logo;
-            this.pictureBox4.Location = new System.Drawing.Point(15, 90);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(15, 90, 3, 25);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(353, 179);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox4.TabIndex = 0;
-            this.pictureBox4.TabStop = false;
             // 
             // header1
             // 
@@ -248,6 +248,7 @@ namespace Kinesia
             this.Controls.Add(this.panelBorder1);
             this.Controls.Add(this.flowLayoutPanel3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.Form1_Load_2);

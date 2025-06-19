@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Kinesia.Patients;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,15 +13,39 @@ namespace Kinesia.Components
 {
     public partial class Sidebar : UserControl
     {
+       static String tags;
         public Sidebar()
         {
             InitializeComponent();
         }
 
-        private void customButton5_Click(object sender, EventArgs e)
+        public void patientModule_Click(object sender, EventArgs e)
         {
-      
-            
+           tags = "patients module";
+            Dashboard dashboard = Application.OpenForms["Dashboard"] as Dashboard;
+            PageObjects.patientsPage = new PatientsPage();
+            dashboard.ContentsPanel.Controls.Clear();
+            dashboard.ContentsPanel.Controls.Add(PageObjects.patientsPage);
+            PageObjects.patientsPage.Tag = tags;
+            Console.WriteLine("Patient module clicked");
         }
+
+        private void usersModule_Click(object sender, EventArgs e)
+        {
+            Dashboard dashboard = Application.OpenForms["Dashboard"] as Dashboard;
+            Console.WriteLine("User module clicked");
+        }
+
+        private void dashboardModule_Click(object sender, EventArgs e)
+        {
+            Dashboard dashboard = Application.OpenForms["Dashboard"] as Dashboard;
+            dashboard.ContentsPanel.Controls.Clear();
+            dashboard.ContentsPanel.Controls.Add(PageObjects.dashboardPage);
+
+        }
+
+
+
+    
     }
 }
