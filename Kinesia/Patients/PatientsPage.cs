@@ -18,5 +18,18 @@ namespace Kinesia.Patients
             this.Dock = DockStyle.Fill;
             InitializeComponent();
         }
+
+        private void PatientsPage_Load(object sender, EventArgs e)
+        {
+            PageObjects.displayPatients = new displayPatients();
+            PatientHolder.Controls.Add(PageObjects.displayPatients);
+            PageObjects.displayPatients = new displayPatients();
+            PatientHolder.Controls.Add(PageObjects.displayPatients);
+            PageObjects.displayPatients = new displayPatients();
+            PatientHolder.Controls.Add(PageObjects.displayPatients);
+            PageObjects.displayPatients = new displayPatients();
+            PatientHolder.Controls.Add(PageObjects.displayPatients);
+
+        }
     }
 }

@@ -63,6 +63,26 @@ namespace Kinesia.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap add_btn {
+            get {
+                object obj = ResourceManager.GetObject("add-btn", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap archive_icon {
+            get {
+                object obj = ResourceManager.GetObject("archive-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap btn_back {
             get {
                 object obj = ResourceManager.GetObject("btn-back", resourceCulture);
@@ -86,6 +106,26 @@ namespace Kinesia.Properties {
         internal static System.Drawing.Bitmap dashboard_quick_background {
             get {
                 object obj = ResourceManager.GetObject("dashboard-quick-background", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap edit_icon_green {
+            get {
+                object obj = ResourceManager.GetObject("edit-icon-green", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap EMR_icon {
+            get {
+                object obj = ResourceManager.GetObject("EMR-icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -166,6 +206,16 @@ namespace Kinesia.Properties {
         internal static System.Drawing.Bitmap search_background {
             get {
                 object obj = ResourceManager.GetObject("search-background", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap search_background_new {
+            get {
+                object obj = ResourceManager.GetObject("search-background-new", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
