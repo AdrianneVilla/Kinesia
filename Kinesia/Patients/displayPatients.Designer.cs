@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(displayPatients));
             this.panelBorder1 = new WindowsFormsApp2.CustomButton.PanelBorder();
             this.customButton3 = new OrganizationProfile.CustomButton();
             this.customButton2 = new OrganizationProfile.CustomButton();
@@ -64,7 +65,7 @@
             // 
             this.customButton3.BackColor = System.Drawing.Color.Transparent;
             this.customButton3.BackgroundColor = System.Drawing.Color.Transparent;
-            this.customButton3.BackgroundImage = global::Kinesia.Properties.Resources.archive_icon;
+            this.customButton3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("customButton3.BackgroundImage")));
             this.customButton3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.customButton3.BorderColor = System.Drawing.Color.White;
             this.customButton3.BorderRadius = 40;
@@ -83,7 +84,7 @@
             // 
             this.customButton2.BackColor = System.Drawing.Color.Transparent;
             this.customButton2.BackgroundColor = System.Drawing.Color.Transparent;
-            this.customButton2.BackgroundImage = global::Kinesia.Properties.Resources.edit_icon_green;
+            this.customButton2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("customButton2.BackgroundImage")));
             this.customButton2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.customButton2.BorderColor = System.Drawing.Color.White;
             this.customButton2.BorderRadius = 40;
@@ -102,7 +103,7 @@
             // 
             this.customButton1.BackColor = System.Drawing.Color.Transparent;
             this.customButton1.BackgroundColor = System.Drawing.Color.Transparent;
-            this.customButton1.BackgroundImage = global::Kinesia.Properties.Resources.EMR_icon;
+            this.customButton1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("customButton1.BackgroundImage")));
             this.customButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.customButton1.BorderColor = System.Drawing.Color.White;
             this.customButton1.BorderRadius = 40;
@@ -116,6 +117,7 @@
             this.customButton1.TabIndex = 5;
             this.customButton1.TextColor = System.Drawing.Color.Transparent;
             this.customButton1.UseVisualStyleBackColor = false;
+            this.customButton1.Click += new System.EventHandler(this.customButton1_Click);
             // 
             // label5
             // 

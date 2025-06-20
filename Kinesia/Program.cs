@@ -29,6 +29,8 @@ namespace Kinesia
         public static DashboardPage dashboardPage;
         public static PatientsPage patientsPage;
         public static displayPatients displayPatients;
+        public static AddPatient addPatient;
+        public static PatientDetails patientDetails;
     }
 
     public class Connection

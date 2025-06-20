@@ -114,3 +114,5 @@ D:\git\Kinesia\Kinesia\obj\Debug\Kinesia.csproj.Up2Date
 D:\git\Kinesia\Kinesia\obj\Debug\Kinesia.exe
 D:\git\Kinesia\Kinesia\obj\Debug\Kinesia.pdb
 D:\git\Kinesia\Kinesia\obj\Debug\Kinesia.Patients.displayPatients.resources
+D:\git\Kinesia\Kinesia\obj\Debug\Kinesia.Patients.AddPatient.resources
+D:\git\Kinesia\Kinesia\obj\Debug\Kinesia.Patients.PatientDetails.resources

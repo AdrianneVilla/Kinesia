@@ -31,5 +31,13 @@ namespace Kinesia.Patients
             PatientHolder.Controls.Add(PageObjects.displayPatients);
 
         }
+
+        private void addPatientBtn_Click(object sender, EventArgs e)
+        {
+            Dashboard dashboard = Application.OpenForms["Dashboard"] as Dashboard;
+            PageObjects.addPatient = new AddPatient();
+            dashboard.ContentsPanel.Controls.Clear();
+            dashboard.ContentsPanel.Controls.Add(PageObjects.addPatient);
+        }
     }
 }

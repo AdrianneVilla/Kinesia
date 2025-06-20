@@ -138,11 +138,23 @@
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="Patients\AddPatient.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Patients\AddPatient.Designer.cs">
+      <DependentUpon>AddPatient.cs</DependentUpon>
+    </Compile>
     <Compile Include="Patients\displayPatients.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Patients\displayPatients.Designer.cs">
       <DependentUpon>displayPatients.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Patients\PatientDetails.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Patients\PatientDetails.Designer.cs">
+      <DependentUpon>PatientDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="Patients\PatientsPage.cs">
       <SubType>UserControl</SubType>
@@ -168,8 +180,14 @@
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Patients\AddPatient.resx">
+      <DependentUpon>AddPatient.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Patients\displayPatients.resx">
       <DependentUpon>displayPatients.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Patients\PatientDetails.resx">
+      <DependentUpon>PatientDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Patients\PatientsPage.resx">
       <DependentUpon>PatientsPage.cs</DependentUpon>
@@ -254,6 +272,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Kinesia Images\archive-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Kinesia Images\back-button-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Kinesia Images\Add-Patient-Background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Kinesia Images\save-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Kinesia Images\clear-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Kinesia Images\general-information-background.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -21,12 +21,12 @@ namespace Kinesia.Components
 
         public void patientModule_Click(object sender, EventArgs e)
         {
-           tags = "patients module";
+         
             Dashboard dashboard = Application.OpenForms["Dashboard"] as Dashboard;
             PageObjects.patientsPage = new PatientsPage();
             dashboard.ContentsPanel.Controls.Clear();
             dashboard.ContentsPanel.Controls.Add(PageObjects.patientsPage);
-            PageObjects.patientsPage.Tag = tags;
+         
             Console.WriteLine("Patient module clicked");
         }
 
