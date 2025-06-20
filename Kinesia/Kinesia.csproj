@@ -116,6 +116,9 @@
     <Compile Include="Components\PanelBorder.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Components\RJDatePicker.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Components\RJTextBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -287,6 +290,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Kinesia Images\general-information-background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Kinesia Images\calendarDark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Kinesia Images\calendarWhite.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Kinesia Images\newCalendarWhite.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Kinesia Images\newCalendarDark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Kinesia Images\calendarDarksmall.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Kinesia Images\calendarWhitesmall.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

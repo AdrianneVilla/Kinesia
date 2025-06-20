@@ -117,17 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="backBtn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAA0AAAAaCAYAAABsONZfAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EAAACxABrSO9dQAAAPdJREFUOE+9k90NgkAQhC1hPSzAEizBEngxcieJdqAdYAeWQAmWYAlE9hIfKcES
-        NHsI0bmfJ/VL5gFuJrdDlsnkV1Bxm+O7JBJQxnZK2xOeRVHG1srwQ0S6zfHcQxk+DoGX7slR+7E+Ak5T
-        zWf0OsYegRAVTfimqeEzmvsAV+h1BHq81NbodZCxC98sPdouONZ3e6x5j15HVrY5mntFegjKcOUHEmMJ
-        s5KXGOhl4zcJ2YYvfogfSl8P6B2hXUPyab2QjLmyC/SPJMbsKG8I/SOkrwc/lFjUgf/2i+8hX9D7AfaL
-        Li7yvpOk7RbPgwz9oj9gDOn3/vwEfXw3HMwpY+MAAAAASUVORK5CYII=
-</value>
-  </data>
   <metadata name="AssessmentID.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -140,4 +129,15 @@
   <metadata name="AssessmentDate.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="backBtn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAA0AAAAaCAYAAABsONZfAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
+        DAAACwwBP0AiyAAAAPdJREFUOE+9k90NgkAQhC1hPSzAEizBEngxcieJdqAdYAeWQAmWYAlE9hIfKcES
+        NHsI0bmfJ/VL5gFuJrdDlsnkV1Bxm+O7JBJQxnZK2xOeRVHG1srwQ0S6zfHcQxk+DoGX7slR+7E+Ak5T
+        zWf0OsYegRAVTfimqeEzmvsAV+h1BHq81NbodZCxC98sPdouONZ3e6x5j15HVrY5mntFegjKcOUHEmMJ
+        s5KXGOhl4zcJ2YYvfogfSl8P6B2hXUPyab2QjLmyC/SPJMbsKG8I/SOkrwc/lFjUgf/2i+8hX9D7AfaL
+        Li7yvpOk7RbPgwz9oj9gDOn3/vwEfXw3HMwpY+MAAAAASUVORK5CYII=
+</value>
+  </data>
 </root>

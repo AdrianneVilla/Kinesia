@@ -39,7 +39,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.rjTextBox5 = new CustomControls.RJControls.RJTextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.rjTextBox4 = new CustomControls.RJControls.RJTextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.rjTextBox3 = new CustomControls.RJControls.RJTextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -49,6 +48,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.backBtn = new OrganizationProfile.CustomButton();
+            this.rjDatePicker1 = new CustomControls.RJControls.RJDatePicker();
             this.panelBorder1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -149,11 +149,11 @@
             this.panelBorder1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panelBorder1.BorderRadius = 30;
             this.panelBorder1.Color = System.Drawing.Color.BurlyWood;
+            this.panelBorder1.Controls.Add(this.rjDatePicker1);
             this.panelBorder1.Controls.Add(this.rjTextBox6);
             this.panelBorder1.Controls.Add(this.label9);
             this.panelBorder1.Controls.Add(this.rjTextBox5);
             this.panelBorder1.Controls.Add(this.label8);
-            this.panelBorder1.Controls.Add(this.rjTextBox4);
             this.panelBorder1.Controls.Add(this.label7);
             this.panelBorder1.Controls.Add(this.rjTextBox3);
             this.panelBorder1.Controls.Add(this.label6);
@@ -177,7 +177,7 @@
             this.rjTextBox6.BorderSize = 1;
             this.rjTextBox6.Font = new System.Drawing.Font("Poppins", 10.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rjTextBox6.ForeColor = System.Drawing.Color.Black;
-            this.rjTextBox6.Location = new System.Drawing.Point(143, 290);
+            this.rjTextBox6.Location = new System.Drawing.Point(165, 290);
             this.rjTextBox6.Margin = new System.Windows.Forms.Padding(4);
             this.rjTextBox6.Multiline = true;
             this.rjTextBox6.Name = "rjTextBox6";
@@ -194,7 +194,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(139, 267);
+            this.label9.Location = new System.Drawing.Point(161, 267);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(66, 23);
             this.label9.TabIndex = 12;
@@ -209,7 +209,7 @@
             this.rjTextBox5.BorderSize = 1;
             this.rjTextBox5.Font = new System.Drawing.Font("Poppins", 10.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rjTextBox5.ForeColor = System.Drawing.Color.Black;
-            this.rjTextBox5.Location = new System.Drawing.Point(529, 198);
+            this.rjTextBox5.Location = new System.Drawing.Point(551, 198);
             this.rjTextBox5.Margin = new System.Windows.Forms.Padding(4);
             this.rjTextBox5.Multiline = false;
             this.rjTextBox5.Name = "rjTextBox5";
@@ -217,7 +217,7 @@
             this.rjTextBox5.PasswordChar = false;
             this.rjTextBox5.PlaceholderColor = System.Drawing.Color.DarkGray;
             this.rjTextBox5.PlaceholderText = "";
-            this.rjTextBox5.Size = new System.Drawing.Size(367, 41);
+            this.rjTextBox5.Size = new System.Drawing.Size(241, 41);
             this.rjTextBox5.TabIndex = 9;
             this.rjTextBox5.Texts = "";
             this.rjTextBox5.UnderlinedStyle = false;
@@ -226,39 +226,17 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(525, 175);
+            this.label8.Location = new System.Drawing.Point(547, 175);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(123, 23);
             this.label8.TabIndex = 10;
             this.label8.Text = "Contact Number";
             // 
-            // rjTextBox4
-            // 
-            this.rjTextBox4.BackColor = System.Drawing.SystemColors.Window;
-            this.rjTextBox4.BorderColor = System.Drawing.Color.DimGray;
-            this.rjTextBox4.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.rjTextBox4.BorderRadius = 5;
-            this.rjTextBox4.BorderSize = 1;
-            this.rjTextBox4.Font = new System.Drawing.Font("Poppins", 10.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rjTextBox4.ForeColor = System.Drawing.Color.Black;
-            this.rjTextBox4.Location = new System.Drawing.Point(143, 198);
-            this.rjTextBox4.Margin = new System.Windows.Forms.Padding(4);
-            this.rjTextBox4.Multiline = false;
-            this.rjTextBox4.Name = "rjTextBox4";
-            this.rjTextBox4.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.rjTextBox4.PasswordChar = false;
-            this.rjTextBox4.PlaceholderColor = System.Drawing.Color.DarkGray;
-            this.rjTextBox4.PlaceholderText = "";
-            this.rjTextBox4.Size = new System.Drawing.Size(355, 41);
-            this.rjTextBox4.TabIndex = 7;
-            this.rjTextBox4.Texts = "";
-            this.rjTextBox4.UnderlinedStyle = false;
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(139, 175);
+            this.label7.Location = new System.Drawing.Point(161, 175);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(74, 23);
             this.label7.TabIndex = 8;
@@ -273,7 +251,7 @@
             this.rjTextBox3.BorderSize = 1;
             this.rjTextBox3.Font = new System.Drawing.Font("Poppins", 10.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rjTextBox3.ForeColor = System.Drawing.Color.Black;
-            this.rjTextBox3.Location = new System.Drawing.Point(811, 112);
+            this.rjTextBox3.Location = new System.Drawing.Point(833, 112);
             this.rjTextBox3.Margin = new System.Windows.Forms.Padding(4);
             this.rjTextBox3.Multiline = false;
             this.rjTextBox3.Name = "rjTextBox3";
@@ -290,7 +268,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(807, 89);
+            this.label6.Location = new System.Drawing.Point(829, 89);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(37, 23);
             this.label6.TabIndex = 6;
@@ -305,7 +283,7 @@
             this.rjTextBox2.BorderSize = 1;
             this.rjTextBox2.Font = new System.Drawing.Font("Poppins", 10.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rjTextBox2.ForeColor = System.Drawing.Color.Black;
-            this.rjTextBox2.Location = new System.Drawing.Point(529, 112);
+            this.rjTextBox2.Location = new System.Drawing.Point(551, 112);
             this.rjTextBox2.Margin = new System.Windows.Forms.Padding(4);
             this.rjTextBox2.Multiline = false;
             this.rjTextBox2.Name = "rjTextBox2";
@@ -322,7 +300,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(525, 89);
+            this.label5.Location = new System.Drawing.Point(547, 89);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(60, 23);
             this.label5.TabIndex = 4;
@@ -337,7 +315,7 @@
             this.rjTextBox1.BorderSize = 1;
             this.rjTextBox1.Font = new System.Drawing.Font("Poppins", 10.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rjTextBox1.ForeColor = System.Drawing.Color.Black;
-            this.rjTextBox1.Location = new System.Drawing.Point(140, 112);
+            this.rjTextBox1.Location = new System.Drawing.Point(162, 112);
             this.rjTextBox1.Margin = new System.Windows.Forms.Padding(4);
             this.rjTextBox1.Multiline = false;
             this.rjTextBox1.Name = "rjTextBox1";
@@ -354,7 +332,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(136, 89);
+            this.label4.Location = new System.Drawing.Point(158, 89);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(51, 23);
             this.label4.TabIndex = 2;
@@ -383,7 +361,7 @@
             this.backBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.backBtn.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.backBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.backBtn.Image = ((System.Drawing.Image)(resources.GetObject("backBtn.Image")));
+            this.backBtn.Image = global::Kinesia.Properties.Resources.back_button_icon;
             this.backBtn.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.backBtn.Location = new System.Drawing.Point(1041, 39);
             this.backBtn.Name = "backBtn";
@@ -395,6 +373,21 @@
             this.backBtn.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
             this.backBtn.UseVisualStyleBackColor = false;
             this.backBtn.Click += new System.EventHandler(this.backBtn_Click);
+            // 
+            // rjDatePicker1
+            // 
+            this.rjDatePicker1.BorderColor = System.Drawing.Color.DimGray;
+            this.rjDatePicker1.BorderSize = 1;
+            this.rjDatePicker1.CalendarFont = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rjDatePicker1.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right;
+            this.rjDatePicker1.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rjDatePicker1.Location = new System.Drawing.Point(165, 204);
+            this.rjDatePicker1.MinimumSize = new System.Drawing.Size(0, 35);
+            this.rjDatePicker1.Name = "rjDatePicker1";
+            this.rjDatePicker1.Size = new System.Drawing.Size(355, 35);
+            this.rjDatePicker1.SkinColor = System.Drawing.Color.White;
+            this.rjDatePicker1.TabIndex = 14;
+            this.rjDatePicker1.TextColor = System.Drawing.Color.Black;
             // 
             // AddPatient
             // 
@@ -425,7 +418,6 @@
         private OrganizationProfile.CustomButton backBtn;
         private WindowsFormsApp2.CustomButton.PanelBorder panelBorder1;
         private System.Windows.Forms.Label label3;
-        private CustomControls.RJControls.RJTextBox rjTextBox4;
         private System.Windows.Forms.Label label7;
         private CustomControls.RJControls.RJTextBox rjTextBox3;
         private System.Windows.Forms.Label label6;
@@ -439,5 +431,6 @@
         private System.Windows.Forms.Label label8;
         private OrganizationProfile.CustomButton customButton1;
         private OrganizationProfile.CustomButton customButton2;
+        private CustomControls.RJControls.RJDatePicker rjDatePicker1;
     }
 }

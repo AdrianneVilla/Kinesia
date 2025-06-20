@@ -3,7 +3,8 @@
     "",
     "\\Kinesia",
     "\\Kinesia\\bin",
-    "\\Kinesia\\Components"
+    "\\Kinesia\\Components",
+    "\\Kinesia\\Patients"
   ],
   "SelectedNode": "\\Kinesia.sln",
   "PreviewInSolutionExplorer": false
