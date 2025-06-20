@@ -17,9 +17,15 @@ namespace Kinesia.Components
             InitializeComponent();
         }
 
-        private void pictureBox3_Click(object sender, EventArgs e)
+        private void btnExit_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            DialogResult exitDiag = MessageBox.Show("Are you sure you want to exit the application?",
+                                                    "Exit Application", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+
+            if (exitDiag == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
         }
     }
 }

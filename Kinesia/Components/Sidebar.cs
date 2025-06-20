@@ -41,11 +41,7 @@ namespace Kinesia.Components
             Dashboard dashboard = Application.OpenForms["Dashboard"] as Dashboard;
             dashboard.ContentsPanel.Controls.Clear();
             dashboard.ContentsPanel.Controls.Add(PageObjects.dashboardPage);
-
         }
 
-
-
-    
     }
 }

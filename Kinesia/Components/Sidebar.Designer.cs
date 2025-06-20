@@ -47,9 +47,10 @@
             this.logoutBtn.BorderColor = System.Drawing.Color.White;
             this.logoutBtn.BorderRadius = 10;
             this.logoutBtn.BorderSize = 0;
+            this.logoutBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.logoutBtn.FlatAppearance.BorderSize = 0;
             this.logoutBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.logoutBtn.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold);
+            this.logoutBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.logoutBtn.ForeColor = System.Drawing.Color.White;
             this.logoutBtn.Image = ((System.Drawing.Image)(resources.GetObject("logoutBtn.Image")));
             this.logoutBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -76,7 +77,7 @@
             this.logsModule.BorderSize = 0;
             this.logsModule.FlatAppearance.BorderSize = 0;
             this.logsModule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.logsModule.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold);
+            this.logsModule.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.logsModule.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
             this.logsModule.Image = ((System.Drawing.Image)(resources.GetObject("logsModule.Image")));
             this.logsModule.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -103,7 +104,7 @@
             this.assessmentModule.BorderSize = 0;
             this.assessmentModule.FlatAppearance.BorderSize = 0;
             this.assessmentModule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.assessmentModule.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold);
+            this.assessmentModule.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.assessmentModule.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
             this.assessmentModule.Image = ((System.Drawing.Image)(resources.GetObject("assessmentModule.Image")));
             this.assessmentModule.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -128,9 +129,10 @@
             this.usersModule.BorderColor = System.Drawing.Color.White;
             this.usersModule.BorderRadius = 10;
             this.usersModule.BorderSize = 0;
+            this.usersModule.Cursor = System.Windows.Forms.Cursors.Hand;
             this.usersModule.FlatAppearance.BorderSize = 0;
             this.usersModule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.usersModule.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold);
+            this.usersModule.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.usersModule.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
             this.usersModule.Image = ((System.Drawing.Image)(resources.GetObject("usersModule.Image")));
             this.usersModule.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -159,7 +161,7 @@
             this.patientModule.Cursor = System.Windows.Forms.Cursors.Hand;
             this.patientModule.FlatAppearance.BorderSize = 0;
             this.patientModule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.patientModule.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold);
+            this.patientModule.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.patientModule.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
             this.patientModule.Image = ((System.Drawing.Image)(resources.GetObject("patientModule.Image")));
             this.patientModule.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -184,9 +186,10 @@
             this.dashboardModule.BorderColor = System.Drawing.Color.Transparent;
             this.dashboardModule.BorderRadius = 10;
             this.dashboardModule.BorderSize = 0;
+            this.dashboardModule.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dashboardModule.FlatAppearance.BorderSize = 0;
             this.dashboardModule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.dashboardModule.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dashboardModule.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dashboardModule.ForeColor = System.Drawing.Color.Transparent;
             this.dashboardModule.Image = ((System.Drawing.Image)(resources.GetObject("dashboardModule.Image")));
             this.dashboardModule.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;

@@ -1,7 +1,9 @@
 ﻿using Kinesia.Components;
 using Kinesia.Patients;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -18,7 +20,7 @@ namespace Kinesia
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new Login());
         }
     }
 
@@ -26,5 +28,18 @@ namespace Kinesia
     {
         public static DashboardPage dashboardPage;
         public static PatientsPage patientsPage;
+    }
+
+    public class Connection
+    {
+        public static string connectionString = "server=localhost;port=3306;database=kinesia;uid=root;pwd=;";
+        public static MySqlConnection conn = new MySqlConnection(connectionString);
+        public static MySqlCommand cmd;
+        public static MySqlDataReader reader;
+    }
+
+    public class Queries
+    {
+
     }
 }
