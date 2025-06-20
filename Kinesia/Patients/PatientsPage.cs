@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp2.CustomButton;
 
 namespace Kinesia.Patients
 {
@@ -19,20 +20,14 @@ namespace Kinesia.Patients
             InitializeComponent();
         }
 
+        public PanelBorder getPatientHolder { get { return PatientHolder; } }
+
         private void PatientsPage_Load(object sender, EventArgs e)
         {
-            PageObjects.displayPatients = new displayPatients();
-            PatientHolder.Controls.Add(PageObjects.displayPatients);
-            PageObjects.displayPatients = new displayPatients();
-            PatientHolder.Controls.Add(PageObjects.displayPatients);
-            PageObjects.displayPatients = new displayPatients();
-            PatientHolder.Controls.Add(PageObjects.displayPatients);
-            PageObjects.displayPatients = new displayPatients();
-            PatientHolder.Controls.Add(PageObjects.displayPatients);
-
+            Queries.PatientQueries.DisplayPatients();
         }
 
-        private void addPatientBtn_Click(object sender, EventArgs e)
+        private void btnAddPatient_Click(object sender, EventArgs e)
         {
             Dashboard dashboard = Application.OpenForms["Dashboard"] as Dashboard;
             PageObjects.addPatient = new AddPatient();

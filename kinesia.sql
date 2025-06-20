@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 20, 2025 at 04:30 AM
+-- Generation Time: Jun 20, 2025 at 03:46 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -20,6 +20,32 @@ SET time_zone = "+00:00";
 --
 -- Database: `kinesia`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `patients`
+--
+
+CREATE TABLE `patients` (
+  `PatientID` varchar(50) NOT NULL,
+  `FirstName` varchar(50) NOT NULL,
+  `LastName` varchar(50) NOT NULL,
+  `MiddleName` varchar(50) DEFAULT NULL,
+  `Contact` varchar(11) NOT NULL,
+  `Birthdate` date NOT NULL,
+  `Sex` varchar(10) NOT NULL,
+  `Address` varchar(255) NOT NULL,
+  `Occupation` varchar(50) NOT NULL,
+  `Status` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `patients`
+--
+
+INSERT INTO `patients` (`PatientID`, `FirstName`, `LastName`, `MiddleName`, `Contact`, `Birthdate`, `Sex`, `Address`, `Occupation`, `Status`) VALUES
+('Patient1', 'sample', 'sample', 'sample', 'sample', '2002-05-29', 'sample', 'sample', 'sample', 1);
 
 -- --------------------------------------------------------
 
@@ -51,6 +77,12 @@ INSERT INTO `users` (`UserID`, `FirstName`, `LastName`, `MiddleName`, `Birthdate
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `patients`
+--
+ALTER TABLE `patients`
+  ADD PRIMARY KEY (`PatientID`);
 
 --
 -- Indexes for table `users`

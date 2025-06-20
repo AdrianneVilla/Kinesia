@@ -323,9 +323,9 @@ namespace Kinesia
 
                 if (Connection.reader.Read())
                 {
-                    Dashboard dashboard = new Dashboard();
+                    PageObjects.dashboard = new Dashboard();
 
-                    dashboard.Show();
+                    PageObjects.dashboard.Show();
                     this.Hide();
                 } else
                 {

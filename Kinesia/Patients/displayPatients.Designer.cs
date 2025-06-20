@@ -1,6 +1,6 @@
 ﻿namespace Kinesia.Patients
 {
-    partial class displayPatients
+    partial class DisplayPatients
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,16 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(displayPatients));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DisplayPatients));
             this.panelBorder1 = new WindowsFormsApp2.CustomButton.PanelBorder();
-            this.customButton3 = new OrganizationProfile.CustomButton();
-            this.customButton2 = new OrganizationProfile.CustomButton();
+            this.btnArchive = new OrganizationProfile.CustomButton();
+            this.btnEdit = new OrganizationProfile.CustomButton();
             this.customButton1 = new OrganizationProfile.CustomButton();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.txtStatus = new System.Windows.Forms.Label();
+            this.txtContact = new System.Windows.Forms.Label();
+            this.txtGender = new System.Windows.Forms.Label();
+            this.txtAge = new System.Windows.Forms.Label();
+            this.txtPatientName = new System.Windows.Forms.Label();
             this.panelBorder1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,57 +47,57 @@
             this.panelBorder1.BackColor = System.Drawing.Color.White;
             this.panelBorder1.BorderRadius = 20;
             this.panelBorder1.Color = System.Drawing.Color.White;
-            this.panelBorder1.Controls.Add(this.customButton3);
-            this.panelBorder1.Controls.Add(this.customButton2);
+            this.panelBorder1.Controls.Add(this.btnArchive);
+            this.panelBorder1.Controls.Add(this.btnEdit);
             this.panelBorder1.Controls.Add(this.customButton1);
-            this.panelBorder1.Controls.Add(this.label5);
-            this.panelBorder1.Controls.Add(this.label4);
-            this.panelBorder1.Controls.Add(this.label3);
-            this.panelBorder1.Controls.Add(this.label2);
-            this.panelBorder1.Controls.Add(this.label1);
+            this.panelBorder1.Controls.Add(this.txtStatus);
+            this.panelBorder1.Controls.Add(this.txtContact);
+            this.panelBorder1.Controls.Add(this.txtGender);
+            this.panelBorder1.Controls.Add(this.txtAge);
+            this.panelBorder1.Controls.Add(this.txtPatientName);
             this.panelBorder1.ForeColor = System.Drawing.Color.Black;
             this.panelBorder1.Location = new System.Drawing.Point(3, 3);
             this.panelBorder1.Name = "panelBorder1";
             this.panelBorder1.Size = new System.Drawing.Size(1497, 91);
             this.panelBorder1.TabIndex = 0;
             // 
-            // customButton3
+            // btnArchive
             // 
-            this.customButton3.BackColor = System.Drawing.Color.Transparent;
-            this.customButton3.BackgroundColor = System.Drawing.Color.Transparent;
-            this.customButton3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("customButton3.BackgroundImage")));
-            this.customButton3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.customButton3.BorderColor = System.Drawing.Color.White;
-            this.customButton3.BorderRadius = 40;
-            this.customButton3.BorderSize = 0;
-            this.customButton3.FlatAppearance.BorderSize = 0;
-            this.customButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.customButton3.ForeColor = System.Drawing.Color.Transparent;
-            this.customButton3.Location = new System.Drawing.Point(1415, 24);
-            this.customButton3.Name = "customButton3";
-            this.customButton3.Size = new System.Drawing.Size(39, 40);
-            this.customButton3.TabIndex = 7;
-            this.customButton3.TextColor = System.Drawing.Color.Transparent;
-            this.customButton3.UseVisualStyleBackColor = false;
+            this.btnArchive.BackColor = System.Drawing.Color.Transparent;
+            this.btnArchive.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btnArchive.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnArchive.BackgroundImage")));
+            this.btnArchive.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnArchive.BorderColor = System.Drawing.Color.White;
+            this.btnArchive.BorderRadius = 40;
+            this.btnArchive.BorderSize = 0;
+            this.btnArchive.FlatAppearance.BorderSize = 0;
+            this.btnArchive.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnArchive.ForeColor = System.Drawing.Color.Transparent;
+            this.btnArchive.Location = new System.Drawing.Point(1415, 24);
+            this.btnArchive.Name = "btnArchive";
+            this.btnArchive.Size = new System.Drawing.Size(39, 40);
+            this.btnArchive.TabIndex = 7;
+            this.btnArchive.TextColor = System.Drawing.Color.Transparent;
+            this.btnArchive.UseVisualStyleBackColor = false;
             // 
-            // customButton2
+            // btnEdit
             // 
-            this.customButton2.BackColor = System.Drawing.Color.Transparent;
-            this.customButton2.BackgroundColor = System.Drawing.Color.Transparent;
-            this.customButton2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("customButton2.BackgroundImage")));
-            this.customButton2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.customButton2.BorderColor = System.Drawing.Color.White;
-            this.customButton2.BorderRadius = 40;
-            this.customButton2.BorderSize = 0;
-            this.customButton2.FlatAppearance.BorderSize = 0;
-            this.customButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.customButton2.ForeColor = System.Drawing.Color.Transparent;
-            this.customButton2.Location = new System.Drawing.Point(1344, 24);
-            this.customButton2.Name = "customButton2";
-            this.customButton2.Size = new System.Drawing.Size(39, 40);
-            this.customButton2.TabIndex = 6;
-            this.customButton2.TextColor = System.Drawing.Color.Transparent;
-            this.customButton2.UseVisualStyleBackColor = false;
+            this.btnEdit.BackColor = System.Drawing.Color.Transparent;
+            this.btnEdit.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btnEdit.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnEdit.BackgroundImage")));
+            this.btnEdit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnEdit.BorderColor = System.Drawing.Color.White;
+            this.btnEdit.BorderRadius = 40;
+            this.btnEdit.BorderSize = 0;
+            this.btnEdit.FlatAppearance.BorderSize = 0;
+            this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEdit.ForeColor = System.Drawing.Color.Transparent;
+            this.btnEdit.Location = new System.Drawing.Point(1344, 24);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(39, 40);
+            this.btnEdit.TabIndex = 6;
+            this.btnEdit.TextColor = System.Drawing.Color.Transparent;
+            this.btnEdit.UseVisualStyleBackColor = false;
             // 
             // customButton1
             // 
@@ -119,57 +119,57 @@
             this.customButton1.UseVisualStyleBackColor = false;
             this.customButton1.Click += new System.EventHandler(this.customButton1_Click);
             // 
-            // label5
+            // txtStatus
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(1057, 35);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(47, 22);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Status";
+            this.txtStatus.AutoSize = true;
+            this.txtStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStatus.Location = new System.Drawing.Point(1057, 35);
+            this.txtStatus.Name = "txtStatus";
+            this.txtStatus.Size = new System.Drawing.Size(41, 15);
+            this.txtStatus.TabIndex = 4;
+            this.txtStatus.Text = "Status";
             // 
-            // label4
+            // txtContact
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(843, 35);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(108, 22);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Contact Number";
+            this.txtContact.AutoSize = true;
+            this.txtContact.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtContact.Location = new System.Drawing.Point(843, 35);
+            this.txtContact.Name = "txtContact";
+            this.txtContact.Size = new System.Drawing.Size(96, 15);
+            this.txtContact.TabIndex = 3;
+            this.txtContact.Text = "Contact Number";
             // 
-            // label3
+            // txtGender
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(635, 35);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 22);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Gender";
+            this.txtGender.AutoSize = true;
+            this.txtGender.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtGender.Location = new System.Drawing.Point(635, 35);
+            this.txtGender.Name = "txtGender";
+            this.txtGender.Size = new System.Drawing.Size(48, 15);
+            this.txtGender.TabIndex = 2;
+            this.txtGender.Text = "Gender";
             // 
-            // label2
+            // txtAge
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtAge.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(421, 35);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(33, 22);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Age";
+            this.txtAge.AutoSize = true;
+            this.txtAge.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAge.Location = new System.Drawing.Point(421, 35);
+            this.txtAge.Name = "txtAge";
+            this.txtAge.Size = new System.Drawing.Size(28, 15);
+            this.txtAge.TabIndex = 1;
+            this.txtAge.Text = "Age";
             // 
-            // label1
+            // txtPatientName
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(14, 35);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(94, 22);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Patient Name";
+            this.txtPatientName.AutoSize = true;
+            this.txtPatientName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPatientName.Location = new System.Drawing.Point(14, 35);
+            this.txtPatientName.Name = "txtPatientName";
+            this.txtPatientName.Size = new System.Drawing.Size(94, 15);
+            this.txtPatientName.TabIndex = 0;
+            this.txtPatientName.Text = "Patient Name";
             // 
             // displayPatients
             // 
@@ -188,13 +188,13 @@
         #endregion
 
         private WindowsFormsApp2.CustomButton.PanelBorder panelBorder1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label txtPatientName;
+        private System.Windows.Forms.Label txtAge;
+        private System.Windows.Forms.Label txtGender;
+        private System.Windows.Forms.Label txtContact;
+        private System.Windows.Forms.Label txtStatus;
         private OrganizationProfile.CustomButton customButton1;
-        private OrganizationProfile.CustomButton customButton2;
-        private OrganizationProfile.CustomButton customButton3;
+        private OrganizationProfile.CustomButton btnEdit;
+        private OrganizationProfile.CustomButton btnArchive;
     }
 }

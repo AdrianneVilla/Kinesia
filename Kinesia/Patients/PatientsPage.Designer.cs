@@ -44,7 +44,7 @@
             this.editHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.archiveHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PatientHolder = new WindowsFormsApp2.CustomButton.PanelBorder();
-            this.addPatientBtn = new OrganizationProfile.CustomButton();
+            this.btnAddPatient = new OrganizationProfile.CustomButton();
             this.panelBorder1 = new WindowsFormsApp2.CustomButton.PanelBorder();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.rjTextBox1 = new CustomControls.RJControls.RJTextBox();
@@ -58,12 +58,12 @@
             this.nameHolder.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.nameHolder.AutoSize = true;
-            this.nameHolder.Font = new System.Drawing.Font("Poppins", 20F, System.Drawing.FontStyle.Bold);
+            this.nameHolder.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold);
             this.nameHolder.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
             this.nameHolder.Location = new System.Drawing.Point(61, 32);
             this.nameHolder.Margin = new System.Windows.Forms.Padding(0);
             this.nameHolder.Name = "nameHolder";
-            this.nameHolder.Size = new System.Drawing.Size(135, 48);
+            this.nameHolder.Size = new System.Drawing.Size(121, 31);
             this.nameHolder.TabIndex = 2;
             this.nameHolder.Text = "Patients";
             this.nameHolder.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -71,10 +71,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(65, 72);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(201, 23);
+            this.label1.Size = new System.Drawing.Size(178, 16);
             this.label1.TabIndex = 3;
             this.label1.Text = "patients personal information";
             // 
@@ -95,7 +95,7 @@
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Transparent;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
@@ -117,7 +117,7 @@
             this.dataGridView1.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Transparent;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
@@ -136,7 +136,7 @@
             this.nameHeader.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
@@ -213,30 +213,30 @@
             this.PatientHolder.Size = new System.Drawing.Size(1129, 472);
             this.PatientHolder.TabIndex = 7;
             // 
-            // addPatientBtn
+            // btnAddPatient
             // 
-            this.addPatientBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.addPatientBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.addPatientBtn.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.addPatientBtn.BorderColor = System.Drawing.Color.White;
-            this.addPatientBtn.BorderRadius = 10;
-            this.addPatientBtn.BorderSize = 0;
-            this.addPatientBtn.FlatAppearance.BorderSize = 0;
-            this.addPatientBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addPatientBtn.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.addPatientBtn.ForeColor = System.Drawing.Color.Transparent;
-            this.addPatientBtn.Image = ((System.Drawing.Image)(resources.GetObject("addPatientBtn.Image")));
-            this.addPatientBtn.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.addPatientBtn.Location = new System.Drawing.Point(1041, 39);
-            this.addPatientBtn.Name = "addPatientBtn";
-            this.addPatientBtn.Padding = new System.Windows.Forms.Padding(5, 5, 20, 0);
-            this.addPatientBtn.Size = new System.Drawing.Size(150, 48);
-            this.addPatientBtn.TabIndex = 6;
-            this.addPatientBtn.Text = "Add Patient";
-            this.addPatientBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.addPatientBtn.TextColor = System.Drawing.Color.Transparent;
-            this.addPatientBtn.UseVisualStyleBackColor = false;
-            this.addPatientBtn.Click += new System.EventHandler(this.addPatientBtn_Click);
+            this.btnAddPatient.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddPatient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
+            this.btnAddPatient.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
+            this.btnAddPatient.BorderColor = System.Drawing.Color.White;
+            this.btnAddPatient.BorderRadius = 10;
+            this.btnAddPatient.BorderSize = 0;
+            this.btnAddPatient.FlatAppearance.BorderSize = 0;
+            this.btnAddPatient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddPatient.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnAddPatient.ForeColor = System.Drawing.Color.Transparent;
+            this.btnAddPatient.Image = ((System.Drawing.Image)(resources.GetObject("btnAddPatient.Image")));
+            this.btnAddPatient.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnAddPatient.Location = new System.Drawing.Point(1041, 39);
+            this.btnAddPatient.Name = "btnAddPatient";
+            this.btnAddPatient.Padding = new System.Windows.Forms.Padding(5, 5, 20, 0);
+            this.btnAddPatient.Size = new System.Drawing.Size(150, 48);
+            this.btnAddPatient.TabIndex = 6;
+            this.btnAddPatient.Text = "Add Patient";
+            this.btnAddPatient.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAddPatient.TextColor = System.Drawing.Color.Transparent;
+            this.btnAddPatient.UseVisualStyleBackColor = false;
+            this.btnAddPatient.Click += new System.EventHandler(this.btnAddPatient_Click);
             // 
             // panelBorder1
             // 
@@ -272,7 +272,7 @@
             this.rjTextBox1.BorderFocusColor = System.Drawing.Color.White;
             this.rjTextBox1.BorderRadius = 5;
             this.rjTextBox1.BorderSize = 1;
-            this.rjTextBox1.Font = new System.Drawing.Font("Poppins", 10.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rjTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rjTextBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.rjTextBox1.Location = new System.Drawing.Point(48, 8);
             this.rjTextBox1.Margin = new System.Windows.Forms.Padding(4);
@@ -282,7 +282,7 @@
             this.rjTextBox1.PasswordChar = false;
             this.rjTextBox1.PlaceholderColor = System.Drawing.Color.DarkGray;
             this.rjTextBox1.PlaceholderText = "Search Patient";
-            this.rjTextBox1.Size = new System.Drawing.Size(381, 34);
+            this.rjTextBox1.Size = new System.Drawing.Size(381, 26);
             this.rjTextBox1.TabIndex = 4;
             this.rjTextBox1.Texts = "";
             this.rjTextBox1.UnderlinedStyle = false;
@@ -294,7 +294,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.PatientHolder);
-            this.Controls.Add(this.addPatientBtn);
+            this.Controls.Add(this.btnAddPatient);
             this.Controls.Add(this.panelBorder1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.nameHolder);
@@ -316,7 +316,7 @@
         private CustomControls.RJControls.RJTextBox rjTextBox1;
         private WindowsFormsApp2.CustomButton.PanelBorder panelBorder1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private OrganizationProfile.CustomButton addPatientBtn;
+        private OrganizationProfile.CustomButton btnAddPatient;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameHeader;
         private System.Windows.Forms.DataGridViewTextBoxColumn ageHeader;
@@ -326,6 +326,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn EMRHeader;
         private System.Windows.Forms.DataGridViewTextBoxColumn editHeader;
         private System.Windows.Forms.DataGridViewTextBoxColumn archiveHeader;
-        public WindowsFormsApp2.CustomButton.PanelBorder PatientHolder;
+        private WindowsFormsApp2.CustomButton.PanelBorder PatientHolder;
     }
 }

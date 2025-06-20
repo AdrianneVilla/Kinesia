@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Kinesia.Patients;
 
 namespace Kinesia
 {
@@ -26,9 +27,10 @@ namespace Kinesia
 
     public class PageObjects
     {
+        public static Dashboard dashboard;
         public static DashboardPage dashboardPage;
         public static PatientsPage patientsPage;
-        public static displayPatients displayPatients;
+        public static DisplayPatients displayPatients;
         public static AddPatient addPatient;
         public static PatientDetails patientDetails;
     }
@@ -43,6 +45,6 @@ namespace Kinesia
 
     public class Queries
     {
-
+        public static PatientsCRUD PatientQueries = new PatientsCRUD();
     }
 }

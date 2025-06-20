@@ -118,20 +118,20 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="customButton3.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnArchive.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EgAACxIB0t1+/AAAAN9JREFUSEvtktENgkAQRCnBEizBEoZLrEM7gU4sxRIuB/5TAiVoBuVybPZuBX55
+        EAAACxABrSO9dQAAAN9JREFUSEvtktENgkAQRCnBEizBEoZLrEM7gU4sxRIuB/5TAiVoBuVybPZuBX55
         ycbk9s2sH1TVwVo8cO7hfAf3XjkDs7JvAQWKSvjf4ZGT7I10cA+KAbUvigK6zHyP1E+5jyj/aNPI3ogU
         t47sjZiCgZk3BQMzbwl796awd58VPHCR+xeu01tKLh/RhADX8i0At3nvgfvvt01dLb9AE3q4Zn6XE4Am
         dbX8gpygHZHlJJePlIT0iFZOSvkJS+CRXDmx8rZgYOY7uHGWtk5APcjeCD8/CjK0YkZ+zrL3oMgHcDGy
         PiCGc84AAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="customButton2.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnEdit.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EgAACxIB0t1+/AAAARNJREFUSEvtlMENwjAMRRmBY9IIqRvBBmWTivjAETbgFpcTIzACI3SEjgBymqDW
+        EAAACxABrSO9dQAAARNJREFUSEvtlMENwjAMRRmBY9IIqRvBBmWTivjAETbgFpcTIzACI3SEjgBymqDW
         OLRBcONJviTf365jdbH480uWp3ppHBwNQkehG3vgmo8h88LBrUC4j8PWXJvN0FyjbRXWpcJ96Qs46Lg+
         C6lzdYZqVgGDdkuzZJ/cxnveOc086mKedm/eoUBox+a9Ed1xcxoLnZtBEe3gRjru+yQK+XnKPIzFNzVp
         TqQKfMWckAqsHGy+Yk5IBWiv+/N+vz82J6QCBuHqzRp7oA3h5n7zzlANc5IkCrC1HXcu5SSRxLrvuCsa
@@ -142,7 +142,7 @@
   <data name="customButton1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EgAACxIB0t1+/AAAAPxJREFUOE+VVO0NwiAU7AhPdABH6AZ1BP9JaUy6gW6gmzBKRyAF1J8doSOoj4aW
+        EAAACxABrSO9dQAAAPxJREFUOE+VVO0NwiAU7AhPdABH6AZ1BP9JaUy6gW6gmzBKRyAF1J8doSOoj4aW
         j0rrJZcQ3r2DHpQMjgII05xUqidMveepO6CvfTYH0zwI+22lmpCLJlYAVMRFp24XASoOswJv0sHU/LiN
         47K9RgKvy8G4Q5PVZAK0vXuCsNFiykELwiTHLDyTJQPMZlPKsSnkooEFMJ3vzs/C8m+DEKsMhu/VXTiP
         SBpg4njetobj8BIlDdykHfa+JmEAVNbDkdlmyeGkLq4maWCBqyZqywbARA6lLMJ5RGSAwYWiX8BARwPn
