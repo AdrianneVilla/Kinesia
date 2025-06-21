@@ -32,7 +32,7 @@
             this.panelBorder1 = new WindowsFormsApp2.CustomButton.PanelBorder();
             this.btnArchive = new OrganizationProfile.CustomButton();
             this.btnEdit = new OrganizationProfile.CustomButton();
-            this.customButton1 = new OrganizationProfile.CustomButton();
+            this.btnView = new OrganizationProfile.CustomButton();
             this.txtStatus = new System.Windows.Forms.Label();
             this.txtContact = new System.Windows.Forms.Label();
             this.txtGender = new System.Windows.Forms.Label();
@@ -49,7 +49,7 @@
             this.panelBorder1.Color = System.Drawing.Color.White;
             this.panelBorder1.Controls.Add(this.btnArchive);
             this.panelBorder1.Controls.Add(this.btnEdit);
-            this.panelBorder1.Controls.Add(this.customButton1);
+            this.panelBorder1.Controls.Add(this.btnView);
             this.panelBorder1.Controls.Add(this.txtStatus);
             this.panelBorder1.Controls.Add(this.txtContact);
             this.panelBorder1.Controls.Add(this.txtGender);
@@ -98,26 +98,27 @@
             this.btnEdit.TabIndex = 6;
             this.btnEdit.TextColor = System.Drawing.Color.Transparent;
             this.btnEdit.UseVisualStyleBackColor = false;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
-            // customButton1
+            // btnView
             // 
-            this.customButton1.BackColor = System.Drawing.Color.Transparent;
-            this.customButton1.BackgroundColor = System.Drawing.Color.Transparent;
-            this.customButton1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("customButton1.BackgroundImage")));
-            this.customButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.customButton1.BorderColor = System.Drawing.Color.White;
-            this.customButton1.BorderRadius = 40;
-            this.customButton1.BorderSize = 0;
-            this.customButton1.FlatAppearance.BorderSize = 0;
-            this.customButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.customButton1.ForeColor = System.Drawing.Color.Transparent;
-            this.customButton1.Location = new System.Drawing.Point(1267, 24);
-            this.customButton1.Name = "customButton1";
-            this.customButton1.Size = new System.Drawing.Size(39, 40);
-            this.customButton1.TabIndex = 5;
-            this.customButton1.TextColor = System.Drawing.Color.Transparent;
-            this.customButton1.UseVisualStyleBackColor = false;
-            this.customButton1.Click += new System.EventHandler(this.customButton1_Click);
+            this.btnView.BackColor = System.Drawing.Color.Transparent;
+            this.btnView.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btnView.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnView.BackgroundImage")));
+            this.btnView.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnView.BorderColor = System.Drawing.Color.White;
+            this.btnView.BorderRadius = 40;
+            this.btnView.BorderSize = 0;
+            this.btnView.FlatAppearance.BorderSize = 0;
+            this.btnView.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnView.ForeColor = System.Drawing.Color.Transparent;
+            this.btnView.Location = new System.Drawing.Point(1267, 24);
+            this.btnView.Name = "btnView";
+            this.btnView.Size = new System.Drawing.Size(39, 40);
+            this.btnView.TabIndex = 5;
+            this.btnView.TextColor = System.Drawing.Color.Transparent;
+            this.btnView.UseVisualStyleBackColor = false;
+            this.btnView.Click += new System.EventHandler(this.BtnView_Click);
             // 
             // txtStatus
             // 
@@ -171,13 +172,13 @@
             this.txtPatientName.TabIndex = 0;
             this.txtPatientName.Text = "Patient Name";
             // 
-            // displayPatients
+            // DisplayPatients
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(249)))), ((int)(((byte)(238)))));
             this.Controls.Add(this.panelBorder1);
-            this.Name = "displayPatients";
+            this.Name = "DisplayPatients";
             this.Size = new System.Drawing.Size(1510, 97);
             this.panelBorder1.ResumeLayout(false);
             this.panelBorder1.PerformLayout();
@@ -193,7 +194,7 @@
         private System.Windows.Forms.Label txtGender;
         private System.Windows.Forms.Label txtContact;
         private System.Windows.Forms.Label txtStatus;
-        private OrganizationProfile.CustomButton customButton1;
+        private OrganizationProfile.CustomButton btnView;
         private OrganizationProfile.CustomButton btnEdit;
         private OrganizationProfile.CustomButton btnArchive;
     }

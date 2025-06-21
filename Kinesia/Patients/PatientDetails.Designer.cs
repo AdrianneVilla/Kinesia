@@ -28,14 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PatientDetails));
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblSelectedPatient = new System.Windows.Forms.Label();
             this.titleNav = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblPatientName = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lblPatientID = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
@@ -49,11 +49,11 @@
             this.customButton2 = new OrganizationProfile.CustomButton();
             this.customButton1 = new OrganizationProfile.CustomButton();
             this.panelBorder1 = new WindowsFormsApp2.CustomButton.PanelBorder();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
+            this.lblBirthdate = new System.Windows.Forms.Label();
+            this.lblAddress = new System.Windows.Forms.Label();
+            this.lblAge = new System.Windows.Forms.Label();
+            this.lblContact = new System.Windows.Forms.Label();
+            this.lblGender = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -67,21 +67,21 @@
             this.panelBorder1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label2
+            // lblSelectedPatient
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.lblSelectedPatient.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold);
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.label2.Location = new System.Drawing.Point(165, 38);
-            this.label2.Margin = new System.Windows.Forms.Padding(0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(170, 25);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "Selected Patient";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblSelectedPatient.AutoSize = true;
+            this.lblSelectedPatient.BackColor = System.Drawing.Color.Transparent;
+            this.lblSelectedPatient.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold);
+            this.lblSelectedPatient.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
+            this.lblSelectedPatient.Location = new System.Drawing.Point(165, 38);
+            this.lblSelectedPatient.Margin = new System.Windows.Forms.Padding(0);
+            this.lblSelectedPatient.Name = "lblSelectedPatient";
+            this.lblSelectedPatient.Size = new System.Drawing.Size(170, 25);
+            this.lblSelectedPatient.TabIndex = 8;
+            this.lblSelectedPatient.Text = "Selected Patient";
+            this.lblSelectedPatient.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // titleNav
             // 
@@ -98,26 +98,26 @@
             this.titleNav.Text = "Patients >";
             this.titleNav.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label1
+            // lblPatientName
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.lblPatientName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Bold);
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.label1.Location = new System.Drawing.Point(57, 100);
-            this.label1.Margin = new System.Windows.Forms.Padding(0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(281, 39);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "Selected Patient";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblPatientName.AutoSize = true;
+            this.lblPatientName.BackColor = System.Drawing.Color.Transparent;
+            this.lblPatientName.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Bold);
+            this.lblPatientName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
+            this.lblPatientName.Location = new System.Drawing.Point(57, 100);
+            this.lblPatientName.Margin = new System.Windows.Forms.Padding(0);
+            this.lblPatientName.Name = "lblPatientName";
+            this.lblPatientName.Size = new System.Drawing.Size(235, 39);
+            this.lblPatientName.TabIndex = 10;
+            this.lblPatientName.Text = "Patient Name";
+            this.lblPatientName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.label3);
-            this.flowLayoutPanel1.Controls.Add(this.label4);
+            this.flowLayoutPanel1.Controls.Add(this.lblPatientID);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(67, 163);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
@@ -132,20 +132,20 @@
             this.label3.Location = new System.Drawing.Point(3, 3);
             this.label3.Name = "label3";
             this.label3.Padding = new System.Windows.Forms.Padding(0, 0, 20, 0);
-            this.label3.Size = new System.Drawing.Size(100, 13);
+            this.label3.Size = new System.Drawing.Size(74, 13);
             this.label3.TabIndex = 0;
-            this.label3.Text = "Appointment ID";
+            this.label3.Text = "Patient ID";
             // 
-            // label4
+            // lblPatientID
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(109, 3);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(61, 13);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "<Id here>";
+            this.lblPatientID.AutoSize = true;
+            this.lblPatientID.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPatientID.ForeColor = System.Drawing.Color.Black;
+            this.lblPatientID.Location = new System.Drawing.Point(83, 3);
+            this.lblPatientID.Name = "lblPatientID";
+            this.lblPatientID.Size = new System.Drawing.Size(61, 13);
+            this.lblPatientID.TabIndex = 1;
+            this.lblPatientID.Text = "<Id here>";
             // 
             // label12
             // 
@@ -209,14 +209,14 @@
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.AssessmentID,
@@ -325,11 +325,11 @@
             this.panelBorder1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panelBorder1.BorderRadius = 30;
             this.panelBorder1.Color = System.Drawing.Color.BurlyWood;
-            this.panelBorder1.Controls.Add(this.label16);
-            this.panelBorder1.Controls.Add(this.label15);
-            this.panelBorder1.Controls.Add(this.label14);
-            this.panelBorder1.Controls.Add(this.label13);
-            this.panelBorder1.Controls.Add(this.label10);
+            this.panelBorder1.Controls.Add(this.lblBirthdate);
+            this.panelBorder1.Controls.Add(this.lblAddress);
+            this.panelBorder1.Controls.Add(this.lblAge);
+            this.panelBorder1.Controls.Add(this.lblContact);
+            this.panelBorder1.Controls.Add(this.lblGender);
             this.panelBorder1.Controls.Add(this.label9);
             this.panelBorder1.Controls.Add(this.label7);
             this.panelBorder1.Controls.Add(this.label8);
@@ -342,65 +342,65 @@
             this.panelBorder1.Size = new System.Drawing.Size(1098, 146);
             this.panelBorder1.TabIndex = 13;
             // 
-            // label16
+            // lblBirthdate
             // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.ForeColor = System.Drawing.Color.Black;
-            this.label16.Location = new System.Drawing.Point(879, 58);
-            this.label16.Name = "label16";
-            this.label16.Padding = new System.Windows.Forms.Padding(0, 0, 52, 0);
-            this.label16.Size = new System.Drawing.Size(147, 13);
-            this.label16.TabIndex = 23;
-            this.label16.Text = "<birthday here>";
+            this.lblBirthdate.AutoSize = true;
+            this.lblBirthdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBirthdate.ForeColor = System.Drawing.Color.Black;
+            this.lblBirthdate.Location = new System.Drawing.Point(879, 58);
+            this.lblBirthdate.Name = "lblBirthdate";
+            this.lblBirthdate.Padding = new System.Windows.Forms.Padding(0, 0, 52, 0);
+            this.lblBirthdate.Size = new System.Drawing.Size(147, 13);
+            this.lblBirthdate.TabIndex = 23;
+            this.lblBirthdate.Text = "<birthday here>";
             // 
-            // label15
+            // lblAddress
             // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.ForeColor = System.Drawing.Color.Black;
-            this.label15.Location = new System.Drawing.Point(508, 96);
-            this.label15.Name = "label15";
-            this.label15.Padding = new System.Windows.Forms.Padding(0, 0, 52, 0);
-            this.label15.Size = new System.Drawing.Size(146, 13);
-            this.label15.TabIndex = 22;
-            this.label15.Text = "<address here>";
+            this.lblAddress.AutoSize = true;
+            this.lblAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAddress.ForeColor = System.Drawing.Color.Black;
+            this.lblAddress.Location = new System.Drawing.Point(508, 96);
+            this.lblAddress.Name = "lblAddress";
+            this.lblAddress.Padding = new System.Windows.Forms.Padding(0, 0, 52, 0);
+            this.lblAddress.Size = new System.Drawing.Size(146, 13);
+            this.lblAddress.TabIndex = 22;
+            this.lblAddress.Text = "<address here>";
             // 
-            // label14
+            // lblAge
             // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.ForeColor = System.Drawing.Color.Black;
-            this.label14.Location = new System.Drawing.Point(508, 58);
-            this.label14.Name = "label14";
-            this.label14.Padding = new System.Windows.Forms.Padding(0, 0, 52, 0);
-            this.label14.Size = new System.Drawing.Size(123, 13);
-            this.label14.TabIndex = 21;
-            this.label14.Text = "<age here>";
+            this.lblAge.AutoSize = true;
+            this.lblAge.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAge.ForeColor = System.Drawing.Color.Black;
+            this.lblAge.Location = new System.Drawing.Point(508, 58);
+            this.lblAge.Name = "lblAge";
+            this.lblAge.Padding = new System.Windows.Forms.Padding(0, 0, 52, 0);
+            this.lblAge.Size = new System.Drawing.Size(123, 13);
+            this.lblAge.TabIndex = 21;
+            this.lblAge.Text = "<age here>";
             // 
-            // label13
+            // lblContact
             // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.Color.Black;
-            this.label13.Location = new System.Drawing.Point(150, 96);
-            this.label13.Name = "label13";
-            this.label13.Padding = new System.Windows.Forms.Padding(0, 0, 52, 0);
-            this.label13.Size = new System.Drawing.Size(172, 13);
-            this.label13.TabIndex = 20;
-            this.label13.Text = "<contact num here>";
+            this.lblContact.AutoSize = true;
+            this.lblContact.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblContact.ForeColor = System.Drawing.Color.Black;
+            this.lblContact.Location = new System.Drawing.Point(150, 96);
+            this.lblContact.Name = "lblContact";
+            this.lblContact.Padding = new System.Windows.Forms.Padding(0, 0, 52, 0);
+            this.lblContact.Size = new System.Drawing.Size(172, 13);
+            this.lblContact.TabIndex = 20;
+            this.lblContact.Text = "<contact num here>";
             // 
-            // label10
+            // lblGender
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.Black;
-            this.label10.Location = new System.Drawing.Point(150, 58);
-            this.label10.Name = "label10";
-            this.label10.Padding = new System.Windows.Forms.Padding(0, 0, 52, 0);
-            this.label10.Size = new System.Drawing.Size(141, 13);
-            this.label10.TabIndex = 19;
-            this.label10.Text = "<gender here>";
+            this.lblGender.AutoSize = true;
+            this.lblGender.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGender.ForeColor = System.Drawing.Color.Black;
+            this.lblGender.Location = new System.Drawing.Point(150, 58);
+            this.lblGender.Name = "lblGender";
+            this.lblGender.Padding = new System.Windows.Forms.Padding(0, 0, 52, 0);
+            this.lblGender.Size = new System.Drawing.Size(141, 13);
+            this.lblGender.TabIndex = 19;
+            this.lblGender.Text = "<gender here>";
             // 
             // label9
             // 
@@ -516,9 +516,9 @@
             this.Controls.Add(this.panelBorder1);
             this.Controls.Add(this.flowLayoutPanel5);
             this.Controls.Add(this.flowLayoutPanel1);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblPatientName);
             this.Controls.Add(this.btnBack);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lblSelectedPatient);
             this.Controls.Add(this.titleNav);
             this.Name = "PatientDetails";
             this.Size = new System.Drawing.Size(1249, 737);
@@ -536,23 +536,23 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblSelectedPatient;
         private System.Windows.Forms.Label titleNav;
         private OrganizationProfile.CustomButton btnBack;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblPatientName;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblPatientID;
         private WindowsFormsApp2.CustomButton.PanelBorder panelBorder1;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label lblBirthdate;
+        private System.Windows.Forms.Label lblAddress;
+        private System.Windows.Forms.Label lblAge;
+        private System.Windows.Forms.Label lblContact;
+        private System.Windows.Forms.Label lblGender;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;

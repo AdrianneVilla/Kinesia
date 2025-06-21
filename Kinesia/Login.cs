@@ -81,7 +81,7 @@ namespace Kinesia
             // 
             // label1
             // 
-            this.label1.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
             this.label1.Location = new System.Drawing.Point(55, 294);
             this.label1.Margin = new System.Windows.Forms.Padding(55, 0, 3, 0);
@@ -160,7 +160,7 @@ namespace Kinesia
             this.txtPassword.PlaceholderColor = System.Drawing.Color.DarkGray;
             this.txtPassword.PlaceholderText = "";
             this.txtPassword.Size = new System.Drawing.Size(255, 31);
-            this.txtPassword.TabIndex = 9;
+            this.txtPassword.TabIndex = 2;
             this.txtPassword.Texts = "";
             this.txtPassword.UnderlinedStyle = false;
             // 
@@ -183,18 +183,18 @@ namespace Kinesia
             this.txtUsername.PlaceholderColor = System.Drawing.Color.DarkGray;
             this.txtUsername.PlaceholderText = "";
             this.txtUsername.Size = new System.Drawing.Size(255, 31);
-            this.txtUsername.TabIndex = 8;
+            this.txtUsername.TabIndex = 1;
             this.txtUsername.Texts = "";
             this.txtUsername.UnderlinedStyle = false;
             // 
             // username
             // 
             this.username.AutoSize = true;
-            this.username.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.username.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.username.ForeColor = System.Drawing.Color.DimGray;
             this.username.Location = new System.Drawing.Point(57, 102);
             this.username.Name = "username";
-            this.username.Size = new System.Drawing.Size(91, 26);
+            this.username.Size = new System.Drawing.Size(85, 18);
             this.username.TabIndex = 7;
             this.username.Text = "Username";
             // 
@@ -208,12 +208,12 @@ namespace Kinesia
             this.btnLogin.BorderSize = 0;
             this.btnLogin.FlatAppearance.BorderSize = 0;
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLogin.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogin.ForeColor = System.Drawing.Color.Transparent;
             this.btnLogin.Location = new System.Drawing.Point(62, 290);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(262, 40);
-            this.btnLogin.TabIndex = 6;
+            this.btnLogin.TabIndex = 3;
             this.btnLogin.Text = "Login";
             this.btnLogin.TextColor = System.Drawing.Color.Transparent;
             this.btnLogin.UseVisualStyleBackColor = false;
@@ -222,11 +222,11 @@ namespace Kinesia
             // passwordLabel
             // 
             this.passwordLabel.AutoSize = true;
-            this.passwordLabel.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.passwordLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.passwordLabel.ForeColor = System.Drawing.Color.DimGray;
             this.passwordLabel.Location = new System.Drawing.Point(57, 187);
             this.passwordLabel.Name = "passwordLabel";
-            this.passwordLabel.Size = new System.Drawing.Size(86, 26);
+            this.passwordLabel.Size = new System.Drawing.Size(83, 18);
             this.passwordLabel.TabIndex = 5;
             this.passwordLabel.Text = "Password";
             // 
@@ -245,11 +245,11 @@ namespace Kinesia
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.label2.Location = new System.Drawing.Point(56, 40);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(204, 34);
+            this.label2.Size = new System.Drawing.Size(195, 24);
             this.label2.TabIndex = 0;
             this.label2.Text = "Login Your Account";
             // 

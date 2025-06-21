@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OrganizationProfile;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,12 +21,9 @@ namespace Kinesia.Patients
             InitializeComponent();
         }
 
-        private void customButton1_Click(object sender, EventArgs e)
+        private void BtnView_Click(object sender, EventArgs e)
         {
-            Dashboard dashboard = Application.OpenForms["Dashboard"] as Dashboard;
-            dashboard.ContentsPanel.Controls.Clear();
-            PageObjects.patientDetails = new PatientDetails();
-            dashboard.ContentsPanel.Controls.Add(PageObjects.patientDetails);
+            Queries.PatientQueries.GetPatientDetails(BtnView.Tag.ToString());
         }
 
         public string PatientName { get { return txtPatientName.Text; } set { txtPatientName.Text = value; } }
@@ -33,5 +31,14 @@ namespace Kinesia.Patients
         public string Gender { get { return txtGender.Text; } set { txtGender.Text = value; } } 
         public string Contact { get { return txtContact.Text; } set { txtContact.Text = value; } }
         public string Status { get { return txtStatus.Text; } set { txtStatus.Text = value; } }
+
+        public CustomButton BtnView { get { return btnView; } }
+        public CustomButton BtnEdit { get { return btnEdit; } }
+        public CustomButton BtnArchive { get { return btnArchive; } }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
