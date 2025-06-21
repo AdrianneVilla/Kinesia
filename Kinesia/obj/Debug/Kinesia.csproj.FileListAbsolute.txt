@@ -119,3 +119,6 @@ D:\git\Kinesia\Kinesia\obj\Debug\Kinesia.Patients.PatientDetails.resources
 E:\C# Projects\Kinesia\Kinesia\obj\Debug\Kinesia.Patients.AddPatient.resources
 E:\C# Projects\Kinesia\Kinesia\obj\Debug\Kinesia.Patients.displayPatients.resources
 E:\C# Projects\Kinesia\Kinesia\obj\Debug\Kinesia.Patients.PatientDetails.resources
+D:\git\Kinesia\Kinesia\obj\Debug\Kinesia.Users.DisplayUsers.resources
+D:\git\Kinesia\Kinesia\obj\Debug\Kinesia.Users.UserPage.resources
+D:\git\Kinesia\Kinesia\obj\Debug\Kinesia.Users.UserDetails.resources

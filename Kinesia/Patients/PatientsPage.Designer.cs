@@ -58,12 +58,12 @@
             this.nameHolder.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.nameHolder.AutoSize = true;
-            this.nameHolder.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold);
+            this.nameHolder.Font = new System.Drawing.Font("Poppins", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nameHolder.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
             this.nameHolder.Location = new System.Drawing.Point(61, 32);
             this.nameHolder.Margin = new System.Windows.Forms.Padding(0);
             this.nameHolder.Name = "nameHolder";
-            this.nameHolder.Size = new System.Drawing.Size(121, 31);
+            this.nameHolder.Size = new System.Drawing.Size(135, 48);
             this.nameHolder.TabIndex = 2;
             this.nameHolder.Text = "Patients";
             this.nameHolder.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -71,10 +71,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(65, 72);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(178, 16);
+            this.label1.Size = new System.Drawing.Size(201, 23);
             this.label1.TabIndex = 3;
             this.label1.Text = "patients personal information";
             // 
@@ -95,7 +95,7 @@
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Transparent;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
@@ -223,7 +223,7 @@
             this.btnAddPatient.BorderSize = 0;
             this.btnAddPatient.FlatAppearance.BorderSize = 0;
             this.btnAddPatient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddPatient.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnAddPatient.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnAddPatient.ForeColor = System.Drawing.Color.Transparent;
             this.btnAddPatient.Image = ((System.Drawing.Image)(resources.GetObject("btnAddPatient.Image")));
             this.btnAddPatient.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
@@ -272,7 +272,7 @@
             this.rjTextBox1.BorderFocusColor = System.Drawing.Color.White;
             this.rjTextBox1.BorderRadius = 5;
             this.rjTextBox1.BorderSize = 1;
-            this.rjTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rjTextBox1.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rjTextBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.rjTextBox1.Location = new System.Drawing.Point(48, 8);
             this.rjTextBox1.Margin = new System.Windows.Forms.Padding(4);
@@ -282,7 +282,7 @@
             this.rjTextBox1.PasswordChar = false;
             this.rjTextBox1.PlaceholderColor = System.Drawing.Color.DarkGray;
             this.rjTextBox1.PlaceholderText = "Search Patient";
-            this.rjTextBox1.Size = new System.Drawing.Size(381, 26);
+            this.rjTextBox1.Size = new System.Drawing.Size(381, 34);
             this.rjTextBox1.TabIndex = 4;
             this.rjTextBox1.Texts = "";
             this.rjTextBox1.UnderlinedStyle = false;

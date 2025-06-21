@@ -19,6 +19,13 @@ namespace Kinesia.Components
             InitializeComponent();
         }
 
+        private void dashboardModule_Click(object sender, EventArgs e)
+        {
+            Dashboard dashboard = Application.OpenForms["Dashboard"] as Dashboard;
+            dashboard.ContentsPanel.Controls.Clear();
+            dashboard.ContentsPanel.Controls.Add(PageObjects.dashboardPage);
+        }
+
         public void patientModule_Click(object sender, EventArgs e)
         {
          
@@ -27,21 +34,19 @@ namespace Kinesia.Components
             dashboard.ContentsPanel.Controls.Clear();
             dashboard.ContentsPanel.Controls.Add(PageObjects.patientsPage);
          
-            Console.WriteLine("Patient module clicked");
+            
         }
 
         private void usersModule_Click(object sender, EventArgs e)
         {
             Dashboard dashboard = Application.OpenForms["Dashboard"] as Dashboard;
-            Console.WriteLine("User module clicked");
+            PageObjects.userPage = new Users.UserPage();
+            dashboard.ContentsPanel.Controls.Clear();
+            dashboard.ContentsPanel.Controls.Add(PageObjects.userPage);
+            
         }
 
-        private void dashboardModule_Click(object sender, EventArgs e)
-        {
-            Dashboard dashboard = Application.OpenForms["Dashboard"] as Dashboard;
-            dashboard.ContentsPanel.Controls.Clear();
-            dashboard.ContentsPanel.Controls.Add(PageObjects.dashboardPage);
-        }
+
 
     }
 }

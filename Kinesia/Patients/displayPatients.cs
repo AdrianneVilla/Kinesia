@@ -27,6 +27,7 @@ namespace Kinesia.Patients
         }
 
         public string PatientName { get { return txtPatientName.Text; } set { txtPatientName.Text = value; } }
+        //public string PatiendID { get { return txtPatientID.Text; } set { txtPatientID.Text = value; } }
         public string Age { get { return txtAge.Text; } set { txtAge.Text = value; } }
         public string Gender { get { return txtGender.Text; } set { txtGender.Text = value; } } 
         public string Contact { get { return txtContact.Text; } set { txtContact.Text = value; } }

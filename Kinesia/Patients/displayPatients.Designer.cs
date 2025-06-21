@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DisplayPatients));
             this.panelBorder1 = new WindowsFormsApp2.CustomButton.PanelBorder();
+            this.txtPatientID = new System.Windows.Forms.Label();
             this.btnArchive = new OrganizationProfile.CustomButton();
             this.btnEdit = new OrganizationProfile.CustomButton();
             this.btnView = new OrganizationProfile.CustomButton();
@@ -47,6 +48,7 @@
             this.panelBorder1.BackColor = System.Drawing.Color.White;
             this.panelBorder1.BorderRadius = 20;
             this.panelBorder1.Color = System.Drawing.Color.White;
+            this.panelBorder1.Controls.Add(this.txtPatientID);
             this.panelBorder1.Controls.Add(this.btnArchive);
             this.panelBorder1.Controls.Add(this.btnEdit);
             this.panelBorder1.Controls.Add(this.btnView);
@@ -61,10 +63,21 @@
             this.panelBorder1.Size = new System.Drawing.Size(1497, 91);
             this.panelBorder1.TabIndex = 0;
             // 
+            // txtPatientID
+            // 
+            this.txtPatientID.AutoSize = true;
+            this.txtPatientID.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.txtPatientID.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.txtPatientID.Location = new System.Drawing.Point(14, 55);
+            this.txtPatientID.Name = "txtPatientID";
+            this.txtPatientID.Size = new System.Drawing.Size(54, 13);
+            this.txtPatientID.TabIndex = 8;
+            this.txtPatientID.Text = "Patient ID";
+            // 
             // btnArchive
             // 
-            this.btnArchive.BackColor = System.Drawing.Color.Transparent;
-            this.btnArchive.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btnArchive.BackColor = System.Drawing.Color.White;
+            this.btnArchive.BackgroundColor = System.Drawing.Color.White;
             this.btnArchive.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnArchive.BackgroundImage")));
             this.btnArchive.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnArchive.BorderColor = System.Drawing.Color.White;
@@ -82,8 +95,8 @@
             // 
             // btnEdit
             // 
-            this.btnEdit.BackColor = System.Drawing.Color.Transparent;
-            this.btnEdit.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btnEdit.BackColor = System.Drawing.Color.White;
+            this.btnEdit.BackgroundColor = System.Drawing.Color.White;
             this.btnEdit.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnEdit.BackgroundImage")));
             this.btnEdit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnEdit.BorderColor = System.Drawing.Color.White;
@@ -102,8 +115,8 @@
             // 
             // btnView
             // 
-            this.btnView.BackColor = System.Drawing.Color.Transparent;
-            this.btnView.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btnView.BackColor = System.Drawing.Color.White;
+            this.btnView.BackgroundColor = System.Drawing.Color.White;
             this.btnView.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnView.BackgroundImage")));
             this.btnView.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnView.BorderColor = System.Drawing.Color.White;
@@ -123,30 +136,30 @@
             // txtStatus
             // 
             this.txtStatus.AutoSize = true;
-            this.txtStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStatus.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtStatus.Location = new System.Drawing.Point(1057, 35);
             this.txtStatus.Name = "txtStatus";
-            this.txtStatus.Size = new System.Drawing.Size(41, 15);
+            this.txtStatus.Size = new System.Drawing.Size(47, 22);
             this.txtStatus.TabIndex = 4;
             this.txtStatus.Text = "Status";
             // 
             // txtContact
             // 
             this.txtContact.AutoSize = true;
-            this.txtContact.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtContact.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtContact.Location = new System.Drawing.Point(843, 35);
             this.txtContact.Name = "txtContact";
-            this.txtContact.Size = new System.Drawing.Size(96, 15);
+            this.txtContact.Size = new System.Drawing.Size(108, 22);
             this.txtContact.TabIndex = 3;
             this.txtContact.Text = "Contact Number";
             // 
             // txtGender
             // 
             this.txtGender.AutoSize = true;
-            this.txtGender.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtGender.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtGender.Location = new System.Drawing.Point(635, 35);
             this.txtGender.Name = "txtGender";
-            this.txtGender.Size = new System.Drawing.Size(48, 15);
+            this.txtGender.Size = new System.Drawing.Size(53, 22);
             this.txtGender.TabIndex = 2;
             this.txtGender.Text = "Gender";
             // 
@@ -155,20 +168,20 @@
             this.txtAge.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtAge.AutoSize = true;
-            this.txtAge.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAge.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAge.Location = new System.Drawing.Point(421, 35);
             this.txtAge.Name = "txtAge";
-            this.txtAge.Size = new System.Drawing.Size(28, 15);
+            this.txtAge.Size = new System.Drawing.Size(33, 22);
             this.txtAge.TabIndex = 1;
             this.txtAge.Text = "Age";
             // 
             // txtPatientName
             // 
             this.txtPatientName.AutoSize = true;
-            this.txtPatientName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPatientName.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPatientName.Location = new System.Drawing.Point(14, 35);
             this.txtPatientName.Name = "txtPatientName";
-            this.txtPatientName.Size = new System.Drawing.Size(94, 15);
+            this.txtPatientName.Size = new System.Drawing.Size(94, 22);
             this.txtPatientName.TabIndex = 0;
             this.txtPatientName.Text = "Patient Name";
             // 
@@ -197,5 +210,6 @@
         private OrganizationProfile.CustomButton btnView;
         private OrganizationProfile.CustomButton btnEdit;
         private OrganizationProfile.CustomButton btnArchive;
+        private System.Windows.Forms.Label txtPatientID;
     }
 }

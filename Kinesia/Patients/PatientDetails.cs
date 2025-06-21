@@ -28,5 +28,9 @@ namespace Kinesia.Patients
         public string Address { get { return lblAddress.Text; } set { lblAddress.Text = value; } }
         public string Birthdate { get { return lblBirthdate.Text; } set { lblBirthdate.Text = value; } }
 
+        private void btnEditInfo_Click(object sender, EventArgs e)
+        {
+           
+        }
     }
 }

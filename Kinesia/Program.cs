@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Kinesia.Patients;
+using Kinesia.Users;
 
 namespace Kinesia
 {
@@ -33,6 +34,9 @@ namespace Kinesia
         public static DisplayPatients displayPatients;
         public static AddPatient addPatient;
         public static PatientDetails patientDetails;
+        public static DisplayUsers displayUsers;
+        public static UserPage userPage;    
+        public static UserDetails userDetails;  
     }
 
     public class Connection

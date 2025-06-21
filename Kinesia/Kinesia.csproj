@@ -168,6 +168,24 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Users\DisplayUsers.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Users\DisplayUsers.Designer.cs">
+      <DependentUpon>DisplayUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Users\UserDetails.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Users\UserDetails.Designer.cs">
+      <DependentUpon>UserDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Users\UserPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Users\UserPage.Designer.cs">
+      <DependentUpon>UserPage.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Components\DashboardPage.resx">
       <DependentUpon>DashboardPage.cs</DependentUpon>
     </EmbeddedResource>
@@ -200,6 +218,15 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\DisplayUsers.resx">
+      <DependentUpon>DisplayUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\UserDetails.resx">
+      <DependentUpon>UserDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\UserPage.resx">
+      <DependentUpon>UserPage.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
