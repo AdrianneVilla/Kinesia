@@ -372,6 +372,7 @@
             this.btnBack.BorderColor = System.Drawing.Color.PaleVioletRed;
             this.btnBack.BorderRadius = 10;
             this.btnBack.BorderSize = 0;
+            this.btnBack.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBack.FlatAppearance.BorderSize = 0;
             this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBack.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

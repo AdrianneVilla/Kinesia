@@ -24,6 +24,7 @@ namespace Kinesia.Patients
                 PageObjects.displayPatients.BtnEdit.Tag = Connection.reader.GetString(0);
                 PageObjects.displayPatients.BtnArchive.Tag = Connection.reader.GetString(0);
 
+                PageObjects.displayPatients.PatientID = Connection.reader.GetString(0);
                 PageObjects.displayPatients.PatientName = $"{Connection.reader.GetString(1)} {Connection.reader.GetString(2)} {Connection.reader.GetString(3)}";
                 PageObjects.displayPatients.Age = (Connection.reader.GetInt64(4) / 12).ToString();
                 PageObjects.displayPatients.Gender = Connection.reader.GetString(5);

@@ -24,7 +24,7 @@ namespace Kinesia
         {
             PageObjects.dashboardPage = new DashboardPage();
             ContentsPanel.Controls.Add(PageObjects.dashboardPage);
-            GC.Collect();
+            PageObjects.CurrentControl = PageObjects.dashboardPage;
         }
 
     }

@@ -68,7 +68,7 @@
             this.txtPatientID.AutoSize = true;
             this.txtPatientID.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.txtPatientID.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.txtPatientID.Location = new System.Drawing.Point(14, 55);
+            this.txtPatientID.Location = new System.Drawing.Point(16, 45);
             this.txtPatientID.Name = "txtPatientID";
             this.txtPatientID.Size = new System.Drawing.Size(54, 13);
             this.txtPatientID.TabIndex = 8;
@@ -179,7 +179,7 @@
             // 
             this.txtPatientName.AutoSize = true;
             this.txtPatientName.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPatientName.Location = new System.Drawing.Point(14, 35);
+            this.txtPatientName.Location = new System.Drawing.Point(194, 42);
             this.txtPatientName.Name = "txtPatientName";
             this.txtPatientName.Size = new System.Drawing.Size(94, 22);
             this.txtPatientName.TabIndex = 0;

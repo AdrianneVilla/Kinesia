@@ -21,10 +21,11 @@ namespace Kinesia.Patients
 
         private void backBtn_Click(object sender, EventArgs e)
         {
-            Dashboard dashboard = Application.OpenForms["Dashboard"] as Dashboard;
+            PageObjects.RemoveResources(PageObjects.CurrentControl);
             PageObjects.patientsPage = new PatientsPage();
-            dashboard.ContentsPanel.Controls.Clear();
-            dashboard.ContentsPanel.Controls.Add(PageObjects.patientsPage);
+            PageObjects.dashboard.ContentsPanel.Controls.Clear();
+            PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.patientsPage);
+            PageObjects.CurrentControl = PageObjects.patientsPage;
         }
     }
 }

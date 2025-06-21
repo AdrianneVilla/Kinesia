@@ -221,6 +221,7 @@
             this.btnAddPatient.BorderColor = System.Drawing.Color.White;
             this.btnAddPatient.BorderRadius = 10;
             this.btnAddPatient.BorderSize = 0;
+            this.btnAddPatient.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAddPatient.FlatAppearance.BorderSize = 0;
             this.btnAddPatient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddPatient.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));

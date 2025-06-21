@@ -36,7 +36,15 @@ namespace Kinesia
         public static PatientDetails patientDetails;
         public static DisplayUsers displayUsers;
         public static UserPage userPage;    
-        public static UserDetails userDetails;  
+        public static UserDetails userDetails;
+
+        public static Control CurrentControl;
+
+        public static void RemoveResources(Control activeControl)
+        {
+            activeControl.Dispose();
+            activeControl = null;
+        }
     }
 
     public class Connection
