@@ -125,3 +125,4 @@ D:\git\Kinesia\Kinesia\obj\Debug\Kinesia.Users.UserDetails.resources
 E:\C# Projects\Kinesia\Kinesia\obj\Debug\Kinesia.Users.DisplayUsers.resources
 E:\C# Projects\Kinesia\Kinesia\obj\Debug\Kinesia.Users.UserDetails.resources
 E:\C# Projects\Kinesia\Kinesia\obj\Debug\Kinesia.Users.UserPage.resources
+D:\git\Kinesia\Kinesia\obj\Debug\Kinesia.Users.AddUser.resources

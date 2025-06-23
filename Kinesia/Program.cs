@@ -37,6 +37,7 @@ namespace Kinesia
         public static DisplayUsers displayUsers;
         public static UserPage userPage;    
         public static UserDetails userDetails;
+        public static AddUser addUser;
 
         public static Control CurrentControl;
 

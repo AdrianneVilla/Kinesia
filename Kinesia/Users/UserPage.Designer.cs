@@ -228,6 +228,7 @@
             this.btnAddPatient.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAddPatient.TextColor = System.Drawing.Color.Transparent;
             this.btnAddPatient.UseVisualStyleBackColor = false;
+            this.btnAddPatient.Click += new System.EventHandler(this.btnAddPatient_Click);
             // 
             // panelBorder1
             // 
