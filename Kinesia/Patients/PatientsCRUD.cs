@@ -14,7 +14,7 @@ namespace Kinesia.Patients
         {
             Connection.conn.Open();
 
-            Connection.cmd = new MySqlCommand("SELECT PatientID, FirstName, MiddleName, LastName, TIMESTAMPDIFF(MONTH, Birthdate, CURDATE()) AS totalMonths, Sex, Contact, Status FROM Patients", Connection.conn);
+            Connection.cmd = new MySqlCommand("SELECT PatientID, FirstName, MiddleName, LastName, TIMESTAMPDIFF(MONTH, Birthdate, CURDATE()) AS totalMonths, Gender, Contact, Status FROM Patients", Connection.conn);
             Connection.reader = Connection.cmd.ExecuteReader();
 
             while(Connection.reader.Read())
@@ -53,7 +53,7 @@ namespace Kinesia.Patients
         {
             Connection.conn.Open();
 
-            Connection.cmd = new MySqlCommand("SELECT PatientID, FirstName, MiddleName, LastName, Sex, Contact, TIMESTAMPDIFF(MONTH, Birthdate, CURDATE()) AS Age, Address, Birthdate " +
+            Connection.cmd = new MySqlCommand("SELECT PatientID, FirstName, MiddleName, LastName, Gender, Contact, TIMESTAMPDIFF(MONTH, Birthdate, CURDATE()) AS Age, Address, Birthdate " +
                 "FROM Patients WHERE PatientID = @patientID", Connection.conn);
             Connection.cmd.Parameters.AddWithValue("@patientID", PatientID);
             Connection.reader = Connection.cmd.ExecuteReader();

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 20, 2025 at 03:46 PM
+-- Generation Time: Jun 24, 2025 at 01:43 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -34,7 +34,7 @@ CREATE TABLE `patients` (
   `MiddleName` varchar(50) DEFAULT NULL,
   `Contact` varchar(11) NOT NULL,
   `Birthdate` date NOT NULL,
-  `Sex` varchar(10) NOT NULL,
+  `Gender` varchar(10) NOT NULL,
   `Address` varchar(255) NOT NULL,
   `Occupation` varchar(50) NOT NULL,
   `Status` int(11) NOT NULL
@@ -44,7 +44,7 @@ CREATE TABLE `patients` (
 -- Dumping data for table `patients`
 --
 
-INSERT INTO `patients` (`PatientID`, `FirstName`, `LastName`, `MiddleName`, `Contact`, `Birthdate`, `Sex`, `Address`, `Occupation`, `Status`) VALUES
+INSERT INTO `patients` (`PatientID`, `FirstName`, `LastName`, `MiddleName`, `Contact`, `Birthdate`, `Gender`, `Address`, `Occupation`, `Status`) VALUES
 ('Patient1', 'sample', 'sample', 'sample', 'sample', '2002-05-29', 'sample', 'sample', 'sample', 1);
 
 -- --------------------------------------------------------
