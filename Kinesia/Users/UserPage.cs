@@ -32,7 +32,6 @@ namespace Kinesia.Users
             PageObjects.dashboard.ContentsPanel.Controls.Clear();
             PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.addUser);
             PageObjects.CurrentControl = PageObjects.addUser;
-
         }
     }
 }

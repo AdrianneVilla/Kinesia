@@ -32,5 +32,10 @@ namespace Kinesia.Patients
         {
 
         }
+
+        private void AddPatient_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

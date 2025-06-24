@@ -153,6 +153,7 @@
     <Compile Include="Patients\DisplayPatients.Designer.cs">
       <DependentUpon>DisplayPatients.cs</DependentUpon>
     </Compile>
+    <Compile Include="Patients\PatientDataHolder.cs" />
     <Compile Include="Patients\PatientDetails.cs">
       <SubType>UserControl</SubType>
     </Compile>
