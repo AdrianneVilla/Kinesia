@@ -35,10 +35,10 @@
             this.btnClearInput = new OrganizationProfile.CustomButton();
             this.btnAddPatient = new OrganizationProfile.CustomButton();
             this.panelBorder1 = new WindowsFormsApp2.CustomButton.PanelBorder();
+            this.label13 = new System.Windows.Forms.Label();
             this.txtOccupation = new CustomControls.RJControls.RJTextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtGender = new CustomControls.RJControls.RJTextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtAge = new CustomControls.RJControls.RJTextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -56,7 +56,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.btnBack = new OrganizationProfile.CustomButton();
-            this.label13 = new System.Windows.Forms.Label();
+            this.rjComboBox1 = new CustomControls.RJControls.RJComboBox();
             this.panelBorder1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -158,11 +158,11 @@
             this.panelBorder1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panelBorder1.BorderRadius = 30;
             this.panelBorder1.Color = System.Drawing.Color.BurlyWood;
+            this.panelBorder1.Controls.Add(this.rjComboBox1);
             this.panelBorder1.Controls.Add(this.label13);
             this.panelBorder1.Controls.Add(this.txtOccupation);
             this.panelBorder1.Controls.Add(this.label4);
             this.panelBorder1.Controls.Add(this.label3);
-            this.panelBorder1.Controls.Add(this.txtGender);
             this.panelBorder1.Controls.Add(this.label5);
             this.panelBorder1.Controls.Add(this.txtAge);
             this.panelBorder1.Controls.Add(this.label6);
@@ -185,6 +185,19 @@
             this.panelBorder1.Size = new System.Drawing.Size(1398, 468);
             this.panelBorder1.TabIndex = 8;
             // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.Gray;
+            this.label13.Location = new System.Drawing.Point(828, 220);
+            this.label13.Margin = new System.Windows.Forms.Padding(30, 0, 3, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(34, 23);
+            this.label13.TabIndex = 32;
+            this.label13.Text = "+63";
+            this.label13.Click += new System.EventHandler(this.label13_Click);
+            // 
             // txtOccupation
             // 
             this.txtOccupation.BackColor = System.Drawing.SystemColors.Window;
@@ -202,7 +215,7 @@
             this.txtOccupation.PasswordChar = false;
             this.txtOccupation.PlaceholderColor = System.Drawing.Color.DarkGray;
             this.txtOccupation.PlaceholderText = "";
-            this.txtOccupation.Size = new System.Drawing.Size(214, 41);
+            this.txtOccupation.Size = new System.Drawing.Size(146, 41);
             this.txtOccupation.TabIndex = 30;
             this.txtOccupation.Texts = "";
             this.txtOccupation.UnderlinedStyle = false;
@@ -226,28 +239,6 @@
             this.label3.Size = new System.Drawing.Size(196, 23);
             this.label3.TabIndex = 11;
             this.label3.Text = "All fields with (*) are required";
-            // 
-            // txtGender
-            // 
-            this.txtGender.BackColor = System.Drawing.SystemColors.Window;
-            this.txtGender.BorderColor = System.Drawing.Color.DimGray;
-            this.txtGender.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.txtGender.BorderRadius = 5;
-            this.txtGender.BorderSize = 1;
-            this.txtGender.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtGender.ForeColor = System.Drawing.Color.Black;
-            this.txtGender.Location = new System.Drawing.Point(594, 210);
-            this.txtGender.Margin = new System.Windows.Forms.Padding(30, 4, 4, 4);
-            this.txtGender.Multiline = false;
-            this.txtGender.Name = "txtGender";
-            this.txtGender.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.txtGender.PasswordChar = false;
-            this.txtGender.PlaceholderColor = System.Drawing.Color.DarkGray;
-            this.txtGender.PlaceholderText = "";
-            this.txtGender.Size = new System.Drawing.Size(156, 41);
-            this.txtGender.TabIndex = 28;
-            this.txtGender.Texts = "";
-            this.txtGender.UnderlinedStyle = false;
             // 
             // label5
             // 
@@ -300,7 +291,7 @@
             this.txtMiddleName.BorderSize = 1;
             this.txtMiddleName.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMiddleName.ForeColor = System.Drawing.Color.Black;
-            this.txtMiddleName.Location = new System.Drawing.Point(704, 112);
+            this.txtMiddleName.Location = new System.Drawing.Point(848, 112);
             this.txtMiddleName.Margin = new System.Windows.Forms.Padding(30, 4, 4, 4);
             this.txtMiddleName.Multiline = false;
             this.txtMiddleName.Name = "txtMiddleName";
@@ -308,7 +299,7 @@
             this.txtMiddleName.PasswordChar = false;
             this.txtMiddleName.PlaceholderColor = System.Drawing.Color.DarkGray;
             this.txtMiddleName.PlaceholderText = "";
-            this.txtMiddleName.Size = new System.Drawing.Size(294, 41);
+            this.txtMiddleName.Size = new System.Drawing.Size(366, 41);
             this.txtMiddleName.TabIndex = 24;
             this.txtMiddleName.Texts = "";
             this.txtMiddleName.UnderlinedStyle = false;
@@ -317,7 +308,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(700, 89);
+            this.label10.Location = new System.Drawing.Point(844, 89);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(100, 23);
             this.label10.TabIndex = 25;
@@ -332,7 +323,7 @@
             this.txtLastName.BorderSize = 1;
             this.txtLastName.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLastName.ForeColor = System.Drawing.Color.Black;
-            this.txtLastName.Location = new System.Drawing.Point(376, 112);
+            this.txtLastName.Location = new System.Drawing.Point(448, 112);
             this.txtLastName.Margin = new System.Windows.Forms.Padding(30, 4, 4, 4);
             this.txtLastName.Multiline = false;
             this.txtLastName.Name = "txtLastName";
@@ -340,7 +331,7 @@
             this.txtLastName.PasswordChar = false;
             this.txtLastName.PlaceholderColor = System.Drawing.Color.DarkGray;
             this.txtLastName.PlaceholderText = "";
-            this.txtLastName.Size = new System.Drawing.Size(294, 41);
+            this.txtLastName.Size = new System.Drawing.Size(366, 41);
             this.txtLastName.TabIndex = 22;
             this.txtLastName.Texts = "";
             this.txtLastName.UnderlinedStyle = false;
@@ -349,7 +340,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(372, 89);
+            this.label2.Location = new System.Drawing.Point(444, 89);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(91, 23);
             this.label2.TabIndex = 23;
@@ -372,7 +363,7 @@
             this.txtFirstName.PasswordChar = false;
             this.txtFirstName.PlaceholderColor = System.Drawing.Color.DarkGray;
             this.txtFirstName.PlaceholderText = "";
-            this.txtFirstName.Size = new System.Drawing.Size(294, 41);
+            this.txtFirstName.Size = new System.Drawing.Size(366, 41);
             this.txtFirstName.TabIndex = 20;
             this.txtFirstName.Texts = "";
             this.txtFirstName.UnderlinedStyle = false;
@@ -430,7 +421,7 @@
             this.txtAddress.PasswordChar = false;
             this.txtAddress.PlaceholderColor = System.Drawing.Color.DarkGray;
             this.txtAddress.PlaceholderText = "";
-            this.txtAddress.Size = new System.Drawing.Size(947, 103);
+            this.txtAddress.Size = new System.Drawing.Size(1163, 103);
             this.txtAddress.TabIndex = 11;
             this.txtAddress.Texts = "";
             this.txtAddress.UnderlinedStyle = false;
@@ -459,7 +450,7 @@
             this.txtContact.Margin = new System.Windows.Forms.Padding(30, 4, 4, 4);
             this.txtContact.Multiline = false;
             this.txtContact.Name = "txtContact";
-            this.txtContact.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.txtContact.Padding = new System.Windows.Forms.Padding(30, 7, 10, 7);
             this.txtContact.PasswordChar = false;
             this.txtContact.PlaceholderColor = System.Drawing.Color.DarkGray;
             this.txtContact.PlaceholderText = "";
@@ -516,15 +507,28 @@
             this.btnBack.UseVisualStyleBackColor = false;
             this.btnBack.Click += new System.EventHandler(this.backBtn_Click);
             // 
-            // label13
+            // rjComboBox1
             // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(787, 221);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(34, 23);
-            this.label13.TabIndex = 32;
-            this.label13.Text = "+63";
+            this.rjComboBox1.BackColor = System.Drawing.Color.White;
+            this.rjComboBox1.BorderColor = System.Drawing.Color.Black;
+            this.rjComboBox1.BorderSize = 1;
+            this.rjComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
+            this.rjComboBox1.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rjComboBox1.ForeColor = System.Drawing.Color.Black;
+            this.rjComboBox1.IconColor = System.Drawing.Color.Black;
+            this.rjComboBox1.Items.AddRange(new object[] {
+            "Male",
+            "Female",
+            "Prefer not to say"});
+            this.rjComboBox1.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
+            this.rjComboBox1.ListTextColor = System.Drawing.Color.DimGray;
+            this.rjComboBox1.Location = new System.Drawing.Point(594, 210);
+            this.rjComboBox1.MinimumSize = new System.Drawing.Size(200, 30);
+            this.rjComboBox1.Name = "rjComboBox1";
+            this.rjComboBox1.Padding = new System.Windows.Forms.Padding(1);
+            this.rjComboBox1.Size = new System.Drawing.Size(200, 41);
+            this.rjComboBox1.TabIndex = 33;
+            this.rjComboBox1.Texts = "";
             // 
             // AddPatient
             // 
@@ -572,11 +576,11 @@
         private System.Windows.Forms.Label label12;
         private CustomControls.RJControls.RJTextBox txtAge;
         private System.Windows.Forms.Label label6;
-        private CustomControls.RJControls.RJTextBox txtGender;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label3;
         private CustomControls.RJControls.RJTextBox txtOccupation;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label13;
+        private CustomControls.RJControls.RJComboBox rjComboBox1;
     }
 }

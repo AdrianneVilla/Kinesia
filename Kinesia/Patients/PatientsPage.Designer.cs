@@ -241,7 +241,7 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
             this.nameHeader.DefaultCellStyle = dataGridViewCellStyle2;
-            this.nameHeader.FillWeight = 125F;
+            this.nameHeader.FillWeight = 120F;
             this.nameHeader.HeaderText = "Name";
             this.nameHeader.Name = "nameHeader";
             this.nameHeader.ReadOnly = true;
@@ -270,7 +270,8 @@
             // 
             // statusHeader
             // 
-            this.statusHeader.FillWeight = 63.63636F;
+            this.statusHeader.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.statusHeader.FillWeight = 55.63636F;
             this.statusHeader.HeaderText = "Status";
             this.statusHeader.Name = "statusHeader";
             this.statusHeader.ReadOnly = true;
@@ -293,7 +294,7 @@
             // archiveHeader
             // 
             this.archiveHeader.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.archiveHeader.FillWeight = 25F;
+            this.archiveHeader.FillWeight = 30F;
             this.archiveHeader.HeaderText = "Archive";
             this.archiveHeader.Name = "archiveHeader";
             this.archiveHeader.ReadOnly = true;

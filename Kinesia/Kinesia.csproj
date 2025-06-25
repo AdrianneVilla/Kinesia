@@ -98,6 +98,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assessment\AssessmentPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Assessment\AssessmentPage.Designer.cs">
+      <DependentUpon>AssessmentPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Assessment\DisplayAssessment.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Assessment\DisplayAssessment.Designer.cs">
+      <DependentUpon>DisplayAssessment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Components\CustomButton.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -115,6 +127,9 @@
     </Compile>
     <Compile Include="Components\PanelBorder.cs">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\RJComboBox.cs">
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Components\RJDatePicker.cs">
       <SubType>Component</SubType>
@@ -193,6 +208,12 @@
     <Compile Include="Users\UserPage.Designer.cs">
       <DependentUpon>UserPage.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Assessment\AssessmentPage.resx">
+      <DependentUpon>AssessmentPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assessment\DisplayAssessment.resx">
+      <DependentUpon>DisplayAssessment.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Components\DashboardPage.resx">
       <DependentUpon>DashboardPage.cs</DependentUpon>
     </EmbeddedResource>
