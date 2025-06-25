@@ -35,6 +35,7 @@
             this.btnClearInput = new OrganizationProfile.CustomButton();
             this.btnAddPatient = new OrganizationProfile.CustomButton();
             this.panelBorder1 = new WindowsFormsApp2.CustomButton.PanelBorder();
+            this.cbGender = new CustomControls.RJControls.RJComboBox();
             this.label13 = new System.Windows.Forms.Label();
             this.txtOccupation = new CustomControls.RJControls.RJTextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -56,7 +57,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.btnBack = new OrganizationProfile.CustomButton();
-            this.rjComboBox1 = new CustomControls.RJControls.RJComboBox();
             this.panelBorder1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -124,6 +124,7 @@
             this.btnClearInput.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnClearInput.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(64)))), ((int)(((byte)(66)))));
             this.btnClearInput.UseVisualStyleBackColor = false;
+            this.btnClearInput.Click += new System.EventHandler(this.btnClearInput_Click);
             // 
             // btnAddPatient
             // 
@@ -158,7 +159,7 @@
             this.panelBorder1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panelBorder1.BorderRadius = 30;
             this.panelBorder1.Color = System.Drawing.Color.BurlyWood;
-            this.panelBorder1.Controls.Add(this.rjComboBox1);
+            this.panelBorder1.Controls.Add(this.cbGender);
             this.panelBorder1.Controls.Add(this.label13);
             this.panelBorder1.Controls.Add(this.txtOccupation);
             this.panelBorder1.Controls.Add(this.label4);
@@ -184,6 +185,29 @@
             this.panelBorder1.Name = "panelBorder1";
             this.panelBorder1.Size = new System.Drawing.Size(1398, 468);
             this.panelBorder1.TabIndex = 8;
+            // 
+            // cbGender
+            // 
+            this.cbGender.BackColor = System.Drawing.Color.White;
+            this.cbGender.BorderColor = System.Drawing.Color.Black;
+            this.cbGender.BorderSize = 1;
+            this.cbGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
+            this.cbGender.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbGender.ForeColor = System.Drawing.Color.Black;
+            this.cbGender.IconColor = System.Drawing.Color.Black;
+            this.cbGender.Items.AddRange(new object[] {
+            "Male",
+            "Female",
+            "Prefer not to say"});
+            this.cbGender.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
+            this.cbGender.ListTextColor = System.Drawing.Color.DimGray;
+            this.cbGender.Location = new System.Drawing.Point(594, 210);
+            this.cbGender.MinimumSize = new System.Drawing.Size(200, 30);
+            this.cbGender.Name = "cbGender";
+            this.cbGender.Padding = new System.Windows.Forms.Padding(1);
+            this.cbGender.Size = new System.Drawing.Size(200, 41);
+            this.cbGender.TabIndex = 33;
+            this.cbGender.Texts = "";
             // 
             // label13
             // 
@@ -402,7 +426,7 @@
             this.dpBirthDate.SkinColor = System.Drawing.Color.White;
             this.dpBirthDate.TabIndex = 14;
             this.dpBirthDate.TextColor = System.Drawing.Color.Black;
-            this.dpBirthDate.ValueChanged += new System.EventHandler(this.rjDatePicker1_ValueChanged);
+            this.dpBirthDate.ValueChanged += new System.EventHandler(this.dpBirthDate_ValueChanged);
             // 
             // txtAddress
             // 
@@ -507,29 +531,6 @@
             this.btnBack.UseVisualStyleBackColor = false;
             this.btnBack.Click += new System.EventHandler(this.backBtn_Click);
             // 
-            // rjComboBox1
-            // 
-            this.rjComboBox1.BackColor = System.Drawing.Color.White;
-            this.rjComboBox1.BorderColor = System.Drawing.Color.Black;
-            this.rjComboBox1.BorderSize = 1;
-            this.rjComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
-            this.rjComboBox1.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rjComboBox1.ForeColor = System.Drawing.Color.Black;
-            this.rjComboBox1.IconColor = System.Drawing.Color.Black;
-            this.rjComboBox1.Items.AddRange(new object[] {
-            "Male",
-            "Female",
-            "Prefer not to say"});
-            this.rjComboBox1.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
-            this.rjComboBox1.ListTextColor = System.Drawing.Color.DimGray;
-            this.rjComboBox1.Location = new System.Drawing.Point(594, 210);
-            this.rjComboBox1.MinimumSize = new System.Drawing.Size(200, 30);
-            this.rjComboBox1.Name = "rjComboBox1";
-            this.rjComboBox1.Padding = new System.Windows.Forms.Padding(1);
-            this.rjComboBox1.Size = new System.Drawing.Size(200, 41);
-            this.rjComboBox1.TabIndex = 33;
-            this.rjComboBox1.Texts = "";
-            // 
             // AddPatient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -581,6 +582,6 @@
         private CustomControls.RJControls.RJTextBox txtOccupation;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label13;
-        private CustomControls.RJControls.RJComboBox rjComboBox1;
+        private CustomControls.RJControls.RJComboBox cbGender;
     }
 }
