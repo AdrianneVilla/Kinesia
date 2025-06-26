@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
 namespace Kinesia.Patients
@@ -94,7 +95,7 @@ namespace Kinesia.Patients
             Connection.conn.Open();
 
             Connection.cmd = new MySqlCommand("INSERT INTO Patients VALUES (@patientID, @firstName, @lastName, @middleName, @contact, @birthdate, @gender, @address, @occupation, @status)", Connection.conn);
-            Connection.cmd.Parameters.AddWithValue("@patientID", $"PATIENT{patientIDCount++}");
+            Connection.cmd.Parameters.AddWithValue("@patientID", $"PATIENT{patientIDCount + 1}");
             Connection.cmd.Parameters.AddWithValue("@firstname", patientData.FirstName);
             Connection.cmd.Parameters.AddWithValue("@lastName", patientData.LastName);
             Connection.cmd.Parameters.AddWithValue("@middleName", patientData.MiddleName);
@@ -113,13 +114,17 @@ namespace Kinesia.Patients
         {
             Connection.conn.Open();
 
-            Connection.cmd = new MySqlCommand("SELECT FirstName, MiddleName, LastName FROM Patients", Connection.conn);
+            Connection.cmd = new MySqlCommand("SELECT FirstName, MiddleName, LastName FROM Patients WHERE FirstName = @firstName AND MiddleName = @middleName AND LastName = @lastName", Connection.conn);
+            Connection.cmd.Parameters.AddWithValue("@firstName", patientData.FirstName);
+            Connection.cmd.Parameters.AddWithValue("@middleName", patientData.MiddleName);
+            Connection.cmd.Parameters.AddWithValue("@lastName", patientData.LastName);
             Connection.reader = Connection.cmd.ExecuteReader();
 
             if (Connection.reader.Read())
             {
                 Connection.reader.Close();
                 Connection.conn.Close();
+                MessageBox.Show("Patient was already existing", "Add Patient Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return true;
             }
 
@@ -128,11 +133,23 @@ namespace Kinesia.Patients
             return false;
         }
 
-        public bool isPatientDetailsComplete(PatientDataHolder patientData)
+        public bool IsPatientDetailsComplete(PatientDataHolder patientData)
         {
             if (patientData.FirstName.Equals("") || patientData.LastName.Equals("") || patientData.Gender.Equals("") || patientData.Contact.Equals("") ||
-                patientData.Occupation.Equals("") || patientData.Address.Equals("") || patientData.Age <= 0)
+                patientData.Occupation.Equals("") || patientData.Address.Equals(""))
             {
+                MessageBox.Show("Patient details was incomplete!", "Add Patient Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            return true;
+        }
+
+        public bool IsAgeValid(PatientDataHolder patientData)
+        {
+            Console.WriteLine("sdad");
+            if(patientData.Age <= 0)
+            {
+                MessageBox.Show("Patient age was invalid!", "Add Patient Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             return true;

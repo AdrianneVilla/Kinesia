@@ -38,7 +38,7 @@ namespace Kinesia.Patients
             } 
             else
             {
-                // will directly go back to Patient page if there's no unsaved input
+                // will directly go back to Patient page if there's no unsaved input    
                 PageObjects.RemoveResources(PageObjects.CurrentControl);
                 PageObjects.patientsPage = new PatientsPage();
                 PageObjects.dashboard.ContentsPanel.Controls.Clear();
@@ -68,6 +68,7 @@ namespace Kinesia.Patients
             txtLastName.Texts = "";
             txtMiddleName.Texts = "";
             dpBirthDate.Value = DateTime.Now;
+            cbGender.Texts = "";
             txtContact.Texts = "";
             txtOccupation.Texts = "";
             txtAddress.Texts = "";
@@ -104,11 +105,51 @@ namespace Kinesia.Patients
         private bool areInputsBlank()
         {
             if (!txtFirstName.Texts.Equals("") || !txtMiddleName.Texts.Equals("") || !txtLastName.Texts.Equals("") || !txtContact.Texts.Equals("") ||
-                !txtOccupation.Texts.Equals("") || !txtAddress.Texts.Equals(""))
+                !txtOccupation.Texts.Equals("") || !txtAddress.Texts.Equals("") || !cbGender.Texts.Equals(""))
             {
                 return true;
             }
             return false;
+        }
+
+        private void btnAddPatient_Click(object sender, EventArgs e)
+        {
+            DialogResult addPatientDialog = MessageBox.Show("Are you sure you want to add this patient?", "Add Patient Notification",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+
+            if(addPatientDialog == DialogResult.Yes)
+            {
+                txtFirstName.Texts.Trim();
+                txtLastName.Texts.Trim();
+                txtMiddleName.Texts.Trim();
+                txtContact.Texts.Trim();
+                txtOccupation.Texts.Trim();
+                txtAddress.Texts.Trim();
+
+                PatientDataHolder patientData = new PatientDataHolder
+                {
+                    FirstName = txtFirstName.Texts,
+                    MiddleName = txtMiddleName.Texts,
+                    LastName = txtLastName.Texts,
+                    Contact = txtContact.Texts,
+                    Age = Convert.ToInt32(txtAge.Texts),
+                    Birthdate = dpBirthDate.Value.ToString("yyyy-MM-dd"),
+                    Gender = cbGender.Texts,
+                    Address = txtAddress.Texts,
+                    Occupation = txtOccupation.Texts,
+                };
+
+                if(Queries.PatientQueries.IsPatientDetailsComplete(patientData) && !Queries.PatientQueries.CheckExistingPatient(patientData) && Queries.PatientQueries.IsAgeValid(patientData))
+                {
+                    Queries.PatientQueries.GetPatientIDCount();
+                    Queries.PatientQueries.AddPatient(patientData);
+
+                    clearAllInputs();
+                    patientData = null;
+                    MessageBox.Show("Patient added successfully!", "Add Patient Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+
         }
     }
 }

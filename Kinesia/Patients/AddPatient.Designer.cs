@@ -149,6 +149,7 @@
             this.btnAddPatient.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAddPatient.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
             this.btnAddPatient.UseVisualStyleBackColor = false;
+            this.btnAddPatient.Click += new System.EventHandler(this.btnAddPatient_Click);
             // 
             // panelBorder1
             // 
@@ -214,7 +215,7 @@
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.Gray;
-            this.label13.Location = new System.Drawing.Point(828, 220);
+            this.label13.Location = new System.Drawing.Point(798, 221);
             this.label13.Margin = new System.Windows.Forms.Padding(30, 0, 3, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(34, 23);
@@ -231,7 +232,7 @@
             this.txtOccupation.BorderSize = 1;
             this.txtOccupation.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtOccupation.ForeColor = System.Drawing.Color.Black;
-            this.txtOccupation.Location = new System.Drawing.Point(1068, 210);
+            this.txtOccupation.Location = new System.Drawing.Point(1034, 210);
             this.txtOccupation.Margin = new System.Windows.Forms.Padding(30, 4, 4, 4);
             this.txtOccupation.Multiline = false;
             this.txtOccupation.Name = "txtOccupation";
@@ -239,7 +240,7 @@
             this.txtOccupation.PasswordChar = false;
             this.txtOccupation.PlaceholderColor = System.Drawing.Color.DarkGray;
             this.txtOccupation.PlaceholderText = "";
-            this.txtOccupation.Size = new System.Drawing.Size(146, 41);
+            this.txtOccupation.Size = new System.Drawing.Size(180, 41);
             this.txtOccupation.TabIndex = 30;
             this.txtOccupation.Texts = "";
             this.txtOccupation.UnderlinedStyle = false;
@@ -248,7 +249,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(1064, 185);
+            this.label4.Location = new System.Drawing.Point(1030, 185);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(99, 23);
             this.label4.TabIndex = 31;
@@ -470,7 +471,7 @@
             this.txtContact.BorderSize = 1;
             this.txtContact.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtContact.ForeColor = System.Drawing.Color.Black;
-            this.txtContact.Location = new System.Drawing.Point(820, 210);
+            this.txtContact.Location = new System.Drawing.Point(832, 210);
             this.txtContact.Margin = new System.Windows.Forms.Padding(30, 4, 4, 4);
             this.txtContact.Multiline = false;
             this.txtContact.Name = "txtContact";
@@ -478,7 +479,7 @@
             this.txtContact.PasswordChar = false;
             this.txtContact.PlaceholderColor = System.Drawing.Color.DarkGray;
             this.txtContact.PlaceholderText = "";
-            this.txtContact.Size = new System.Drawing.Size(214, 41);
+            this.txtContact.Size = new System.Drawing.Size(179, 41);
             this.txtContact.TabIndex = 9;
             this.txtContact.Texts = "";
             this.txtContact.UnderlinedStyle = false;
@@ -487,7 +488,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(816, 185);
+            this.label8.Location = new System.Drawing.Point(828, 185);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(133, 23);
             this.label8.TabIndex = 10;
