@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Kinesia.Patients;
 using Kinesia.Users;
+using System.Text.RegularExpressions;
 
 namespace Kinesia
 {
@@ -66,7 +67,7 @@ namespace Kinesia
         public static void CharactersOnly(object sender, KeyPressEventArgs e)
         {
             // will only allow characters on textboxes
-            if(!char.IsControl(e.KeyChar) && char.IsDigit(e.KeyChar))
+            if(!Regex.IsMatch(e.KeyChar.ToString(), @"^[a-zA-Z\s\b]"))
             {
                 e.Handled = true;
             }
