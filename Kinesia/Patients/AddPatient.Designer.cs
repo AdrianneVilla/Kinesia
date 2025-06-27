@@ -244,6 +244,7 @@
             this.txtOccupation.TabIndex = 30;
             this.txtOccupation.Texts = "";
             this.txtOccupation.UnderlinedStyle = false;
+            this.txtOccupation.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtOccupation_KeyPress);
             // 
             // label4
             // 
@@ -328,6 +329,7 @@
             this.txtMiddleName.TabIndex = 24;
             this.txtMiddleName.Texts = "";
             this.txtMiddleName.UnderlinedStyle = false;
+            this.txtMiddleName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMiddleName_KeyPress);
             // 
             // label10
             // 
@@ -360,6 +362,7 @@
             this.txtLastName.TabIndex = 22;
             this.txtLastName.Texts = "";
             this.txtLastName.UnderlinedStyle = false;
+            this.txtLastName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLastName_KeyPress);
             // 
             // label2
             // 
@@ -392,6 +395,7 @@
             this.txtFirstName.TabIndex = 20;
             this.txtFirstName.Texts = "";
             this.txtFirstName.UnderlinedStyle = false;
+            this.txtFirstName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFirstName_KeyPress);
             // 
             // label11
             // 
@@ -483,6 +487,7 @@
             this.txtContact.TabIndex = 9;
             this.txtContact.Texts = "";
             this.txtContact.UnderlinedStyle = false;
+            this.txtContact.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtContact_KeyPress);
             // 
             // label8
             // 

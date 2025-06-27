@@ -139,7 +139,8 @@ namespace Kinesia.Patients
                     Occupation = txtOccupation.Texts,
                 };
 
-                if(Queries.PatientQueries.IsPatientDetailsComplete(patientData) && !Queries.PatientQueries.CheckExistingPatient(patientData) && Queries.PatientQueries.IsAgeValid(patientData))
+                if(Queries.PatientQueries.IsPatientDetailsComplete(patientData) && !Queries.PatientQueries.CheckExistingPatient(patientData) &&
+                    Queries.PatientQueries.IsAgeValid(patientData) && Queries.PatientQueries.IsContactValid(patientData))
                 {
                     Queries.PatientQueries.GetPatientIDCount();
                     Queries.PatientQueries.AddPatient(patientData);
@@ -150,6 +151,32 @@ namespace Kinesia.Patients
                 }
             }
 
+        }
+
+        // Textboxes Input Validations
+        private void txtFirstName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            InputValidation.CharactersOnly(sender, e);
+        }
+
+        private void txtLastName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            InputValidation.CharactersOnly(sender, e);
+        }
+
+        private void txtMiddleName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            InputValidation.CharactersOnly(sender, e);
+        }
+
+        private void txtContact_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            InputValidation.WholeNumbersOnly(sender, e);
+        }
+
+        private void txtOccupation_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            InputValidation.CharactersOnly(sender, e);
         }
     }
 }

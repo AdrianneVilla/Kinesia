@@ -60,4 +60,46 @@ namespace Kinesia
     {
         public static PatientsCRUD PatientQueries = new PatientsCRUD();
     }
+
+    public class InputValidation
+    {
+        public static void CharactersOnly(object sender, KeyPressEventArgs e)
+        {
+            // will only allow characters on textboxes
+            if(!char.IsControl(e.KeyChar) && char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        public static void WholeNumbersOnly(object sender, KeyPressEventArgs e)
+        {
+            // will only allow whole numbers on textboxes
+            if(!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        public static void FloatingNumbersOnly(object sender, KeyPressEventArgs e)
+        {
+            // will only allow whole numbers and a dot on textboxes
+            if(!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // will only allow one dot on textboxes
+            if((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+
+            // will not allow dot as first character on a textbox
+            if (((sender as TextBox).Text.Length == 0) && e.KeyChar == '.')
+            {
+                e.Handled = true;
+            }
+        }
+    }
 }

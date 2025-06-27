@@ -146,12 +146,29 @@ namespace Kinesia.Patients
 
         public bool IsAgeValid(PatientDataHolder patientData)
         {
-            Console.WriteLine("sdad");
             if(patientData.Age <= 0)
             {
                 MessageBox.Show("Patient age was invalid!", "Add Patient Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
+            return true;
+        }
+
+        public bool IsContactValid(PatientDataHolder patientData)
+        {
+            Console.WriteLine(patientData.Contact[0]);
+            if((patientData.Contact.Length > 11 || patientData.Contact.Length < 10))
+            {
+                MessageBox.Show("Invalid contact number! Contact number length should be 10 or 11", "Add Patient Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (patientData.Contact.Substring(0,1) != "09" && patientData.Contact[0] != '9')
+            {
+                MessageBox.Show("Invalid contact number! Contact number should start with 09 or 9", "Add Patient Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
             return true;
         }
 
