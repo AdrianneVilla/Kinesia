@@ -11,11 +11,22 @@ namespace Kinesia.Patients
     public class PatientsCRUD
     {
         private int patientIDCount;
-        public void DisplayPatients()
+        public void DisplayPatients(string searchData)
         {
+            PageObjects.patientsPage.getPatientHolder.Controls.Clear();
             Connection.conn.Open();
 
-            Connection.cmd = new MySqlCommand("SELECT PatientID, FirstName, MiddleName, LastName, TIMESTAMPDIFF(MONTH, Birthdate, CURDATE()) AS totalMonths, Gender, Contact, Status FROM Patients", Connection.conn);
+            if(searchData == "")
+            {
+                // will display all patients
+                Connection.cmd = new MySqlCommand("SELECT PatientID, FirstName, MiddleName, LastName, TIMESTAMPDIFF(MONTH, Birthdate, CURDATE()) AS totalMonths, Gender, Contact, Status FROM Patients", Connection.conn);
+            } else
+            {
+                // will only do searching and display specific patient/s if there's a searchData value
+                Connection.cmd = new MySqlCommand("SELECT PatientID, FirstName, MiddleName, LastName, TIMESTAMPDIFF(MONTH, Birthdate, CURDATE()) AS totalMonths, Gender, Contact, Status" +
+                " FROM Patients WHERE PatientID LIKE CONCAT('%', @searchData, '%') OR FirstName LIKE CONCAT('%', @searchData, '%') OR MiddleName LIKE CONCAT('%', @searchData, '%') OR LastName LIKE CONCAT('%', @searchData, '%')", Connection.conn);
+                Connection.cmd.Parameters.AddWithValue("@searchData", searchData);
+            }
             Connection.reader = Connection.cmd.ExecuteReader();
 
             while(Connection.reader.Read())
@@ -47,7 +58,6 @@ namespace Kinesia.Patients
             }
             Connection.reader.Close();
             Connection.conn.Close();
-            GC.Collect();
         }
 
         public void GetPatientDetails(string PatientID)
@@ -143,7 +153,6 @@ namespace Kinesia.Patients
             }
             return true;
         }
-
         public bool IsAgeValid(PatientDataHolder patientData)
         {
             if(patientData.Age <= 0)
@@ -171,6 +180,5 @@ namespace Kinesia.Patients
 
             return true;
         }
-
     }
 }
