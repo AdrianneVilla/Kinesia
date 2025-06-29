@@ -109,6 +109,13 @@ namespace Kinesia.Patients
             Connection.cmd.Parameters.AddWithValue("@firstname", patientData.FirstName);
             Connection.cmd.Parameters.AddWithValue("@lastName", patientData.LastName);
             Connection.cmd.Parameters.AddWithValue("@middleName", patientData.MiddleName);
+
+            if (patientData.Contact[0] == '0')
+            {
+                patientData.Contact = patientData.Contact.Substring(1); // will remove the "0" in the contact
+            }
+            patientData.Contact = "+63" + patientData.Contact; // will insert '+63' at the start of contact
+
             Connection.cmd.Parameters.AddWithValue("@contact", patientData.Contact);
             Connection.cmd.Parameters.AddWithValue("@birthDate", patientData.Birthdate);
             Connection.cmd.Parameters.AddWithValue("@gender", patientData.Gender);
@@ -165,15 +172,16 @@ namespace Kinesia.Patients
 
         public bool IsContactValid(PatientDataHolder patientData)
         {
-            Console.WriteLine(patientData.Contact[0]);
-            if((patientData.Contact.Length > 11 || patientData.Contact.Length < 10))
+            if(patientData.Contact.Length > 11 || patientData.Contact.Length < 10)
             {
+                // will show an error if the length of contact number is not 10 or 11 (PH contact number)
                 MessageBox.Show("Invalid contact number! Contact number length should be 10 or 11", "Add Patient Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
-            if (patientData.Contact.Substring(0,1) != "09" && patientData.Contact[0] != '9')
+            if (patientData.Contact.Substring(0,2) != "09" && patientData.Contact[0] != '9')
             {
+                // will show an error if the contact number does not start on 09 or 9 (PH contact number)
                 MessageBox.Show("Invalid contact number! Contact number should start with 09 or 9", "Add Patient Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
