@@ -29,17 +29,11 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserPage));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.nameHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EmployeeID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EmpPosition = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ageHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contactNumHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.statusHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.editHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.nameHolder = new System.Windows.Forms.Label();
             this.UsersHolder = new WindowsFormsApp2.CustomButton.PanelBorder();
@@ -47,6 +41,12 @@
             this.panelBorder1 = new WindowsFormsApp2.CustomButton.PanelBorder();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.rjTextBox1 = new CustomControls.RJControls.RJTextBox();
+            this.UserIDHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EmpPosition = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.editHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panelBorder1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -77,25 +77,24 @@
             this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.UserIDHeader,
             this.nameHeader,
-            this.EmployeeID,
             this.EmpPosition,
-            this.ageHeader,
-            this.contactNumHeader,
-            this.statusHeader,
-            this.editHeader});
+            this.editHeader,
+            this.Column1,
+            this.Column2});
             this.dataGridView1.GridColor = System.Drawing.Color.White;
-            this.dataGridView1.Location = new System.Drawing.Point(67, 147);
+            this.dataGridView1.Location = new System.Drawing.Point(68, 147);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dataGridView1.ShowCellErrors = false;
             this.dataGridView1.ShowCellToolTips = false;
@@ -103,67 +102,7 @@
             this.dataGridView1.ShowRowErrors = false;
             this.dataGridView1.Size = new System.Drawing.Size(1111, 24);
             this.dataGridView1.TabIndex = 14;
-            // 
-            // nameHeader
-            // 
-            this.nameHeader.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.nameHeader.DefaultCellStyle = dataGridViewCellStyle2;
-            this.nameHeader.HeaderText = "Name";
-            this.nameHeader.Name = "nameHeader";
-            this.nameHeader.ReadOnly = true;
-            this.nameHeader.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // EmployeeID
-            // 
-            this.EmployeeID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.EmployeeID.FillWeight = 60F;
-            this.EmployeeID.HeaderText = "Employee ID";
-            this.EmployeeID.Name = "EmployeeID";
-            this.EmployeeID.ReadOnly = true;
-            // 
-            // EmpPosition
-            // 
-            this.EmpPosition.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.EmpPosition.FillWeight = 60F;
-            this.EmpPosition.HeaderText = "Position";
-            this.EmpPosition.Name = "EmpPosition";
-            this.EmpPosition.ReadOnly = true;
-            // 
-            // ageHeader
-            // 
-            this.ageHeader.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ageHeader.FillWeight = 50F;
-            this.ageHeader.HeaderText = "Age";
-            this.ageHeader.Name = "ageHeader";
-            this.ageHeader.ReadOnly = true;
-            // 
-            // contactNumHeader
-            // 
-            this.contactNumHeader.FillWeight = 63.63636F;
-            this.contactNumHeader.HeaderText = "Contact Number";
-            this.contactNumHeader.Name = "contactNumHeader";
-            this.contactNumHeader.ReadOnly = true;
-            // 
-            // statusHeader
-            // 
-            this.statusHeader.FillWeight = 63.63636F;
-            this.statusHeader.HeaderText = "Address";
-            this.statusHeader.Name = "statusHeader";
-            this.statusHeader.ReadOnly = true;
-            // 
-            // editHeader
-            // 
-            this.editHeader.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.editHeader.FillWeight = 25F;
-            this.editHeader.HeaderText = "Select";
-            this.editHeader.Name = "editHeader";
-            this.editHeader.ReadOnly = true;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // label1
             // 
@@ -279,6 +218,63 @@
             this.rjTextBox1.Texts = "";
             this.rjTextBox1.UnderlinedStyle = false;
             // 
+            // UserIDHeader
+            // 
+            this.UserIDHeader.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.UserIDHeader.FillWeight = 50F;
+            this.UserIDHeader.HeaderText = "User ID";
+            this.UserIDHeader.Name = "UserIDHeader";
+            this.UserIDHeader.ReadOnly = true;
+            // 
+            // nameHeader
+            // 
+            this.nameHeader.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
+            this.nameHeader.DefaultCellStyle = dataGridViewCellStyle2;
+            this.nameHeader.HeaderText = "Name";
+            this.nameHeader.Name = "nameHeader";
+            this.nameHeader.ReadOnly = true;
+            this.nameHeader.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // EmpPosition
+            // 
+            this.EmpPosition.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.EmpPosition.FillWeight = 60F;
+            this.EmpPosition.HeaderText = "Position";
+            this.EmpPosition.Name = "EmpPosition";
+            this.EmpPosition.ReadOnly = true;
+            // 
+            // editHeader
+            // 
+            this.editHeader.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.editHeader.DefaultCellStyle = dataGridViewCellStyle3;
+            this.editHeader.FillWeight = 20F;
+            this.editHeader.HeaderText = "Select";
+            this.editHeader.Name = "editHeader";
+            this.editHeader.ReadOnly = true;
+            // 
+            // Column1
+            // 
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column1.FillWeight = 20F;
+            this.Column1.HeaderText = "Edit";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column2.FillWeight = 20F;
+            this.Column2.HeaderText = "Archive";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
             // UserPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -311,12 +307,11 @@
         private WindowsFormsApp2.CustomButton.PanelBorder panelBorder1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private CustomControls.RJControls.RJTextBox rjTextBox1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UserIDHeader;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameHeader;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EmployeeID;
         private System.Windows.Forms.DataGridViewTextBoxColumn EmpPosition;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ageHeader;
-        private System.Windows.Forms.DataGridViewTextBoxColumn contactNumHeader;
-        private System.Windows.Forms.DataGridViewTextBoxColumn statusHeader;
         private System.Windows.Forms.DataGridViewTextBoxColumn editHeader;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
     }
 }

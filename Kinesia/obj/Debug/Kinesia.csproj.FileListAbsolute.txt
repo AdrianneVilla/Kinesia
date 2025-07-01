@@ -129,3 +129,5 @@ D:\git\Kinesia\Kinesia\obj\Debug\Kinesia.Users.AddUser.resources
 E:\C# Projects\Kinesia\Kinesia\obj\Debug\Kinesia.Users.AddUser.resources
 E:\C# Projects\Kinesia\Kinesia\obj\Debug\Kinesia.Assessment.AssessmentPage.resources
 E:\C# Projects\Kinesia\Kinesia\obj\Debug\Kinesia.Assessment.DisplayAssessment.resources
+D:\git\Kinesia\Kinesia\obj\Debug\Kinesia.Assessment.AssessmentPage.resources
+D:\git\Kinesia\Kinesia\obj\Debug\Kinesia.Assessment.DisplayAssessment.resources

@@ -33,5 +33,10 @@ namespace Kinesia.Users
             PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.addUser);
             PageObjects.CurrentControl = PageObjects.addUser;
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

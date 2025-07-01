@@ -30,10 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DisplayUsers));
             this.panelBorder1 = new WindowsFormsApp2.CustomButton.PanelBorder();
+            this.customButton3 = new OrganizationProfile.CustomButton();
+            this.customButton2 = new OrganizationProfile.CustomButton();
             this.customButton1 = new OrganizationProfile.CustomButton();
-            this.txtAddress = new System.Windows.Forms.Label();
-            this.txtContactNum = new System.Windows.Forms.Label();
-            this.txtAge = new System.Windows.Forms.Label();
             this.txtPosition = new System.Windows.Forms.Label();
             this.txtEmpID = new System.Windows.Forms.Label();
             this.txtUserName = new System.Windows.Forms.Label();
@@ -45,10 +44,9 @@
             this.panelBorder1.BackColor = System.Drawing.Color.White;
             this.panelBorder1.BorderRadius = 20;
             this.panelBorder1.Color = System.Drawing.Color.BurlyWood;
+            this.panelBorder1.Controls.Add(this.customButton3);
+            this.panelBorder1.Controls.Add(this.customButton2);
             this.panelBorder1.Controls.Add(this.customButton1);
-            this.panelBorder1.Controls.Add(this.txtAddress);
-            this.panelBorder1.Controls.Add(this.txtContactNum);
-            this.panelBorder1.Controls.Add(this.txtAge);
             this.panelBorder1.Controls.Add(this.txtPosition);
             this.panelBorder1.Controls.Add(this.txtEmpID);
             this.panelBorder1.Controls.Add(this.txtUserName);
@@ -57,6 +55,43 @@
             this.panelBorder1.Name = "panelBorder1";
             this.panelBorder1.Size = new System.Drawing.Size(1497, 91);
             this.panelBorder1.TabIndex = 0;
+            // 
+            // customButton3
+            // 
+            this.customButton3.BackColor = System.Drawing.Color.White;
+            this.customButton3.BackgroundColor = System.Drawing.Color.White;
+            this.customButton3.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.customButton3.BorderRadius = 34;
+            this.customButton3.BorderSize = 0;
+            this.customButton3.FlatAppearance.BorderSize = 0;
+            this.customButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.customButton3.ForeColor = System.Drawing.Color.Transparent;
+            this.customButton3.Image = ((System.Drawing.Image)(resources.GetObject("customButton3.Image")));
+            this.customButton3.Location = new System.Drawing.Point(1284, 25);
+            this.customButton3.Name = "customButton3";
+            this.customButton3.Size = new System.Drawing.Size(39, 40);
+            this.customButton3.TabIndex = 10;
+            this.customButton3.TextColor = System.Drawing.Color.Transparent;
+            this.customButton3.UseVisualStyleBackColor = false;
+            // 
+            // customButton2
+            // 
+            this.customButton2.BackColor = System.Drawing.Color.White;
+            this.customButton2.BackgroundColor = System.Drawing.Color.White;
+            this.customButton2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.customButton2.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.customButton2.BorderRadius = 40;
+            this.customButton2.BorderSize = 0;
+            this.customButton2.FlatAppearance.BorderSize = 0;
+            this.customButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.customButton2.ForeColor = System.Drawing.Color.Transparent;
+            this.customButton2.Image = ((System.Drawing.Image)(resources.GetObject("customButton2.Image")));
+            this.customButton2.Location = new System.Drawing.Point(1385, 25);
+            this.customButton2.Name = "customButton2";
+            this.customButton2.Size = new System.Drawing.Size(39, 40);
+            this.customButton2.TabIndex = 9;
+            this.customButton2.TextColor = System.Drawing.Color.Transparent;
+            this.customButton2.UseVisualStyleBackColor = false;
             // 
             // customButton1
             // 
@@ -69,7 +104,7 @@
             this.customButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.customButton1.ForeColor = System.Drawing.Color.Transparent;
             this.customButton1.Image = ((System.Drawing.Image)(resources.GetObject("customButton1.Image")));
-            this.customButton1.Location = new System.Drawing.Point(1413, 28);
+            this.customButton1.Location = new System.Drawing.Point(1175, 25);
             this.customButton1.Name = "customButton1";
             this.customButton1.Size = new System.Drawing.Size(39, 40);
             this.customButton1.TabIndex = 8;
@@ -77,51 +112,15 @@
             this.customButton1.UseVisualStyleBackColor = false;
             this.customButton1.Click += new System.EventHandler(this.customButton1_Click);
             // 
-            // txtAddress
-            // 
-            this.txtAddress.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtAddress.AutoSize = true;
-            this.txtAddress.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAddress.Location = new System.Drawing.Point(1186, 35);
-            this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(57, 22);
-            this.txtAddress.TabIndex = 6;
-            this.txtAddress.Text = "Address";
-            // 
-            // txtContactNum
-            // 
-            this.txtContactNum.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtContactNum.AutoSize = true;
-            this.txtContactNum.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtContactNum.Location = new System.Drawing.Point(960, 35);
-            this.txtContactNum.Name = "txtContactNum";
-            this.txtContactNum.Size = new System.Drawing.Size(106, 22);
-            this.txtContactNum.TabIndex = 5;
-            this.txtContactNum.Text = "contact number";
-            // 
-            // txtAge
-            // 
-            this.txtAge.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtAge.AutoSize = true;
-            this.txtAge.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAge.Location = new System.Drawing.Point(780, 35);
-            this.txtAge.Name = "txtAge";
-            this.txtAge.Size = new System.Drawing.Size(33, 22);
-            this.txtAge.TabIndex = 4;
-            this.txtAge.Text = "Age";
-            // 
             // txtPosition
             // 
             this.txtPosition.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPosition.AutoSize = true;
-            this.txtPosition.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPosition.Location = new System.Drawing.Point(577, 35);
+            this.txtPosition.Font = new System.Drawing.Font("Poppins", 10F);
+            this.txtPosition.Location = new System.Drawing.Point(837, 35);
             this.txtPosition.Name = "txtPosition";
-            this.txtPosition.Size = new System.Drawing.Size(57, 22);
+            this.txtPosition.Size = new System.Drawing.Size(65, 25);
             this.txtPosition.TabIndex = 3;
             this.txtPosition.Text = "Position";
             // 
@@ -130,20 +129,20 @@
             this.txtEmpID.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtEmpID.AutoSize = true;
-            this.txtEmpID.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmpID.Location = new System.Drawing.Point(361, 35);
+            this.txtEmpID.Font = new System.Drawing.Font("Poppins", 10F);
+            this.txtEmpID.Location = new System.Drawing.Point(19, 35);
             this.txtEmpID.Name = "txtEmpID";
-            this.txtEmpID.Size = new System.Drawing.Size(47, 22);
+            this.txtEmpID.Size = new System.Drawing.Size(55, 25);
             this.txtEmpID.TabIndex = 2;
             this.txtEmpID.Text = "EmpID";
             // 
             // txtUserName
             // 
             this.txtUserName.AutoSize = true;
-            this.txtUserName.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold);
-            this.txtUserName.Location = new System.Drawing.Point(14, 35);
+            this.txtUserName.Font = new System.Drawing.Font("Poppins", 10F, System.Drawing.FontStyle.Bold);
+            this.txtUserName.Location = new System.Drawing.Point(279, 35);
             this.txtUserName.Name = "txtUserName";
-            this.txtUserName.Size = new System.Drawing.Size(46, 22);
+            this.txtUserName.Size = new System.Drawing.Size(54, 25);
             this.txtUserName.TabIndex = 0;
             this.txtUserName.Text = "label1";
             // 
@@ -154,7 +153,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(249)))), ((int)(((byte)(238)))));
             this.Controls.Add(this.panelBorder1);
             this.Name = "DisplayUsers";
-            this.Size = new System.Drawing.Size(1510, 98);
+            this.Size = new System.Drawing.Size(1510, 99);
             this.panelBorder1.ResumeLayout(false);
             this.panelBorder1.PerformLayout();
             this.ResumeLayout(false);
@@ -165,11 +164,10 @@
 
         private WindowsFormsApp2.CustomButton.PanelBorder panelBorder1;
         private System.Windows.Forms.Label txtUserName;
-        private System.Windows.Forms.Label txtAddress;
-        private System.Windows.Forms.Label txtContactNum;
-        private System.Windows.Forms.Label txtAge;
         private System.Windows.Forms.Label txtPosition;
         private System.Windows.Forms.Label txtEmpID;
         private OrganizationProfile.CustomButton customButton1;
+        private OrganizationProfile.CustomButton customButton2;
+        private OrganizationProfile.CustomButton customButton3;
     }
 }

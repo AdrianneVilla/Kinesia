@@ -1,6 +1,6 @@
 ﻿namespace Kinesia.Users
 {
-    partial class AddUser
+    partial class EditUser
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,12 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddUser));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditUser));
             this.label1 = new System.Windows.Forms.Label();
             this.nameHolder = new System.Windows.Forms.Label();
             this.txtTitleLabel = new System.Windows.Forms.Label();
-            this.btnBack = new OrganizationProfile.CustomButton();
+            this.btnClearInput = new OrganizationProfile.CustomButton();
+            this.btnAddUser = new OrganizationProfile.CustomButton();
             this.panelBorder1 = new WindowsFormsApp2.CustomButton.PanelBorder();
+            this.label15 = new System.Windows.Forms.Label();
+            this.rjComboBox2 = new CustomControls.RJControls.RJComboBox();
             this.rjComboBox1 = new CustomControls.RJControls.RJComboBox();
             this.label14 = new System.Windows.Forms.Label();
             this.txtPassword = new CustomControls.RJControls.RJTextBox();
@@ -57,10 +60,7 @@
             this.txtUserFirstName = new CustomControls.RJControls.RJTextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.btnClearInput = new OrganizationProfile.CustomButton();
-            this.btnAddUser = new OrganizationProfile.CustomButton();
-            this.rjComboBox2 = new CustomControls.RJControls.RJComboBox();
-            this.label15 = new System.Windows.Forms.Label();
+            this.btnBack = new OrganizationProfile.CustomButton();
             this.panelBorder1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,9 +70,9 @@
             this.label1.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(65, 72);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(268, 23);
-            this.label1.TabIndex = 12;
-            this.label1.Text = "users personal information and account";
+            this.label1.Size = new System.Drawing.Size(258, 23);
+            this.label1.TabIndex = 19;
+            this.label1.Text = "edit personal information and account";
             // 
             // nameHolder
             // 
@@ -85,7 +85,7 @@
             this.nameHolder.Margin = new System.Windows.Forms.Padding(0);
             this.nameHolder.Name = "nameHolder";
             this.nameHolder.Size = new System.Drawing.Size(87, 36);
-            this.nameHolder.TabIndex = 11;
+            this.nameHolder.TabIndex = 18;
             this.nameHolder.Text = "Users >";
             this.nameHolder.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -100,36 +100,58 @@
             this.txtTitleLabel.Location = new System.Drawing.Point(141, 30);
             this.txtTitleLabel.Margin = new System.Windows.Forms.Padding(0);
             this.txtTitleLabel.Name = "txtTitleLabel";
-            this.txtTitleLabel.Size = new System.Drawing.Size(145, 48);
-            this.txtTitleLabel.TabIndex = 13;
-            this.txtTitleLabel.Text = "Add User";
+            this.txtTitleLabel.Size = new System.Drawing.Size(141, 48);
+            this.txtTitleLabel.TabIndex = 20;
+            this.txtTitleLabel.Text = "Edit User";
             this.txtTitleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // btnBack
+            // btnClearInput
             // 
-            this.btnBack.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBack.BackColor = System.Drawing.Color.White;
-            this.btnBack.BackgroundColor = System.Drawing.Color.White;
-            this.btnBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnBack.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnBack.BorderRadius = 10;
-            this.btnBack.BorderSize = 0;
-            this.btnBack.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnBack.FlatAppearance.BorderSize = 0;
-            this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBack.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBack.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.btnBack.Image = global::Kinesia.Properties.Resources.back_button_icon;
-            this.btnBack.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnBack.Location = new System.Drawing.Point(1303, 39);
-            this.btnBack.Name = "btnBack";
-            this.btnBack.Padding = new System.Windows.Forms.Padding(0, 3, 30, 0);
-            this.btnBack.Size = new System.Drawing.Size(124, 40);
-            this.btnBack.TabIndex = 14;
-            this.btnBack.Text = "Back";
-            this.btnBack.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnBack.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.btnBack.UseVisualStyleBackColor = false;
+            this.btnClearInput.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClearInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(216)))), ((int)(((byte)(216)))));
+            this.btnClearInput.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(216)))), ((int)(((byte)(216)))));
+            this.btnClearInput.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(64)))), ((int)(((byte)(66)))));
+            this.btnClearInput.BorderRadius = 10;
+            this.btnClearInput.BorderSize = 1;
+            this.btnClearInput.FlatAppearance.BorderSize = 0;
+            this.btnClearInput.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClearInput.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClearInput.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(64)))), ((int)(((byte)(66)))));
+            this.btnClearInput.Image = ((System.Drawing.Image)(resources.GetObject("btnClearInput.Image")));
+            this.btnClearInput.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnClearInput.Location = new System.Drawing.Point(1214, 780);
+            this.btnClearInput.Name = "btnClearInput";
+            this.btnClearInput.Padding = new System.Windows.Forms.Padding(10, 4, 40, 0);
+            this.btnClearInput.Size = new System.Drawing.Size(173, 50);
+            this.btnClearInput.TabIndex = 24;
+            this.btnClearInput.Text = "Clear";
+            this.btnClearInput.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnClearInput.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(64)))), ((int)(((byte)(66)))));
+            this.btnClearInput.UseVisualStyleBackColor = false;
+            // 
+            // btnAddUser
+            // 
+            this.btnAddUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(220)))), ((int)(((byte)(255)))));
+            this.btnAddUser.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(220)))), ((int)(((byte)(255)))));
+            this.btnAddUser.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
+            this.btnAddUser.BorderRadius = 10;
+            this.btnAddUser.BorderSize = 1;
+            this.btnAddUser.FlatAppearance.BorderSize = 0;
+            this.btnAddUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddUser.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
+            this.btnAddUser.Image = ((System.Drawing.Image)(resources.GetObject("btnAddUser.Image")));
+            this.btnAddUser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAddUser.Location = new System.Drawing.Point(1035, 780);
+            this.btnAddUser.Name = "btnAddUser";
+            this.btnAddUser.Padding = new System.Windows.Forms.Padding(10, 4, 30, 0);
+            this.btnAddUser.Size = new System.Drawing.Size(173, 50);
+            this.btnAddUser.TabIndex = 23;
+            this.btnAddUser.Text = "Add User";
+            this.btnAddUser.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAddUser.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
+            this.btnAddUser.UseVisualStyleBackColor = false;
             // 
             // panelBorder1
             // 
@@ -169,7 +191,39 @@
             this.panelBorder1.Location = new System.Drawing.Point(67, 114);
             this.panelBorder1.Name = "panelBorder1";
             this.panelBorder1.Size = new System.Drawing.Size(1421, 630);
-            this.panelBorder1.TabIndex = 15;
+            this.panelBorder1.TabIndex = 22;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(706, 509);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(38, 23);
+            this.label15.TabIndex = 36;
+            this.label15.Text = "Role";
+            // 
+            // rjComboBox2
+            // 
+            this.rjComboBox2.BackColor = System.Drawing.Color.White;
+            this.rjComboBox2.BorderColor = System.Drawing.Color.Black;
+            this.rjComboBox2.BorderSize = 1;
+            this.rjComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
+            this.rjComboBox2.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rjComboBox2.ForeColor = System.Drawing.Color.Black;
+            this.rjComboBox2.IconColor = System.Drawing.Color.Black;
+            this.rjComboBox2.Items.AddRange(new object[] {
+            "Therapist",
+            "Maintenance"});
+            this.rjComboBox2.ListBackColor = System.Drawing.Color.White;
+            this.rjComboBox2.ListTextColor = System.Drawing.Color.Black;
+            this.rjComboBox2.Location = new System.Drawing.Point(707, 533);
+            this.rjComboBox2.MinimumSize = new System.Drawing.Size(200, 30);
+            this.rjComboBox2.Name = "rjComboBox2";
+            this.rjComboBox2.Padding = new System.Windows.Forms.Padding(1);
+            this.rjComboBox2.Size = new System.Drawing.Size(228, 39);
+            this.rjComboBox2.TabIndex = 35;
+            this.rjComboBox2.Texts = "";
             // 
             // rjComboBox1
             // 
@@ -516,101 +570,46 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "Personal Information";
             // 
-            // btnClearInput
+            // btnBack
             // 
-            this.btnClearInput.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClearInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(216)))), ((int)(((byte)(216)))));
-            this.btnClearInput.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(216)))), ((int)(((byte)(216)))));
-            this.btnClearInput.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(64)))), ((int)(((byte)(66)))));
-            this.btnClearInput.BorderRadius = 10;
-            this.btnClearInput.BorderSize = 1;
-            this.btnClearInput.FlatAppearance.BorderSize = 0;
-            this.btnClearInput.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClearInput.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClearInput.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(64)))), ((int)(((byte)(66)))));
-            this.btnClearInput.Image = ((System.Drawing.Image)(resources.GetObject("btnClearInput.Image")));
-            this.btnClearInput.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClearInput.Location = new System.Drawing.Point(1214, 780);
-            this.btnClearInput.Name = "btnClearInput";
-            this.btnClearInput.Padding = new System.Windows.Forms.Padding(10, 4, 40, 0);
-            this.btnClearInput.Size = new System.Drawing.Size(173, 50);
-            this.btnClearInput.TabIndex = 17;
-            this.btnClearInput.Text = "Clear";
-            this.btnClearInput.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnClearInput.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(64)))), ((int)(((byte)(66)))));
-            this.btnClearInput.UseVisualStyleBackColor = false;
+            this.btnBack.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnBack.BackColor = System.Drawing.Color.White;
+            this.btnBack.BackgroundColor = System.Drawing.Color.White;
+            this.btnBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnBack.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnBack.BorderRadius = 10;
+            this.btnBack.BorderSize = 0;
+            this.btnBack.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBack.FlatAppearance.BorderSize = 0;
+            this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBack.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBack.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
+            this.btnBack.Image = global::Kinesia.Properties.Resources.back_button_icon;
+            this.btnBack.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnBack.Location = new System.Drawing.Point(1303, 39);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Padding = new System.Windows.Forms.Padding(0, 3, 30, 0);
+            this.btnBack.Size = new System.Drawing.Size(124, 40);
+            this.btnBack.TabIndex = 21;
+            this.btnBack.Text = "Back";
+            this.btnBack.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnBack.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
+            this.btnBack.UseVisualStyleBackColor = false;
             // 
-            // btnAddUser
-            // 
-            this.btnAddUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(220)))), ((int)(((byte)(255)))));
-            this.btnAddUser.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(220)))), ((int)(((byte)(255)))));
-            this.btnAddUser.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.btnAddUser.BorderRadius = 10;
-            this.btnAddUser.BorderSize = 1;
-            this.btnAddUser.FlatAppearance.BorderSize = 0;
-            this.btnAddUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddUser.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.btnAddUser.Image = ((System.Drawing.Image)(resources.GetObject("btnAddUser.Image")));
-            this.btnAddUser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAddUser.Location = new System.Drawing.Point(1035, 780);
-            this.btnAddUser.Name = "btnAddUser";
-            this.btnAddUser.Padding = new System.Windows.Forms.Padding(10, 4, 30, 0);
-            this.btnAddUser.Size = new System.Drawing.Size(173, 50);
-            this.btnAddUser.TabIndex = 16;
-            this.btnAddUser.Text = "Add User";
-            this.btnAddUser.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAddUser.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.btnAddUser.UseVisualStyleBackColor = false;
-            // 
-            // rjComboBox2
-            // 
-            this.rjComboBox2.BackColor = System.Drawing.Color.White;
-            this.rjComboBox2.BorderColor = System.Drawing.Color.Black;
-            this.rjComboBox2.BorderSize = 1;
-            this.rjComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
-            this.rjComboBox2.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rjComboBox2.ForeColor = System.Drawing.Color.Black;
-            this.rjComboBox2.IconColor = System.Drawing.Color.Black;
-            this.rjComboBox2.Items.AddRange(new object[] {
-            "Therapist",
-            "Maintenance"});
-            this.rjComboBox2.ListBackColor = System.Drawing.Color.White;
-            this.rjComboBox2.ListTextColor = System.Drawing.Color.Black;
-            this.rjComboBox2.Location = new System.Drawing.Point(707, 533);
-            this.rjComboBox2.MinimumSize = new System.Drawing.Size(200, 30);
-            this.rjComboBox2.Name = "rjComboBox2";
-            this.rjComboBox2.Padding = new System.Windows.Forms.Padding(1);
-            this.rjComboBox2.Size = new System.Drawing.Size(228, 39);
-            this.rjComboBox2.TabIndex = 35;
-            this.rjComboBox2.Texts = "";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(706, 509);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(38, 23);
-            this.label15.TabIndex = 36;
-            this.label15.Text = "Role";
-            // 
-            // AddUser
+            // EditUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.btnBack);
-            this.Controls.Add(this.panelBorder1);
             this.Controls.Add(this.btnClearInput);
+            this.Controls.Add(this.btnAddUser);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.nameHolder);
-            this.Controls.Add(this.btnAddUser);
             this.Controls.Add(this.txtTitleLabel);
-            this.Name = "AddUser";
+            this.Controls.Add(this.panelBorder1);
+            this.Controls.Add(this.btnBack);
+            this.Name = "EditUser";
             this.Size = new System.Drawing.Size(1511, 843);
-            this.Load += new System.EventHandler(this.AddUser_Load);
             this.panelBorder1.ResumeLayout(false);
             this.panelBorder1.PerformLayout();
             this.ResumeLayout(false);
@@ -620,37 +619,37 @@
 
         #endregion
 
-        private OrganizationProfile.CustomButton btnBack;
-        private CustomControls.RJControls.RJDatePicker rjDatePicker1;
-        private CustomControls.RJControls.RJTextBox txtUserAddress;
-        private System.Windows.Forms.Label label9;
-        private WindowsFormsApp2.CustomButton.PanelBorder panelBorder1;
-        private CustomControls.RJControls.RJTextBox txtUserContact;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
-        private CustomControls.RJControls.RJTextBox txtUserAge;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private CustomControls.RJControls.RJTextBox txtUserFirstName;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label15;
         private OrganizationProfile.CustomButton btnClearInput;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label nameHolder;
         private OrganizationProfile.CustomButton btnAddUser;
-        private System.Windows.Forms.Label txtTitleLabel;
+        private CustomControls.RJControls.RJComboBox rjComboBox2;
+        private CustomControls.RJControls.RJComboBox rjComboBox1;
+        private System.Windows.Forms.Label label14;
+        private CustomControls.RJControls.RJTextBox txtPassword;
+        private System.Windows.Forms.Label label13;
+        private CustomControls.RJControls.RJTextBox txtUsername;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label11;
         private CustomControls.RJControls.RJTextBox txtUserMiddleName;
         private System.Windows.Forms.Label label10;
         private CustomControls.RJControls.RJTextBox txtUserLastName;
         private System.Windows.Forms.Label label2;
-        private CustomControls.RJControls.RJTextBox txtUsername;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label11;
-        private CustomControls.RJControls.RJTextBox txtPassword;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label14;
-        private CustomControls.RJControls.RJComboBox rjComboBox1;
-        private System.Windows.Forms.Label label15;
-        private CustomControls.RJControls.RJComboBox rjComboBox2;
+        private System.Windows.Forms.Label label1;
+        private CustomControls.RJControls.RJDatePicker rjDatePicker1;
+        private CustomControls.RJControls.RJTextBox txtUserAddress;
+        private System.Windows.Forms.Label label9;
+        private CustomControls.RJControls.RJTextBox txtUserContact;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
+        private CustomControls.RJControls.RJTextBox txtUserAge;
+        private System.Windows.Forms.Label nameHolder;
+        private System.Windows.Forms.Label txtTitleLabel;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private WindowsFormsApp2.CustomButton.PanelBorder panelBorder1;
+        private CustomControls.RJControls.RJTextBox txtUserFirstName;
+        private OrganizationProfile.CustomButton btnBack;
     }
 }

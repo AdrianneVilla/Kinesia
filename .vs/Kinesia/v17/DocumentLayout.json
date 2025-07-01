@@ -1,26 +1,46 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "E:\\C# Projects\\Kinesia\\",
+  "WorkspaceRootPath": "D:\\git\\Kinesia\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2848B017-4DD2-4ABC-9A7B-AA6D69B597FE}|Kinesia\\Kinesia.csproj|e:\\c# projects\\kinesia\\kinesia\\patients\\patientscrud.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2848B017-4DD2-4ABC-9A7B-AA6D69B597FE}|Kinesia\\Kinesia.csproj|solutionrelative:kinesia\\patients\\patientscrud.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2848B017-4DD2-4ABC-9A7B-AA6D69B597FE}|Kinesia\\Kinesia.csproj|d:\\git\\kinesia\\kinesia\\patients\\editpatient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{2848B017-4DD2-4ABC-9A7B-AA6D69B597FE}|Kinesia\\Kinesia.csproj|solutionrelative:kinesia\\patients\\editpatient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2848B017-4DD2-4ABC-9A7B-AA6D69B597FE}|Kinesia\\Kinesia.csproj|E:\\C# Projects\\Kinesia\\kinesia\\patients\\patientspage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2848B017-4DD2-4ABC-9A7B-AA6D69B597FE}|Kinesia\\Kinesia.csproj|solutionrelative:kinesia\\patients\\patientspage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2848B017-4DD2-4ABC-9A7B-AA6D69B597FE}|Kinesia\\Kinesia.csproj|d:\\git\\kinesia\\kinesia\\users\\adduser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{2848B017-4DD2-4ABC-9A7B-AA6D69B597FE}|Kinesia\\Kinesia.csproj|solutionrelative:kinesia\\users\\adduser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2848B017-4DD2-4ABC-9A7B-AA6D69B597FE}|Kinesia\\Kinesia.csproj|E:\\C# Projects\\Kinesia\\kinesia\\patients\\patientspage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{2848B017-4DD2-4ABC-9A7B-AA6D69B597FE}|Kinesia\\Kinesia.csproj|solutionrelative:kinesia\\patients\\patientspage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2848B017-4DD2-4ABC-9A7B-AA6D69B597FE}|Kinesia\\Kinesia.csproj|E:\\C# Projects\\Kinesia\\kinesia\\patients\\addpatient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{2848B017-4DD2-4ABC-9A7B-AA6D69B597FE}|Kinesia\\Kinesia.csproj|D:\\git\\Kinesia\\kinesia\\patients\\addpatient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{2848B017-4DD2-4ABC-9A7B-AA6D69B597FE}|Kinesia\\Kinesia.csproj|solutionrelative:kinesia\\patients\\addpatient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2848B017-4DD2-4ABC-9A7B-AA6D69B597FE}|Kinesia\\Kinesia.csproj|E:\\C# Projects\\Kinesia\\kinesia\\patients\\addpatient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{2848B017-4DD2-4ABC-9A7B-AA6D69B597FE}|Kinesia\\Kinesia.csproj|D:\\git\\Kinesia\\kinesia\\patients\\addpatient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2848B017-4DD2-4ABC-9A7B-AA6D69B597FE}|Kinesia\\Kinesia.csproj|solutionrelative:kinesia\\patients\\addpatient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2848B017-4DD2-4ABC-9A7B-AA6D69B597FE}|Kinesia\\Kinesia.csproj|d:\\git\\kinesia\\kinesia\\users\\userpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{2848B017-4DD2-4ABC-9A7B-AA6D69B597FE}|Kinesia\\Kinesia.csproj|solutionrelative:kinesia\\users\\userpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2848B017-4DD2-4ABC-9A7B-AA6D69B597FE}|Kinesia\\Kinesia.csproj|d:\\git\\kinesia\\kinesia\\users\\edituser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{2848B017-4DD2-4ABC-9A7B-AA6D69B597FE}|Kinesia\\Kinesia.csproj|solutionrelative:kinesia\\users\\edituser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2848B017-4DD2-4ABC-9A7B-AA6D69B597FE}|Kinesia\\Kinesia.csproj|d:\\git\\kinesia\\kinesia\\users\\userpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2848B017-4DD2-4ABC-9A7B-AA6D69B597FE}|Kinesia\\Kinesia.csproj|solutionrelative:kinesia\\users\\userpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2848B017-4DD2-4ABC-9A7B-AA6D69B597FE}|Kinesia\\Kinesia.csproj|d:\\git\\kinesia\\kinesia\\patients\\patientscrud.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2848B017-4DD2-4ABC-9A7B-AA6D69B597FE}|Kinesia\\Kinesia.csproj|solutionrelative:kinesia\\patients\\patientscrud.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2848B017-4DD2-4ABC-9A7B-AA6D69B597FE}|Kinesia\\Kinesia.csproj|D:\\git\\Kinesia\\kinesia\\patients\\patientspage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2848B017-4DD2-4ABC-9A7B-AA6D69B597FE}|Kinesia\\Kinesia.csproj|solutionrelative:kinesia\\patients\\patientspage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2848B017-4DD2-4ABC-9A7B-AA6D69B597FE}|Kinesia\\Kinesia.csproj|D:\\git\\Kinesia\\kinesia\\patients\\patientspage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{2848B017-4DD2-4ABC-9A7B-AA6D69B597FE}|Kinesia\\Kinesia.csproj|solutionrelative:kinesia\\patients\\patientspage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,7 +50,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 262,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -42,64 +62,124 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "PatientsPage.cs [Design]",
-              "DocumentMoniker": "E:\\C# Projects\\Kinesia\\Kinesia\\Patients\\PatientsPage.cs",
-              "RelativeDocumentMoniker": "Kinesia\\Patients\\PatientsPage.cs",
-              "ToolTip": "E:\\C# Projects\\Kinesia\\Kinesia\\Patients\\PatientsPage.cs [Design]",
-              "RelativeToolTip": "Kinesia\\Patients\\PatientsPage.cs [Design]",
+              "DocumentIndex": 0,
+              "Title": "EditPatient.cs [Design]",
+              "DocumentMoniker": "D:\\git\\Kinesia\\Kinesia\\Patients\\EditPatient.cs",
+              "RelativeDocumentMoniker": "Kinesia\\Patients\\EditPatient.cs",
+              "ToolTip": "D:\\git\\Kinesia\\Kinesia\\Patients\\EditPatient.cs [Design]",
+              "RelativeToolTip": "Kinesia\\Patients\\EditPatient.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-28T13:18:58.235Z",
+              "WhenOpened": "2025-07-01T14:17:22.266Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "EditUser.cs [Design]",
+              "DocumentMoniker": "D:\\git\\Kinesia\\Kinesia\\Users\\EditUser.cs",
+              "RelativeDocumentMoniker": "Kinesia\\Users\\EditUser.cs",
+              "ToolTip": "D:\\git\\Kinesia\\Kinesia\\Users\\EditUser.cs [Design]",
+              "RelativeToolTip": "Kinesia\\Users\\EditUser.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-01T14:16:01.73Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "UserPage.cs [Design]",
+              "DocumentMoniker": "D:\\git\\Kinesia\\Kinesia\\Users\\UserPage.cs",
+              "RelativeDocumentMoniker": "Kinesia\\Users\\UserPage.cs",
+              "ToolTip": "D:\\git\\Kinesia\\Kinesia\\Users\\UserPage.cs [Design]",
+              "RelativeToolTip": "Kinesia\\Users\\UserPage.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-01T13:21:30.311Z",
               "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "PatientsPage.cs",
-              "DocumentMoniker": "E:\\C# Projects\\Kinesia\\Kinesia\\Patients\\PatientsPage.cs",
-              "RelativeDocumentMoniker": "Kinesia\\Patients\\PatientsPage.cs",
-              "ToolTip": "E:\\C# Projects\\Kinesia\\Kinesia\\Patients\\PatientsPage.cs",
-              "RelativeToolTip": "Kinesia\\Patients\\PatientsPage.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAA1wEEAAAANAAAAAAAAAA==",
+              "Title": "AddUser.cs [Design]",
+              "DocumentMoniker": "D:\\git\\Kinesia\\Kinesia\\Users\\AddUser.cs",
+              "RelativeDocumentMoniker": "Kinesia\\Users\\AddUser.cs",
+              "ToolTip": "D:\\git\\Kinesia\\Kinesia\\Users\\AddUser.cs [Design]",
+              "RelativeToolTip": "Kinesia\\Users\\AddUser.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-28T12:30:40.884Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-01T13:21:29.269Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 8,
+              "Title": "PatientsPage.cs",
+              "DocumentMoniker": "D:\\git\\Kinesia\\Kinesia\\Patients\\PatientsPage.cs",
+              "RelativeDocumentMoniker": "Kinesia\\Patients\\PatientsPage.cs",
+              "ToolTip": "D:\\git\\Kinesia\\Kinesia\\Patients\\PatientsPage.cs",
+              "RelativeToolTip": "Kinesia\\Patients\\PatientsPage.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAA1wEEAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-28T12:30:40.884Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "PatientsCRUD.cs",
-              "DocumentMoniker": "E:\\C# Projects\\Kinesia\\Kinesia\\Patients\\PatientsCRUD.cs",
+              "DocumentMoniker": "D:\\git\\Kinesia\\Kinesia\\Patients\\PatientsCRUD.cs",
               "RelativeDocumentMoniker": "Kinesia\\Patients\\PatientsCRUD.cs",
-              "ToolTip": "E:\\C# Projects\\Kinesia\\Kinesia\\Patients\\PatientsCRUD.cs",
+              "ToolTip": "D:\\git\\Kinesia\\Kinesia\\Patients\\PatientsCRUD.cs",
               "RelativeToolTip": "Kinesia\\Patients\\PatientsCRUD.cs",
-              "ViewState": "AgIAABkAAAAAAAAAAAAgwHQAAABrAAAAAAAAAA==",
+              "ViewState": "AgIAAA0AAAAAAAAAAAA1wB0AAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-27T06:46:08.443Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "AddPatient.cs",
-              "DocumentMoniker": "E:\\C# Projects\\Kinesia\\Kinesia\\Patients\\AddPatient.cs",
+              "DocumentMoniker": "D:\\git\\Kinesia\\Kinesia\\Patients\\AddPatient.cs",
               "RelativeDocumentMoniker": "Kinesia\\Patients\\AddPatient.cs",
-              "ToolTip": "E:\\C# Projects\\Kinesia\\Kinesia\\Patients\\AddPatient.cs",
+              "ToolTip": "D:\\git\\Kinesia\\Kinesia\\Patients\\AddPatient.cs",
               "RelativeToolTip": "Kinesia\\Patients\\AddPatient.cs",
               "ViewState": "AgIAAHAAAAAAAAAAAAAYwDgAAAB1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-25T10:31:45.493Z"
+              "WhenOpened": "2025-06-25T10:31:45.493Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "AddPatient.cs [Design]",
-              "DocumentMoniker": "E:\\C# Projects\\Kinesia\\Kinesia\\Patients\\AddPatient.cs",
+              "DocumentMoniker": "D:\\git\\Kinesia\\Kinesia\\Patients\\AddPatient.cs",
               "RelativeDocumentMoniker": "Kinesia\\Patients\\AddPatient.cs",
-              "ToolTip": "E:\\C# Projects\\Kinesia\\Kinesia\\Patients\\AddPatient.cs [Design]",
+              "ToolTip": "D:\\git\\Kinesia\\Kinesia\\Patients\\AddPatient.cs [Design]",
               "RelativeToolTip": "Kinesia\\Patients\\AddPatient.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-21T10:48:02.175Z"
+              "WhenOpened": "2025-06-21T10:48:02.175Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "PatientsPage.cs [Design]",
+              "DocumentMoniker": "D:\\git\\Kinesia\\Kinesia\\Patients\\PatientsPage.cs",
+              "RelativeDocumentMoniker": "Kinesia\\Patients\\PatientsPage.cs",
+              "ToolTip": "E:\\C# Projects\\Kinesia\\Kinesia\\Patients\\PatientsPage.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-28T13:18:58.235Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "UserPage.cs",
+              "DocumentMoniker": "D:\\git\\Kinesia\\Kinesia\\Users\\UserPage.cs",
+              "RelativeDocumentMoniker": "Kinesia\\Users\\UserPage.cs",
+              "ToolTip": "D:\\git\\Kinesia\\Kinesia\\Users\\UserPage.cs",
+              "RelativeToolTip": "Kinesia\\Users\\UserPage.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAhwCYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-01T13:26:10.69Z",
+              "EditorCaption": ""
             }
           ]
         },

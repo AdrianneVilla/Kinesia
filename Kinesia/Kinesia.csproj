@@ -168,6 +168,12 @@
     <Compile Include="Patients\DisplayPatients.Designer.cs">
       <DependentUpon>DisplayPatients.cs</DependentUpon>
     </Compile>
+    <Compile Include="Patients\EditPatient.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Patients\EditPatient.Designer.cs">
+      <DependentUpon>EditPatient.cs</DependentUpon>
+    </Compile>
     <Compile Include="Patients\PatientDataHolder.cs" />
     <Compile Include="Patients\PatientDetails.cs">
       <SubType>UserControl</SubType>
@@ -195,6 +201,12 @@
     </Compile>
     <Compile Include="Users\DisplayUsers.Designer.cs">
       <DependentUpon>DisplayUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Users\EditUser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Users\EditUser.Designer.cs">
+      <DependentUpon>EditUser.cs</DependentUpon>
     </Compile>
     <Compile Include="Users\UserDetails.cs">
       <SubType>UserControl</SubType>
@@ -236,6 +248,9 @@
     <EmbeddedResource Include="Patients\DisplayPatients.resx">
       <DependentUpon>DisplayPatients.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Patients\EditPatient.resx">
+      <DependentUpon>EditPatient.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Patients\PatientDetails.resx">
       <DependentUpon>PatientDetails.cs</DependentUpon>
     </EmbeddedResource>
@@ -252,6 +267,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Users\DisplayUsers.resx">
       <DependentUpon>DisplayUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\EditUser.resx">
+      <DependentUpon>EditUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Users\UserDetails.resx">
       <DependentUpon>UserDetails.cs</DependentUpon>
