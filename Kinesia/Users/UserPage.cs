@@ -7,11 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp2.CustomButton;
 
 namespace Kinesia.Users
 {
     public partial class UserPage : UserControl
     {
+        public PanelBorder getUserHolder { get { return UserHolder; } }
+
         public UserPage()
         {
             this.Anchor = AnchorStyles.Right | AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Bottom;
@@ -21,8 +24,7 @@ namespace Kinesia.Users
 
         private void UserPage_Load(object sender, EventArgs e)
         {
-            PageObjects.displayUsers = new DisplayUsers();
-            UsersHolder.Controls.Add(PageObjects.displayUsers);
+            Queries.UserQueries.DisplayUsers();
         }
 
         private void btnAddPatient_Click(object sender, EventArgs e)

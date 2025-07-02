@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OrganizationProfile;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -27,5 +28,12 @@ namespace Kinesia.Users
             dashboard.ContentsPanel.Controls.Clear();
             dashboard.ContentsPanel.Controls.Add(PageObjects.userDetails);
         }
+
+        public string UserID { get { return lblUserID.Text; } set { lblUserID.Text = value; } }
+        public string Name { get { return lblName.Text; } set { lblName.Text = value; } }
+        public string Role { get { return lblRole.Text; } set { lblRole.Text = value; } }
+        public CustomButton BtnView { get { return btnView; } }
+        public CustomButton BtnEdit { get { return btnEdit; } }
+        public CustomButton BtnArchive { get { return btnArchive; } }
     }
 }

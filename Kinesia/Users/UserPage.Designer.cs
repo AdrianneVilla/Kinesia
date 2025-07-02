@@ -30,23 +30,23 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserPage));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserPage));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.nameHolder = new System.Windows.Forms.Label();
-            this.UsersHolder = new WindowsFormsApp2.CustomButton.PanelBorder();
-            this.btnAddPatient = new OrganizationProfile.CustomButton();
-            this.panelBorder1 = new WindowsFormsApp2.CustomButton.PanelBorder();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.rjTextBox1 = new CustomControls.RJControls.RJTextBox();
             this.UserIDHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EmpPosition = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.editHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
+            this.nameHolder = new System.Windows.Forms.Label();
+            this.UserHolder = new WindowsFormsApp2.CustomButton.PanelBorder();
+            this.btnAddPatient = new OrganizationProfile.CustomButton();
+            this.panelBorder1 = new WindowsFormsApp2.CustomButton.PanelBorder();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.rjTextBox1 = new CustomControls.RJControls.RJTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panelBorder1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -104,6 +104,63 @@
             this.dataGridView1.TabIndex = 14;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
+            // UserIDHeader
+            // 
+            this.UserIDHeader.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.UserIDHeader.FillWeight = 50F;
+            this.UserIDHeader.HeaderText = "User ID";
+            this.UserIDHeader.Name = "UserIDHeader";
+            this.UserIDHeader.ReadOnly = true;
+            // 
+            // nameHeader
+            // 
+            this.nameHeader.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
+            this.nameHeader.DefaultCellStyle = dataGridViewCellStyle2;
+            this.nameHeader.HeaderText = "Name";
+            this.nameHeader.Name = "nameHeader";
+            this.nameHeader.ReadOnly = true;
+            this.nameHeader.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // EmpPosition
+            // 
+            this.EmpPosition.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.EmpPosition.FillWeight = 60F;
+            this.EmpPosition.HeaderText = "Position";
+            this.EmpPosition.Name = "EmpPosition";
+            this.EmpPosition.ReadOnly = true;
+            // 
+            // editHeader
+            // 
+            this.editHeader.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.editHeader.DefaultCellStyle = dataGridViewCellStyle3;
+            this.editHeader.FillWeight = 20F;
+            this.editHeader.HeaderText = "Select";
+            this.editHeader.Name = "editHeader";
+            this.editHeader.ReadOnly = true;
+            // 
+            // Column1
+            // 
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column1.FillWeight = 20F;
+            this.Column1.HeaderText = "Edit";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column2.FillWeight = 20F;
+            this.Column2.HeaderText = "Archive";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -129,20 +186,20 @@
             this.nameHolder.Text = "Users";
             this.nameHolder.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // UsersHolder
+            // UserHolder
             // 
-            this.UsersHolder.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.UserHolder.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.UsersHolder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(249)))), ((int)(((byte)(238)))));
-            this.UsersHolder.BorderRadius = 10;
-            this.UsersHolder.Color = System.Drawing.Color.White;
-            this.UsersHolder.ForeColor = System.Drawing.Color.Black;
-            this.UsersHolder.Location = new System.Drawing.Point(59, 173);
-            this.UsersHolder.Name = "UsersHolder";
-            this.UsersHolder.Padding = new System.Windows.Forms.Padding(5);
-            this.UsersHolder.Size = new System.Drawing.Size(1129, 472);
-            this.UsersHolder.TabIndex = 13;
+            this.UserHolder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(249)))), ((int)(((byte)(238)))));
+            this.UserHolder.BorderRadius = 10;
+            this.UserHolder.Color = System.Drawing.Color.White;
+            this.UserHolder.ForeColor = System.Drawing.Color.Black;
+            this.UserHolder.Location = new System.Drawing.Point(59, 173);
+            this.UserHolder.Name = "UserHolder";
+            this.UserHolder.Padding = new System.Windows.Forms.Padding(5);
+            this.UserHolder.Size = new System.Drawing.Size(1129, 472);
+            this.UserHolder.TabIndex = 13;
             // 
             // btnAddPatient
             // 
@@ -218,63 +275,6 @@
             this.rjTextBox1.Texts = "";
             this.rjTextBox1.UnderlinedStyle = false;
             // 
-            // UserIDHeader
-            // 
-            this.UserIDHeader.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.UserIDHeader.FillWeight = 50F;
-            this.UserIDHeader.HeaderText = "User ID";
-            this.UserIDHeader.Name = "UserIDHeader";
-            this.UserIDHeader.ReadOnly = true;
-            // 
-            // nameHeader
-            // 
-            this.nameHeader.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.nameHeader.DefaultCellStyle = dataGridViewCellStyle2;
-            this.nameHeader.HeaderText = "Name";
-            this.nameHeader.Name = "nameHeader";
-            this.nameHeader.ReadOnly = true;
-            this.nameHeader.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // EmpPosition
-            // 
-            this.EmpPosition.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.EmpPosition.FillWeight = 60F;
-            this.EmpPosition.HeaderText = "Position";
-            this.EmpPosition.Name = "EmpPosition";
-            this.EmpPosition.ReadOnly = true;
-            // 
-            // editHeader
-            // 
-            this.editHeader.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.editHeader.DefaultCellStyle = dataGridViewCellStyle3;
-            this.editHeader.FillWeight = 20F;
-            this.editHeader.HeaderText = "Select";
-            this.editHeader.Name = "editHeader";
-            this.editHeader.ReadOnly = true;
-            // 
-            // Column1
-            // 
-            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column1.FillWeight = 20F;
-            this.Column1.HeaderText = "Edit";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column2.FillWeight = 20F;
-            this.Column2.HeaderText = "Archive";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
             // UserPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -283,7 +283,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.nameHolder);
-            this.Controls.Add(this.UsersHolder);
+            this.Controls.Add(this.UserHolder);
             this.Controls.Add(this.btnAddPatient);
             this.Controls.Add(this.panelBorder1);
             this.Name = "UserPage";
@@ -302,7 +302,7 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label nameHolder;
-        private WindowsFormsApp2.CustomButton.PanelBorder UsersHolder;
+        private WindowsFormsApp2.CustomButton.PanelBorder UserHolder;
         private OrganizationProfile.CustomButton btnAddPatient;
         private WindowsFormsApp2.CustomButton.PanelBorder panelBorder1;
         private System.Windows.Forms.PictureBox pictureBox1;

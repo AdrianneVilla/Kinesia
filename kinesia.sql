@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 29, 2025 at 06:33 AM
+-- Generation Time: Jul 02, 2025 at 01:54 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -60,7 +60,7 @@ CREATE TABLE `users` (
   `LastName` varchar(50) NOT NULL,
   `MiddleName` varchar(50) DEFAULT NULL,
   `Birthdate` date NOT NULL,
-  `Sex` varchar(10) NOT NULL,
+  `Gender` varchar(10) NOT NULL,
   `Role` varchar(50) NOT NULL,
   `Username` varchar(50) NOT NULL,
   `Password` varchar(50) NOT NULL,
@@ -72,7 +72,7 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`UserID`, `FirstName`, `LastName`, `MiddleName`, `Birthdate`, `Sex`, `Role`, `Username`, `Password`, `Email`, `Status`) VALUES
+INSERT INTO `users` (`UserID`, `FirstName`, `LastName`, `MiddleName`, `Birthdate`, `Gender`, `Role`, `Username`, `Password`, `Email`, `Status`) VALUES
 ('sample', 'sample', 'sample', 'sample', '2025-06-03', 'sample', 'sample', 'test', 'test', 'sample', 1);
 
 --

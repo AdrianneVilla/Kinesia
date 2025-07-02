@@ -208,6 +208,7 @@
     <Compile Include="Users\EditUser.Designer.cs">
       <DependentUpon>EditUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Users\UserCRUD.cs" />
     <Compile Include="Users\UserDetails.cs">
       <SubType>UserControl</SubType>
     </Compile>

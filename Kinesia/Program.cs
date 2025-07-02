@@ -60,6 +60,7 @@ namespace Kinesia
     public class Queries
     {
         public static PatientsCRUD PatientQueries = new PatientsCRUD();
+        public static UserCRUD UserQueries = new UserCRUD();
     }
 
     public class InputValidation
