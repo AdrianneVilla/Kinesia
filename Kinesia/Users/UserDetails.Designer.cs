@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserDetails));
-            this.lblUserBirthdate = new System.Windows.Forms.Label();
-            this.lblUserAddress = new System.Windows.Forms.Label();
-            this.lblUserAge = new System.Windows.Forms.Label();
-            this.lblUserContact = new System.Windows.Forms.Label();
-            this.lblUserGender = new System.Windows.Forms.Label();
+            this.lblBirthdate = new System.Windows.Forms.Label();
+            this.lblAddress = new System.Windows.Forms.Label();
+            this.lblAge = new System.Windows.Forms.Label();
+            this.lblContact = new System.Windows.Forms.Label();
+            this.lblGender = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -42,18 +42,18 @@
             this.label19 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.lblPatientID = new System.Windows.Forms.Label();
+            this.lblUserID = new System.Windows.Forms.Label();
             this.btnArchiveUser = new OrganizationProfile.CustomButton();
             this.btnEditUserInfo = new OrganizationProfile.CustomButton();
             this.panelBorder1 = new WindowsFormsApp2.CustomButton.PanelBorder();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.lblPatientName = new System.Windows.Forms.Label();
+            this.lblName = new System.Windows.Forms.Label();
             this.btnBack = new OrganizationProfile.CustomButton();
-            this.lblSelectedPatient = new System.Windows.Forms.Label();
+            this.lblSelectedUser = new System.Windows.Forms.Label();
             this.titleNav = new System.Windows.Forms.Label();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
-            this.lblUserPosition = new System.Windows.Forms.Label();
+            this.lblRole = new System.Windows.Forms.Label();
             this.panelBorder2 = new WindowsFormsApp2.CustomButton.PanelBorder();
             this.btnEditAccount = new OrganizationProfile.CustomButton();
             this.txtPassword = new CustomControls.RJControls.RJTextBox();
@@ -66,65 +66,65 @@
             this.panelBorder2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // lblUserBirthdate
+            // lblBirthdate
             // 
-            this.lblUserBirthdate.AutoSize = true;
-            this.lblUserBirthdate.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUserBirthdate.ForeColor = System.Drawing.Color.Black;
-            this.lblUserBirthdate.Location = new System.Drawing.Point(879, 58);
-            this.lblUserBirthdate.Name = "lblUserBirthdate";
-            this.lblUserBirthdate.Padding = new System.Windows.Forms.Padding(0, 0, 52, 0);
-            this.lblUserBirthdate.Size = new System.Drawing.Size(159, 22);
-            this.lblUserBirthdate.TabIndex = 23;
-            this.lblUserBirthdate.Text = "<birthday here>";
+            this.lblBirthdate.AutoSize = true;
+            this.lblBirthdate.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBirthdate.ForeColor = System.Drawing.Color.Black;
+            this.lblBirthdate.Location = new System.Drawing.Point(879, 58);
+            this.lblBirthdate.Name = "lblBirthdate";
+            this.lblBirthdate.Padding = new System.Windows.Forms.Padding(0, 0, 52, 0);
+            this.lblBirthdate.Size = new System.Drawing.Size(133, 22);
+            this.lblBirthdate.TabIndex = 23;
+            this.lblBirthdate.Text = "<birthdate>";
             // 
-            // lblUserAddress
+            // lblAddress
             // 
-            this.lblUserAddress.AutoSize = true;
-            this.lblUserAddress.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUserAddress.ForeColor = System.Drawing.Color.Black;
-            this.lblUserAddress.Location = new System.Drawing.Point(508, 96);
-            this.lblUserAddress.Name = "lblUserAddress";
-            this.lblUserAddress.Padding = new System.Windows.Forms.Padding(0, 0, 52, 0);
-            this.lblUserAddress.Size = new System.Drawing.Size(155, 22);
-            this.lblUserAddress.TabIndex = 22;
-            this.lblUserAddress.Text = "<address here>";
+            this.lblAddress.AutoSize = true;
+            this.lblAddress.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAddress.ForeColor = System.Drawing.Color.Black;
+            this.lblAddress.Location = new System.Drawing.Point(508, 96);
+            this.lblAddress.Name = "lblAddress";
+            this.lblAddress.Padding = new System.Windows.Forms.Padding(0, 0, 52, 0);
+            this.lblAddress.Size = new System.Drawing.Size(125, 22);
+            this.lblAddress.TabIndex = 22;
+            this.lblAddress.Text = "<address>";
             // 
-            // lblUserAge
+            // lblAge
             // 
-            this.lblUserAge.AutoSize = true;
-            this.lblUserAge.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUserAge.ForeColor = System.Drawing.Color.Black;
-            this.lblUserAge.Location = new System.Drawing.Point(508, 58);
-            this.lblUserAge.Name = "lblUserAge";
-            this.lblUserAge.Padding = new System.Windows.Forms.Padding(0, 0, 52, 0);
-            this.lblUserAge.Size = new System.Drawing.Size(128, 22);
-            this.lblUserAge.TabIndex = 21;
-            this.lblUserAge.Text = "<age here>";
+            this.lblAge.AutoSize = true;
+            this.lblAge.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAge.ForeColor = System.Drawing.Color.Black;
+            this.lblAge.Location = new System.Drawing.Point(508, 58);
+            this.lblAge.Name = "lblAge";
+            this.lblAge.Padding = new System.Windows.Forms.Padding(0, 0, 52, 0);
+            this.lblAge.Size = new System.Drawing.Size(98, 22);
+            this.lblAge.TabIndex = 21;
+            this.lblAge.Text = "<age>";
             // 
-            // lblUserContact
+            // lblContact
             // 
-            this.lblUserContact.AutoSize = true;
-            this.lblUserContact.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUserContact.ForeColor = System.Drawing.Color.Black;
-            this.lblUserContact.Location = new System.Drawing.Point(150, 96);
-            this.lblUserContact.Name = "lblUserContact";
-            this.lblUserContact.Padding = new System.Windows.Forms.Padding(0, 0, 52, 0);
-            this.lblUserContact.Size = new System.Drawing.Size(185, 22);
-            this.lblUserContact.TabIndex = 20;
-            this.lblUserContact.Text = "<contact num here>";
+            this.lblContact.AutoSize = true;
+            this.lblContact.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblContact.ForeColor = System.Drawing.Color.Black;
+            this.lblContact.Location = new System.Drawing.Point(150, 96);
+            this.lblContact.Name = "lblContact";
+            this.lblContact.Padding = new System.Windows.Forms.Padding(0, 0, 52, 0);
+            this.lblContact.Size = new System.Drawing.Size(123, 22);
+            this.lblContact.TabIndex = 20;
+            this.lblContact.Text = "<contact>";
             // 
-            // lblUserGender
+            // lblGender
             // 
-            this.lblUserGender.AutoSize = true;
-            this.lblUserGender.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUserGender.ForeColor = System.Drawing.Color.Black;
-            this.lblUserGender.Location = new System.Drawing.Point(150, 58);
-            this.lblUserGender.Name = "lblUserGender";
-            this.lblUserGender.Padding = new System.Windows.Forms.Padding(0, 0, 52, 0);
-            this.lblUserGender.Size = new System.Drawing.Size(148, 22);
-            this.lblUserGender.TabIndex = 19;
-            this.lblUserGender.Text = "<gender here>";
+            this.lblGender.AutoSize = true;
+            this.lblGender.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGender.ForeColor = System.Drawing.Color.Black;
+            this.lblGender.Location = new System.Drawing.Point(150, 58);
+            this.lblGender.Name = "lblGender";
+            this.lblGender.Padding = new System.Windows.Forms.Padding(0, 0, 52, 0);
+            this.lblGender.Size = new System.Drawing.Size(118, 22);
+            this.lblGender.TabIndex = 19;
+            this.lblGender.Text = "<gender>";
             // 
             // label9
             // 
@@ -134,9 +134,9 @@
             this.label9.Location = new System.Drawing.Point(806, 58);
             this.label9.Name = "label9";
             this.label9.Padding = new System.Windows.Forms.Padding(0, 0, 52, 0);
-            this.label9.Size = new System.Drawing.Size(111, 22);
+            this.label9.Size = new System.Drawing.Size(115, 22);
             this.label9.TabIndex = 18;
-            this.label9.Text = "Birthday";
+            this.label9.Text = "Birthdate";
             // 
             // label7
             // 
@@ -230,17 +230,17 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "User ID";
             // 
-            // lblPatientID
+            // lblUserID
             // 
-            this.lblPatientID.AutoSize = true;
-            this.lblPatientID.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPatientID.ForeColor = System.Drawing.Color.Black;
-            this.lblPatientID.Location = new System.Drawing.Point(78, 3);
-            this.lblPatientID.Name = "lblPatientID";
-            this.lblPatientID.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
-            this.lblPatientID.Size = new System.Drawing.Size(73, 22);
-            this.lblPatientID.TabIndex = 1;
-            this.lblPatientID.Text = "<Id here>";
+            this.lblUserID.AutoSize = true;
+            this.lblUserID.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUserID.ForeColor = System.Drawing.Color.Black;
+            this.lblUserID.Location = new System.Drawing.Point(78, 3);
+            this.lblUserID.Name = "lblUserID";
+            this.lblUserID.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
+            this.lblUserID.Size = new System.Drawing.Size(43, 22);
+            this.lblUserID.TabIndex = 1;
+            this.lblUserID.Text = "<Id>";
             // 
             // btnArchiveUser
             // 
@@ -299,11 +299,11 @@
             this.panelBorder1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panelBorder1.BorderRadius = 30;
             this.panelBorder1.Color = System.Drawing.Color.BurlyWood;
-            this.panelBorder1.Controls.Add(this.lblUserBirthdate);
-            this.panelBorder1.Controls.Add(this.lblUserAddress);
-            this.panelBorder1.Controls.Add(this.lblUserAge);
-            this.panelBorder1.Controls.Add(this.lblUserContact);
-            this.panelBorder1.Controls.Add(this.lblUserGender);
+            this.panelBorder1.Controls.Add(this.lblBirthdate);
+            this.panelBorder1.Controls.Add(this.lblAddress);
+            this.panelBorder1.Controls.Add(this.lblAge);
+            this.panelBorder1.Controls.Add(this.lblContact);
+            this.panelBorder1.Controls.Add(this.lblGender);
             this.panelBorder1.Controls.Add(this.label9);
             this.panelBorder1.Controls.Add(this.label7);
             this.panelBorder1.Controls.Add(this.label8);
@@ -319,28 +319,28 @@
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.label3);
-            this.flowLayoutPanel1.Controls.Add(this.lblPatientID);
+            this.flowLayoutPanel1.Controls.Add(this.lblUserID);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(67, 150);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
             this.flowLayoutPanel1.Size = new System.Drawing.Size(442, 29);
             this.flowLayoutPanel1.TabIndex = 33;
             // 
-            // lblPatientName
+            // lblName
             // 
-            this.lblPatientName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.lblName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblPatientName.AutoSize = true;
-            this.lblPatientName.BackColor = System.Drawing.Color.Transparent;
-            this.lblPatientName.Font = new System.Drawing.Font("Poppins", 24.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPatientName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.lblPatientName.Location = new System.Drawing.Point(57, 100);
-            this.lblPatientName.Margin = new System.Windows.Forms.Padding(0);
-            this.lblPatientName.Name = "lblPatientName";
-            this.lblPatientName.Size = new System.Drawing.Size(209, 58);
-            this.lblPatientName.TabIndex = 32;
-            this.lblPatientName.Text = "User Name";
-            this.lblPatientName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblName.AutoSize = true;
+            this.lblName.BackColor = System.Drawing.Color.Transparent;
+            this.lblName.Font = new System.Drawing.Font("Poppins", 24.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
+            this.lblName.Location = new System.Drawing.Point(57, 100);
+            this.lblName.Margin = new System.Windows.Forms.Padding(0);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(163, 58);
+            this.lblName.TabIndex = 32;
+            this.lblName.Text = "<Name>";
+            this.lblName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnBack
             // 
@@ -367,21 +367,21 @@
             this.btnBack.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
             this.btnBack.UseVisualStyleBackColor = false;
             // 
-            // lblSelectedPatient
+            // lblSelectedUser
             // 
-            this.lblSelectedPatient.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.lblSelectedUser.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblSelectedPatient.AutoSize = true;
-            this.lblSelectedPatient.BackColor = System.Drawing.Color.Transparent;
-            this.lblSelectedPatient.Font = new System.Drawing.Font("Poppins", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSelectedPatient.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.lblSelectedPatient.Location = new System.Drawing.Point(141, 38);
-            this.lblSelectedPatient.Margin = new System.Windows.Forms.Padding(0);
-            this.lblSelectedPatient.Name = "lblSelectedPatient";
-            this.lblSelectedPatient.Size = new System.Drawing.Size(153, 36);
-            this.lblSelectedPatient.TabIndex = 30;
-            this.lblSelectedPatient.Text = "Selected User";
-            this.lblSelectedPatient.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblSelectedUser.AutoSize = true;
+            this.lblSelectedUser.BackColor = System.Drawing.Color.Transparent;
+            this.lblSelectedUser.Font = new System.Drawing.Font("Poppins", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSelectedUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
+            this.lblSelectedUser.Location = new System.Drawing.Point(141, 38);
+            this.lblSelectedUser.Margin = new System.Windows.Forms.Padding(0);
+            this.lblSelectedUser.Name = "lblSelectedUser";
+            this.lblSelectedUser.Size = new System.Drawing.Size(153, 36);
+            this.lblSelectedUser.TabIndex = 30;
+            this.lblSelectedUser.Text = "Selected User";
+            this.lblSelectedUser.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // titleNav
             // 
@@ -401,7 +401,7 @@
             // flowLayoutPanel2
             // 
             this.flowLayoutPanel2.Controls.Add(this.label1);
-            this.flowLayoutPanel2.Controls.Add(this.lblUserPosition);
+            this.flowLayoutPanel2.Controls.Add(this.lblRole);
             this.flowLayoutPanel2.Location = new System.Drawing.Point(67, 185);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
@@ -416,20 +416,20 @@
             this.label1.Location = new System.Drawing.Point(3, 3);
             this.label1.Name = "label1";
             this.label1.Padding = new System.Windows.Forms.Padding(0, 0, 20, 0);
-            this.label1.Size = new System.Drawing.Size(77, 22);
+            this.label1.Size = new System.Drawing.Size(55, 22);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Position";
+            this.label1.Text = "Role";
             // 
-            // lblUserPosition
+            // lblRole
             // 
-            this.lblUserPosition.AutoSize = true;
-            this.lblUserPosition.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUserPosition.ForeColor = System.Drawing.Color.Black;
-            this.lblUserPosition.Location = new System.Drawing.Point(86, 3);
-            this.lblUserPosition.Name = "lblUserPosition";
-            this.lblUserPosition.Size = new System.Drawing.Size(105, 22);
-            this.lblUserPosition.TabIndex = 1;
-            this.lblUserPosition.Text = "<position here>";
+            this.lblRole.AutoSize = true;
+            this.lblRole.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRole.ForeColor = System.Drawing.Color.Black;
+            this.lblRole.Location = new System.Drawing.Point(64, 3);
+            this.lblRole.Name = "lblRole";
+            this.lblRole.Size = new System.Drawing.Size(47, 22);
+            this.lblRole.TabIndex = 1;
+            this.lblRole.Text = "<role>";
             // 
             // panelBorder2
             // 
@@ -558,9 +558,9 @@
             this.Controls.Add(this.btnEditUserInfo);
             this.Controls.Add(this.panelBorder1);
             this.Controls.Add(this.flowLayoutPanel1);
-            this.Controls.Add(this.lblPatientName);
+            this.Controls.Add(this.lblName);
             this.Controls.Add(this.btnBack);
-            this.Controls.Add(this.lblSelectedPatient);
+            this.Controls.Add(this.lblSelectedUser);
             this.Controls.Add(this.titleNav);
             this.Name = "UserDetails";
             this.Size = new System.Drawing.Size(1249, 737);
@@ -579,11 +579,11 @@
 
         #endregion
 
-        private System.Windows.Forms.Label lblUserBirthdate;
-        private System.Windows.Forms.Label lblUserAddress;
-        private System.Windows.Forms.Label lblUserAge;
-        private System.Windows.Forms.Label lblUserContact;
-        private System.Windows.Forms.Label lblUserGender;
+        private System.Windows.Forms.Label lblBirthdate;
+        private System.Windows.Forms.Label lblAddress;
+        private System.Windows.Forms.Label lblAge;
+        private System.Windows.Forms.Label lblContact;
+        private System.Windows.Forms.Label lblGender;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
@@ -592,18 +592,18 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label lblPatientID;
+        private System.Windows.Forms.Label lblUserID;
         private OrganizationProfile.CustomButton btnArchiveUser;
         private OrganizationProfile.CustomButton btnEditUserInfo;
         private WindowsFormsApp2.CustomButton.PanelBorder panelBorder1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Label lblPatientName;
+        private System.Windows.Forms.Label lblName;
         private OrganizationProfile.CustomButton btnBack;
-        private System.Windows.Forms.Label lblSelectedPatient;
+        private System.Windows.Forms.Label lblSelectedUser;
         private System.Windows.Forms.Label titleNav;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label lblUserPosition;
+        private System.Windows.Forms.Label lblRole;
         private WindowsFormsApp2.CustomButton.PanelBorder panelBorder2;
         private CustomControls.RJControls.RJTextBox txtUsername;
         private System.Windows.Forms.Label label2;

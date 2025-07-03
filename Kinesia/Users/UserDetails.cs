@@ -31,5 +31,15 @@ namespace Kinesia.Users
                 btnEditAccount.BorderColor = Color.DarkGray;
             }
         }
+
+        public string SelectedUser { get { return lblSelectedUser.Text; } set { lblSelectedUser.Text = value; } }
+        public string Name { get { return lblName.Text; } set { lblName.Text = value; } }
+        public string UserID { get { return lblUserID.Text; } set { lblUserID.Text = value; } }
+        public string Role { get { return lblRole.Text; } set { lblRole.Text = value; } }
+        public string Gender { get { return lblGender.Text; } set { lblGender.Text = value; } }
+        public string Contact { get { return lblContact.Text; } set { lblContact.Text = value; } }
+        public string Age { get { return lblAge.Text; } set { lblAge.Text = value; } }
+        public string Address { get { return lblAddress.Text; } set { lblAddress.Text = value; } }
+        public string Birthdate { get { return lblBirthdate.Text; } set { lblBirthdate.Text = value; } }
     }
 }

@@ -1,9 +1,10 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MySql.Data.MySqlClient;
+using System.Windows.Forms;
 
 namespace Kinesia.Users
 {
@@ -32,6 +33,43 @@ namespace Kinesia.Users
                 PageObjects.displayUsers.Role = Connection.reader.GetString(4);
 
                 PageObjects.userPage.getUserHolder.Controls.Add(PageObjects.displayUsers);
+            }
+
+            Connection.reader.Close();
+            Connection.conn.Close();
+        }
+
+        public void GetUserDetails(string userID)
+        {
+            Connection.conn.Open();
+
+            Connection.cmd = new MySqlCommand("SELECT UserID, FirstName, MiddleName, LastName, Gender, Contact, TIMESTAMPDIFF(MONTH, Birthdate, CURDATE()), Address, Birthdate, Role " +
+                "FROM Users WHERE UserID = @userID", Connection.conn);
+            Connection.cmd.Parameters.AddWithValue("@userID", userID);
+            Connection.reader = Connection.cmd.ExecuteReader();
+
+            if (Connection.reader.Read())
+            {
+                PageObjects.userDetails = new UserDetails();
+
+                PageObjects.userDetails.UserID = Connection.reader.GetString(0);
+                PageObjects.userDetails.SelectedUser = $"{Connection.reader.GetString(1)} {Connection.reader.GetString(2)} {Connection.reader.GetString(3)}";
+                PageObjects.userDetails.Name = $"{Connection.reader.GetString(1)} {Connection.reader.GetString(2)} {Connection.reader.GetString(3)}";
+                PageObjects.userDetails.Gender = Connection.reader.GetString(4);
+                PageObjects.userDetails.Contact = Connection.reader.GetString(5);
+                PageObjects.userDetails.Age = (Connection.reader.GetInt64(6) / 12).ToString();
+                PageObjects.userDetails.Address = Connection.reader.GetString(7);
+                DateTime birthDate = Connection.reader.GetDateTime(8);
+                PageObjects.userDetails.Birthdate = birthDate.ToString("yyyy-MM-dd");
+                PageObjects.userDetails.Role = Connection.reader.GetString(9);
+
+                // will only display User Details if fetched successfully by the system
+                PageObjects.RemoveResources(ref PageObjects.CurrentControl);
+                PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.userDetails);
+                PageObjects.CurrentControl = PageObjects.userPage;
+            } else
+            {
+                MessageBox.Show("User details not found.", "User Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             Connection.reader.Close();

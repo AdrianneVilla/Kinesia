@@ -31,9 +31,8 @@ namespace Kinesia.Patients
 
         private void btnAddPatient_Click(object sender, EventArgs e)
         {
-            PageObjects.RemoveResources(PageObjects.CurrentControl);
+            PageObjects.RemoveResources(ref PageObjects.CurrentControl);
             PageObjects.addPatient = new AddPatient();
-            PageObjects.dashboard.ContentsPanel.Controls.Clear();
             PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.addPatient);
             PageObjects.CurrentControl = PageObjects.addPatient;
         }

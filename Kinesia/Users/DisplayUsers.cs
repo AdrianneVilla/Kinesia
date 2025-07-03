@@ -20,13 +20,9 @@ namespace Kinesia.Users
             InitializeComponent();
         }
 
-        private void customButton1_Click(object sender, EventArgs e)
+        private void btnView_Click(object sender, EventArgs e)
         {
-            Dashboard dashboard = Application.OpenForms["Dashboard"] as Dashboard;
-            PageObjects.userDetails = new UserDetails();
-
-            dashboard.ContentsPanel.Controls.Clear();
-            dashboard.ContentsPanel.Controls.Add(PageObjects.userDetails);
+            Queries.UserQueries.GetUserDetails(btnView.Tag.ToString());
         }
 
         public string UserID { get { return lblUserID.Text; } set { lblUserID.Text = value; } }

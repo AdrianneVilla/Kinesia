@@ -22,27 +22,24 @@ namespace Kinesia.Components
 
         private void dashboardModule_Click(object sender, EventArgs e)
         {
-            PageObjects.RemoveResources(PageObjects.CurrentControl);
+            PageObjects.RemoveResources(ref PageObjects.CurrentControl);
             PageObjects.dashboardPage = new DashboardPage();
-            PageObjects.dashboard.ContentsPanel.Controls.Clear();
             PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.dashboardPage);
             PageObjects.CurrentControl = PageObjects.dashboardPage;
         }
 
         private void patientModule_Click(object sender, EventArgs e)
         {
-            PageObjects.RemoveResources(PageObjects.CurrentControl);
+            PageObjects.RemoveResources(ref PageObjects.CurrentControl);
             PageObjects.patientsPage = new PatientsPage();
-            PageObjects.dashboard.ContentsPanel.Controls.Clear();
             PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.patientsPage);
             PageObjects.CurrentControl = PageObjects.patientsPage;
         }
 
         private void usersModule_Click(object sender, EventArgs e)
         {
-            PageObjects.RemoveResources(PageObjects.CurrentControl);
+            PageObjects.RemoveResources(ref PageObjects.CurrentControl);
             PageObjects.userPage = new UserPage();
-            PageObjects.dashboard.ContentsPanel.Controls.Clear();
             PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.userPage);
             PageObjects.CurrentControl = PageObjects.userPage;
             

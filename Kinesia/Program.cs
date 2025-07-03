@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Kinesia.Patients;
 using Kinesia.Users;
 using System.Text.RegularExpressions;
+using WindowsFormsApp2.CustomButton;
 
 namespace Kinesia
 {
@@ -42,10 +43,20 @@ namespace Kinesia
 
         public static Control CurrentControl;
 
-        public static void RemoveResources(Control activeControl)
+        public static void RemoveResources(ref Control activeControl)
         {
+            if (activeControl == null) return;
+
             activeControl.Dispose();
             activeControl = null;
+        }
+
+        public static void DisposeHolderControls(PanelBorder panelHolder)
+        {
+            foreach(Control control in panelHolder.Controls)
+            {
+                control.Dispose();
+            }
         }
     }
 

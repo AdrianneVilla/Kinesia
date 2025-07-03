@@ -13,7 +13,7 @@ namespace Kinesia.Patients
         private int patientIDCount;
         public void DisplayPatients(string searchData)
         {
-            PageObjects.patientsPage.getPatientHolder.Controls.Clear();
+            PageObjects.DisposeHolderControls(PageObjects.patientsPage.getPatientHolder);
             Connection.conn.Open();
 
             if(searchData == "")
@@ -83,10 +83,16 @@ namespace Kinesia.Patients
                 PageObjects.patientDetails.Address = Connection.reader.GetString(7);
                 DateTime birthDate = Connection.reader.GetDateTime(8);
                 PageObjects.patientDetails.Birthdate = birthDate.ToString("yyyy-MM-dd");
-            }
 
-            PageObjects.dashboard.ContentsPanel.Controls.Clear();
-            PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.patientDetails);
+                // will only display Patient Details if fetched successfully by the system
+                PageObjects.RemoveResources(ref PageObjects.CurrentControl);
+                PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.patientDetails);
+                PageObjects.CurrentControl = PageObjects.patientDetails;
+            }
+            else
+            {
+                MessageBox.Show("Patient details not found.", "Patient Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
             Connection.reader.Close();
             Connection.conn.Close();

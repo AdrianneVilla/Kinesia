@@ -32,5 +32,13 @@ namespace Kinesia.Patients
         {
            
         }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            PageObjects.RemoveResources(ref PageObjects.CurrentControl);
+            PageObjects.patientsPage = new PatientsPage();
+            PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.patientsPage);
+            PageObjects.CurrentControl = PageObjects.patientsPage;
+        }
     }
 }

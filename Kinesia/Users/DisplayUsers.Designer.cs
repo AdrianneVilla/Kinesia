@@ -110,7 +110,7 @@
             this.btnView.TabIndex = 8;
             this.btnView.TextColor = System.Drawing.Color.Transparent;
             this.btnView.UseVisualStyleBackColor = false;
-            this.btnView.Click += new System.EventHandler(this.customButton1_Click);
+            this.btnView.Click += new System.EventHandler(this.btnView_Click);
             // 
             // lblRole
             // 

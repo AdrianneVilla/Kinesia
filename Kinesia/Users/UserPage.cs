@@ -29,7 +29,7 @@ namespace Kinesia.Users
 
         private void btnAddPatient_Click(object sender, EventArgs e)
         {
-            PageObjects.RemoveResources(PageObjects.CurrentControl);
+            PageObjects.RemoveResources(ref PageObjects.CurrentControl);
             PageObjects.addUser = new AddUser();
             PageObjects.dashboard.ContentsPanel.Controls.Clear();
             PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.addUser);

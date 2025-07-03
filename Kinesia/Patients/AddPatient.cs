@@ -29,7 +29,7 @@ namespace Kinesia.Patients
 
                 if(backDialog == DialogResult.Yes)
                 {
-                    PageObjects.RemoveResources(PageObjects.CurrentControl);
+                    PageObjects.RemoveResources(ref PageObjects.CurrentControl);
                     PageObjects.patientsPage = new PatientsPage();
                     PageObjects.dashboard.ContentsPanel.Controls.Clear();
                     PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.patientsPage);
@@ -39,7 +39,7 @@ namespace Kinesia.Patients
             else
             {
                 // will directly go back to Patient page if there's no unsaved input    
-                PageObjects.RemoveResources(PageObjects.CurrentControl);
+                PageObjects.RemoveResources(ref PageObjects.CurrentControl);
                 PageObjects.patientsPage = new PatientsPage();
                 PageObjects.dashboard.ContentsPanel.Controls.Clear();
                 PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.patientsPage);
