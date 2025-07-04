@@ -57,6 +57,7 @@ namespace Kinesia
             {
                 control.Dispose();
             }
+            panelHolder.Controls.Clear();
         }
     }
 

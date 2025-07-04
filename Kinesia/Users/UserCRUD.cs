@@ -12,7 +12,7 @@ namespace Kinesia.Users
     {
         public void DisplayUsers()
         {
-            PageObjects.userPage.getUserHolder.Controls.Clear();
+            PageObjects.DisposeHolderControls(PageObjects.userPage.getUserHolder);
             Connection.conn.Open();
 
             Connection.cmd = new MySqlCommand("SELECT UserID, FirstName, MiddleName, LastName, Role FROM Users", Connection.conn);
