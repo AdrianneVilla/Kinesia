@@ -98,6 +98,38 @@ namespace Kinesia.Patients
             Connection.conn.Close();
         }
         
+        public void GetPatientDetails(string PatientID, PatientDataHolder PatientData)
+        {
+            Connection.conn.Open();
+
+            Connection.cmd = new MySqlCommand("SELECT FirstName, LastName, MiddleName, BirthDate, TIMESTAMPDIFF(MONTH, BirthDate, CURDATE()), Gender, Contact, Occupation, Address " +
+                "FROM Patients WHERE PatientID = @patientID", Connection.conn);
+            Connection.cmd.Parameters.AddWithValue("@patientID", PatientID);
+            Connection.reader = Connection.cmd.ExecuteReader();
+
+            if(Connection.reader.Read())
+            {
+                PatientData.FirstName = Connection.reader.GetString(0);
+                PatientData.LastName = Connection.reader.GetString(1);
+                PatientData.MiddleName = Connection.reader.GetString(2);
+                DateTime birthDate = Connection.reader.GetDateTime(3);
+                PatientData.Birthdate = birthDate.ToString("yyyy-MM-dd");
+                PatientData.Age = Connection.reader.GetInt32(4) / 12;
+                PatientData.Gender = Connection.reader.GetString(5);
+                PatientData.Contact = Connection.reader.GetString(6);
+                PatientData.Occupation = Connection.reader.GetString(7);
+                PatientData.Address = Connection.reader.GetString(8);
+
+                PageObjects.editPatient = new EditPatient();
+                PageObjects.RemoveResources(ref PageObjects.CurrentControl);
+                PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.editPatient);
+                PageObjects.CurrentControl = PageObjects.editPatient;
+            }
+
+            Connection.reader.Close();
+            Connection.conn.Close();
+        }
+        
         public void GetPatientIDCount()
         {
             Connection.conn.Open();

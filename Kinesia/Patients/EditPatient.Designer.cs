@@ -29,7 +29,11 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditPatient));
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtTitleLabel = new System.Windows.Forms.Label();
+            this.nameHolder = new System.Windows.Forms.Label();
             this.btnBack = new OrganizationProfile.CustomButton();
+            this.panelBorder1 = new WindowsFormsApp2.CustomButton.PanelBorder();
             this.cbGender = new CustomControls.RJControls.RJComboBox();
             this.label13 = new System.Windows.Forms.Label();
             this.txtOccupation = new CustomControls.RJControls.RJTextBox();
@@ -37,8 +41,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtAge = new CustomControls.RJControls.RJTextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.panelBorder1 = new WindowsFormsApp2.CustomButton.PanelBorder();
             this.txtMiddleName = new CustomControls.RJControls.RJTextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.txtLastName = new CustomControls.RJControls.RJTextBox();
@@ -52,12 +54,50 @@
             this.txtContact = new CustomControls.RJControls.RJTextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.btnClearInput = new OrganizationProfile.CustomButton();
-            this.txtTitleLabel = new System.Windows.Forms.Label();
-            this.nameHolder = new System.Windows.Forms.Label();
-            this.btnAddPatient = new OrganizationProfile.CustomButton();
+            this.btnSaveChanges = new OrganizationProfile.CustomButton();
             this.panelBorder1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(65, 72);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(231, 23);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "edit patient\'s personal information";
+            // 
+            // txtTitleLabel
+            // 
+            this.txtTitleLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtTitleLabel.AutoSize = true;
+            this.txtTitleLabel.BackColor = System.Drawing.Color.Transparent;
+            this.txtTitleLabel.Font = new System.Drawing.Font("Poppins", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTitleLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
+            this.txtTitleLabel.Location = new System.Drawing.Point(167, 30);
+            this.txtTitleLabel.Margin = new System.Windows.Forms.Padding(0);
+            this.txtTitleLabel.Name = "txtTitleLabel";
+            this.txtTitleLabel.Size = new System.Drawing.Size(178, 48);
+            this.txtTitleLabel.TabIndex = 13;
+            this.txtTitleLabel.Text = "Edit Patient";
+            this.txtTitleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // nameHolder
+            // 
+            this.nameHolder.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.nameHolder.AutoSize = true;
+            this.nameHolder.Font = new System.Drawing.Font("Poppins", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nameHolder.ForeColor = System.Drawing.Color.DarkGray;
+            this.nameHolder.Location = new System.Drawing.Point(61, 38);
+            this.nameHolder.Margin = new System.Windows.Forms.Padding(0);
+            this.nameHolder.Name = "nameHolder";
+            this.nameHolder.Size = new System.Drawing.Size(114, 36);
+            this.nameHolder.TabIndex = 11;
+            this.nameHolder.Text = "Patients >";
+            this.nameHolder.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnBack
             // 
@@ -84,6 +124,42 @@
             this.btnBack.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnBack.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
             this.btnBack.UseVisualStyleBackColor = false;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
+            // panelBorder1
+            // 
+            this.panelBorder1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelBorder1.BackColor = System.Drawing.Color.White;
+            this.panelBorder1.BackgroundImage = global::Kinesia.Properties.Resources.Add_Patient_Background;
+            this.panelBorder1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panelBorder1.BorderRadius = 30;
+            this.panelBorder1.Color = System.Drawing.Color.BurlyWood;
+            this.panelBorder1.Controls.Add(this.cbGender);
+            this.panelBorder1.Controls.Add(this.label13);
+            this.panelBorder1.Controls.Add(this.txtOccupation);
+            this.panelBorder1.Controls.Add(this.label4);
+            this.panelBorder1.Controls.Add(this.label5);
+            this.panelBorder1.Controls.Add(this.txtAge);
+            this.panelBorder1.Controls.Add(this.label6);
+            this.panelBorder1.Controls.Add(this.txtMiddleName);
+            this.panelBorder1.Controls.Add(this.label10);
+            this.panelBorder1.Controls.Add(this.txtLastName);
+            this.panelBorder1.Controls.Add(this.label2);
+            this.panelBorder1.Controls.Add(this.txtFirstName);
+            this.panelBorder1.Controls.Add(this.label11);
+            this.panelBorder1.Controls.Add(this.label12);
+            this.panelBorder1.Controls.Add(this.dpBirthDate);
+            this.panelBorder1.Controls.Add(this.txtAddress);
+            this.panelBorder1.Controls.Add(this.label9);
+            this.panelBorder1.Controls.Add(this.txtContact);
+            this.panelBorder1.Controls.Add(this.label8);
+            this.panelBorder1.Controls.Add(this.label7);
+            this.panelBorder1.ForeColor = System.Drawing.Color.Black;
+            this.panelBorder1.Location = new System.Drawing.Point(67, 114);
+            this.panelBorder1.Name = "panelBorder1";
+            this.panelBorder1.Size = new System.Drawing.Size(1398, 468);
+            this.panelBorder1.TabIndex = 15;
             // 
             // cbGender
             // 
@@ -96,8 +172,7 @@
             this.cbGender.IconColor = System.Drawing.Color.Black;
             this.cbGender.Items.AddRange(new object[] {
             "Male",
-            "Female",
-            "Prefer not to say"});
+            "Female"});
             this.cbGender.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
             this.cbGender.ListTextColor = System.Drawing.Color.DimGray;
             this.cbGender.Location = new System.Drawing.Point(594, 210);
@@ -107,13 +182,14 @@
             this.cbGender.Size = new System.Drawing.Size(200, 41);
             this.cbGender.TabIndex = 33;
             this.cbGender.Texts = "";
+            this.cbGender.OnSelectedIndexChanged += new System.EventHandler(this.cbGender_OnSelectedIndexChanged);
             // 
             // label13
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.Gray;
-            this.label13.Location = new System.Drawing.Point(839, 221);
+            this.label13.Location = new System.Drawing.Point(793, 221);
             this.label13.Margin = new System.Windows.Forms.Padding(30, 0, 3, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(34, 23);
@@ -141,6 +217,8 @@
             this.txtOccupation.TabIndex = 30;
             this.txtOccupation.Texts = "";
             this.txtOccupation.UnderlinedStyle = false;
+            this.txtOccupation._TextChanged += new System.EventHandler(this.txtOccupation__TextChanged);
+            this.txtOccupation.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtOccupation_KeyPress);
             // 
             // label4
             // 
@@ -194,51 +272,6 @@
             this.label6.TabIndex = 27;
             this.label6.Text = "Age";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(65, 72);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(231, 23);
-            this.label1.TabIndex = 12;
-            this.label1.Text = "edit patient\'s personal information";
-            // 
-            // panelBorder1
-            // 
-            this.panelBorder1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelBorder1.BackColor = System.Drawing.Color.White;
-            this.panelBorder1.BackgroundImage = global::Kinesia.Properties.Resources.Add_Patient_Background;
-            this.panelBorder1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panelBorder1.BorderRadius = 30;
-            this.panelBorder1.Color = System.Drawing.Color.BurlyWood;
-            this.panelBorder1.Controls.Add(this.cbGender);
-            this.panelBorder1.Controls.Add(this.label13);
-            this.panelBorder1.Controls.Add(this.txtOccupation);
-            this.panelBorder1.Controls.Add(this.label4);
-            this.panelBorder1.Controls.Add(this.label5);
-            this.panelBorder1.Controls.Add(this.txtAge);
-            this.panelBorder1.Controls.Add(this.label6);
-            this.panelBorder1.Controls.Add(this.txtMiddleName);
-            this.panelBorder1.Controls.Add(this.label10);
-            this.panelBorder1.Controls.Add(this.txtLastName);
-            this.panelBorder1.Controls.Add(this.label2);
-            this.panelBorder1.Controls.Add(this.txtFirstName);
-            this.panelBorder1.Controls.Add(this.label11);
-            this.panelBorder1.Controls.Add(this.label12);
-            this.panelBorder1.Controls.Add(this.dpBirthDate);
-            this.panelBorder1.Controls.Add(this.txtAddress);
-            this.panelBorder1.Controls.Add(this.label9);
-            this.panelBorder1.Controls.Add(this.txtContact);
-            this.panelBorder1.Controls.Add(this.label8);
-            this.panelBorder1.Controls.Add(this.label7);
-            this.panelBorder1.ForeColor = System.Drawing.Color.Black;
-            this.panelBorder1.Location = new System.Drawing.Point(67, 114);
-            this.panelBorder1.Name = "panelBorder1";
-            this.panelBorder1.Size = new System.Drawing.Size(1398, 468);
-            this.panelBorder1.TabIndex = 15;
-            // 
             // txtMiddleName
             // 
             this.txtMiddleName.BackColor = System.Drawing.SystemColors.Window;
@@ -260,6 +293,8 @@
             this.txtMiddleName.TabIndex = 24;
             this.txtMiddleName.Texts = "";
             this.txtMiddleName.UnderlinedStyle = false;
+            this.txtMiddleName._TextChanged += new System.EventHandler(this.txtMiddleName__TextChanged);
+            this.txtMiddleName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMiddleName_KeyPress);
             // 
             // label10
             // 
@@ -292,6 +327,8 @@
             this.txtLastName.TabIndex = 22;
             this.txtLastName.Texts = "";
             this.txtLastName.UnderlinedStyle = false;
+            this.txtLastName._TextChanged += new System.EventHandler(this.txtLastName__TextChanged);
+            this.txtLastName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLastName_KeyPress);
             // 
             // label2
             // 
@@ -324,6 +361,8 @@
             this.txtFirstName.TabIndex = 20;
             this.txtFirstName.Texts = "";
             this.txtFirstName.UnderlinedStyle = false;
+            this.txtFirstName._TextChanged += new System.EventHandler(this.txtFirstName__TextChanged);
+            this.txtFirstName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFirstName_KeyPress);
             // 
             // label11
             // 
@@ -359,6 +398,7 @@
             this.dpBirthDate.SkinColor = System.Drawing.Color.White;
             this.dpBirthDate.TabIndex = 14;
             this.dpBirthDate.TextColor = System.Drawing.Color.Black;
+            this.dpBirthDate.ValueChanged += new System.EventHandler(this.dpBirthDate_ValueChanged);
             // 
             // txtAddress
             // 
@@ -381,6 +421,7 @@
             this.txtAddress.TabIndex = 11;
             this.txtAddress.Texts = "";
             this.txtAddress.UnderlinedStyle = false;
+            this.txtAddress._TextChanged += new System.EventHandler(this.txtAddress__TextChanged);
             // 
             // label9
             // 
@@ -414,6 +455,8 @@
             this.txtContact.TabIndex = 9;
             this.txtContact.Texts = "";
             this.txtContact.UnderlinedStyle = false;
+            this.txtContact._TextChanged += new System.EventHandler(this.txtContact__TextChanged);
+            this.txtContact.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtContact_KeyPress);
             // 
             // label8
             // 
@@ -436,84 +479,31 @@
             this.label7.TabIndex = 8;
             this.label7.Text = "Birthdate";
             // 
-            // btnClearInput
+            // btnSaveChanges
             // 
-            this.btnClearInput.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClearInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(216)))), ((int)(((byte)(216)))));
-            this.btnClearInput.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(216)))), ((int)(((byte)(216)))));
-            this.btnClearInput.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(64)))), ((int)(((byte)(66)))));
-            this.btnClearInput.BorderRadius = 10;
-            this.btnClearInput.BorderSize = 1;
-            this.btnClearInput.FlatAppearance.BorderSize = 0;
-            this.btnClearInput.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClearInput.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClearInput.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(64)))), ((int)(((byte)(66)))));
-            this.btnClearInput.Image = ((System.Drawing.Image)(resources.GetObject("btnClearInput.Image")));
-            this.btnClearInput.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClearInput.Location = new System.Drawing.Point(1290, 773);
-            this.btnClearInput.Name = "btnClearInput";
-            this.btnClearInput.Padding = new System.Windows.Forms.Padding(10, 4, 40, 0);
-            this.btnClearInput.Size = new System.Drawing.Size(173, 50);
-            this.btnClearInput.TabIndex = 17;
-            this.btnClearInput.Text = "Clear";
-            this.btnClearInput.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnClearInput.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(64)))), ((int)(((byte)(66)))));
-            this.btnClearInput.UseVisualStyleBackColor = false;
-            // 
-            // txtTitleLabel
-            // 
-            this.txtTitleLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtTitleLabel.AutoSize = true;
-            this.txtTitleLabel.BackColor = System.Drawing.Color.Transparent;
-            this.txtTitleLabel.Font = new System.Drawing.Font("Poppins", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTitleLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.txtTitleLabel.Location = new System.Drawing.Point(167, 30);
-            this.txtTitleLabel.Margin = new System.Windows.Forms.Padding(0);
-            this.txtTitleLabel.Name = "txtTitleLabel";
-            this.txtTitleLabel.Size = new System.Drawing.Size(178, 48);
-            this.txtTitleLabel.TabIndex = 13;
-            this.txtTitleLabel.Text = "Edit Patient";
-            this.txtTitleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // nameHolder
-            // 
-            this.nameHolder.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.nameHolder.AutoSize = true;
-            this.nameHolder.Font = new System.Drawing.Font("Poppins", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nameHolder.ForeColor = System.Drawing.Color.DarkGray;
-            this.nameHolder.Location = new System.Drawing.Point(61, 38);
-            this.nameHolder.Margin = new System.Windows.Forms.Padding(0);
-            this.nameHolder.Name = "nameHolder";
-            this.nameHolder.Size = new System.Drawing.Size(114, 36);
-            this.nameHolder.TabIndex = 11;
-            this.nameHolder.Text = "Patients >";
-            this.nameHolder.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // btnAddPatient
-            // 
-            this.btnAddPatient.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddPatient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(220)))), ((int)(((byte)(255)))));
-            this.btnAddPatient.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(220)))), ((int)(((byte)(255)))));
-            this.btnAddPatient.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.btnAddPatient.BorderRadius = 10;
-            this.btnAddPatient.BorderSize = 1;
-            this.btnAddPatient.FlatAppearance.BorderSize = 0;
-            this.btnAddPatient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddPatient.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddPatient.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.btnAddPatient.Image = ((System.Drawing.Image)(resources.GetObject("btnAddPatient.Image")));
-            this.btnAddPatient.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAddPatient.Location = new System.Drawing.Point(1111, 773);
-            this.btnAddPatient.Name = "btnAddPatient";
-            this.btnAddPatient.Padding = new System.Windows.Forms.Padding(10, 4, 20, 0);
-            this.btnAddPatient.Size = new System.Drawing.Size(173, 50);
-            this.btnAddPatient.TabIndex = 16;
-            this.btnAddPatient.Text = "Add Patient";
-            this.btnAddPatient.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAddPatient.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.btnAddPatient.UseVisualStyleBackColor = false;
+            this.btnSaveChanges.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSaveChanges.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(220)))), ((int)(((byte)(255)))));
+            this.btnSaveChanges.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(220)))), ((int)(((byte)(255)))));
+            this.btnSaveChanges.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
+            this.btnSaveChanges.BorderRadius = 10;
+            this.btnSaveChanges.BorderSize = 1;
+            this.btnSaveChanges.FlatAppearance.BorderSize = 0;
+            this.btnSaveChanges.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSaveChanges.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSaveChanges.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
+            this.btnSaveChanges.Image = ((System.Drawing.Image)(resources.GetObject("btnSaveChanges.Image")));
+            this.btnSaveChanges.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSaveChanges.Location = new System.Drawing.Point(1281, 767);
+            this.btnSaveChanges.Name = "btnSaveChanges";
+            this.btnSaveChanges.Padding = new System.Windows.Forms.Padding(10, 4, 20, 0);
+            this.btnSaveChanges.Size = new System.Drawing.Size(173, 50);
+            this.btnSaveChanges.TabIndex = 16;
+            this.btnSaveChanges.Text = "Save Changes";
+            this.btnSaveChanges.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSaveChanges.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
+            this.btnSaveChanges.UseVisualStyleBackColor = false;
+            this.btnSaveChanges.Visible = false;
+            this.btnSaveChanges.Click += new System.EventHandler(this.btnSaveChanges_Click);
             // 
             // EditPatient
             // 
@@ -523,12 +513,12 @@
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panelBorder1);
-            this.Controls.Add(this.btnClearInput);
             this.Controls.Add(this.txtTitleLabel);
             this.Controls.Add(this.nameHolder);
-            this.Controls.Add(this.btnAddPatient);
+            this.Controls.Add(this.btnSaveChanges);
             this.Name = "EditPatient";
             this.Size = new System.Drawing.Size(1511, 843);
+            this.Load += new System.EventHandler(this.EditPatient_Load);
             this.panelBorder1.ResumeLayout(false);
             this.panelBorder1.PerformLayout();
             this.ResumeLayout(false);
@@ -561,9 +551,8 @@
         private CustomControls.RJControls.RJTextBox txtContact;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
-        private OrganizationProfile.CustomButton btnClearInput;
         private System.Windows.Forms.Label txtTitleLabel;
         private System.Windows.Forms.Label nameHolder;
-        private OrganizationProfile.CustomButton btnAddPatient;
+        private OrganizationProfile.CustomButton btnSaveChanges;
     }
 }

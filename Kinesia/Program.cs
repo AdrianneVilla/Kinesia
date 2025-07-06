@@ -36,6 +36,7 @@ namespace Kinesia
         public static DisplayPatients displayPatients;
         public static AddPatient addPatient;
         public static PatientDetails patientDetails;
+        public static EditPatient editPatient;
         public static DisplayUsers displayUsers;
         public static UserPage userPage;    
         public static UserDetails userDetails;
@@ -59,6 +60,11 @@ namespace Kinesia
             }
             panelHolder.Controls.Clear();
         }
+    }
+
+    public class DataHolder
+    {
+        public static PatientDataHolder PatientDataHolder;
     }
 
     public class Connection

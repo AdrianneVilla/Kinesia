@@ -153,7 +153,7 @@ namespace Kinesia.Patients
 
         }
 
-        // Textboxes Input Validations
+        #region Textboxes Input Validation
         private void txtFirstName_KeyPress(object sender, KeyPressEventArgs e)
         {
             InputValidation.CharactersOnly(sender, e);
@@ -178,5 +178,6 @@ namespace Kinesia.Patients
         {
             InputValidation.CharactersOnly(sender, e);
         }
+        #endregion
     }
 }

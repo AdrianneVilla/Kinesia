@@ -39,7 +39,8 @@ namespace Kinesia.Patients
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-
+            DataHolder.PatientDataHolder = new PatientDataHolder();
+            Queries.PatientQueries.GetPatientDetails(btnEdit.Tag.ToString(), DataHolder.PatientDataHolder);
         }
     }
 }
