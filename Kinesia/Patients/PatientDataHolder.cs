@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 namespace Kinesia.Patients
 {
     public class PatientDataHolder
-    {
+    {   
+        public string PatientID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string MiddleName { get; set; }

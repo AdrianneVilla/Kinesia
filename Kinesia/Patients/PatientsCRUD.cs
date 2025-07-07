@@ -19,7 +19,7 @@ namespace Kinesia.Patients
             if(searchData == "")
             {
                 // will display all patients
-                Connection.cmd = new MySqlCommand("SELECT PatientID, FirstName, MiddleName, LastName, TIMESTAMPDIFF(MONTH, Birthdate, CURDATE()) AS totalMonths, Gender, Contact, Status FROM Patients", Connection.conn);
+                Connection.cmd = new MySqlCommand("SELECT PatientID, FirstName, MiddleName, LastName, TIMESTAMPDIFF(MONTH, Birthdate, CURDATE()) AS totalMonths, Gender, Contact, Status FROM Patients ORDER BY PatientID DESC", Connection.conn);
             } else
             {
                 // will only do searching and display specific patient/s if there's a searchData value
@@ -60,13 +60,13 @@ namespace Kinesia.Patients
             Connection.conn.Close();
         }
 
-        public void GetPatientDetails(string PatientID)
+        public void GetPatientDetails(string patientID)
         {
             Connection.conn.Open();
 
             Connection.cmd = new MySqlCommand("SELECT PatientID, FirstName, MiddleName, LastName, Gender, Contact, TIMESTAMPDIFF(MONTH, Birthdate, CURDATE()) AS Age, Address, Birthdate " +
                 "FROM Patients WHERE PatientID = @patientID", Connection.conn);
-            Connection.cmd.Parameters.AddWithValue("@patientID", PatientID);
+            Connection.cmd.Parameters.AddWithValue("@patientID", patientID);
             Connection.reader = Connection.cmd.ExecuteReader();
 
             if(Connection.reader.Read())
@@ -98,27 +98,28 @@ namespace Kinesia.Patients
             Connection.conn.Close();
         }
         
-        public void GetPatientDetails(string PatientID, PatientDataHolder PatientData)
+        public void GetPatientDetails(string patientID, PatientDataHolder patientData)
         {
             Connection.conn.Open();
 
             Connection.cmd = new MySqlCommand("SELECT FirstName, LastName, MiddleName, BirthDate, TIMESTAMPDIFF(MONTH, BirthDate, CURDATE()), Gender, Contact, Occupation, Address " +
                 "FROM Patients WHERE PatientID = @patientID", Connection.conn);
-            Connection.cmd.Parameters.AddWithValue("@patientID", PatientID);
+            Connection.cmd.Parameters.AddWithValue("@patientID", patientID);
             Connection.reader = Connection.cmd.ExecuteReader();
 
             if(Connection.reader.Read())
             {
-                PatientData.FirstName = Connection.reader.GetString(0);
-                PatientData.LastName = Connection.reader.GetString(1);
-                PatientData.MiddleName = Connection.reader.GetString(2);
+                patientData.PatientID = patientID;
+                patientData.FirstName = Connection.reader.GetString(0);
+                patientData.LastName = Connection.reader.GetString(1);
+                patientData.MiddleName = Connection.reader.GetString(2);
                 DateTime birthDate = Connection.reader.GetDateTime(3);
-                PatientData.Birthdate = birthDate.ToString("yyyy-MM-dd");
-                PatientData.Age = Connection.reader.GetInt32(4) / 12;
-                PatientData.Gender = Connection.reader.GetString(5);
-                PatientData.Contact = Connection.reader.GetString(6);
-                PatientData.Occupation = Connection.reader.GetString(7);
-                PatientData.Address = Connection.reader.GetString(8);
+                patientData.Birthdate = birthDate.ToString("yyyy-MM-dd");
+                patientData.Age = Connection.reader.GetInt32(4) / 12;
+                patientData.Gender = Connection.reader.GetString(5);
+                patientData.Contact = Connection.reader.GetString(6);
+                patientData.Occupation = Connection.reader.GetString(7);
+                patientData.Address = Connection.reader.GetString(8);
 
                 PageObjects.editPatient = new EditPatient();
                 PageObjects.RemoveResources(ref PageObjects.CurrentControl);
@@ -160,6 +161,33 @@ namespace Kinesia.Patients
             Connection.cmd.Parameters.AddWithValue("@address", patientData.Address);
             Connection.cmd.Parameters.AddWithValue("@occupation", patientData.Occupation);
             Connection.cmd.Parameters.AddWithValue("@status", 1);
+            Connection.cmd.ExecuteNonQuery();
+
+            Connection.conn.Close();
+        }
+
+        public void UpdatePatient(PatientDataHolder patientData)
+        {
+            Connection.conn.Open();
+
+            Connection.cmd = new MySqlCommand("UPDATE Patients SET FirstName = @firstName, LastName = @lastName, MiddleName = @middleName, Birthdate = @birthDate, " +
+                "Gender = @gender, Contact = @contact, Occupation = @occupation, Address = @address WHERE PatientID = @patientID", Connection.conn);
+            Connection.cmd.Parameters.AddWithValue("@patientID", patientData.PatientID);
+            Connection.cmd.Parameters.AddWithValue("@firstName", patientData.FirstName);
+            Connection.cmd.Parameters.AddWithValue("@lastName", patientData.LastName);
+            Connection.cmd.Parameters.AddWithValue("@middleName", patientData.MiddleName);
+            Connection.cmd.Parameters.AddWithValue("@birthDate", patientData.Birthdate);
+            Connection.cmd.Parameters.AddWithValue("@gender", patientData.Gender);
+
+            if (patientData.Contact[0] == '0')
+            {
+                patientData.Contact = patientData.Contact.Substring(1); // will remove the "0" in the contact
+            }
+            patientData.Contact = "+63" + patientData.Contact; // will insert '+63' at the start of contact
+
+            Connection.cmd.Parameters.AddWithValue("@contact", patientData.Contact);
+            Connection.cmd.Parameters.AddWithValue("@occupation", patientData.Occupation);
+            Connection.cmd.Parameters.AddWithValue("@address", patientData.Address);
             Connection.cmd.ExecuteNonQuery();
 
             Connection.conn.Close();

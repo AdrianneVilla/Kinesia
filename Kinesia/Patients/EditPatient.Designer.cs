@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditPatient));
-            this.label1 = new System.Windows.Forms.Label();
             this.txtTitleLabel = new System.Windows.Forms.Label();
             this.nameHolder = new System.Windows.Forms.Label();
+            this.lblPatientID = new System.Windows.Forms.Label();
             this.btnBack = new OrganizationProfile.CustomButton();
             this.panelBorder1 = new WindowsFormsApp2.CustomButton.PanelBorder();
             this.cbGender = new CustomControls.RJControls.RJComboBox();
@@ -58,16 +58,6 @@
             this.panelBorder1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(65, 72);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(231, 23);
-            this.label1.TabIndex = 12;
-            this.label1.Text = "edit patient\'s personal information";
-            // 
             // txtTitleLabel
             // 
             this.txtTitleLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -79,9 +69,9 @@
             this.txtTitleLabel.Location = new System.Drawing.Point(167, 30);
             this.txtTitleLabel.Margin = new System.Windows.Forms.Padding(0);
             this.txtTitleLabel.Name = "txtTitleLabel";
-            this.txtTitleLabel.Size = new System.Drawing.Size(178, 48);
+            this.txtTitleLabel.Size = new System.Drawing.Size(72, 48);
             this.txtTitleLabel.TabIndex = 13;
-            this.txtTitleLabel.Text = "Edit Patient";
+            this.txtTitleLabel.Text = "Edit";
             this.txtTitleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // nameHolder
@@ -98,6 +88,22 @@
             this.nameHolder.TabIndex = 11;
             this.nameHolder.Text = "Patients >";
             this.nameHolder.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblPatientID
+            // 
+            this.lblPatientID.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblPatientID.AutoSize = true;
+            this.lblPatientID.BackColor = System.Drawing.Color.Transparent;
+            this.lblPatientID.Font = new System.Drawing.Font("Poppins", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPatientID.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
+            this.lblPatientID.Location = new System.Drawing.Point(230, 29);
+            this.lblPatientID.Margin = new System.Windows.Forms.Padding(0);
+            this.lblPatientID.Name = "lblPatientID";
+            this.lblPatientID.Size = new System.Drawing.Size(184, 48);
+            this.lblPatientID.TabIndex = 17;
+            this.lblPatientID.Text = "<Patient ID>";
+            this.lblPatientID.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnBack
             // 
@@ -510,8 +516,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.lblPatientID);
             this.Controls.Add(this.btnBack);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.panelBorder1);
             this.Controls.Add(this.txtTitleLabel);
             this.Controls.Add(this.nameHolder);
@@ -536,7 +542,6 @@
         private System.Windows.Forms.Label label5;
         private CustomControls.RJControls.RJTextBox txtAge;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label1;
         private WindowsFormsApp2.CustomButton.PanelBorder panelBorder1;
         private CustomControls.RJControls.RJTextBox txtMiddleName;
         private System.Windows.Forms.Label label10;
@@ -554,5 +559,6 @@
         private System.Windows.Forms.Label txtTitleLabel;
         private System.Windows.Forms.Label nameHolder;
         private OrganizationProfile.CustomButton btnSaveChanges;
+        private System.Windows.Forms.Label lblPatientID;
     }
 }

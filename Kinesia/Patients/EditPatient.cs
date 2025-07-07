@@ -20,6 +20,7 @@ namespace Kinesia.Patients
         private void EditPatient_Load(object sender, EventArgs e)
         {
             // will set the value of the textboxes to the values of the patient
+            lblPatientID.Text = DataHolder.PatientDataHolder.PatientID + " Personal Information";
             txtFirstName.Texts = DataHolder.PatientDataHolder.FirstName;
             txtLastName.Texts = DataHolder.PatientDataHolder.LastName;
             txtMiddleName.Texts = DataHolder.PatientDataHolder.MiddleName;
@@ -54,23 +55,17 @@ namespace Kinesia.Patients
 
         public bool hasChanged()
         {
-            if (txtFirstName.Texts != DataHolder.PatientDataHolder.FirstName) return true;
+            var patient = DataHolder.PatientDataHolder;
 
-            if (txtLastName.Texts != DataHolder.PatientDataHolder.LastName) return true;
-
-            if (txtMiddleName.Texts != DataHolder.PatientDataHolder.MiddleName) return true;
-
-            if (dpBirthDate.Value.ToString("yyyy-MM-dd") != DataHolder.PatientDataHolder.Birthdate) return true;
-
-            if (cbGender.Texts != DataHolder.PatientDataHolder.Gender) return true;
-
-            if (txtContact.Texts != DataHolder.PatientDataHolder.Contact.Remove(0, 3)) return true;
-
-            if (txtOccupation.Texts != DataHolder.PatientDataHolder.Occupation) return true;
-
-            if (txtAddress.Texts != DataHolder.PatientDataHolder.Address) return true;
-
-            return false;
+            return
+                txtFirstName.Texts.Trim() != patient.FirstName ||
+                txtLastName.Texts.Trim() != patient.LastName ||
+                txtMiddleName.Texts.Trim() != patient.MiddleName ||
+                dpBirthDate.Value.ToString("yyyy-MM-dd") != patient.Birthdate ||
+                cbGender.Texts != patient.Gender ||
+                txtContact.Texts.Trim() != patient.Contact.Remove(0, 3) ||
+                txtOccupation.Texts.Trim() != patient.Occupation ||
+                txtAddress.Texts.Trim() != patient.Address;
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -103,7 +98,49 @@ namespace Kinesia.Patients
 
         private void btnSaveChanges_Click(object sender, EventArgs e)
         {
+            DialogResult updateDialog = MessageBox.Show($"Are you sure you want to update\n" +
+                    $"{DataHolder.PatientDataHolder.PatientID}'s personal information?", "Edit Patient Notification", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
 
+            if (updateDialog == DialogResult.Yes)
+            {
+                // will remove extra whitespaces on beginning and end of the textboxes
+                txtFirstName.Texts.Trim();
+                txtLastName.Texts.Trim();
+                txtMiddleName.Texts.Trim();
+                txtContact.Texts.Trim();
+                txtAddress.Texts.Trim();
+
+                var patientData = new PatientDataHolder();
+
+                patientData.PatientID = DataHolder.PatientDataHolder.PatientID;
+                patientData.FirstName = txtFirstName.Texts;
+                patientData.LastName = txtLastName.Texts;
+                patientData.MiddleName = txtMiddleName.Texts;
+                patientData.Contact = txtContact.Texts;
+                patientData.Age = Convert.ToInt32(txtAge.Texts);
+                patientData.Birthdate = dpBirthDate.Value.ToString("yyyy-MM-dd");
+                patientData.Gender = cbGender.Texts;
+                patientData.Occupation = txtOccupation.Texts;
+                patientData.Address = txtAddress.Texts;
+
+                if (Queries.PatientQueries.IsPatientDetailsComplete(patientData) && !Queries.PatientQueries.CheckExistingPatient(patientData) &&
+                    Queries.PatientQueries.IsAgeValid(patientData) && Queries.PatientQueries.IsContactValid(patientData))
+                {
+                    // will update the patient's personal information if patientData passed all data validations
+                    Queries.PatientQueries.UpdatePatient(patientData);
+
+                    MessageBox.Show($"{DataHolder.PatientDataHolder.PatientID}'s personal information \n" +
+                        $"has been updated successfully!", "Edit Patient Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    DataHolder.PatientDataHolder = null;
+
+                    // will go back to Patient page
+                    PageObjects.RemoveResources(ref PageObjects.CurrentControl);
+                    PageObjects.patientsPage = new PatientsPage();
+                    PageObjects.dashboard.ContentsPanel.Controls.Clear();
+                    PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.patientsPage);
+                    PageObjects.CurrentControl = PageObjects.patientsPage;
+                }
+            }
         }
 
         #region btnSaveChanges Visibility
@@ -236,7 +273,6 @@ namespace Kinesia.Patients
         {
             InputValidation.CharactersOnly(sender, e);
         }
-
         #endregion
     }
 }

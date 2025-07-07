@@ -119,6 +119,7 @@ namespace Kinesia.Patients
 
             if(addPatientDialog == DialogResult.Yes)
             {
+                // will remove extra whitespaces on beginning and end of the textboxes
                 txtFirstName.Texts.Trim();
                 txtLastName.Texts.Trim();
                 txtMiddleName.Texts.Trim();
@@ -126,7 +127,7 @@ namespace Kinesia.Patients
                 txtOccupation.Texts.Trim();
                 txtAddress.Texts.Trim();
 
-                PatientDataHolder patientData = new PatientDataHolder
+                DataHolder.PatientDataHolder = new PatientDataHolder // will create an insatnce of PatientDataHolder and set the values of it
                 {
                     FirstName = txtFirstName.Texts,
                     MiddleName = txtMiddleName.Texts,
@@ -139,15 +140,20 @@ namespace Kinesia.Patients
                     Occupation = txtOccupation.Texts,
                 };
 
-                if(Queries.PatientQueries.IsPatientDetailsComplete(patientData) && !Queries.PatientQueries.CheckExistingPatient(patientData) &&
-                    Queries.PatientQueries.IsAgeValid(patientData) && Queries.PatientQueries.IsContactValid(patientData))
+                if(Queries.PatientQueries.IsPatientDetailsComplete(DataHolder.PatientDataHolder) && !Queries.PatientQueries.CheckExistingPatient(DataHolder.PatientDataHolder) &&
+                    Queries.PatientQueries.IsAgeValid(DataHolder.PatientDataHolder) && Queries.PatientQueries.IsContactValid(DataHolder.PatientDataHolder))
                 {
+                    // will continue to add the patient if PatientDataHolder passed the data validations
                     Queries.PatientQueries.GetPatientIDCount();
-                    Queries.PatientQueries.AddPatient(patientData);
+                    Queries.PatientQueries.AddPatient(DataHolder.PatientDataHolder);
 
                     clearAllInputs();
-                    patientData = null;
+                    DataHolder.PatientDataHolder = null;
                     MessageBox.Show("Patient added successfully!", "Add Patient Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                } 
+                else
+                {
+                    DataHolder.PatientDataHolder = null; // will remove the instance of PatientDataHolder if it didn't pass the data validations
                 }
             }
 
