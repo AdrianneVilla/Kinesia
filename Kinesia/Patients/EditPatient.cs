@@ -123,9 +123,20 @@ namespace Kinesia.Patients
                 patientData.Occupation = txtOccupation.Texts;
                 patientData.Address = txtAddress.Texts;
 
-                if (Queries.PatientQueries.IsPatientDetailsComplete(patientData) && !Queries.PatientQueries.CheckExistingPatient(patientData) &&
+                if (Queries.PatientQueries.IsPatientDetailsComplete(patientData) && 
                     Queries.PatientQueries.IsAgeValid(patientData) && Queries.PatientQueries.IsContactValid(patientData))
                 {
+                    if(DataHolder.PatientDataHolder.FirstName !=  patientData.FirstName || DataHolder.PatientDataHolder.LastName != patientData.LastName 
+                        || DataHolder.PatientDataHolder.MiddleName != patientData.MiddleName)
+                    {
+                        // will only check existing patient if
+                        // first, last, and middle name data were changed
+
+                        if (Queries.PatientQueries.CheckExistingPatient(patientData)) 
+                        {
+                            return; // will exit the update method
+                        }
+                    }
                     // will update the patient's personal information if patientData passed all data validations
                     Queries.PatientQueries.UpdatePatient(patientData);
 
