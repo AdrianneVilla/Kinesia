@@ -42,5 +42,21 @@ namespace Kinesia.Patients
             DataHolder.PatientDataHolder = new PatientDataHolder();
             Queries.PatientQueries.GetPatientDetails(btnEdit.Tag.ToString(), DataHolder.PatientDataHolder);
         }
+
+        private void btnArchive_Click(object sender, EventArgs e)
+        {
+            DialogResult archiveDiag = MessageBox.Show($"Are you sure you want to archive {btnArchive.Tag}?", "Archive Patient Notification", 
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+
+            if(archiveDiag == DialogResult.Yes)
+            {
+                Queries.PatientQueries.ArchivePatient(btnArchive.Tag.ToString());
+
+                MessageBox.Show($"{btnArchive.Tag} has been successfully archived!", "Archive Patient Notification",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                Queries.PatientQueries.DisplayPatients("");
+            }
+        }
     }
 }

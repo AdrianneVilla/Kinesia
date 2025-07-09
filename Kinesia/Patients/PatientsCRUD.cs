@@ -13,7 +13,7 @@ namespace Kinesia.Patients
         private int patientIDCount;
         public void DisplayPatients(string searchData)
         {
-            PageObjects.DisposeHolderControls(PageObjects.patientsPage.getPatientHolder);
+            PageObjects.patientsPage.getPatientHolder.Controls.Clear();
             Connection.conn.Open();
 
             if(searchData == "")
@@ -31,30 +31,30 @@ namespace Kinesia.Patients
 
             while(Connection.reader.Read())
             {
-                PageObjects.displayPatients = new DisplayPatients(); // will create user control for every patient
-                
+                var displayPatientControl = new DisplayPatients(); // will create user control for every patient
+
                 // will set the tag of every button to patientID
-                PageObjects.displayPatients.BtnView.Tag = Connection.reader.GetString(0);
-                PageObjects.displayPatients.BtnEdit.Tag = Connection.reader.GetString(0);
-                PageObjects.displayPatients.BtnArchive.Tag = Connection.reader.GetString(0);
+                displayPatientControl.BtnView.Tag = Connection.reader.GetString(0);
+                displayPatientControl.BtnEdit.Tag = Connection.reader.GetString(0);
+                displayPatientControl.BtnArchive.Tag = Connection.reader.GetString(0);
 
                 // will set the data of every patient to the labels
-                PageObjects.displayPatients.PatientID = Connection.reader.GetString(0);
-                PageObjects.displayPatients.PatientName = $"{Connection.reader.GetString(1)} {Connection.reader.GetString(2)} {Connection.reader.GetString(3)}";
-                PageObjects.displayPatients.Age = (Connection.reader.GetInt64(4) / 12).ToString();
-                PageObjects.displayPatients.Gender = Connection.reader.GetString(5);
-                PageObjects.displayPatients.Contact = Connection.reader.GetString(6);
+                displayPatientControl.PatientID = Connection.reader.GetString(0);
+                displayPatientControl.PatientName = $"{Connection.reader.GetString(1)} {Connection.reader.GetString(2)} {Connection.reader.GetString(3)}";
+                displayPatientControl.Age = (Connection.reader.GetInt64(4) / 12).ToString();
+                displayPatientControl.Gender = Connection.reader.GetString(5);
+                displayPatientControl.Contact = Connection.reader.GetString(6);
 
                 // 1 = Active
                 // 2 = Inactive
                 if(Connection.reader.GetInt64(7) == 1)
                 {
-                    PageObjects.displayPatients.Status = "Active";
+                    displayPatientControl.Status = "Active";
                 } else
                 {
-                    PageObjects.displayPatients.Status = "Inactive";
+                    displayPatientControl.Status = "Inactive";
                 }
-                PageObjects.patientsPage.getPatientHolder.Controls.Add(PageObjects.displayPatients);
+                PageObjects.patientsPage.getPatientHolder.Controls.Add(displayPatientControl);
             }
             Connection.reader.Close();
             Connection.conn.Close();
@@ -188,6 +188,17 @@ namespace Kinesia.Patients
             Connection.cmd.Parameters.AddWithValue("@contact", patientData.Contact);
             Connection.cmd.Parameters.AddWithValue("@occupation", patientData.Occupation);
             Connection.cmd.Parameters.AddWithValue("@address", patientData.Address);
+            Connection.cmd.ExecuteNonQuery();
+
+            Connection.conn.Close();
+        }
+
+        public void ArchivePatient(string patientID)
+        {
+            Connection.conn.Open();
+
+            Connection.cmd = new MySqlCommand("UPDATE Patients SET Status = 0 WHERE PatientID = @patientID", Connection.conn);
+            Connection.cmd.Parameters.AddWithValue("@patientID", patientID);
             Connection.cmd.ExecuteNonQuery();
 
             Connection.conn.Close();
