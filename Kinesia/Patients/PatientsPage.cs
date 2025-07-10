@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CustomControls.RJControls;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -27,6 +28,14 @@ namespace Kinesia.Patients
         {
             Queries.PatientQueries.DisplayPatients(searchData);
             txtSearchBar.Texts = "Search Patient Name or Patient ID";
+
+            // will get the TextBox inside the RJTextBox
+            TextBox innerTxtSearchBar = txtSearchBar.Controls.OfType<TextBox>().FirstOrDefault();
+
+            if(innerTxtSearchBar != null)
+            {
+                innerTxtSearchBar.KeyDown += InnerTxtSearchBar_KeyDown; // will add KeyDown KeyEvent
+            }
         }
 
         private void btnAddPatient_Click(object sender, EventArgs e)
@@ -47,7 +56,7 @@ namespace Kinesia.Patients
 
         private void txtSearchBar_Leave(object sender, EventArgs e)
         {
-            if(txtSearchBar.Texts == "")
+            if (txtSearchBar.Texts == "")
             {
                 txtSearchBar.Texts = "Search Patient Name or Patient ID";
                 searchData = "";
@@ -64,6 +73,16 @@ namespace Kinesia.Patients
                 searchData = txtSearchBar.Texts;
             }
             Queries.PatientQueries.DisplayPatients(searchData);
+        }
+
+        private void InnerTxtSearchBar_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Escape)
+            {
+                lblHiddenForFocus.Focus(); // will move the focus away from the txtSearchBar
+
+                e.SuppressKeyPress = true; // will prevent windows from making the beep sounds when pressing "esc"
+            }
         }
     }
 }
