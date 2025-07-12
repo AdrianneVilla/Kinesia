@@ -110,6 +110,18 @@
     <Compile Include="Assessment\DisplayAssessment.Designer.cs">
       <DependentUpon>DisplayAssessment.cs</DependentUpon>
     </Compile>
+    <Compile Include="Components\Custom Dialog Boxes\DoubleButtonDialog.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\Custom Dialog Boxes\DoubleButtonDialog.Designer.cs">
+      <DependentUpon>DoubleButtonDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Custom Dialog Boxes\SingleButtonDialog.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\Custom Dialog Boxes\SingleButtonDialog.Designer.cs">
+      <DependentUpon>SingleButtonDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Components\CustomButton.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -226,6 +238,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Assessment\DisplayAssessment.resx">
       <DependentUpon>DisplayAssessment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\Custom Dialog Boxes\DoubleButtonDialog.resx">
+      <DependentUpon>DoubleButtonDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\Custom Dialog Boxes\SingleButtonDialog.resx">
+      <DependentUpon>SingleButtonDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\DashboardPage.resx">
       <DependentUpon>DashboardPage.cs</DependentUpon>
@@ -386,6 +404,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Kinesia Images\calendarWhitesmall.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Kinesia Images\warning-icon.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

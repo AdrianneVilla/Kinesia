@@ -84,5 +84,10 @@ namespace Kinesia.Patients
                 e.SuppressKeyPress = true; // will prevent windows from making the beep sounds when pressing "esc"
             }
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

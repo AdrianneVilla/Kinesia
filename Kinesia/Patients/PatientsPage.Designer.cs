@@ -45,12 +45,18 @@
             this.editHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.archiveHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblHiddenForFocus = new System.Windows.Forms.Label();
-            this.PatientHolder = new WindowsFormsApp2.CustomButton.PanelBorder();
+            this.panelBorder2 = new WindowsFormsApp2.CustomButton.PanelBorder();
             this.btnAddPatient = new OrganizationProfile.CustomButton();
+            this.customButton3 = new OrganizationProfile.CustomButton();
+            this.customButton2 = new OrganizationProfile.CustomButton();
+            this.customButton1 = new OrganizationProfile.CustomButton();
+            this.PatientHolder = new WindowsFormsApp2.CustomButton.PanelBorder();
             this.panelBorder1 = new WindowsFormsApp2.CustomButton.PanelBorder();
+            this.customButton4 = new OrganizationProfile.CustomButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.txtSearchBar = new CustomControls.RJControls.RJTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.panelBorder2.SuspendLayout();
             this.panelBorder1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -115,7 +121,7 @@
             this.editHeader,
             this.archiveHeader});
             this.dataGridView1.GridColor = System.Drawing.Color.White;
-            this.dataGridView1.Location = new System.Drawing.Point(69, 148);
+            this.dataGridView1.Location = new System.Drawing.Point(70, 218);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -220,20 +226,22 @@
             this.lblHiddenForFocus.TabIndex = 9;
             this.lblHiddenForFocus.Text = "<Focus Label (Hidden)>";
             // 
-            // PatientHolder
+            // panelBorder2
             // 
-            this.PatientHolder.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.panelBorder2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.PatientHolder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(249)))), ((int)(((byte)(238)))));
-            this.PatientHolder.BorderRadius = 10;
-            this.PatientHolder.Color = System.Drawing.Color.White;
-            this.PatientHolder.ForeColor = System.Drawing.Color.Black;
-            this.PatientHolder.Location = new System.Drawing.Point(61, 174);
-            this.PatientHolder.Name = "PatientHolder";
-            this.PatientHolder.Padding = new System.Windows.Forms.Padding(5);
-            this.PatientHolder.Size = new System.Drawing.Size(1129, 472);
-            this.PatientHolder.TabIndex = 7;
+            this.panelBorder2.BackColor = System.Drawing.Color.White;
+            this.panelBorder2.BorderRadius = 30;
+            this.panelBorder2.Color = System.Drawing.Color.BurlyWood;
+            this.panelBorder2.Controls.Add(this.btnAddPatient);
+            this.panelBorder2.Controls.Add(this.customButton3);
+            this.panelBorder2.Controls.Add(this.customButton2);
+            this.panelBorder2.Controls.Add(this.customButton1);
+            this.panelBorder2.ForeColor = System.Drawing.Color.Black;
+            this.panelBorder2.Location = new System.Drawing.Point(62, 141);
+            this.panelBorder2.Name = "panelBorder2";
+            this.panelBorder2.Size = new System.Drawing.Size(1129, 58);
+            this.panelBorder2.TabIndex = 13;
             // 
             // btnAddPatient
             // 
@@ -250,7 +258,7 @@
             this.btnAddPatient.ForeColor = System.Drawing.Color.Transparent;
             this.btnAddPatient.Image = ((System.Drawing.Image)(resources.GetObject("btnAddPatient.Image")));
             this.btnAddPatient.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnAddPatient.Location = new System.Drawing.Point(1041, 39);
+            this.btnAddPatient.Location = new System.Drawing.Point(972, 5);
             this.btnAddPatient.Name = "btnAddPatient";
             this.btnAddPatient.Padding = new System.Windows.Forms.Padding(5, 5, 20, 0);
             this.btnAddPatient.Size = new System.Drawing.Size(150, 48);
@@ -261,6 +269,80 @@
             this.btnAddPatient.UseVisualStyleBackColor = false;
             this.btnAddPatient.Click += new System.EventHandler(this.btnAddPatient_Click);
             // 
+            // customButton3
+            // 
+            this.customButton3.BackColor = System.Drawing.Color.Gainsboro;
+            this.customButton3.BackgroundColor = System.Drawing.Color.Gainsboro;
+            this.customButton3.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.customButton3.BorderRadius = 5;
+            this.customButton3.BorderSize = 0;
+            this.customButton3.FlatAppearance.BorderSize = 0;
+            this.customButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.customButton3.Font = new System.Drawing.Font("Poppins", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))));
+            this.customButton3.ForeColor = System.Drawing.Color.Gray;
+            this.customButton3.Location = new System.Drawing.Point(180, 9);
+            this.customButton3.Margin = new System.Windows.Forms.Padding(1);
+            this.customButton3.Name = "customButton3";
+            this.customButton3.Size = new System.Drawing.Size(80, 40);
+            this.customButton3.TabIndex = 12;
+            this.customButton3.Text = "Inactive";
+            this.customButton3.TextColor = System.Drawing.Color.Gray;
+            this.customButton3.UseVisualStyleBackColor = false;
+            // 
+            // customButton2
+            // 
+            this.customButton2.BackColor = System.Drawing.Color.Gainsboro;
+            this.customButton2.BackgroundColor = System.Drawing.Color.Gainsboro;
+            this.customButton2.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.customButton2.BorderRadius = 5;
+            this.customButton2.BorderSize = 0;
+            this.customButton2.FlatAppearance.BorderSize = 0;
+            this.customButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.customButton2.Font = new System.Drawing.Font("Poppins", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))));
+            this.customButton2.ForeColor = System.Drawing.Color.Gray;
+            this.customButton2.Location = new System.Drawing.Point(96, 9);
+            this.customButton2.Name = "customButton2";
+            this.customButton2.Size = new System.Drawing.Size(80, 40);
+            this.customButton2.TabIndex = 11;
+            this.customButton2.Text = "Active";
+            this.customButton2.TextColor = System.Drawing.Color.Gray;
+            this.customButton2.UseVisualStyleBackColor = false;
+            // 
+            // customButton1
+            // 
+            this.customButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
+            this.customButton1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
+            this.customButton1.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.customButton1.BorderRadius = 5;
+            this.customButton1.BorderSize = 0;
+            this.customButton1.FlatAppearance.BorderSize = 0;
+            this.customButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.customButton1.Font = new System.Drawing.Font("Poppins", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))));
+            this.customButton1.ForeColor = System.Drawing.Color.White;
+            this.customButton1.Location = new System.Drawing.Point(12, 9);
+            this.customButton1.Margin = new System.Windows.Forms.Padding(1);
+            this.customButton1.Name = "customButton1";
+            this.customButton1.Size = new System.Drawing.Size(80, 40);
+            this.customButton1.TabIndex = 10;
+            this.customButton1.Text = "All";
+            this.customButton1.TextColor = System.Drawing.Color.White;
+            this.customButton1.UseVisualStyleBackColor = false;
+            // 
+            // PatientHolder
+            // 
+            this.PatientHolder.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.PatientHolder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(249)))), ((int)(((byte)(238)))));
+            this.PatientHolder.BorderRadius = 10;
+            this.PatientHolder.Color = System.Drawing.Color.White;
+            this.PatientHolder.ForeColor = System.Drawing.Color.Black;
+            this.PatientHolder.Location = new System.Drawing.Point(62, 244);
+            this.PatientHolder.Name = "PatientHolder";
+            this.PatientHolder.Padding = new System.Windows.Forms.Padding(5);
+            this.PatientHolder.Size = new System.Drawing.Size(1129, 496);
+            this.PatientHolder.TabIndex = 7;
+            // 
             // panelBorder1
             // 
             this.panelBorder1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -269,24 +351,47 @@
             this.panelBorder1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panelBorder1.BorderRadius = 10;
             this.panelBorder1.Color = System.Drawing.Color.BurlyWood;
+            this.panelBorder1.Controls.Add(this.customButton4);
             this.panelBorder1.Controls.Add(this.pictureBox1);
             this.panelBorder1.Controls.Add(this.txtSearchBar);
             this.panelBorder1.ForeColor = System.Drawing.Color.Black;
-            this.panelBorder1.Location = new System.Drawing.Point(597, 38);
+            this.panelBorder1.Location = new System.Drawing.Point(692, 44);
             this.panelBorder1.Name = "panelBorder1";
             this.panelBorder1.Padding = new System.Windows.Forms.Padding(5);
-            this.panelBorder1.Size = new System.Drawing.Size(438, 51);
+            this.panelBorder1.Size = new System.Drawing.Size(499, 51);
             this.panelBorder1.TabIndex = 5;
+            // 
+            // customButton4
+            // 
+            this.customButton4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.customButton4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(210)))), ((int)(((byte)(173)))));
+            this.customButton4.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(210)))), ((int)(((byte)(173)))));
+            this.customButton4.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.customButton4.BorderRadius = 10;
+            this.customButton4.BorderSize = 0;
+            this.customButton4.FlatAppearance.BorderSize = 0;
+            this.customButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.customButton4.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.customButton4.ForeColor = System.Drawing.Color.White;
+            this.customButton4.Location = new System.Drawing.Point(388, 7);
+            this.customButton4.Name = "customButton4";
+            this.customButton4.Padding = new System.Windows.Forms.Padding(2, 3, 0, 0);
+            this.customButton4.Size = new System.Drawing.Size(101, 35);
+            this.customButton4.TabIndex = 14;
+            this.customButton4.Text = "Search";
+            this.customButton4.TextColor = System.Drawing.Color.White;
+            this.customButton4.UseVisualStyleBackColor = false;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Kinesia.Properties.Resources.search_icon;
-            this.pictureBox1.Location = new System.Drawing.Point(15, 17);
+            this.pictureBox1.Location = new System.Drawing.Point(14, 15);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(28, 24);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // txtSearchBar
             // 
@@ -295,9 +400,9 @@
             this.txtSearchBar.BorderFocusColor = System.Drawing.Color.White;
             this.txtSearchBar.BorderRadius = 5;
             this.txtSearchBar.BorderSize = 1;
-            this.txtSearchBar.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearchBar.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSearchBar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtSearchBar.Location = new System.Drawing.Point(48, 8);
+            this.txtSearchBar.Location = new System.Drawing.Point(48, 9);
             this.txtSearchBar.Margin = new System.Windows.Forms.Padding(4);
             this.txtSearchBar.Multiline = false;
             this.txtSearchBar.Name = "txtSearchBar";
@@ -305,7 +410,7 @@
             this.txtSearchBar.PasswordChar = false;
             this.txtSearchBar.PlaceholderColor = System.Drawing.Color.DarkGray;
             this.txtSearchBar.PlaceholderText = "";
-            this.txtSearchBar.Size = new System.Drawing.Size(381, 34);
+            this.txtSearchBar.Size = new System.Drawing.Size(333, 31);
             this.txtSearchBar.TabIndex = 4;
             this.txtSearchBar.Texts = "";
             this.txtSearchBar.UnderlinedStyle = false;
@@ -318,17 +423,18 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.panelBorder2);
             this.Controls.Add(this.lblHiddenForFocus);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.PatientHolder);
-            this.Controls.Add(this.btnAddPatient);
             this.Controls.Add(this.panelBorder1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.nameHolder);
             this.Name = "PatientsPage";
-            this.Size = new System.Drawing.Size(1249, 676);
+            this.Size = new System.Drawing.Size(1249, 758);
             this.Load += new System.EventHandler(this.PatientsPage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.panelBorder2.ResumeLayout(false);
             this.panelBorder1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -355,6 +461,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn EMRHeader;
         private System.Windows.Forms.DataGridViewTextBoxColumn editHeader;
         private System.Windows.Forms.DataGridViewTextBoxColumn archiveHeader;
+        private OrganizationProfile.CustomButton customButton1;
+        private OrganizationProfile.CustomButton customButton2;
+        private OrganizationProfile.CustomButton customButton3;
+        private WindowsFormsApp2.CustomButton.PanelBorder panelBorder2;
         private System.Windows.Forms.Label lblHiddenForFocus;
+        private OrganizationProfile.CustomButton customButton4;
     }
 }
