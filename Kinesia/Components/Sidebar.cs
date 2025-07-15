@@ -1,5 +1,6 @@
 ﻿using Kinesia.Patients;
 using Kinesia.Users;
+using Kinesia.Assessment;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -45,5 +46,12 @@ namespace Kinesia.Components
             
         }
 
+        private void assessmentModule_Click(object sender, EventArgs e)
+        {
+            PageObjects.RemoveResources(ref PageObjects.CurrentControl);
+            PageObjects.assessmentPage = new AssessmentPage();
+            PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.assessmentPage);
+            PageObjects.CurrentControl = PageObjects.assessmentPage;
+        }
     }
 }

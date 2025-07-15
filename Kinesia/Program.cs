@@ -11,6 +11,7 @@ using Kinesia.Patients;
 using Kinesia.Users;
 using System.Text.RegularExpressions;
 using WindowsFormsApp2.CustomButton;
+using Kinesia.Assessment;
 
 namespace Kinesia
 {
@@ -41,6 +42,7 @@ namespace Kinesia
         public static UserPage userPage;    
         public static UserDetails userDetails;
         public static AddUser addUser;
+        public static AssessmentPage assessmentPage;
 
         public static Control CurrentControl;
 

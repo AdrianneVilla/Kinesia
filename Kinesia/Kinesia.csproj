@@ -98,6 +98,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assessment\AddAssessment.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Assessment\AddAssessment.Designer.cs">
+      <DependentUpon>AddAssessment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Assessment\AssessmentPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -168,6 +174,12 @@
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="NewAssessmentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewAssessmentForm.Designer.cs">
+      <DependentUpon>NewAssessmentForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Patients\AddPatient.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -233,6 +245,9 @@
     <Compile Include="Users\UserPage.Designer.cs">
       <DependentUpon>UserPage.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Assessment\AddAssessment.resx">
+      <DependentUpon>AddAssessment.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Assessment\AssessmentPage.resx">
       <DependentUpon>AssessmentPage.cs</DependentUpon>
     </EmbeddedResource>
@@ -260,6 +275,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewAssessmentForm.resx">
+      <DependentUpon>NewAssessmentForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Patients\AddPatient.resx">
       <DependentUpon>AddPatient.cs</DependentUpon>
@@ -407,6 +425,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Kinesia Images\warning-icon.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Kinesia Images\error-icon.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Kinesia Images\information-icon.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Kinesia Images\question-icon.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Kinesia Images\Orbbec-camera-icon.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

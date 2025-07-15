@@ -82,7 +82,7 @@
             this.lblDescription.Name = "lblDescription";
             this.lblDescription.Size = new System.Drawing.Size(401, 84);
             this.lblDescription.TabIndex = 1;
-            this.lblDescription.Text = "Description Holder";
+            this.lblDescription.Text = "Description here";
             this.lblDescription.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // dialogHeader

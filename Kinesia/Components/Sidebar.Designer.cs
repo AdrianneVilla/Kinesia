@@ -117,6 +117,7 @@
             this.assessmentModule.Text = "Assessment";
             this.assessmentModule.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
             this.assessmentModule.UseVisualStyleBackColor = false;
+            this.assessmentModule.Click += new System.EventHandler(this.assessmentModule_Click);
             // 
             // usersModule
             // 

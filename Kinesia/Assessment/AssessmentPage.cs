@@ -14,10 +14,17 @@ namespace Kinesia.Assessment
     {
         public AssessmentPage()
         {
+            this.Anchor = AnchorStyles.Right | AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Bottom;
+            this.Dock = DockStyle.Fill;
             InitializeComponent();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void AssessmentPage_Load(object sender, EventArgs e)
         {
 
         }
