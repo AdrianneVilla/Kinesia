@@ -11,23 +11,50 @@ namespace Kinesia.Patients
     public class PatientsCRUD
     {
         private int patientIDCount;
-        public void DisplayPatients(string searchData)
+        public void DisplayPatients(string searchData, string currentTab)
         {
             PageObjects.patientsPage.getPatientHolder.Controls.Clear();
             Connection.conn.Open();
 
-            if(searchData == "")
+            if(searchData == "" && currentTab == "All")
             {
                 // will display all patients
                 Connection.cmd = new MySqlCommand("SELECT PatientID, FirstName, MiddleName, LastName, TIMESTAMPDIFF(MONTH, Birthdate, CURDATE()) AS totalMonths, Gender, Contact, Status FROM Patients ORDER BY PatientID DESC", Connection.conn);
-            } else
+            } 
+            else if(searchData == "" && currentTab == "Active")
+            {
+                // will display all active patients
+                Connection.cmd = new MySqlCommand("SELECT PatientID, FirstName, MiddleName, LastName, TIMESTAMPDIFF(MONTH, Birthdate, CURDATE()) AS totalMonths, Gender, Contact, Status FROM Patients " +
+                    "WHERE Status = 1 ORDER BY PatientID DESC", Connection.conn);
+            } 
+            else if(searchData == "" && currentTab == "Inactive")
+            {
+                // will display all inactive patients
+                Connection.cmd = new MySqlCommand("SELECT PatientID, FirstName, MiddleName, LastName, TIMESTAMPDIFF(MONTH, Birthdate, CURDATE()) AS totalMonths, Gender, Contact, Status FROM Patients " +
+                    "WHERE Status = 0 ORDER BY PatientID DESC", Connection.conn);
+            }
+            else if(searchData != "" && currentTab == "All")
             {
                 // will only do searching and display specific patient/s if there's a searchData value
                 Connection.cmd = new MySqlCommand("SELECT PatientID, FirstName, MiddleName, LastName, TIMESTAMPDIFF(MONTH, Birthdate, CURDATE()) AS totalMonths, Gender, Contact, Status" +
                 " FROM Patients WHERE PatientID LIKE CONCAT('%', @searchData, '%') OR FirstName LIKE CONCAT('%', @searchData, '%') OR MiddleName LIKE CONCAT('%', @searchData, '%') OR LastName LIKE CONCAT('%', @searchData, '%')", Connection.conn);
                 Connection.cmd.Parameters.AddWithValue("@searchData", searchData);
+            } 
+            else if(searchData != "" && currentTab == "Active")
+            {
+                // will only do searching on active patients and display specific patient/s if there's a searchData value
+                Connection.cmd = new MySqlCommand("SELECT PatientID, FirstName, MiddleName, LastName, TIMESTAMPDIFF(MONTH, Birthdate, CURDATE()) AS totalMonths, Gender, Contact, Status" +
+                " FROM Patients WHERE Status = 1 AND PatientID LIKE CONCAT('%', @searchData, '%') OR FirstName LIKE CONCAT('%', @searchData, '%') OR MiddleName LIKE CONCAT('%', @searchData, '%') OR LastName LIKE CONCAT('%', @searchData, '%')", Connection.conn);
+                Connection.cmd.Parameters.AddWithValue("@searchData", searchData);
+            } 
+            else if(searchData != "" && currentTab == "Inactive")
+            {
+                // will only do searching on inactive patients and display specific patient/s if there's a searchData value
+                Connection.cmd = new MySqlCommand("SELECT PatientID, FirstName, MiddleName, LastName, TIMESTAMPDIFF(MONTH, Birthdate, CURDATE()) AS totalMonths, Gender, Contact, Status" +
+                " FROM Patients WHERE Status = 0 AND PatientID LIKE CONCAT('%', @searchData, '%') OR FirstName LIKE CONCAT('%', @searchData, '%') OR MiddleName LIKE CONCAT('%', @searchData, '%') OR LastName LIKE CONCAT('%', @searchData, '%')", Connection.conn);
+                Connection.cmd.Parameters.AddWithValue("@searchData", searchData);
             }
-            Connection.reader = Connection.cmd.ExecuteReader();
+                Connection.reader = Connection.cmd.ExecuteReader();
 
             while(Connection.reader.Read())
             {

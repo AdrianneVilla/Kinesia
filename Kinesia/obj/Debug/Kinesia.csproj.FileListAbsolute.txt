@@ -137,3 +137,7 @@ D:\git\Kinesia\Kinesia\obj\Debug\Kinesia.Patients.EditPatient.resources
 D:\git\Kinesia\Kinesia\obj\Debug\Kinesia.Users.EditUser.resources
 D:\git\Kinesia\Kinesia\obj\Debug\Kinesia.Components.Custom_Dialog_Boxes.DoubleButtonDialog.resources
 D:\git\Kinesia\Kinesia\obj\Debug\Kinesia.Components.Custom_Dialog_Boxes.SingleButtonDialog.resources
+E:\C# Projects\Kinesia\Kinesia\obj\Debug\Kinesia.Assessment.AddAssessment.resources
+E:\C# Projects\Kinesia\Kinesia\obj\Debug\Kinesia.Components.Custom_Dialog_Boxes.DoubleButtonDialog.resources
+E:\C# Projects\Kinesia\Kinesia\obj\Debug\Kinesia.Components.Custom_Dialog_Boxes.SingleButtonDialog.resources
+E:\C# Projects\Kinesia\Kinesia\obj\Debug\Kinesia.NewAssessmentForm.resources

@@ -15,6 +15,7 @@ namespace Kinesia.Patients
     public partial class PatientsPage : UserControl
     {
         string searchData = "";
+        string currentTab = "All";
         public PatientsPage()
         {
             this.Anchor = AnchorStyles.Right | AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Bottom;
@@ -23,10 +24,11 @@ namespace Kinesia.Patients
         }
 
         public PanelBorder getPatientHolder { get { return PatientHolder; } }
+        public string CurrentTab { get { return currentTab; } }
 
         private void PatientsPage_Load(object sender, EventArgs e)
         {
-            Queries.PatientQueries.DisplayPatients(searchData);
+            Queries.PatientQueries.DisplayPatients(searchData, currentTab);
             txtSearchBar.Texts = "Search Patient Name or Patient ID";
 
             // will get the TextBox inside the RJTextBox
@@ -72,7 +74,6 @@ namespace Kinesia.Patients
             {
                 searchData = txtSearchBar.Texts;
             }
-            Queries.PatientQueries.DisplayPatients(searchData);
         }
 
         private void InnerTxtSearchBar_KeyDown(object sender, KeyEventArgs e)
@@ -82,12 +83,91 @@ namespace Kinesia.Patients
                 lblHiddenForFocus.Focus(); // will move the focus away from the txtSearchBar
 
                 e.SuppressKeyPress = true; // will prevent windows from making the beep sounds when pressing "esc"
+            } 
+            else if(e.KeyCode == Keys.Enter)
+            {
+                // will do search query if "enter" was pressed
+                // while txtSearchBar was being focused
+                Queries.PatientQueries.DisplayPatients(searchData, currentTab);
+
+                e.SuppressKeyPress = true; // will prevent windows from making the beep sounds when pressing "enter"
             }
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            Queries.PatientQueries.DisplayPatients(searchData, currentTab); // will do search query
+        }
+
+        private void btnAll_Click(object sender, EventArgs e)
+        {
+            currentTab = "All";
+            switchTab(currentTab);
+            txtSearchBar.Texts = "Search Patient Name or Patient ID";
+            searchData = "";
+            Queries.PatientQueries.DisplayPatients(searchData, currentTab);
+        }
+
+        private void btnActive_Click(object sender, EventArgs e)
+        {
+            currentTab = "Active";
+            switchTab(currentTab);
+            txtSearchBar.Texts = "Search Patient Name or Patient ID";
+            searchData = "";
+            Queries.PatientQueries.DisplayPatients(searchData, currentTab);
+        }
+
+        private void btnInactive_Click(object sender, EventArgs e)
+        {
+            currentTab = "Inactive";
+            switchTab(currentTab);
+            txtSearchBar.Texts = "Search Patient Name or Patient ID";
+            searchData = "";
+            Queries.PatientQueries.DisplayPatients(searchData, currentTab);
+        }
+
+        private void switchTab(string currentTab)
+        {
+            switch (currentTab)
+            {
+                case "All":
+                    btnAll.BackgroundColor = Color.FromArgb(18, 90, 211);
+                    btnAll.ForeColor = Color.White;
+
+                    btnActive.BackgroundColor = Color.Gainsboro;
+                    btnActive.ForeColor = Color.Gray;
+
+                    btnInactive.BackgroundColor = Color.Gainsboro;
+                    btnInactive.ForeColor = Color.Gray;
+                    break;
+
+                case "Active":
+                    btnActive.BackgroundColor = Color.FromArgb(18, 90, 211);
+                    btnActive.ForeColor = Color.White;
+
+                    btnAll.BackgroundColor = Color.Gainsboro;
+                    btnAll.ForeColor = Color.Gray;
+
+                    btnInactive.BackgroundColor = Color.Gainsboro;
+                    btnInactive.ForeColor = Color.Gray;
+                    break;
+
+                case "Inactive":
+                    btnInactive.BackgroundColor = Color.FromArgb(18, 90, 211);
+                    btnInactive.ForeColor = Color.White;
+
+                    btnAll.BackgroundColor = Color.Gainsboro;
+                    btnAll.ForeColor = Color.Gray;
+
+                    btnActive.BackgroundColor = Color.Gainsboro;
+                    btnActive.ForeColor = Color.Gray;
+                    break;
+            }
         }
     }
 }

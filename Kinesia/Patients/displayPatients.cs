@@ -55,7 +55,7 @@ namespace Kinesia.Patients
                 MessageBox.Show($"{btnArchive.Tag} has been successfully archived!", "Archive Patient Notification",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                Queries.PatientQueries.DisplayPatients("");
+                Queries.PatientQueries.DisplayPatients("", PageObjects.patientsPage.CurrentTab);
             }
         }
     }
