@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditPatient));
             this.txtTitleLabel = new System.Windows.Forms.Label();
             this.nameHolder = new System.Windows.Forms.Label();
@@ -55,7 +56,10 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.btnSaveChanges = new OrganizationProfile.CustomButton();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.toolTipAge = new System.Windows.Forms.ToolTip(this.components);
             this.panelBorder1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // txtTitleLabel
@@ -141,6 +145,7 @@
             this.panelBorder1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panelBorder1.BorderRadius = 30;
             this.panelBorder1.Color = System.Drawing.Color.BurlyWood;
+            this.panelBorder1.Controls.Add(this.pictureBox1);
             this.panelBorder1.Controls.Add(this.cbGender);
             this.panelBorder1.Controls.Add(this.label13);
             this.panelBorder1.Controls.Add(this.txtOccupation);
@@ -253,6 +258,7 @@
             this.txtAge.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
             this.txtAge.BorderRadius = 5;
             this.txtAge.BorderSize = 1;
+            this.txtAge.Enabled = false;
             this.txtAge.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAge.ForeColor = System.Drawing.Color.Black;
             this.txtAge.Location = new System.Drawing.Point(464, 210);
@@ -511,6 +517,17 @@
             this.btnSaveChanges.Visible = false;
             this.btnSaveChanges.Click += new System.EventHandler(this.btnSaveChanges_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(492, 185);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(20, 20);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 35;
+            this.pictureBox1.TabStop = false;
+            this.toolTipAge.SetToolTip(this.pictureBox1, "Age is automatically computated when birthdate value changed");
+            // 
             // EditPatient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -527,6 +544,7 @@
             this.Load += new System.EventHandler(this.EditPatient_Load);
             this.panelBorder1.ResumeLayout(false);
             this.panelBorder1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -560,5 +578,7 @@
         private System.Windows.Forms.Label nameHolder;
         private OrganizationProfile.CustomButton btnSaveChanges;
         private System.Windows.Forms.Label lblPatientID;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ToolTip toolTipAge;
     }
 }

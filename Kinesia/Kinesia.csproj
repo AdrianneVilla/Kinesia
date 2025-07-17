@@ -438,5 +438,8 @@
   <ItemGroup>
     <None Include="Kinesia Images\Orbbec-camera-icon.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Kinesia Images\tooltip.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

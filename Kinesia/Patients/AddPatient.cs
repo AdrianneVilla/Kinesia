@@ -55,6 +55,7 @@ namespace Kinesia.Patients
         private void AddPatient_Load(object sender, EventArgs e)
         {
             dpBirthDate.Text = DateTime.Now.ToString(); // will set the value of DatePicker dpBirthDate to date today
+            txtAge.BackColor = System.Drawing.Color.White;
         }
 
         private void label13_Click(object sender, EventArgs e)

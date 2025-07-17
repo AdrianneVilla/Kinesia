@@ -38,6 +38,8 @@ namespace Kinesia.Patients
             txtContact.Texts = DataHolder.PatientDataHolder.Contact.Remove(0,3); // will remove the "+63" of the contact
             txtOccupation.Texts = DataHolder.PatientDataHolder.Occupation;
             txtAddress.Texts = DataHolder.PatientDataHolder.Address;
+
+            txtAge.BackColor = System.Drawing.Color.White;
         }
 
         private int getAge()
