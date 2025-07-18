@@ -17,10 +17,10 @@ namespace CustomControls.RJControls
     {
         #region -> Fields
         //Fields
-        private Color backColor = Color.WhiteSmoke;
+        private Color backColor = Color.White;
         private Color iconColor = Color.MediumSlateBlue;
-        private Color listBackColor = Color.FromArgb(230, 228, 245);
-        private Color listTextColor = Color.DimGray;
+        private Color listBackColor = Color.White;
+        private Color listTextColor = Color.Black;
         private Color borderColor = Color.MediumSlateBlue;
         private int borderSize = 1;
 
