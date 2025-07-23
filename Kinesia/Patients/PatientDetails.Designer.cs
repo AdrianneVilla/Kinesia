@@ -160,23 +160,22 @@
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.Black;
-            this.label12.Location = new System.Drawing.Point(130, 3);
+            this.label12.Location = new System.Drawing.Point(94, 3);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(113, 22);
+            this.label12.Size = new System.Drawing.Size(93, 22);
             this.label12.TabIndex = 1;
-            this.label12.Text = "<condition here>";
+            this.label12.Text = "<status here>";
             // 
             // label11
             // 
-            this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.Gray;
             this.label11.Location = new System.Drawing.Point(3, 3);
             this.label11.Name = "label11";
             this.label11.Padding = new System.Windows.Forms.Padding(0, 0, 52, 0);
-            this.label11.Size = new System.Drawing.Size(121, 22);
+            this.label11.Size = new System.Drawing.Size(85, 22);
             this.label11.TabIndex = 0;
-            this.label11.Text = "Condition";
+            this.label11.Text = "Status";
             // 
             // flowLayoutPanel5
             // 
