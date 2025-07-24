@@ -10,7 +10,7 @@ namespace Kinesia.Patients
 {
     public class PatientsCRUD
     {
-        public void DisplayPatients(string searchData, string currentTab)
+        public void DisplayPatients(string searchData, string currentTab, string sortColumn)
         {
             PageObjects.patientsPage.getPatientHolder.Controls.Clear();
             Connection.conn.Open();
@@ -34,7 +34,7 @@ namespace Kinesia.Patients
             }
 
             // will only add this condition to the query if searchData is not empty
-            if (!string.IsNullOrEmpty(searchData))
+            if(!string.IsNullOrEmpty(searchData))
             {
                 string searchCondition = @"(PatientID LIKE CONCAT('%', @searchData, '%') 
                                         OR FirstName LIKE CONCAT('%', @searchData, '%') 
@@ -43,14 +43,32 @@ namespace Kinesia.Patients
                 conditions.Add(searchCondition);
             }
 
-            // will add all conditions to the query
+            // will add all conditions to the query (if there's any condition added)
             if(conditions.Count > 0)
             {
                 query += " WHERE " + string.Join(" AND ", conditions);
             }
 
-            string sortColumn = "PatientID";
+            // will set the sort order based on sortColumn
             string sortCondition = "DESC";
+
+            if(sortColumn == "Default")
+            {
+                sortColumn = "PatientID";
+            } 
+            else if(sortColumn == "Alphabetical (Name)")
+            {
+                sortColumn = "FirstName";
+            } 
+            else if(sortColumn == "Earliest (Date Added)")
+            {
+                sortColumn = "DateAdded";
+            } 
+            else if(sortColumn == "Latest (Date Added)")
+            {
+                sortColumn = "DateAdded";
+                sortCondition = "ASC";
+            }
 
             query += $" ORDER BY {sortColumn} {sortCondition}";
 

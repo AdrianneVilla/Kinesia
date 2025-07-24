@@ -28,7 +28,7 @@ namespace Kinesia.Patients
 
         private void PatientsPage_Load(object sender, EventArgs e)
         {
-            Queries.PatientQueries.DisplayPatients(searchData, currentTab);
+            Queries.PatientQueries.DisplayPatients(searchData, currentTab, cbSort.Texts);
             txtSearchBar.Texts = "Search Patient Name or Patient ID";
 
             // will get the TextBox inside the RJTextBox
@@ -88,7 +88,7 @@ namespace Kinesia.Patients
             {
                 // will do search query if "enter" was pressed
                 // while txtSearchBar was being focused
-                Queries.PatientQueries.DisplayPatients(searchData, currentTab);
+                Queries.PatientQueries.DisplayPatients(searchData, currentTab, cbSort.Texts);
 
                 e.SuppressKeyPress = true; // will prevent windows from making the beep sounds when pressing "enter"
             }
@@ -101,7 +101,7 @@ namespace Kinesia.Patients
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            Queries.PatientQueries.DisplayPatients(searchData, currentTab); // will do search query
+            Queries.PatientQueries.DisplayPatients(searchData, currentTab, cbSort.Texts); // will do search query
         }
 
         private void btnAll_Click(object sender, EventArgs e)
@@ -110,7 +110,7 @@ namespace Kinesia.Patients
             switchTab(currentTab);
             txtSearchBar.Texts = "Search Patient Name or Patient ID";
             searchData = "";
-            Queries.PatientQueries.DisplayPatients(searchData, currentTab);
+            Queries.PatientQueries.DisplayPatients(searchData, currentTab, cbSort.Texts);
         }
 
         private void btnActive_Click(object sender, EventArgs e)
@@ -119,7 +119,7 @@ namespace Kinesia.Patients
             switchTab(currentTab);
             txtSearchBar.Texts = "Search Patient Name or Patient ID";
             searchData = "";
-            Queries.PatientQueries.DisplayPatients(searchData, currentTab);
+            Queries.PatientQueries.DisplayPatients(searchData, currentTab, cbSort.Texts);
         }
 
         private void btnInactive_Click(object sender, EventArgs e)
@@ -128,7 +128,7 @@ namespace Kinesia.Patients
             switchTab(currentTab);
             txtSearchBar.Texts = "Search Patient Name or Patient ID";
             searchData = "";
-            Queries.PatientQueries.DisplayPatients(searchData, currentTab);
+            Queries.PatientQueries.DisplayPatients(searchData, currentTab, cbSort.Texts);
         }
 
         private void switchTab(string currentTab)
@@ -169,6 +169,11 @@ namespace Kinesia.Patients
                     break;
             }
         }
-       
+
+        private void cbSort_OnSelectedIndexChanged(object sender, EventArgs e)
+        {
+            // will refresh patients list every time the sort value was changed
+            Queries.PatientQueries.DisplayPatients(searchData, currentTab, cbSort.Texts);
+        }
     }
 }

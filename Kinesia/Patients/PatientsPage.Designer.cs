@@ -46,7 +46,7 @@
             this.archiveHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblHiddenForFocus = new System.Windows.Forms.Label();
             this.panelBorder2 = new WindowsFormsApp2.CustomButton.PanelBorder();
-            this.rjComboBox2 = new CustomControls.RJControls.RJComboBox();
+            this.cbSort = new CustomControls.RJControls.RJComboBox();
             this.btnAddPatient = new OrganizationProfile.CustomButton();
             this.btnInactive = new OrganizationProfile.CustomButton();
             this.btnActive = new OrganizationProfile.CustomButton();
@@ -234,7 +234,7 @@
             this.panelBorder2.BackColor = System.Drawing.Color.White;
             this.panelBorder2.BorderRadius = 30;
             this.panelBorder2.Color = System.Drawing.Color.BurlyWood;
-            this.panelBorder2.Controls.Add(this.rjComboBox2);
+            this.panelBorder2.Controls.Add(this.cbSort);
             this.panelBorder2.Controls.Add(this.btnAddPatient);
             this.panelBorder2.Controls.Add(this.btnInactive);
             this.panelBorder2.Controls.Add(this.btnActive);
@@ -245,30 +245,31 @@
             this.panelBorder2.Size = new System.Drawing.Size(1129, 58);
             this.panelBorder2.TabIndex = 13;
             // 
-            // rjComboBox2
+            // cbSort
             // 
-            this.rjComboBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.rjComboBox2.BackColor = System.Drawing.Color.White;
-            this.rjComboBox2.BorderColor = System.Drawing.Color.Gray;
-            this.rjComboBox2.BorderSize = 1;
-            this.rjComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
-            this.rjComboBox2.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rjComboBox2.ForeColor = System.Drawing.Color.DimGray;
-            this.rjComboBox2.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.rjComboBox2.Items.AddRange(new object[] {
+            this.cbSort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbSort.BackColor = System.Drawing.Color.White;
+            this.cbSort.BorderColor = System.Drawing.Color.Gray;
+            this.cbSort.BorderSize = 1;
+            this.cbSort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
+            this.cbSort.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbSort.ForeColor = System.Drawing.Color.DimGray;
+            this.cbSort.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
+            this.cbSort.Items.AddRange(new object[] {
             "Default",
-            "Alphabetical",
-            "Earliest",
-            "Latest"});
-            this.rjComboBox2.ListBackColor = System.Drawing.Color.White;
-            this.rjComboBox2.ListTextColor = System.Drawing.Color.Black;
-            this.rjComboBox2.Location = new System.Drawing.Point(699, 5);
-            this.rjComboBox2.MinimumSize = new System.Drawing.Size(200, 30);
-            this.rjComboBox2.Name = "rjComboBox2";
-            this.rjComboBox2.Padding = new System.Windows.Forms.Padding(1);
-            this.rjComboBox2.Size = new System.Drawing.Size(263, 48);
-            this.rjComboBox2.TabIndex = 14;
-            this.rjComboBox2.Texts = "";
+            "Alphabetical (Name)",
+            "Earliest (Date Added)",
+            "Latest (Date Added)"});
+            this.cbSort.ListBackColor = System.Drawing.Color.White;
+            this.cbSort.ListTextColor = System.Drawing.Color.Black;
+            this.cbSort.Location = new System.Drawing.Point(719, 5);
+            this.cbSort.MinimumSize = new System.Drawing.Size(200, 30);
+            this.cbSort.Name = "cbSort";
+            this.cbSort.Padding = new System.Windows.Forms.Padding(1);
+            this.cbSort.Size = new System.Drawing.Size(243, 48);
+            this.cbSort.TabIndex = 14;
+            this.cbSort.Texts = "Default";
+            this.cbSort.OnSelectedIndexChanged += new System.EventHandler(this.cbSort_OnSelectedIndexChanged);
             // 
             // btnAddPatient
             // 
@@ -498,6 +499,6 @@
         private WindowsFormsApp2.CustomButton.PanelBorder panelBorder2;
         private System.Windows.Forms.Label lblHiddenForFocus;
         private OrganizationProfile.CustomButton btnSearch;
-        private CustomControls.RJControls.RJComboBox rjComboBox2;
+        private CustomControls.RJControls.RJComboBox cbSort;
     }
 }
