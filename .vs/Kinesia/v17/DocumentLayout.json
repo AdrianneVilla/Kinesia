@@ -3,7 +3,7 @@
   "WorkspaceRootPath": "E:\\C# Projects\\Kinesia\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2848B017-4DD2-4ABC-9A7B-AA6D69B597FE}|Kinesia\\Kinesia.csproj|E:\\C# Projects\\Kinesia\\kinesia\\patients\\patientscrud.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{2848B017-4DD2-4ABC-9A7B-AA6D69B597FE}|Kinesia\\Kinesia.csproj|e:\\c# projects\\kinesia\\kinesia\\patients\\patientscrud.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2848B017-4DD2-4ABC-9A7B-AA6D69B597FE}|Kinesia\\Kinesia.csproj|solutionrelative:kinesia\\patients\\patientscrud.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -19,7 +19,7 @@
       "RelativeMoniker": "D:0:0:{2848B017-4DD2-4ABC-9A7B-AA6D69B597FE}|Kinesia\\Kinesia.csproj|solutionrelative:kinesia\\patients\\patientspage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2848B017-4DD2-4ABC-9A7B-AA6D69B597FE}|Kinesia\\Kinesia.csproj|e:\\c# projects\\kinesia\\kinesia\\patients\\addpatient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{2848B017-4DD2-4ABC-9A7B-AA6D69B597FE}|Kinesia\\Kinesia.csproj|E:\\C# Projects\\Kinesia\\kinesia\\patients\\addpatient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2848B017-4DD2-4ABC-9A7B-AA6D69B597FE}|Kinesia\\Kinesia.csproj|solutionrelative:kinesia\\patients\\addpatient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -53,8 +53,7 @@
               "ToolTip": "E:\\C# Projects\\Kinesia\\Kinesia\\Patients\\PatientsPage.cs [Design]",
               "RelativeToolTip": "Kinesia\\Patients\\PatientsPage.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-16T05:28:29.874Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-07-16T05:28:29.874Z"
             },
             {
               "$type": "Document",
@@ -66,8 +65,7 @@
               "RelativeToolTip": "Kinesia\\Patients\\PatientDetails.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAwBoAAAByAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-24T05:49:39.51Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-24T05:49:39.51Z"
             },
             {
               "$type": "Document",
@@ -78,8 +76,7 @@
               "ToolTip": "E:\\C# Projects\\Kinesia\\Kinesia\\Patients\\PatientDetails.cs [Design]",
               "RelativeToolTip": "Kinesia\\Patients\\PatientDetails.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-18T03:29:23.551Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-07-18T03:29:23.551Z"
             },
             {
               "$type": "Document",
@@ -91,8 +88,7 @@
               "RelativeToolTip": "Kinesia\\Patients\\AddPatient.cs",
               "ViewState": "AgIAAHEAAAAAAAAAAAAUwJsAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-17T08:23:13.968Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-17T08:23:13.968Z"
             },
             {
               "$type": "Document",
@@ -103,8 +99,7 @@
               "ToolTip": "E:\\C# Projects\\Kinesia\\Kinesia\\Patients\\AddPatient.cs [Design]",
               "RelativeToolTip": "Kinesia\\Patients\\AddPatient.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-17T08:22:10.01Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-07-17T08:22:10.01Z"
             },
             {
               "$type": "Document",
@@ -114,7 +109,7 @@
               "RelativeDocumentMoniker": "Kinesia\\Patients\\PatientsCRUD.cs",
               "ToolTip": "E:\\C# Projects\\Kinesia\\Kinesia\\Patients\\PatientsCRUD.cs",
               "RelativeToolTip": "Kinesia\\Patients\\PatientsCRUD.cs",
-              "ViewState": "AgIAAGwAAAAAAAAAAAAuwIAAAAAwAAAAAAAAAA==",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAiwBUAAAA5AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-16T05:41:53.96Z",
               "EditorCaption": ""
