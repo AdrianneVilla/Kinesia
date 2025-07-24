@@ -440,6 +440,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Kinesia Images\tooltip.png" />
+    <None Include="Kinesia Images\Unarchive.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

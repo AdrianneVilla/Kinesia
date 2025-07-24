@@ -23,7 +23,7 @@ namespace Kinesia.Patients
 
         private void BtnView_Click(object sender, EventArgs e)
         {
-            Queries.PatientQueries.GetPatientDetails(BtnView.Tag.ToString());
+            Queries.PatientQueries.GetPatientDetails(txtPatientID.Text);
         }
 
         public string PatientID { get { return txtPatientID.Text; } set { txtPatientID.Text = value; } }
@@ -32,30 +32,47 @@ namespace Kinesia.Patients
         public string Gender { get { return txtGender.Text; } set { txtGender.Text = value; } } 
         public string Contact { get { return txtContact.Text; } set { txtContact.Text = value; } }
         public string Status { get { return txtStatus.Text; } set { txtStatus.Text = value; } }
-
-        public CustomButton BtnView { get { return btnView; } }
-        public CustomButton BtnEdit { get { return btnEdit; } }
         public CustomButton BtnArchive { get { return btnArchive; } }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
             DataHolder.PatientDataHolder = new PatientDataHolder();
-            Queries.PatientQueries.GetPatientDetails(btnEdit.Tag.ToString(), DataHolder.PatientDataHolder);
+            Queries.PatientQueries.GetPatientDetails(txtPatientID.Text, DataHolder.PatientDataHolder);
         }
 
         private void btnArchive_Click(object sender, EventArgs e)
         {
-            DialogResult archiveDiag = MessageBox.Show($"Are you sure you want to archive {btnArchive.Tag}?", "Archive Patient Notification", 
+            if(btnArchive.Tag.ToString() == "Archive")
+            {
+                // will show message box for Archiving patient
+                DialogResult archiveDiag = MessageBox.Show($"Are you sure you want to archive {btnArchive.Tag}?", "Archive Patient Notification",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
 
-            if(archiveDiag == DialogResult.Yes)
+                if (archiveDiag == DialogResult.Yes)
+                {
+                    Queries.PatientQueries.ArchivePatient(txtPatientID.Text);
+
+                    MessageBox.Show($"{btnArchive.Tag} has been successfully archived!", "Archive Patient Notification",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    Queries.PatientQueries.DisplayPatients("", PageObjects.patientsPage.CurrentTab, "Default");
+                }
+            } 
+            else
             {
-                Queries.PatientQueries.ArchivePatient(btnArchive.Tag.ToString());
+                // will show message box for Unarchiving patient
+                DialogResult archiveDiag = MessageBox.Show($"Are you sure you want to unarchive {btnArchive.Tag}?", "Unarchive Patient Notification",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
 
-                MessageBox.Show($"{btnArchive.Tag} has been successfully archived!", "Archive Patient Notification",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (archiveDiag == DialogResult.Yes)
+                {
+                    Queries.PatientQueries.UnarchivePatient(txtPatientID.Text);
 
-                Queries.PatientQueries.DisplayPatients("", PageObjects.patientsPage.CurrentTab, "Default");
+                    MessageBox.Show($"{btnArchive.Tag} has been successfully unarchived!", "Unarchive Patient Notification",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    Queries.PatientQueries.DisplayPatients("", PageObjects.patientsPage.CurrentTab, "Default");
+                }
             }
         }
     }

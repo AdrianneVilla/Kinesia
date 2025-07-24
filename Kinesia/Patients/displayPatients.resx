@@ -118,16 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="btnArchive.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DAAACwwBP0AiyAAAAN9JREFUSEvtktENgkAQRCnBEizBEoZLrEM7gU4sxRIuB/5TAiVoBuVybPZuBX55
-        ycbk9s2sH1TVwVo8cO7hfAf3XjkDs7JvAQWKSvjf4ZGT7I10cA+KAbUvigK6zHyP1E+5jyj/aNPI3ogU
-        t47sjZiCgZk3BQMzbwl796awd58VPHCR+xeu01tKLh/RhADX8i0At3nvgfvvt01dLb9AE3q4Zn6XE4Am
-        dbX8gpygHZHlJJePlIT0iFZOSvkJS+CRXDmx8rZgYOY7uHGWtk5APcjeCD8/CjK0YkZ+zrL3oMgHcDGy
-        PiCGc84AAAAASUVORK5CYII=
-</value>
-  </data>
   <data name="btnEdit.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -85,10 +86,15 @@ namespace Kinesia.Patients
             {
                 var displayPatientControl = new DisplayPatients(); // will create user control for every patient
 
-                // will set the tag of every button to patientID
-                displayPatientControl.BtnView.Tag = Connection.reader.GetString(0);
-                displayPatientControl.BtnEdit.Tag = Connection.reader.GetString(0);
-                displayPatientControl.BtnArchive.Tag = Connection.reader.GetString(0);
+                if(currentTab == "Inactive")
+                {
+                    displayPatientControl.BtnArchive.BackgroundImage = Properties.Resources.Unarchive;
+                    displayPatientControl.BtnArchive.Tag = "Unarchive";
+                }
+                else
+                {
+                    displayPatientControl.BtnArchive.Tag = "Archive";
+                }
 
                 // will set the data of every patient to the labels
                 displayPatientControl.PatientID = Connection.reader.GetString(0);
@@ -278,6 +284,17 @@ namespace Kinesia.Patients
             Connection.conn.Open();
 
             Connection.cmd = new MySqlCommand("UPDATE Patients SET Status = 0 WHERE PatientID = @patientID", Connection.conn);
+            Connection.cmd.Parameters.AddWithValue("@patientID", patientID);
+            Connection.cmd.ExecuteNonQuery();
+
+            Connection.conn.Close();
+        }
+
+        public void UnarchivePatient(string patientID)
+        {
+            Connection.conn.Open();
+
+            Connection.cmd = new MySqlCommand("UPDATE Patients SET Status = 1 WHERE PatientID = @patientID", Connection.conn);
             Connection.cmd.Parameters.AddWithValue("@patientID", patientID);
             Connection.cmd.ExecuteNonQuery();
 
