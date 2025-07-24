@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 03, 2025 at 02:42 PM
+-- Generation Time: Jul 24, 2025 at 08:34 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -37,16 +37,17 @@ CREATE TABLE `patients` (
   `Gender` varchar(10) NOT NULL,
   `Address` varchar(255) NOT NULL,
   `Occupation` varchar(50) NOT NULL,
-  `Status` int(11) NOT NULL
+  `Status` int(11) NOT NULL,
+  `DateAdded` datetime NOT NULL,
+  `LastArchiveDate` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `patients`
 --
 
-INSERT INTO `patients` (`PatientID`, `FirstName`, `LastName`, `MiddleName`, `Contact`, `Birthdate`, `Gender`, `Address`, `Occupation`, `Status`) VALUES
-('PATIENT1', 'Jc', 'Calayag', '', '+639285321382', '2002-05-29', 'Male', '108 Davao Street Bungahan', 'Student', 1),
-('PATIENT2', 'Mari Nicole', 'Medel', 'Relos', '+639555716841', '2002-11-26', 'Female', 'Sta. Clara', 'Student', 1);
+INSERT INTO `patients` (`PatientID`, `FirstName`, `LastName`, `MiddleName`, `Contact`, `Birthdate`, `Gender`, `Address`, `Occupation`, `Status`, `DateAdded`, `LastArchiveDate`) VALUES
+('PATIENT1', 'Jose Crisanto', 'Calayag', '', '+639285321382', '2005-07-24', 'Male', 'dsadsa', 'Student', 1, '2025-07-24 14:20:05', NULL);
 
 -- --------------------------------------------------------
 

@@ -22,6 +22,9 @@ namespace Kinesia.Patients
         public string SelectedPatient { get { return lblSelectedPatient.Text; } set { lblSelectedPatient.Text = value; } }
         public string PatientName { get {  return lblPatientName.Text; } set { lblPatientName.Text = value; } }
         public string PatientID { get { return lblPatientID.Text; } set { lblPatientID.Text = value; } }
+        public string Status { get { return lblStatus.Text; } set { lblStatus.Text = value; } }
+        public string DateAdded { get { return lblDateAdded.Text; } set { lblDateAdded.Text = value; } }
+        public string LastArchiveDate { get { return lblArchiveDate.Text; } set { lblArchiveDate.Text = value; } }
         public string Gender { get { return lblGender.Text; } set { lblGender.Text = value; } }
         public string Contact { get { return lblContact.Text; } set { lblContact.Text = value; } }
         public string Age { get { return lblAge.Text; } set { lblAge.Text = value; } }

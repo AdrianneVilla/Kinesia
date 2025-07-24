@@ -88,10 +88,11 @@ namespace Kinesia.Patients
 
         public void GetPatientDetails(string patientID)
         {
+            // GetPatientDetails overload for Patient Details page
             Connection.conn.Open();
 
-            Connection.cmd = new MySqlCommand("SELECT PatientID, FirstName, MiddleName, LastName, Gender, Contact, TIMESTAMPDIFF(MONTH, Birthdate, CURDATE()) AS Age, Address, Birthdate " +
-                "FROM Patients WHERE PatientID = @patientID", Connection.conn);
+            Connection.cmd = new MySqlCommand("SELECT PatientID, FirstName, MiddleName, LastName, Gender, Contact, TIMESTAMPDIFF(MONTH, Birthdate, CURDATE()) AS Age, Address, Birthdate, " +
+                "Status, DateAdded, LastArchiveDate FROM Patients WHERE PatientID = @patientID", Connection.conn);
             Connection.cmd.Parameters.AddWithValue("@patientID", patientID);
             Connection.reader = Connection.cmd.ExecuteReader();
 
@@ -109,9 +110,33 @@ namespace Kinesia.Patients
                 PageObjects.patientDetails.Address = Connection.reader.GetString(7);
                 DateTime birthDate = Connection.reader.GetDateTime(8);
                 PageObjects.patientDetails.Birthdate = birthDate.ToString("yyyy-MM-dd");
+                
+                // 1 = Active
+                // 0 = Inactive
+                if(Connection.reader.GetInt64(9) == 1)
+                {
+                    PageObjects.patientDetails.Status = "Active";
+                } 
+                else
+                {
+                    PageObjects.patientDetails.Status = "Inactive";
+                }
 
-                // will only display Patient Details if fetched successfully by the system
-                PageObjects.RemoveResources(ref PageObjects.CurrentControl);
+                DateTime dateAdded = Connection.reader.GetDateTime(10);
+                PageObjects.patientDetails.DateAdded = dateAdded.ToString();
+
+                // Null = Data has not been archived even once
+                if(Connection.reader.IsDBNull(11))
+                {
+                    PageObjects.patientDetails.LastArchiveDate = "N/A";
+                } 
+                else
+                {
+                    DateTime lastArchiveDate = Connection.reader.GetDateTime(11);
+                    PageObjects.patientDetails.LastArchiveDate = lastArchiveDate.ToString();
+                }
+                    // will only display Patient Details if fetched successfully by the system
+                    PageObjects.RemoveResources(ref PageObjects.CurrentControl);
                 PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.patientDetails);
                 PageObjects.CurrentControl = PageObjects.patientDetails;
             }
@@ -126,6 +151,7 @@ namespace Kinesia.Patients
         
         public void GetPatientDetails(string patientID, PatientDataHolder patientData)
         {
+            // GetPatientDetails overload for Edit Patient page
             Connection.conn.Open();
 
             Connection.cmd = new MySqlCommand("SELECT FirstName, LastName, MiddleName, BirthDate, TIMESTAMPDIFF(MONTH, BirthDate, CURDATE()), Gender, Contact, Occupation, Address " +
@@ -169,7 +195,7 @@ namespace Kinesia.Patients
         {
             Connection.conn.Open();
 
-            Connection.cmd = new MySqlCommand("INSERT INTO Patients VALUES (@patientID, @firstName, @lastName, @middleName, @contact, @birthdate, @gender, @address, @occupation, @status)", Connection.conn);
+            Connection.cmd = new MySqlCommand("INSERT INTO Patients VALUES (@patientID, @firstName, @lastName, @middleName, @contact, @birthdate, @gender, @address, @occupation, @status, @dateAdded, @lastArchiveDate)", Connection.conn);
             Connection.cmd.Parameters.AddWithValue("@patientID", patientData.PatientID);
             Connection.cmd.Parameters.AddWithValue("@firstname", patientData.FirstName);
             Connection.cmd.Parameters.AddWithValue("@lastName", patientData.LastName);
@@ -187,6 +213,8 @@ namespace Kinesia.Patients
             Connection.cmd.Parameters.AddWithValue("@address", patientData.Address);
             Connection.cmd.Parameters.AddWithValue("@occupation", patientData.Occupation);
             Connection.cmd.Parameters.AddWithValue("@status", 1);
+            Connection.cmd.Parameters.AddWithValue("@dateAdded", DateTime.Now);
+            Connection.cmd.Parameters.AddWithValue("@lastArchiveDate", null);
             Connection.cmd.ExecuteNonQuery();
 
             Connection.conn.Close();
