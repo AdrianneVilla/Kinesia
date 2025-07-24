@@ -145,12 +145,12 @@ namespace Kinesia.Patients
                     Queries.PatientQueries.IsAgeValid(DataHolder.PatientDataHolder) && Queries.PatientQueries.IsContactValid(DataHolder.PatientDataHolder))
                 {
                     // will continue to add the patient if PatientDataHolder passed the data validations
-                    Queries.PatientQueries.GetPatientIDCount();
+                    Queries.PatientQueries.SetPatientID(DataHolder.PatientDataHolder);
                     Queries.PatientQueries.AddPatient(DataHolder.PatientDataHolder);
 
                     clearAllInputs();
-                    DataHolder.PatientDataHolder = null;
                     MessageBox.Show("Patient added successfully!", "Add Patient Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Queries.PatientQueries.GetPatientDetails(DataHolder.PatientDataHolder.PatientID); // will redirect to Patient Details page
                 } 
                 else
                 {

@@ -10,7 +10,6 @@ namespace Kinesia.Patients
 {
     public class PatientsCRUD
     {
-        private int patientIDCount;
         public void DisplayPatients(string searchData, string currentTab)
         {
             PageObjects.patientsPage.getPatientHolder.Controls.Clear();
@@ -158,11 +157,11 @@ namespace Kinesia.Patients
             Connection.conn.Close();
         }
         
-        public void GetPatientIDCount()
+        public void SetPatientID(PatientDataHolder patientData)
         {
             Connection.conn.Open();
             Connection.cmd = new MySqlCommand("SELECT COUNT(PatientID) FROM Patients", Connection.conn);
-            patientIDCount = Convert.ToInt32(Connection.cmd.ExecuteScalar());
+            patientData.PatientID = $"PATIENT{Convert.ToInt32(Connection.cmd.ExecuteScalar()) + 1}";
             Connection.conn.Close();
         }
 
@@ -171,7 +170,7 @@ namespace Kinesia.Patients
             Connection.conn.Open();
 
             Connection.cmd = new MySqlCommand("INSERT INTO Patients VALUES (@patientID, @firstName, @lastName, @middleName, @contact, @birthdate, @gender, @address, @occupation, @status)", Connection.conn);
-            Connection.cmd.Parameters.AddWithValue("@patientID", $"PATIENT{patientIDCount + 1}");
+            Connection.cmd.Parameters.AddWithValue("@patientID", patientData.PatientID);
             Connection.cmd.Parameters.AddWithValue("@firstname", patientData.FirstName);
             Connection.cmd.Parameters.AddWithValue("@lastName", patientData.LastName);
             Connection.cmd.Parameters.AddWithValue("@middleName", patientData.MiddleName);

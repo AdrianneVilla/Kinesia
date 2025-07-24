@@ -257,10 +257,9 @@
             this.rjComboBox2.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
             this.rjComboBox2.Items.AddRange(new object[] {
             "Default",
-            "A-Z (Name)",
-            "Z-A (Name)",
-            "Earliest-Latest",
-            "Latest-Earliest"});
+            "Alphabetical",
+            "Earliest",
+            "Latest"});
             this.rjComboBox2.ListBackColor = System.Drawing.Color.White;
             this.rjComboBox2.ListTextColor = System.Drawing.Color.Black;
             this.rjComboBox2.Location = new System.Drawing.Point(699, 5);

@@ -40,5 +40,6 @@ namespace Kinesia.Patients
             PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.patientsPage);
             PageObjects.CurrentControl = PageObjects.patientsPage;
         }
+
     }
 }
