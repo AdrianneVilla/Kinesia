@@ -312,8 +312,6 @@ namespace Kinesia
                     "Please fill-out all fields to login.", "Login Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
             } else
             {
-                Console.WriteLine(username);
-                Console.WriteLine(password);
                 Connection.conn.Open();
 
                 Connection.cmd = new MySqlCommand("SELECT * FROM Users WHERE Username = @username AND Password = @password", Connection.conn);

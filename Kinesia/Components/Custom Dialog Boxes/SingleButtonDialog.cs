@@ -15,6 +15,11 @@ namespace Kinesia.Components.Custom_Dialog_Boxes
         public SingleButtonDialog()
         {
             InitializeComponent();
+            this.Controls.Add(this);
         }
+
+        public string Title { get { return lblTitle.Text; } set { lblTitle.Text = value; } }
+        public string Description { get { return lblDescription.Text; } set { lblDescription.Text = value; } }
+        public PictureBox DialogIcon { get { return imgDialogIcon; } set { imgDialogIcon = value; } }
     }
 }

@@ -16,5 +16,9 @@ namespace Kinesia.Components.Custom_Dialog_Boxes
         {
             InitializeComponent();
         }
+
+        public string Title { get { return lblTitle.Text; } set { lblTitle.Text = value; } }
+        public string Description { get { return lblDescription.Text; } set { lblDescription.Text = value; } }
+        public Image DialogIcon { get { return imgDialogIcon.Image; } set { imgDialogIcon.Image = value; } }
     }
 }

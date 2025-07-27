@@ -12,6 +12,8 @@ using Kinesia.Users;
 using System.Text.RegularExpressions;
 using WindowsFormsApp2.CustomButton;
 using Kinesia.Assessment;
+using Kinesia.Components.Custom_Dialog_Boxes;
+using System.Drawing;
 
 namespace Kinesia
 {
@@ -62,6 +64,21 @@ namespace Kinesia
             }
             panelHolder.Controls.Clear();
         }
+    }
+    
+    public enum CustomDialogButtons
+    {
+        OK, // 0
+        YesNo // 1
+    }
+
+    public enum CustomDialogIcons
+    {
+        None, // 0
+        Question, // 1
+        Information, // 2
+        Error, // 3
+        Warning // 4
     }
 
     public class DataHolder

@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.panelBorder1 = new WindowsFormsApp2.CustomButton.PanelBorder();
-            this.customButton1 = new OrganizationProfile.CustomButton();
+            this.btnOK = new OrganizationProfile.CustomButton();
             this.lblDescription = new System.Windows.Forms.Label();
             this.dialogHeader = new WindowsFormsApp2.CustomButton.PanelBorder();
-            this.lblDialogTitle = new System.Windows.Forms.Label();
+            this.lblTitle = new System.Windows.Forms.Label();
             this.imgDialogIcon = new System.Windows.Forms.PictureBox();
             this.panelBorder1.SuspendLayout();
             this.dialogHeader.SuspendLayout();
@@ -44,7 +44,7 @@
             this.panelBorder1.BackColor = System.Drawing.Color.White;
             this.panelBorder1.BorderRadius = 30;
             this.panelBorder1.Color = System.Drawing.Color.BurlyWood;
-            this.panelBorder1.Controls.Add(this.customButton1);
+            this.panelBorder1.Controls.Add(this.btnOK);
             this.panelBorder1.Controls.Add(this.lblDescription);
             this.panelBorder1.Controls.Add(this.dialogHeader);
             this.panelBorder1.ForeColor = System.Drawing.Color.Black;
@@ -53,25 +53,26 @@
             this.panelBorder1.Size = new System.Drawing.Size(500, 247);
             this.panelBorder1.TabIndex = 1;
             // 
-            // customButton1
+            // btnOK
             // 
-            this.customButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.customButton1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.customButton1.BorderColor = System.Drawing.Color.White;
-            this.customButton1.BorderRadius = 10;
-            this.customButton1.BorderSize = 0;
-            this.customButton1.FlatAppearance.BorderSize = 0;
-            this.customButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.customButton1.Font = new System.Drawing.Font("Poppins", 8.25F, System.Drawing.FontStyle.Bold);
-            this.customButton1.ForeColor = System.Drawing.Color.Transparent;
-            this.customButton1.Location = new System.Drawing.Point(189, 190);
-            this.customButton1.Name = "customButton1";
-            this.customButton1.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
-            this.customButton1.Size = new System.Drawing.Size(118, 40);
-            this.customButton1.TabIndex = 2;
-            this.customButton1.Text = "Continue";
-            this.customButton1.TextColor = System.Drawing.Color.Transparent;
-            this.customButton1.UseVisualStyleBackColor = false;
+            this.btnOK.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
+            this.btnOK.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
+            this.btnOK.BorderColor = System.Drawing.Color.White;
+            this.btnOK.BorderRadius = 10;
+            this.btnOK.BorderSize = 0;
+            this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnOK.FlatAppearance.BorderSize = 0;
+            this.btnOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOK.Font = new System.Drawing.Font("Poppins", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnOK.ForeColor = System.Drawing.Color.Transparent;
+            this.btnOK.Location = new System.Drawing.Point(189, 190);
+            this.btnOK.Name = "btnOK";
+            this.btnOK.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
+            this.btnOK.Size = new System.Drawing.Size(118, 40);
+            this.btnOK.TabIndex = 2;
+            this.btnOK.Text = "OK";
+            this.btnOK.TextColor = System.Drawing.Color.Transparent;
+            this.btnOK.UseVisualStyleBackColor = false;
             // 
             // lblDescription
             // 
@@ -90,7 +91,7 @@
             this.dialogHeader.BackColor = System.Drawing.Color.White;
             this.dialogHeader.BorderRadius = 0;
             this.dialogHeader.Color = System.Drawing.Color.BurlyWood;
-            this.dialogHeader.Controls.Add(this.lblDialogTitle);
+            this.dialogHeader.Controls.Add(this.lblTitle);
             this.dialogHeader.Controls.Add(this.imgDialogIcon);
             this.dialogHeader.ForeColor = System.Drawing.Color.Black;
             this.dialogHeader.Location = new System.Drawing.Point(-16, 0);
@@ -98,15 +99,15 @@
             this.dialogHeader.Size = new System.Drawing.Size(533, 60);
             this.dialogHeader.TabIndex = 0;
             // 
-            // lblDialogTitle
+            // lblTitle
             // 
-            this.lblDialogTitle.AutoSize = true;
-            this.lblDialogTitle.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDialogTitle.Location = new System.Drawing.Point(90, 22);
-            this.lblDialogTitle.Name = "lblDialogTitle";
-            this.lblDialogTitle.Size = new System.Drawing.Size(69, 22);
-            this.lblDialogTitle.TabIndex = 1;
-            this.lblDialogTitle.Text = "title label";
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Location = new System.Drawing.Point(90, 22);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(69, 22);
+            this.lblTitle.TabIndex = 1;
+            this.lblTitle.Text = "title label";
             // 
             // imgDialogIcon
             // 
@@ -137,10 +138,10 @@
         #endregion
 
         private WindowsFormsApp2.CustomButton.PanelBorder panelBorder1;
-        private OrganizationProfile.CustomButton customButton1;
+        private OrganizationProfile.CustomButton btnOK;
         private System.Windows.Forms.Label lblDescription;
         private WindowsFormsApp2.CustomButton.PanelBorder dialogHeader;
-        private System.Windows.Forms.Label lblDialogTitle;
+        private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.PictureBox imgDialogIcon;
     }
 }

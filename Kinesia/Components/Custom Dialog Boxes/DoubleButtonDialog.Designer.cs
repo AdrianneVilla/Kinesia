@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.panelBorder1 = new WindowsFormsApp2.CustomButton.PanelBorder();
-            this.dialogHeader = new WindowsFormsApp2.CustomButton.PanelBorder();
-            this.lblDialogTitle = new System.Windows.Forms.Label();
-            this.customButton1 = new OrganizationProfile.CustomButton();
-            this.customButton2 = new OrganizationProfile.CustomButton();
-            this.imgDialogIcon = new System.Windows.Forms.PictureBox();
             this.lblDescription = new System.Windows.Forms.Label();
+            this.btnNo = new OrganizationProfile.CustomButton();
+            this.btnYes = new OrganizationProfile.CustomButton();
+            this.dialogHeader = new WindowsFormsApp2.CustomButton.PanelBorder();
+            this.lblTitle = new System.Windows.Forms.Label();
+            this.imgDialogIcon = new System.Windows.Forms.PictureBox();
             this.panelBorder1.SuspendLayout();
             this.dialogHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgDialogIcon)).BeginInit();
@@ -46,87 +46,14 @@
             this.panelBorder1.BorderRadius = 30;
             this.panelBorder1.Color = System.Drawing.Color.BurlyWood;
             this.panelBorder1.Controls.Add(this.lblDescription);
-            this.panelBorder1.Controls.Add(this.customButton2);
-            this.panelBorder1.Controls.Add(this.customButton1);
+            this.panelBorder1.Controls.Add(this.btnNo);
+            this.panelBorder1.Controls.Add(this.btnYes);
             this.panelBorder1.Controls.Add(this.dialogHeader);
             this.panelBorder1.ForeColor = System.Drawing.Color.Black;
             this.panelBorder1.Location = new System.Drawing.Point(22, 3);
             this.panelBorder1.Name = "panelBorder1";
             this.panelBorder1.Size = new System.Drawing.Size(500, 247);
             this.panelBorder1.TabIndex = 0;
-            // 
-            // dialogHeader
-            // 
-            this.dialogHeader.BackColor = System.Drawing.Color.White;
-            this.dialogHeader.BorderRadius = 0;
-            this.dialogHeader.Color = System.Drawing.Color.BurlyWood;
-            this.dialogHeader.Controls.Add(this.lblDialogTitle);
-            this.dialogHeader.Controls.Add(this.imgDialogIcon);
-            this.dialogHeader.ForeColor = System.Drawing.Color.Black;
-            this.dialogHeader.Location = new System.Drawing.Point(-16, 0);
-            this.dialogHeader.Name = "dialogHeader";
-            this.dialogHeader.Size = new System.Drawing.Size(533, 60);
-            this.dialogHeader.TabIndex = 0;
-            // 
-            // lblDialogTitle
-            // 
-            this.lblDialogTitle.AutoSize = true;
-            this.lblDialogTitle.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDialogTitle.Location = new System.Drawing.Point(90, 22);
-            this.lblDialogTitle.Name = "lblDialogTitle";
-            this.lblDialogTitle.Size = new System.Drawing.Size(69, 22);
-            this.lblDialogTitle.TabIndex = 1;
-            this.lblDialogTitle.Text = "title label";
-            // 
-            // customButton1
-            // 
-            this.customButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.customButton1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.customButton1.BorderColor = System.Drawing.Color.White;
-            this.customButton1.BorderRadius = 10;
-            this.customButton1.BorderSize = 0;
-            this.customButton1.FlatAppearance.BorderSize = 0;
-            this.customButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.customButton1.Font = new System.Drawing.Font("Poppins", 8.25F, System.Drawing.FontStyle.Bold);
-            this.customButton1.ForeColor = System.Drawing.Color.Transparent;
-            this.customButton1.Location = new System.Drawing.Point(93, 194);
-            this.customButton1.Name = "customButton1";
-            this.customButton1.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
-            this.customButton1.Size = new System.Drawing.Size(118, 40);
-            this.customButton1.TabIndex = 2;
-            this.customButton1.Text = "customButton1";
-            this.customButton1.TextColor = System.Drawing.Color.Transparent;
-            this.customButton1.UseVisualStyleBackColor = false;
-            // 
-            // customButton2
-            // 
-            this.customButton2.BackColor = System.Drawing.Color.Silver;
-            this.customButton2.BackgroundColor = System.Drawing.Color.Silver;
-            this.customButton2.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.customButton2.BorderRadius = 10;
-            this.customButton2.BorderSize = 0;
-            this.customButton2.FlatAppearance.BorderSize = 0;
-            this.customButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.customButton2.Font = new System.Drawing.Font("Poppins", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customButton2.ForeColor = System.Drawing.Color.Black;
-            this.customButton2.Location = new System.Drawing.Point(292, 194);
-            this.customButton2.Name = "customButton2";
-            this.customButton2.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
-            this.customButton2.Size = new System.Drawing.Size(118, 40);
-            this.customButton2.TabIndex = 3;
-            this.customButton2.Text = "Cancel";
-            this.customButton2.TextColor = System.Drawing.Color.Black;
-            this.customButton2.UseVisualStyleBackColor = false;
-            // 
-            // imgDialogIcon
-            // 
-            this.imgDialogIcon.Image = global::Kinesia.Properties.Resources.warning_icon;
-            this.imgDialogIcon.Location = new System.Drawing.Point(30, 3);
-            this.imgDialogIcon.Name = "imgDialogIcon";
-            this.imgDialogIcon.Size = new System.Drawing.Size(54, 54);
-            this.imgDialogIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.imgDialogIcon.TabIndex = 0;
-            this.imgDialogIcon.TabStop = false;
             // 
             // lblDescription
             // 
@@ -139,6 +66,81 @@
             this.lblDescription.TabIndex = 4;
             this.lblDescription.Text = "Description Holder";
             this.lblDescription.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnNo
+            // 
+            this.btnNo.BackColor = System.Drawing.Color.Silver;
+            this.btnNo.BackgroundColor = System.Drawing.Color.Silver;
+            this.btnNo.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnNo.BorderRadius = 10;
+            this.btnNo.BorderSize = 0;
+            this.btnNo.DialogResult = System.Windows.Forms.DialogResult.No;
+            this.btnNo.FlatAppearance.BorderSize = 0;
+            this.btnNo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNo.Font = new System.Drawing.Font("Poppins", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNo.ForeColor = System.Drawing.Color.Black;
+            this.btnNo.Location = new System.Drawing.Point(292, 194);
+            this.btnNo.Name = "btnNo";
+            this.btnNo.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
+            this.btnNo.Size = new System.Drawing.Size(118, 40);
+            this.btnNo.TabIndex = 3;
+            this.btnNo.Text = "No";
+            this.btnNo.TextColor = System.Drawing.Color.Black;
+            this.btnNo.UseVisualStyleBackColor = false;
+            // 
+            // btnYes
+            // 
+            this.btnYes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
+            this.btnYes.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
+            this.btnYes.BorderColor = System.Drawing.Color.White;
+            this.btnYes.BorderRadius = 10;
+            this.btnYes.BorderSize = 0;
+            this.btnYes.DialogResult = System.Windows.Forms.DialogResult.Yes;
+            this.btnYes.FlatAppearance.BorderSize = 0;
+            this.btnYes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnYes.Font = new System.Drawing.Font("Poppins", 8.25F, System.Drawing.FontStyle.Bold);
+            this.btnYes.ForeColor = System.Drawing.Color.Transparent;
+            this.btnYes.Location = new System.Drawing.Point(93, 194);
+            this.btnYes.Name = "btnYes";
+            this.btnYes.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
+            this.btnYes.Size = new System.Drawing.Size(118, 40);
+            this.btnYes.TabIndex = 2;
+            this.btnYes.Text = "Yes";
+            this.btnYes.TextColor = System.Drawing.Color.Transparent;
+            this.btnYes.UseVisualStyleBackColor = false;
+            // 
+            // dialogHeader
+            // 
+            this.dialogHeader.BackColor = System.Drawing.Color.White;
+            this.dialogHeader.BorderRadius = 0;
+            this.dialogHeader.Color = System.Drawing.Color.BurlyWood;
+            this.dialogHeader.Controls.Add(this.lblTitle);
+            this.dialogHeader.Controls.Add(this.imgDialogIcon);
+            this.dialogHeader.ForeColor = System.Drawing.Color.Black;
+            this.dialogHeader.Location = new System.Drawing.Point(-16, 0);
+            this.dialogHeader.Name = "dialogHeader";
+            this.dialogHeader.Size = new System.Drawing.Size(533, 60);
+            this.dialogHeader.TabIndex = 0;
+            // 
+            // lblTitle
+            // 
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Location = new System.Drawing.Point(90, 22);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(69, 22);
+            this.lblTitle.TabIndex = 1;
+            this.lblTitle.Text = "title label";
+            // 
+            // imgDialogIcon
+            // 
+            this.imgDialogIcon.Image = global::Kinesia.Properties.Resources.warning_icon;
+            this.imgDialogIcon.Location = new System.Drawing.Point(30, 3);
+            this.imgDialogIcon.Name = "imgDialogIcon";
+            this.imgDialogIcon.Size = new System.Drawing.Size(54, 54);
+            this.imgDialogIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imgDialogIcon.TabIndex = 0;
+            this.imgDialogIcon.TabStop = false;
             // 
             // DoubleButtonDialog
             // 
@@ -161,9 +163,9 @@
         private WindowsFormsApp2.CustomButton.PanelBorder panelBorder1;
         private WindowsFormsApp2.CustomButton.PanelBorder dialogHeader;
         private System.Windows.Forms.PictureBox imgDialogIcon;
-        private OrganizationProfile.CustomButton customButton2;
-        private OrganizationProfile.CustomButton customButton1;
-        private System.Windows.Forms.Label lblDialogTitle;
+        private OrganizationProfile.CustomButton btnNo;
+        private OrganizationProfile.CustomButton btnYes;
+        private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Label lblDescription;
     }
 }
