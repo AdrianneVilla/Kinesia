@@ -103,6 +103,16 @@ namespace Kinesia.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap blue_information_icon {
+            get {
+                object obj = ResourceManager.GetObject("blue-information-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap btn_back {
             get {
                 object obj = ResourceManager.GetObject("btn-back", resourceCulture);
@@ -416,6 +426,16 @@ namespace Kinesia.Properties {
         internal static System.Drawing.Bitmap warning_icon {
             get {
                 object obj = ResourceManager.GetObject("warning-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap yellow_triangle_warning_icon {
+            get {
+                object obj = ResourceManager.GetObject("yellow-triangle-warning-icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -60,10 +60,20 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtUsername = new CustomControls.RJControls.RJTextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            this.label10 = new System.Windows.Forms.Label();
+            this.lblArchiveDate = new System.Windows.Forms.Label();
+            this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
+            this.label11 = new System.Windows.Forms.Label();
+            this.lblDateAdded = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.panelBorder1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.panelBorder2.SuspendLayout();
+            this.flowLayoutPanel3.SuspendLayout();
+            this.flowLayoutPanel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblBirthdate
@@ -299,6 +309,8 @@
             this.panelBorder1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panelBorder1.BorderRadius = 30;
             this.panelBorder1.Color = System.Drawing.Color.BurlyWood;
+            this.panelBorder1.Controls.Add(this.label12);
+            this.panelBorder1.Controls.Add(this.label13);
             this.panelBorder1.Controls.Add(this.lblBirthdate);
             this.panelBorder1.Controls.Add(this.lblAddress);
             this.panelBorder1.Controls.Add(this.lblAge);
@@ -311,19 +323,19 @@
             this.panelBorder1.Controls.Add(this.label19);
             this.panelBorder1.Controls.Add(this.label5);
             this.panelBorder1.ForeColor = System.Drawing.Color.Black;
-            this.panelBorder1.Location = new System.Drawing.Point(62, 244);
+            this.panelBorder1.Location = new System.Drawing.Point(62, 273);
             this.panelBorder1.Name = "panelBorder1";
-            this.panelBorder1.Size = new System.Drawing.Size(1098, 146);
+            this.panelBorder1.Size = new System.Drawing.Size(1098, 173);
             this.panelBorder1.TabIndex = 35;
             // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.label3);
             this.flowLayoutPanel1.Controls.Add(this.lblUserID);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(67, 150);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(67, 163);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(442, 29);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(442, 26);
             this.flowLayoutPanel1.TabIndex = 33;
             // 
             // lblName
@@ -402,10 +414,10 @@
             // 
             this.flowLayoutPanel2.Controls.Add(this.label1);
             this.flowLayoutPanel2.Controls.Add(this.lblRole);
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(67, 185);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(67, 195);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(442, 29);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(442, 25);
             this.flowLayoutPanel2.TabIndex = 41;
             // 
             // label1
@@ -447,7 +459,7 @@
             this.panelBorder2.Controls.Add(this.label2);
             this.panelBorder2.Controls.Add(this.label17);
             this.panelBorder2.ForeColor = System.Drawing.Color.Black;
-            this.panelBorder2.Location = new System.Drawing.Point(62, 431);
+            this.panelBorder2.Location = new System.Drawing.Point(62, 477);
             this.panelBorder2.Name = "panelBorder2";
             this.panelBorder2.Size = new System.Drawing.Size(1098, 146);
             this.panelBorder2.TabIndex = 42;
@@ -547,11 +559,103 @@
             this.label2.TabIndex = 24;
             this.label2.Text = "Username";
             // 
+            // flowLayoutPanel3
+            // 
+            this.flowLayoutPanel3.Controls.Add(this.label10);
+            this.flowLayoutPanel3.Controls.Add(this.lblArchiveDate);
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(556, 195);
+            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+            this.flowLayoutPanel3.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(442, 26);
+            this.flowLayoutPanel3.TabIndex = 44;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.Gray;
+            this.label10.Location = new System.Drawing.Point(3, 3);
+            this.label10.Name = "label10";
+            this.label10.Padding = new System.Windows.Forms.Padding(0, 0, 20, 0);
+            this.label10.Size = new System.Drawing.Size(145, 22);
+            this.label10.TabIndex = 0;
+            this.label10.Text = "Last Date of Archive";
+            // 
+            // lblArchiveDate
+            // 
+            this.lblArchiveDate.AutoSize = true;
+            this.lblArchiveDate.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblArchiveDate.ForeColor = System.Drawing.Color.Black;
+            this.lblArchiveDate.Location = new System.Drawing.Point(154, 3);
+            this.lblArchiveDate.Name = "lblArchiveDate";
+            this.lblArchiveDate.Size = new System.Drawing.Size(116, 22);
+            this.lblArchiveDate.TabIndex = 1;
+            this.lblArchiveDate.Text = "<date of archive>";
+            // 
+            // flowLayoutPanel4
+            // 
+            this.flowLayoutPanel4.Controls.Add(this.label11);
+            this.flowLayoutPanel4.Controls.Add(this.lblDateAdded);
+            this.flowLayoutPanel4.Location = new System.Drawing.Point(556, 163);
+            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
+            this.flowLayoutPanel4.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
+            this.flowLayoutPanel4.Size = new System.Drawing.Size(442, 26);
+            this.flowLayoutPanel4.TabIndex = 43;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.Gray;
+            this.label11.Location = new System.Drawing.Point(3, 3);
+            this.label11.Name = "label11";
+            this.label11.Padding = new System.Windows.Forms.Padding(0, 0, 20, 0);
+            this.label11.Size = new System.Drawing.Size(99, 22);
+            this.label11.TabIndex = 0;
+            this.label11.Text = "Date Added";
+            // 
+            // lblDateAdded
+            // 
+            this.lblDateAdded.AutoSize = true;
+            this.lblDateAdded.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDateAdded.ForeColor = System.Drawing.Color.Black;
+            this.lblDateAdded.Location = new System.Drawing.Point(108, 3);
+            this.lblDateAdded.Name = "lblDateAdded";
+            this.lblDateAdded.Size = new System.Drawing.Size(93, 22);
+            this.lblDateAdded.TabIndex = 1;
+            this.lblDateAdded.Text = "<date added>";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.Black;
+            this.label12.Location = new System.Drawing.Point(150, 135);
+            this.label12.Name = "label12";
+            this.label12.Padding = new System.Windows.Forms.Padding(0, 0, 52, 0);
+            this.label12.Size = new System.Drawing.Size(164, 22);
+            this.label12.TabIndex = 25;
+            this.label12.Text = "<Email Address>";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.Gray;
+            this.label13.Location = new System.Drawing.Point(18, 135);
+            this.label13.Name = "label13";
+            this.label13.Padding = new System.Windows.Forms.Padding(0, 0, 52, 0);
+            this.label13.Size = new System.Drawing.Size(144, 22);
+            this.label13.TabIndex = 24;
+            this.label13.Text = "Email Address";
+            // 
             // UserDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.flowLayoutPanel3);
+            this.Controls.Add(this.flowLayoutPanel4);
             this.Controls.Add(this.panelBorder2);
             this.Controls.Add(this.flowLayoutPanel2);
             this.Controls.Add(this.btnArchiveUser);
@@ -572,6 +676,10 @@
             this.flowLayoutPanel2.PerformLayout();
             this.panelBorder2.ResumeLayout(false);
             this.panelBorder2.PerformLayout();
+            this.flowLayoutPanel3.ResumeLayout(false);
+            this.flowLayoutPanel3.PerformLayout();
+            this.flowLayoutPanel4.ResumeLayout(false);
+            this.flowLayoutPanel4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -610,5 +718,13 @@
         private OrganizationProfile.CustomButton btnEditAccount;
         private CustomControls.RJControls.RJTextBox txtPassword;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label lblArchiveDate;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label lblDateAdded;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
     }
 }

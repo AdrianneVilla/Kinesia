@@ -1,9 +1,33 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "E:\\C# Projects\\Kinesia\\",
+  "WorkspaceRootPath": "D:\\git\\Kinesia\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2848B017-4DD2-4ABC-9A7B-AA6D69B597FE}|Kinesia\\Kinesia.csproj|e:\\c# projects\\kinesia\\kinesia\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{2848B017-4DD2-4ABC-9A7B-AA6D69B597FE}|Kinesia\\Kinesia.csproj|d:\\git\\kinesia\\kinesia\\components\\custom dialog boxes\\doublebtndialog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{2848B017-4DD2-4ABC-9A7B-AA6D69B597FE}|Kinesia\\Kinesia.csproj|solutionrelative:kinesia\\components\\custom dialog boxes\\doublebtndialog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2848B017-4DD2-4ABC-9A7B-AA6D69B597FE}|Kinesia\\Kinesia.csproj|d:\\git\\kinesia\\kinesia\\components\\custom dialog boxes\\singlebtndialog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{2848B017-4DD2-4ABC-9A7B-AA6D69B597FE}|Kinesia\\Kinesia.csproj|solutionrelative:kinesia\\components\\custom dialog boxes\\singlebtndialog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2848B017-4DD2-4ABC-9A7B-AA6D69B597FE}|Kinesia\\Kinesia.csproj|D:\\git\\Kinesia\\kinesia\\users\\edituser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{2848B017-4DD2-4ABC-9A7B-AA6D69B597FE}|Kinesia\\Kinesia.csproj|solutionrelative:kinesia\\users\\edituser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2848B017-4DD2-4ABC-9A7B-AA6D69B597FE}|Kinesia\\Kinesia.csproj|D:\\git\\Kinesia\\kinesia\\users\\adduser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{2848B017-4DD2-4ABC-9A7B-AA6D69B597FE}|Kinesia\\Kinesia.csproj|solutionrelative:kinesia\\users\\adduser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2848B017-4DD2-4ABC-9A7B-AA6D69B597FE}|Kinesia\\Kinesia.csproj|D:\\git\\Kinesia\\kinesia\\users\\userdetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{2848B017-4DD2-4ABC-9A7B-AA6D69B597FE}|Kinesia\\Kinesia.csproj|solutionrelative:kinesia\\users\\userdetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2848B017-4DD2-4ABC-9A7B-AA6D69B597FE}|Kinesia\\Kinesia.csproj|D:\\git\\Kinesia\\kinesia\\users\\userpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{2848B017-4DD2-4ABC-9A7B-AA6D69B597FE}|Kinesia\\Kinesia.csproj|solutionrelative:kinesia\\users\\userpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2848B017-4DD2-4ABC-9A7B-AA6D69B597FE}|Kinesia\\Kinesia.csproj|D:\\git\\Kinesia\\kinesia\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2848B017-4DD2-4ABC-9A7B-AA6D69B597FE}|Kinesia\\Kinesia.csproj|solutionrelative:kinesia\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -27,15 +51,82 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "E:\\C# Projects\\Kinesia\\Kinesia\\Program.cs",
-              "RelativeDocumentMoniker": "Kinesia\\Program.cs",
-              "ToolTip": "E:\\C# Projects\\Kinesia\\Kinesia\\Program.cs",
-              "RelativeToolTip": "Kinesia\\Program.cs",
-              "ViewState": "AgIAAD4AAAAAAAAAAAAIwEMAAAAEAAAAAAAAAA==",
+              "Title": "DoubleBtnDialog.cs [Design]",
+              "DocumentMoniker": "D:\\git\\Kinesia\\Kinesia\\Components\\Custom Dialog Boxes\\DoubleBtnDialog.cs",
+              "RelativeDocumentMoniker": "Kinesia\\Components\\Custom Dialog Boxes\\DoubleBtnDialog.cs",
+              "ToolTip": "D:\\git\\Kinesia\\Kinesia\\Components\\Custom Dialog Boxes\\DoubleBtnDialog.cs [Design]",
+              "RelativeToolTip": "Kinesia\\Components\\Custom Dialog Boxes\\DoubleBtnDialog.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-27T09:38:15.481Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-29T03:32:53.534Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SingleBtnDialog.cs [Design]",
+              "DocumentMoniker": "D:\\git\\Kinesia\\Kinesia\\Components\\Custom Dialog Boxes\\SingleBtnDialog.cs",
+              "RelativeDocumentMoniker": "Kinesia\\Components\\Custom Dialog Boxes\\SingleBtnDialog.cs",
+              "ToolTip": "D:\\git\\Kinesia\\Kinesia\\Components\\Custom Dialog Boxes\\SingleBtnDialog.cs [Design]",
+              "RelativeToolTip": "Kinesia\\Components\\Custom Dialog Boxes\\SingleBtnDialog.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-29T03:32:23.186Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "EditUser.cs [Design]",
+              "DocumentMoniker": "D:\\git\\Kinesia\\Kinesia\\Users\\EditUser.cs",
+              "RelativeDocumentMoniker": "Kinesia\\Users\\EditUser.cs",
+              "ToolTip": "D:\\git\\Kinesia\\Kinesia\\Users\\EditUser.cs [Design]",
+              "RelativeToolTip": "Kinesia\\Users\\EditUser.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-29T03:22:27.454Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AddUser.cs [Design]",
+              "DocumentMoniker": "D:\\git\\Kinesia\\Kinesia\\Users\\AddUser.cs",
+              "RelativeDocumentMoniker": "Kinesia\\Users\\AddUser.cs",
+              "ToolTip": "D:\\git\\Kinesia\\Kinesia\\Users\\AddUser.cs [Design]",
+              "RelativeToolTip": "Kinesia\\Users\\AddUser.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-29T03:17:12.905Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "UserDetails.cs [Design]",
+              "DocumentMoniker": "D:\\git\\Kinesia\\Kinesia\\Users\\UserDetails.cs",
+              "RelativeDocumentMoniker": "Kinesia\\Users\\UserDetails.cs",
+              "ToolTip": "D:\\git\\Kinesia\\Kinesia\\Users\\UserDetails.cs [Design]",
+              "RelativeToolTip": "Kinesia\\Users\\UserDetails.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-29T03:10:17.863Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "UserPage.cs [Design]",
+              "DocumentMoniker": "D:\\git\\Kinesia\\Kinesia\\Users\\UserPage.cs",
+              "RelativeDocumentMoniker": "Kinesia\\Users\\UserPage.cs",
+              "ToolTip": "D:\\git\\Kinesia\\Kinesia\\Users\\UserPage.cs [Design]",
+              "RelativeToolTip": "Kinesia\\Users\\UserPage.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-29T03:01:26.605Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\git\\Kinesia\\Kinesia\\Program.cs",
+              "RelativeDocumentMoniker": "Kinesia\\Program.cs",
+              "ToolTip": "D:\\git\\Kinesia\\Kinesia\\Program.cs",
+              "RelativeToolTip": "Kinesia\\Program.cs",
+              "ViewState": "AgIAADgAAAAAAAAAAAAwwEMAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-27T09:38:15.481Z"
             }
           ]
         },
@@ -43,10 +134,6 @@
           "DockedWidth": 262,
           "SelectedChildIndex": -1,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
@@ -58,6 +145,10 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
             }
           ]
         },

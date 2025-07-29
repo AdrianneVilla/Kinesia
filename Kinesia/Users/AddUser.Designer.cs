@@ -34,6 +34,8 @@
             this.txtTitleLabel = new System.Windows.Forms.Label();
             this.btnBack = new OrganizationProfile.CustomButton();
             this.panelBorder1 = new WindowsFormsApp2.CustomButton.PanelBorder();
+            this.label15 = new System.Windows.Forms.Label();
+            this.rjComboBox2 = new CustomControls.RJControls.RJComboBox();
             this.rjComboBox1 = new CustomControls.RJControls.RJComboBox();
             this.label14 = new System.Windows.Forms.Label();
             this.txtPassword = new CustomControls.RJControls.RJTextBox();
@@ -59,8 +61,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.btnClearInput = new OrganizationProfile.CustomButton();
             this.btnAddUser = new OrganizationProfile.CustomButton();
-            this.rjComboBox2 = new CustomControls.RJControls.RJComboBox();
-            this.label15 = new System.Windows.Forms.Label();
+            this.rjTextBox1 = new CustomControls.RJControls.RJTextBox();
+            this.label16 = new System.Windows.Forms.Label();
             this.panelBorder1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -140,6 +142,8 @@
             this.panelBorder1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panelBorder1.BorderRadius = 30;
             this.panelBorder1.Color = System.Drawing.Color.BurlyWood;
+            this.panelBorder1.Controls.Add(this.rjTextBox1);
+            this.panelBorder1.Controls.Add(this.label16);
             this.panelBorder1.Controls.Add(this.label15);
             this.panelBorder1.Controls.Add(this.rjComboBox2);
             this.panelBorder1.Controls.Add(this.rjComboBox1);
@@ -168,8 +172,40 @@
             this.panelBorder1.ForeColor = System.Drawing.Color.Black;
             this.panelBorder1.Location = new System.Drawing.Point(67, 114);
             this.panelBorder1.Name = "panelBorder1";
-            this.panelBorder1.Size = new System.Drawing.Size(1421, 630);
+            this.panelBorder1.Size = new System.Drawing.Size(1421, 742);
             this.panelBorder1.TabIndex = 15;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(707, 604);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(38, 23);
+            this.label15.TabIndex = 36;
+            this.label15.Text = "Role";
+            // 
+            // rjComboBox2
+            // 
+            this.rjComboBox2.BackColor = System.Drawing.Color.White;
+            this.rjComboBox2.BorderColor = System.Drawing.Color.Black;
+            this.rjComboBox2.BorderSize = 1;
+            this.rjComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
+            this.rjComboBox2.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rjComboBox2.ForeColor = System.Drawing.Color.Black;
+            this.rjComboBox2.IconColor = System.Drawing.Color.Black;
+            this.rjComboBox2.Items.AddRange(new object[] {
+            "Therapist",
+            "Maintenance"});
+            this.rjComboBox2.ListBackColor = System.Drawing.Color.White;
+            this.rjComboBox2.ListTextColor = System.Drawing.Color.Black;
+            this.rjComboBox2.Location = new System.Drawing.Point(708, 628);
+            this.rjComboBox2.MinimumSize = new System.Drawing.Size(200, 30);
+            this.rjComboBox2.Name = "rjComboBox2";
+            this.rjComboBox2.Padding = new System.Windows.Forms.Padding(1);
+            this.rjComboBox2.Size = new System.Drawing.Size(228, 39);
+            this.rjComboBox2.TabIndex = 35;
+            this.rjComboBox2.Texts = "";
             // 
             // rjComboBox1
             // 
@@ -212,7 +248,7 @@
             this.txtPassword.BorderSize = 1;
             this.txtPassword.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPassword.ForeColor = System.Drawing.Color.Black;
-            this.txtPassword.Location = new System.Drawing.Point(376, 531);
+            this.txtPassword.Location = new System.Drawing.Point(377, 626);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(4);
             this.txtPassword.Multiline = false;
             this.txtPassword.Name = "txtPassword";
@@ -229,7 +265,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(372, 508);
+            this.label13.Location = new System.Drawing.Point(373, 603);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(75, 23);
             this.label13.TabIndex = 23;
@@ -244,7 +280,7 @@
             this.txtUsername.BorderSize = 1;
             this.txtUsername.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUsername.ForeColor = System.Drawing.Color.Black;
-            this.txtUsername.Location = new System.Drawing.Point(51, 531);
+            this.txtUsername.Location = new System.Drawing.Point(52, 626);
             this.txtUsername.Margin = new System.Windows.Forms.Padding(4);
             this.txtUsername.Multiline = false;
             this.txtUsername.Name = "txtUsername";
@@ -261,7 +297,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(47, 508);
+            this.label12.Location = new System.Drawing.Point(48, 603);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(80, 23);
             this.label12.TabIndex = 21;
@@ -271,7 +307,8 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(45, 454);
+            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
+            this.label11.Location = new System.Drawing.Point(46, 549);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(159, 34);
             this.label11.TabIndex = 19;
@@ -365,7 +402,7 @@
             this.txtUserAddress.BorderSize = 1;
             this.txtUserAddress.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUserAddress.ForeColor = System.Drawing.Color.Black;
-            this.txtUserAddress.Location = new System.Drawing.Point(51, 304);
+            this.txtUserAddress.Location = new System.Drawing.Point(48, 402);
             this.txtUserAddress.Margin = new System.Windows.Forms.Padding(4);
             this.txtUserAddress.Multiline = true;
             this.txtUserAddress.Name = "txtUserAddress";
@@ -382,7 +419,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(47, 281);
+            this.label9.Location = new System.Drawing.Point(44, 379);
             this.label9.Margin = new System.Windows.Forms.Padding(3, 30, 3, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(66, 23);
@@ -510,6 +547,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
             this.label3.Location = new System.Drawing.Point(40, 24);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(224, 34);
@@ -530,7 +568,7 @@
             this.btnClearInput.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(64)))), ((int)(((byte)(66)))));
             this.btnClearInput.Image = ((System.Drawing.Image)(resources.GetObject("btnClearInput.Image")));
             this.btnClearInput.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClearInput.Location = new System.Drawing.Point(1214, 780);
+            this.btnClearInput.Location = new System.Drawing.Point(1214, 881);
             this.btnClearInput.Name = "btnClearInput";
             this.btnClearInput.Padding = new System.Windows.Forms.Padding(10, 4, 40, 0);
             this.btnClearInput.Size = new System.Drawing.Size(173, 50);
@@ -554,7 +592,7 @@
             this.btnAddUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
             this.btnAddUser.Image = ((System.Drawing.Image)(resources.GetObject("btnAddUser.Image")));
             this.btnAddUser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAddUser.Location = new System.Drawing.Point(1035, 780);
+            this.btnAddUser.Location = new System.Drawing.Point(1035, 881);
             this.btnAddUser.Name = "btnAddUser";
             this.btnAddUser.Padding = new System.Windows.Forms.Padding(10, 4, 30, 0);
             this.btnAddUser.Size = new System.Drawing.Size(173, 50);
@@ -564,37 +602,38 @@
             this.btnAddUser.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
             this.btnAddUser.UseVisualStyleBackColor = false;
             // 
-            // rjComboBox2
+            // rjTextBox1
             // 
-            this.rjComboBox2.BackColor = System.Drawing.Color.White;
-            this.rjComboBox2.BorderColor = System.Drawing.Color.Black;
-            this.rjComboBox2.BorderSize = 1;
-            this.rjComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
-            this.rjComboBox2.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rjComboBox2.ForeColor = System.Drawing.Color.Black;
-            this.rjComboBox2.IconColor = System.Drawing.Color.Black;
-            this.rjComboBox2.Items.AddRange(new object[] {
-            "Therapist",
-            "Maintenance"});
-            this.rjComboBox2.ListBackColor = System.Drawing.Color.White;
-            this.rjComboBox2.ListTextColor = System.Drawing.Color.Black;
-            this.rjComboBox2.Location = new System.Drawing.Point(707, 533);
-            this.rjComboBox2.MinimumSize = new System.Drawing.Size(200, 30);
-            this.rjComboBox2.Name = "rjComboBox2";
-            this.rjComboBox2.Padding = new System.Windows.Forms.Padding(1);
-            this.rjComboBox2.Size = new System.Drawing.Size(228, 39);
-            this.rjComboBox2.TabIndex = 35;
-            this.rjComboBox2.Texts = "";
+            this.rjTextBox1.BackColor = System.Drawing.SystemColors.Window;
+            this.rjTextBox1.BorderColor = System.Drawing.Color.DimGray;
+            this.rjTextBox1.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
+            this.rjTextBox1.BorderRadius = 5;
+            this.rjTextBox1.BorderSize = 1;
+            this.rjTextBox1.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rjTextBox1.ForeColor = System.Drawing.Color.Black;
+            this.rjTextBox1.Location = new System.Drawing.Point(48, 304);
+            this.rjTextBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.rjTextBox1.Multiline = false;
+            this.rjTextBox1.Name = "rjTextBox1";
+            this.rjTextBox1.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.rjTextBox1.PasswordChar = false;
+            this.rjTextBox1.PlaceholderColor = System.Drawing.Color.DarkGray;
+            this.rjTextBox1.PlaceholderText = "";
+            this.rjTextBox1.Size = new System.Drawing.Size(366, 41);
+            this.rjTextBox1.TabIndex = 37;
+            this.rjTextBox1.Texts = "";
+            this.rjTextBox1.UnderlinedStyle = false;
             // 
-            // label15
+            // label16
             // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(706, 509);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(38, 23);
-            this.label15.TabIndex = 36;
-            this.label15.Text = "Role";
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(47, 281);
+            this.label16.Margin = new System.Windows.Forms.Padding(3, 30, 3, 0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(107, 23);
+            this.label16.TabIndex = 38;
+            this.label16.Text = "Email Address";
             // 
             // AddUser
             // 
@@ -609,7 +648,7 @@
             this.Controls.Add(this.btnAddUser);
             this.Controls.Add(this.txtTitleLabel);
             this.Name = "AddUser";
-            this.Size = new System.Drawing.Size(1511, 843);
+            this.Size = new System.Drawing.Size(1511, 944);
             this.Load += new System.EventHandler(this.AddUser_Load);
             this.panelBorder1.ResumeLayout(false);
             this.panelBorder1.PerformLayout();
@@ -652,5 +691,7 @@
         private CustomControls.RJControls.RJComboBox rjComboBox1;
         private System.Windows.Forms.Label label15;
         private CustomControls.RJControls.RJComboBox rjComboBox2;
+        private CustomControls.RJControls.RJTextBox rjTextBox1;
+        private System.Windows.Forms.Label label16;
     }
 }

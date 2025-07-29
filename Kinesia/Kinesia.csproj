@@ -116,11 +116,23 @@
     <Compile Include="Assessment\DisplayAssessment.Designer.cs">
       <DependentUpon>DisplayAssessment.cs</DependentUpon>
     </Compile>
+    <Compile Include="Components\Custom Dialog Boxes\DoubleBtnDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Components\Custom Dialog Boxes\DoubleBtnDialog.Designer.cs">
+      <DependentUpon>DoubleBtnDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Components\Custom Dialog Boxes\DoubleButtonDialog.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Components\Custom Dialog Boxes\DoubleButtonDialog.Designer.cs">
       <DependentUpon>DoubleButtonDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Custom Dialog Boxes\SingleBtnDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Components\Custom Dialog Boxes\SingleBtnDialog.Designer.cs">
+      <DependentUpon>SingleBtnDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Components\Custom Dialog Boxes\SingleButtonDialog.cs">
       <SubType>UserControl</SubType>
@@ -254,8 +266,14 @@
     <EmbeddedResource Include="Assessment\DisplayAssessment.resx">
       <DependentUpon>DisplayAssessment.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Components\Custom Dialog Boxes\DoubleBtnDialog.resx">
+      <DependentUpon>DoubleBtnDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Components\Custom Dialog Boxes\DoubleButtonDialog.resx">
       <DependentUpon>DoubleButtonDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\Custom Dialog Boxes\SingleBtnDialog.resx">
+      <DependentUpon>SingleBtnDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Components\Custom Dialog Boxes\SingleButtonDialog.resx">
       <DependentUpon>SingleButtonDialog.cs</DependentUpon>
@@ -439,6 +457,8 @@
     <None Include="Kinesia Images\Orbbec-camera-icon.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Kinesia Images\yellow-triangle-warning-icon.jpg" />
+    <None Include="Kinesia Images\blue-information-icon.jpg" />
     <Content Include="Kinesia Images\tooltip.png" />
     <None Include="Kinesia Images\Unarchive.png" />
   </ItemGroup>
