@@ -1,0 +1,28 @@
+# This file will ignore every files that contains extensions included here
+
+# Ignore Visual Studio Folder
+.vs/
+
+# Ignore build results
+bin/
+obj/
+*.dll
+*.exe
+
+# Ignore User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Temporary files
+*.tmp
+*.bak
+*.cache
+
+# Build logs
+*.log
+
+# Windows
+Thumbs.db
+desktop.ini
