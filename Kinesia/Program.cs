@@ -14,6 +14,7 @@ using WindowsFormsApp2.CustomButton;
 using Kinesia.Assessment;
 using Kinesia.Components.Custom_Dialog_Boxes;
 using System.Drawing;
+using System.Runtime.InteropServices;
 
 namespace Kinesia
 {
@@ -63,6 +64,45 @@ namespace Kinesia
                 control.Dispose();
             }
             panelHolder.Controls.Clear();
+        }
+    }
+
+    public static class CustomDialog
+    {
+        public static DialogResult Show(string description, string title, CustomDialogButtons button, CustomDialogIcons icon)
+        {
+            using(var dialog = CreateDialog(button))
+            {
+                if (dialog is ICustomDialog customDialog)
+                {
+                    customDialog.Title = title;
+                    customDialog.Description = description;
+                    switchIcon(customDialog.DialogIcon, icon);
+                }
+
+                return dialog.ShowDialog();
+            }  
+        }
+
+        private static Form CreateDialog(CustomDialogButtons button)
+        {
+            if( button == CustomDialogButtons.OK )
+            {
+                return new SingleBtnDialog();
+            }
+            return new DoubleBtnDialog();
+        }
+
+        private static void switchIcon(PictureBox pictureBox, CustomDialogIcons icon)
+        {
+            switch ((int)icon)
+            {
+                case 0: pictureBox.Image = null; break;
+                case 1: pictureBox.Image = Properties.Resources.question_icon; break;
+                case 2: pictureBox.Image = Properties.Resources.blue_information_icon; break;
+                case 3: pictureBox.Image = Properties.Resources.error_icon; break;
+                case 4: pictureBox.Image = Properties.Resources.yellow_triangle_warning_icon; break;
+            }
         }
     }
     

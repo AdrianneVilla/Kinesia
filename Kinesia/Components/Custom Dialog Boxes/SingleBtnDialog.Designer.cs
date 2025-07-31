@@ -33,10 +33,10 @@
             this.lblDescription = new System.Windows.Forms.Label();
             this.dialogHeader = new WindowsFormsApp2.CustomButton.PanelBorder();
             this.lblTitle = new System.Windows.Forms.Label();
-            this.imgDialogIcon = new System.Windows.Forms.PictureBox();
+            this.pbIcon = new System.Windows.Forms.PictureBox();
             this.panelBorder1.SuspendLayout();
             this.dialogHeader.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imgDialogIcon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbIcon)).BeginInit();
             this.SuspendLayout();
             // 
             // panelBorder1
@@ -92,7 +92,7 @@
             this.dialogHeader.BorderRadius = 0;
             this.dialogHeader.Color = System.Drawing.Color.BurlyWood;
             this.dialogHeader.Controls.Add(this.lblTitle);
-            this.dialogHeader.Controls.Add(this.imgDialogIcon);
+            this.dialogHeader.Controls.Add(this.pbIcon);
             this.dialogHeader.ForeColor = System.Drawing.Color.Black;
             this.dialogHeader.Location = new System.Drawing.Point(-16, 0);
             this.dialogHeader.Name = "dialogHeader";
@@ -109,30 +109,33 @@
             this.lblTitle.TabIndex = 1;
             this.lblTitle.Text = "title label";
             // 
-            // imgDialogIcon
+            // pbIcon
             // 
-            this.imgDialogIcon.Image = global::Kinesia.Properties.Resources.yellow_triangle_warning_icon;
-            this.imgDialogIcon.Location = new System.Drawing.Point(30, 3);
-            this.imgDialogIcon.Name = "imgDialogIcon";
-            this.imgDialogIcon.Size = new System.Drawing.Size(54, 54);
-            this.imgDialogIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.imgDialogIcon.TabIndex = 0;
-            this.imgDialogIcon.TabStop = false;
+            this.pbIcon.Image = global::Kinesia.Properties.Resources.yellow_triangle_warning_icon;
+            this.pbIcon.Location = new System.Drawing.Point(30, 3);
+            this.pbIcon.Name = "pbIcon";
+            this.pbIcon.Size = new System.Drawing.Size(54, 54);
+            this.pbIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbIcon.TabIndex = 0;
+            this.pbIcon.TabStop = false;
             // 
             // SingleBtnDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.BackColor = System.Drawing.Color.Gray;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.panelBorder1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "SingleBtnDialog";
+            this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SingleBtnDialog";
+            this.TransparencyKey = System.Drawing.Color.Gray;
             this.panelBorder1.ResumeLayout(false);
             this.dialogHeader.ResumeLayout(false);
             this.dialogHeader.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imgDialogIcon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbIcon)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -144,6 +147,6 @@
         private System.Windows.Forms.Label lblDescription;
         private WindowsFormsApp2.CustomButton.PanelBorder dialogHeader;
         private System.Windows.Forms.Label lblTitle;
-        private System.Windows.Forms.PictureBox imgDialogIcon;
+        private System.Windows.Forms.PictureBox pbIcon;
     }
 }

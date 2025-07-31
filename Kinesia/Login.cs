@@ -308,8 +308,10 @@ namespace Kinesia
 
             if(username.Equals("") && password.Equals(""))
             {
-                MessageBox.Show("Username or Password fields are empty!\n" +
-                    "Please fill-out all fields to login.", "Login Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //MessageBox.Show("Username or Password fields are empty!\n" +
+                //    "Please fill-out all fields to login.", "Login Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                CustomDialog.Show("Username or Password fields are empty!\n" +
+                    "Please fill-out all fields to login.", "Login Alert", CustomDialogButtons.OK, CustomDialogIcons.Error);
             } else
             {
                 Connection.conn.Open();
@@ -327,8 +329,10 @@ namespace Kinesia
                     this.Hide();
                 } else
                 {
-                    MessageBox.Show("Username or Password was incorrect!\n" +
-                        "Please try again.", "Login Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //MessageBox.Show("Username or Password was incorrect!\n" +
+                    //    "Please try again.", "Login Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    CustomDialog.Show("Username or Password was incorrect!\n" +
+                        "Please try again.", "Login Alert", CustomDialogButtons.OK, CustomDialogIcons.Error);
                 }
                 Connection.reader.Close();
                 Connection.conn.Close();

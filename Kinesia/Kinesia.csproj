@@ -128,6 +128,7 @@
     <Compile Include="Components\Custom Dialog Boxes\DoubleButtonDialog.Designer.cs">
       <DependentUpon>DoubleButtonDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Components\Custom Dialog Boxes\ICustomDialog.cs" />
     <Compile Include="Components\Custom Dialog Boxes\SingleBtnDialog.cs">
       <SubType>Form</SubType>
     </Compile>

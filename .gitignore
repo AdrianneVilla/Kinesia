@@ -8,6 +8,7 @@ bin/
 obj/
 *.dll
 *.exe
+*.pdb
 
 # Ignore User-specific files
 *.user

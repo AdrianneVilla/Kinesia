@@ -19,8 +19,11 @@ namespace Kinesia.Components
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            DialogResult exitDiag = MessageBox.Show("Are you sure you want to exit the application?",
-                                                    "Exit Application", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+            //DialogResult exitDiag = MessageBox.Show("Are you sure you want to exit the application?",
+            //                                        "Exit Application", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+
+            DialogResult exitDiag = CustomDialog.Show("Are you sure you want to exit the application?",
+                "Exit Application", CustomDialogButtons.YesNo, CustomDialogIcons.Question);
 
             if (exitDiag == DialogResult.Yes)
             {
