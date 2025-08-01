@@ -10,12 +10,36 @@ namespace Kinesia.Users
 {
     public class UserCRUD
     {
-        public void DisplayUsers()
+        public void DisplayUsers(string searchData)
         {
             PageObjects.DisposeHolderControls(PageObjects.userPage.getUserHolder);
             Connection.conn.Open();
 
-            Connection.cmd = new MySqlCommand("SELECT UserID, FirstName, MiddleName, LastName, Role FROM Users", Connection.conn);
+            string query = "SELECT UserID, FirstName, MiddleName, LastName, Role FROM Users";
+
+            List<string> conditions = new List<string>();
+
+            if (!string.IsNullOrEmpty(searchData))
+            {
+                string searchCondition = @"(UserID LIKE CONCAT('%', @searchData, '%') 
+                                        OR FirstName LIKE CONCAT('%', @searchData, '%') 
+                                        OR MiddleName LIKE CONCAT('%', @searchData, '%') 
+                                        OR LastName LIKE CONCAT('%', @searchData, '%'))";
+                conditions.Add(searchCondition);
+            }
+
+            if(conditions.Count > 0)
+            {
+                query += " WHERE " + string.Join(" AND ", conditions);
+            }
+
+            Connection.cmd = new MySqlCommand(query, Connection.conn);
+
+            if (!string.IsNullOrEmpty(searchData))
+            {
+                Connection.cmd.Parameters.AddWithValue("@searchData", searchData);
+            }
+
             Connection.reader = Connection.cmd.ExecuteReader();
 
             while (Connection.reader.Read())

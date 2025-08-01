@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserPage));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.UserIDHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -42,21 +42,22 @@
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.nameHolder = new System.Windows.Forms.Label();
-            this.UserHolder = new WindowsFormsApp2.CustomButton.PanelBorder();
-            this.btnAddPatient = new OrganizationProfile.CustomButton();
-            this.panelBorder1 = new WindowsFormsApp2.CustomButton.PanelBorder();
-            this.customButton1 = new OrganizationProfile.CustomButton();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.rjTextBox1 = new CustomControls.RJControls.RJTextBox();
             this.panelBorder2 = new WindowsFormsApp2.CustomButton.PanelBorder();
+            this.cbSort = new CustomControls.RJControls.RJComboBox();
             this.customButton3 = new OrganizationProfile.CustomButton();
             this.customButton2 = new OrganizationProfile.CustomButton();
             this.customButton4 = new OrganizationProfile.CustomButton();
-            this.cbSort = new CustomControls.RJControls.RJComboBox();
+            this.btnAddPatient = new OrganizationProfile.CustomButton();
+            this.UserHolder = new WindowsFormsApp2.CustomButton.PanelBorder();
+            this.panelBorder1 = new WindowsFormsApp2.CustomButton.PanelBorder();
+            this.btnSearch = new OrganizationProfile.CustomButton();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.txtSearchBar = new CustomControls.RJControls.RJTextBox();
+            this.lblHiddenForFocus = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.panelBorder2.SuspendLayout();
             this.panelBorder1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panelBorder2.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -74,14 +75,14 @@
             this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dataGridView1.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.UserIDHeader,
@@ -94,14 +95,14 @@
             this.dataGridView1.Location = new System.Drawing.Point(70, 218);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dataGridView1.ShowCellErrors = false;
             this.dataGridView1.ShowCellToolTips = false;
@@ -122,13 +123,13 @@
             // nameHeader
             // 
             this.nameHeader.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.nameHeader.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
+            this.nameHeader.DefaultCellStyle = dataGridViewCellStyle2;
             this.nameHeader.HeaderText = "Name";
             this.nameHeader.Name = "nameHeader";
             this.nameHeader.ReadOnly = true;
@@ -145,8 +146,8 @@
             // editHeader
             // 
             this.editHeader.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.editHeader.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.editHeader.DefaultCellStyle = dataGridViewCellStyle3;
             this.editHeader.FillWeight = 20F;
             this.editHeader.HeaderText = "Select";
             this.editHeader.Name = "editHeader";
@@ -193,117 +194,6 @@
             this.nameHolder.Text = "Users";
             this.nameHolder.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // UserHolder
-            // 
-            this.UserHolder.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.UserHolder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(249)))), ((int)(((byte)(238)))));
-            this.UserHolder.BorderRadius = 10;
-            this.UserHolder.Color = System.Drawing.Color.White;
-            this.UserHolder.ForeColor = System.Drawing.Color.Black;
-            this.UserHolder.Location = new System.Drawing.Point(62, 244);
-            this.UserHolder.Name = "UserHolder";
-            this.UserHolder.Padding = new System.Windows.Forms.Padding(5);
-            this.UserHolder.Size = new System.Drawing.Size(1129, 468);
-            this.UserHolder.TabIndex = 13;
-            // 
-            // btnAddPatient
-            // 
-            this.btnAddPatient.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddPatient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.btnAddPatient.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.btnAddPatient.BorderColor = System.Drawing.Color.White;
-            this.btnAddPatient.BorderRadius = 10;
-            this.btnAddPatient.BorderSize = 0;
-            this.btnAddPatient.FlatAppearance.BorderSize = 0;
-            this.btnAddPatient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddPatient.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btnAddPatient.ForeColor = System.Drawing.Color.Transparent;
-            this.btnAddPatient.Image = ((System.Drawing.Image)(resources.GetObject("btnAddPatient.Image")));
-            this.btnAddPatient.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnAddPatient.Location = new System.Drawing.Point(972, 5);
-            this.btnAddPatient.Name = "btnAddPatient";
-            this.btnAddPatient.Padding = new System.Windows.Forms.Padding(5, 5, 20, 0);
-            this.btnAddPatient.Size = new System.Drawing.Size(150, 48);
-            this.btnAddPatient.TabIndex = 12;
-            this.btnAddPatient.Text = "Add Users";
-            this.btnAddPatient.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAddPatient.TextColor = System.Drawing.Color.Transparent;
-            this.btnAddPatient.UseVisualStyleBackColor = false;
-            this.btnAddPatient.Click += new System.EventHandler(this.btnAddPatient_Click);
-            // 
-            // panelBorder1
-            // 
-            this.panelBorder1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelBorder1.BackColor = System.Drawing.Color.White;
-            this.panelBorder1.BackgroundImage = global::Kinesia.Properties.Resources.search_background_new;
-            this.panelBorder1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panelBorder1.BorderRadius = 10;
-            this.panelBorder1.Color = System.Drawing.Color.BurlyWood;
-            this.panelBorder1.Controls.Add(this.customButton1);
-            this.panelBorder1.Controls.Add(this.pictureBox1);
-            this.panelBorder1.Controls.Add(this.rjTextBox1);
-            this.panelBorder1.ForeColor = System.Drawing.Color.Black;
-            this.panelBorder1.Location = new System.Drawing.Point(692, 44);
-            this.panelBorder1.Name = "panelBorder1";
-            this.panelBorder1.Padding = new System.Windows.Forms.Padding(5);
-            this.panelBorder1.Size = new System.Drawing.Size(499, 51);
-            this.panelBorder1.TabIndex = 11;
-            // 
-            // customButton1
-            // 
-            this.customButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.customButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(210)))), ((int)(((byte)(173)))));
-            this.customButton1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(210)))), ((int)(((byte)(173)))));
-            this.customButton1.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.customButton1.BorderRadius = 10;
-            this.customButton1.BorderSize = 0;
-            this.customButton1.FlatAppearance.BorderSize = 0;
-            this.customButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.customButton1.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customButton1.ForeColor = System.Drawing.Color.White;
-            this.customButton1.Location = new System.Drawing.Point(388, 7);
-            this.customButton1.Name = "customButton1";
-            this.customButton1.Padding = new System.Windows.Forms.Padding(2, 3, 0, 0);
-            this.customButton1.Size = new System.Drawing.Size(101, 35);
-            this.customButton1.TabIndex = 15;
-            this.customButton1.Text = "Search";
-            this.customButton1.TextColor = System.Drawing.Color.White;
-            this.customButton1.UseVisualStyleBackColor = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Kinesia.Properties.Resources.search_icon;
-            this.pictureBox1.Location = new System.Drawing.Point(14, 15);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(28, 24);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 5;
-            this.pictureBox1.TabStop = false;
-            // 
-            // rjTextBox1
-            // 
-            this.rjTextBox1.BackColor = System.Drawing.Color.White;
-            this.rjTextBox1.BorderColor = System.Drawing.Color.White;
-            this.rjTextBox1.BorderFocusColor = System.Drawing.Color.White;
-            this.rjTextBox1.BorderRadius = 5;
-            this.rjTextBox1.BorderSize = 1;
-            this.rjTextBox1.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rjTextBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.rjTextBox1.Location = new System.Drawing.Point(48, 8);
-            this.rjTextBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.rjTextBox1.Multiline = false;
-            this.rjTextBox1.Name = "rjTextBox1";
-            this.rjTextBox1.Padding = new System.Windows.Forms.Padding(10, 7, 10, 0);
-            this.rjTextBox1.PasswordChar = false;
-            this.rjTextBox1.PlaceholderColor = System.Drawing.Color.DarkGray;
-            this.rjTextBox1.PlaceholderText = "Search Users";
-            this.rjTextBox1.Size = new System.Drawing.Size(333, 34);
-            this.rjTextBox1.TabIndex = 4;
-            this.rjTextBox1.Texts = "";
-            this.rjTextBox1.UnderlinedStyle = false;
-            // 
             // panelBorder2
             // 
             this.panelBorder2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -321,6 +211,31 @@
             this.panelBorder2.Name = "panelBorder2";
             this.panelBorder2.Size = new System.Drawing.Size(1129, 58);
             this.panelBorder2.TabIndex = 15;
+            // 
+            // cbSort
+            // 
+            this.cbSort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbSort.BackColor = System.Drawing.Color.White;
+            this.cbSort.BorderColor = System.Drawing.Color.Gray;
+            this.cbSort.BorderSize = 1;
+            this.cbSort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
+            this.cbSort.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbSort.ForeColor = System.Drawing.Color.DimGray;
+            this.cbSort.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
+            this.cbSort.Items.AddRange(new object[] {
+            "Default",
+            "Alphabetical (Name)",
+            "Earliest (Date Added)",
+            "Latest (Date Added)"});
+            this.cbSort.ListBackColor = System.Drawing.Color.White;
+            this.cbSort.ListTextColor = System.Drawing.Color.Black;
+            this.cbSort.Location = new System.Drawing.Point(719, 5);
+            this.cbSort.MinimumSize = new System.Drawing.Size(200, 30);
+            this.cbSort.Name = "cbSort";
+            this.cbSort.Padding = new System.Windows.Forms.Padding(1);
+            this.cbSort.Size = new System.Drawing.Size(243, 48);
+            this.cbSort.TabIndex = 16;
+            this.cbSort.Texts = "Default";
             // 
             // customButton3
             // 
@@ -381,36 +296,133 @@
             this.customButton4.TextColor = System.Drawing.Color.White;
             this.customButton4.UseVisualStyleBackColor = false;
             // 
-            // cbSort
+            // btnAddPatient
             // 
-            this.cbSort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbSort.BackColor = System.Drawing.Color.White;
-            this.cbSort.BorderColor = System.Drawing.Color.Gray;
-            this.cbSort.BorderSize = 1;
-            this.cbSort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
-            this.cbSort.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbSort.ForeColor = System.Drawing.Color.DimGray;
-            this.cbSort.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.cbSort.Items.AddRange(new object[] {
-            "Default",
-            "Alphabetical (Name)",
-            "Earliest (Date Added)",
-            "Latest (Date Added)"});
-            this.cbSort.ListBackColor = System.Drawing.Color.White;
-            this.cbSort.ListTextColor = System.Drawing.Color.Black;
-            this.cbSort.Location = new System.Drawing.Point(719, 5);
-            this.cbSort.MinimumSize = new System.Drawing.Size(200, 30);
-            this.cbSort.Name = "cbSort";
-            this.cbSort.Padding = new System.Windows.Forms.Padding(1);
-            this.cbSort.Size = new System.Drawing.Size(243, 48);
-            this.cbSort.TabIndex = 16;
-            this.cbSort.Texts = "Default";
+            this.btnAddPatient.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddPatient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
+            this.btnAddPatient.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
+            this.btnAddPatient.BorderColor = System.Drawing.Color.White;
+            this.btnAddPatient.BorderRadius = 10;
+            this.btnAddPatient.BorderSize = 0;
+            this.btnAddPatient.FlatAppearance.BorderSize = 0;
+            this.btnAddPatient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddPatient.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnAddPatient.ForeColor = System.Drawing.Color.Transparent;
+            this.btnAddPatient.Image = ((System.Drawing.Image)(resources.GetObject("btnAddPatient.Image")));
+            this.btnAddPatient.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnAddPatient.Location = new System.Drawing.Point(972, 5);
+            this.btnAddPatient.Name = "btnAddPatient";
+            this.btnAddPatient.Padding = new System.Windows.Forms.Padding(5, 5, 20, 0);
+            this.btnAddPatient.Size = new System.Drawing.Size(150, 48);
+            this.btnAddPatient.TabIndex = 12;
+            this.btnAddPatient.Text = "Add Users";
+            this.btnAddPatient.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAddPatient.TextColor = System.Drawing.Color.Transparent;
+            this.btnAddPatient.UseVisualStyleBackColor = false;
+            this.btnAddPatient.Click += new System.EventHandler(this.btnAddPatient_Click);
+            // 
+            // UserHolder
+            // 
+            this.UserHolder.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.UserHolder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(249)))), ((int)(((byte)(238)))));
+            this.UserHolder.BorderRadius = 10;
+            this.UserHolder.Color = System.Drawing.Color.White;
+            this.UserHolder.ForeColor = System.Drawing.Color.Black;
+            this.UserHolder.Location = new System.Drawing.Point(62, 244);
+            this.UserHolder.Name = "UserHolder";
+            this.UserHolder.Padding = new System.Windows.Forms.Padding(5);
+            this.UserHolder.Size = new System.Drawing.Size(1129, 468);
+            this.UserHolder.TabIndex = 13;
+            // 
+            // panelBorder1
+            // 
+            this.panelBorder1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelBorder1.BackColor = System.Drawing.Color.White;
+            this.panelBorder1.BackgroundImage = global::Kinesia.Properties.Resources.search_background_new;
+            this.panelBorder1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panelBorder1.BorderRadius = 10;
+            this.panelBorder1.Color = System.Drawing.Color.BurlyWood;
+            this.panelBorder1.Controls.Add(this.btnSearch);
+            this.panelBorder1.Controls.Add(this.pictureBox1);
+            this.panelBorder1.Controls.Add(this.txtSearchBar);
+            this.panelBorder1.ForeColor = System.Drawing.Color.Black;
+            this.panelBorder1.Location = new System.Drawing.Point(692, 44);
+            this.panelBorder1.Name = "panelBorder1";
+            this.panelBorder1.Padding = new System.Windows.Forms.Padding(5);
+            this.panelBorder1.Size = new System.Drawing.Size(499, 51);
+            this.panelBorder1.TabIndex = 11;
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(210)))), ((int)(((byte)(173)))));
+            this.btnSearch.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(210)))), ((int)(((byte)(173)))));
+            this.btnSearch.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnSearch.BorderRadius = 10;
+            this.btnSearch.BorderSize = 0;
+            this.btnSearch.FlatAppearance.BorderSize = 0;
+            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearch.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearch.ForeColor = System.Drawing.Color.White;
+            this.btnSearch.Location = new System.Drawing.Point(388, 7);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Padding = new System.Windows.Forms.Padding(2, 3, 0, 0);
+            this.btnSearch.Size = new System.Drawing.Size(101, 35);
+            this.btnSearch.TabIndex = 15;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.TextColor = System.Drawing.Color.White;
+            this.btnSearch.UseVisualStyleBackColor = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Kinesia.Properties.Resources.search_icon;
+            this.pictureBox1.Location = new System.Drawing.Point(14, 15);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(28, 24);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
+            // 
+            // txtSearchBar
+            // 
+            this.txtSearchBar.BackColor = System.Drawing.Color.White;
+            this.txtSearchBar.BorderColor = System.Drawing.Color.White;
+            this.txtSearchBar.BorderFocusColor = System.Drawing.Color.White;
+            this.txtSearchBar.BorderRadius = 5;
+            this.txtSearchBar.BorderSize = 1;
+            this.txtSearchBar.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearchBar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtSearchBar.Location = new System.Drawing.Point(48, 8);
+            this.txtSearchBar.Margin = new System.Windows.Forms.Padding(4);
+            this.txtSearchBar.Multiline = false;
+            this.txtSearchBar.Name = "txtSearchBar";
+            this.txtSearchBar.Padding = new System.Windows.Forms.Padding(10, 7, 10, 0);
+            this.txtSearchBar.PasswordChar = false;
+            this.txtSearchBar.PlaceholderColor = System.Drawing.Color.DarkGray;
+            this.txtSearchBar.PlaceholderText = "";
+            this.txtSearchBar.Size = new System.Drawing.Size(333, 34);
+            this.txtSearchBar.TabIndex = 4;
+            this.txtSearchBar.Texts = "";
+            this.txtSearchBar.UnderlinedStyle = false;
+            // 
+            // lblHiddenForFocus
+            // 
+            this.lblHiddenForFocus.AutoSize = true;
+            this.lblHiddenForFocus.ForeColor = System.Drawing.Color.White;
+            this.lblHiddenForFocus.Location = new System.Drawing.Point(371, 73);
+            this.lblHiddenForFocus.Name = "lblHiddenForFocus";
+            this.lblHiddenForFocus.Size = new System.Drawing.Size(120, 13);
+            this.lblHiddenForFocus.TabIndex = 16;
+            this.lblHiddenForFocus.Text = "<Focus Label (Hidden)>";
             // 
             // UserPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.lblHiddenForFocus);
             this.Controls.Add(this.panelBorder2);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label1);
@@ -421,9 +433,9 @@
             this.Size = new System.Drawing.Size(1249, 758);
             this.Load += new System.EventHandler(this.UserPage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.panelBorder2.ResumeLayout(false);
             this.panelBorder1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panelBorder2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -438,7 +450,7 @@
         private OrganizationProfile.CustomButton btnAddPatient;
         private WindowsFormsApp2.CustomButton.PanelBorder panelBorder1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private CustomControls.RJControls.RJTextBox rjTextBox1;
+        private CustomControls.RJControls.RJTextBox txtSearchBar;
         private System.Windows.Forms.DataGridViewTextBoxColumn UserIDHeader;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameHeader;
         private System.Windows.Forms.DataGridViewTextBoxColumn EmpPosition;
@@ -449,7 +461,8 @@
         private OrganizationProfile.CustomButton customButton3;
         private OrganizationProfile.CustomButton customButton2;
         private OrganizationProfile.CustomButton customButton4;
-        private OrganizationProfile.CustomButton customButton1;
+        private OrganizationProfile.CustomButton btnSearch;
         private CustomControls.RJControls.RJComboBox cbSort;
+        private System.Windows.Forms.Label lblHiddenForFocus;
     }
 }

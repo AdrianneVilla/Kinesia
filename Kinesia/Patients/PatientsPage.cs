@@ -40,6 +40,24 @@ namespace Kinesia.Patients
             }
         }
 
+        private void InnerTxtSearchBar_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                lblHiddenForFocus.Focus(); // will move the focus away from the txtSearchBar
+
+                e.SuppressKeyPress = true; // will prevent windows from making the beep sounds when pressing "esc"
+            }
+            else if (e.KeyCode == Keys.Enter)
+            {
+                // will do search query if "enter" was pressed
+                // while txtSearchBar was being focused
+                Queries.PatientQueries.DisplayPatients(searchData, currentTab, cbSort.Texts);
+
+                e.SuppressKeyPress = true; // will prevent windows from making the beep sounds when pressing "enter"
+            }
+        }
+
         private void btnAddPatient_Click(object sender, EventArgs e)
         {
             PageObjects.RemoveResources(ref PageObjects.CurrentControl);
@@ -76,24 +94,6 @@ namespace Kinesia.Patients
             }
         }
 
-        private void InnerTxtSearchBar_KeyDown(object sender, KeyEventArgs e)
-        {
-            if(e.KeyCode == Keys.Escape)
-            {
-                lblHiddenForFocus.Focus(); // will move the focus away from the txtSearchBar
-
-                e.SuppressKeyPress = true; // will prevent windows from making the beep sounds when pressing "esc"
-            } 
-            else if(e.KeyCode == Keys.Enter)
-            {
-                // will do search query if "enter" was pressed
-                // while txtSearchBar was being focused
-                Queries.PatientQueries.DisplayPatients(searchData, currentTab, cbSort.Texts);
-
-                e.SuppressKeyPress = true; // will prevent windows from making the beep sounds when pressing "enter"
-            }
-        }
-
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
@@ -103,7 +103,6 @@ namespace Kinesia.Patients
         {
             Queries.PatientQueries.DisplayPatients(searchData, currentTab, cbSort.Texts); // will do search query
         }
-
         private void btnAll_Click(object sender, EventArgs e)
         {
             currentTab = "All";

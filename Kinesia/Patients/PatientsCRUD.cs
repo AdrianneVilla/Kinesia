@@ -40,7 +40,7 @@ namespace Kinesia.Patients
                 string searchCondition = @"(PatientID LIKE CONCAT('%', @searchData, '%') 
                                         OR FirstName LIKE CONCAT('%', @searchData, '%') 
                                         OR MiddleName LIKE CONCAT('%', @searchData, '%') 
-                                        OR LastName LIKE CONCAT('%', @searchData, '$'))";
+                                        OR LastName LIKE CONCAT('%', @searchData, '%'))";
                 conditions.Add(searchCondition);
             }
 
