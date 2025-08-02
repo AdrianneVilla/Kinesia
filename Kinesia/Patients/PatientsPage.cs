@@ -29,7 +29,7 @@ namespace Kinesia.Patients
         private void PatientsPage_Load(object sender, EventArgs e)
         {
             Queries.PatientQueries.DisplayPatients(searchData, currentTab, cbSort.Texts);
-            txtSearchBar.Texts = "Search Patient Name or Patient ID";
+            txtSearchBar.Texts = "Search for Patient Name or Patient ID";
 
             // will get the TextBox inside the RJTextBox
             TextBox innerTxtSearchBar = txtSearchBar.Controls.OfType<TextBox>().FirstOrDefault();
@@ -68,7 +68,7 @@ namespace Kinesia.Patients
 
         private void txtSearchBar_Enter(object sender, EventArgs e)
         {
-            if(txtSearchBar.Texts == "Search Patient Name or Patient ID")
+            if(txtSearchBar.Texts == "Search for Patient Name or Patient ID")
             {
                 txtSearchBar.Texts = "";
             }
@@ -78,17 +78,18 @@ namespace Kinesia.Patients
         {
             if (txtSearchBar.Texts == "")
             {
-                txtSearchBar.Texts = "Search Patient Name or Patient ID";
+                txtSearchBar.Texts = "Search for Patient Name or Patient ID";
                 searchData = "";
             }
         }
 
         private void txtSearchBar__TextChanged(object sender, EventArgs e)
         {
-            if(txtSearchBar.Texts == "Search Patient Name or Patient ID")
+            if(txtSearchBar.Texts == "Search for Patient Name or Patient ID")
             {
                 searchData = "";
-            } else
+            } 
+            else
             {
                 searchData = txtSearchBar.Texts;
             }

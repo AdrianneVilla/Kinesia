@@ -316,7 +316,7 @@ namespace Kinesia
             {
                 Connection.conn.Open();
 
-                Connection.cmd = new MySqlCommand("SELECT * FROM Users WHERE Username = @username AND Password = @password", Connection.conn);
+                Connection.cmd = new MySqlCommand($"SELECT * FROM Users WHERE Username = @username AND Password = @password", Connection.conn);
                 Connection.cmd.Parameters.AddWithValue("@username", username);
                 Connection.cmd.Parameters.AddWithValue("@password", password);
                 Connection.reader = Connection.cmd.ExecuteReader();

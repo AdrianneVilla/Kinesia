@@ -69,5 +69,39 @@ namespace Kinesia.Users
         {
 
         }
+
+        private void txtSearchBar_Enter(object sender, EventArgs e)
+        {
+            if (txtSearchBar.Texts == "Search for User name or UserID")
+            {
+                txtSearchBar.Texts = "";
+            }
+        }
+
+        private void txtSearchBar_Leave(object sender, EventArgs e)
+        {
+            if (txtSearchBar.Texts == "")
+            {
+                txtSearchBar.Texts = "Search for User name or UserID";
+                searchData = "";
+            }
+        }
+
+        private void txtSearchBar__TextChanged(object sender, EventArgs e)
+        {
+            if (txtSearchBar.Texts == "Search for User name or UserID")
+            {
+                searchData = "";
+            } 
+            else
+            {
+                searchData = txtSearchBar.Texts;
+            }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            Queries.UserQueries.DisplayUsers(searchData); // will do search query
+        }
     }
 }
