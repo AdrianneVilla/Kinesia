@@ -68,7 +68,7 @@ namespace Kinesia.Patients
 
         private void txtSearchBar_Enter(object sender, EventArgs e)
         {
-            if(txtSearchBar.Texts == "Search for Patient Name or Patient ID")
+            if(txtSearchBar.Texts == "Search for Patient name or Patient ID")
             {
                 txtSearchBar.Texts = "";
             }
@@ -78,14 +78,14 @@ namespace Kinesia.Patients
         {
             if (txtSearchBar.Texts == "")
             {
-                txtSearchBar.Texts = "Search for Patient Name or Patient ID";
+                txtSearchBar.Texts = "Search for Patient name or Patient ID";
                 searchData = "";
             }
         }
 
         private void txtSearchBar__TextChanged(object sender, EventArgs e)
         {
-            if(txtSearchBar.Texts == "Search for Patient Name or Patient ID")
+            if(txtSearchBar.Texts == "Search for Patient name or Patient ID")
             {
                 searchData = "";
             } 
@@ -106,29 +106,38 @@ namespace Kinesia.Patients
         }
         private void btnAll_Click(object sender, EventArgs e)
         {
-            currentTab = "All";
-            switchTab(currentTab);
-            txtSearchBar.Texts = "Search Patient Name or Patient ID";
-            searchData = "";
-            Queries.PatientQueries.DisplayPatients(searchData, currentTab, cbSort.Texts);
+            if(currentTab != "All")
+            {
+                currentTab = "All";
+                switchTab(currentTab);
+                txtSearchBar.Texts = "Search for Patient name or Patient ID";
+                searchData = "";
+                Queries.PatientQueries.DisplayPatients(searchData, currentTab, cbSort.Texts);
+            }
         }
 
         private void btnActive_Click(object sender, EventArgs e)
         {
-            currentTab = "Active";
-            switchTab(currentTab);
-            txtSearchBar.Texts = "Search Patient Name or Patient ID";
-            searchData = "";
-            Queries.PatientQueries.DisplayPatients(searchData, currentTab, cbSort.Texts);
+            if(currentTab != "Active")
+            {
+                currentTab = "Active";
+                switchTab(currentTab);
+                txtSearchBar.Texts = "Search for Patient name or Patient ID";
+                searchData = "";
+                Queries.PatientQueries.DisplayPatients(searchData, currentTab, cbSort.Texts);
+            }
         }
 
         private void btnInactive_Click(object sender, EventArgs e)
         {
-            currentTab = "Inactive";
-            switchTab(currentTab);
-            txtSearchBar.Texts = "Search Patient Name or Patient ID";
-            searchData = "";
-            Queries.PatientQueries.DisplayPatients(searchData, currentTab, cbSort.Texts);
+            if(currentTab != "Inactive")
+            {
+                currentTab = "Inactive";
+                switchTab(currentTab);
+                txtSearchBar.Texts = "Search for Patient name or Patient ID";
+                searchData = "";
+                Queries.PatientQueries.DisplayPatients(searchData, currentTab, cbSort.Texts);
+            }
         }
 
         private void switchTab(string currentTab)

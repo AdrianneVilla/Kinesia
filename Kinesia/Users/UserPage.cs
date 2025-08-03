@@ -26,7 +26,7 @@ namespace Kinesia.Users
 
         private void UserPage_Load(object sender, EventArgs e)
         {
-            Queries.UserQueries.DisplayUsers(searchData);
+            Queries.UserQueries.DisplayUsers(searchData, currentTab);
             txtSearchBar.Texts = "Search for User name or UserID";
 
             // will get the TextBox inside the RJTextBox
@@ -50,7 +50,7 @@ namespace Kinesia.Users
             {
                 // will do search query if "enter" was pressed
                 // while txtSearchBar was being focused
-                Queries.PatientQueries.DisplayPatients(searchData, currentTab, cbSort.Texts);
+                Queries.UserQueries.DisplayUsers(searchData, currentTab);
 
                 e.SuppressKeyPress = true; // will prevent windows from making the beep sounds when pressing "enter"
             }
@@ -101,7 +101,88 @@ namespace Kinesia.Users
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            Queries.UserQueries.DisplayUsers(searchData); // will do search query
+            Queries.UserQueries.DisplayUsers(searchData, currentTab); // will do search query
+        }
+
+        private void btnAll_Click(object sender, EventArgs e)
+        {
+            if(currentTab != "All")
+            {
+                currentTab = "All";
+                switchTab(currentTab);
+                txtSearchBar.Texts = "Search for User name or UserID";
+                searchData = "";
+                Queries.UserQueries.DisplayUsers(searchData, currentTab);
+            }
+        }
+
+        private void btnActive_Click(object sender, EventArgs e)
+        {
+            if(currentTab != "Active")
+            {
+                currentTab = "Active";
+                switchTab(currentTab);
+                txtSearchBar.Texts = "Search for User name or UserID";
+                searchData = "";
+                Queries.UserQueries.DisplayUsers(searchData, currentTab);
+            }
+        }
+
+        private void btnInactive_Click(object sender, EventArgs e)
+        {
+            if(currentTab != "Inactive")
+            {
+                currentTab = "Inactive";
+                switchTab(currentTab);
+                txtSearchBar.Texts = "Search for User name or UserID";
+                searchData = "";
+                Queries.UserQueries.DisplayUsers(searchData, currentTab);
+            }
+        }
+
+        private void switchTab(string currentTab)
+        {
+            switch (currentTab)
+            {
+                case "All":
+                    btnAll.BackgroundColor = Color.FromArgb(18, 90, 211);
+                    btnAll.ForeColor = Color.White;
+
+                    btnActive.BackgroundColor = Color.Gainsboro;
+                    btnActive.ForeColor = Color.Gray;
+
+                    btnInactive.BackgroundColor = Color.Gainsboro;
+                    btnInactive.ForeColor = Color.Gray;
+
+                    dataGridUsers.Columns[dataGridUsers.Columns.Count - 1].HeaderText = "Archive";
+                    break;
+
+                case "Active":
+                    btnActive.BackgroundColor = Color.FromArgb(18, 90, 211);
+                    btnActive.ForeColor = Color.White;
+
+                    btnAll.BackgroundColor = Color.Gainsboro;
+                    btnAll.ForeColor = Color.Gray;
+
+                    btnInactive.BackgroundColor = Color.Gainsboro;
+                    btnInactive.ForeColor = Color.Gray;
+
+                    dataGridUsers.Columns[dataGridUsers.Columns.Count - 1].HeaderText = "Archive";
+                    break;
+
+                case "Inactive":
+                    btnInactive.BackgroundColor = Color.FromArgb(18, 90, 211);
+                    btnInactive.ForeColor = Color.White;
+
+                    btnAll.BackgroundColor = Color.Gainsboro;
+                    btnAll.ForeColor = Color.Gray;
+
+                    btnActive.BackgroundColor = Color.Gainsboro;
+                    btnActive.ForeColor = Color.Gray;
+
+                    dataGridUsers.Columns[dataGridUsers.Columns.Count - 1].HeaderText = "Unarchive";
+                    break;
+            }
         }
     }
 }

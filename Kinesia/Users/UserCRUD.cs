@@ -10,14 +10,27 @@ namespace Kinesia.Users
 {
     public class UserCRUD
     {
-        public void DisplayUsers(string searchData)
+        public void DisplayUsers(string searchData, string currentTab)
         {
             PageObjects.DisposeHolderControls(PageObjects.userPage.getUserHolder);
             Connection.conn.Open();
 
             string query = "SELECT UserID, FirstName, MiddleName, LastName, Role FROM Users";
 
+            // Collection of all conditions for the query
             List<string> conditions = new List<string>();
+
+            // 1 = Active Patients
+            // 2 = Inactive Patients
+            // Else = All Patients
+            if (currentTab == "Active")
+            {
+                conditions.Add("Status = 1");
+            }
+            else if (currentTab == "Inactive")
+            {
+                conditions.Add("Status = 0");
+            }
 
             if (!string.IsNullOrEmpty(searchData))
             {
