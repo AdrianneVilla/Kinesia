@@ -95,18 +95,14 @@ namespace Kinesia.Patients
             }
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnSearch_Click(object sender, EventArgs e)
         {
             Queries.PatientQueries.DisplayPatients(searchData, currentTab, cbSort.Texts); // will do search query
         }
         private void btnAll_Click(object sender, EventArgs e)
         {
-            if(currentTab != "All")
+            // will only refresh the patients list if the currentTab was not already All
+            if (currentTab != "All")
             {
                 currentTab = "All";
                 switchTab(currentTab);
@@ -118,7 +114,8 @@ namespace Kinesia.Patients
 
         private void btnActive_Click(object sender, EventArgs e)
         {
-            if(currentTab != "Active")
+            // will only refresh the patients list if the currentTab was not already Active
+            if (currentTab != "Active")
             {
                 currentTab = "Active";
                 switchTab(currentTab);
@@ -130,7 +127,8 @@ namespace Kinesia.Patients
 
         private void btnInactive_Click(object sender, EventArgs e)
         {
-            if(currentTab != "Inactive")
+            // will only refresh the patients list if the currentTab was not already Inactive
+            if (currentTab != "Inactive")
             {
                 currentTab = "Inactive";
                 switchTab(currentTab);

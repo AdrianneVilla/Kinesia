@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 24, 2025 at 08:34 AM
+-- Generation Time: Aug 03, 2025 at 02:45 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -47,7 +47,8 @@ CREATE TABLE `patients` (
 --
 
 INSERT INTO `patients` (`PatientID`, `FirstName`, `LastName`, `MiddleName`, `Contact`, `Birthdate`, `Gender`, `Address`, `Occupation`, `Status`, `DateAdded`, `LastArchiveDate`) VALUES
-('PATIENT1', 'Jose Crisanto', 'Calayag', '', '+639285321382', '2005-07-24', 'Male', 'dsadsa', 'Student', 1, '2025-07-24 14:20:05', NULL);
+('PATIENT1', 'Jose Crisanto', 'Calayag', '', '+639285321382', '2005-07-24', 'Male', 'dsadsa', 'Student', 1, '2025-07-24 14:20:05', NULL),
+('PATIENT2', 'Mari Nicole', 'Medel', 'Relos', '+639285321382', '2002-11-26', 'Female', 'Sta Clara', 'Student', 0, '2025-07-24 18:35:50', NULL);
 
 -- --------------------------------------------------------
 
@@ -68,6 +69,8 @@ CREATE TABLE `users` (
   `Username` varchar(50) NOT NULL,
   `Password` varchar(50) NOT NULL,
   `Email` varchar(50) NOT NULL,
+  `DateAdded` datetime DEFAULT NULL,
+  `LastArchiveDate` datetime DEFAULT NULL,
   `Status` int(11) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -75,8 +78,9 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`UserID`, `FirstName`, `LastName`, `MiddleName`, `Birthdate`, `Gender`, `Contact`, `Address`, `Role`, `Username`, `Password`, `Email`, `Status`) VALUES
-('sample', 'sample', 'sample', 'sample', '2025-06-03', 'sample', '+639285321382', 'sample', 'sample', 'test', 'test', 'sample', 1);
+INSERT INTO `users` (`UserID`, `FirstName`, `LastName`, `MiddleName`, `Birthdate`, `Gender`, `Contact`, `Address`, `Role`, `Username`, `Password`, `Email`, `DateAdded`, `LastArchiveDate`, `Status`) VALUES
+('A', 'A', 'A', 'A', '2025-06-03', 'sample', '+639285321382', 'sample', 'sample', 'test', 'test', 'sample', '2025-08-01 08:40:17', NULL, 1),
+('sample', 'sample', 'sample', 'sample', '2025-06-03', 'sample', '+639285321382', 'sample', 'sample', 'test', 'test', 'sample', '2025-08-03 08:40:26', NULL, 1);
 
 --
 -- Indexes for dumped tables

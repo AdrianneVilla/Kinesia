@@ -10,7 +10,7 @@ namespace Kinesia.Users
 {
     public class UserCRUD
     {
-        public void DisplayUsers(string searchData, string currentTab)
+        public void DisplayUsers(string searchData, string currentTab, string sortColumn)
         {
             PageObjects.DisposeHolderControls(PageObjects.userPage.getUserHolder);
             Connection.conn.Open();
@@ -41,10 +41,33 @@ namespace Kinesia.Users
                 conditions.Add(searchCondition);
             }
 
-            if(conditions.Count > 0)
+            // will set the sort order based on sortColumn
+            string sortCondition = "DESC";
+
+            if (sortColumn == "Default")
+            {
+                sortColumn = "UserID";
+            }
+            else if (sortColumn == "Alphabetical (Name)")
+            {
+                sortColumn = "FirstName";
+            }
+            else if (sortColumn == "Earliest (Date Added)")
+            {
+                sortColumn = "DateAdded";
+            }
+            else if (sortColumn == "Latest (Date Added)")
+            {
+                sortColumn = "DateAdded";
+                sortCondition = "ASC";
+            }
+
+            if (conditions.Count > 0)
             {
                 query += " WHERE " + string.Join(" AND ", conditions);
             }
+
+            query += $" ORDER BY {sortColumn} {sortCondition}";
 
             Connection.cmd = new MySqlCommand(query, Connection.conn);
 

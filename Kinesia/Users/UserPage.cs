@@ -26,7 +26,7 @@ namespace Kinesia.Users
 
         private void UserPage_Load(object sender, EventArgs e)
         {
-            Queries.UserQueries.DisplayUsers(searchData, currentTab);
+            Queries.UserQueries.DisplayUsers(searchData, currentTab, cbSort.Texts);
             txtSearchBar.Texts = "Search for User name or UserID";
 
             // will get the TextBox inside the RJTextBox
@@ -50,7 +50,7 @@ namespace Kinesia.Users
             {
                 // will do search query if "enter" was pressed
                 // while txtSearchBar was being focused
-                Queries.UserQueries.DisplayUsers(searchData, currentTab);
+                Queries.UserQueries.DisplayUsers(searchData, currentTab, cbSort.Texts);
 
                 e.SuppressKeyPress = true; // will prevent windows from making the beep sounds when pressing "enter"
             }
@@ -63,11 +63,6 @@ namespace Kinesia.Users
             PageObjects.dashboard.ContentsPanel.Controls.Clear();
             PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.addUser);
             PageObjects.CurrentControl = PageObjects.addUser;
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
 
         private void txtSearchBar_Enter(object sender, EventArgs e)
@@ -101,42 +96,45 @@ namespace Kinesia.Users
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            Queries.UserQueries.DisplayUsers(searchData, currentTab); // will do search query
+            Queries.UserQueries.DisplayUsers(searchData, currentTab, cbSort.Texts); // will do search query
         }
 
         private void btnAll_Click(object sender, EventArgs e)
         {
-            if(currentTab != "All")
+            // will only refresh the users list if the currentTab was not already All
+            if (currentTab != "All")
             {
                 currentTab = "All";
                 switchTab(currentTab);
                 txtSearchBar.Texts = "Search for User name or UserID";
                 searchData = "";
-                Queries.UserQueries.DisplayUsers(searchData, currentTab);
+                Queries.UserQueries.DisplayUsers(searchData, currentTab, cbSort.Texts);
             }
         }
 
         private void btnActive_Click(object sender, EventArgs e)
         {
-            if(currentTab != "Active")
+            // will only refresh the users list if the currentTab was not already Active
+            if (currentTab != "Active")
             {
                 currentTab = "Active";
                 switchTab(currentTab);
                 txtSearchBar.Texts = "Search for User name or UserID";
                 searchData = "";
-                Queries.UserQueries.DisplayUsers(searchData, currentTab);
+                Queries.UserQueries.DisplayUsers(searchData, currentTab, cbSort.Texts);
             }
         }
 
         private void btnInactive_Click(object sender, EventArgs e)
         {
+            // will only refresh the users list if the currentTab was not already Inactive
             if(currentTab != "Inactive")
             {
                 currentTab = "Inactive";
                 switchTab(currentTab);
                 txtSearchBar.Texts = "Search for User name or UserID";
                 searchData = "";
-                Queries.UserQueries.DisplayUsers(searchData, currentTab);
+                Queries.UserQueries.DisplayUsers(searchData, currentTab, cbSort.Texts);
             }
         }
 
@@ -183,6 +181,12 @@ namespace Kinesia.Users
                     dataGridUsers.Columns[dataGridUsers.Columns.Count - 1].HeaderText = "Unarchive";
                     break;
             }
+        }
+
+        private void cbSort_OnSelectedIndexChanged(object sender, EventArgs e)
+        {
+            // will refresh users list every time the sort value was changed
+            Queries.UserQueries.DisplayUsers(searchData, currentTab, cbSort.Texts);
         }
     }
 }
