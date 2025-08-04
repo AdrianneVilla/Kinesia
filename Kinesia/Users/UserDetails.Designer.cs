@@ -46,6 +46,8 @@
             this.btnArchiveUser = new OrganizationProfile.CustomButton();
             this.btnEditUserInfo = new OrganizationProfile.CustomButton();
             this.panelBorder1 = new WindowsFormsApp2.CustomButton.PanelBorder();
+            this.lblEmail = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.lblName = new System.Windows.Forms.Label();
             this.btnBack = new OrganizationProfile.CustomButton();
@@ -66,8 +68,6 @@
             this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             this.label11 = new System.Windows.Forms.Label();
             this.lblDateAdded = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
             this.panelBorder1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
@@ -309,7 +309,7 @@
             this.panelBorder1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panelBorder1.BorderRadius = 30;
             this.panelBorder1.Color = System.Drawing.Color.BurlyWood;
-            this.panelBorder1.Controls.Add(this.label12);
+            this.panelBorder1.Controls.Add(this.lblEmail);
             this.panelBorder1.Controls.Add(this.label13);
             this.panelBorder1.Controls.Add(this.lblBirthdate);
             this.panelBorder1.Controls.Add(this.lblAddress);
@@ -327,6 +327,30 @@
             this.panelBorder1.Name = "panelBorder1";
             this.panelBorder1.Size = new System.Drawing.Size(1098, 173);
             this.panelBorder1.TabIndex = 35;
+            // 
+            // lblEmail
+            // 
+            this.lblEmail.AutoSize = true;
+            this.lblEmail.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEmail.ForeColor = System.Drawing.Color.Black;
+            this.lblEmail.Location = new System.Drawing.Point(150, 135);
+            this.lblEmail.Name = "lblEmail";
+            this.lblEmail.Padding = new System.Windows.Forms.Padding(0, 0, 52, 0);
+            this.lblEmail.Size = new System.Drawing.Size(164, 22);
+            this.lblEmail.TabIndex = 25;
+            this.lblEmail.Text = "<Email Address>";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.Gray;
+            this.label13.Location = new System.Drawing.Point(18, 135);
+            this.label13.Name = "label13";
+            this.label13.Padding = new System.Windows.Forms.Padding(0, 0, 52, 0);
+            this.label13.Size = new System.Drawing.Size(144, 22);
+            this.label13.TabIndex = 24;
+            this.label13.Text = "Email Address";
             // 
             // flowLayoutPanel1
             // 
@@ -625,30 +649,6 @@
             this.lblDateAdded.TabIndex = 1;
             this.lblDateAdded.Text = "<date added>";
             // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.Black;
-            this.label12.Location = new System.Drawing.Point(150, 135);
-            this.label12.Name = "label12";
-            this.label12.Padding = new System.Windows.Forms.Padding(0, 0, 52, 0);
-            this.label12.Size = new System.Drawing.Size(164, 22);
-            this.label12.TabIndex = 25;
-            this.label12.Text = "<Email Address>";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.Color.Gray;
-            this.label13.Location = new System.Drawing.Point(18, 135);
-            this.label13.Name = "label13";
-            this.label13.Padding = new System.Windows.Forms.Padding(0, 0, 52, 0);
-            this.label13.Size = new System.Drawing.Size(144, 22);
-            this.label13.TabIndex = 24;
-            this.label13.Text = "Email Address";
-            // 
             // UserDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -724,7 +724,7 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label lblDateAdded;
-        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.Label label13;
     }
 }

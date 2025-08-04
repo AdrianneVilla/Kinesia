@@ -103,8 +103,8 @@ namespace Kinesia.Users
         {
             Connection.conn.Open();
 
-            Connection.cmd = new MySqlCommand("SELECT UserID, FirstName, MiddleName, LastName, Gender, Contact, TIMESTAMPDIFF(MONTH, Birthdate, CURDATE()), Address, Birthdate, Role " +
-                "FROM Users WHERE UserID = @userID", Connection.conn);
+            Connection.cmd = new MySqlCommand("SELECT UserID, FirstName, MiddleName, LastName, Gender, Contact, TIMESTAMPDIFF(MONTH, Birthdate, CURDATE()), Address, Birthdate, Role, " +
+                "Email, DateAdded, LastArchiveDate FROM Users WHERE UserID = @userID", Connection.conn);
             Connection.cmd.Parameters.AddWithValue("@userID", userID);
             Connection.reader = Connection.cmd.ExecuteReader();
 
@@ -122,9 +122,23 @@ namespace Kinesia.Users
                 DateTime birthDate = Connection.reader.GetDateTime(8);
                 PageObjects.userDetails.Birthdate = birthDate.ToString("yyyy-MM-dd");
                 PageObjects.userDetails.Role = Connection.reader.GetString(9);
+                PageObjects.userDetails.Email = Connection.reader.GetString(10);
 
-                // will only display User Details if fetched successfully by the system
-                PageObjects.RemoveResources(ref PageObjects.CurrentControl);
+                DateTime dateAdded = Connection.reader.GetDateTime(11);
+                PageObjects.userDetails.DateAdded = dateAdded.ToString();
+
+                if (Connection.reader.IsDBNull(12))
+                {
+                    PageObjects.userDetails.LastArchiveDate = null;
+                } 
+                else
+                {
+                    DateTime lastArchiveDate = Connection.reader.GetDateTime(12);
+                    PageObjects.userDetails.LastArchiveDate = lastArchiveDate.ToString();
+                }
+
+                    // will only display User Details if fetched successfully by the system
+                    PageObjects.RemoveResources(ref PageObjects.CurrentControl);
                 PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.userDetails);
                 PageObjects.CurrentControl = PageObjects.userPage;
             } else

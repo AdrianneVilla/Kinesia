@@ -41,5 +41,8 @@ namespace Kinesia.Users
         public string Age { get { return lblAge.Text; } set { lblAge.Text = value; } }
         public string Address { get { return lblAddress.Text; } set { lblAddress.Text = value; } }
         public string Birthdate { get { return lblBirthdate.Text; } set { lblBirthdate.Text = value; } }
+        public string Email { get { return lblEmail.Text; } set { lblEmail.Text = value; } }
+        public string DateAdded { get { return lblDateAdded.Text; } set { lblDateAdded.Text = value; } }
+        public string LastArchiveDate { get { return lblArchiveDate.Text; } set { lblArchiveDate.Text = value; } }
     }
 }
