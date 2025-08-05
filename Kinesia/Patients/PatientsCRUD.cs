@@ -84,7 +84,7 @@ namespace Kinesia.Patients
 
             while(Connection.reader.Read())
             {
-                var displayPatientControl = new DisplayPatients(); // will create user control for every patient
+                var displayPatientControl = new DisplayPatients(); // will create user control for every patients
 
                 if(currentTab == "Inactive")
                 {

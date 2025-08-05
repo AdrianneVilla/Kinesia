@@ -13,10 +13,11 @@ namespace Kinesia.Users
 {
     public partial class UserPage : UserControl
     {
-        public PanelBorder getUserHolder { get { return UserHolder; } }
-
         string searchData = "";
         string currentTab = "All";
+
+        public PanelBorder getUserHolder { get { return UserHolder; } }
+        public string CurrentTab { get { return currentTab; } }
         public UserPage()
         {
             this.Anchor = AnchorStyles.Right | AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Bottom;

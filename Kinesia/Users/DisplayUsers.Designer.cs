@@ -92,6 +92,7 @@
             this.btnArchive.TabIndex = 9;
             this.btnArchive.TextColor = System.Drawing.Color.Transparent;
             this.btnArchive.UseVisualStyleBackColor = false;
+            this.btnArchive.Click += new System.EventHandler(this.btnArchive_Click);
             // 
             // btnView
             // 

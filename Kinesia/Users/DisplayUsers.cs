@@ -31,5 +31,35 @@ namespace Kinesia.Users
         public CustomButton BtnView { get { return btnView; } }
         public CustomButton BtnEdit { get { return btnEdit; } }
         public CustomButton BtnArchive { get { return btnArchive; } }
+
+        private void btnArchive_Click(object sender, EventArgs e)
+        {
+            if(btnArchive.Tag == "Archive")
+            {
+                var archiveDiag = CustomDialog.Show($"Are you sure you want to archive {lblUserID.Text}?", "Archive Alert", CustomDialogButtons.YesNo, CustomDialogIcons.Question);
+
+                if(archiveDiag == DialogResult.Yes)
+                {
+                    Queries.UserQueries.ArchiveUser(lblUserID.Text);
+
+                    CustomDialog.Show($"{lblUserID.Text} has been archived successfully!", "Archive Alert", CustomDialogButtons.OK, CustomDialogIcons.Information);
+
+                    Queries.UserQueries.DisplayUsers("", PageObjects.userPage.CurrentTab, "Default");
+                }
+            } 
+            else
+            {
+                var unarchiveDiag = CustomDialog.Show($"Are you sure you want to unarchive {lblUserID.Text}?", "Unarchive Alert", CustomDialogButtons.YesNo, CustomDialogIcons.Question);
+
+                if(unarchiveDiag == DialogResult.Yes)
+                {
+                    Queries.UserQueries.UnarchiveUser(lblUserID.Text);
+
+                    CustomDialog.Show($"{lblUserID.Text} has been unarchived successfully!", "Unarchive Alert", CustomDialogButtons.OK, CustomDialogIcons.Information);
+
+                    Queries.UserQueries.DisplayUsers("", PageObjects.userPage.CurrentTab, "Default");
+                }
+            }
+        }
     }
 }

@@ -80,19 +80,24 @@ namespace Kinesia.Users
 
             while (Connection.reader.Read())
             {
-                PageObjects.displayUsers = new DisplayUsers(); // will create user control for every users
+                var displayUserControl = new DisplayUsers(); // will create user control for every users
 
-                // will set the tag of every button to UserID
-                PageObjects.displayUsers.BtnView.Tag = Connection.reader.GetString(0);
-                PageObjects.displayUsers.BtnEdit.Tag = Connection.reader.GetString(0);
-                PageObjects.displayUsers.BtnArchive.Tag = Connection.reader.GetString(0);
+                if(currentTab == "Inactive")
+                {
+                    displayUserControl.BtnArchive.Image = Properties.Resources.Unarchive;
+                    displayUserControl.BtnArchive.Tag = "Unarchive";
+                } 
+                else
+                {
+                    displayUserControl.BtnArchive.Tag = "Archive";
+                }
 
                 // will set the data of every users to the labels
-                PageObjects.displayUsers.UserID = Connection.reader.GetString(0);
-                PageObjects.displayUsers.Name = $"{Connection.reader.GetString(1)} {Connection.reader.GetString(2)} {Connection.reader.GetString(3)}";
-                PageObjects.displayUsers.Role = Connection.reader.GetString(4);
+                displayUserControl.UserID = Connection.reader.GetString(0);
+                displayUserControl.Name = $"{Connection.reader.GetString(1)} {Connection.reader.GetString(2)} {Connection.reader.GetString(3)}";
+                displayUserControl.Role = Connection.reader.GetString(4);
 
-                PageObjects.userPage.getUserHolder.Controls.Add(PageObjects.displayUsers);
+                PageObjects.userPage.getUserHolder.Controls.Add(displayUserControl);
             }
 
             Connection.reader.Close();
@@ -147,6 +152,28 @@ namespace Kinesia.Users
             }
 
             Connection.reader.Close();
+            Connection.conn.Close();
+        }
+
+        public void ArchiveUser(string userID)
+        {
+            Connection.conn.Open();
+
+            Connection.cmd = new MySqlCommand("UPDATE Users SET Status = 0 WHERE UserID = @userID", Connection.conn);
+            Connection.cmd.Parameters.AddWithValue("@userID", userID);
+            Connection.cmd.ExecuteNonQuery();
+
+            Connection.conn.Close();
+        }
+
+        public void UnarchiveUser(string userID)
+        {
+            Connection.conn.Open();
+
+            Connection.cmd = new MySqlCommand("UPDATE Users SET Status = 1 WHERE UserID = @userID", Connection.conn);
+            Connection.cmd.Parameters.AddWithValue("@userID", userID);
+            Connection.cmd.ExecuteNonQuery();
+
             Connection.conn.Close();
         }
     }

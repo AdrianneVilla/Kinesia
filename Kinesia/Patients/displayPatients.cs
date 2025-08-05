@@ -45,14 +45,14 @@ namespace Kinesia.Patients
             if(btnArchive.Tag.ToString() == "Archive")
             {
                 // will show message box for Archiving patient
-                DialogResult archiveDiag = MessageBox.Show($"Are you sure you want to archive {btnArchive.Tag}?", "Archive Patient Notification",
+                DialogResult archiveDiag = MessageBox.Show($"Are you sure you want to archive {txtPatientID.Text}?", "Archive Patient Notification",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
 
                 if (archiveDiag == DialogResult.Yes)
                 {
                     Queries.PatientQueries.ArchivePatient(txtPatientID.Text);
 
-                    MessageBox.Show($"{btnArchive.Tag} has been successfully archived!", "Archive Patient Notification",
+                    MessageBox.Show($"{txtPatientID.Text} has been successfully archived!", "Archive Patient Notification",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     Queries.PatientQueries.DisplayPatients("", PageObjects.patientsPage.CurrentTab, "Default");
@@ -61,14 +61,14 @@ namespace Kinesia.Patients
             else
             {
                 // will show message box for Unarchiving patient
-                DialogResult archiveDiag = MessageBox.Show($"Are you sure you want to unarchive {btnArchive.Tag}?", "Unarchive Patient Notification",
+                DialogResult unarchiveDiag = MessageBox.Show($"Are you sure you want to unarchive {txtPatientID.Text}?", "Unarchive Patient Notification",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
 
-                if (archiveDiag == DialogResult.Yes)
+                if (unarchiveDiag == DialogResult.Yes)
                 {
                     Queries.PatientQueries.UnarchivePatient(txtPatientID.Text);
 
-                    MessageBox.Show($"{btnArchive.Tag} has been successfully unarchived!", "Unarchive Patient Notification",
+                    MessageBox.Show($"{txtPatientID.Text} has been successfully unarchived!", "Unarchive Patient Notification",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     Queries.PatientQueries.DisplayPatients("", PageObjects.patientsPage.CurrentTab, "Default");
