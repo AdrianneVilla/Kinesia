@@ -153,7 +153,7 @@ namespace Kinesia.Users
                     btnInactive.BackgroundColor = Color.Gainsboro;
                     btnInactive.ForeColor = Color.Gray;
 
-                    dataGridUsers.Columns[dataGridUsers.Columns.Count - 1].HeaderText = "Archive";
+                    dataGridUsers.Columns[dataGridUsers.Columns.Count - 1].HeaderText = "Archive / Unarchive";
                     break;
 
                 case "Active":

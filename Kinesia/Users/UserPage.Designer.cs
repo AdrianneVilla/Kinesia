@@ -91,8 +91,9 @@
             this.editHeader,
             this.Column1,
             this.Column2});
+            this.dataGridUsers.Enabled = false;
             this.dataGridUsers.GridColor = System.Drawing.Color.White;
-            this.dataGridUsers.Location = new System.Drawing.Point(70, 218);
+            this.dataGridUsers.Location = new System.Drawing.Point(70, 200);
             this.dataGridUsers.Name = "dataGridUsers";
             this.dataGridUsers.ReadOnly = true;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -108,7 +109,7 @@
             this.dataGridUsers.ShowCellToolTips = false;
             this.dataGridUsers.ShowEditingIcon = false;
             this.dataGridUsers.ShowRowErrors = false;
-            this.dataGridUsers.Size = new System.Drawing.Size(1111, 24);
+            this.dataGridUsers.Size = new System.Drawing.Size(1111, 50);
             this.dataGridUsers.TabIndex = 14;
             // 
             // UserIDHeader
@@ -164,7 +165,7 @@
             // 
             this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Column2.FillWeight = 20F;
-            this.Column2.HeaderText = "Archive";
+            this.Column2.HeaderText = "Archive / Unarchive";
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
             // 
@@ -333,10 +334,10 @@
             this.UserHolder.BorderRadius = 10;
             this.UserHolder.Color = System.Drawing.Color.White;
             this.UserHolder.ForeColor = System.Drawing.Color.Black;
-            this.UserHolder.Location = new System.Drawing.Point(62, 244);
+            this.UserHolder.Location = new System.Drawing.Point(62, 248);
             this.UserHolder.Name = "UserHolder";
             this.UserHolder.Padding = new System.Windows.Forms.Padding(5);
-            this.UserHolder.Size = new System.Drawing.Size(1129, 468);
+            this.UserHolder.Size = new System.Drawing.Size(1129, 464);
             this.UserHolder.TabIndex = 13;
             // 
             // panelBorder1
@@ -458,12 +459,6 @@
         private WindowsFormsApp2.CustomButton.PanelBorder panelBorder1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private CustomControls.RJControls.RJTextBox txtSearchBar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UserIDHeader;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameHeader;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EmpPosition;
-        private System.Windows.Forms.DataGridViewTextBoxColumn editHeader;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private WindowsFormsApp2.CustomButton.PanelBorder panelBorder2;
         private OrganizationProfile.CustomButton btnInactive;
         private OrganizationProfile.CustomButton btnActive;
@@ -471,5 +466,11 @@
         private OrganizationProfile.CustomButton btnSearch;
         private CustomControls.RJControls.RJComboBox cbSort;
         private System.Windows.Forms.Label lblHiddenForFocus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UserIDHeader;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameHeader;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EmpPosition;
+        private System.Windows.Forms.DataGridViewTextBoxColumn editHeader;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
     }
 }

@@ -15,7 +15,7 @@ namespace Kinesia.Users
             PageObjects.DisposeHolderControls(PageObjects.userPage.getUserHolder);
             Connection.conn.Open();
 
-            string query = "SELECT UserID, FirstName, MiddleName, LastName, Role FROM Users";
+            string query = "SELECT UserID, FirstName, MiddleName, LastName, Role, Status FROM Users";
 
             // Collection of all conditions for the query
             List<string> conditions = new List<string>();
@@ -82,7 +82,13 @@ namespace Kinesia.Users
             {
                 var displayUserControl = new DisplayUsers(); // will create user control for every users
 
-                if(currentTab == "Inactive")
+
+                // will set the data of every users to the labels
+                displayUserControl.UserID = Connection.reader.GetString(0);
+                displayUserControl.Name = $"{Connection.reader.GetString(1)} {Connection.reader.GetString(2)} {Connection.reader.GetString(3)}";
+                displayUserControl.Role = Connection.reader.GetString(4);
+
+                if (Connection.reader.GetInt64(5) == 0)
                 {
                     displayUserControl.BtnArchive.Image = Properties.Resources.Unarchive;
                     displayUserControl.BtnArchive.Tag = "Unarchive";
@@ -92,12 +98,7 @@ namespace Kinesia.Users
                     displayUserControl.BtnArchive.Tag = "Archive";
                 }
 
-                // will set the data of every users to the labels
-                displayUserControl.UserID = Connection.reader.GetString(0);
-                displayUserControl.Name = $"{Connection.reader.GetString(1)} {Connection.reader.GetString(2)} {Connection.reader.GetString(3)}";
-                displayUserControl.Role = Connection.reader.GetString(4);
-
-                PageObjects.userPage.getUserHolder.Controls.Add(displayUserControl);
+                    PageObjects.userPage.getUserHolder.Controls.Add(displayUserControl);
             }
 
             Connection.reader.Close();

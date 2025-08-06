@@ -86,16 +86,6 @@ namespace Kinesia.Patients
             {
                 var displayPatientControl = new DisplayPatients(); // will create user control for every patients
 
-                if(currentTab == "Inactive")
-                {
-                    displayPatientControl.BtnArchive.BackgroundImage = Properties.Resources.Unarchive;
-                    displayPatientControl.BtnArchive.Tag = "Unarchive";
-                }
-                else
-                {
-                    displayPatientControl.BtnArchive.Tag = "Archive";
-                }
-
                 // will set the data of every patient to the labels
                 displayPatientControl.PatientID = Connection.reader.GetString(0);
                 displayPatientControl.PatientName = $"{Connection.reader.GetString(1)} {Connection.reader.GetString(2)} {Connection.reader.GetString(3)}";
@@ -108,10 +98,15 @@ namespace Kinesia.Patients
                 if(Connection.reader.GetInt64(7) == 1)
                 {
                     displayPatientControl.Status = "Active";
+                    displayPatientControl.BtnArchive.Tag = "Archive";
+
                 } else
                 {
                     displayPatientControl.Status = "Inactive";
+                    displayPatientControl.BtnArchive.BackgroundImage = Properties.Resources.Unarchive;
+                    displayPatientControl.BtnArchive.Tag = "Unarchive";
                 }
+
                 PageObjects.patientsPage.getPatientHolder.Controls.Add(displayPatientControl);
             }
             Connection.reader.Close();

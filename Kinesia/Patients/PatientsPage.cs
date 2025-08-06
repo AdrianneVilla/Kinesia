@@ -29,7 +29,7 @@ namespace Kinesia.Patients
         private void PatientsPage_Load(object sender, EventArgs e)
         {
             Queries.PatientQueries.DisplayPatients(searchData, currentTab, cbSort.Texts);
-            txtSearchBar.Texts = "Search for Patient Name or Patient ID";
+            txtSearchBar.Texts = "Search for Patient name or Patient ID";
 
             // will get the TextBox inside the RJTextBox
             TextBox innerTxtSearchBar = txtSearchBar.Controls.OfType<TextBox>().FirstOrDefault();
@@ -152,7 +152,7 @@ namespace Kinesia.Patients
                     btnInactive.BackgroundColor = Color.Gainsboro;
                     btnInactive.ForeColor = Color.Gray;
 
-                    dataGridPatients.Columns[dataGridPatients.Columns.Count - 1].HeaderText = "Archive";
+                    dataGridPatients.Columns[dataGridPatients.Columns.Count - 1].HeaderText = "Archive / Unarchive";
                     break;
 
                 case "Active":

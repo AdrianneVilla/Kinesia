@@ -30,20 +30,11 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PatientsPage));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.nameHolder = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridPatients = new System.Windows.Forms.DataGridView();
-            this.PatientID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ageHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.genderHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contactNumHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.statusHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EMRHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.editHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.archiveHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblHiddenForFocus = new System.Windows.Forms.Label();
             this.panelBorder2 = new WindowsFormsApp2.CustomButton.PanelBorder();
             this.cbSort = new CustomControls.RJControls.RJComboBox();
@@ -56,6 +47,15 @@
             this.btnSearch = new OrganizationProfile.CustomButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.txtSearchBar = new CustomControls.RJControls.RJTextBox();
+            this.PatientID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ageHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.genderHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contactNumHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EMRHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.editHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.archiveHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridPatients)).BeginInit();
             this.panelBorder2.SuspendLayout();
             this.panelBorder1.SuspendLayout();
@@ -122,7 +122,7 @@
             this.editHeader,
             this.archiveHeader});
             this.dataGridPatients.GridColor = System.Drawing.Color.White;
-            this.dataGridPatients.Location = new System.Drawing.Point(70, 218);
+            this.dataGridPatients.Location = new System.Drawing.Point(70, 196);
             this.dataGridPatients.Name = "dataGridPatients";
             this.dataGridPatients.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -138,84 +138,8 @@
             this.dataGridPatients.ShowCellToolTips = false;
             this.dataGridPatients.ShowEditingIcon = false;
             this.dataGridPatients.ShowRowErrors = false;
-            this.dataGridPatients.Size = new System.Drawing.Size(1111, 24);
+            this.dataGridPatients.Size = new System.Drawing.Size(1111, 46);
             this.dataGridPatients.TabIndex = 8;
-            // 
-            // PatientID
-            // 
-            this.PatientID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.PatientID.FillWeight = 60F;
-            this.PatientID.HeaderText = "Patient ID";
-            this.PatientID.Name = "PatientID";
-            this.PatientID.ReadOnly = true;
-            // 
-            // nameHeader
-            // 
-            this.nameHeader.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.nameHeader.DefaultCellStyle = dataGridViewCellStyle2;
-            this.nameHeader.FillWeight = 120F;
-            this.nameHeader.HeaderText = "Name";
-            this.nameHeader.Name = "nameHeader";
-            this.nameHeader.ReadOnly = true;
-            this.nameHeader.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // ageHeader
-            // 
-            this.ageHeader.FillWeight = 63.63636F;
-            this.ageHeader.HeaderText = "Age";
-            this.ageHeader.Name = "ageHeader";
-            this.ageHeader.ReadOnly = true;
-            // 
-            // genderHeader
-            // 
-            this.genderHeader.FillWeight = 63.63636F;
-            this.genderHeader.HeaderText = "Gender";
-            this.genderHeader.Name = "genderHeader";
-            this.genderHeader.ReadOnly = true;
-            // 
-            // contactNumHeader
-            // 
-            this.contactNumHeader.FillWeight = 63.63636F;
-            this.contactNumHeader.HeaderText = "Contact Number";
-            this.contactNumHeader.Name = "contactNumHeader";
-            this.contactNumHeader.ReadOnly = true;
-            // 
-            // statusHeader
-            // 
-            this.statusHeader.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.statusHeader.FillWeight = 55.63636F;
-            this.statusHeader.HeaderText = "Status";
-            this.statusHeader.Name = "statusHeader";
-            this.statusHeader.ReadOnly = true;
-            // 
-            // EMRHeader
-            // 
-            this.EMRHeader.FillWeight = 20F;
-            this.EMRHeader.HeaderText = "EMR";
-            this.EMRHeader.Name = "EMRHeader";
-            this.EMRHeader.ReadOnly = true;
-            // 
-            // editHeader
-            // 
-            this.editHeader.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.editHeader.FillWeight = 25F;
-            this.editHeader.HeaderText = "Edit";
-            this.editHeader.Name = "editHeader";
-            this.editHeader.ReadOnly = true;
-            // 
-            // archiveHeader
-            // 
-            this.archiveHeader.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.archiveHeader.FillWeight = 30F;
-            this.archiveHeader.HeaderText = "Archive";
-            this.archiveHeader.Name = "archiveHeader";
-            this.archiveHeader.ReadOnly = true;
             // 
             // lblHiddenForFocus
             // 
@@ -449,6 +373,82 @@
             this.txtSearchBar.Enter += new System.EventHandler(this.txtSearchBar_Enter);
             this.txtSearchBar.Leave += new System.EventHandler(this.txtSearchBar_Leave);
             // 
+            // PatientID
+            // 
+            this.PatientID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.PatientID.FillWeight = 60F;
+            this.PatientID.HeaderText = "Patient ID";
+            this.PatientID.Name = "PatientID";
+            this.PatientID.ReadOnly = true;
+            // 
+            // nameHeader
+            // 
+            this.nameHeader.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
+            this.nameHeader.DefaultCellStyle = dataGridViewCellStyle2;
+            this.nameHeader.FillWeight = 120F;
+            this.nameHeader.HeaderText = "Name";
+            this.nameHeader.Name = "nameHeader";
+            this.nameHeader.ReadOnly = true;
+            this.nameHeader.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // ageHeader
+            // 
+            this.ageHeader.FillWeight = 63.63636F;
+            this.ageHeader.HeaderText = "Age";
+            this.ageHeader.Name = "ageHeader";
+            this.ageHeader.ReadOnly = true;
+            // 
+            // genderHeader
+            // 
+            this.genderHeader.FillWeight = 63.63636F;
+            this.genderHeader.HeaderText = "Gender";
+            this.genderHeader.Name = "genderHeader";
+            this.genderHeader.ReadOnly = true;
+            // 
+            // contactNumHeader
+            // 
+            this.contactNumHeader.FillWeight = 63.63636F;
+            this.contactNumHeader.HeaderText = "Contact Number";
+            this.contactNumHeader.Name = "contactNumHeader";
+            this.contactNumHeader.ReadOnly = true;
+            // 
+            // statusHeader
+            // 
+            this.statusHeader.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.statusHeader.FillWeight = 55.63636F;
+            this.statusHeader.HeaderText = "Status";
+            this.statusHeader.Name = "statusHeader";
+            this.statusHeader.ReadOnly = true;
+            // 
+            // EMRHeader
+            // 
+            this.EMRHeader.FillWeight = 20F;
+            this.EMRHeader.HeaderText = "EMR";
+            this.EMRHeader.Name = "EMRHeader";
+            this.EMRHeader.ReadOnly = true;
+            // 
+            // editHeader
+            // 
+            this.editHeader.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.editHeader.FillWeight = 25F;
+            this.editHeader.HeaderText = "Edit";
+            this.editHeader.Name = "editHeader";
+            this.editHeader.ReadOnly = true;
+            // 
+            // archiveHeader
+            // 
+            this.archiveHeader.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.archiveHeader.FillWeight = 30F;
+            this.archiveHeader.HeaderText = "Archive / Unarchive";
+            this.archiveHeader.Name = "archiveHeader";
+            this.archiveHeader.ReadOnly = true;
+            // 
             // PatientsPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -483,6 +483,13 @@
         private OrganizationProfile.CustomButton btnAddPatient;
         private System.Windows.Forms.DataGridView dataGridPatients;
         private WindowsFormsApp2.CustomButton.PanelBorder PatientHolder;
+        private OrganizationProfile.CustomButton btnAll;
+        private OrganizationProfile.CustomButton btnActive;
+        private OrganizationProfile.CustomButton btnInactive;
+        private WindowsFormsApp2.CustomButton.PanelBorder panelBorder2;
+        private System.Windows.Forms.Label lblHiddenForFocus;
+        private OrganizationProfile.CustomButton btnSearch;
+        private CustomControls.RJControls.RJComboBox cbSort;
         private System.Windows.Forms.DataGridViewTextBoxColumn PatientID;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameHeader;
         private System.Windows.Forms.DataGridViewTextBoxColumn ageHeader;
@@ -492,12 +499,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn EMRHeader;
         private System.Windows.Forms.DataGridViewTextBoxColumn editHeader;
         private System.Windows.Forms.DataGridViewTextBoxColumn archiveHeader;
-        private OrganizationProfile.CustomButton btnAll;
-        private OrganizationProfile.CustomButton btnActive;
-        private OrganizationProfile.CustomButton btnInactive;
-        private WindowsFormsApp2.CustomButton.PanelBorder panelBorder2;
-        private System.Windows.Forms.Label lblHiddenForFocus;
-        private OrganizationProfile.CustomButton btnSearch;
-        private CustomControls.RJControls.RJComboBox cbSort;
     }
 }
