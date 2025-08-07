@@ -36,6 +36,7 @@
             this.btnClearInput = new OrganizationProfile.CustomButton();
             this.btnAddPatient = new OrganizationProfile.CustomButton();
             this.panelBorder1 = new WindowsFormsApp2.CustomButton.PanelBorder();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.cbGender = new CustomControls.RJControls.RJComboBox();
             this.label13 = new System.Windows.Forms.Label();
             this.txtOccupation = new CustomControls.RJControls.RJTextBox();
@@ -57,7 +58,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.btnBack = new OrganizationProfile.CustomButton();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.toolTipAge = new System.Windows.Forms.ToolTip(this.components);
             this.panelBorder1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -190,6 +190,17 @@
             this.panelBorder1.Size = new System.Drawing.Size(1398, 468);
             this.panelBorder1.TabIndex = 8;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(494, 185);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(20, 20);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 34;
+            this.pictureBox1.TabStop = false;
+            this.toolTipAge.SetToolTip(this.pictureBox1, "Age is automatically computated when birthdate value changed");
+            // 
             // cbGender
             // 
             this.cbGender.BackColor = System.Drawing.Color.White;
@@ -210,7 +221,7 @@
             this.cbGender.Name = "cbGender";
             this.cbGender.Padding = new System.Windows.Forms.Padding(1);
             this.cbGender.Size = new System.Drawing.Size(200, 41);
-            this.cbGender.TabIndex = 33;
+            this.cbGender.TabIndex = 5;
             this.cbGender.Texts = "";
             // 
             // label13
@@ -244,7 +255,7 @@
             this.txtOccupation.PlaceholderColor = System.Drawing.Color.DarkGray;
             this.txtOccupation.PlaceholderText = "";
             this.txtOccupation.Size = new System.Drawing.Size(180, 41);
-            this.txtOccupation.TabIndex = 30;
+            this.txtOccupation.TabIndex = 7;
             this.txtOccupation.Texts = "";
             this.txtOccupation.UnderlinedStyle = false;
             this.txtOccupation.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtOccupation_KeyPress);
@@ -320,7 +331,7 @@
             this.txtMiddleName.PlaceholderColor = System.Drawing.Color.DarkGray;
             this.txtMiddleName.PlaceholderText = "";
             this.txtMiddleName.Size = new System.Drawing.Size(366, 41);
-            this.txtMiddleName.TabIndex = 24;
+            this.txtMiddleName.TabIndex = 3;
             this.txtMiddleName.Texts = "";
             this.txtMiddleName.UnderlinedStyle = false;
             this.txtMiddleName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMiddleName_KeyPress);
@@ -353,7 +364,7 @@
             this.txtLastName.PlaceholderColor = System.Drawing.Color.DarkGray;
             this.txtLastName.PlaceholderText = "";
             this.txtLastName.Size = new System.Drawing.Size(366, 41);
-            this.txtLastName.TabIndex = 22;
+            this.txtLastName.TabIndex = 2;
             this.txtLastName.Texts = "";
             this.txtLastName.UnderlinedStyle = false;
             this.txtLastName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLastName_KeyPress);
@@ -386,7 +397,7 @@
             this.txtFirstName.PlaceholderColor = System.Drawing.Color.DarkGray;
             this.txtFirstName.PlaceholderText = "";
             this.txtFirstName.Size = new System.Drawing.Size(366, 41);
-            this.txtFirstName.TabIndex = 20;
+            this.txtFirstName.TabIndex = 1;
             this.txtFirstName.Texts = "";
             this.txtFirstName.UnderlinedStyle = false;
             this.txtFirstName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFirstName_KeyPress);
@@ -423,7 +434,7 @@
             this.dpBirthDate.Name = "dpBirthDate";
             this.dpBirthDate.Size = new System.Drawing.Size(380, 35);
             this.dpBirthDate.SkinColor = System.Drawing.Color.White;
-            this.dpBirthDate.TabIndex = 14;
+            this.dpBirthDate.TabIndex = 4;
             this.dpBirthDate.TextColor = System.Drawing.Color.Black;
             this.dpBirthDate.ValueChanged += new System.EventHandler(this.dpBirthDate_ValueChanged);
             // 
@@ -445,7 +456,7 @@
             this.txtAddress.PlaceholderColor = System.Drawing.Color.DarkGray;
             this.txtAddress.PlaceholderText = "";
             this.txtAddress.Size = new System.Drawing.Size(1163, 103);
-            this.txtAddress.TabIndex = 11;
+            this.txtAddress.TabIndex = 8;
             this.txtAddress.Texts = "";
             this.txtAddress.UnderlinedStyle = false;
             // 
@@ -478,7 +489,7 @@
             this.txtContact.PlaceholderColor = System.Drawing.Color.DarkGray;
             this.txtContact.PlaceholderText = "";
             this.txtContact.Size = new System.Drawing.Size(179, 41);
-            this.txtContact.TabIndex = 9;
+            this.txtContact.TabIndex = 6;
             this.txtContact.Texts = "";
             this.txtContact.UnderlinedStyle = false;
             this.txtContact.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtContact_KeyPress);
@@ -530,17 +541,6 @@
             this.btnBack.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
             this.btnBack.UseVisualStyleBackColor = false;
             this.btnBack.Click += new System.EventHandler(this.backBtn_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(494, 185);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(20, 20);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 34;
-            this.pictureBox1.TabStop = false;
-            this.toolTipAge.SetToolTip(this.pictureBox1, "Age is automatically computated when birthdate value changed");
             // 
             // AddPatient
             // 

@@ -49,7 +49,7 @@ namespace Kinesia.Patients
 
         private void dpBirthDate_ValueChanged(object sender, EventArgs e)
         {
-            txtAge.Texts = getAge().ToString(); // txtAge value will changed if the value of DatePicker dpBirthDate changed 
+             txtAge.Texts = getAge().ToString(); // txtAge value will changed if the value of DatePicker dpBirthDate changed 
         }
 
         private void AddPatient_Load(object sender, EventArgs e)
@@ -94,7 +94,7 @@ namespace Kinesia.Patients
             {
                 // will only show dialog if there's an unsaved input
                 DialogResult clearDialog = MessageBox.Show("Are you sure you want to clear inputs?\n" +
-                "Any unsaved changes will be lost!", "Add Patient Notification", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                "Any unsaved inputs will be lost!", "Add Patient Notification", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
 
                 if (clearDialog == DialogResult.Yes)
                 {

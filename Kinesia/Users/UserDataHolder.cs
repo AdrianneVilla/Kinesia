@@ -13,7 +13,9 @@ namespace Kinesia.Users
         public string LastName { get; set; }
         public string MiddleName { get; set; }
         public string BirthDate { get; set; }
+        public int Age { get; set; }
         public string Gender { get; set; }
+        public string Contact { get; set; }
         public string Address { get; set; }
         public string Role { get; set; }
         public string UserName { get; set; }

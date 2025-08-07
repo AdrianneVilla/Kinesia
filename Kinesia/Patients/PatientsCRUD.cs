@@ -306,6 +306,8 @@ namespace Kinesia.Patients
             Connection.cmd.Parameters.AddWithValue("@lastName", patientData.LastName);
             Connection.reader = Connection.cmd.ExecuteReader();
 
+            // will return true if the patient was already existing
+            // will return false if the patient was not already existing
             if (Connection.reader.Read())
             {
                 Connection.reader.Close();
@@ -321,6 +323,8 @@ namespace Kinesia.Patients
 
         public bool IsPatientDetailsComplete(PatientDataHolder patientData)
         {
+            // will return true if the patient details on Add Patient page was complete
+            // will return false if the patient details on Add Patient page was incomplete
             if (patientData.FirstName.Equals("") || patientData.LastName.Equals("") || patientData.Gender.Equals("") || patientData.Contact.Equals("") ||
                 patientData.Occupation.Equals("") || patientData.Address.Equals(""))
             {

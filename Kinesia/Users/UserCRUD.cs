@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Kinesia.Patients;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -156,6 +157,49 @@ namespace Kinesia.Users
             Connection.conn.Close();
         }
 
+        public void SetUserID(UserDataHolder userData)
+        {
+            Connection.conn.Open();
+
+            Connection.cmd = new MySqlCommand("SELECT COUNT(UserID) FROM Users", Connection.conn);
+            userData.UserID = $"USER{Convert.ToInt32(Connection.cmd.ExecuteScalar()) + 1}";
+
+            Connection.conn.Close();
+        }
+
+        public void AddUser(UserDataHolder userData)
+        {
+            Connection.conn.Open();
+
+            Connection.cmd = new MySqlCommand("INSERT INTO Users VALUES (@userID, @firstName, @lastName, @middleName, @birthDate, @gender, " +
+                "@contact, @address, @role, @username, @password, @email, @dateAdded, @lastArchiveDate, @status)", Connection.conn);
+            Connection.cmd.Parameters.AddWithValue("@userID", userData.UserID);
+            Connection.cmd.Parameters.AddWithValue("@firstName", userData.FirstName);
+            Connection.cmd.Parameters.AddWithValue("@lastName", userData.LastName);
+            Connection.cmd.Parameters.AddWithValue("@middleName", userData.MiddleName);
+            Connection.cmd.Parameters.AddWithValue("@birthDate", userData.BirthDate);
+            Connection.cmd.Parameters.AddWithValue("@gender", userData.Gender);
+
+            if (userData.Contact[0] == '0')
+            {
+                userData.Contact = userData.Contact.Substring(1); // will remove the "0" in the contact
+            }
+            userData.Contact = "+63" + userData.Contact; // will insert '+63' at the start of contact
+
+            Connection.cmd.Parameters.AddWithValue("@contact", userData.Contact);
+            Connection.cmd.Parameters.AddWithValue("@address", userData.Address);
+            Connection.cmd.Parameters.AddWithValue("@role", userData.Role);
+            Connection.cmd.Parameters.AddWithValue("@username", userData.UserName);
+            Connection.cmd.Parameters.AddWithValue("@password", userData.Password);
+            Connection.cmd.Parameters.AddWithValue("@email", userData.Email);
+            Connection.cmd.Parameters.AddWithValue("@dateAdded", DateTime.Now);
+            Connection.cmd.Parameters.AddWithValue("@lastArchiveDate", null);
+            Connection.cmd.Parameters.AddWithValue("@status", 1);
+            Connection.cmd.ExecuteNonQuery();
+
+            Connection.conn.Close();
+        }
+
         public void ArchiveUser(string userID)
         {
             Connection.conn.Open();
@@ -176,6 +220,80 @@ namespace Kinesia.Users
             Connection.cmd.ExecuteNonQuery();
 
             Connection.conn.Close();
+        }
+
+        public bool CheckExistingUser(UserDataHolder userData)
+        {
+            Connection.conn.Open();
+
+            Connection.cmd = new MySqlCommand("SELECT FirstName, LastName, MiddleName FROM Users WHERE FirstName = @firstName AND LastName = @lastName AND " +
+                "MiddleName = @middleName", Connection.conn);
+            Connection.cmd.Parameters.AddWithValue("@firstName", userData.FirstName);
+            Connection.cmd.Parameters.AddWithValue("@lastName", userData.LastName);
+            Connection.cmd.Parameters.AddWithValue("@middleName", userData.MiddleName);
+            Connection.reader = Connection.cmd.ExecuteReader();
+
+            // will return true if the user was already existing
+            // will return false if the user was not already existing
+            if (Connection.reader.Read())
+            {
+                CustomDialog.Show("User was already existing!", "Existing User", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                Connection.reader.Close();
+                Connection.conn.Close();
+                return true;
+            }
+
+            Connection.reader.Close();
+            Connection.conn.Close();
+            return false;
+        }
+
+        public bool IsUserDetailsComplete(UserDataHolder userData)
+        {
+            // will return true if the user details on Add User page was complete
+            // will return false if the user details on Add User page was incomplete
+            if (userData.FirstName.Equals("") || userData.LastName.Equals("") ||
+                userData.Gender.Equals("") || userData.Contact.Equals("") || userData.Email.Equals("") || userData.Address.Equals("") ||
+                userData.UserName.Equals("") || userData.Password.Equals("") || userData.Role.Equals(""))
+            {
+                CustomDialog.Show("User details was incomplete! \nPlease fill-out all details to add this user.", "Incomplete User Details",
+                    CustomDialogButtons.OK, CustomDialogIcons.Error);
+                return false;
+            }
+
+            return true;
+        }
+
+        public bool IsContactValid(UserDataHolder userData)
+        {
+            if (userData.Contact.Length > 11 || userData.Contact.Length < 10)
+            {
+                // will show an error if the length of contact number is not 10 or 11 (PH contact number)
+                CustomDialog.Show("Invalid contact number! \nContact number length should be 10 or 11", 
+                    "Invalid Contact Number", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                return false;
+            }
+
+            if (userData.Contact.Substring(0, 2) != "09" && userData.Contact[0] != '9')
+            {
+                // will show an error if the contact number does not start on 09 or 9 (PH contact number)
+                CustomDialog.Show("Invalid contact number! Contact number should start with 09 or 9",
+                    "Invalid Contact Number", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                return false;
+            }
+
+            return true;
+        }
+
+        public DateTime GetLegalDate()
+        {
+            Connection.conn.Open();
+
+            Connection.cmd = new MySqlCommand("SELECT DATE_ADD(CURDATE(), INTERVAL -18 YEAR)", Connection.conn);
+            var legalDate = Convert.ToDateTime(Connection.cmd.ExecuteScalar());
+
+            Connection.conn.Close();
+            return legalDate;
         }
     }
 }
