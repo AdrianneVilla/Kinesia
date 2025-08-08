@@ -285,6 +285,20 @@ namespace Kinesia.Users
             return true;
         }
 
+        public bool IsEmailValid(UserDataHolder userData)
+        {
+            // will return false if the email address does not contains '.' and '@'
+            if(!userData.Email.Contains(".") || !userData.Email.Contains("@"))
+            {
+                CustomDialog.Show("Invalid email address! \nPlease enter a valid email address",
+                    "Invalid Email Address", CustomDialogButtons.OK, CustomDialogIcons.Error);
+
+                return false;
+            }
+
+            return true;
+        }
+
         public DateTime GetLegalDate()
         {
             Connection.conn.Open();

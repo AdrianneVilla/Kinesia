@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Kinesia.Users
@@ -59,7 +52,7 @@ namespace Kinesia.Users
                 };
 
                 if(Queries.UserQueries.IsUserDetailsComplete(userData) && !Queries.UserQueries.CheckExistingUser(userData) &&
-                    Queries.UserQueries.IsContactValid(userData))
+                    Queries.UserQueries.IsContactValid(userData) && Queries.UserQueries.IsEmailValid(userData))
                 {
                     // will continue to add the user if UserDataHolder passed the data validations
                     Queries.UserQueries.SetUserID(userData);
