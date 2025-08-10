@@ -22,7 +22,7 @@ namespace Kinesia.Users
 
         private void btnView_Click(object sender, EventArgs e)
         {
-            Queries.UserQueries.GetUserDetails(btnView.Tag.ToString());
+            Queries.UserQueries.GetUserDetails(lblUserID.Text);
         }
 
         public string UserID { get { return lblUserID.Text; } set { lblUserID.Text = value; } }

@@ -163,7 +163,7 @@ namespace Kinesia.Patients
                     PageObjects.patientDetails.LastArchiveDate = lastArchiveDate.ToString();
                 }
                     // will only display Patient Details if fetched successfully by the system
-                    PageObjects.RemoveResources(ref PageObjects.CurrentControl);
+                PageObjects.RemoveResources(ref PageObjects.CurrentControl);
                 PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.patientDetails);
                 PageObjects.CurrentControl = PageObjects.patientDetails;
             }
@@ -181,7 +181,7 @@ namespace Kinesia.Patients
             // GetPatientDetails overload for Edit Patient page
             Connection.conn.Open();
 
-            Connection.cmd = new MySqlCommand("SELECT FirstName, LastName, MiddleName, BirthDate, TIMESTAMPDIFF(MONTH, BirthDate, CURDATE()), Gender, Contact, Occupation, Address " +
+            Connection.cmd = new MySqlCommand("SELECT FirstName, LastName, MiddleName, BirthDate, TIMESTAMPDIFF(MONTH, BirthDate, CURDATE()) AS Age, Gender, Contact, Occupation, Address " +
                 "FROM Patients WHERE PatientID = @patientID", Connection.conn);
             Connection.cmd.Parameters.AddWithValue("@patientID", patientID);
             Connection.reader = Connection.cmd.ExecuteReader();
@@ -278,8 +278,9 @@ namespace Kinesia.Patients
         {
             Connection.conn.Open();
 
-            Connection.cmd = new MySqlCommand("UPDATE Patients SET Status = 0 WHERE PatientID = @patientID", Connection.conn);
+            Connection.cmd = new MySqlCommand("UPDATE Patients SET Status = 0, LastArchiveDate = @lastArchiveDate WHERE PatientID = @patientID", Connection.conn);
             Connection.cmd.Parameters.AddWithValue("@patientID", patientID);
+            Connection.cmd.Parameters.AddWithValue("@lastArchiveDate", DateTime.Now);
             Connection.cmd.ExecuteNonQuery();
 
             Connection.conn.Close();

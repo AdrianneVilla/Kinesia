@@ -44,5 +44,13 @@ namespace Kinesia.Users
         public string Email { get { return lblEmail.Text; } set { lblEmail.Text = value; } }
         public string DateAdded { get { return lblDateAdded.Text; } set { lblDateAdded.Text = value; } }
         public string LastArchiveDate { get { return lblArchiveDate.Text; } set { lblArchiveDate.Text = value; } }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            PageObjects.RemoveResources(ref PageObjects.CurrentControl);
+            PageObjects.userPage = new UserPage();
+            PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.userPage);
+            PageObjects.CurrentControl = PageObjects.userPage;
+        }
     }
 }

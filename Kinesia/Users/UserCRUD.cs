@@ -1,4 +1,5 @@
 ﻿using Kinesia.Patients;
+using Microsoft.Win32;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -108,6 +109,7 @@ namespace Kinesia.Users
 
         public void GetUserDetails(string userID)
         {
+            // GetUserDetails overload for Display Users page
             Connection.conn.Open();
 
             Connection.cmd = new MySqlCommand("SELECT UserID, FirstName, MiddleName, LastName, Gender, Contact, TIMESTAMPDIFF(MONTH, Birthdate, CURDATE()), Address, Birthdate, Role, " +
@@ -144,13 +146,43 @@ namespace Kinesia.Users
                     PageObjects.userDetails.LastArchiveDate = lastArchiveDate.ToString();
                 }
 
-                    // will only display User Details if fetched successfully by the system
-                    PageObjects.RemoveResources(ref PageObjects.CurrentControl);
+                // will only display User Details if fetched successfully by the system
+                PageObjects.RemoveResources(ref PageObjects.CurrentControl);
                 PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.userDetails);
                 PageObjects.CurrentControl = PageObjects.userPage;
             } else
             {
                 MessageBox.Show("User details not found.", "User Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            Connection.reader.Close();
+            Connection.conn.Close();
+        }
+
+        public void GetUserDetails(string userID, UserDataHolder userData)
+        {
+            // GetUserDetails overload for Edit User page
+            Connection.conn.Open();
+
+            Connection.cmd = new MySqlCommand("SELECT FirstName, LastName, MiddleName, Birthdate, TIMESTAMPDIFF(Month, Birthdate, CURDATE()) AS Age, " +
+                "Gender, Contact, Email, Address, Username, Password, Role FROM Users WHERE UserID = @userID", Connection.conn);
+            Connection.cmd.Parameters.AddWithValue("@userID", userID);
+            Connection.reader = Connection.cmd.ExecuteReader();
+
+            if (Connection.reader.Read())
+            {
+                userData.FirstName = Connection.reader.GetString(0);
+                userData.LastName = Connection.reader.GetString(1);
+                userData.MiddleName = Connection.reader.GetString(2);
+                DateTime birthDate = Connection.reader.GetDateTime(3);
+                userData.BirthDate = birthDate.ToString("yyyy-MM-dd");
+                userData.Age = Connection.reader.GetInt32(4);
+                userData.Gender = Connection.reader.GetString(5);
+                userData.Email = Connection.reader.GetString(6);
+                userData.Address = Connection.reader.GetString(7);
+                userData.UserName = Connection.reader.GetString(8);
+                userData.Password = Connection.reader.GetString(9);
+                userData.Role = Connection.reader.GetString(10);
             }
 
             Connection.reader.Close();
@@ -204,8 +236,9 @@ namespace Kinesia.Users
         {
             Connection.conn.Open();
 
-            Connection.cmd = new MySqlCommand("UPDATE Users SET Status = 0 WHERE UserID = @userID", Connection.conn);
+            Connection.cmd = new MySqlCommand("UPDATE Users SET Status = 0, LastArchiveDate = @lastArchiveDate WHERE UserID = @userID", Connection.conn);
             Connection.cmd.Parameters.AddWithValue("@userID", userID);
+            Connection.cmd.Parameters.AddWithValue("@lastArchiveDate", DateTime.Now);
             Connection.cmd.ExecuteNonQuery();
 
             Connection.conn.Close();
