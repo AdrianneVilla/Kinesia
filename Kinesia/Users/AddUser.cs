@@ -120,5 +120,25 @@ namespace Kinesia.Users
         {
             txtAge.Texts = getAge().ToString();
         }
+
+        private void txtFirstName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            InputValidation.CharactersOnly(sender, e);
+        }
+
+        private void txtLastName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            InputValidation.CharactersOnly(sender, e);
+        }
+
+        private void txtMiddleName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            InputValidation.CharactersOnly(sender, e);
+        }
+
+        private void txtContact_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            InputValidation.WholeNumbersOnly(sender, e);
+        }
     }
 }
