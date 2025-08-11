@@ -229,8 +229,7 @@
             this.cbRole.IconColor = System.Drawing.Color.Black;
             this.cbRole.Items.AddRange(new object[] {
             "Admin",
-            "Therapist",
-            "Maintenance"});
+            "Therapist"});
             this.cbRole.ListBackColor = System.Drawing.Color.White;
             this.cbRole.ListTextColor = System.Drawing.Color.Black;
             this.cbRole.Location = new System.Drawing.Point(708, 628);
@@ -269,7 +268,7 @@
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.Gray;
-            this.label14.Location = new System.Drawing.Point(793, 221);
+            this.label14.Location = new System.Drawing.Point(811, 221);
             this.label14.Margin = new System.Windows.Forms.Padding(30, 0, 3, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(34, 23);
@@ -475,7 +474,7 @@
             this.txtContact.BorderSize = 1;
             this.txtContact.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtContact.ForeColor = System.Drawing.Color.Black;
-            this.txtContact.Location = new System.Drawing.Point(827, 210);
+            this.txtContact.Location = new System.Drawing.Point(848, 210);
             this.txtContact.Margin = new System.Windows.Forms.Padding(30, 4, 4, 4);
             this.txtContact.Multiline = false;
             this.txtContact.Name = "txtContact";
@@ -483,7 +482,7 @@
             this.txtContact.PasswordChar = false;
             this.txtContact.PlaceholderColor = System.Drawing.Color.DarkGray;
             this.txtContact.PlaceholderText = "";
-            this.txtContact.Size = new System.Drawing.Size(387, 41);
+            this.txtContact.Size = new System.Drawing.Size(366, 41);
             this.txtContact.TabIndex = 6;
             this.txtContact.Texts = "";
             this.txtContact.UnderlinedStyle = false;
@@ -493,7 +492,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(823, 185);
+            this.label8.Location = new System.Drawing.Point(844, 185);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(123, 23);
             this.label8.TabIndex = 10;

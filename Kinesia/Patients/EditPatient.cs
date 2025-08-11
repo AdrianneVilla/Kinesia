@@ -28,14 +28,14 @@ namespace Kinesia.Patients
             
             if(DataHolder.PatientDataHolder.Gender == "Male")
             {
-                cbGender.SelectedIndex = 0; // will set the cbGender to Male
+                cbGender.SelectedIndex = 0; // will set the cbGender value to Male
             } 
             else
             {
-                cbGender.SelectedIndex = 1; // will set the cbGender to Female
+                cbGender.SelectedIndex = 1; // will set the cbGender value to Female
             }
 
-            txtContact.Texts = DataHolder.PatientDataHolder.Contact.Remove(0,3); // will remove the "+63" of the contact
+            txtContact.Texts = DataHolder.PatientDataHolder.Contact.Remove(0,3); // will remove the "+63" from the contact
             txtOccupation.Texts = DataHolder.PatientDataHolder.Occupation;
             txtAddress.Texts = DataHolder.PatientDataHolder.Address;
 
@@ -46,8 +46,8 @@ namespace Kinesia.Patients
         {
             int age = 0;
 
-            DateTime birthDate = dpBirthDate.Value; // will get the value from dpBirthDate
-            DateTime currentDate = DateTime.Now; // will get the currentDate
+            var birthDate = dpBirthDate.Value; // will get the value from dpBirthDate
+            var currentDate = DateTime.Now; // will get the currentDate
 
             int totalMonths = (currentDate.Year - birthDate.Year) * 12 + currentDate.Month - birthDate.Month; // will get the total months
             age = totalMonths / 12; // will divide the total months to 12 to get the age
@@ -55,7 +55,7 @@ namespace Kinesia.Patients
             return age;
         }
 
-        public bool hasChanged()
+        private bool hasChanged()
         {
             var patient = DataHolder.PatientDataHolder;
 
@@ -133,10 +133,9 @@ namespace Kinesia.Patients
                     {
                         // will only check existing patient if
                         // first, last, and middle name data were changed
-
                         if (Queries.PatientQueries.CheckExistingPatient(patientData)) 
                         {
-                            return; // will exit the update method
+                            return; // will exit the update method if patient was already existing
                         }
                     }
                     // will update the patient's personal information if patientData passed all data validations

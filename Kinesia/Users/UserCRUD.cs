@@ -164,25 +164,32 @@ namespace Kinesia.Users
             // GetUserDetails overload for Edit User page
             Connection.conn.Open();
 
-            Connection.cmd = new MySqlCommand("SELECT FirstName, LastName, MiddleName, Birthdate, TIMESTAMPDIFF(Month, Birthdate, CURDATE()) AS Age, " +
+            Connection.cmd = new MySqlCommand("SELECT UserID, FirstName, LastName, MiddleName, Birthdate, TIMESTAMPDIFF(Month, Birthdate, CURDATE()) AS Age, " +
                 "Gender, Contact, Email, Address, Username, Password, Role FROM Users WHERE UserID = @userID", Connection.conn);
             Connection.cmd.Parameters.AddWithValue("@userID", userID);
             Connection.reader = Connection.cmd.ExecuteReader();
 
             if (Connection.reader.Read())
             {
-                userData.FirstName = Connection.reader.GetString(0);
-                userData.LastName = Connection.reader.GetString(1);
-                userData.MiddleName = Connection.reader.GetString(2);
-                DateTime birthDate = Connection.reader.GetDateTime(3);
+                userData.UserID = Connection.reader.GetString(0);
+                userData.FirstName = Connection.reader.GetString(1);
+                userData.LastName = Connection.reader.GetString(2);
+                userData.MiddleName = Connection.reader.GetString(3);
+                DateTime birthDate = Connection.reader.GetDateTime(4);
                 userData.BirthDate = birthDate.ToString("yyyy-MM-dd");
-                userData.Age = Connection.reader.GetInt32(4);
-                userData.Gender = Connection.reader.GetString(5);
-                userData.Email = Connection.reader.GetString(6);
-                userData.Address = Connection.reader.GetString(7);
-                userData.UserName = Connection.reader.GetString(8);
-                userData.Password = Connection.reader.GetString(9);
-                userData.Role = Connection.reader.GetString(10);
+                userData.Age = Connection.reader.GetInt32(5);
+                userData.Gender = Connection.reader.GetString(6);
+                userData.Contact = Connection.reader.GetString(7);
+                userData.Email = Connection.reader.GetString(8);
+                userData.Address = Connection.reader.GetString(9);
+                userData.UserName = Connection.reader.GetString(10);
+                userData.Password = Connection.reader.GetString(11);
+                userData.Role = Connection.reader.GetString(12);
+
+                PageObjects.editUser = new EditUser();
+                PageObjects.RemoveResources(ref PageObjects.CurrentControl);
+                PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.editUser);
+                PageObjects.CurrentControl = PageObjects.editUser;
             }
 
             Connection.reader.Close();
@@ -227,6 +234,37 @@ namespace Kinesia.Users
             Connection.cmd.Parameters.AddWithValue("@dateAdded", DateTime.Now);
             Connection.cmd.Parameters.AddWithValue("@lastArchiveDate", null);
             Connection.cmd.Parameters.AddWithValue("@status", 1);
+            Connection.cmd.ExecuteNonQuery();
+
+            Connection.conn.Close();
+        }
+
+        public void UpdateUser(UserDataHolder userData)
+        {
+            Connection.conn.Open();
+
+            Connection.cmd = new MySqlCommand("UPDATE Users SET FirstName = @firstName, LastName = @lastName, MiddleName = @middleName, " +
+                "Birthdate = @birthDate, Gender = @gender, Contact = @contact, Email = @email, Address = @address, Username = @username, " +
+                "Password = @password, Role = @role WHERE UserID = @userID", Connection.conn);
+            Connection.cmd.Parameters.AddWithValue("@userID", userData.UserID);
+            Connection.cmd.Parameters.AddWithValue("@firstName", userData.FirstName);
+            Connection.cmd.Parameters.AddWithValue("@lastName", userData.LastName);
+            Connection.cmd.Parameters.AddWithValue("@middleName", userData.MiddleName);
+            Connection.cmd.Parameters.AddWithValue("@birthDate", userData.BirthDate);
+            Connection.cmd.Parameters.AddWithValue("@gender", userData.Gender);
+
+            if (userData.Contact[0] == '0')
+            {
+                userData.Contact = userData.Contact.Substring(1); // will remove the "0" in the contact
+            }
+            userData.Contact = "+63" + userData.Contact; // will insert '+63' at the start of contact
+
+            Connection.cmd.Parameters.AddWithValue("@contact", userData.Contact);
+            Connection.cmd.Parameters.AddWithValue("@email", userData.Email);
+            Connection.cmd.Parameters.AddWithValue("@address", userData.Address);
+            Connection.cmd.Parameters.AddWithValue("@username", userData.UserName);
+            Connection.cmd.Parameters.AddWithValue("@password", userData.Password);
+            Connection.cmd.Parameters.AddWithValue("@role", userData.Role);
             Connection.cmd.ExecuteNonQuery();
 
             Connection.conn.Close();
@@ -330,17 +368,6 @@ namespace Kinesia.Users
             }
 
             return true;
-        }
-
-        public DateTime GetLegalDate()
-        {
-            Connection.conn.Open();
-
-            Connection.cmd = new MySqlCommand("SELECT DATE_ADD(CURDATE(), INTERVAL -18 YEAR)", Connection.conn);
-            var legalDate = Convert.ToDateTime(Connection.cmd.ExecuteScalar());
-
-            Connection.conn.Close();
-            return legalDate;
         }
     }
 }

@@ -16,7 +16,7 @@ namespace Kinesia.Users
         {
             // will only limit the Date Picker to age 18 of the current date
             // this means, the user can only pick a birth date that is 18 years old and older of the current date
-            dpBirthDate.MaxDate = Queries.UserQueries.GetLegalDate();
+            dpBirthDate.MaxDate = DateTime.Today.AddYears(-18);
         }
 
         private void btnAddUser_Click(object sender, EventArgs e)
@@ -70,7 +70,7 @@ namespace Kinesia.Users
             txtFirstName.Texts = "";
             txtLastName.Texts = "";
             txtMiddleName.Texts = "";
-            dpBirthDate.Value = Queries.UserQueries.GetLegalDate();
+            dpBirthDate.Value = DateTime.Today.AddYears(-18);
             txtContact.Texts = "";
             txtEmail.Texts = "";
             txtAddress.Texts = "";

@@ -73,6 +73,7 @@
             this.btnEdit.TabIndex = 10;
             this.btnEdit.TextColor = System.Drawing.Color.Transparent;
             this.btnEdit.UseVisualStyleBackColor = false;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnArchive
             // 

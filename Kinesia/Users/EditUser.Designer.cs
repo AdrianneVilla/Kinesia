@@ -32,8 +32,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.nameHolder = new System.Windows.Forms.Label();
             this.txtTitleLabel = new System.Windows.Forms.Label();
-            this.btnClearInput = new OrganizationProfile.CustomButton();
-            this.btnAddUser = new OrganizationProfile.CustomButton();
+            this.btnSaveChanges = new OrganizationProfile.CustomButton();
             this.panelBorder1 = new WindowsFormsApp2.CustomButton.PanelBorder();
             this.txtEmail = new CustomControls.RJControls.RJTextBox();
             this.label16 = new System.Windows.Forms.Label();
@@ -63,6 +62,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.btnBack = new OrganizationProfile.CustomButton();
+            this.lblUserID = new System.Windows.Forms.Label();
             this.panelBorder1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -102,58 +102,35 @@
             this.txtTitleLabel.Location = new System.Drawing.Point(141, 30);
             this.txtTitleLabel.Margin = new System.Windows.Forms.Padding(0);
             this.txtTitleLabel.Name = "txtTitleLabel";
-            this.txtTitleLabel.Size = new System.Drawing.Size(141, 48);
+            this.txtTitleLabel.Size = new System.Drawing.Size(72, 48);
             this.txtTitleLabel.TabIndex = 20;
-            this.txtTitleLabel.Text = "Edit User";
+            this.txtTitleLabel.Text = "Edit";
             this.txtTitleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // btnClearInput
+            // btnSaveChanges
             // 
-            this.btnClearInput.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClearInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(216)))), ((int)(((byte)(216)))));
-            this.btnClearInput.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(216)))), ((int)(((byte)(216)))));
-            this.btnClearInput.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(64)))), ((int)(((byte)(66)))));
-            this.btnClearInput.BorderRadius = 10;
-            this.btnClearInput.BorderSize = 1;
-            this.btnClearInput.FlatAppearance.BorderSize = 0;
-            this.btnClearInput.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClearInput.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClearInput.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(64)))), ((int)(((byte)(66)))));
-            this.btnClearInput.Image = ((System.Drawing.Image)(resources.GetObject("btnClearInput.Image")));
-            this.btnClearInput.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClearInput.Location = new System.Drawing.Point(1214, 881);
-            this.btnClearInput.Name = "btnClearInput";
-            this.btnClearInput.Padding = new System.Windows.Forms.Padding(10, 4, 40, 0);
-            this.btnClearInput.Size = new System.Drawing.Size(173, 50);
-            this.btnClearInput.TabIndex = 24;
-            this.btnClearInput.Text = "Clear";
-            this.btnClearInput.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnClearInput.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(64)))), ((int)(((byte)(66)))));
-            this.btnClearInput.UseVisualStyleBackColor = false;
-            // 
-            // btnAddUser
-            // 
-            this.btnAddUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(220)))), ((int)(((byte)(255)))));
-            this.btnAddUser.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(220)))), ((int)(((byte)(255)))));
-            this.btnAddUser.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.btnAddUser.BorderRadius = 10;
-            this.btnAddUser.BorderSize = 1;
-            this.btnAddUser.FlatAppearance.BorderSize = 0;
-            this.btnAddUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddUser.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.btnAddUser.Image = ((System.Drawing.Image)(resources.GetObject("btnAddUser.Image")));
-            this.btnAddUser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAddUser.Location = new System.Drawing.Point(1035, 881);
-            this.btnAddUser.Name = "btnAddUser";
-            this.btnAddUser.Padding = new System.Windows.Forms.Padding(10, 4, 30, 0);
-            this.btnAddUser.Size = new System.Drawing.Size(173, 50);
-            this.btnAddUser.TabIndex = 23;
-            this.btnAddUser.Text = "Add User";
-            this.btnAddUser.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAddUser.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.btnAddUser.UseVisualStyleBackColor = false;
+            this.btnSaveChanges.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSaveChanges.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(220)))), ((int)(((byte)(255)))));
+            this.btnSaveChanges.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(220)))), ((int)(((byte)(255)))));
+            this.btnSaveChanges.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
+            this.btnSaveChanges.BorderRadius = 10;
+            this.btnSaveChanges.BorderSize = 1;
+            this.btnSaveChanges.FlatAppearance.BorderSize = 0;
+            this.btnSaveChanges.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSaveChanges.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSaveChanges.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
+            this.btnSaveChanges.Image = ((System.Drawing.Image)(resources.GetObject("btnSaveChanges.Image")));
+            this.btnSaveChanges.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSaveChanges.Location = new System.Drawing.Point(1286, 881);
+            this.btnSaveChanges.Name = "btnSaveChanges";
+            this.btnSaveChanges.Padding = new System.Windows.Forms.Padding(10, 4, 30, 0);
+            this.btnSaveChanges.Size = new System.Drawing.Size(173, 50);
+            this.btnSaveChanges.TabIndex = 23;
+            this.btnSaveChanges.Text = "Save Changes";
+            this.btnSaveChanges.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSaveChanges.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
+            this.btnSaveChanges.UseVisualStyleBackColor = false;
+            this.btnSaveChanges.Click += new System.EventHandler(this.btnSaveChanges_Click);
             // 
             // panelBorder1
             // 
@@ -218,6 +195,7 @@
             this.txtEmail.TabIndex = 39;
             this.txtEmail.Texts = "";
             this.txtEmail.UnderlinedStyle = false;
+            this.txtEmail._TextChanged += new System.EventHandler(this.txtEmail__TextChanged);
             // 
             // label16
             // 
@@ -250,8 +228,8 @@
             this.cbRole.ForeColor = System.Drawing.Color.Black;
             this.cbRole.IconColor = System.Drawing.Color.Black;
             this.cbRole.Items.AddRange(new object[] {
-            "Therapist",
-            "Maintenance"});
+            "Admin",
+            "Therapist"});
             this.cbRole.ListBackColor = System.Drawing.Color.White;
             this.cbRole.ListTextColor = System.Drawing.Color.Black;
             this.cbRole.Location = new System.Drawing.Point(708, 628);
@@ -261,6 +239,7 @@
             this.cbRole.Size = new System.Drawing.Size(228, 39);
             this.cbRole.TabIndex = 35;
             this.cbRole.Texts = "";
+            this.cbRole.OnSelectedIndexChanged += new System.EventHandler(this.cbRole_OnSelectedIndexChanged);
             // 
             // cbGender
             // 
@@ -271,6 +250,9 @@
             this.cbGender.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.cbGender.ForeColor = System.Drawing.Color.DimGray;
             this.cbGender.IconColor = System.Drawing.Color.Black;
+            this.cbGender.Items.AddRange(new object[] {
+            "Male",
+            "Female"});
             this.cbGender.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
             this.cbGender.ListTextColor = System.Drawing.Color.Black;
             this.cbGender.Location = new System.Drawing.Point(594, 210);
@@ -281,13 +263,14 @@
             this.cbGender.Size = new System.Drawing.Size(200, 41);
             this.cbGender.TabIndex = 34;
             this.cbGender.Texts = "";
+            this.cbGender.OnSelectedIndexChanged += new System.EventHandler(this.cbGender_OnSelectedIndexChanged);
             // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.Gray;
-            this.label14.Location = new System.Drawing.Point(837, 221);
+            this.label14.Location = new System.Drawing.Point(809, 221);
             this.label14.Margin = new System.Windows.Forms.Padding(30, 0, 3, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(34, 23);
@@ -315,6 +298,7 @@
             this.txtPassword.TabIndex = 22;
             this.txtPassword.Texts = "";
             this.txtPassword.UnderlinedStyle = false;
+            this.txtPassword._TextChanged += new System.EventHandler(this.txtPassword__TextChanged);
             // 
             // label13
             // 
@@ -347,6 +331,7 @@
             this.txtUsername.TabIndex = 20;
             this.txtUsername.Texts = "";
             this.txtUsername.UnderlinedStyle = false;
+            this.txtUsername._TextChanged += new System.EventHandler(this.txtUsername__TextChanged);
             // 
             // label12
             // 
@@ -389,6 +374,8 @@
             this.txtMiddleName.TabIndex = 17;
             this.txtMiddleName.Texts = "";
             this.txtMiddleName.UnderlinedStyle = false;
+            this.txtMiddleName._TextChanged += new System.EventHandler(this.txtMiddleName__TextChanged);
+            this.txtMiddleName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMiddleName_KeyPress);
             // 
             // label10
             // 
@@ -421,6 +408,8 @@
             this.txtLastName.TabIndex = 15;
             this.txtLastName.Texts = "";
             this.txtLastName.UnderlinedStyle = false;
+            this.txtLastName._TextChanged += new System.EventHandler(this.txtLastName__TextChanged);
+            this.txtLastName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLastName_KeyPress);
             // 
             // label2
             // 
@@ -446,6 +435,7 @@
             this.dpBirthDate.SkinColor = System.Drawing.Color.White;
             this.dpBirthDate.TabIndex = 14;
             this.dpBirthDate.TextColor = System.Drawing.Color.Black;
+            this.dpBirthDate.ValueChanged += new System.EventHandler(this.dpBirthDate_ValueChanged);
             // 
             // txtAddress
             // 
@@ -468,6 +458,7 @@
             this.txtAddress.TabIndex = 11;
             this.txtAddress.Texts = "";
             this.txtAddress.UnderlinedStyle = false;
+            this.txtAddress._TextChanged += new System.EventHandler(this.txtAddress__TextChanged);
             // 
             // label9
             // 
@@ -489,7 +480,7 @@
             this.txtContact.BorderSize = 1;
             this.txtContact.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtContact.ForeColor = System.Drawing.Color.Black;
-            this.txtContact.Location = new System.Drawing.Point(827, 210);
+            this.txtContact.Location = new System.Drawing.Point(848, 210);
             this.txtContact.Margin = new System.Windows.Forms.Padding(30, 4, 4, 4);
             this.txtContact.Multiline = false;
             this.txtContact.Name = "txtContact";
@@ -497,16 +488,18 @@
             this.txtContact.PasswordChar = false;
             this.txtContact.PlaceholderColor = System.Drawing.Color.DarkGray;
             this.txtContact.PlaceholderText = "";
-            this.txtContact.Size = new System.Drawing.Size(387, 41);
+            this.txtContact.Size = new System.Drawing.Size(363, 41);
             this.txtContact.TabIndex = 9;
             this.txtContact.Texts = "";
             this.txtContact.UnderlinedStyle = false;
+            this.txtContact._TextChanged += new System.EventHandler(this.txtContact__TextChanged);
+            this.txtContact.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtContact_KeyPress);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(823, 185);
+            this.label8.Location = new System.Drawing.Point(844, 185);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(123, 23);
             this.label8.TabIndex = 10;
@@ -586,6 +579,8 @@
             this.txtFirstName.TabIndex = 1;
             this.txtFirstName.Texts = "";
             this.txtFirstName.UnderlinedStyle = false;
+            this.txtFirstName._TextChanged += new System.EventHandler(this.txtFirstName__TextChanged);
+            this.txtFirstName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFirstName_KeyPress);
             // 
             // label4
             // 
@@ -632,14 +627,31 @@
             this.btnBack.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnBack.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
             this.btnBack.UseVisualStyleBackColor = false;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
+            // lblUserID
+            // 
+            this.lblUserID.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblUserID.AutoSize = true;
+            this.lblUserID.BackColor = System.Drawing.Color.Transparent;
+            this.lblUserID.Font = new System.Drawing.Font("Poppins", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUserID.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
+            this.lblUserID.Location = new System.Drawing.Point(200, 30);
+            this.lblUserID.Margin = new System.Windows.Forms.Padding(0);
+            this.lblUserID.Name = "lblUserID";
+            this.lblUserID.Size = new System.Drawing.Size(113, 48);
+            this.lblUserID.TabIndex = 25;
+            this.lblUserID.Text = "<User>";
+            this.lblUserID.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // EditUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.btnClearInput);
-            this.Controls.Add(this.btnAddUser);
+            this.Controls.Add(this.lblUserID);
+            this.Controls.Add(this.btnSaveChanges);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.nameHolder);
             this.Controls.Add(this.txtTitleLabel);
@@ -647,6 +659,7 @@
             this.Controls.Add(this.btnBack);
             this.Name = "EditUser";
             this.Size = new System.Drawing.Size(1511, 944);
+            this.Load += new System.EventHandler(this.EditUser_Load);
             this.panelBorder1.ResumeLayout(false);
             this.panelBorder1.PerformLayout();
             this.ResumeLayout(false);
@@ -657,8 +670,7 @@
         #endregion
 
         private System.Windows.Forms.Label label15;
-        private OrganizationProfile.CustomButton btnClearInput;
-        private OrganizationProfile.CustomButton btnAddUser;
+        private OrganizationProfile.CustomButton btnSaveChanges;
         private CustomControls.RJControls.RJComboBox cbRole;
         private CustomControls.RJControls.RJComboBox cbGender;
         private System.Windows.Forms.Label label14;
@@ -690,5 +702,6 @@
         private OrganizationProfile.CustomButton btnBack;
         private CustomControls.RJControls.RJTextBox txtEmail;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label lblUserID;
     }
 }

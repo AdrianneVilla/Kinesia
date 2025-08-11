@@ -7,7 +7,6 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Kinesia.Patients;
 using Kinesia.Users;
 using System.Text.RegularExpressions;
 using WindowsFormsApp2.CustomButton;
@@ -45,6 +44,7 @@ namespace Kinesia
         public static UserPage userPage;    
         public static UserDetails userDetails;
         public static AddUser addUser;
+        public static EditUser editUser;
         public static AssessmentPage assessmentPage;
 
         public static Control CurrentControl;
@@ -124,6 +124,7 @@ namespace Kinesia
     public class DataHolder
     {
         public static PatientDataHolder PatientDataHolder;
+        public static UserDataHolder UserDataHolder;
     }
 
     public class Connection
