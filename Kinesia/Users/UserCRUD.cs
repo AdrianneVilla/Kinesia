@@ -229,7 +229,7 @@ namespace Kinesia.Users
             Connection.cmd.Parameters.AddWithValue("@address", userData.Address);
             Connection.cmd.Parameters.AddWithValue("@role", userData.Role);
             Connection.cmd.Parameters.AddWithValue("@username", userData.UserName);
-            Connection.cmd.Parameters.AddWithValue("@password", userData.Password);
+            Connection.cmd.Parameters.AddWithValue("@password", CustomSecurity.HashPassword(userData.Password, CustomSecurity.GenerateSalt()));
             Connection.cmd.Parameters.AddWithValue("@email", userData.Email);
             Connection.cmd.Parameters.AddWithValue("@dateAdded", DateTime.Now);
             Connection.cmd.Parameters.AddWithValue("@lastArchiveDate", null);

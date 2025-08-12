@@ -312,7 +312,8 @@ namespace Kinesia
                 //    "Please fill-out all fields to login.", "Login Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 CustomDialog.Show("Username or Password fields are empty!\n" +
                     "Please fill-out all fields to login.", "Login Alert", CustomDialogButtons.OK, CustomDialogIcons.Error);
-            } else
+            } 
+            else
             {
                 Connection.conn.Open();
 

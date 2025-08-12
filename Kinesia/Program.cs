@@ -14,6 +14,8 @@ using Kinesia.Assessment;
 using Kinesia.Components.Custom_Dialog_Boxes;
 using System.Drawing;
 using System.Runtime.InteropServices;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace Kinesia
 {
@@ -31,6 +33,7 @@ namespace Kinesia
         }
     }
 
+    // Contains PageObjects objects
     public class PageObjects
     {
         public static Dashboard dashboard;
@@ -67,6 +70,7 @@ namespace Kinesia
         }
     }
 
+    // Contains custom dialog methods
     public static class CustomDialog
     {
         public static DialogResult Show(string description, string title, CustomDialogButtons button, CustomDialogIcons icon)
@@ -108,12 +112,14 @@ namespace Kinesia
     
     public enum CustomDialogButtons
     {
+        // Numbers are indexes
         OK, // 0
         YesNo // 1
     }
 
     public enum CustomDialogIcons
     {
+        // Numbers are indexes
         None, // 0
         Question, // 1
         Information, // 2
@@ -121,12 +127,14 @@ namespace Kinesia
         Warning // 4
     }
 
+    // Contains DataHolder/Model objects
     public class DataHolder
     {
         public static PatientDataHolder PatientDataHolder;
         public static UserDataHolder UserDataHolder;
     }
 
+    // Contains MySQL objects
     public class Connection
     {
         public static string connectionString = "server=localhost;port=3306;database=kinesia;uid=root;pwd=;";
@@ -135,12 +143,52 @@ namespace Kinesia
         public static MySqlDataReader reader;
     }
 
+    // Contains quries objects intantiation
     public class Queries
     {
         public static PatientsCRUD PatientQueries = new PatientsCRUD();
         public static UserCRUD UserQueries = new UserCRUD();
     }
 
+    // Contains custom security methods
+    public class CustomSecurity
+    {
+        public static string HashPassword(string password, string salt)
+        {
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                string saltedPassword = password + salt;
+
+                // will hash the saltedPassword into 256-bit hash
+                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(saltedPassword));
+                StringBuilder builder = new StringBuilder();
+
+                // will converts each byte into its 2-digit lowercase hexadecimal form
+                // Example: "4b227777d4dd1fc61c6f884f48641d02..."
+                foreach (byte b in bytes)
+                {
+                    builder.Append(b.ToString("x2"));
+                }
+                return builder.ToString();
+            }
+        }
+
+        public static string GenerateSalt()
+        {
+            byte[] saltByes = new byte[16]; // will create a 16-byte array
+
+            using (var random = RandomNumberGenerator.Create())
+            {
+                random.GetBytes(saltByes); // will fills it with cryptographically random values
+            }
+
+            // will convert bytes into a Base64 Str
+            // Example: "bZf34Gv2aF+5QZz9q3bXyA=="
+            return Convert.ToBase64String(saltByes);
+        }
+    }
+
+    // Contains Input Validation methods
     public class InputValidation
     {
         public static void CharactersOnly(object sender, KeyPressEventArgs e)
