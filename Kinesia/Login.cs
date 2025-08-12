@@ -300,45 +300,60 @@ namespace Kinesia
         
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            string username = txtUsername.Texts;
-            string password = txtPassword.Texts;
+            string password;
+            string salt;
 
-            username.Trim();
-            password.Trim();
+            // will remove white spaces before and after the textboxes input
+            txtUsername.Texts.Trim();
+            txtPassword.Texts.Trim();
 
-            if(username.Equals("") && password.Equals(""))
+            if(txtUsername.Texts.Equals("") || txtPassword.Texts.Equals(""))
             {
-                //MessageBox.Show("Username or Password fields are empty!\n" +
-                //    "Please fill-out all fields to login.", "Login Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                CustomDialog.Show("Username or Password fields are empty!\n" +
+                // will show an error dialog if the login field was incomplete
+                CustomDialog.Show("Username or Password field are empty!\n" +
                     "Please fill-out all fields to login.", "Login Alert", CustomDialogButtons.OK, CustomDialogIcons.Error);
             } 
             else
             {
                 Connection.conn.Open();
 
-                Connection.cmd = new MySqlCommand($"SELECT * FROM Users WHERE Username = @username AND Password = @password", Connection.conn);
-                Connection.cmd.Parameters.AddWithValue("@username", username);
-                Connection.cmd.Parameters.AddWithValue("@password", password);
+                Connection.cmd = new MySqlCommand("SELECT Password, Salt FROM Users WHERE Username = @username", Connection.conn);
+                Connection.cmd.Parameters.AddWithValue("@username", txtUsername.Texts);
                 Connection.reader = Connection.cmd.ExecuteReader();
 
                 if (Connection.reader.Read())
                 {
-                    PageObjects.dashboard = new Dashboard();
-
-                    PageObjects.dashboard.Show();
-                    this.Hide();
-                } else
+                    password = Connection.reader.GetString(0);
+                    salt = Connection.reader.GetString(1);
+                }
+                else
                 {
-                    //MessageBox.Show("Username or Password was incorrect!\n" +
-                    //    "Please try again.", "Login Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    // will show an error dialog if the username was invalid, inactive, or cannot be found
+                    // will exit btnLogin onclick method
+                    CustomDialog.Show("Username cannot be found!\n" +
+                        "Please check your username", "Username cannot be found", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                    return;
+                }
+
+                Connection.reader.Close();
+
+                // will check if the password and hashed + salted password input is the same
+                // will show an error dialog if the password and hashed + salted password input is different
+                // will continue to dashboard page if the password and hashed + salted password input is the same
+                if(password != CustomSecurity.HashPassword(txtPassword.Texts, salt))
+                {
                     CustomDialog.Show("Username or Password was incorrect!\n" +
                         "Please try again.", "Login Alert", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                } 
+                else
+                {
+                    PageObjects.dashboard = new Dashboard();
+                    PageObjects.dashboard.Show();
+                    this.Hide();
                 }
-                Connection.reader.Close();
+
                 Connection.conn.Close();
             }
-
 
         }
 
