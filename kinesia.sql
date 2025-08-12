@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 03, 2025 at 02:45 AM
+-- Generation Time: Aug 12, 2025 at 10:28 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -47,8 +47,8 @@ CREATE TABLE `patients` (
 --
 
 INSERT INTO `patients` (`PatientID`, `FirstName`, `LastName`, `MiddleName`, `Contact`, `Birthdate`, `Gender`, `Address`, `Occupation`, `Status`, `DateAdded`, `LastArchiveDate`) VALUES
-('PATIENT1', 'Jose Crisanto', 'Calayag', '', '+639285321382', '2005-07-24', 'Male', 'dsadsa', 'Student', 1, '2025-07-24 14:20:05', NULL),
-('PATIENT2', 'Mari Nicole', 'Medel', 'Relos', '+639285321382', '2002-11-26', 'Female', 'Sta Clara', 'Student', 0, '2025-07-24 18:35:50', NULL);
+('PATIENT1', 'Jose Crisanto', 'Calayag', '', '+639285321382', '2005-07-24', 'Male', 'dsadsa', 'Student', 0, '2025-07-24 14:20:05', '2025-08-10 16:41:43'),
+('PATIENT2', 'Mari Nicole', 'Medel', 'Relos', '+639285321382', '2002-11-26', 'Female', 'Sta Clara', 'Student', 1, '2025-07-24 18:35:50', NULL);
 
 -- --------------------------------------------------------
 
@@ -67,7 +67,8 @@ CREATE TABLE `users` (
   `Address` varchar(255) NOT NULL,
   `Role` varchar(50) NOT NULL,
   `Username` varchar(50) NOT NULL,
-  `Password` varchar(50) NOT NULL,
+  `Password` varchar(255) NOT NULL,
+  `Salt` varchar(255) NOT NULL,
   `Email` varchar(50) NOT NULL,
   `DateAdded` datetime DEFAULT NULL,
   `LastArchiveDate` datetime DEFAULT NULL,
@@ -78,9 +79,9 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`UserID`, `FirstName`, `LastName`, `MiddleName`, `Birthdate`, `Gender`, `Contact`, `Address`, `Role`, `Username`, `Password`, `Email`, `DateAdded`, `LastArchiveDate`, `Status`) VALUES
-('A', 'A', 'A', 'A', '2025-06-03', 'sample', '+639285321382', 'sample', 'sample', 'test', 'test', 'sample', '2025-08-01 08:40:17', NULL, 1),
-('sample', 'sample', 'sample', 'sample', '2025-06-03', 'sample', '+639285321382', 'sample', 'sample', 'test', 'test', 'sample', '2025-08-03 08:40:26', NULL, 1);
+INSERT INTO `users` (`UserID`, `FirstName`, `LastName`, `MiddleName`, `Birthdate`, `Gender`, `Contact`, `Address`, `Role`, `Username`, `Password`, `Salt`, `Email`, `DateAdded`, `LastArchiveDate`, `Status`) VALUES
+('USER2', 'das', 'dsa', 'dsa', '2007-08-12', 'Male', '+639285321382', 'sdad', 'Admin', 'sda', '08bc4b3d5475c3ffad7ff8d757b3bc0cbbcb49136ed88a95eec67d41c9df73fd', '08bc4b3d5475c3ffad7ff8d757b3bc0cbbcb49136ed88a95eec67d41c9df73fd', 'jcbcalayag@gmail.com', '2025-08-12 15:03:45', NULL, 1),
+('USER3', 'das', 'dsa', '', '2007-08-12', 'Male', '+639285321382', 'dsad', 'Admin', 'test', '3f710f0e1119fd11c99cb4e10ef07a66f4a529554b7bd6031f2bc504dcc09ebe', '/eqfI94wMWaW67hRSJK6AQ==', 'jccalayag@gmail.com', '2025-08-12 16:27:16', NULL, 1);
 
 --
 -- Indexes for dumped tables

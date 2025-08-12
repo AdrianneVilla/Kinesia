@@ -211,7 +211,7 @@ namespace Kinesia.Users
             Connection.conn.Open();
 
             Connection.cmd = new MySqlCommand("INSERT INTO Users VALUES (@userID, @firstName, @lastName, @middleName, @birthDate, @gender, " +
-                "@contact, @address, @role, @username, @password, @email, @dateAdded, @lastArchiveDate, @status)", Connection.conn);
+                "@contact, @address, @role, @username, @password, @salt, @email, @dateAdded, @lastArchiveDate, @status)", Connection.conn);
             Connection.cmd.Parameters.AddWithValue("@userID", userData.UserID);
             Connection.cmd.Parameters.AddWithValue("@firstName", userData.FirstName);
             Connection.cmd.Parameters.AddWithValue("@lastName", userData.LastName);
@@ -229,7 +229,12 @@ namespace Kinesia.Users
             Connection.cmd.Parameters.AddWithValue("@address", userData.Address);
             Connection.cmd.Parameters.AddWithValue("@role", userData.Role);
             Connection.cmd.Parameters.AddWithValue("@username", userData.UserName);
-            Connection.cmd.Parameters.AddWithValue("@password", CustomSecurity.HashPassword(userData.Password, CustomSecurity.GenerateSalt()));
+
+            // will generate salt for hashing
+            // salt will be unique for every user
+            var salt = CustomSecurity.GenerateSalt();
+            Connection.cmd.Parameters.AddWithValue("@password", CustomSecurity.HashPassword(userData.Password, salt));
+            Connection.cmd.Parameters.AddWithValue("@salt", salt);
             Connection.cmd.Parameters.AddWithValue("@email", userData.Email);
             Connection.cmd.Parameters.AddWithValue("@dateAdded", DateTime.Now);
             Connection.cmd.Parameters.AddWithValue("@lastArchiveDate", null);
