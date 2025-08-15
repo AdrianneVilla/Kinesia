@@ -187,6 +187,18 @@
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="Logs\DisplayLogs.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Logs\DisplayLogs.Designer.cs">
+      <DependentUpon>DisplayLogs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Logs\LogsPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Logs\LogsPage.Designer.cs">
+      <DependentUpon>LogsPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="NewAssessmentForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -295,6 +307,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Logs\DisplayLogs.resx">
+      <DependentUpon>DisplayLogs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Logs\LogsPage.resx">
+      <DependentUpon>LogsPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NewAssessmentForm.resx">
       <DependentUpon>NewAssessmentForm.cs</DependentUpon>
