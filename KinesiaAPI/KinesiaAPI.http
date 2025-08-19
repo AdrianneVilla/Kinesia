@@ -1,0 +1,6 @@
+@KinesiaAPI_HostAddress = http://localhost:5001
+
+GET {{KinesiaAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
