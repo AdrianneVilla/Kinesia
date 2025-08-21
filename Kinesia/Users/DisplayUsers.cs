@@ -66,6 +66,7 @@ namespace Kinesia.Users
         {
             DataHolder.UserDataHolder = new UserDataHolder();
             Queries.UserQueries.GetUserDetails(lblUserID.Text, DataHolder.UserDataHolder);
+            PageObjects.editUser.PreviousPage = "Users Page";
         }
     }
 }

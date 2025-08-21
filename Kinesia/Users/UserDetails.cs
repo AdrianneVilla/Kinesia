@@ -44,6 +44,7 @@ namespace Kinesia.Users
         public string Email { get { return lblEmail.Text; } set { lblEmail.Text = value; } }
         public string DateAdded { get { return lblDateAdded.Text; } set { lblDateAdded.Text = value; } }
         public string LastArchiveDate { get { return lblArchiveDate.Text; } set { lblArchiveDate.Text = value; } }
+        public string Status { get { return lblStatus.Text; } set { lblStatus.Text = value; } }
 
         private void btnBack_Click(object sender, EventArgs e)
         {
@@ -51,6 +52,43 @@ namespace Kinesia.Users
             PageObjects.userPage = new UserPage();
             PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.userPage);
             PageObjects.CurrentControl = PageObjects.userPage;
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            DataHolder.UserDataHolder = new UserDataHolder();
+            Queries.UserQueries.GetUserDetails(lblUserID.Text, DataHolder.UserDataHolder);
+            PageObjects.editUser.PreviousPage = "User Details Page";
+        }
+
+        private void btnArchive_Click(object sender, EventArgs e)
+        {
+            if (lblStatus.Text == "Active")
+            {
+                var archiveDiag = CustomDialog.Show($"Are you sure you want to archive {lblUserID.Text}?", "Archive Alert", CustomDialogButtons.YesNo, CustomDialogIcons.Question);
+
+                if (archiveDiag == DialogResult.Yes)
+                {
+                    Queries.UserQueries.ArchiveUser(lblUserID.Text);
+
+                    CustomDialog.Show($"{lblUserID.Text} has been archived successfully!", "Archive Alert", CustomDialogButtons.OK, CustomDialogIcons.Information);
+
+                    Queries.UserQueries.GetUserDetails(lblUserID.Text);
+                }
+            }
+            else
+            {
+                var unarchiveDiag = CustomDialog.Show($"Are you sure you want to unarchive {lblUserID.Text}?", "Unarchive Alert", CustomDialogButtons.YesNo, CustomDialogIcons.Question);
+
+                if (unarchiveDiag == DialogResult.Yes)
+                {
+                    Queries.UserQueries.UnarchiveUser(lblUserID.Text);
+
+                    CustomDialog.Show($"{lblUserID.Text} has been unarchived successfully!", "Unarchive Alert", CustomDialogButtons.OK, CustomDialogIcons.Information);
+
+                    Queries.UserQueries.GetUserDetails(lblUserID.Text);
+                }
+            }
         }
     }
 }

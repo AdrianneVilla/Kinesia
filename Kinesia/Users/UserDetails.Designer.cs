@@ -43,8 +43,7 @@
             this.label17 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.lblUserID = new System.Windows.Forms.Label();
-            this.btnArchiveUser = new OrganizationProfile.CustomButton();
-            this.btnEditUserInfo = new OrganizationProfile.CustomButton();
+            this.btnArchive = new OrganizationProfile.CustomButton();
             this.panelBorder1 = new WindowsFormsApp2.CustomButton.PanelBorder();
             this.lblEmail = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -68,6 +67,9 @@
             this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             this.label11 = new System.Windows.Forms.Label();
             this.lblDateAdded = new System.Windows.Forms.Label();
+            this.btnEdit = new OrganizationProfile.CustomButton();
+            this.label12 = new System.Windows.Forms.Label();
+            this.lblStatus = new System.Windows.Forms.Label();
             this.panelBorder1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
@@ -252,53 +254,30 @@
             this.lblUserID.TabIndex = 1;
             this.lblUserID.Text = "<Id>";
             // 
-            // btnArchiveUser
+            // btnArchive
             // 
-            this.btnArchiveUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnArchiveUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(216)))), ((int)(((byte)(216)))));
-            this.btnArchiveUser.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(216)))), ((int)(((byte)(216)))));
-            this.btnArchiveUser.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(64)))), ((int)(((byte)(66)))));
-            this.btnArchiveUser.BorderRadius = 10;
-            this.btnArchiveUser.BorderSize = 1;
-            this.btnArchiveUser.FlatAppearance.BorderSize = 0;
-            this.btnArchiveUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnArchiveUser.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnArchiveUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(64)))), ((int)(((byte)(66)))));
-            this.btnArchiveUser.Image = ((System.Drawing.Image)(resources.GetObject("btnArchiveUser.Image")));
-            this.btnArchiveUser.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnArchiveUser.Location = new System.Drawing.Point(990, 100);
-            this.btnArchiveUser.Name = "btnArchiveUser";
-            this.btnArchiveUser.Padding = new System.Windows.Forms.Padding(5, 3, 25, 0);
-            this.btnArchiveUser.Size = new System.Drawing.Size(170, 40);
-            this.btnArchiveUser.TabIndex = 40;
-            this.btnArchiveUser.Text = "Archive User";
-            this.btnArchiveUser.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnArchiveUser.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(64)))), ((int)(((byte)(66)))));
-            this.btnArchiveUser.UseVisualStyleBackColor = false;
-            // 
-            // btnEditUserInfo
-            // 
-            this.btnEditUserInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEditUserInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(249)))), ((int)(((byte)(238)))));
-            this.btnEditUserInfo.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(249)))), ((int)(((byte)(238)))));
-            this.btnEditUserInfo.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(210)))), ((int)(((byte)(173)))));
-            this.btnEditUserInfo.BorderRadius = 10;
-            this.btnEditUserInfo.BorderSize = 1;
-            this.btnEditUserInfo.FlatAppearance.BorderSize = 0;
-            this.btnEditUserInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEditUserInfo.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditUserInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(134)))), ((int)(((byte)(105)))));
-            this.btnEditUserInfo.Image = ((System.Drawing.Image)(resources.GetObject("btnEditUserInfo.Image")));
-            this.btnEditUserInfo.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnEditUserInfo.Location = new System.Drawing.Point(804, 100);
-            this.btnEditUserInfo.Name = "btnEditUserInfo";
-            this.btnEditUserInfo.Padding = new System.Windows.Forms.Padding(5, 3, 15, 0);
-            this.btnEditUserInfo.Size = new System.Drawing.Size(170, 40);
-            this.btnEditUserInfo.TabIndex = 39;
-            this.btnEditUserInfo.Text = "Edit Information";
-            this.btnEditUserInfo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnEditUserInfo.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(134)))), ((int)(((byte)(105)))));
-            this.btnEditUserInfo.UseVisualStyleBackColor = false;
+            this.btnArchive.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnArchive.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(216)))), ((int)(((byte)(216)))));
+            this.btnArchive.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(216)))), ((int)(((byte)(216)))));
+            this.btnArchive.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(64)))), ((int)(((byte)(66)))));
+            this.btnArchive.BorderRadius = 10;
+            this.btnArchive.BorderSize = 1;
+            this.btnArchive.FlatAppearance.BorderSize = 0;
+            this.btnArchive.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnArchive.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnArchive.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(64)))), ((int)(((byte)(66)))));
+            this.btnArchive.Image = ((System.Drawing.Image)(resources.GetObject("btnArchive.Image")));
+            this.btnArchive.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnArchive.Location = new System.Drawing.Point(990, 100);
+            this.btnArchive.Name = "btnArchive";
+            this.btnArchive.Padding = new System.Windows.Forms.Padding(5, 3, 25, 0);
+            this.btnArchive.Size = new System.Drawing.Size(170, 40);
+            this.btnArchive.TabIndex = 40;
+            this.btnArchive.Text = "Archive User";
+            this.btnArchive.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnArchive.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(64)))), ((int)(((byte)(66)))));
+            this.btnArchive.UseVisualStyleBackColor = false;
+            this.btnArchive.Click += new System.EventHandler(this.btnArchive_Click);
             // 
             // panelBorder1
             // 
@@ -650,17 +629,67 @@
             this.lblDateAdded.TabIndex = 1;
             this.lblDateAdded.Text = "<date added>";
             // 
+            // btnEdit
+            // 
+            this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(249)))), ((int)(((byte)(238)))));
+            this.btnEdit.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(249)))), ((int)(((byte)(238)))));
+            this.btnEdit.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(210)))), ((int)(((byte)(173)))));
+            this.btnEdit.BorderRadius = 10;
+            this.btnEdit.BorderSize = 1;
+            this.btnEdit.FlatAppearance.BorderSize = 0;
+            this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEdit.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEdit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(134)))), ((int)(((byte)(105)))));
+            this.btnEdit.Image = ((System.Drawing.Image)(resources.GetObject("btnEdit.Image")));
+            this.btnEdit.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnEdit.Location = new System.Drawing.Point(813, 100);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Padding = new System.Windows.Forms.Padding(5, 3, 15, 0);
+            this.btnEdit.Size = new System.Drawing.Size(170, 40);
+            this.btnEdit.TabIndex = 45;
+            this.btnEdit.Text = "Edit Information";
+            this.btnEdit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEdit.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(134)))), ((int)(((byte)(105)))));
+            this.btnEdit.UseVisualStyleBackColor = false;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.Gray;
+            this.label12.Location = new System.Drawing.Point(70, 235);
+            this.label12.Name = "label12";
+            this.label12.Padding = new System.Windows.Forms.Padding(0, 0, 20, 0);
+            this.label12.Size = new System.Drawing.Size(67, 22);
+            this.label12.TabIndex = 2;
+            this.label12.Text = "Status";
+            // 
+            // lblStatus
+            // 
+            this.lblStatus.AutoSize = true;
+            this.lblStatus.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStatus.ForeColor = System.Drawing.Color.Black;
+            this.lblStatus.Location = new System.Drawing.Point(131, 235);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(63, 22);
+            this.lblStatus.TabIndex = 3;
+            this.lblStatus.Text = "<status>";
+            // 
             // UserDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.flowLayoutPanel3);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.flowLayoutPanel4);
+            this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.panelBorder2);
             this.Controls.Add(this.flowLayoutPanel2);
-            this.Controls.Add(this.btnArchiveUser);
-            this.Controls.Add(this.btnEditUserInfo);
+            this.Controls.Add(this.btnArchive);
             this.Controls.Add(this.panelBorder1);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.lblName);
@@ -702,8 +731,7 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblUserID;
-        private OrganizationProfile.CustomButton btnArchiveUser;
-        private OrganizationProfile.CustomButton btnEditUserInfo;
+        private OrganizationProfile.CustomButton btnArchive;
         private WindowsFormsApp2.CustomButton.PanelBorder panelBorder1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Label lblName;
@@ -727,5 +755,8 @@
         private System.Windows.Forms.Label lblDateAdded;
         private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.Label label13;
+        private OrganizationProfile.CustomButton btnEdit;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label lblStatus;
     }
 }

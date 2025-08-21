@@ -113,7 +113,7 @@ namespace Kinesia.Users
             Connection.conn.Open();
 
             Connection.cmd = new MySqlCommand("SELECT UserID, FirstName, MiddleName, LastName, Gender, Contact, TIMESTAMPDIFF(MONTH, Birthdate, CURDATE()), Address, Birthdate, Role, " +
-                "Email, DateAdded, LastArchiveDate FROM Users WHERE UserID = @userID", Connection.conn);
+                "Email, DateAdded, LastArchiveDate, Status FROM Users WHERE UserID = @userID", Connection.conn);
             Connection.cmd.Parameters.AddWithValue("@userID", userID);
             Connection.reader = Connection.cmd.ExecuteReader();
 
@@ -146,11 +146,23 @@ namespace Kinesia.Users
                     PageObjects.userDetails.LastArchiveDate = lastArchiveDate.ToString();
                 }
 
-                // will only display User Details if fetched successfully by the system
-                PageObjects.RemoveResources(ref PageObjects.CurrentControl);
+                // 1 = Active
+                // 0 = Inactive
+                if(Connection.reader.GetInt32(13) == 1)
+                {
+                    PageObjects.userDetails.Status = "Active";
+                } 
+                else
+                {
+                    PageObjects.userDetails.Status = "Inactive";
+                }
+
+                    // will only display User Details if fetched successfully by the system
+                    PageObjects.RemoveResources(ref PageObjects.CurrentControl);
                 PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.userDetails);
-                PageObjects.CurrentControl = PageObjects.userPage;
-            } else
+                PageObjects.CurrentControl = PageObjects.userDetails;
+            } 
+            else
             {
                 MessageBox.Show("User details not found.", "User Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

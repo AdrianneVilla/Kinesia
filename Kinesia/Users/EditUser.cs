@@ -13,6 +13,9 @@ namespace Kinesia.Users
 {
     public partial class EditUser : UserControl
     {
+        private string previousPage;
+
+        public string PreviousPage { get { return previousPage; } set { previousPage = value; } }   
         public EditUser()
         {
             InitializeComponent();
@@ -148,13 +151,25 @@ namespace Kinesia.Users
 
         private void btnBack_Click(object sender, EventArgs e)
         {
+            if(previousPage == "Users Page")
+            {
+                goBackToUserPage();
+            } 
+            else
+            {
+                goBackToUserDetailsPage();
+            }
+        }
+
+        private void goBackToUserPage()
+        {
             if (hasChanged())
             {
                 // will only show dialog if there's an unsaved changes
                 DialogResult backDialog = CustomDialog.Show("Are you sure you want to go back to User page?\n" +
                     "Any unsaved changes will be lost!", "Go back to User page", CustomDialogButtons.YesNo, CustomDialogIcons.Warning);
 
-                if(backDialog == DialogResult.Yes)
+                if (backDialog == DialogResult.Yes)
                 {
                     PageObjects.RemoveResources(ref PageObjects.CurrentControl);
                     PageObjects.userPage = new UserPage();
@@ -162,7 +177,7 @@ namespace Kinesia.Users
                     PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.userPage);
                     PageObjects.CurrentControl = PageObjects.userPage;
                 }
-            } 
+            }
             else
             {
                 // will go back to user page directly if there's no unsaved changes
@@ -171,6 +186,26 @@ namespace Kinesia.Users
                 PageObjects.dashboard.ContentsPanel.Controls.Clear();
                 PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.userPage);
                 PageObjects.CurrentControl = PageObjects.userPage;
+            }
+        }
+
+        private void goBackToUserDetailsPage()
+        {
+            if (hasChanged())
+            {
+                // will only show dialog if there's an unsaved changes
+                DialogResult backDialog = CustomDialog.Show("Are you sure you want to go back to User Details page?\n" +
+                    "Any unsaved changes will be lost!", "Go back to User page", CustomDialogButtons.YesNo, CustomDialogIcons.Warning);
+
+                if (backDialog == DialogResult.Yes)
+                {
+                    Queries.UserQueries.GetUserDetails(DataHolder.UserDataHolder.UserID);
+                }
+            }
+            else
+            {
+                // will go back to user details page directly if there's no unsaved changes
+                Queries.UserQueries.GetUserDetails(DataHolder.UserDataHolder.UserID);
             }
         }
 
