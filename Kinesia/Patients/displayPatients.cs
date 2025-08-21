@@ -38,6 +38,7 @@ namespace Kinesia.Patients
         {
             DataHolder.PatientDataHolder = new PatientDataHolder();
             Queries.PatientQueries.GetPatientDetails(txtPatientID.Text, DataHolder.PatientDataHolder);
+            PageObjects.editPatient.PreviousPage = "Patients Page";
         }
 
         private void btnArchive_Click(object sender, EventArgs e)

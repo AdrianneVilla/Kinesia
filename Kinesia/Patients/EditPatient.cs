@@ -12,6 +12,10 @@ namespace Kinesia.Patients
 {
     public partial class EditPatient : UserControl
     {
+        private string previousPage;
+
+        public string PreviousPage { get { return previousPage; } set { previousPage = value; } }
+
         public EditPatient()
         {
             InitializeComponent();
@@ -72,6 +76,18 @@ namespace Kinesia.Patients
 
         private void btnBack_Click(object sender, EventArgs e)
         {
+            if(previousPage == "Patients Page")
+            {
+                goBackToPatientPage();
+            }
+            else
+            {
+                goBackToPatientDetailsPage();
+            }
+        }
+
+        private void goBackToPatientPage()
+        {
             if (hasChanged())
             {
                 // will only show dialog if there's an unsaved input
@@ -95,6 +111,26 @@ namespace Kinesia.Patients
                 PageObjects.dashboard.ContentsPanel.Controls.Clear();
                 PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.patientsPage);
                 PageObjects.CurrentControl = PageObjects.patientsPage;
+            }
+        }
+
+        private void goBackToPatientDetailsPage()
+        {
+            if (hasChanged())
+            {
+                // will only show dialog if there's an unsaved input
+                DialogResult backDialog = MessageBox.Show("Are you sure you want to go back to Patient Details page?\n" +
+                    "Any unsaved changes will be lost!", "Edit Patient Notification", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+
+                if (backDialog == DialogResult.Yes)
+                {
+                    Queries.PatientQueries.GetPatientDetails(DataHolder.PatientDataHolder.PatientID);
+                }
+            }
+            else
+            {
+                // will directly go back to Patient Details page if there's no unsaved input    
+                Queries.PatientQueries.GetPatientDetails(DataHolder.PatientDataHolder.PatientID);
             }
         }
 

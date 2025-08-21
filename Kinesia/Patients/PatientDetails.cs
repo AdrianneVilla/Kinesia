@@ -33,7 +33,9 @@ namespace Kinesia.Patients
 
         private void btnEditInfo_Click(object sender, EventArgs e)
         {
-           
+            DataHolder.PatientDataHolder = new PatientDataHolder();
+            Queries.PatientQueries.GetPatientDetails(lblPatientID.Text, DataHolder.PatientDataHolder);
+            PageObjects.editPatient.PreviousPage = "Patient Details Page";
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -44,5 +46,40 @@ namespace Kinesia.Patients
             PageObjects.CurrentControl = PageObjects.patientsPage;
         }
 
+        private void btnArchive_Click(object sender, EventArgs e)
+        {
+            if (lblStatus.Text == "Active")
+            {
+                // will show message box for Archiving patient
+                DialogResult archiveDiag = MessageBox.Show($"Are you sure you want to archive {lblPatientID.Text}?", "Archive Patient Notification",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+
+                if (archiveDiag == DialogResult.Yes)
+                {
+                    Queries.PatientQueries.ArchivePatient(lblPatientID.Text);
+
+                    MessageBox.Show($"{lblPatientID.Text} has been successfully archived!", "Archive Patient Notification",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    Queries.PatientQueries.GetPatientDetails(lblPatientID.Text);
+                }
+            }
+            else
+            {
+                // will show message box for Unarchiving patient
+                DialogResult unarchiveDiag = MessageBox.Show($"Are you sure you want to unarchive {lblPatientID.Text}?", "Unarchive Patient Notification",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+
+                if (unarchiveDiag == DialogResult.Yes)
+                {
+                    Queries.PatientQueries.UnarchivePatient(lblPatientID.Text);
+
+                    MessageBox.Show($"{lblPatientID.Text} has been successfully unarchived!", "Unarchive Patient Notification",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    Queries.PatientQueries.GetPatientDetails(lblPatientID.Text);
+                }
+            }
+        }
     }
 }
