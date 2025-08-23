@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 12, 2025 at 10:28 AM
+-- Generation Time: Aug 23, 2025 at 12:27 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -20,6 +20,27 @@ SET time_zone = "+00:00";
 --
 -- Database: `kinesia`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `logs`
+--
+
+CREATE TABLE `logs` (
+  `LogID` varchar(50) NOT NULL,
+  `UserID` varchar(50) NOT NULL,
+  `Description` varchar(255) NOT NULL,
+  `LogType` varchar(50) NOT NULL,
+  `LogDate` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `logs`
+--
+
+INSERT INTO `logs` (`LogID`, `UserID`, `Description`, `LogType`, `LogDate`) VALUES
+('LOG1', 'USER2', 'Sample', 'dsad', '2025-08-23 12:26:15');
 
 -- --------------------------------------------------------
 
@@ -88,6 +109,13 @@ INSERT INTO `users` (`UserID`, `FirstName`, `LastName`, `MiddleName`, `Birthdate
 --
 
 --
+-- Indexes for table `logs`
+--
+ALTER TABLE `logs`
+  ADD PRIMARY KEY (`LogID`),
+  ADD KEY `Logs->Users` (`UserID`);
+
+--
 -- Indexes for table `patients`
 --
 ALTER TABLE `patients`
@@ -98,6 +126,16 @@ ALTER TABLE `patients`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`UserID`);
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `logs`
+--
+ALTER TABLE `logs`
+  ADD CONSTRAINT `Logs->Users` FOREIGN KEY (`UserID`) REFERENCES `users` (`UserID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Sidebar));
             this.logoutBtn = new OrganizationProfile.CustomButton();
-            this.logsModule = new OrganizationProfile.CustomButton();
+            this.btnLogs = new OrganizationProfile.CustomButton();
             this.assessmentModule = new OrganizationProfile.CustomButton();
             this.usersModule = new OrganizationProfile.CustomButton();
             this.patientModule = new OrganizationProfile.CustomButton();
@@ -64,32 +64,33 @@
             this.logoutBtn.TextColor = System.Drawing.Color.White;
             this.logoutBtn.UseVisualStyleBackColor = false;
             // 
-            // logsModule
+            // btnLogs
             // 
-            this.logsModule.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.btnLogs.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.logsModule.BackColor = System.Drawing.Color.White;
-            this.logsModule.BackgroundColor = System.Drawing.Color.White;
-            this.logsModule.BackgroundImage = global::Kinesia.Properties.Resources.btn_back;
-            this.logsModule.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.logsModule.BorderColor = System.Drawing.Color.White;
-            this.logsModule.BorderRadius = 10;
-            this.logsModule.BorderSize = 0;
-            this.logsModule.FlatAppearance.BorderSize = 0;
-            this.logsModule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.logsModule.Font = new System.Drawing.Font("Poppins", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.logsModule.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.logsModule.Image = ((System.Drawing.Image)(resources.GetObject("logsModule.Image")));
-            this.logsModule.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.logsModule.Location = new System.Drawing.Point(21, 378);
-            this.logsModule.Margin = new System.Windows.Forms.Padding(3, 15, 3, 3);
-            this.logsModule.Name = "logsModule";
-            this.logsModule.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.logsModule.Size = new System.Drawing.Size(206, 54);
-            this.logsModule.TabIndex = 4;
-            this.logsModule.Text = "Logs";
-            this.logsModule.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.logsModule.UseVisualStyleBackColor = false;
+            this.btnLogs.BackColor = System.Drawing.Color.White;
+            this.btnLogs.BackgroundColor = System.Drawing.Color.White;
+            this.btnLogs.BackgroundImage = global::Kinesia.Properties.Resources.btn_back;
+            this.btnLogs.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnLogs.BorderColor = System.Drawing.Color.White;
+            this.btnLogs.BorderRadius = 10;
+            this.btnLogs.BorderSize = 0;
+            this.btnLogs.FlatAppearance.BorderSize = 0;
+            this.btnLogs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLogs.Font = new System.Drawing.Font("Poppins", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
+            this.btnLogs.Image = ((System.Drawing.Image)(resources.GetObject("btnLogs.Image")));
+            this.btnLogs.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLogs.Location = new System.Drawing.Point(21, 378);
+            this.btnLogs.Margin = new System.Windows.Forms.Padding(3, 15, 3, 3);
+            this.btnLogs.Name = "btnLogs";
+            this.btnLogs.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnLogs.Size = new System.Drawing.Size(206, 54);
+            this.btnLogs.TabIndex = 4;
+            this.btnLogs.Text = "Logs";
+            this.btnLogs.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
+            this.btnLogs.UseVisualStyleBackColor = false;
+            this.btnLogs.Click += new System.EventHandler(this.btnLogs_Click);
             // 
             // assessmentModule
             // 
@@ -211,7 +212,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.Controls.Add(this.logoutBtn);
-            this.Controls.Add(this.logsModule);
+            this.Controls.Add(this.btnLogs);
             this.Controls.Add(this.assessmentModule);
             this.Controls.Add(this.usersModule);
             this.Controls.Add(this.patientModule);
@@ -227,7 +228,7 @@
         private OrganizationProfile.CustomButton dashboardModule;
         private OrganizationProfile.CustomButton usersModule;
         private OrganizationProfile.CustomButton assessmentModule;
-        private OrganizationProfile.CustomButton logsModule;
+        private OrganizationProfile.CustomButton btnLogs;
         private OrganizationProfile.CustomButton logoutBtn;
         public OrganizationProfile.CustomButton patientModule;
     }

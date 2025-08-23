@@ -16,6 +16,7 @@ using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
+using Kinesia.Logs;
 
 namespace Kinesia
 {
@@ -49,6 +50,7 @@ namespace Kinesia
         public static AddUser addUser;
         public static EditUser editUser;
         public static AssessmentPage assessmentPage;
+        public static LogsPage logsPage;
 
         public static Control CurrentControl;
 
@@ -148,6 +150,7 @@ namespace Kinesia
     {
         public static PatientsCRUD PatientQueries = new PatientsCRUD();
         public static UserCRUD UserQueries = new UserCRUD();
+        public static LogsCRUD LogsQueries = new LogsCRUD();
     }
 
     // Contains custom security methods

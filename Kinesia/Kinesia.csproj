@@ -205,6 +205,7 @@
     <Compile Include="Logs\DisplayLogs.Designer.cs">
       <DependentUpon>DisplayLogs.cs</DependentUpon>
     </Compile>
+    <Compile Include="Logs\LogsCRUD.cs" />
     <Compile Include="Logs\LogsPage.cs">
       <SubType>UserControl</SubType>
     </Compile>

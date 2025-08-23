@@ -33,7 +33,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.nameHolder = new System.Windows.Forms.Label();
-            this.PatientHolder = new WindowsFormsApp2.CustomButton.PanelBorder();
+            this.LogHolder = new WindowsFormsApp2.CustomButton.PanelBorder();
             this.dataGridPatients = new System.Windows.Forms.DataGridView();
             this.LogID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -70,20 +70,20 @@
             this.nameHolder.Text = "Logs";
             this.nameHolder.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // PatientHolder
+            // LogHolder
             // 
-            this.PatientHolder.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.LogHolder.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.PatientHolder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(249)))), ((int)(((byte)(238)))));
-            this.PatientHolder.BorderRadius = 10;
-            this.PatientHolder.Color = System.Drawing.Color.White;
-            this.PatientHolder.ForeColor = System.Drawing.Color.Black;
-            this.PatientHolder.Location = new System.Drawing.Point(62, 244);
-            this.PatientHolder.Name = "PatientHolder";
-            this.PatientHolder.Padding = new System.Windows.Forms.Padding(5);
-            this.PatientHolder.Size = new System.Drawing.Size(1129, 496);
-            this.PatientHolder.TabIndex = 8;
+            this.LogHolder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(249)))), ((int)(((byte)(238)))));
+            this.LogHolder.BorderRadius = 10;
+            this.LogHolder.Color = System.Drawing.Color.White;
+            this.LogHolder.ForeColor = System.Drawing.Color.Black;
+            this.LogHolder.Location = new System.Drawing.Point(62, 244);
+            this.LogHolder.Name = "LogHolder";
+            this.LogHolder.Padding = new System.Windows.Forms.Padding(5);
+            this.LogHolder.Size = new System.Drawing.Size(1129, 496);
+            this.LogHolder.TabIndex = 8;
             // 
             // dataGridPatients
             // 
@@ -218,11 +218,12 @@
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.panelBorder2);
             this.Controls.Add(this.dataGridPatients);
-            this.Controls.Add(this.PatientHolder);
+            this.Controls.Add(this.LogHolder);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.nameHolder);
             this.Name = "LogsPage";
             this.Size = new System.Drawing.Size(1249, 758);
+            this.Load += new System.EventHandler(this.LogsPage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridPatients)).EndInit();
             this.panelBorder2.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -234,7 +235,7 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label nameHolder;
-        private WindowsFormsApp2.CustomButton.PanelBorder PatientHolder;
+        private WindowsFormsApp2.CustomButton.PanelBorder LogHolder;
         private System.Windows.Forms.DataGridView dataGridPatients;
         private System.Windows.Forms.DataGridViewTextBoxColumn LogID;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameHeader;

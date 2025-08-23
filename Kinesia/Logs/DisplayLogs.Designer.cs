@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.panelBorder1 = new WindowsFormsApp2.CustomButton.PanelBorder();
-            this.txtLogID = new System.Windows.Forms.Label();
-            this.txtDate = new System.Windows.Forms.Label();
-            this.txtDescription = new System.Windows.Forms.Label();
-            this.txtUserName = new System.Windows.Forms.Label();
+            this.lblLogID = new System.Windows.Forms.Label();
+            this.lblDate = new System.Windows.Forms.Label();
+            this.lblDescription = new System.Windows.Forms.Label();
+            this.lblUserName = new System.Windows.Forms.Label();
             this.panelBorder1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -42,56 +42,56 @@
             this.panelBorder1.BackColor = System.Drawing.Color.White;
             this.panelBorder1.BorderRadius = 20;
             this.panelBorder1.Color = System.Drawing.Color.White;
-            this.panelBorder1.Controls.Add(this.txtLogID);
-            this.panelBorder1.Controls.Add(this.txtDate);
-            this.panelBorder1.Controls.Add(this.txtDescription);
-            this.panelBorder1.Controls.Add(this.txtUserName);
+            this.panelBorder1.Controls.Add(this.lblLogID);
+            this.panelBorder1.Controls.Add(this.lblDate);
+            this.panelBorder1.Controls.Add(this.lblDescription);
+            this.panelBorder1.Controls.Add(this.lblUserName);
             this.panelBorder1.ForeColor = System.Drawing.Color.Black;
             this.panelBorder1.Location = new System.Drawing.Point(7, 5);
             this.panelBorder1.Name = "panelBorder1";
             this.panelBorder1.Size = new System.Drawing.Size(1497, 91);
             this.panelBorder1.TabIndex = 1;
             // 
-            // txtLogID
+            // lblLogID
             // 
-            this.txtLogID.AutoSize = true;
-            this.txtLogID.Font = new System.Drawing.Font("Poppins", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLogID.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.txtLogID.Location = new System.Drawing.Point(14, 37);
-            this.txtLogID.Name = "txtLogID";
-            this.txtLogID.Size = new System.Drawing.Size(37, 19);
-            this.txtLogID.TabIndex = 8;
-            this.txtLogID.Text = "logID";
+            this.lblLogID.AutoSize = true;
+            this.lblLogID.Font = new System.Drawing.Font("Poppins", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLogID.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lblLogID.Location = new System.Drawing.Point(14, 37);
+            this.lblLogID.Name = "lblLogID";
+            this.lblLogID.Size = new System.Drawing.Size(37, 19);
+            this.lblLogID.TabIndex = 8;
+            this.lblLogID.Text = "logID";
             // 
-            // txtDate
+            // lblDate
             // 
-            this.txtDate.AutoSize = true;
-            this.txtDate.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDate.Location = new System.Drawing.Point(1310, 37);
-            this.txtDate.Name = "txtDate";
-            this.txtDate.Size = new System.Drawing.Size(37, 22);
-            this.txtDate.TabIndex = 4;
-            this.txtDate.Text = "date";
+            this.lblDate.AutoSize = true;
+            this.lblDate.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDate.Location = new System.Drawing.Point(1310, 37);
+            this.lblDate.Name = "lblDate";
+            this.lblDate.Size = new System.Drawing.Size(37, 22);
+            this.lblDate.TabIndex = 4;
+            this.lblDate.Text = "date";
             // 
-            // txtDescription
+            // lblDescription
             // 
-            this.txtDescription.AutoSize = true;
-            this.txtDescription.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDescription.Location = new System.Drawing.Point(732, 35);
-            this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(60, 22);
-            this.txtDescription.TabIndex = 2;
-            this.txtDescription.Text = "log desc";
+            this.lblDescription.AutoSize = true;
+            this.lblDescription.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDescription.Location = new System.Drawing.Point(732, 35);
+            this.lblDescription.Name = "lblDescription";
+            this.lblDescription.Size = new System.Drawing.Size(60, 22);
+            this.lblDescription.TabIndex = 2;
+            this.lblDescription.Text = "log desc";
             // 
-            // txtUserName
+            // lblUserName
             // 
-            this.txtUserName.AutoSize = true;
-            this.txtUserName.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUserName.Location = new System.Drawing.Point(297, 34);
-            this.txtUserName.Name = "txtUserName";
-            this.txtUserName.Size = new System.Drawing.Size(92, 22);
-            this.txtUserName.TabIndex = 0;
-            this.txtUserName.Text = "Name of user";
+            this.lblUserName.AutoSize = true;
+            this.lblUserName.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUserName.Location = new System.Drawing.Point(297, 34);
+            this.lblUserName.Name = "lblUserName";
+            this.lblUserName.Size = new System.Drawing.Size(92, 22);
+            this.lblUserName.TabIndex = 0;
+            this.lblUserName.Text = "Name of user";
             // 
             // DisplayLogs
             // 
@@ -110,9 +110,9 @@
         #endregion
 
         private WindowsFormsApp2.CustomButton.PanelBorder panelBorder1;
-        private System.Windows.Forms.Label txtLogID;
-        private System.Windows.Forms.Label txtDate;
-        private System.Windows.Forms.Label txtDescription;
-        private System.Windows.Forms.Label txtUserName;
+        private System.Windows.Forms.Label lblLogID;
+        private System.Windows.Forms.Label lblDate;
+        private System.Windows.Forms.Label lblDescription;
+        private System.Windows.Forms.Label lblUserName;
     }
 }

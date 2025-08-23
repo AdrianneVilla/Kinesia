@@ -16,5 +16,10 @@ namespace Kinesia.Logs
         {
             InitializeComponent();
         }
+
+        public string LogID { get { return lblLogID.Text; } set { lblLogID.Text = value; } }
+        public string UserName { get { return lblUserName.Text; } set { lblUserName.Text = value; } }
+        public string Description { get { return lblDescription.Text; } set { lblDescription.Text = value; } }
+        public string LogDate { get { return lblDate.Text; } set { lblDate.Text = value; } }
     }
 }
