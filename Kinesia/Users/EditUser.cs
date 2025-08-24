@@ -105,6 +105,9 @@ namespace Kinesia.Users
 
                     Queries.UserQueries.UpdateUser(userData);
 
+                    // will add a log for editing user
+                    Queries.LogsQueries.AddLog($"Edited {DataHolder.UserDataHolder.UserID}'s personal information", "EDIT USER");
+
                     CustomDialog.Show($"{DataHolder.UserDataHolder.UserID}'s personal information \n" +
                         $"has been updated successfully!", "Update successful", CustomDialogButtons.OK, CustomDialogIcons.Information);
 
