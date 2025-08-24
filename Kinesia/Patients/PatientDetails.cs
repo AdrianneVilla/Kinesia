@@ -58,6 +58,9 @@ namespace Kinesia.Patients
                 {
                     Queries.PatientQueries.ArchivePatient(lblPatientID.Text);
 
+                    // will add a log for archiving a patient;
+                    Queries.LogsQueries.AddLog($"Archived {lblPatientID.Text}", "ARCHIVE PATIENT");
+
                     MessageBox.Show($"{lblPatientID.Text} has been successfully archived!", "Archive Patient Notification",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -73,6 +76,9 @@ namespace Kinesia.Patients
                 if (unarchiveDiag == DialogResult.Yes)
                 {
                     Queries.PatientQueries.UnarchivePatient(lblPatientID.Text);
+
+                    // will add a log for unarchiving a patient
+                    Queries.LogsQueries.AddLog($"Unarchived {lblPatientID.Text}", "UNARCHIVE PATIENT");
 
                     MessageBox.Show($"{lblPatientID.Text} has been successfully unarchived!", "Unarchive Patient Notification",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
