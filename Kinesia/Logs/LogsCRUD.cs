@@ -35,5 +35,28 @@ namespace Kinesia.Logs
             Connection.reader.Close();
             Connection.conn.Close();
         }
+        
+        public void AddLog(string description, string logType)
+        {
+            Connection.conn.Open();
+
+            var logID = SetLogID();
+
+            Connection.cmd = new MySqlCommand("INSERT INTO Logs VALUES(@logID, @userID, @description, @logType, @logDate)", Connection.conn);
+            Connection.cmd.Parameters.AddWithValue("@logID", logID);
+            Connection.cmd.Parameters.AddWithValue("@userID", SessionManager.UserID);
+            Connection.cmd.Parameters.AddWithValue("@description", description);
+            Connection.cmd.Parameters.AddWithValue("@logType", logType);
+            Connection.cmd.Parameters.AddWithValue("@logDate", DateTime.Now);
+            Connection.cmd.ExecuteNonQuery();
+
+            Connection.conn.Close();
+        }
+
+        public string SetLogID()
+        {
+            Connection.cmd = new MySqlCommand("SELECT COUNT(LogID) FROM Logs", Connection.conn);
+            return $"LOG{Convert.ToInt32(Connection.cmd.ExecuteScalar()) + 1}";
+        }
     }
 }

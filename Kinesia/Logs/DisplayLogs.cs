@@ -14,6 +14,9 @@ namespace Kinesia.Logs
     {
         public DisplayLogs()
         {
+            this.Anchor = AnchorStyles.Right | AnchorStyles.Left | AnchorStyles.Top;
+            this.Dock = DockStyle.Top;
+
             InitializeComponent();
         }
 

@@ -136,6 +136,16 @@ namespace Kinesia
         public static UserDataHolder UserDataHolder;
     }
 
+    public class SessionManager
+    {
+        public static string UserID;
+
+        public void Logout()
+        {
+            UserID = null;
+        }
+    }
+
     // Contains MySQL objects
     public class Connection
     {

@@ -302,6 +302,7 @@ namespace Kinesia
         {
             string password;
             string salt;
+            string userID;
 
             // will remove white spaces before and after the textboxes input
             txtUsername.Texts.Trim();
@@ -317,14 +318,14 @@ namespace Kinesia
             {
                 Connection.conn.Open();
 
-                Connection.cmd = new MySqlCommand("SELECT Password, Salt FROM Users WHERE Username = @username", Connection.conn);
+                Connection.cmd = new MySqlCommand("SELECT UserID, Password, Salt FROM Users WHERE Username = @username", Connection.conn);
                 Connection.cmd.Parameters.AddWithValue("@username", txtUsername.Texts);
                 Connection.reader = Connection.cmd.ExecuteReader();
 
                 if (Connection.reader.Read())
                 {
-                    password = Connection.reader.GetString(0);
-                    salt = Connection.reader.GetString(1);
+                    password = Connection.reader.GetString(1);
+                    salt = Connection.reader.GetString(2);
                 }
                 else
                 {
@@ -335,12 +336,15 @@ namespace Kinesia
                     return;
                 }
 
+                userID = Connection.reader.GetString(0);
+
                 Connection.reader.Close();
+                Connection.conn.Close();
 
                 // will check if the password and hashed + salted password input is the same
                 // will show an error dialog if the password and hashed + salted password input is different
                 // will continue to dashboard page if the password and hashed + salted password input is the same
-                if(password != CustomSecurity.HashPassword(txtPassword.Texts, salt))
+                if (password != CustomSecurity.HashPassword(txtPassword.Texts, salt))
                 {
                     CustomDialog.Show("Username or Password was incorrect!\n" +
                         "Please try again.", "Login Alert", CustomDialogButtons.OK, CustomDialogIcons.Error);
@@ -350,9 +354,10 @@ namespace Kinesia
                     PageObjects.dashboard = new Dashboard();
                     PageObjects.dashboard.Show();
                     this.Hide();
+                    SessionManager.UserID = userID;
+                    Queries.LogsQueries.AddLog("Has Logged In", "LOGIN");
                 }
-
-                Connection.conn.Close();
+           
             }
 
         }
