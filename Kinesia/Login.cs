@@ -351,6 +351,9 @@ namespace Kinesia
                 } 
                 else
                 {
+                    txtUsername.Texts = "";
+                    txtPassword.Texts = "";
+
                     PageObjects.dashboard = new Dashboard();
                     PageObjects.dashboard.Show();
                     this.Hide();

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Sidebar));
-            this.logoutBtn = new OrganizationProfile.CustomButton();
+            this.btnLogout = new OrganizationProfile.CustomButton();
             this.btnLogs = new OrganizationProfile.CustomButton();
             this.assessmentModule = new OrganizationProfile.CustomButton();
             this.usersModule = new OrganizationProfile.CustomButton();
@@ -37,32 +37,33 @@
             this.dashboardModule = new OrganizationProfile.CustomButton();
             this.SuspendLayout();
             // 
-            // logoutBtn
+            // btnLogout
             // 
-            this.logoutBtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.btnLogout.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.logoutBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(210)))), ((int)(((byte)(173)))));
-            this.logoutBtn.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(210)))), ((int)(((byte)(173)))));
-            this.logoutBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.logoutBtn.BorderColor = System.Drawing.Color.White;
-            this.logoutBtn.BorderRadius = 10;
-            this.logoutBtn.BorderSize = 0;
-            this.logoutBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.logoutBtn.FlatAppearance.BorderSize = 0;
-            this.logoutBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.logoutBtn.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.logoutBtn.ForeColor = System.Drawing.Color.White;
-            this.logoutBtn.Image = ((System.Drawing.Image)(resources.GetObject("logoutBtn.Image")));
-            this.logoutBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.logoutBtn.Location = new System.Drawing.Point(21, 568);
-            this.logoutBtn.Margin = new System.Windows.Forms.Padding(3, 15, 3, 3);
-            this.logoutBtn.Name = "logoutBtn";
-            this.logoutBtn.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.logoutBtn.Size = new System.Drawing.Size(206, 54);
-            this.logoutBtn.TabIndex = 5;
-            this.logoutBtn.Text = "Logout";
-            this.logoutBtn.TextColor = System.Drawing.Color.White;
-            this.logoutBtn.UseVisualStyleBackColor = false;
+            this.btnLogout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(210)))), ((int)(((byte)(173)))));
+            this.btnLogout.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(210)))), ((int)(((byte)(173)))));
+            this.btnLogout.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnLogout.BorderColor = System.Drawing.Color.White;
+            this.btnLogout.BorderRadius = 10;
+            this.btnLogout.BorderSize = 0;
+            this.btnLogout.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLogout.FlatAppearance.BorderSize = 0;
+            this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLogout.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogout.ForeColor = System.Drawing.Color.White;
+            this.btnLogout.Image = ((System.Drawing.Image)(resources.GetObject("btnLogout.Image")));
+            this.btnLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLogout.Location = new System.Drawing.Point(21, 568);
+            this.btnLogout.Margin = new System.Windows.Forms.Padding(3, 15, 3, 3);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnLogout.Size = new System.Drawing.Size(206, 54);
+            this.btnLogout.TabIndex = 5;
+            this.btnLogout.Text = "Logout";
+            this.btnLogout.TextColor = System.Drawing.Color.White;
+            this.btnLogout.UseVisualStyleBackColor = false;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // btnLogs
             // 
@@ -211,7 +212,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.Controls.Add(this.logoutBtn);
+            this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.btnLogs);
             this.Controls.Add(this.assessmentModule);
             this.Controls.Add(this.usersModule);
@@ -229,7 +230,7 @@
         private OrganizationProfile.CustomButton usersModule;
         private OrganizationProfile.CustomButton assessmentModule;
         private OrganizationProfile.CustomButton btnLogs;
-        private OrganizationProfile.CustomButton logoutBtn;
+        private OrganizationProfile.CustomButton btnLogout;
         public OrganizationProfile.CustomButton patientModule;
     }
 }

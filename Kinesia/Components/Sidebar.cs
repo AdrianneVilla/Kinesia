@@ -62,5 +62,17 @@ namespace Kinesia.Components
             PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.logsPage);
             PageObjects.CurrentControl = PageObjects.logsPage;
         }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            DialogResult logoutDiag = CustomDialog.Show("Are you sure you want to logout?", "Logout Alert", CustomDialogButtons.YesNo, CustomDialogIcons.Question);
+
+            if(logoutDiag == DialogResult.Yes)
+            {
+                SessionManager.Logout();
+                PageObjects.dashboard.Close();
+                PageObjects.loginPage.Show();
+            }
+        }
     }
 }

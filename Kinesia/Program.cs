@@ -37,6 +37,7 @@ namespace Kinesia
     // Contains PageObjects objects
     public class PageObjects
     {
+        public static Login loginPage = Login.getLoginInstance();
         public static Dashboard dashboard;
         public static DashboardPage dashboardPage;
         public static PatientsPage patientsPage;
@@ -140,7 +141,7 @@ namespace Kinesia
     {
         public static string UserID;
 
-        public void Logout()
+        public static void Logout()
         {
             UserID = null;
         }
