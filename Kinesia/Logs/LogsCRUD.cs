@@ -16,7 +16,7 @@ namespace Kinesia.Logs
             Connection.conn.Open();
 
             Connection.cmd = new MySqlCommand("SELECT L.LogID, U.FirstName, U.MiddleName, U.LastName, L.Description, L.LogDate " +
-                "FROM Logs L JOIN Users U WHERE L.UserID = U.UserID", Connection.conn);
+                "FROM Logs L JOIN Users U WHERE L.UserID = U.UserID GROUP BY L.LogDate", Connection.conn);
             Connection.reader = Connection.cmd.ExecuteReader();
 
             while(Connection.reader.Read())
