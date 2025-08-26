@@ -117,19 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="LogID.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Column1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="nameHeader.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="genderHeader.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="contactNumHeader.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnArchive.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
+        DwAACw8BkvkDpQAAAOhJREFUSEvtktENgyAQhh0BmKAjdJQ+yvWhbqKbdJSOQCo0fWQER2iDBioncFVf
+        /ZKLCff9P5pYVQdrYfX7JK5aCdCfdWOsy+K+iLEcjF2G/x1j2UUx3BsQYO5O5FKroohgjWIcpq/mUj/w
+        PrB8o22DewNY3Dq4N0AKBGSeFAjIPCUI0B2rnx0+91D5ouDK/T53SSk/khPm5aVLcvlASkiV5y5J5SNS
+        goBXO5ZJc/sV98301G3sLvMROYGBOeO9P5uTywcoYe+eFPbuaYGAzAvQg5e2Dpe9xb0B93c4AYdWzOD+
+        Ntx7UOQLCTGiTp2g5P4AAAAASUVORK5CYII=
+</value>
+  </data>
 </root>

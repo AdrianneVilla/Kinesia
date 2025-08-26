@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panelBorder1 = new WindowsFormsApp2.CustomButton.PanelBorder();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.lblLogID = new System.Windows.Forms.Label();
             this.lblDate = new System.Windows.Forms.Label();
             this.lblDescription = new System.Windows.Forms.Label();
@@ -42,6 +44,8 @@
             this.panelBorder1.BackColor = System.Drawing.Color.White;
             this.panelBorder1.BorderRadius = 20;
             this.panelBorder1.Color = System.Drawing.Color.White;
+            this.panelBorder1.Controls.Add(this.label2);
+            this.panelBorder1.Controls.Add(this.label1);
             this.panelBorder1.Controls.Add(this.lblLogID);
             this.panelBorder1.Controls.Add(this.lblDate);
             this.panelBorder1.Controls.Add(this.lblDescription);
@@ -51,6 +55,26 @@
             this.panelBorder1.Name = "panelBorder1";
             this.panelBorder1.Size = new System.Drawing.Size(1497, 91);
             this.panelBorder1.TabIndex = 1;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(248, 34);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(58, 22);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "log type";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Poppins", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label1.Location = new System.Drawing.Point(223, 39);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(0, 19);
+            this.label1.TabIndex = 9;
             // 
             // lblLogID
             // 
@@ -67,7 +91,7 @@
             // 
             this.lblDate.AutoSize = true;
             this.lblDate.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDate.Location = new System.Drawing.Point(1310, 37);
+            this.lblDate.Location = new System.Drawing.Point(1193, 34);
             this.lblDate.Name = "lblDate";
             this.lblDate.Size = new System.Drawing.Size(37, 22);
             this.lblDate.TabIndex = 4;
@@ -77,7 +101,7 @@
             // 
             this.lblDescription.AutoSize = true;
             this.lblDescription.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDescription.Location = new System.Drawing.Point(732, 35);
+            this.lblDescription.Location = new System.Drawing.Point(962, 35);
             this.lblDescription.Name = "lblDescription";
             this.lblDescription.Size = new System.Drawing.Size(60, 22);
             this.lblDescription.TabIndex = 2;
@@ -87,7 +111,7 @@
             // 
             this.lblUserName.AutoSize = true;
             this.lblUserName.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUserName.Location = new System.Drawing.Point(297, 34);
+            this.lblUserName.Location = new System.Drawing.Point(486, 34);
             this.lblUserName.Name = "lblUserName";
             this.lblUserName.Size = new System.Drawing.Size(92, 22);
             this.lblUserName.TabIndex = 0;
@@ -114,5 +138,7 @@
         private System.Windows.Forms.Label lblDate;
         private System.Windows.Forms.Label lblDescription;
         private System.Windows.Forms.Label lblUserName;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
     }
 }
