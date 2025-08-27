@@ -21,6 +21,7 @@ namespace Kinesia.Logs
         }
 
         public string LogID { get { return lblLogID.Text; } set { lblLogID.Text = value; } }
+        public string LogType { get { return lblLogType.Text; } set { lblLogType.Text = value; } }
         public string UserName { get { return lblUserName.Text; } set { lblUserName.Text = value; } }
         public string Description { get { return lblDescription.Text; } set { lblDescription.Text = value; } }
         public string LogDate { get { return lblDate.Text; } set { lblDate.Text = value; } }

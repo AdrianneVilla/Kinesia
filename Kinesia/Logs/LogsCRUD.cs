@@ -15,7 +15,7 @@ namespace Kinesia.Logs
 
             Connection.conn.Open();
 
-            Connection.cmd = new MySqlCommand("SELECT L.LogID, U.FirstName, U.MiddleName, U.LastName, L.Description, L.LogDate " +
+            Connection.cmd = new MySqlCommand("SELECT L.LogID, L.LogType, U.FirstName, U.MiddleName, U.LastName, L.Description, L.LogDate " +
                 "FROM Logs L JOIN Users U WHERE L.UserID = U.UserID GROUP BY L.LogDate", Connection.conn);
             Connection.reader = Connection.cmd.ExecuteReader();
 
@@ -24,9 +24,10 @@ namespace Kinesia.Logs
                 var displayLogs = new DisplayLogs();
 
                 displayLogs.LogID = Connection.reader.GetString(0);
-                displayLogs.UserName = $"{Connection.reader.GetString(1)} {Connection.reader.GetString(2)} {Connection.reader.GetString(3)}";
-                displayLogs.Description = Connection.reader.GetString(4);
-                var dateTime = Connection.reader.GetDateTime(5);
+                displayLogs.LogType = Connection.reader.GetString(1);
+                displayLogs.UserName = $"{Connection.reader.GetString(2)} {Connection.reader.GetString(3)} {Connection.reader.GetString(4)}";
+                displayLogs.Description = Connection.reader.GetString(5);
+                var dateTime = Connection.reader.GetDateTime(6);
                 displayLogs.LogDate = dateTime.ToString();
 
                 PageObjects.logsPage.getLogHolder.Controls.Add(displayLogs);

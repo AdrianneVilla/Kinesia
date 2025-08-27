@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.panelBorder1 = new WindowsFormsApp2.CustomButton.PanelBorder();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblLogType = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lblLogID = new System.Windows.Forms.Label();
             this.lblDate = new System.Windows.Forms.Label();
@@ -44,7 +44,7 @@
             this.panelBorder1.BackColor = System.Drawing.Color.White;
             this.panelBorder1.BorderRadius = 20;
             this.panelBorder1.Color = System.Drawing.Color.White;
-            this.panelBorder1.Controls.Add(this.label2);
+            this.panelBorder1.Controls.Add(this.lblLogType);
             this.panelBorder1.Controls.Add(this.label1);
             this.panelBorder1.Controls.Add(this.lblLogID);
             this.panelBorder1.Controls.Add(this.lblDate);
@@ -56,15 +56,15 @@
             this.panelBorder1.Size = new System.Drawing.Size(1497, 91);
             this.panelBorder1.TabIndex = 1;
             // 
-            // label2
+            // lblLogType
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(248, 34);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(58, 22);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "log type";
+            this.lblLogType.AutoSize = true;
+            this.lblLogType.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLogType.Location = new System.Drawing.Point(248, 34);
+            this.lblLogType.Name = "lblLogType";
+            this.lblLogType.Size = new System.Drawing.Size(58, 22);
+            this.lblLogType.TabIndex = 10;
+            this.lblLogType.Text = "log type";
             // 
             // label1
             // 
@@ -138,7 +138,7 @@
         private System.Windows.Forms.Label lblDate;
         private System.Windows.Forms.Label lblDescription;
         private System.Windows.Forms.Label lblUserName;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblLogType;
         private System.Windows.Forms.Label label1;
     }
 }
