@@ -24,7 +24,12 @@ namespace Kinesia.Logs
 
         private void LogsPage_Load(object sender, EventArgs e)
         {
-            Queries.LogsQueries.DisplayLogs();
+            Queries.LogsQueries.DisplayLogs(cbSort.Texts);
+        }
+
+        private void cbSort_OnSelectedIndexChanged(object sender, EventArgs e)
+        {
+            Queries.LogsQueries.DisplayLogs(cbSort.Texts);
         }
     }
 }

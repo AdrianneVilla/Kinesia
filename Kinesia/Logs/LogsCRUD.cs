@@ -9,14 +9,25 @@ namespace Kinesia.Logs
 {
     public class LogsCRUD
     {
-        public void DisplayLogs()
+        public void DisplayLogs(string sortColumn)
         {
             PageObjects.logsPage.getLogHolder.Controls.Clear();
 
-            Connection.conn.Open();
+            string query = "SELECT L.LogID, L.LogType, U.FirstName, U.MiddleName, U.LastName, L.Description, L.LogDate " +
+                "FROM Logs L JOIN Users U WHERE L.UserID = U.UserID";
 
-            Connection.cmd = new MySqlCommand("SELECT L.LogID, L.LogType, U.FirstName, U.MiddleName, U.LastName, L.Description, L.LogDate " +
-                "FROM Logs L JOIN Users U WHERE L.UserID = U.UserID GROUP BY L.LogDate", Connection.conn);
+            string sortCondition = "ASC";
+
+            if(sortColumn == "Earliest")
+            {
+                sortCondition = "DESC";
+            }
+
+            query += $" ORDER BY L.LogDate {sortCondition}";
+
+                Connection.conn.Open();
+
+            Connection.cmd = new MySqlCommand(query, Connection.conn);
             Connection.reader = Connection.cmd.ExecuteReader();
 
             while(Connection.reader.Read())

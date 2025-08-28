@@ -28,20 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.nameHolder = new System.Windows.Forms.Label();
             this.dataGridPatients = new System.Windows.Forms.DataGridView();
-            this.panelBorder2 = new WindowsFormsApp2.CustomButton.PanelBorder();
-            this.cbSort = new CustomControls.RJControls.RJComboBox();
-            this.LogHolder = new WindowsFormsApp2.CustomButton.PanelBorder();
             this.LogID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.genderHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contactNumHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panelBorder2 = new WindowsFormsApp2.CustomButton.PanelBorder();
+            this.cbSort = new CustomControls.RJControls.RJComboBox();
+            this.LogHolder = new WindowsFormsApp2.CustomButton.PanelBorder();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridPatients)).BeginInit();
             this.panelBorder2.SuspendLayout();
             this.SuspendLayout();
@@ -86,14 +86,14 @@
             this.dataGridPatients.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dataGridPatients.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
             this.dataGridPatients.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridPatients.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridPatients.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.dataGridPatients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridPatients.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.LogID,
@@ -105,14 +105,14 @@
             this.dataGridPatients.Location = new System.Drawing.Point(70, 206);
             this.dataGridPatients.Name = "dataGridPatients";
             this.dataGridPatients.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridPatients.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridPatients.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.dataGridPatients.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dataGridPatients.ShowCellErrors = false;
             this.dataGridPatients.ShowCellToolTips = false;
@@ -120,6 +120,51 @@
             this.dataGridPatients.ShowRowErrors = false;
             this.dataGridPatients.Size = new System.Drawing.Size(1111, 27);
             this.dataGridPatients.TabIndex = 9;
+            // 
+            // LogID
+            // 
+            this.LogID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.LogID.FillWeight = 50F;
+            this.LogID.HeaderText = "Log ID";
+            this.LogID.Name = "LogID";
+            this.LogID.ReadOnly = true;
+            // 
+            // Column1
+            // 
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column1.FillWeight = 50F;
+            this.Column1.HeaderText = "Log Type";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // nameHeader
+            // 
+            this.nameHeader.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
+            this.nameHeader.DefaultCellStyle = dataGridViewCellStyle11;
+            this.nameHeader.HeaderText = "Name of User";
+            this.nameHeader.Name = "nameHeader";
+            this.nameHeader.ReadOnly = true;
+            this.nameHeader.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // genderHeader
+            // 
+            this.genderHeader.FillWeight = 50F;
+            this.genderHeader.HeaderText = "Log Description";
+            this.genderHeader.Name = "genderHeader";
+            this.genderHeader.ReadOnly = true;
+            // 
+            // contactNumHeader
+            // 
+            this.contactNumHeader.FillWeight = 63.63636F;
+            this.contactNumHeader.HeaderText = "Date";
+            this.contactNumHeader.Name = "contactNumHeader";
+            this.contactNumHeader.ReadOnly = true;
             // 
             // panelBorder2
             // 
@@ -146,10 +191,8 @@
             this.cbSort.ForeColor = System.Drawing.Color.DimGray;
             this.cbSort.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
             this.cbSort.Items.AddRange(new object[] {
-            "Default",
-            "Alphabetical (Name)",
-            "Earliest (Date Added)",
-            "Latest (Date Added)"});
+            "Latest",
+            "Earliest"});
             this.cbSort.ListBackColor = System.Drawing.Color.White;
             this.cbSort.ListTextColor = System.Drawing.Color.Black;
             this.cbSort.Location = new System.Drawing.Point(876, 7);
@@ -158,7 +201,8 @@
             this.cbSort.Padding = new System.Windows.Forms.Padding(1);
             this.cbSort.Size = new System.Drawing.Size(243, 48);
             this.cbSort.TabIndex = 14;
-            this.cbSort.Texts = "Default";
+            this.cbSort.Texts = "Latest";
+            this.cbSort.OnSelectedIndexChanged += new System.EventHandler(this.cbSort_OnSelectedIndexChanged);
             // 
             // LogHolder
             // 
@@ -175,51 +219,6 @@
             this.LogHolder.Padding = new System.Windows.Forms.Padding(5);
             this.LogHolder.Size = new System.Drawing.Size(1129, 496);
             this.LogHolder.TabIndex = 8;
-            // 
-            // LogID
-            // 
-            this.LogID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.LogID.FillWeight = 50F;
-            this.LogID.HeaderText = "Log ID";
-            this.LogID.Name = "LogID";
-            this.LogID.ReadOnly = true;
-            // 
-            // Column1
-            // 
-            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column1.FillWeight = 50F;
-            this.Column1.HeaderText = "Log Type";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // nameHeader
-            // 
-            this.nameHeader.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.nameHeader.DefaultCellStyle = dataGridViewCellStyle2;
-            this.nameHeader.HeaderText = "Name of User";
-            this.nameHeader.Name = "nameHeader";
-            this.nameHeader.ReadOnly = true;
-            this.nameHeader.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // genderHeader
-            // 
-            this.genderHeader.FillWeight = 50F;
-            this.genderHeader.HeaderText = "Log Description";
-            this.genderHeader.Name = "genderHeader";
-            this.genderHeader.ReadOnly = true;
-            // 
-            // contactNumHeader
-            // 
-            this.contactNumHeader.FillWeight = 63.63636F;
-            this.contactNumHeader.HeaderText = "Date";
-            this.contactNumHeader.Name = "contactNumHeader";
-            this.contactNumHeader.ReadOnly = true;
             // 
             // LogsPage
             // 
