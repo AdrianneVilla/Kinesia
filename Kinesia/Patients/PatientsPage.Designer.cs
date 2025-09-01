@@ -122,7 +122,7 @@
             this.editHeader,
             this.archiveHeader});
             this.dataGridPatients.GridColor = System.Drawing.Color.White;
-            this.dataGridPatients.Location = new System.Drawing.Point(70, 196);
+            this.dataGridPatients.Location = new System.Drawing.Point(70, 197);
             this.dataGridPatients.Name = "dataGridPatients";
             this.dataGridPatients.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -364,6 +364,7 @@
             this.PatientHolder.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.PatientHolder.AutoScroll = true;
             this.PatientHolder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(249)))), ((int)(((byte)(238)))));
             this.PatientHolder.BorderRadius = 10;
             this.PatientHolder.Color = System.Drawing.Color.White;

@@ -27,5 +27,9 @@ namespace Kinesia
             PageObjects.CurrentControl = PageObjects.dashboardPage;
         }
 
+        private void header1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

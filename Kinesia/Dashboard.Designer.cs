@@ -66,6 +66,7 @@
             this.header1.Name = "header1";
             this.header1.Size = new System.Drawing.Size(1205, 69);
             this.header1.TabIndex = 0;
+            this.header1.Load += new System.EventHandler(this.header1_Load);
             // 
             // Dashboard
             // 

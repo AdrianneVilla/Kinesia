@@ -24,6 +24,7 @@ namespace Kinesia.Components
 
             DialogResult exitDiag = CustomDialog.Show("Are you sure you want to exit the application?",
                 "Exit Application", CustomDialogButtons.YesNo, CustomDialogIcons.Question);
+           
 
             if (exitDiag == DialogResult.Yes)
             {
