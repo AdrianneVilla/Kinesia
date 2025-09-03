@@ -3,6 +3,7 @@ using Microsoft.Win32;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -151,10 +152,17 @@ namespace Kinesia.Users
                 if(Connection.reader.GetInt32(13) == 1)
                 {
                     PageObjects.userDetails.Status = "Active";
+                    PageObjects.userDetails.BtnArchive.Tag = "Archive";
                 } 
                 else
                 {
                     PageObjects.userDetails.Status = "Inactive";
+                    PageObjects.userDetails.BtnArchive.Tag = "Unarchive";
+                    PageObjects.userDetails.BtnArchive.Text = "Unarchive User";
+                    PageObjects.userDetails.BtnArchive.Image = Properties.Resources.Unarchive;
+                    PageObjects.userDetails.BtnArchive.ForeColor = Color.FromArgb(18, 90, 211);
+                    PageObjects.userDetails.BtnArchive.BackColor = Color.FromArgb(223, 236, 250);
+                    PageObjects.userDetails.BtnArchive.BorderColor = Color.FromArgb(18, 90, 211);
                 }
 
                     // will only display User Details if fetched successfully by the system

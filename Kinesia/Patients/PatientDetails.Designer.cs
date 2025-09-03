@@ -46,6 +46,12 @@
             this.BodyGroup = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AssessmentDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblDateAdded = new System.Windows.Forms.Label();
+            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lblArchiveDate = new System.Windows.Forms.Label();
             this.btnArchive = new OrganizationProfile.CustomButton();
             this.btnEdit = new OrganizationProfile.CustomButton();
             this.panelBorder1 = new WindowsFormsApp2.CustomButton.PanelBorder();
@@ -61,18 +67,12 @@
             this.label19 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.btnBack = new OrganizationProfile.CustomButton();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lblDateAdded = new System.Windows.Forms.Label();
-            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.lblArchiveDate = new System.Windows.Forms.Label();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.panelBorder1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
+            this.panelBorder1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblSelectedPatient
@@ -274,6 +274,72 @@
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "View Detailed Assessment >";
             this.linkLabel1.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(210)))), ((int)(((byte)(173)))));
+            // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.Controls.Add(this.label1);
+            this.flowLayoutPanel2.Controls.Add(this.lblDateAdded);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(556, 163);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(442, 26);
+            this.flowLayoutPanel2.TabIndex = 12;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Gray;
+            this.label1.Location = new System.Drawing.Point(3, 3);
+            this.label1.Name = "label1";
+            this.label1.Padding = new System.Windows.Forms.Padding(0, 0, 20, 0);
+            this.label1.Size = new System.Drawing.Size(99, 22);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Date Added";
+            // 
+            // lblDateAdded
+            // 
+            this.lblDateAdded.AutoSize = true;
+            this.lblDateAdded.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDateAdded.ForeColor = System.Drawing.Color.Black;
+            this.lblDateAdded.Location = new System.Drawing.Point(108, 3);
+            this.lblDateAdded.Name = "lblDateAdded";
+            this.lblDateAdded.Size = new System.Drawing.Size(93, 22);
+            this.lblDateAdded.TabIndex = 1;
+            this.lblDateAdded.Text = "<date added>";
+            // 
+            // flowLayoutPanel3
+            // 
+            this.flowLayoutPanel3.Controls.Add(this.label2);
+            this.flowLayoutPanel3.Controls.Add(this.lblArchiveDate);
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(556, 195);
+            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+            this.flowLayoutPanel3.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(442, 26);
+            this.flowLayoutPanel3.TabIndex = 13;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Gray;
+            this.label2.Location = new System.Drawing.Point(3, 3);
+            this.label2.Name = "label2";
+            this.label2.Padding = new System.Windows.Forms.Padding(0, 0, 20, 0);
+            this.label2.Size = new System.Drawing.Size(145, 22);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Last Date of Archive";
+            // 
+            // lblArchiveDate
+            // 
+            this.lblArchiveDate.AutoSize = true;
+            this.lblArchiveDate.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblArchiveDate.ForeColor = System.Drawing.Color.Black;
+            this.lblArchiveDate.Location = new System.Drawing.Point(154, 3);
+            this.lblArchiveDate.Name = "lblArchiveDate";
+            this.lblArchiveDate.Size = new System.Drawing.Size(116, 22);
+            this.lblArchiveDate.TabIndex = 1;
+            this.lblArchiveDate.Text = "<date of archive>";
             // 
             // btnArchive
             // 
@@ -513,72 +579,6 @@
             this.btnBack.UseVisualStyleBackColor = false;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
-            // flowLayoutPanel2
-            // 
-            this.flowLayoutPanel2.Controls.Add(this.label1);
-            this.flowLayoutPanel2.Controls.Add(this.lblDateAdded);
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(556, 163);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(442, 26);
-            this.flowLayoutPanel2.TabIndex = 12;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Gray;
-            this.label1.Location = new System.Drawing.Point(3, 3);
-            this.label1.Name = "label1";
-            this.label1.Padding = new System.Windows.Forms.Padding(0, 0, 20, 0);
-            this.label1.Size = new System.Drawing.Size(99, 22);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Date Added";
-            // 
-            // lblDateAdded
-            // 
-            this.lblDateAdded.AutoSize = true;
-            this.lblDateAdded.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDateAdded.ForeColor = System.Drawing.Color.Black;
-            this.lblDateAdded.Location = new System.Drawing.Point(108, 3);
-            this.lblDateAdded.Name = "lblDateAdded";
-            this.lblDateAdded.Size = new System.Drawing.Size(93, 22);
-            this.lblDateAdded.TabIndex = 1;
-            this.lblDateAdded.Text = "<date added>";
-            // 
-            // flowLayoutPanel3
-            // 
-            this.flowLayoutPanel3.Controls.Add(this.label2);
-            this.flowLayoutPanel3.Controls.Add(this.lblArchiveDate);
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(556, 195);
-            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(442, 26);
-            this.flowLayoutPanel3.TabIndex = 13;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Gray;
-            this.label2.Location = new System.Drawing.Point(3, 3);
-            this.label2.Name = "label2";
-            this.label2.Padding = new System.Windows.Forms.Padding(0, 0, 20, 0);
-            this.label2.Size = new System.Drawing.Size(145, 22);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Last Date of Archive";
-            // 
-            // lblArchiveDate
-            // 
-            this.lblArchiveDate.AutoSize = true;
-            this.lblArchiveDate.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblArchiveDate.ForeColor = System.Drawing.Color.Black;
-            this.lblArchiveDate.Location = new System.Drawing.Point(154, 3);
-            this.lblArchiveDate.Name = "lblArchiveDate";
-            this.lblArchiveDate.Size = new System.Drawing.Size(116, 22);
-            this.lblArchiveDate.TabIndex = 1;
-            this.lblArchiveDate.Text = "<date of archive>";
-            // 
             // PatientDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -605,12 +605,12 @@
             this.flowLayoutPanel5.ResumeLayout(false);
             this.flowLayoutPanel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.panelBorder1.ResumeLayout(false);
-            this.panelBorder1.PerformLayout();
             this.flowLayoutPanel2.ResumeLayout(false);
             this.flowLayoutPanel2.PerformLayout();
             this.flowLayoutPanel3.ResumeLayout(false);
             this.flowLayoutPanel3.PerformLayout();
+            this.panelBorder1.ResumeLayout(false);
+            this.panelBorder1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

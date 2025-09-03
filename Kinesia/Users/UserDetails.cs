@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OrganizationProfile;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -45,7 +46,7 @@ namespace Kinesia.Users
         public string DateAdded { get { return lblDateAdded.Text; } set { lblDateAdded.Text = value; } }
         public string LastArchiveDate { get { return lblArchiveDate.Text; } set { lblArchiveDate.Text = value; } }
         public string Status { get { return lblStatus.Text; } set { lblStatus.Text = value; } }
-
+        public CustomButton BtnArchive { get { return btnArchive; } }
         private void btnBack_Click(object sender, EventArgs e)
         {
             PageObjects.RemoveResources(ref PageObjects.CurrentControl);

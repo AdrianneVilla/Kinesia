@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -143,10 +144,17 @@ namespace Kinesia.Patients
                 if(Connection.reader.GetInt64(9) == 1)
                 {
                     PageObjects.patientDetails.Status = "Active";
+                    PageObjects.patientDetails.BtnArchive.Tag = "Archive";
                 } 
                 else
                 {
                     PageObjects.patientDetails.Status = "Inactive";
+                    PageObjects.patientDetails.BtnArchive.Tag = "Unarchive";
+                    PageObjects.patientDetails.BtnArchive.Image = Properties.Resources.Unarchive;
+                    PageObjects.patientDetails.BtnArchive.Text = "Unarchive Patient";
+                    PageObjects.patientDetails.BtnArchive.ForeColor = Color.FromArgb(18, 90, 211);
+                    PageObjects.patientDetails.BtnArchive.BackColor = Color.FromArgb(223, 236, 250);
+                    PageObjects.patientDetails.BtnArchive.BorderColor = Color.FromArgb(18, 90, 211);
                 }
 
                 DateTime dateAdded = Connection.reader.GetDateTime(10);

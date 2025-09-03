@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OrganizationProfile;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -30,7 +31,7 @@ namespace Kinesia.Patients
         public string Age { get { return lblAge.Text; } set { lblAge.Text = value; } }
         public string Address { get { return lblAddress.Text; } set { lblAddress.Text = value; } }
         public string Birthdate { get { return lblBirthdate.Text; } set { lblBirthdate.Text = value; } }
-
+        public CustomButton BtnArchive { get { return btnArchive; } }
         private void btnEditInfo_Click(object sender, EventArgs e)
         {
             DataHolder.PatientDataHolder = new PatientDataHolder();
