@@ -149,7 +149,7 @@ namespace Kinesia.Patients
                     Queries.PatientQueries.AddPatient(DataHolder.PatientDataHolder);
 
                     // will add a log for adding a patient
-                    Queries.LogsQueries.AddLog($"Added {DataHolder.PatientDataHolder.PatientID}", "ADD PATIENT");
+                    Queries.LogsQueries.AddLog($"Added {DataHolder.PatientDataHolder.PatientID}", "Patients");
 
                     clearAllInputs();
                     MessageBox.Show("Patient added successfully!", "Add Patient Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);

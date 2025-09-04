@@ -358,7 +358,7 @@ namespace Kinesia
                     PageObjects.dashboard.Show();
                     this.Hide();
                     SessionManager.UserID = userID;
-                    Queries.LogsQueries.AddLog("Has Logged In", "LOGIN");
+                    Queries.LogsQueries.AddLog("Has Logged In", "Sessions");
                 }
            
             }

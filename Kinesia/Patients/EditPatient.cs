@@ -178,7 +178,7 @@ namespace Kinesia.Patients
                     Queries.PatientQueries.UpdatePatient(patientData);
 
                     // will add a log for editing a patient
-                    Queries.LogsQueries.AddLog($"Edited {DataHolder.PatientDataHolder.PatientID}'s personal information", "EDIT PATIENT");
+                    Queries.LogsQueries.AddLog($"Edited {DataHolder.PatientDataHolder.PatientID}'s personal information", "Patients");
 
                     MessageBox.Show($"{DataHolder.PatientDataHolder.PatientID}'s personal information \n" +
                         $"has been updated successfully!", "Edit Patient Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
