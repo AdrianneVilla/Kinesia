@@ -9,12 +9,38 @@ namespace Kinesia.Logs
 {
     public class LogsCRUD
     {
-        public void DisplayLogs(string sortColumn)
+        public void DisplayLogs(string searchData, string currentTab, string sortColumn)
         {
             PageObjects.logsPage.getLogHolder.Controls.Clear();
+            Connection.conn.Open();
 
             string query = "SELECT L.LogID, L.LogType, U.FirstName, U.MiddleName, U.LastName, L.Description, L.LogDate " +
                 "FROM Logs L JOIN Users U WHERE L.UserID = U.UserID";
+
+            // collections of all conditions for the query
+            List<string> conditions = new List<string>();
+
+            // will only display specific logs
+            if(currentTab != "All")
+            {
+                conditions.Add("LogType = @logType");
+            }
+
+            // will only add this condition to the query if searchData is not empty
+            if (!string.IsNullOrEmpty(searchData))
+            {
+                string searchCondition = @"(L.LogID LIKE CONCAT('%', @searchData, '%') 
+                                        OR U.FirstName LIKE CONCAT('%', @searchData, '%') 
+                                        OR U.MiddleName LIKE CONCAT('%', @searchData, '%') 
+                                        OR U.LastName LIKE CONCAT('%', @searchData, '%'))";
+                conditions.Add(searchCondition);
+            }
+
+            // will add all conditions to the query (if there's any condition added)
+            if (conditions.Count > 0)
+            {
+                query += " AND " + string.Join(" AND ", conditions);
+            }
 
             string sortCondition = "ASC";
 
@@ -25,9 +51,16 @@ namespace Kinesia.Logs
 
             query += $" ORDER BY L.LogDate {sortCondition}";
 
-                Connection.conn.Open();
-
             Connection.cmd = new MySqlCommand(query, Connection.conn);
+
+            // will only add parameter if searchData is not empty
+            if (!string.IsNullOrEmpty(searchData))
+            {
+                Connection.cmd.Parameters.AddWithValue("@searchData", searchData);
+            }
+
+            Connection.cmd.Parameters.AddWithValue("logType", currentTab);
+
             Connection.reader = Connection.cmd.ExecuteReader();
 
             while(Connection.reader.Read())

@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.nameHolder = new System.Windows.Forms.Label();
             this.dataGridPatients = new System.Windows.Forms.DataGridView();
@@ -40,16 +40,17 @@
             this.genderHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contactNumHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelBorder2 = new WindowsFormsApp2.CustomButton.PanelBorder();
-            this.cbSort = new CustomControls.RJControls.RJComboBox();
-            this.LogHolder = new WindowsFormsApp2.CustomButton.PanelBorder();
+            this.btnPatients = new OrganizationProfile.CustomButton();
             this.btnUsers = new OrganizationProfile.CustomButton();
             this.btnSessions = new OrganizationProfile.CustomButton();
             this.btnAll = new OrganizationProfile.CustomButton();
-            this.btnPatients = new OrganizationProfile.CustomButton();
+            this.cbSort = new CustomControls.RJControls.RJComboBox();
+            this.LogHolder = new WindowsFormsApp2.CustomButton.PanelBorder();
             this.panelBorder1 = new WindowsFormsApp2.CustomButton.PanelBorder();
             this.btnSearch = new OrganizationProfile.CustomButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.txtSearchBar = new CustomControls.RJControls.RJTextBox();
+            this.lblHiddenForFocus = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridPatients)).BeginInit();
             this.panelBorder2.SuspendLayout();
             this.panelBorder1.SuspendLayout();
@@ -96,14 +97,14 @@
             this.dataGridPatients.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dataGridPatients.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
             this.dataGridPatients.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridPatients.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridPatients.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridPatients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridPatients.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.LogID,
@@ -115,14 +116,14 @@
             this.dataGridPatients.Location = new System.Drawing.Point(70, 206);
             this.dataGridPatients.Name = "dataGridPatients";
             this.dataGridPatients.ReadOnly = true;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridPatients.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridPatients.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridPatients.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dataGridPatients.ShowCellErrors = false;
             this.dataGridPatients.ShowCellToolTips = false;
@@ -150,13 +151,13 @@
             // nameHeader
             // 
             this.nameHeader.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.nameHeader.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
+            this.nameHeader.DefaultCellStyle = dataGridViewCellStyle2;
             this.nameHeader.HeaderText = "Name of User";
             this.nameHeader.Name = "nameHeader";
             this.nameHeader.ReadOnly = true;
@@ -193,6 +194,89 @@
             this.panelBorder2.Name = "panelBorder2";
             this.panelBorder2.Size = new System.Drawing.Size(1129, 58);
             this.panelBorder2.TabIndex = 14;
+            // 
+            // btnPatients
+            // 
+            this.btnPatients.BackColor = System.Drawing.Color.Gainsboro;
+            this.btnPatients.BackgroundColor = System.Drawing.Color.Gainsboro;
+            this.btnPatients.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnPatients.BorderRadius = 5;
+            this.btnPatients.BorderSize = 0;
+            this.btnPatients.FlatAppearance.BorderSize = 0;
+            this.btnPatients.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPatients.Font = new System.Drawing.Font("Poppins", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))));
+            this.btnPatients.ForeColor = System.Drawing.Color.Gray;
+            this.btnPatients.Location = new System.Drawing.Point(265, 9);
+            this.btnPatients.Margin = new System.Windows.Forms.Padding(1);
+            this.btnPatients.Name = "btnPatients";
+            this.btnPatients.Size = new System.Drawing.Size(80, 40);
+            this.btnPatients.TabIndex = 18;
+            this.btnPatients.Text = "Patients";
+            this.btnPatients.TextColor = System.Drawing.Color.Gray;
+            this.btnPatients.UseVisualStyleBackColor = false;
+            this.btnPatients.Click += new System.EventHandler(this.btnPatients_Click);
+            // 
+            // btnUsers
+            // 
+            this.btnUsers.BackColor = System.Drawing.Color.Gainsboro;
+            this.btnUsers.BackgroundColor = System.Drawing.Color.Gainsboro;
+            this.btnUsers.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnUsers.BorderRadius = 5;
+            this.btnUsers.BorderSize = 0;
+            this.btnUsers.FlatAppearance.BorderSize = 0;
+            this.btnUsers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUsers.Font = new System.Drawing.Font("Poppins", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))));
+            this.btnUsers.ForeColor = System.Drawing.Color.Gray;
+            this.btnUsers.Location = new System.Drawing.Point(180, 9);
+            this.btnUsers.Margin = new System.Windows.Forms.Padding(1);
+            this.btnUsers.Name = "btnUsers";
+            this.btnUsers.Size = new System.Drawing.Size(80, 40);
+            this.btnUsers.TabIndex = 17;
+            this.btnUsers.Text = "Users";
+            this.btnUsers.TextColor = System.Drawing.Color.Gray;
+            this.btnUsers.UseVisualStyleBackColor = false;
+            this.btnUsers.Click += new System.EventHandler(this.btnUsers_Click);
+            // 
+            // btnSessions
+            // 
+            this.btnSessions.BackColor = System.Drawing.Color.Gainsboro;
+            this.btnSessions.BackgroundColor = System.Drawing.Color.Gainsboro;
+            this.btnSessions.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnSessions.BorderRadius = 5;
+            this.btnSessions.BorderSize = 0;
+            this.btnSessions.FlatAppearance.BorderSize = 0;
+            this.btnSessions.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSessions.Font = new System.Drawing.Font("Poppins", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))));
+            this.btnSessions.ForeColor = System.Drawing.Color.Gray;
+            this.btnSessions.Location = new System.Drawing.Point(96, 9);
+            this.btnSessions.Name = "btnSessions";
+            this.btnSessions.Size = new System.Drawing.Size(80, 40);
+            this.btnSessions.TabIndex = 16;
+            this.btnSessions.Text = "Sessions";
+            this.btnSessions.TextColor = System.Drawing.Color.Gray;
+            this.btnSessions.UseVisualStyleBackColor = false;
+            this.btnSessions.Click += new System.EventHandler(this.btnSessions_Click);
+            // 
+            // btnAll
+            // 
+            this.btnAll.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
+            this.btnAll.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
+            this.btnAll.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnAll.BorderRadius = 5;
+            this.btnAll.BorderSize = 0;
+            this.btnAll.FlatAppearance.BorderSize = 0;
+            this.btnAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAll.Font = new System.Drawing.Font("Poppins", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))));
+            this.btnAll.ForeColor = System.Drawing.Color.White;
+            this.btnAll.Location = new System.Drawing.Point(12, 9);
+            this.btnAll.Margin = new System.Windows.Forms.Padding(1);
+            this.btnAll.Name = "btnAll";
+            this.btnAll.Size = new System.Drawing.Size(80, 40);
+            this.btnAll.TabIndex = 15;
+            this.btnAll.Text = "All";
+            this.btnAll.TextColor = System.Drawing.Color.White;
+            this.btnAll.UseVisualStyleBackColor = false;
+            this.btnAll.Click += new System.EventHandler(this.btnAll_Click);
             // 
             // cbSort
             // 
@@ -234,85 +318,6 @@
             this.LogHolder.Size = new System.Drawing.Size(1129, 496);
             this.LogHolder.TabIndex = 8;
             // 
-            // btnUsers
-            // 
-            this.btnUsers.BackColor = System.Drawing.Color.Gainsboro;
-            this.btnUsers.BackgroundColor = System.Drawing.Color.Gainsboro;
-            this.btnUsers.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnUsers.BorderRadius = 5;
-            this.btnUsers.BorderSize = 0;
-            this.btnUsers.FlatAppearance.BorderSize = 0;
-            this.btnUsers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUsers.Font = new System.Drawing.Font("Poppins", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))));
-            this.btnUsers.ForeColor = System.Drawing.Color.Gray;
-            this.btnUsers.Location = new System.Drawing.Point(180, 9);
-            this.btnUsers.Margin = new System.Windows.Forms.Padding(1);
-            this.btnUsers.Name = "btnUsers";
-            this.btnUsers.Size = new System.Drawing.Size(80, 40);
-            this.btnUsers.TabIndex = 17;
-            this.btnUsers.Text = "Users";
-            this.btnUsers.TextColor = System.Drawing.Color.Gray;
-            this.btnUsers.UseVisualStyleBackColor = false;
-            // 
-            // btnSessions
-            // 
-            this.btnSessions.BackColor = System.Drawing.Color.Gainsboro;
-            this.btnSessions.BackgroundColor = System.Drawing.Color.Gainsboro;
-            this.btnSessions.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnSessions.BorderRadius = 5;
-            this.btnSessions.BorderSize = 0;
-            this.btnSessions.FlatAppearance.BorderSize = 0;
-            this.btnSessions.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSessions.Font = new System.Drawing.Font("Poppins", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))));
-            this.btnSessions.ForeColor = System.Drawing.Color.Gray;
-            this.btnSessions.Location = new System.Drawing.Point(96, 9);
-            this.btnSessions.Name = "btnSessions";
-            this.btnSessions.Size = new System.Drawing.Size(80, 40);
-            this.btnSessions.TabIndex = 16;
-            this.btnSessions.Text = "Sessions";
-            this.btnSessions.TextColor = System.Drawing.Color.Gray;
-            this.btnSessions.UseVisualStyleBackColor = false;
-            // 
-            // btnAll
-            // 
-            this.btnAll.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.btnAll.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.btnAll.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnAll.BorderRadius = 5;
-            this.btnAll.BorderSize = 0;
-            this.btnAll.FlatAppearance.BorderSize = 0;
-            this.btnAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAll.Font = new System.Drawing.Font("Poppins", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))));
-            this.btnAll.ForeColor = System.Drawing.Color.White;
-            this.btnAll.Location = new System.Drawing.Point(12, 9);
-            this.btnAll.Margin = new System.Windows.Forms.Padding(1);
-            this.btnAll.Name = "btnAll";
-            this.btnAll.Size = new System.Drawing.Size(80, 40);
-            this.btnAll.TabIndex = 15;
-            this.btnAll.Text = "All";
-            this.btnAll.TextColor = System.Drawing.Color.White;
-            this.btnAll.UseVisualStyleBackColor = false;
-            // 
-            // btnPatients
-            // 
-            this.btnPatients.BackColor = System.Drawing.Color.Gainsboro;
-            this.btnPatients.BackgroundColor = System.Drawing.Color.Gainsboro;
-            this.btnPatients.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnPatients.BorderRadius = 5;
-            this.btnPatients.BorderSize = 0;
-            this.btnPatients.FlatAppearance.BorderSize = 0;
-            this.btnPatients.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPatients.Font = new System.Drawing.Font("Poppins", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))));
-            this.btnPatients.ForeColor = System.Drawing.Color.Gray;
-            this.btnPatients.Location = new System.Drawing.Point(265, 9);
-            this.btnPatients.Margin = new System.Windows.Forms.Padding(1);
-            this.btnPatients.Name = "btnPatients";
-            this.btnPatients.Size = new System.Drawing.Size(80, 40);
-            this.btnPatients.TabIndex = 18;
-            this.btnPatients.Text = "Patients";
-            this.btnPatients.TextColor = System.Drawing.Color.Gray;
-            this.btnPatients.UseVisualStyleBackColor = false;
-            // 
             // panelBorder1
             // 
             this.panelBorder1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -351,6 +356,7 @@
             this.btnSearch.Text = "Search";
             this.btnSearch.TextColor = System.Drawing.Color.White;
             this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // pictureBox1
             // 
@@ -381,14 +387,28 @@
             this.txtSearchBar.PlaceholderText = "";
             this.txtSearchBar.Size = new System.Drawing.Size(333, 31);
             this.txtSearchBar.TabIndex = 4;
-            this.txtSearchBar.Texts = "";
+            this.txtSearchBar.Texts = "Search for User name or Log ID";
             this.txtSearchBar.UnderlinedStyle = false;
+            this.txtSearchBar._TextChanged += new System.EventHandler(this.txtSearchBar__TextChanged);
+            this.txtSearchBar.Enter += new System.EventHandler(this.txtSearchBar_Enter);
+            this.txtSearchBar.Leave += new System.EventHandler(this.txtSearchBar_Leave);
+            // 
+            // lblHiddenForFocus
+            // 
+            this.lblHiddenForFocus.AutoSize = true;
+            this.lblHiddenForFocus.ForeColor = System.Drawing.Color.White;
+            this.lblHiddenForFocus.Location = new System.Drawing.Point(341, 82);
+            this.lblHiddenForFocus.Name = "lblHiddenForFocus";
+            this.lblHiddenForFocus.Size = new System.Drawing.Size(120, 13);
+            this.lblHiddenForFocus.TabIndex = 16;
+            this.lblHiddenForFocus.Text = "<Focus Label (Hidden)>";
             // 
             // LogsPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.lblHiddenForFocus);
             this.Controls.Add(this.panelBorder1);
             this.Controls.Add(this.panelBorder2);
             this.Controls.Add(this.dataGridPatients);
@@ -428,5 +448,6 @@
         private OrganizationProfile.CustomButton btnSearch;
         private System.Windows.Forms.PictureBox pictureBox1;
         private CustomControls.RJControls.RJTextBox txtSearchBar;
+        private System.Windows.Forms.Label lblHiddenForFocus;
     }
 }
