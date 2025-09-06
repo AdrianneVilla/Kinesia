@@ -10,7 +10,8 @@ namespace KinesiaAPI.Data
 
         }
 
-        public DbSet<Users> Users { get; set; }
-        public DbSet<Patients> Patients { get; set; }
+        public DbSet<Users> Users { get; set; } = null!;
+        public DbSet<Patients> Patients { get; set; } = null!;
+        public DbSet<KinesiaAPI.Models.Entities.Logs> Logs { get; set; } = default!;
     }
 }
