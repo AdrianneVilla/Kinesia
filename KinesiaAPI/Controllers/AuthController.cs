@@ -1,5 +1,5 @@
 ﻿using KinesiaAPI.Data;
-using KinesiaAPI.Models.DTOs;
+using KinesiaLibrary.DTOs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -7,7 +7,7 @@ using KinesiaLibrary;
 
 namespace KinesiaAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/auth")]
     [ApiController]
     public class AuthController : ControllerBase
     {
@@ -28,6 +28,7 @@ namespace KinesiaAPI.Controllers
                 return new LoginResponse { Success = false, Message = "Username cannot be found" };
             }
 
+            // will check if the password and hashed + salted password input is the same
             var hashedInput = CustomSecurity.HashPassword(request.Password, user.Salt);
 
             if(hashedInput != user.Password)
@@ -35,7 +36,7 @@ namespace KinesiaAPI.Controllers
                 return new LoginResponse { Success = false, Message = "Username or Password incorrect" };
             }
 
-            return new LoginResponse { Success = true, Message = "Login Successful" };
+            return new LoginResponse { Success = true, Message = "Login Successful", UserID = user.UserID };
         }
     }
 }

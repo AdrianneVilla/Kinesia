@@ -4,11 +4,13 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using KinesiaLibrary.DTOs;
 using MySql.Data.MySqlClient;
-
+using Newtonsoft.Json;
 
 namespace Kinesia
 {
@@ -298,12 +300,8 @@ namespace Kinesia
 
         }
         
-        private void btnLogin_Click(object sender, EventArgs e)
+        private async void btnLogin_Click(object sender, EventArgs e)
         {
-            string password;
-            string salt;
-            string userID;
-
             // will remove white spaces before and after the textboxes input
             txtUsername.Texts.Trim();
             txtPassword.Texts.Trim();
@@ -316,53 +314,54 @@ namespace Kinesia
             } 
             else
             {
-                Connection.conn.Open();
+                var loginResult = await LoginAsync(txtUsername.Texts, txtPassword.Texts);
 
-                Connection.cmd = new MySqlCommand("SELECT UserID, Password, Salt FROM Users WHERE Username = @username", Connection.conn);
-                Connection.cmd.Parameters.AddWithValue("@username", txtUsername.Texts);
-                Connection.reader = Connection.cmd.ExecuteReader();
-
-                if (Connection.reader.Read())
+                if(loginResult.Success)
                 {
-                    password = Connection.reader.GetString(1);
-                    salt = Connection.reader.GetString(2);
-                }
-                else
-                {
-                    // will show an error dialog if the username was invalid, inactive, or cannot be found
-                    // will exit btnLogin onclick method
-                    CustomDialog.Show("Username cannot be found!\n" +
-                        "Please check your username", "Username cannot be found", CustomDialogButtons.OK, CustomDialogIcons.Error);
-                    return;
-                }
-
-                userID = Connection.reader.GetString(0);
-
-                Connection.reader.Close();
-                Connection.conn.Close();
-
-                // will check if the password and hashed + salted password input is the same
-                // will show an error dialog if the password and hashed + salted password input is different
-                // will continue to dashboard page if the password and hashed + salted password input is the same
-                if (password != CustomSecurity.HashPassword(txtPassword.Texts, salt))
-                {
-                    CustomDialog.Show("Username or Password was incorrect!\n" +
-                        "Please try again.", "Login Alert", CustomDialogButtons.OK, CustomDialogIcons.Error);
-                } 
-                else
-                {
-                    txtUsername.Texts = "";
-                    txtPassword.Texts = "";
-
+                    // will continue to dashboard page if the password and hashed + salted password input is the same
                     PageObjects.dashboard = new Dashboard();
                     PageObjects.dashboard.Show();
                     this.Hide();
-                    SessionManager.UserID = userID;
+                    SessionManager.UserID = loginResult.UserID;
                     Queries.LogsQueries.AddLog("Has Logged In", "Sessions");
+                } 
+                else if(loginResult.Message == "Username or Password incorrect")
+                {
+                    // will show an error dialog if the password and hashed + salted password input is different
+                    CustomDialog.Show("Username or Password was incorrect!\n" +
+                        "Please try again.", "Login Alert", CustomDialogButtons.OK, CustomDialogIcons.Error);
                 }
-           
             }
 
+        }
+
+        public async Task<LoginResponse> LoginAsync(string username, string password)
+        {
+            using (var client = new HttpClient { BaseAddress = new Uri("https://localhost:5001/") })
+            {
+                var request = new LoginRequest
+                {
+                    Username = username,
+                    Password = password
+                };
+
+                var json = JsonConvert.SerializeObject(request);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                var response = await client.PostAsync("api/auth/login", content);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    return new LoginResponse
+                    {
+                        Success = false,
+                        Message = $"Server error {response.StatusCode}"
+                    };
+                }
+
+                var responsContent = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<LoginResponse>(responsContent);
+            }
         }
 
         private void header1_Load(object sender, EventArgs e)
