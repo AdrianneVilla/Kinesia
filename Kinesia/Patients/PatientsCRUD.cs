@@ -3,115 +3,58 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using KinesiaLibrary.DTOs;
 using MySql.Data.MySqlClient;
+using Newtonsoft.Json;
 
 namespace Kinesia.Patients
 {
     public class PatientsCRUD
     {
-        public void DisplayPatients(string searchData, string currentTab, string sortColumn)
+        public async Task DisplayPatients(string searchData, string currentTab, string sortColumn)
         {
             PageObjects.patientsPage.getPatientHolder.Controls.Clear();
-            Connection.conn.Open();
 
-            string query = "SELECT PatientID, FirstName, MiddleName, LastName, TIMESTAMPDIFF(MONTH, Birthdate, CURDATE()) AS totalMonths, Gender, Contact, Status " +
-                "FROM Patients";
-            
-            // collections of all conditions for the query
-            List<string> conditions = new List<string>();
-
-            // 1 = Active Patients
-            // 2 = Inactive Patients
-            // Else = All Patients
-            if(currentTab == "Active")
+            using(var client = new HttpClient())
             {
-                conditions.Add("Status = 1");
-            } 
-            else if(currentTab == "Inactive")
-            {
-                conditions.Add("Status = 0");
-            }
+                var url = $"https://localhost:5001/api/patients?searchData={searchData}&currentTab={currentTab}&sortColumn={sortColumn}";
 
-            // will only add this condition to the query if searchData is not empty
-            if(!string.IsNullOrEmpty(searchData))
-            {
-                string searchCondition = @"(PatientID LIKE CONCAT('%', @searchData, '%') 
-                                        OR FirstName LIKE CONCAT('%', @searchData, '%') 
-                                        OR MiddleName LIKE CONCAT('%', @searchData, '%') 
-                                        OR LastName LIKE CONCAT('%', @searchData, '%'))";
-                conditions.Add(searchCondition);
-            }
+                var response = await client.GetStringAsync(url);
+                var patients = JsonConvert.DeserializeObject<List<PatientsDTO>>(response);
 
-            // will add all conditions to the query (if there's any condition added)
-            if(conditions.Count > 0)
-            {
-                query += " WHERE " + string.Join(" AND ", conditions);
-            }
-
-            // will set the sort order based on sortColumn
-            string sortCondition = "DESC";
-
-            if(sortColumn == "Default")
-            {
-                sortColumn = "PatientID";
-            } 
-            else if(sortColumn == "Alphabetical (Name)")
-            {
-                sortColumn = "FirstName";
-            } 
-            else if(sortColumn == "Earliest (Date Added)")
-            {
-                sortColumn = "DateAdded";
-            } 
-            else if(sortColumn == "Latest (Date Added)")
-            {
-                sortColumn = "DateAdded";
-                sortCondition = "ASC";
-            }
-
-            query += $" ORDER BY {sortColumn} {sortCondition}";
-
-            Connection.cmd = new MySqlCommand(query, Connection.conn);
-
-            // will only add parameter if searchData is not empty
-            if(!string.IsNullOrEmpty(searchData))
-            {
-                Connection.cmd.Parameters.AddWithValue("@searchData", searchData);
-            }
-            Connection.reader = Connection.cmd.ExecuteReader();
-
-            while(Connection.reader.Read())
-            {
-                var displayPatientControl = new DisplayPatients(); // will create user control for every patients
-
-                // will set the data of every patient to the labels
-                displayPatientControl.PatientID = Connection.reader.GetString(0);
-                displayPatientControl.PatientName = $"{Connection.reader.GetString(1)} {Connection.reader.GetString(2)} {Connection.reader.GetString(3)}";
-                displayPatientControl.Age = (Connection.reader.GetInt64(4) / 12).ToString();
-                displayPatientControl.Gender = Connection.reader.GetString(5);
-                displayPatientControl.Contact = Connection.reader.GetString(6);
-
-                // 1 = Active
-                // 2 = Inactive
-                if(Connection.reader.GetInt64(7) == 1)
+                foreach(var patient in patients)
                 {
-                    displayPatientControl.Status = "Active";
-                    displayPatientControl.BtnArchive.Tag = "Archive";
+                    // will set the data of every patient to the labels
+                    var displayPatientControl = new DisplayPatients
+                    {
+                        PatientID = patient.PatientID,
+                        PatientName = $"{patient.FirstName} {patient.MiddleName} {patient.LastName}",
+                        Age = patient.Age.ToString(),
+                        Gender = patient.Gender,
+                        Contact = patient.Contact
+                    };
 
-                } else
-                {
-                    displayPatientControl.Status = "Inactive";
-                    displayPatientControl.BtnArchive.BackgroundImage = Properties.Resources.Unarchive;
-                    displayPatientControl.BtnArchive.Tag = "Unarchive";
+                    // 1 = Active
+                    // 2 = Inactive
+                    if (patient.Status == 1)
+                    {
+                        displayPatientControl.Status = "Active";
+                        displayPatientControl.BtnArchive.Tag = "Archive";
+                    } 
+                    else
+                    {
+                        displayPatientControl.Status = "Inactive";
+                        displayPatientControl.BtnArchive.BackgroundImage = Properties.Resources.Unarchive;
+                        displayPatientControl.BtnArchive.Tag = "Unarchive";
+                    }
+
+                    PageObjects.patientsPage.getPatientHolder.Controls.Add(displayPatientControl);
                 }
-
-                PageObjects.patientsPage.getPatientHolder.Controls.Add(displayPatientControl);
             }
-            Connection.reader.Close();
-            Connection.conn.Close();
         }
 
         public void GetPatientDetails(string patientID)

@@ -22,11 +22,55 @@ namespace KinesiaAPI.Controllers
             _context = context;
         }
 
-        // GET: api/patients
+        // GET: api/patients?searchData={}&currentTab={}&sortColumn={}
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<PatientsDTO>>> GetPatients()
+        public async Task<ActionResult<IEnumerable<PatientsDTO>>> GetPatients(
+            string? searchData = null,
+            string? currentTab = null,
+            string? sortColumn = "PatientID")
         {
-            return await _context.Patients
+            var query = _context.Patients.AsQueryable();
+
+            // will filter by Active / Inactive
+            if(currentTab == "Active")
+            {
+                query = query.Where(p => p.Status == 1);
+            }
+            else if(currentTab == "Inactive")
+            {
+                query = query.Where(p => p.Status == 0);
+            }
+
+            // search
+            if(!string.IsNullOrEmpty(searchData))
+            {
+                query = query.Where(p => 
+                p.PatientID.Contains(searchData) || 
+                p.FirstName.Contains(searchData) || 
+                p.LastName.Contains(searchData) || 
+                p.MiddleName.Contains(searchData));
+            }
+            
+            // sorting
+            bool desc = true;
+            switch (sortColumn)
+            {
+                case "Alphabetic (Name)":
+                    query = query.OrderBy(p => p.FirstName);
+                    break;
+                case "Earliest (Date Added)":
+                    query = query.OrderByDescending(p => p.DateAdded);
+                    break;
+                case "Latest (Date Added)":
+                    query = query.OrderBy(p => p.DateAdded);
+                    desc = false;
+                    break;
+                default:
+                    query = query.OrderByDescending(p => p.PatientID);
+                    break;
+            }
+
+            return await query
                 .Select(p => PatientToDTO(p))
                 .ToListAsync();
         }
@@ -130,6 +174,7 @@ namespace KinesiaAPI.Controllers
                 LastName = patients.LastName,
                 MiddleName = patients.MiddleName,
                 Contact = patients.Contact,
+                Age = (int)((DateTime.Now - patients.Birthdate).TotalDays / 365.25),
                 Birthdate = patients.Birthdate,
                 Gender = patients.Gender,
                 Address = patients.Address,
