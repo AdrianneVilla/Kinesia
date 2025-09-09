@@ -1,31 +1,15 @@
-﻿<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2848B017-4DD2-4ABC-9A7B-AA6D69B597FE}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Kinesia</RootNamespace>
-    <AssemblyName>Kinesia</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <Deterministic>true</Deterministic>
+    <TargetFramework>net472</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+
+<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
 
   <ItemGroup>
-    <!-- Keep framework/system references -->
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <!-- NuGet dependencies moved to PackageReference -->
+    <!-- NuGet dependencies -->
     <PackageReference Include="BouncyCastle.Cryptography" Version="2.5.1" />
     <PackageReference Include="Google.Protobuf" Version="3.30.0" />
     <PackageReference Include="K4os.Compression.LZ4" Version="1.3.8" />
@@ -48,11 +32,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\KinesiaLibrary\KinesiaLibrary.csproj">
-      <Project>{817d0b47-319c-4007-bc28-82ed8dcd3d94}</Project>
-      <Name>KinesiaLibrary</Name>
-    </ProjectReference>
+    <ProjectReference Include="..\KinesiaLibrary\KinesiaLibrary.csproj" />
   </ItemGroup>
 
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
