@@ -159,7 +159,7 @@ namespace Kinesia.Patients
                     FirstName = patientData.FirstName,
                     LastName = patientData.LastName,
                     MiddleName = patientData.MiddleName,
-                    Contact = ContactFormater(patientData.Contact),
+                    Contact = ContactFormatter(patientData.Contact),
                     Birthdate = DateTime.Parse(patientData.Birthdate),
                     Gender = patientData.Gender,
                     Address = patientData.Address,
