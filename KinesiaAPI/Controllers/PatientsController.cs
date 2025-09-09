@@ -89,7 +89,7 @@ namespace KinesiaAPI.Controllers
             return PatientToDTO(patients);
         }
 
-        // PUT: api/Patients/5
+        // PUT: api/patients/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutPatients(string id, Patients patients)
@@ -120,7 +120,7 @@ namespace KinesiaAPI.Controllers
             return NoContent();
         }
 
-        // POST: api/Patients
+        // POST: api/patients
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Patients>> PostPatients(Patients patients)

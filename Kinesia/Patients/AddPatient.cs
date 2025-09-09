@@ -113,7 +113,7 @@ namespace Kinesia.Patients
             return false;
         }
 
-        private void btnAddPatient_Click(object sender, EventArgs e)
+        private async void btnAddPatient_Click(object sender, EventArgs e)
         {
             DialogResult addPatientDialog = MessageBox.Show("Are you sure you want to add this patient?", "Add Patient Notification",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
@@ -146,14 +146,30 @@ namespace Kinesia.Patients
                 {
                     // will continue to add the patient if PatientDataHolder passed the data validations
                     Queries.PatientQueries.SetPatientID(DataHolder.PatientDataHolder);
-                    Queries.PatientQueries.AddPatient(DataHolder.PatientDataHolder);
 
-                    // will add a log for adding a patient
-                    Queries.LogsQueries.AddLog($"Added {DataHolder.PatientDataHolder.PatientID}", "Patients");
 
-                    clearAllInputs();
-                    MessageBox.Show("Patient added successfully!", "Add Patient Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Queries.PatientQueries.GetPatientDetails(DataHolder.PatientDataHolder.PatientID); // will redirect to Patient Details page
+                    var success = await Queries.PatientQueries.AddPatient(DataHolder.PatientDataHolder);
+
+                    if(success)
+                    {
+                        // if adding patient was successful
+                        // will add a log for adding a patient
+                        // will clear all inputs
+                        // will show a success message
+                        // will redirect to Patient Details page
+                        Queries.LogsQueries.AddLog($"Added {DataHolder.PatientDataHolder.PatientID}", "Patients");
+
+                        clearAllInputs();
+                        MessageBox.Show("Patient added successfully!", "Add Patient Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        await Queries.PatientQueries.GetPatientDetails(DataHolder.PatientDataHolder.PatientID);
+                    }
+                    else
+                    {
+                        // if adding patient was not successful
+                        // will show an error message
+                        MessageBox.Show("Failed to add patient!", "Add Patient Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    
                 } 
                 else
                 {

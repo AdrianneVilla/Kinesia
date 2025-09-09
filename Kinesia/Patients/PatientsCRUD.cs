@@ -149,33 +149,34 @@ namespace Kinesia.Patients
             Connection.conn.Close();
         }
 
-        public void AddPatient(PatientDataHolder patientData)
+        public async Task<bool> AddPatient(PatientDataHolder patientData)
         {
-            Connection.conn.Open();
-
-            Connection.cmd = new MySqlCommand("INSERT INTO Patients VALUES (@patientID, @firstName, @lastName, @middleName, @contact, @birthdate, @gender, @address, @occupation, @status, @dateAdded, @lastArchiveDate)", Connection.conn);
-            Connection.cmd.Parameters.AddWithValue("@patientID", patientData.PatientID);
-            Connection.cmd.Parameters.AddWithValue("@firstname", patientData.FirstName);
-            Connection.cmd.Parameters.AddWithValue("@lastName", patientData.LastName);
-            Connection.cmd.Parameters.AddWithValue("@middleName", patientData.MiddleName);
-
-            if (patientData.Contact[0] == '0')
+            using (var client = new HttpClient())
             {
-                patientData.Contact = patientData.Contact.Substring(1); // will remove the "0" in the contact
+                var newPatient = new PatientsDTO
+                {
+                    PatientID = patientData.PatientID,
+                    FirstName = patientData.FirstName,
+                    LastName = patientData.LastName,
+                    MiddleName = patientData.MiddleName,
+                    Contact = ContactFormater(patientData.Contact),
+                    Birthdate = DateTime.Parse(patientData.Birthdate),
+                    Gender = patientData.Gender,
+                    Address = patientData.Address,
+                    Occupation = patientData.Occupation,
+                    DateAdded = DateTime.Now,
+                    LastArchiveDate = null,
+                    Status = 1
+                };
+
+                client.BaseAddress = new Uri("https://localhost:5001/api/");
+                var json = JsonConvert.SerializeObject(newPatient);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                var response = await client.PostAsync("patients", content);
+
+                return response.IsSuccessStatusCode;
             }
-            patientData.Contact = "+63" + patientData.Contact; // will insert '+63' at the start of contact
-
-            Connection.cmd.Parameters.AddWithValue("@contact", patientData.Contact);
-            Connection.cmd.Parameters.AddWithValue("@birthDate", patientData.Birthdate);
-            Connection.cmd.Parameters.AddWithValue("@gender", patientData.Gender);
-            Connection.cmd.Parameters.AddWithValue("@address", patientData.Address);
-            Connection.cmd.Parameters.AddWithValue("@occupation", patientData.Occupation);
-            Connection.cmd.Parameters.AddWithValue("@status", 1);
-            Connection.cmd.Parameters.AddWithValue("@dateAdded", DateTime.Now);
-            Connection.cmd.Parameters.AddWithValue("@lastArchiveDate", null);
-            Connection.cmd.ExecuteNonQuery();
-
-            Connection.conn.Close();
         }
 
         public void UpdatePatient(PatientDataHolder patientData)
@@ -292,6 +293,18 @@ namespace Kinesia.Patients
             }
 
             return true;
+        }
+
+        public string ContactFormatter(string contact)
+        {
+            if (contact[0] == '0')
+            {
+                contact = contact.Substring(1); // will remove the "0" in the contact
+            }
+
+            contact = "+63" + contact; // will insert '+63' at the start of contact
+
+            return contact;
         }
     }
 }
