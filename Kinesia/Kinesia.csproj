@@ -5,7 +5,14 @@
     <TargetFramework>net472</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
 
-<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+<!-- Assembly metadata (auto-generate AssemblyInfo.cs) -->
+  <AssemblyTitle>Kinesia</AssemblyTitle>
+  <Company>Kinesia</Company>
+  <Product>Kinesia</Product>
+  <Authors>Your Name or Team</Authors>
+  <Version>1.0.0</Version>
+  <FileVersion>1.0.0.0</FileVersion>
+  <InformationalVersion>1.0.0-beta</InformationalVersion>
   </PropertyGroup>
 
   <ItemGroup>
