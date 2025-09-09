@@ -57,74 +57,54 @@ namespace Kinesia.Patients
             }
         }
 
-        public void GetPatientDetails(string patientID)
+        public async Task GetPatientDetails(string patientID)
         {
             // GetPatientDetails overload for Patient Details page
-            Connection.conn.Open();
-
-            Connection.cmd = new MySqlCommand("SELECT PatientID, FirstName, MiddleName, LastName, Gender, Contact, TIMESTAMPDIFF(MONTH, Birthdate, CURDATE()) AS Age, Address, Birthdate, " +
-                "Status, DateAdded, LastArchiveDate FROM Patients WHERE PatientID = @patientID", Connection.conn);
-            Connection.cmd.Parameters.AddWithValue("@patientID", patientID);
-            Connection.reader = Connection.cmd.ExecuteReader();
-
-            if(Connection.reader.Read())
+            using (var client = new HttpClient())
             {
-                PageObjects.patientDetails = new PatientDetails(); // will create PatientDetails user control
+                var url = $"https://localhost:5001/api/patients/{patientID}";
+
+                var response = await client.GetStringAsync(url);
+                var patient = JsonConvert.DeserializeObject<PatientsDTO>(response);
+
+                // will create PatientDetails user control
+                var patientDetails = new PatientDetails();
 
                 // will set the data of the patient to the labels
-                PageObjects.patientDetails.PatientID = Connection.reader.GetString(0);
-                PageObjects.patientDetails.SelectedPatient = $"{Connection.reader.GetString(1)} {Connection.reader.GetString(2)} {Connection.reader.GetString(3)}";
-                PageObjects.patientDetails.PatientName = $"{Connection.reader.GetString(1)} {Connection.reader.GetString(2)} {Connection.reader.GetString(3)}";
-                PageObjects.patientDetails.Gender = Connection.reader.GetString(4);
-                PageObjects.patientDetails.Contact = Connection.reader.GetString(5);
-                PageObjects.patientDetails.Age = (Connection.reader.GetInt64(6) / 12).ToString();
-                PageObjects.patientDetails.Address = Connection.reader.GetString(7);
-                DateTime birthDate = Connection.reader.GetDateTime(8);
-                PageObjects.patientDetails.Birthdate = birthDate.ToString("yyyy-MM-dd");
-                
+                patientDetails.PatientID = patient.PatientID;
+                patientDetails.SelectedPatient = patient.PatientID;
+                patientDetails.PatientName = $"{patient.FirstName} {patient.MiddleName} {patient.LastName}";
+                patientDetails.Gender = patient.Gender;
+                patientDetails.Contact = patient.Contact;
+                patientDetails.Age = patient.Age.ToString();
+                patientDetails.Address = patient.Address;
+                patientDetails.Birthdate = patient.Birthdate.ToString("yyyy-MM-dd");
+
                 // 1 = Active
                 // 0 = Inactive
-                if(Connection.reader.GetInt64(9) == 1)
+                if(patient.Status == 1)
                 {
-                    PageObjects.patientDetails.Status = "Active";
-                    PageObjects.patientDetails.BtnArchive.Tag = "Archive";
+                    patientDetails.Status = "Active";
+                    patientDetails.BtnArchive.Tag = "Archive";
                 } 
                 else
                 {
-                    PageObjects.patientDetails.Status = "Inactive";
-                    PageObjects.patientDetails.BtnArchive.Tag = "Unarchive";
-                    PageObjects.patientDetails.BtnArchive.Image = Properties.Resources.Unarchive;
-                    PageObjects.patientDetails.BtnArchive.Text = "Unarchive Patient";
-                    PageObjects.patientDetails.BtnArchive.ForeColor = Color.FromArgb(18, 90, 211);
-                    PageObjects.patientDetails.BtnArchive.BackColor = Color.FromArgb(223, 236, 250);
-                    PageObjects.patientDetails.BtnArchive.BorderColor = Color.FromArgb(18, 90, 211);
+                    patientDetails.Status = "Inactive";
+                    patientDetails.BtnArchive.Tag = "Unarchive";
+                    patientDetails.BtnArchive.Image = Properties.Resources.Unarchive;
+                    patientDetails.BtnArchive.Text = "Unarchive Patient";
+                    patientDetails.BtnArchive.ForeColor = Color.FromArgb(18, 90, 211);
+                    patientDetails.BtnArchive.BackColor = Color.FromArgb(223, 236, 250);
+                    patientDetails.BtnArchive.BorderColor = Color.FromArgb(18, 90, 211);
                 }
 
-                DateTime dateAdded = Connection.reader.GetDateTime(10);
-                PageObjects.patientDetails.DateAdded = dateAdded.ToString();
+                patientDetails.DateAdded = patient.DateAdded.ToString();
+                patientDetails.LastArchiveDate = patient.LastArchiveDate;
 
-                // Null = Data has not been archived even once
-                if(Connection.reader.IsDBNull(11))
-                {
-                    PageObjects.patientDetails.LastArchiveDate = "N/A";
-                } 
-                else
-                {
-                    DateTime lastArchiveDate = Connection.reader.GetDateTime(11);
-                    PageObjects.patientDetails.LastArchiveDate = lastArchiveDate.ToString();
-                }
-                    // will only display Patient Details if fetched successfully by the system
                 PageObjects.RemoveResources(ref PageObjects.CurrentControl);
-                PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.patientDetails);
-                PageObjects.CurrentControl = PageObjects.patientDetails;
+                PageObjects.dashboard.ContentsPanel.Controls.Add(patientDetails);
+                PageObjects.CurrentControl = patientDetails;
             }
-            else
-            {
-                MessageBox.Show("Patient details not found.", "Patient Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            Connection.reader.Close();
-            Connection.conn.Close();
         }
         
         public void GetPatientDetails(string patientID, PatientDataHolder patientData)

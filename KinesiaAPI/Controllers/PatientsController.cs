@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -75,7 +75,7 @@ namespace KinesiaAPI.Controllers
                 .ToListAsync();
         }
 
-        // GET: api/Patients/5
+        // GET: api/patients/5
         [HttpGet("{id}")]
         public async Task<ActionResult<PatientsDTO>> GetPatients(string id)
         {
@@ -180,7 +180,7 @@ namespace KinesiaAPI.Controllers
                 Address = patients.Address,
                 Occupation = patients.Occupation,
                 DateAdded = patients.DateAdded,
-                LastArchiveDate = patients.LastArchiveDate,
+                LastArchiveDate = patients.LastArchiveDate.HasValue ? patients.LastArchiveDate.Value.ToString() : "N/A",
                 Status = patients.Status
             };
     }

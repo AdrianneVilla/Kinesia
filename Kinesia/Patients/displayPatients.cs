@@ -21,9 +21,9 @@ namespace Kinesia.Patients
             InitializeComponent();
         }
 
-        private void BtnView_Click(object sender, EventArgs e)
+        private async void BtnView_Click(object sender, EventArgs e)
         {
-            Queries.PatientQueries.GetPatientDetails(txtPatientID.Text);
+            await Queries.PatientQueries.GetPatientDetails(txtPatientID.Text);
         }
 
         public string PatientID { get { return txtPatientID.Text; } set { txtPatientID.Text = value; } }
