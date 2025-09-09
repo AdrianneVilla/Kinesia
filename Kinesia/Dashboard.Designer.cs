@@ -36,13 +36,12 @@
             // 
             // ContentsPanel
             // 
-            this.ContentsPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ContentsPanel.AutoSize = true;
             this.ContentsPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ContentsPanel.Location = new System.Drawing.Point(275, 75);
+            this.ContentsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ContentsPanel.Location = new System.Drawing.Point(269, 69);
             this.ContentsPanel.Name = "ContentsPanel";
-            this.ContentsPanel.Size = new System.Drawing.Size(918, 602);
+            this.ContentsPanel.Size = new System.Drawing.Size(936, 620);
             this.ContentsPanel.TabIndex = 2;
             // 
             // sidebar1
@@ -72,6 +71,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1205, 689);
             this.Controls.Add(this.ContentsPanel);
@@ -86,6 +87,7 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Dashboard_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

@@ -41,6 +41,7 @@
             // 
             // panelBorder1
             // 
+            this.panelBorder1.AutoSize = true;
             this.panelBorder1.BackColor = System.Drawing.Color.White;
             this.panelBorder1.BorderRadius = 20;
             this.panelBorder1.Color = System.Drawing.Color.BurlyWood;
@@ -152,13 +153,16 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(249)))), ((int)(((byte)(238)))));
             this.Controls.Add(this.panelBorder1);
             this.Name = "DisplayUsers";
-            this.Size = new System.Drawing.Size(1510, 99);
+            this.Size = new System.Drawing.Size(1503, 97);
             this.panelBorder1.ResumeLayout(false);
             this.panelBorder1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
