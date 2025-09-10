@@ -32,10 +32,10 @@ namespace Kinesia.Patients
         public string Address { get { return lblAddress.Text; } set { lblAddress.Text = value; } }
         public string Birthdate { get { return lblBirthdate.Text; } set { lblBirthdate.Text = value; } }
         public CustomButton BtnArchive { get { return btnArchive; } }
-        private void btnEditInfo_Click(object sender, EventArgs e)
+        private async void btnEditInfo_Click(object sender, EventArgs e)
         {
             DataHolder.PatientDataHolder = new PatientDataHolder();
-            Queries.PatientQueries.GetPatientDetails(lblPatientID.Text, DataHolder.PatientDataHolder);
+            await Queries.PatientQueries.GetPatientDetails(lblPatientID.Text, DataHolder.PatientDataHolder);
             PageObjects.editPatient.PreviousPage = "Patient Details Page";
         }
 

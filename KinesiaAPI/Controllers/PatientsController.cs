@@ -92,30 +92,56 @@ namespace KinesiaAPI.Controllers
         // PUT: api/patients/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutPatients(string id, Patients patients)
+        public async Task<IActionResult> PutPatients(string id, UpdatedPatientDTO updatedPatient)
         {
-            if (id != patients.PatientID)
+            if (string.IsNullOrEmpty(updatedPatient.PatientID) || id != updatedPatient.PatientID)
             {
-                return BadRequest();
+                return BadRequest("Patient ID is required and must match the URL parameter");
             }
 
-            _context.Entry(patients).State = EntityState.Modified;
+            var existingPatient = await _context.Patients.FindAsync(id);
 
-            try
+            if(existingPatient == null)
             {
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!PatientsExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+
+            // will only overwrite/update if a new value was sent
+            if(!string.IsNullOrEmpty(updatedPatient.FirstName))
+                existingPatient.FirstName = updatedPatient.FirstName;
+
+            if(!string.IsNullOrEmpty(updatedPatient.LastName))
+                existingPatient.LastName = updatedPatient.LastName;
+
+            if(!string.IsNullOrEmpty(updatedPatient.MiddleName))
+                existingPatient.MiddleName = updatedPatient.MiddleName;
+
+            if(!string.IsNullOrEmpty(updatedPatient.Contact))
+                existingPatient.Contact = updatedPatient.Contact;
+
+            if(updatedPatient.Birthdate.HasValue)
+                existingPatient.Birthdate = updatedPatient.Birthdate.Value;
+
+            if(!string.IsNullOrEmpty(updatedPatient.Gender))
+                existingPatient.Gender = updatedPatient.Gender;
+
+            if(!string.IsNullOrEmpty(updatedPatient.Address))
+                existingPatient.Address = updatedPatient.Address;
+
+            if(!string.IsNullOrEmpty(updatedPatient.Occupation))
+                existingPatient.Occupation = updatedPatient.Occupation;
+
+            if(updatedPatient.DateAdded.HasValue)
+                existingPatient.DateAdded = updatedPatient.DateAdded.Value;
+
+            if(updatedPatient.LastArchiveDate != default(DateTime))
+                existingPatient.LastArchiveDate = updatedPatient.LastArchiveDate;
+
+            if(updatedPatient.Status.HasValue)
+                existingPatient.Status = updatedPatient.Status.Value;
+
+
+            await _context.SaveChangesAsync();
 
             return NoContent();
         }

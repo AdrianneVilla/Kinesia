@@ -34,10 +34,10 @@ namespace Kinesia.Patients
         public string Status { get { return txtStatus.Text; } set { txtStatus.Text = value; } }
         public CustomButton BtnArchive { get { return btnArchive; } }
 
-        private void btnEdit_Click(object sender, EventArgs e)
+        private async void btnEdit_Click(object sender, EventArgs e)
         {
             DataHolder.PatientDataHolder = new PatientDataHolder();
-            Queries.PatientQueries.GetPatientDetails(txtPatientID.Text, DataHolder.PatientDataHolder);
+            await Queries.PatientQueries.GetPatientDetails(txtPatientID.Text, DataHolder.PatientDataHolder);
             PageObjects.editPatient.PreviousPage = "Patients Page";
         }
 

@@ -114,7 +114,7 @@ namespace Kinesia.Patients
             }
         }
 
-        private void goBackToPatientDetailsPage()
+        private async void goBackToPatientDetailsPage()
         {
             if (hasChanged())
             {
@@ -124,17 +124,17 @@ namespace Kinesia.Patients
 
                 if (backDialog == DialogResult.Yes)
                 {
-                    Queries.PatientQueries.GetPatientDetails(DataHolder.PatientDataHolder.PatientID);
+                    await Queries.PatientQueries.GetPatientDetails(DataHolder.PatientDataHolder.PatientID);
                 }
             }
             else
             {
                 // will directly go back to Patient Details page if there's no unsaved input    
-                Queries.PatientQueries.GetPatientDetails(DataHolder.PatientDataHolder.PatientID);
+                await Queries.PatientQueries.GetPatientDetails(DataHolder.PatientDataHolder.PatientID);
             }
         }
 
-        private void btnSaveChanges_Click(object sender, EventArgs e)
+        private async void btnSaveChanges_Click(object sender, EventArgs e)
         {
             DialogResult updateDialog = MessageBox.Show($"Are you sure you want to update\n" +
                     $"{DataHolder.PatientDataHolder.PatientID}'s personal information?", "Edit Patient Notification", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
@@ -175,21 +175,29 @@ namespace Kinesia.Patients
                         }
                     }
                     // will update the patient's personal information if patientData passed all data validations
-                    Queries.PatientQueries.UpdatePatient(patientData);
+                    var success = await Queries.PatientQueries.UpdatePatient(patientData);
 
-                    // will add a log for editing a patient
-                    Queries.LogsQueries.AddLog($"Edited {DataHolder.PatientDataHolder.PatientID}'s personal information", "Patients");
+                    if (success)
+                    {
+                        // will add a log for editing a patient
+                        Queries.LogsQueries.AddLog($"Edited {DataHolder.PatientDataHolder.PatientID}'s personal information", "Patients");
 
-                    MessageBox.Show($"{DataHolder.PatientDataHolder.PatientID}'s personal information \n" +
-                        $"has been updated successfully!", "Edit Patient Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    DataHolder.PatientDataHolder = null;
+                        MessageBox.Show($"{DataHolder.PatientDataHolder.PatientID}'s personal information \n" +
+                            $"has been updated successfully!", "Edit Patient Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        DataHolder.PatientDataHolder = null;
 
-                    // will go back to Patient page
-                    PageObjects.RemoveResources(ref PageObjects.CurrentControl);
-                    PageObjects.patientsPage = new PatientsPage();
-                    PageObjects.dashboard.ContentsPanel.Controls.Clear();
-                    PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.patientsPage);
-                    PageObjects.CurrentControl = PageObjects.patientsPage;
+                        // will go back to Patient page
+                        PageObjects.RemoveResources(ref PageObjects.CurrentControl);
+                        PageObjects.patientsPage = new PatientsPage();
+                        PageObjects.dashboard.ContentsPanel.Controls.Clear();
+                        PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.patientsPage);
+                        PageObjects.CurrentControl = PageObjects.patientsPage;
+                    } 
+                    else
+                    {
+                        // will display an error message if failed to edit
+                        MessageBox.Show($"Failed to edit {DataHolder.PatientDataHolder.PatientID}'s personal information","Failed to edit" ,MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
         }

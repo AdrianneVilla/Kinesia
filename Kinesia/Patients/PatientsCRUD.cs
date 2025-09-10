@@ -107,38 +107,32 @@ namespace Kinesia.Patients
             }
         }
         
-        public void GetPatientDetails(string patientID, PatientDataHolder patientData)
+        public async Task GetPatientDetails(string patientID, PatientDataHolder patientData)
         {
             // GetPatientDetails overload for Edit Patient page
-            Connection.conn.Open();
-
-            Connection.cmd = new MySqlCommand("SELECT FirstName, LastName, MiddleName, BirthDate, TIMESTAMPDIFF(MONTH, BirthDate, CURDATE()) AS Age, Gender, Contact, Occupation, Address " +
-                "FROM Patients WHERE PatientID = @patientID", Connection.conn);
-            Connection.cmd.Parameters.AddWithValue("@patientID", patientID);
-            Connection.reader = Connection.cmd.ExecuteReader();
-
-            if(Connection.reader.Read())
+            using(var client = new HttpClient())
             {
-                patientData.PatientID = patientID;
-                patientData.FirstName = Connection.reader.GetString(0);
-                patientData.LastName = Connection.reader.GetString(1);
-                patientData.MiddleName = Connection.reader.GetString(2);
-                DateTime birthDate = Connection.reader.GetDateTime(3);
-                patientData.Birthdate = birthDate.ToString("yyyy-MM-dd");
-                patientData.Age = Connection.reader.GetInt32(4) / 12;
-                patientData.Gender = Connection.reader.GetString(5);
-                patientData.Contact = Connection.reader.GetString(6);
-                patientData.Occupation = Connection.reader.GetString(7);
-                patientData.Address = Connection.reader.GetString(8);
+                var url = $"https://localhost:5001/api/patients/{patientID}";
+
+                var response = await client.GetStringAsync(url);
+                var patient = JsonConvert.DeserializeObject<PatientsDTO>(response);
+
+                patientData.PatientID = patient.PatientID;
+                patientData.FirstName = patient.FirstName;
+                patientData.LastName = patient.LastName;
+                patientData.MiddleName = patient.MiddleName;
+                patientData.Birthdate = patient.Birthdate.ToString("yyyy-MM-dd");
+                patientData.Age = patient.Age;
+                patientData.Gender = patient.Gender;
+                patientData.Contact = patient.Contact;
+                patientData.Occupation = patient.Occupation;
+                patientData.Address = patient.Address;
 
                 PageObjects.editPatient = new EditPatient();
                 PageObjects.RemoveResources(ref PageObjects.CurrentControl);
                 PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.editPatient);
                 PageObjects.CurrentControl = PageObjects.editPatient;
             }
-
-            Connection.reader.Close();
-            Connection.conn.Close();
         }
         
         public void SetPatientID(PatientDataHolder patientData)
@@ -179,31 +173,31 @@ namespace Kinesia.Patients
             }
         }
 
-        public void UpdatePatient(PatientDataHolder patientData)
+        public async Task<bool> UpdatePatient(PatientDataHolder patientData)
         {
-            Connection.conn.Open();
-
-            Connection.cmd = new MySqlCommand("UPDATE Patients SET FirstName = @firstName, LastName = @lastName, MiddleName = @middleName, Birthdate = @birthDate, " +
-                "Gender = @gender, Contact = @contact, Occupation = @occupation, Address = @address WHERE PatientID = @patientID", Connection.conn);
-            Connection.cmd.Parameters.AddWithValue("@patientID", patientData.PatientID);
-            Connection.cmd.Parameters.AddWithValue("@firstName", patientData.FirstName);
-            Connection.cmd.Parameters.AddWithValue("@lastName", patientData.LastName);
-            Connection.cmd.Parameters.AddWithValue("@middleName", patientData.MiddleName);
-            Connection.cmd.Parameters.AddWithValue("@birthDate", patientData.Birthdate);
-            Connection.cmd.Parameters.AddWithValue("@gender", patientData.Gender);
-
-            if (patientData.Contact[0] == '0')
+            using(var client = new HttpClient())
             {
-                patientData.Contact = patientData.Contact.Substring(1); // will remove the "0" in the contact
+                var url = $"https://localhost:5001/api/patients/{patientData.PatientID}";
+
+                var updatedPatient = new UpdatedPatientDTO();
+
+                updatedPatient.PatientID = patientData.PatientID;
+                updatedPatient.FirstName = patientData.FirstName;
+                updatedPatient.LastName = patientData.LastName;
+                updatedPatient.MiddleName = patientData.MiddleName;
+                updatedPatient.Birthdate = DateTime.Parse(patientData.Birthdate);
+                updatedPatient.Gender = patientData.Gender;
+                updatedPatient.Contact = ContactFormatter(patientData.Contact);
+                updatedPatient.Occupation = patientData.Occupation;
+                updatedPatient.Address = patientData.Address;
+
+                var json = JsonConvert.SerializeObject(updatedPatient);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                var response = await client.PutAsync(url, content);
+
+                return response.IsSuccessStatusCode;
             }
-            patientData.Contact = "+63" + patientData.Contact; // will insert '+63' at the start of contact
-
-            Connection.cmd.Parameters.AddWithValue("@contact", patientData.Contact);
-            Connection.cmd.Parameters.AddWithValue("@occupation", patientData.Occupation);
-            Connection.cmd.Parameters.AddWithValue("@address", patientData.Address);
-            Connection.cmd.ExecuteNonQuery();
-
-            Connection.conn.Close();
         }
 
         public void ArchivePatient(string patientID)
