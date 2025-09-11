@@ -218,25 +218,6 @@ namespace Kinesia.Patients
 
                 return response.IsSuccessStatusCode;
             }
-            //Connection.conn.Open();
-
-            //Connection.cmd = new MySqlCommand("UPDATE Patients SET Status = 0, LastArchiveDate = @lastArchiveDate WHERE PatientID = @patientID", Connection.conn);
-            //Connection.cmd.Parameters.AddWithValue("@patientID", patientID);
-            //Connection.cmd.Parameters.AddWithValue("@lastArchiveDate", DateTime.Now);
-            //Connection.cmd.ExecuteNonQuery();
-
-            //Connection.conn.Close();
-        }
-
-        public void UnarchivePatient(string patientID)
-        {
-            Connection.conn.Open();
-
-            Connection.cmd = new MySqlCommand("UPDATE Patients SET Status = 1 WHERE PatientID = @patientID", Connection.conn);
-            Connection.cmd.Parameters.AddWithValue("@patientID", patientID);
-            Connection.cmd.ExecuteNonQuery();
-
-            Connection.conn.Close();
         }
 
         public bool CheckExistingPatient(PatientDataHolder patientData)
