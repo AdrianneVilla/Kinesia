@@ -200,16 +200,32 @@ namespace Kinesia.Patients
             }
         }
 
-        public void ArchivePatient(string patientID)
+        public async Task<bool> UpdatePatientStatus(string patientID, int status)
         {
-            Connection.conn.Open();
+            using(var client = new HttpClient())
+            {
+                var url = $"https://localhost:5001/api/patients/{patientID}/status";
 
-            Connection.cmd = new MySqlCommand("UPDATE Patients SET Status = 0, LastArchiveDate = @lastArchiveDate WHERE PatientID = @patientID", Connection.conn);
-            Connection.cmd.Parameters.AddWithValue("@patientID", patientID);
-            Connection.cmd.Parameters.AddWithValue("@lastArchiveDate", DateTime.Now);
-            Connection.cmd.ExecuteNonQuery();
+                var updatedPatient = new PatientUpdateStatusDTO();
 
-            Connection.conn.Close();
+                updatedPatient.PatientID = patientID;
+                updatedPatient.Status = status;
+
+                var json = JsonConvert.SerializeObject(updatedPatient);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                var response = await client.PutAsync(url, content);
+
+                return response.IsSuccessStatusCode;
+            }
+            //Connection.conn.Open();
+
+            //Connection.cmd = new MySqlCommand("UPDATE Patients SET Status = 0, LastArchiveDate = @lastArchiveDate WHERE PatientID = @patientID", Connection.conn);
+            //Connection.cmd.Parameters.AddWithValue("@patientID", patientID);
+            //Connection.cmd.Parameters.AddWithValue("@lastArchiveDate", DateTime.Now);
+            //Connection.cmd.ExecuteNonQuery();
+
+            //Connection.conn.Close();
         }
 
         public void UnarchivePatient(string patientID)

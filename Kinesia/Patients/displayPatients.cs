@@ -41,7 +41,7 @@ namespace Kinesia.Patients
             PageObjects.editPatient.PreviousPage = "Patients Page";
         }
 
-        private void btnArchive_Click(object sender, EventArgs e)
+        private async void btnArchive_Click(object sender, EventArgs e)
         {
             if(btnArchive.Tag.ToString() == "Archive")
             {
@@ -51,15 +51,18 @@ namespace Kinesia.Patients
 
                 if (archiveDiag == DialogResult.Yes)
                 {
-                    Queries.PatientQueries.ArchivePatient(txtPatientID.Text);
+                    var success = await Queries.PatientQueries.UpdatePatientStatus(txtPatientID.Text, 0);
 
-                    // will add a log for archiving a patient
-                    Queries.LogsQueries.AddLog($"Archived {txtPatientID.Text}", "Patients");
+                    if (success)
+                    {
+                        // will add a log for archiving a patient
+                        Queries.LogsQueries.AddLog($"Archived {txtPatientID.Text}", "Patients");
 
-                    MessageBox.Show($"{txtPatientID.Text} has been successfully archived!", "Archive Patient Notification",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show($"{txtPatientID.Text} has been successfully archived!", "Archive Patient Notification",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    Queries.PatientQueries.DisplayPatients("", PageObjects.patientsPage.CurrentTab, "Default");
+                        await Queries.PatientQueries.DisplayPatients("", PageObjects.patientsPage.CurrentTab, "Default");
+                    }
                 }
             } 
             else
@@ -70,15 +73,18 @@ namespace Kinesia.Patients
 
                 if (unarchiveDiag == DialogResult.Yes)
                 {
-                    Queries.PatientQueries.UnarchivePatient(txtPatientID.Text);
+                    var success = await Queries.PatientQueries.UpdatePatientStatus(txtPatientID.Text, 1);
 
-                    // will add a log for unarchiving a patient
-                    Queries.LogsQueries.AddLog($"Unarchived {txtPatientID.Text}", "Patients");
+                    if (success)
+                    {
+                        // will add a log for unarchiving a patient
+                        Queries.LogsQueries.AddLog($"Unarchived {txtPatientID.Text}", "Patients");
 
-                    MessageBox.Show($"{txtPatientID.Text} has been successfully unarchived!", "Unarchive Patient Notification",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show($"{txtPatientID.Text} has been successfully unarchived!", "Unarchive Patient Notification",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    Queries.PatientQueries.DisplayPatients("", PageObjects.patientsPage.CurrentTab, "Default");
+                        await Queries.PatientQueries.DisplayPatients("", PageObjects.patientsPage.CurrentTab, "Default");
+                    }
                 }
             }
         }

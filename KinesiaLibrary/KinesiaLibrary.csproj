@@ -46,6 +46,7 @@
     <Compile Include="DTOs\LoginRequest.cs" />
     <Compile Include="DTOs\LoginResponse.cs" />
     <Compile Include="DTOs\PatientsDTO.cs" />
+    <Compile Include="DTOs\PatientUpdateStatusDTO.cs" />
     <Compile Include="DTOs\UpdatedPatientDTO.cs" />
     <Compile Include="DTOs\UsersDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

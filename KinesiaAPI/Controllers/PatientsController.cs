@@ -146,6 +146,29 @@ namespace KinesiaAPI.Controllers
             return NoContent();
         }
 
+        // PUT: api/patients/5/status
+        [HttpPut("{id}/status")]
+        public async Task<IActionResult> UpdatePatientStatus(string id, PatientUpdateStatusDTO updatedPatient)
+        {
+            if (string.IsNullOrEmpty(updatedPatient.PatientID) || id != updatedPatient.PatientID)
+            {
+                return BadRequest("Patient ID is required and must match the URL parameter");
+            }
+
+            var existingPatient = await _context.Patients.FindAsync(id);
+
+            if (existingPatient == null)
+            {
+                return NotFound();
+            }
+
+            existingPatient.Status = updatedPatient.Status;
+
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
         // POST: api/patients
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
