@@ -89,6 +89,28 @@ namespace KinesiaAPI.Controllers
             return PatientToDTO(patients);
         }
 
+        // POST: api/patients/check-existing
+        [HttpPost("check-existing")]
+        public async Task<IActionResult> CheckExistingPatient(CheckExistingPatientDTO existingPatient)
+        {
+            if(existingPatient == null)
+            {
+                return BadRequest("Invalid patient data.");
+            }
+
+            bool exist = await _context.Patients.AnyAsync(p =>
+                p.FirstName == existingPatient.FirstName &&
+                p.LastName == existingPatient.LastName && 
+                p.MiddleName == existingPatient.MiddleName);
+
+            if (exist)
+            {
+                return Conflict();
+            }
+
+            return Ok();
+        }
+
         // PUT: api/patients/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]

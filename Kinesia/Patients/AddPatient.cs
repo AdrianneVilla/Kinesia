@@ -141,7 +141,7 @@ namespace Kinesia.Patients
                     Occupation = txtOccupation.Texts,
                 };
 
-                if(Queries.PatientQueries.IsPatientDetailsComplete(DataHolder.PatientDataHolder) && !Queries.PatientQueries.CheckExistingPatient(DataHolder.PatientDataHolder) &&
+                if(Queries.PatientQueries.IsPatientDetailsComplete(DataHolder.PatientDataHolder) && !await Queries.PatientQueries.CheckExistingPatient(DataHolder.PatientDataHolder) &&
                     Queries.PatientQueries.IsAgeValid(DataHolder.PatientDataHolder) && Queries.PatientQueries.IsContactValid(DataHolder.PatientDataHolder))
                 {
                     // will continue to add the patient if PatientDataHolder passed the data validations

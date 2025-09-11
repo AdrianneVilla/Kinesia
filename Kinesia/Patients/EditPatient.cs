@@ -169,7 +169,7 @@ namespace Kinesia.Patients
                     {
                         // will only check existing patient if
                         // first, last, and middle name data were changed
-                        if (Queries.PatientQueries.CheckExistingPatient(patientData)) 
+                        if (await Queries.PatientQueries.CheckExistingPatient(patientData)) 
                         {
                             return; // will exit the update method if patient was already existing
                         }
