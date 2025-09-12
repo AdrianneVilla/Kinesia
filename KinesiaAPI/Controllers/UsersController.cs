@@ -22,11 +22,55 @@ namespace KinesiaAPI.Controllers
             _context = context;
         }
 
-        // GET: api/users
+        // GET: api/users?searchData={}&currentTab={}&sortColumn={}
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<UsersDTO>>> GetUsers()
+        public async Task<ActionResult<IEnumerable<UsersDTO>>> GetUsers(
+            string? searchData = null,
+            string? currentTab = null,
+            string? sortColumn = "UserID")
         {
-            return await _context.Users
+            var query = _context.Users.AsQueryable();
+
+            // will filter by Active / Inactive
+            if (currentTab == "Active")
+            {
+                query = query.Where(u => u.Status == 1);
+            }
+            else if (currentTab == "Inactive")
+            {
+                query = query.Where(u => u.Status == 0);
+            }
+
+            // search
+            if (!string.IsNullOrEmpty(searchData))
+            {
+                query = query.Where(u =>
+                u.UserID.Contains(searchData) ||
+                u.FirstName.Contains(searchData) ||
+                u.LastName.Contains(searchData) ||
+                u.MiddleName.Contains(searchData));
+            }
+
+            // sorting
+            bool desc = true;
+            switch (sortColumn)
+            {
+                case "Alphabetic (Name)":
+                    query = query.OrderBy(u => u.FirstName);
+                    break;
+                case "Earliest (Date Added)":
+                    query = query.OrderByDescending(u => u.DateAdded);
+                    break;
+                case "Latest (Date Added)":
+                    query = query.OrderBy(u => u.DateAdded);
+                    desc = false;
+                    break;
+                default:
+                    query = query.OrderByDescending(u => u.UserID);
+                    break;
+            }
+
+            return await query
                 .Select(u => UsersToDTO(u))
                 .ToListAsync();
         }

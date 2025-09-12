@@ -1,10 +1,13 @@
 ﻿using Kinesia.Patients;
+using KinesiaLibrary.DTOs;
 using Microsoft.Win32;
 using MySql.Data.MySqlClient;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,99 +16,43 @@ namespace Kinesia.Users
 {
     public class UserCRUD
     {
-        public void DisplayUsers(string searchData, string currentTab, string sortColumn)
+        public async Task DisplayUsers(string searchData, string currentTab, string sortColumn)
         {
-            PageObjects.DisposeHolderControls(PageObjects.userPage.getUserHolder);
-            Connection.conn.Open();
+            PageObjects.userPage.getUserHolder.Controls.Clear();
 
-            string query = "SELECT UserID, FirstName, MiddleName, LastName, Role, Status FROM Users";
-
-            // Collection of all conditions for the query
-            List<string> conditions = new List<string>();
-
-            // 1 = Active Patients
-            // 2 = Inactive Patients
-            // Else = All Patients
-            if (currentTab == "Active")
+            using(var client = new HttpClient())
             {
-                conditions.Add("Status = 1");
-            }
-            else if (currentTab == "Inactive")
-            {
-                conditions.Add("Status = 0");
-            }
+                var url = $"https://localhost:5001/api/users?searchData={searchData}&currentTab={currentTab}&sortColumn={sortColumn}";
 
-            if (!string.IsNullOrEmpty(searchData))
-            {
-                string searchCondition = @"(UserID LIKE CONCAT('%', @searchData, '%') 
-                                        OR FirstName LIKE CONCAT('%', @searchData, '%') 
-                                        OR MiddleName LIKE CONCAT('%', @searchData, '%') 
-                                        OR LastName LIKE CONCAT('%', @searchData, '%'))";
-                conditions.Add(searchCondition);
-            }
+                var response = await client.GetStringAsync(url);
+                var users = JsonConvert.DeserializeObject<List<UsersDTO>>(response);
 
-            // will set the sort order based on sortColumn
-            string sortCondition = "DESC";
-
-            if (sortColumn == "Default")
-            {
-                sortColumn = "UserID";
-            }
-            else if (sortColumn == "Alphabetical (Name)")
-            {
-                sortColumn = "FirstName";
-            }
-            else if (sortColumn == "Earliest (Date Added)")
-            {
-                sortColumn = "DateAdded";
-            }
-            else if (sortColumn == "Latest (Date Added)")
-            {
-                sortColumn = "DateAdded";
-                sortCondition = "ASC";
-            }
-
-            if (conditions.Count > 0)
-            {
-                query += " WHERE " + string.Join(" AND ", conditions);
-            }
-
-            query += $" ORDER BY {sortColumn} {sortCondition}";
-
-            Connection.cmd = new MySqlCommand(query, Connection.conn);
-
-            if (!string.IsNullOrEmpty(searchData))
-            {
-                Connection.cmd.Parameters.AddWithValue("@searchData", searchData);
-            }
-
-            Connection.reader = Connection.cmd.ExecuteReader();
-
-            while (Connection.reader.Read())
-            {
-                var displayUserControl = new DisplayUsers(); // will create user control for every users
-
-
-                // will set the data of every users to the labels
-                displayUserControl.UserID = Connection.reader.GetString(0);
-                displayUserControl.Name = $"{Connection.reader.GetString(1)} {Connection.reader.GetString(2)} {Connection.reader.GetString(3)}";
-                displayUserControl.Role = Connection.reader.GetString(4);
-
-                if (Connection.reader.GetInt64(5) == 0)
+                foreach(var user in users)
                 {
-                    displayUserControl.BtnArchive.Image = Properties.Resources.Unarchive;
-                    displayUserControl.BtnArchive.Tag = "Unarchive";
-                } 
-                else
-                {
-                    displayUserControl.BtnArchive.Tag = "Archive";
-                }
+                    // will create user control for every users
+                    var displayUserControl = new DisplayUsers();
 
+                    // will set the data of user to label
+                    displayUserControl.UserID = user.UserID;
+                    displayUserControl.Name = $"{user.FirstName} {user.MiddleName} {user.LastName}";
+                    displayUserControl.Role = user.Role;
+
+                    // 0 = Inactive
+                    // 1 = Active
+                    if (user.Status == 0)
+                    {
+                        displayUserControl.BtnArchive.Image = Properties.Resources.Unarchive;
+                        displayUserControl.BtnArchive.Tag = "Unarchive";
+                    }
+                    else
+                    {
+                        displayUserControl.BtnArchive.Tag = "Archive";
+                    }
+
+                    // will add the user control to UserHolder
                     PageObjects.userPage.getUserHolder.Controls.Add(displayUserControl);
+                }
             }
-
-            Connection.reader.Close();
-            Connection.conn.Close();
         }
 
         public void GetUserDetails(string userID)

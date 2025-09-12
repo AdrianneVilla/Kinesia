@@ -25,9 +25,9 @@ namespace Kinesia.Users
             InitializeComponent();
         }
 
-        private void UserPage_Load(object sender, EventArgs e)
+        private async void UserPage_Load(object sender, EventArgs e)
         {
-            Queries.UserQueries.DisplayUsers(searchData, currentTab, cbSort.Texts);
+            await Queries.UserQueries.DisplayUsers(searchData, currentTab, cbSort.Texts);
             txtSearchBar.Texts = "Search for User name or UserID";
 
             // will get the TextBox inside the RJTextBox
@@ -39,7 +39,7 @@ namespace Kinesia.Users
             }
         }
 
-        private void InnerTxtSearchBar_KeyDown(object sender, KeyEventArgs e)
+        private async void InnerTxtSearchBar_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)
             {
@@ -51,7 +51,7 @@ namespace Kinesia.Users
             {
                 // will do search query if "enter" was pressed
                 // while txtSearchBar was being focused
-                Queries.UserQueries.DisplayUsers(searchData, currentTab, cbSort.Texts);
+                await Queries.UserQueries.DisplayUsers(searchData, currentTab, cbSort.Texts);
 
                 e.SuppressKeyPress = true; // will prevent windows from making the beep sounds when pressing "enter"
             }
@@ -95,12 +95,12 @@ namespace Kinesia.Users
             }
         }
 
-        private void btnSearch_Click(object sender, EventArgs e)
+        private async void btnSearch_Click(object sender, EventArgs e)
         {
-            Queries.UserQueries.DisplayUsers(searchData, currentTab, cbSort.Texts); // will do search query
+            await Queries.UserQueries.DisplayUsers(searchData, currentTab, cbSort.Texts); // will do search query
         }
 
-        private void btnAll_Click(object sender, EventArgs e)
+        private async void btnAll_Click(object sender, EventArgs e)
         {
             // will only refresh the users list if the currentTab was not already All
             if (currentTab != "All")
@@ -109,11 +109,11 @@ namespace Kinesia.Users
                 switchTab(currentTab);
                 txtSearchBar.Texts = "Search for User name or UserID";
                 searchData = "";
-                Queries.UserQueries.DisplayUsers(searchData, currentTab, cbSort.Texts);
+                await Queries.UserQueries.DisplayUsers(searchData, currentTab, cbSort.Texts);
             }
         }
 
-        private void btnActive_Click(object sender, EventArgs e)
+        private async void btnActive_Click(object sender, EventArgs e)
         {
             // will only refresh the users list if the currentTab was not already Active
             if (currentTab != "Active")
@@ -122,11 +122,11 @@ namespace Kinesia.Users
                 switchTab(currentTab);
                 txtSearchBar.Texts = "Search for User name or UserID";
                 searchData = "";
-                Queries.UserQueries.DisplayUsers(searchData, currentTab, cbSort.Texts);
+                await Queries.UserQueries.DisplayUsers(searchData, currentTab, cbSort.Texts);
             }
         }
 
-        private void btnInactive_Click(object sender, EventArgs e)
+        private async void btnInactive_Click(object sender, EventArgs e)
         {
             // will only refresh the users list if the currentTab was not already Inactive
             if(currentTab != "Inactive")
@@ -135,7 +135,7 @@ namespace Kinesia.Users
                 switchTab(currentTab);
                 txtSearchBar.Texts = "Search for User name or UserID";
                 searchData = "";
-                Queries.UserQueries.DisplayUsers(searchData, currentTab, cbSort.Texts);
+                await Queries.UserQueries.DisplayUsers(searchData, currentTab, cbSort.Texts);
             }
         }
 
@@ -184,10 +184,10 @@ namespace Kinesia.Users
             }
         }
 
-        private void cbSort_OnSelectedIndexChanged(object sender, EventArgs e)
+        private async void cbSort_OnSelectedIndexChanged(object sender, EventArgs e)
         {
             // will refresh users list every time the sort value was changed
-            Queries.UserQueries.DisplayUsers(searchData, currentTab, cbSort.Texts);
+            await Queries.UserQueries.DisplayUsers(searchData, currentTab, cbSort.Texts);
         }
     }
 }
