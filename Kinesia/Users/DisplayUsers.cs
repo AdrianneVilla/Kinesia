@@ -20,9 +20,9 @@ namespace Kinesia.Users
             InitializeComponent();
         }
 
-        private void btnView_Click(object sender, EventArgs e)
+        private async void btnView_Click(object sender, EventArgs e)
         {
-            Queries.UserQueries.GetUserDetails(lblUserID.Text);
+            await Queries.UserQueries.GetUserDetails(lblUserID.Text);
         }
 
         public string UserID { get { return lblUserID.Text; } set { lblUserID.Text = value; } }
@@ -32,7 +32,7 @@ namespace Kinesia.Users
         public CustomButton BtnEdit { get { return btnEdit; } }
         public CustomButton BtnArchive { get { return btnArchive; } }
 
-        private void btnArchive_Click(object sender, EventArgs e)
+        private async void btnArchive_Click(object sender, EventArgs e)
         {
             if(btnArchive.Tag == "Archive")
             {
@@ -47,7 +47,7 @@ namespace Kinesia.Users
 
                     CustomDialog.Show($"{lblUserID.Text} has been archived successfully!", "Archive Alert", CustomDialogButtons.OK, CustomDialogIcons.Information);
 
-                    Queries.UserQueries.DisplayUsers("", PageObjects.userPage.CurrentTab, "Default");
+                    await Queries.UserQueries.DisplayUsers("", PageObjects.userPage.CurrentTab, "Default");
                 }
             } 
             else
@@ -63,7 +63,7 @@ namespace Kinesia.Users
 
                     CustomDialog.Show($"{lblUserID.Text} has been unarchived successfully!", "Unarchive Alert", CustomDialogButtons.OK, CustomDialogIcons.Information);
 
-                    Queries.UserQueries.DisplayUsers("", PageObjects.userPage.CurrentTab, "Default");
+                    await Queries.UserQueries.DisplayUsers("", PageObjects.userPage.CurrentTab, "Default");
                 }
             }
         }

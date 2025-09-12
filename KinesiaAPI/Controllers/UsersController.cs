@@ -174,12 +174,14 @@ namespace KinesiaAPI.Controllers
                 LastName = users.LastName,
                 MiddleName = users.MiddleName,
                 Birthdate = users.Birthdate,
+                Age = (int)((DateTime.Now - users.Birthdate).TotalDays / 365.25),
                 Gender = users.Gender,
                 Contact = users.Contact,
                 Address = users.Address,
                 Role = users.Role,
+                Email = users.Email,
                 DateAdded = users.DateAdded,
-                LastArchiveDate = users.LastArchiveDate,
+                LastArchiveDate = users.LastArchiveDate.HasValue ? users.LastArchiveDate.Value.ToString() : "N/A",
                 Status = users.Status
             };
     }
