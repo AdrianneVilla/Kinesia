@@ -57,6 +57,7 @@ namespace Kinesia.Users
 
         public async Task GetUserDetails(string userID)
         {
+            // GetUserDetails overload for User Details page
             using(var client = new HttpClient())
             {
                 var url = $"https://localhost:5001/api/users/{userID}";
@@ -103,73 +104,6 @@ namespace Kinesia.Users
                 PageObjects.dashboard.ContentsPanel.Controls.Add(userDetails);
                 PageObjects.CurrentControl = userDetails;
             }
-            //// GetUserDetails overload for Display Users page
-            //Connection.conn.Open();
-
-            //Connection.cmd = new MySqlCommand("SELECT UserID, FirstName, MiddleName, LastName, Gender, Contact, TIMESTAMPDIFF(MONTH, Birthdate, CURDATE()), Address, Birthdate, Role, " +
-            //    "Email, DateAdded, LastArchiveDate, Status FROM Users WHERE UserID = @userID", Connection.conn);
-            //Connection.cmd.Parameters.AddWithValue("@userID", userID);
-            //Connection.reader = Connection.cmd.ExecuteReader();
-
-            //if (Connection.reader.Read())
-            //{
-            //    PageObjects.userDetails = new UserDetails();
-
-            //    PageObjects.userDetails.UserID = Connection.reader.GetString(0);
-            //    PageObjects.userDetails.SelectedUser = $"{Connection.reader.GetString(1)} {Connection.reader.GetString(2)} {Connection.reader.GetString(3)}";
-            //    PageObjects.userDetails.Name = $"{Connection.reader.GetString(1)} {Connection.reader.GetString(2)} {Connection.reader.GetString(3)}";
-            //    PageObjects.userDetails.Gender = Connection.reader.GetString(4);
-            //    PageObjects.userDetails.Contact = Connection.reader.GetString(5);
-            //    PageObjects.userDetails.Age = (Connection.reader.GetInt64(6) / 12).ToString();
-            //    PageObjects.userDetails.Address = Connection.reader.GetString(7);
-            //    DateTime birthDate = Connection.reader.GetDateTime(8);
-            //    PageObjects.userDetails.Birthdate = birthDate.ToString("yyyy-MM-dd");
-            //    PageObjects.userDetails.Role = Connection.reader.GetString(9);
-            //    PageObjects.userDetails.Email = Connection.reader.GetString(10);
-
-            //    DateTime dateAdded = Connection.reader.GetDateTime(11);
-            //    PageObjects.userDetails.DateAdded = dateAdded.ToString();
-
-            //    if (Connection.reader.IsDBNull(12))
-            //    {
-            //        PageObjects.userDetails.LastArchiveDate = null;
-            //    } 
-            //    else
-            //    {
-            //        DateTime lastArchiveDate = Connection.reader.GetDateTime(12);
-            //        PageObjects.userDetails.LastArchiveDate = lastArchiveDate.ToString();
-            //    }
-
-            //    // 1 = Active
-            //    // 0 = Inactive
-            //    if(Connection.reader.GetInt32(13) == 1)
-            //    {
-            //        PageObjects.userDetails.Status = "Active";
-            //        PageObjects.userDetails.BtnArchive.Tag = "Archive";
-            //    } 
-            //    else
-            //    {
-            //        PageObjects.userDetails.Status = "Inactive";
-            //        PageObjects.userDetails.BtnArchive.Tag = "Unarchive";
-            //        PageObjects.userDetails.BtnArchive.Text = "Unarchive User";
-            //        PageObjects.userDetails.BtnArchive.Image = Properties.Resources.Unarchive;
-            //        PageObjects.userDetails.BtnArchive.ForeColor = Color.FromArgb(18, 90, 211);
-            //        PageObjects.userDetails.BtnArchive.BackColor = Color.FromArgb(223, 236, 250);
-            //        PageObjects.userDetails.BtnArchive.BorderColor = Color.FromArgb(18, 90, 211);
-            //    }
-
-            //        // will only display User Details if fetched successfully by the system
-            //        PageObjects.RemoveResources(ref PageObjects.CurrentControl);
-            //    PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.userDetails);
-            //    PageObjects.CurrentControl = PageObjects.userDetails;
-            //} 
-            //else
-            //{
-            //    MessageBox.Show("User details not found.", "User Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
-
-            //Connection.reader.Close();
-            //Connection.conn.Close();
         }
 
         public void GetUserDetails(string userID, UserDataHolder userData)
