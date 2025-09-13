@@ -153,42 +153,43 @@ namespace Kinesia.Users
             Connection.conn.Close();
         }
 
-        public void AddUser(UserDataHolder userData)
+        public async Task<bool> AddUser(UserDataHolder userData)
         {
-            Connection.conn.Open();
-
-            Connection.cmd = new MySqlCommand("INSERT INTO Users VALUES (@userID, @firstName, @lastName, @middleName, @birthDate, @gender, " +
-                "@contact, @address, @role, @username, @password, @salt, @email, @dateAdded, @lastArchiveDate, @status)", Connection.conn);
-            Connection.cmd.Parameters.AddWithValue("@userID", userData.UserID);
-            Connection.cmd.Parameters.AddWithValue("@firstName", userData.FirstName);
-            Connection.cmd.Parameters.AddWithValue("@lastName", userData.LastName);
-            Connection.cmd.Parameters.AddWithValue("@middleName", userData.MiddleName);
-            Connection.cmd.Parameters.AddWithValue("@birthDate", userData.BirthDate);
-            Connection.cmd.Parameters.AddWithValue("@gender", userData.Gender);
-
-            if (userData.Contact[0] == '0')
+            using(var client = new HttpClient())
             {
-                userData.Contact = userData.Contact.Substring(1); // will remove the "0" in the contact
+                // will generate salt for hashing
+                // salt will be unique for every user
+                var salt = CustomSecurity.GenerateSalt();
+
+                var newUser = new AddUserDTO
+                {
+                    UserID = userData.UserID,
+                    FirstName = userData.FirstName,
+                    LastName = userData.LastName,
+                    MiddleName = userData.MiddleName,
+                    Birthdate = DateTime.Parse(userData.BirthDate),
+                    Gender = userData.Gender,
+                    Contact = ContactFormatter(userData.Contact),
+                    Address = userData.Address,
+                    Role = userData.Role,
+                    Username = userData.UserName,
+                    Password = CustomSecurity.HashPassword(userData.Password, salt),
+                    Salt = salt,
+                    Email = userData.Email,
+                    DateAdded = DateTime.Now,
+                    LastArchiveDate = null,
+                    Status = 1
+                };
+
+                client.BaseAddress = new Uri("https://localhost:5001/api/");
+
+                var json = JsonConvert.SerializeObject(newUser);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                var response = await client.PostAsync("users", content);
+
+                return response.IsSuccessStatusCode;
             }
-            userData.Contact = "+63" + userData.Contact; // will insert '+63' at the start of contact
-
-            Connection.cmd.Parameters.AddWithValue("@contact", userData.Contact);
-            Connection.cmd.Parameters.AddWithValue("@address", userData.Address);
-            Connection.cmd.Parameters.AddWithValue("@role", userData.Role);
-            Connection.cmd.Parameters.AddWithValue("@username", userData.UserName);
-
-            // will generate salt for hashing
-            // salt will be unique for every user
-            var salt = CustomSecurity.GenerateSalt();
-            Connection.cmd.Parameters.AddWithValue("@password", CustomSecurity.HashPassword(userData.Password, salt));
-            Connection.cmd.Parameters.AddWithValue("@salt", salt);
-            Connection.cmd.Parameters.AddWithValue("@email", userData.Email);
-            Connection.cmd.Parameters.AddWithValue("@dateAdded", DateTime.Now);
-            Connection.cmd.Parameters.AddWithValue("@lastArchiveDate", null);
-            Connection.cmd.Parameters.AddWithValue("@status", 1);
-            Connection.cmd.ExecuteNonQuery();
-
-            Connection.conn.Close();
         }
 
         public void UpdateUser(UserDataHolder userData)
@@ -320,6 +321,18 @@ namespace Kinesia.Users
             }
 
             return true;
+        }
+
+        public string ContactFormatter(string contact)
+        {
+            if (contact[0] == '0')
+            {
+                contact = contact.Substring(1); // will remove the "0" in the contact
+            }
+
+            contact = "+63" + contact; // will insert '+63' at the start of contact
+
+            return contact;
         }
     }
 }

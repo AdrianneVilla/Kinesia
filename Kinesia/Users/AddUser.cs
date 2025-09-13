@@ -19,7 +19,7 @@ namespace Kinesia.Users
             dpBirthDate.MaxDate = DateTime.Today.AddYears(-18);
         }
 
-        private void btnAddUser_Click(object sender, EventArgs e)
+        private async void btnAddUser_Click(object sender, EventArgs e)
         {
             DialogResult addUserDiag = CustomDialog.Show("Are you sure you want to add this user?", "Add User Alert", CustomDialogButtons.YesNo, CustomDialogIcons.Question);
 
@@ -56,14 +56,21 @@ namespace Kinesia.Users
                 {
                     // will continue to add the user if UserDataHolder passed the data validations
                     Queries.UserQueries.SetUserID(userData);
-                    Queries.UserQueries.AddUser(userData);
+                    var success = await Queries.UserQueries.AddUser(userData);
 
-                    // will add a log for adding user
-                    Queries.LogsQueries.AddLog($"Added {userData.UserID}", "Users");
+                    if (success)
+                    {
+                        // will add a log for adding user
+                        Queries.LogsQueries.AddLog($"Added {userData.UserID}", "Users");
 
-                    clearInputs();
-                    CustomDialog.Show("User has been added successfully!", "Add User Successful", CustomDialogButtons.OK, CustomDialogIcons.Information);
-                    Queries.UserQueries.GetUserDetails(userData.UserID);
+                        clearInputs();
+                        CustomDialog.Show("User has been added successfully!", "Add User Successful", CustomDialogButtons.OK, CustomDialogIcons.Information);
+                        await Queries.UserQueries.GetUserDetails(userData.UserID);
+                    } 
+                    else
+                    {
+                        CustomDialog.Show("Add user failed!", "Add User Successful", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                    }
                 }
             }
         }
