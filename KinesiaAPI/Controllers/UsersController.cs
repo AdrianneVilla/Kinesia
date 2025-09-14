@@ -101,29 +101,62 @@ namespace KinesiaAPI.Controllers
 
             var existingUser = await _context.Users.FindAsync(id);
 
-            if(!string.IsNullOrEmpty(updatedUser.FirstName))
+            if (!string.IsNullOrEmpty(updatedUser.FirstName))
                 existingUser.FirstName = updatedUser.FirstName;
 
             if (!string.IsNullOrEmpty(updatedUser.LastName))
                 existingUser.LastName = updatedUser.LastName;
 
-            if(!string.IsNullOrEmpty(updatedUser.MiddleName))
+            if (!string.IsNullOrEmpty(updatedUser.MiddleName))
                 existingUser.MiddleName = updatedUser.MiddleName;
 
-            if(updatedUser.Birthdate.HasValue)
+            if (updatedUser.Birthdate.HasValue)
                 existingUser.Birthdate = updatedUser.Birthdate.Value;
 
-            if(!string.IsNullOrEmpty(updatedUser.Gender))
+            if (!string.IsNullOrEmpty(updatedUser.Gender))
                 existingUser.Gender = updatedUser.Gender;
 
-            if(!string.IsNullOrEmpty(updatedUser.Contact))
+            if (!string.IsNullOrEmpty(updatedUser.Contact))
                 existingUser.Contact = updatedUser.Contact;
 
-            if(!string.IsNullOrEmpty(updatedUser.Email))
+            if (!string.IsNullOrEmpty(updatedUser.Email))
                 existingUser.Email = updatedUser.Email;
 
-            if(!string.IsNullOrEmpty(updatedUser.Address))
+            if (!string.IsNullOrEmpty(updatedUser.Address))
                 existingUser.Address = updatedUser.Address;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!UsersExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+
+        // PUT: api/users/status
+        [HttpPut("{id}/status")]
+        public async Task<IActionResult> UpdateUserStatus(string id, UserUpdateStatusDTO updatedUser)
+        {
+            if (string.IsNullOrEmpty(updatedUser.UserID) || id != updatedUser.UserID)
+            {
+                return BadRequest("Patient ID is required and must match the URL parameter");
+            }
+
+            var existingUser = await _context.Users.FindAsync(id);
+
+            existingUser.LastArchiveDate = updatedUser.LastArchiveDate;
+            existingUser.Status = updatedUser.Status;
 
             try
             {

@@ -219,28 +219,48 @@ namespace Kinesia.Users
             }
         }
 
-        public void ArchiveUser(string userID)
+        public async Task<bool> UpdateUserStatus(string userID, int status)
         {
-            Connection.conn.Open();
+            using(var client = new HttpClient())
+            {
+                var url = $"https://localhost:5001/api/users/{userID}/status";
 
-            Connection.cmd = new MySqlCommand("UPDATE Users SET Status = 0, LastArchiveDate = @lastArchiveDate WHERE UserID = @userID", Connection.conn);
-            Connection.cmd.Parameters.AddWithValue("@userID", userID);
-            Connection.cmd.Parameters.AddWithValue("@lastArchiveDate", DateTime.Now);
-            Connection.cmd.ExecuteNonQuery();
+                var updatedUser = new UserUpdateStatusDTO();
 
-            Connection.conn.Close();
+                updatedUser.UserID = userID;
+                updatedUser.LastArchiveDate = DateTime.Now;
+                updatedUser.Status = status;
+
+                var json = JsonConvert.SerializeObject(updatedUser);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                var response = await client.PutAsync(url, content);
+
+                return response.IsSuccessStatusCode;
+            }
         }
+        //public void ArchiveUser(string userID)
+        //{
+        //    Connection.conn.Open();
 
-        public void UnarchiveUser(string userID)
-        {
-            Connection.conn.Open();
+        //    Connection.cmd = new MySqlCommand("UPDATE Users SET Status = 0, LastArchiveDate = @lastArchiveDate WHERE UserID = @userID", Connection.conn);
+        //    Connection.cmd.Parameters.AddWithValue("@userID", userID);
+        //    Connection.cmd.Parameters.AddWithValue("@lastArchiveDate", DateTime.Now);
+        //    Connection.cmd.ExecuteNonQuery();
 
-            Connection.cmd = new MySqlCommand("UPDATE Users SET Status = 1 WHERE UserID = @userID", Connection.conn);
-            Connection.cmd.Parameters.AddWithValue("@userID", userID);
-            Connection.cmd.ExecuteNonQuery();
+        //    Connection.conn.Close();
+        //}
 
-            Connection.conn.Close();
-        }
+        //public void UnarchiveUser(string userID)
+        //{
+        //    Connection.conn.Open();
+
+        //    Connection.cmd = new MySqlCommand("UPDATE Users SET Status = 1 WHERE UserID = @userID", Connection.conn);
+        //    Connection.cmd.Parameters.AddWithValue("@userID", userID);
+        //    Connection.cmd.ExecuteNonQuery();
+
+        //    Connection.conn.Close();
+        //}
 
         public bool CheckExistingUser(UserDataHolder userData)
         {

@@ -40,14 +40,21 @@ namespace Kinesia.Users
 
                 if(archiveDiag == DialogResult.Yes)
                 {
-                    Queries.UserQueries.ArchiveUser(lblUserID.Text);
+                    var success = await Queries.UserQueries.UpdateUserStatus(lblUserID.Text, 0);
 
-                    // will add a log for archiving user
-                    Queries.LogsQueries.AddLog($"Archived {lblUserID.Text}", "Users");
+                    if (success)
+                    {
+                        // will add a log for archiving user
+                        Queries.LogsQueries.AddLog($"Archived {lblUserID.Text}", "Users");
 
-                    CustomDialog.Show($"{lblUserID.Text} has been archived successfully!", "Archive Alert", CustomDialogButtons.OK, CustomDialogIcons.Information);
+                        CustomDialog.Show($"{lblUserID.Text} has been archived successfully!", "Archive Alert", CustomDialogButtons.OK, CustomDialogIcons.Information);
 
-                    await Queries.UserQueries.DisplayUsers("", PageObjects.userPage.CurrentTab, "Default");
+                        await Queries.UserQueries.DisplayUsers("", PageObjects.userPage.CurrentTab, "Default");
+                    } 
+                    else
+                    {
+                        CustomDialog.Show($"Failed to archive {lblUserID.Text}", "Archive Alert", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                    }
                 }
             } 
             else
@@ -56,14 +63,21 @@ namespace Kinesia.Users
 
                 if(unarchiveDiag == DialogResult.Yes)
                 {
-                    Queries.UserQueries.UnarchiveUser(lblUserID.Text);
+                    var success = await Queries.UserQueries.UpdateUserStatus(lblUserID.Text, 1);
 
-                    // will add a log for unarchiving user
-                    Queries.LogsQueries.AddLog($"Unarchived {lblUserID.Text}", "Users");
+                    if (success)
+                    {
+                        // will add a log for unarchiving user
+                        Queries.LogsQueries.AddLog($"Unarchived {lblUserID.Text}", "Users");
 
-                    CustomDialog.Show($"{lblUserID.Text} has been unarchived successfully!", "Unarchive Alert", CustomDialogButtons.OK, CustomDialogIcons.Information);
+                        CustomDialog.Show($"{lblUserID.Text} has been unarchived successfully!", "Unarchive Alert", CustomDialogButtons.OK, CustomDialogIcons.Information);
 
-                    await Queries.UserQueries.DisplayUsers("", PageObjects.userPage.CurrentTab, "Default");
+                        await Queries.UserQueries.DisplayUsers("", PageObjects.userPage.CurrentTab, "Default");
+                    } 
+                    else
+                    {
+                        CustomDialog.Show($"Failed to unarchive {lblUserID.Text}", "Unarchive Alert", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                    }
                 }
             }
         }
