@@ -192,35 +192,31 @@ namespace Kinesia.Users
             }
         }
 
-        public void UpdateUser(UserDataHolder userData)
+        public async Task <bool> UpdateUser(UserDataHolder userData)
         {
-            Connection.conn.Open();
-
-            Connection.cmd = new MySqlCommand("UPDATE Users SET FirstName = @firstName, LastName = @lastName, MiddleName = @middleName, " +
-                "Birthdate = @birthDate, Gender = @gender, Contact = @contact, Email = @email, Address = @address, Username = @username, " +
-                "Password = @password, Role = @role WHERE UserID = @userID", Connection.conn);
-            Connection.cmd.Parameters.AddWithValue("@userID", userData.UserID);
-            Connection.cmd.Parameters.AddWithValue("@firstName", userData.FirstName);
-            Connection.cmd.Parameters.AddWithValue("@lastName", userData.LastName);
-            Connection.cmd.Parameters.AddWithValue("@middleName", userData.MiddleName);
-            Connection.cmd.Parameters.AddWithValue("@birthDate", userData.BirthDate);
-            Connection.cmd.Parameters.AddWithValue("@gender", userData.Gender);
-
-            if (userData.Contact[0] == '0')
+            using(var client = new HttpClient())
             {
-                userData.Contact = userData.Contact.Substring(1); // will remove the "0" in the contact
+                var url = $"https://localhost:5001/api/users/{userData.UserID}";
+
+                var updatedUser = new UpdateUserDTO();
+
+                updatedUser.UserID = userData.UserID;
+                updatedUser.FirstName = userData.FirstName;
+                updatedUser.LastName = userData.LastName;
+                updatedUser.MiddleName = userData.MiddleName;
+                updatedUser.Birthdate = DateTime.Parse(userData.BirthDate);
+                updatedUser.Gender = userData.Gender;
+                updatedUser.Contact = ContactFormatter(userData.Contact);
+                updatedUser.Email = userData.Email;
+                updatedUser.Address = userData.Address;
+
+                var json = JsonConvert.SerializeObject(updatedUser);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                var response = await client.PutAsync(url, content);
+
+                return response.IsSuccessStatusCode;
             }
-            userData.Contact = "+63" + userData.Contact; // will insert '+63' at the start of contact
-
-            Connection.cmd.Parameters.AddWithValue("@contact", userData.Contact);
-            Connection.cmd.Parameters.AddWithValue("@email", userData.Email);
-            Connection.cmd.Parameters.AddWithValue("@address", userData.Address);
-            Connection.cmd.Parameters.AddWithValue("@username", userData.UserName);
-            Connection.cmd.Parameters.AddWithValue("@password", userData.Password);
-            Connection.cmd.Parameters.AddWithValue("@role", userData.Role);
-            Connection.cmd.ExecuteNonQuery();
-
-            Connection.conn.Close();
         }
 
         public void ArchiveUser(string userID)

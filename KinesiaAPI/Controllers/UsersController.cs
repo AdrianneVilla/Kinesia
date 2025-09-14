@@ -92,14 +92,38 @@ namespace KinesiaAPI.Controllers
         // PUT: api/Users/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutUsers(string id, Users users)
+        public async Task<IActionResult> PutUsers(string id, UpdateUserDTO updatedUser)
         {
-            if (id != users.UserID)
+            if (string.IsNullOrEmpty(updatedUser.UserID) || id != updatedUser.UserID)
             {
-                return BadRequest();
+                return BadRequest("Patient ID is required and must match the URL parameter");
             }
 
-            _context.Entry(users).State = EntityState.Modified;
+            var existingUser = await _context.Users.FindAsync(id);
+
+            if(!string.IsNullOrEmpty(updatedUser.FirstName))
+                existingUser.FirstName = updatedUser.FirstName;
+
+            if (!string.IsNullOrEmpty(updatedUser.LastName))
+                existingUser.LastName = updatedUser.LastName;
+
+            if(!string.IsNullOrEmpty(updatedUser.MiddleName))
+                existingUser.MiddleName = updatedUser.MiddleName;
+
+            if(updatedUser.Birthdate.HasValue)
+                existingUser.Birthdate = updatedUser.Birthdate.Value;
+
+            if(!string.IsNullOrEmpty(updatedUser.Gender))
+                existingUser.Gender = updatedUser.Gender;
+
+            if(!string.IsNullOrEmpty(updatedUser.Contact))
+                existingUser.Contact = updatedUser.Contact;
+
+            if(!string.IsNullOrEmpty(updatedUser.Email))
+                existingUser.Email = updatedUser.Email;
+
+            if(!string.IsNullOrEmpty(updatedUser.Address))
+                existingUser.Address = updatedUser.Address;
 
             try
             {

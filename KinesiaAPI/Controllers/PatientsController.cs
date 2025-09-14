@@ -162,7 +162,6 @@ namespace KinesiaAPI.Controllers
             if(updatedPatient.Status.HasValue)
                 existingPatient.Status = updatedPatient.Status.Value;
 
-
             await _context.SaveChangesAsync();
 
             return NoContent();

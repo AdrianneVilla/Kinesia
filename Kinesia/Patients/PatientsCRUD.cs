@@ -250,31 +250,9 @@ namespace Kinesia.Patients
                 {
                     // will handle unexpected errors
                     string error = await response.Content.ReadAsStringAsync();
-                    MessageBox.Show($"Error: {response.StatusCode} - {error}");
                     return true;
                 }
             }
-            //Connection.conn.Open();
-
-            //Connection.cmd = new MySqlCommand("SELECT FirstName, MiddleName, LastName FROM Patients WHERE FirstName = @firstName AND MiddleName = @middleName AND LastName = @lastName", Connection.conn);
-            //Connection.cmd.Parameters.AddWithValue("@firstName", patientData.FirstName);
-            //Connection.cmd.Parameters.AddWithValue("@middleName", patientData.MiddleName);
-            //Connection.cmd.Parameters.AddWithValue("@lastName", patientData.LastName);
-            //Connection.reader = Connection.cmd.ExecuteReader();
-
-            //// will return true if the patient was already existing
-            //// will return false if the patient was not already existing
-            //if (Connection.reader.Read())
-            //{
-            //    Connection.reader.Close();
-            //    Connection.conn.Close();
-            //    MessageBox.Show("Patient was already existing", "Add Patient Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    return true;
-            //}
-
-            //Connection.reader.Close();
-            //Connection.conn.Close();
-            //return false;
         }
 
         public bool IsPatientDetailsComplete(PatientDataHolder patientData)

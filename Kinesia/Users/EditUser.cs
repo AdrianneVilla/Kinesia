@@ -59,7 +59,7 @@ namespace Kinesia.Users
             }
         }
 
-        private void btnSaveChanges_Click(object sender, EventArgs e)
+        private async void btnSaveChanges_Click(object sender, EventArgs e)
         {
             DialogResult updateDiag = CustomDialog.Show("Are you sure you want to update\n" +
                 $"{DataHolder.UserDataHolder.UserID}'s personal Information?", "Save changes", CustomDialogButtons.YesNo, CustomDialogIcons.Question);
@@ -103,20 +103,27 @@ namespace Kinesia.Users
                         }
                     }
 
-                    Queries.UserQueries.UpdateUser(userData);
+                    var success = await Queries.UserQueries.UpdateUser(userData);
 
-                    // will add a log for editing user
-                    Queries.LogsQueries.AddLog($"Edited {DataHolder.UserDataHolder.UserID}'s personal information", "Users");
+                    if (success)
+                    {
+                        // will add a log for editing user
+                        Queries.LogsQueries.AddLog($"Edited {DataHolder.UserDataHolder.UserID}'s personal information", "Users");
 
-                    CustomDialog.Show($"{DataHolder.UserDataHolder.UserID}'s personal information \n" +
-                        $"has been updated successfully!", "Update successful", CustomDialogButtons.OK, CustomDialogIcons.Information);
+                        CustomDialog.Show($"{DataHolder.UserDataHolder.UserID}'s personal information \n" +
+                            $"has been updated successfully!", "Update successful", CustomDialogButtons.OK, CustomDialogIcons.Information);
 
-                    // will go back to User page
-                    PageObjects.RemoveResources(ref PageObjects.CurrentControl);
-                    PageObjects.userPage = new UserPage();
-                    PageObjects.dashboard.ContentsPanel.Controls.Clear();
-                    PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.userPage);
-                    PageObjects.CurrentControl = PageObjects.userPage;
+                        // will go back to User page
+                        PageObjects.RemoveResources(ref PageObjects.CurrentControl);
+                        PageObjects.userPage = new UserPage();
+                        PageObjects.dashboard.ContentsPanel.Controls.Clear();
+                        PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.userPage);
+                        PageObjects.CurrentControl = PageObjects.userPage;
+                    } 
+                    else
+                    {
+                        CustomDialog.Show($"Failed to edit {userData.UserID}'s personal information", "Failed to edit", CustomDialogButtons.OK, CustomDialogIcons.Information);
+                    }
                 }
             }
         }
@@ -192,7 +199,7 @@ namespace Kinesia.Users
             }
         }
 
-        private void goBackToUserDetailsPage()
+        private async void goBackToUserDetailsPage()
         {
             if (hasChanged())
             {
@@ -202,13 +209,13 @@ namespace Kinesia.Users
 
                 if (backDialog == DialogResult.Yes)
                 {
-                    Queries.UserQueries.GetUserDetails(DataHolder.UserDataHolder.UserID);
+                    await Queries.UserQueries.GetUserDetails(DataHolder.UserDataHolder.UserID);
                 }
             }
             else
             {
                 // will go back to user details page directly if there's no unsaved changes
-                Queries.UserQueries.GetUserDetails(DataHolder.UserDataHolder.UserID);
+                await Queries.UserQueries.GetUserDetails(DataHolder.UserDataHolder.UserID);
             }
         }
 
