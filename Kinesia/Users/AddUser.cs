@@ -51,7 +51,7 @@ namespace Kinesia.Users
                     Role = cbRole.Texts
                 };
 
-                if(Queries.UserQueries.IsUserDetailsComplete(userData) && !Queries.UserQueries.CheckExistingUser(userData) &&
+                if(Queries.UserQueries.IsUserDetailsComplete(userData) && !await Queries.UserQueries.CheckExistingUser(userData) &&
                     Queries.UserQueries.IsContactValid(userData) && Queries.UserQueries.IsEmailValid(userData))
                 {
                     // will continue to add the user if UserDataHolder passed the data validations
@@ -149,6 +149,34 @@ namespace Kinesia.Users
         private void txtContact_KeyPress(object sender, KeyPressEventArgs e)
         {
             InputValidation.WholeNumbersOnly(sender, e);
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            if (areInputsBlank())
+            {
+                // will only show dialog if there's an unsaved input
+                DialogResult backDialog = CustomDialog.Show("Are you sure you want to go back to User page?\n" +
+                    "Any unsaved changes will be lost!", "Go back to user page?", CustomDialogButtons.YesNo, CustomDialogIcons.Question);
+
+                if(backDialog == DialogResult.Yes)
+                {
+                    PageObjects.RemoveResources(ref PageObjects.CurrentControl);
+                    PageObjects.userPage = new UserPage();
+                    PageObjects.dashboard.ContentsPanel.Controls.Clear();
+                    PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.userPage);
+                    PageObjects.CurrentControl = PageObjects.userPage;
+                }
+            }
+            else
+            {
+                // will directly go back to User page if there's no unsaved input  
+                PageObjects.RemoveResources(ref PageObjects.CurrentControl);
+                PageObjects.userPage = new UserPage();
+                PageObjects.dashboard.ContentsPanel.Controls.Clear();
+                PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.userPage);
+                PageObjects.CurrentControl = PageObjects.userPage;
+            }
         }
     }
 }

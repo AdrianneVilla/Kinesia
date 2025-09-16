@@ -89,6 +89,28 @@ namespace KinesiaAPI.Controllers
             return UsersToDTO(users);
         }
 
+        // POST: api/users/check-existing
+        [HttpPost("check-existing")]
+        public async Task<IActionResult> CheckExistingUser(CheckExistingUserDTO existingUser)
+        {
+            if (existingUser == null)
+            {
+                return BadRequest("Invalid user data.");
+            }
+
+            bool exist = await _context.Users.AnyAsync(u =>
+                u.FirstName == existingUser.FirstName &&
+                u.LastName == existingUser.LastName &&
+                u.MiddleName == existingUser.MiddleName);
+
+            if (exist)
+            {
+                return Conflict();
+            }
+
+            return Ok();
+        }
+
         // PUT: api/Users/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]

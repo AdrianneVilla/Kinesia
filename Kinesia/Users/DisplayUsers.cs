@@ -82,10 +82,10 @@ namespace Kinesia.Users
             }
         }
 
-        private void btnEdit_Click(object sender, EventArgs e)
+        private async void btnEdit_Click(object sender, EventArgs e)
         {
             DataHolder.UserDataHolder = new UserDataHolder();
-            Queries.UserQueries.GetUserDetails(lblUserID.Text, DataHolder.UserDataHolder);
+            await Queries.UserQueries.GetUserDetails(lblUserID.Text, DataHolder.UserDataHolder);
             PageObjects.editUser.PreviousPage = "Users Page";
         }
     }

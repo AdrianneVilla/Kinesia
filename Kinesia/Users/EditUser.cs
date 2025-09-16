@@ -97,7 +97,7 @@ namespace Kinesia.Users
                     {
                         // will only check existing user if
                         // first, last, and middle name data were changed
-                        if (Queries.UserQueries.CheckExistingUser(userData))
+                        if (await Queries.UserQueries.CheckExistingUser(userData))
                         {
                             return; // will exit the update method if user was already existing
                         }

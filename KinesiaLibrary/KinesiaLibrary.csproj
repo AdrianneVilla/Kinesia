@@ -45,6 +45,7 @@
     <Compile Include="CustomSecurity.cs" />
     <Compile Include="DTOs\AddUserDTO.cs" />
     <Compile Include="DTOs\CheckExistingPatientDTO.cs" />
+    <Compile Include="DTOs\CheckExistingUserDTO.cs" />
     <Compile Include="DTOs\LoginRequest.cs" />
     <Compile Include="DTOs\LoginResponse.cs" />
     <Compile Include="DTOs\PatientsDTO.cs" />

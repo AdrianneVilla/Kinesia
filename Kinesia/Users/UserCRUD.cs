@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -106,41 +107,32 @@ namespace Kinesia.Users
             }
         }
 
-        public void GetUserDetails(string userID, UserDataHolder userData)
+        public async Task GetUserDetails(string userID, UserDataHolder userData)
         {
             // GetUserDetails overload for Edit User page
-            Connection.conn.Open();
-
-            Connection.cmd = new MySqlCommand("SELECT UserID, FirstName, LastName, MiddleName, Birthdate, TIMESTAMPDIFF(Month, Birthdate, CURDATE()) AS Age, " +
-                "Gender, Contact, Email, Address, Username, Password, Role FROM Users WHERE UserID = @userID", Connection.conn);
-            Connection.cmd.Parameters.AddWithValue("@userID", userID);
-            Connection.reader = Connection.cmd.ExecuteReader();
-
-            if (Connection.reader.Read())
+            using(var client = new HttpClient())
             {
-                userData.UserID = Connection.reader.GetString(0);
-                userData.FirstName = Connection.reader.GetString(1);
-                userData.LastName = Connection.reader.GetString(2);
-                userData.MiddleName = Connection.reader.GetString(3);
-                DateTime birthDate = Connection.reader.GetDateTime(4);
-                userData.BirthDate = birthDate.ToString("yyyy-MM-dd");
-                userData.Age = Connection.reader.GetInt32(5);
-                userData.Gender = Connection.reader.GetString(6);
-                userData.Contact = Connection.reader.GetString(7);
-                userData.Email = Connection.reader.GetString(8);
-                userData.Address = Connection.reader.GetString(9);
-                userData.UserName = Connection.reader.GetString(10);
-                userData.Password = Connection.reader.GetString(11);
-                userData.Role = Connection.reader.GetString(12);
+                var url = $"https://localhost:5001/api/users/{userID}";
+
+                var response = await client.GetStringAsync(url);
+                var user = JsonConvert.DeserializeObject<UsersDTO>(response);
+
+                userData.UserID = user.UserID;
+                userData.FirstName = user.FirstName;
+                userData.LastName = user.LastName;
+                userData.MiddleName = user.MiddleName;
+                userData.BirthDate = user.Birthdate.ToString("yyyy-MM-dd");
+                userData.Age = user.Age;
+                userData.Gender = user.Gender;
+                userData.Contact = user.Contact;
+                userData.Email = user.Email;
+                userData.Address = user.Address;
 
                 PageObjects.editUser = new EditUser();
                 PageObjects.RemoveResources(ref PageObjects.CurrentControl);
                 PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.editUser);
                 PageObjects.CurrentControl = PageObjects.editUser;
             }
-
-            Connection.reader.Close();
-            Connection.conn.Close();
         }
 
         public void SetUserID(UserDataHolder userData)
@@ -239,53 +231,61 @@ namespace Kinesia.Users
                 return response.IsSuccessStatusCode;
             }
         }
-        //public void ArchiveUser(string userID)
-        //{
-        //    Connection.conn.Open();
 
-        //    Connection.cmd = new MySqlCommand("UPDATE Users SET Status = 0, LastArchiveDate = @lastArchiveDate WHERE UserID = @userID", Connection.conn);
-        //    Connection.cmd.Parameters.AddWithValue("@userID", userID);
-        //    Connection.cmd.Parameters.AddWithValue("@lastArchiveDate", DateTime.Now);
-        //    Connection.cmd.ExecuteNonQuery();
-
-        //    Connection.conn.Close();
-        //}
-
-        //public void UnarchiveUser(string userID)
-        //{
-        //    Connection.conn.Open();
-
-        //    Connection.cmd = new MySqlCommand("UPDATE Users SET Status = 1 WHERE UserID = @userID", Connection.conn);
-        //    Connection.cmd.Parameters.AddWithValue("@userID", userID);
-        //    Connection.cmd.ExecuteNonQuery();
-
-        //    Connection.conn.Close();
-        //}
-
-        public bool CheckExistingUser(UserDataHolder userData)
+        public async Task<bool> CheckExistingUser(UserDataHolder userData)
         {
-            Connection.conn.Open();
-
-            Connection.cmd = new MySqlCommand("SELECT FirstName, LastName, MiddleName FROM Users WHERE FirstName = @firstName AND LastName = @lastName AND " +
-                "MiddleName = @middleName", Connection.conn);
-            Connection.cmd.Parameters.AddWithValue("@firstName", userData.FirstName);
-            Connection.cmd.Parameters.AddWithValue("@lastName", userData.LastName);
-            Connection.cmd.Parameters.AddWithValue("@middleName", userData.MiddleName);
-            Connection.reader = Connection.cmd.ExecuteReader();
-
-            // will return true if the user was already existing
-            // will return false if the user was not already existing
-            if (Connection.reader.Read())
+            using(var client = new HttpClient())
             {
-                CustomDialog.Show("User was already existing!", "Existing User", CustomDialogButtons.OK, CustomDialogIcons.Error);
-                Connection.reader.Close();
-                Connection.conn.Close();
-                return true;
-            }
+                client.BaseAddress = new Uri("https://localhost:5001/");
 
-            Connection.reader.Close();
-            Connection.conn.Close();
-            return false;
+                var existingUser = new CheckExistingUserDTO();
+
+                existingUser.FirstName = userData.FirstName;
+                existingUser.LastName = userData.LastName;
+                existingUser.MiddleName = userData.MiddleName;
+
+                var response = await client.PostAsJsonAsync("api/users/check-existing", existingUser);
+
+                if(response.StatusCode == System.Net.HttpStatusCode.Conflict)
+                {
+                    // will return true if user already exist
+                    CustomDialog.Show("User was already existing!", "Existing User", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                    return true;
+                }
+                else if (response.IsSuccessStatusCode)
+                {
+                    // will return false if user do not exist
+                    return false;
+                }
+                else
+                {
+                    // will handle unexpected errors
+                    string error = await response.Content.ReadAsStringAsync();
+                    return true;
+                }
+            }
+            //Connection.conn.Open();
+
+            //Connection.cmd = new MySqlCommand("SELECT FirstName, LastName, MiddleName FROM Users WHERE FirstName = @firstName AND LastName = @lastName AND " +
+            //    "MiddleName = @middleName", Connection.conn);
+            //Connection.cmd.Parameters.AddWithValue("@firstName", userData.FirstName);
+            //Connection.cmd.Parameters.AddWithValue("@lastName", userData.LastName);
+            //Connection.cmd.Parameters.AddWithValue("@middleName", userData.MiddleName);
+            //Connection.reader = Connection.cmd.ExecuteReader();
+
+            //// will return true if the user was already existing
+            //// will return false if the user was not already existing
+            //if (Connection.reader.Read())
+            //{
+            //    CustomDialog.Show("User was already existing!", "Existing User", CustomDialogButtons.OK, CustomDialogIcons.Error);
+            //    Connection.reader.Close();
+            //    Connection.conn.Close();
+            //    return true;
+            //}
+
+            //Connection.reader.Close();
+            //Connection.conn.Close();
+            //return false;
         }
 
         public bool IsUserDetailsComplete(UserDataHolder userData)
