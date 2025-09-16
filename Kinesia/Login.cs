@@ -8,6 +8,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Kinesia.Components;
 using KinesiaLibrary.DTOs;
 using MySql.Data.MySqlClient;
 using Newtonsoft.Json;
@@ -16,11 +17,14 @@ namespace Kinesia
 {
     public partial class Login : Form
     {
+        private LoadingScreen loadingScreen;
+       
 
         private static Login loginInstance;
         public Login()
         {
             InitializeComponent();
+       
         }
 
         public static Login getLoginInstance()
@@ -53,6 +57,7 @@ namespace Kinesia
             this.passwordLabel = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.flowLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.panelBorder1.SuspendLayout();
@@ -255,6 +260,10 @@ namespace Kinesia
             this.label2.TabIndex = 0;
             this.label2.Text = "Login Your Account";
             // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            // 
             // Login
             // 
             this.BackColor = System.Drawing.Color.White;
@@ -299,6 +308,7 @@ namespace Kinesia
         {
 
         }
+
         
         private async void btnLogin_Click(object sender, EventArgs e)
         {
@@ -314,19 +324,27 @@ namespace Kinesia
             } 
             else
             {
+                loadingScreen = new LoadingScreen();
+                loadingScreen.Show();
+
                 var loginResult = await LoginAsync(txtUsername.Texts, txtPassword.Texts);
 
-                if(loginResult.Success)
+                if (loginResult.Success)
                 {
+                    // will close the loading screen after the loginResult was success
+                    loadingScreen.Close();
+
                     // will continue to dashboard page if the password and hashed + salted password input is the same
                     PageObjects.dashboard = new Dashboard();
                     PageObjects.dashboard.Show();
                     this.Hide();
                     SessionManager.UserID = loginResult.UserID;
                     Queries.LogsQueries.AddLog("Has Logged In", "Sessions");
+          
                 } 
                 else if(loginResult.Message == "Username or Password incorrect")
                 {
+                    loadingScreen.Close();
                     // will show an error dialog if the password and hashed + salted password input is different
                     CustomDialog.Show("Username or Password was incorrect!\n" +
                         "Please try again.", "Login Alert", CustomDialogButtons.OK, CustomDialogIcons.Error);
@@ -365,6 +383,11 @@ namespace Kinesia
         }
 
         private void header1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
 
         }

@@ -38,6 +38,7 @@
         private CustomControls.RJControls.RJTextBox txtUsername;
         private CustomControls.RJControls.RJTextBox txtPassword;
         private Components.Header header1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
 
