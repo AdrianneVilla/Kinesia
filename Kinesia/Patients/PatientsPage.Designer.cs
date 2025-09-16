@@ -32,6 +32,18 @@
             this.nameHolder = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lblHiddenForFocus = new System.Windows.Forms.Label();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.txtPatientID = new System.Windows.Forms.Label();
+            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            this.status = new System.Windows.Forms.Label();
+            this.txtPatientName = new System.Windows.Forms.Label();
+            this.txtGender = new System.Windows.Forms.Label();
+            this.txtAge = new System.Windows.Forms.Label();
+            this.txtContact = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.actionLabel = new System.Windows.Forms.Label();
             this.panelBorder2 = new WindowsFormsApp2.CustomButton.PanelBorder();
             this.cbSort = new CustomControls.RJControls.RJComboBox();
             this.btnAddPatient = new OrganizationProfile.CustomButton();
@@ -43,23 +55,11 @@
             this.btnSearch = new OrganizationProfile.CustomButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.txtSearchBar = new CustomControls.RJControls.RJTextBox();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.txtPatientID = new System.Windows.Forms.Label();
-            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
-            this.status = new System.Windows.Forms.Label();
-            this.txtPatientName = new System.Windows.Forms.Label();
-            this.txtGender = new System.Windows.Forms.Label();
-            this.txtAge = new System.Windows.Forms.Label();
-            this.txtContact = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanel1.SuspendLayout();
+            this.flowLayoutPanel3.SuspendLayout();
             this.panelBorder2.SuspendLayout();
             this.panelBorder1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.flowLayoutPanel1.SuspendLayout();
-            this.flowLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // nameHolder
@@ -96,6 +96,180 @@
             this.lblHiddenForFocus.Size = new System.Drawing.Size(120, 13);
             this.lblHiddenForFocus.TabIndex = 9;
             this.lblHiddenForFocus.Text = "<Focus Label (Hidden)>";
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.AutoSize = true;
+            this.flowLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanel2);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(42, 225);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(3, 6);
+            this.flowLayoutPanel1.TabIndex = 14;
+            // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.AutoSize = true;
+            this.flowLayoutPanel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 3);
+            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(0, 0);
+            this.flowLayoutPanel2.TabIndex = 9;
+            // 
+            // txtPatientID
+            // 
+            this.txtPatientID.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtPatientID.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPatientID.ForeColor = System.Drawing.Color.Black;
+            this.txtPatientID.Location = new System.Drawing.Point(0, 0);
+            this.txtPatientID.Margin = new System.Windows.Forms.Padding(0);
+            this.txtPatientID.Name = "txtPatientID";
+            this.txtPatientID.Padding = new System.Windows.Forms.Padding(0, 10, 50, 0);
+            this.txtPatientID.Size = new System.Drawing.Size(134, 32);
+            this.txtPatientID.TabIndex = 8;
+            this.txtPatientID.Text = "Patient ID";
+            this.txtPatientID.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // flowLayoutPanel3
+            // 
+            this.flowLayoutPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.flowLayoutPanel3.AutoSize = true;
+            this.flowLayoutPanel3.Controls.Add(this.txtPatientID);
+            this.flowLayoutPanel3.Controls.Add(this.status);
+            this.flowLayoutPanel3.Controls.Add(this.txtPatientName);
+            this.flowLayoutPanel3.Controls.Add(this.txtGender);
+            this.flowLayoutPanel3.Controls.Add(this.txtAge);
+            this.flowLayoutPanel3.Controls.Add(this.txtContact);
+            this.flowLayoutPanel3.Controls.Add(this.label2);
+            this.flowLayoutPanel3.Controls.Add(this.label3);
+            this.flowLayoutPanel3.Controls.Add(this.actionLabel);
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(45, 205);
+            this.flowLayoutPanel3.Margin = new System.Windows.Forms.Padding(3, 3, 0, 3);
+            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(1550, 32);
+            this.flowLayoutPanel3.TabIndex = 10;
+            // 
+            // status
+            // 
+            this.status.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.status.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.status.ForeColor = System.Drawing.Color.Black;
+            this.status.Location = new System.Drawing.Point(134, 0);
+            this.status.Margin = new System.Windows.Forms.Padding(0);
+            this.status.Name = "status";
+            this.status.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            this.status.Size = new System.Drawing.Size(174, 32);
+            this.status.TabIndex = 4;
+            this.status.Text = "Status";
+            this.status.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtPatientName
+            // 
+            this.txtPatientName.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPatientName.Location = new System.Drawing.Point(308, 0);
+            this.txtPatientName.Margin = new System.Windows.Forms.Padding(0);
+            this.txtPatientName.Name = "txtPatientName";
+            this.txtPatientName.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            this.txtPatientName.Size = new System.Drawing.Size(375, 32);
+            this.txtPatientName.TabIndex = 0;
+            this.txtPatientName.Text = "Patient Name";
+            this.txtPatientName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtGender
+            // 
+            this.txtGender.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtGender.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtGender.ForeColor = System.Drawing.Color.Black;
+            this.txtGender.Location = new System.Drawing.Point(683, 0);
+            this.txtGender.Margin = new System.Windows.Forms.Padding(0);
+            this.txtGender.Name = "txtGender";
+            this.txtGender.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            this.txtGender.Size = new System.Drawing.Size(173, 32);
+            this.txtGender.TabIndex = 2;
+            this.txtGender.Text = "Gender";
+            this.txtGender.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtAge
+            // 
+            this.txtAge.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtAge.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAge.ForeColor = System.Drawing.Color.Black;
+            this.txtAge.Location = new System.Drawing.Point(856, 0);
+            this.txtAge.Margin = new System.Windows.Forms.Padding(0);
+            this.txtAge.Name = "txtAge";
+            this.txtAge.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            this.txtAge.Size = new System.Drawing.Size(149, 32);
+            this.txtAge.TabIndex = 1;
+            this.txtAge.Text = "Age";
+            this.txtAge.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtContact
+            // 
+            this.txtContact.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtContact.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtContact.ForeColor = System.Drawing.Color.Black;
+            this.txtContact.Location = new System.Drawing.Point(1005, 0);
+            this.txtContact.Margin = new System.Windows.Forms.Padding(0);
+            this.txtContact.Name = "txtContact";
+            this.txtContact.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            this.txtContact.Size = new System.Drawing.Size(273, 32);
+            this.txtContact.TabIndex = 3;
+            this.txtContact.Text = "Contact Number";
+            this.txtContact.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.label2.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(1278, 0);
+            this.label2.Margin = new System.Windows.Forms.Padding(0);
+            this.label2.Name = "label2";
+            this.label2.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            this.label2.Size = new System.Drawing.Size(49, 32);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "EMR";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.label3.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(1327, 0);
+            this.label3.Margin = new System.Windows.Forms.Padding(0);
+            this.label3.Name = "label3";
+            this.label3.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            this.label3.Size = new System.Drawing.Size(61, 32);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "Edit";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // actionLabel
+            // 
+            this.actionLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.actionLabel.AutoSize = true;
+            this.actionLabel.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.actionLabel.ForeColor = System.Drawing.Color.Black;
+            this.actionLabel.Location = new System.Drawing.Point(1388, 0);
+            this.actionLabel.Margin = new System.Windows.Forms.Padding(0);
+            this.actionLabel.Name = "actionLabel";
+            this.actionLabel.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            this.actionLabel.Size = new System.Drawing.Size(132, 32);
+            this.actionLabel.TabIndex = 11;
+            this.actionLabel.Text = "Archive / Unarchive";
+            this.actionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panelBorder2
             // 
@@ -320,179 +494,6 @@
             this.txtSearchBar.Enter += new System.EventHandler(this.txtSearchBar_Enter);
             this.txtSearchBar.Leave += new System.EventHandler(this.txtSearchBar_Leave);
             // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.AutoSize = true;
-            this.flowLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanel2);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(42, 225);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(3, 6);
-            this.flowLayoutPanel1.TabIndex = 14;
-            // 
-            // txtPatientID
-            // 
-            this.txtPatientID.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtPatientID.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPatientID.ForeColor = System.Drawing.Color.Black;
-            this.txtPatientID.Location = new System.Drawing.Point(0, 0);
-            this.txtPatientID.Margin = new System.Windows.Forms.Padding(0);
-            this.txtPatientID.Name = "txtPatientID";
-            this.txtPatientID.Padding = new System.Windows.Forms.Padding(0, 10, 50, 0);
-            this.txtPatientID.Size = new System.Drawing.Size(134, 32);
-            this.txtPatientID.TabIndex = 8;
-            this.txtPatientID.Text = "Patient ID";
-            this.txtPatientID.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // flowLayoutPanel3
-            // 
-            this.flowLayoutPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.flowLayoutPanel3.AutoSize = true;
-            this.flowLayoutPanel3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flowLayoutPanel3.Controls.Add(this.txtPatientID);
-            this.flowLayoutPanel3.Controls.Add(this.status);
-            this.flowLayoutPanel3.Controls.Add(this.txtPatientName);
-            this.flowLayoutPanel3.Controls.Add(this.txtGender);
-            this.flowLayoutPanel3.Controls.Add(this.txtAge);
-            this.flowLayoutPanel3.Controls.Add(this.txtContact);
-            this.flowLayoutPanel3.Controls.Add(this.label2);
-            this.flowLayoutPanel3.Controls.Add(this.label3);
-            this.flowLayoutPanel3.Controls.Add(this.label4);
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(45, 205);
-            this.flowLayoutPanel3.Margin = new System.Windows.Forms.Padding(3, 3, 0, 3);
-            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(1526, 32);
-            this.flowLayoutPanel3.TabIndex = 10;
-            // 
-            // status
-            // 
-            this.status.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.status.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.status.ForeColor = System.Drawing.Color.Black;
-            this.status.Location = new System.Drawing.Point(134, 0);
-            this.status.Margin = new System.Windows.Forms.Padding(0);
-            this.status.Name = "status";
-            this.status.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
-            this.status.Size = new System.Drawing.Size(174, 32);
-            this.status.TabIndex = 4;
-            this.status.Text = "Status";
-            this.status.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtPatientName
-            // 
-            this.txtPatientName.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPatientName.Location = new System.Drawing.Point(308, 0);
-            this.txtPatientName.Margin = new System.Windows.Forms.Padding(0);
-            this.txtPatientName.Name = "txtPatientName";
-            this.txtPatientName.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
-            this.txtPatientName.Size = new System.Drawing.Size(375, 32);
-            this.txtPatientName.TabIndex = 0;
-            this.txtPatientName.Text = "Patient Name";
-            this.txtPatientName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtGender
-            // 
-            this.txtGender.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtGender.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtGender.ForeColor = System.Drawing.Color.Black;
-            this.txtGender.Location = new System.Drawing.Point(683, 0);
-            this.txtGender.Margin = new System.Windows.Forms.Padding(0);
-            this.txtGender.Name = "txtGender";
-            this.txtGender.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
-            this.txtGender.Size = new System.Drawing.Size(173, 32);
-            this.txtGender.TabIndex = 2;
-            this.txtGender.Text = "Gender";
-            this.txtGender.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtAge
-            // 
-            this.txtAge.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtAge.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAge.ForeColor = System.Drawing.Color.Black;
-            this.txtAge.Location = new System.Drawing.Point(856, 0);
-            this.txtAge.Margin = new System.Windows.Forms.Padding(0);
-            this.txtAge.Name = "txtAge";
-            this.txtAge.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
-            this.txtAge.Size = new System.Drawing.Size(149, 32);
-            this.txtAge.TabIndex = 1;
-            this.txtAge.Text = "Age";
-            this.txtAge.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtContact
-            // 
-            this.txtContact.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtContact.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtContact.ForeColor = System.Drawing.Color.Black;
-            this.txtContact.Location = new System.Drawing.Point(1005, 0);
-            this.txtContact.Margin = new System.Windows.Forms.Padding(0);
-            this.txtContact.Name = "txtContact";
-            this.txtContact.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
-            this.txtContact.Size = new System.Drawing.Size(273, 32);
-            this.txtContact.TabIndex = 3;
-            this.txtContact.Text = "Contact Number";
-            this.txtContact.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.label2.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(1278, 0);
-            this.label2.Margin = new System.Windows.Forms.Padding(0);
-            this.label2.Name = "label2";
-            this.label2.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
-            this.label2.Size = new System.Drawing.Size(49, 32);
-            this.label2.TabIndex = 9;
-            this.label2.Text = "EMR";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label3
-            // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.label3.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(1327, 0);
-            this.label3.Margin = new System.Windows.Forms.Padding(0);
-            this.label3.Name = "label3";
-            this.label3.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
-            this.label3.Size = new System.Drawing.Size(61, 32);
-            this.label3.TabIndex = 10;
-            this.label3.Text = "Edit";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label4
-            // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.label4.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(1388, 0);
-            this.label4.Margin = new System.Windows.Forms.Padding(0);
-            this.label4.Name = "label4";
-            this.label4.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
-            this.label4.Size = new System.Drawing.Size(138, 32);
-            this.label4.TabIndex = 11;
-            this.label4.Text = "Archive / Unarchive";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // flowLayoutPanel2
-            // 
-            this.flowLayoutPanel2.AutoSize = true;
-            this.flowLayoutPanel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 3);
-            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(0, 0);
-            this.flowLayoutPanel2.TabIndex = 9;
-            // 
             // PatientsPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -509,12 +510,13 @@
             this.Name = "PatientsPage";
             this.Size = new System.Drawing.Size(1663, 758);
             this.Load += new System.EventHandler(this.PatientsPage_Load);
-            this.panelBorder2.ResumeLayout(false);
-            this.panelBorder1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
             this.flowLayoutPanel3.ResumeLayout(false);
+            this.flowLayoutPanel3.PerformLayout();
+            this.panelBorder2.ResumeLayout(false);
+            this.panelBorder1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -547,6 +549,6 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
+        public System.Windows.Forms.Label actionLabel;
     }
 }

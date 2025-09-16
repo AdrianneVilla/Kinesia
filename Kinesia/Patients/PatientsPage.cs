@@ -152,7 +152,8 @@ namespace Kinesia.Patients
                     btnInactive.BackgroundColor = Color.Gainsboro;
                     btnInactive.ForeColor = Color.Gray;
 
-                    dataGridPatients.Columns[dataGridPatients.Columns.Count - 1].HeaderText = "Archive / Unarchive";
+                    actionLabel.Text = "Archive / Unarchive";
+                    actionLabel.ForeColor = Color.Black;
                     break;
 
                 case "Active":
@@ -164,8 +165,8 @@ namespace Kinesia.Patients
 
                     btnInactive.BackgroundColor = Color.Gainsboro;
                     btnInactive.ForeColor = Color.Gray;
-
-                    dataGridPatients.Columns[dataGridPatients.Columns.Count - 1].HeaderText = "Archive";
+                    actionLabel.Text = "Archive";
+                    actionLabel.ForeColor = Color.Black;
                     break;
 
                 case "Inactive":
@@ -178,7 +179,8 @@ namespace Kinesia.Patients
                     btnActive.BackgroundColor = Color.Gainsboro;
                     btnActive.ForeColor = Color.Gray;
 
-                    dataGridPatients.Columns[dataGridPatients.Columns.Count - 1].HeaderText = "Unarchive";
+                    actionLabel.Text = "Unarchive";
+                    actionLabel.ForeColor = Color.Black;
                     break;
             }
         }
