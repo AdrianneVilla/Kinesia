@@ -28,22 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PatientsPage));
             this.nameHolder = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridPatients = new System.Windows.Forms.DataGridView();
-            this.PatientID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ageHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.genderHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contactNumHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.statusHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EMRHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.editHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.archiveHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblHiddenForFocus = new System.Windows.Forms.Label();
             this.panelBorder2 = new WindowsFormsApp2.CustomButton.PanelBorder();
             this.cbSort = new CustomControls.RJControls.RJComboBox();
@@ -56,10 +43,23 @@
             this.btnSearch = new OrganizationProfile.CustomButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.txtSearchBar = new CustomControls.RJControls.RJTextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridPatients)).BeginInit();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.txtPatientID = new System.Windows.Forms.Label();
+            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            this.status = new System.Windows.Forms.Label();
+            this.txtPatientName = new System.Windows.Forms.Label();
+            this.txtGender = new System.Windows.Forms.Label();
+            this.txtAge = new System.Windows.Forms.Label();
+            this.txtContact = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.panelBorder2.SuspendLayout();
             this.panelBorder1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.flowLayoutPanel1.SuspendLayout();
+            this.flowLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // nameHolder
@@ -87,136 +87,6 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "patients personal information";
             // 
-            // dataGridPatients
-            // 
-            this.dataGridPatients.AllowUserToAddRows = false;
-            this.dataGridPatients.AllowUserToDeleteRows = false;
-            this.dataGridPatients.AllowUserToResizeColumns = false;
-            this.dataGridPatients.AllowUserToResizeRows = false;
-            this.dataGridPatients.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridPatients.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridPatients.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders;
-            this.dataGridPatients.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridPatients.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridPatients.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dataGridPatients.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
-            this.dataGridPatients.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridPatients.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridPatients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridPatients.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.PatientID,
-            this.nameHeader,
-            this.ageHeader,
-            this.genderHeader,
-            this.contactNumHeader,
-            this.statusHeader,
-            this.EMRHeader,
-            this.editHeader,
-            this.archiveHeader});
-            this.dataGridPatients.GridColor = System.Drawing.Color.White;
-            this.dataGridPatients.Location = new System.Drawing.Point(70, 197);
-            this.dataGridPatients.Name = "dataGridPatients";
-            this.dataGridPatients.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridPatients.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridPatients.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.dataGridPatients.ShowCellErrors = false;
-            this.dataGridPatients.ShowCellToolTips = false;
-            this.dataGridPatients.ShowEditingIcon = false;
-            this.dataGridPatients.ShowRowErrors = false;
-            this.dataGridPatients.Size = new System.Drawing.Size(1111, 46);
-            this.dataGridPatients.TabIndex = 8;
-            // 
-            // PatientID
-            // 
-            this.PatientID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.PatientID.FillWeight = 60F;
-            this.PatientID.HeaderText = "Patient ID";
-            this.PatientID.Name = "PatientID";
-            this.PatientID.ReadOnly = true;
-            // 
-            // nameHeader
-            // 
-            this.nameHeader.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.nameHeader.DefaultCellStyle = dataGridViewCellStyle2;
-            this.nameHeader.FillWeight = 120F;
-            this.nameHeader.HeaderText = "Name";
-            this.nameHeader.Name = "nameHeader";
-            this.nameHeader.ReadOnly = true;
-            this.nameHeader.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // ageHeader
-            // 
-            this.ageHeader.FillWeight = 63.63636F;
-            this.ageHeader.HeaderText = "Age";
-            this.ageHeader.Name = "ageHeader";
-            this.ageHeader.ReadOnly = true;
-            // 
-            // genderHeader
-            // 
-            this.genderHeader.FillWeight = 63.63636F;
-            this.genderHeader.HeaderText = "Gender";
-            this.genderHeader.Name = "genderHeader";
-            this.genderHeader.ReadOnly = true;
-            // 
-            // contactNumHeader
-            // 
-            this.contactNumHeader.FillWeight = 63.63636F;
-            this.contactNumHeader.HeaderText = "Contact Number";
-            this.contactNumHeader.Name = "contactNumHeader";
-            this.contactNumHeader.ReadOnly = true;
-            // 
-            // statusHeader
-            // 
-            this.statusHeader.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.statusHeader.FillWeight = 55.63636F;
-            this.statusHeader.HeaderText = "Status";
-            this.statusHeader.Name = "statusHeader";
-            this.statusHeader.ReadOnly = true;
-            // 
-            // EMRHeader
-            // 
-            this.EMRHeader.FillWeight = 20F;
-            this.EMRHeader.HeaderText = "EMR";
-            this.EMRHeader.Name = "EMRHeader";
-            this.EMRHeader.ReadOnly = true;
-            // 
-            // editHeader
-            // 
-            this.editHeader.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.editHeader.FillWeight = 25F;
-            this.editHeader.HeaderText = "Edit";
-            this.editHeader.Name = "editHeader";
-            this.editHeader.ReadOnly = true;
-            // 
-            // archiveHeader
-            // 
-            this.archiveHeader.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.archiveHeader.FillWeight = 30F;
-            this.archiveHeader.HeaderText = "Archive / Unarchive";
-            this.archiveHeader.Name = "archiveHeader";
-            this.archiveHeader.ReadOnly = true;
-            // 
             // lblHiddenForFocus
             // 
             this.lblHiddenForFocus.AutoSize = true;
@@ -242,7 +112,7 @@
             this.panelBorder2.ForeColor = System.Drawing.Color.Black;
             this.panelBorder2.Location = new System.Drawing.Point(62, 141);
             this.panelBorder2.Name = "panelBorder2";
-            this.panelBorder2.Size = new System.Drawing.Size(1129, 58);
+            this.panelBorder2.Size = new System.Drawing.Size(1543, 58);
             this.panelBorder2.TabIndex = 13;
             // 
             // cbSort
@@ -262,7 +132,7 @@
             "Latest (Date Added)"});
             this.cbSort.ListBackColor = System.Drawing.Color.White;
             this.cbSort.ListTextColor = System.Drawing.Color.Black;
-            this.cbSort.Location = new System.Drawing.Point(719, 5);
+            this.cbSort.Location = new System.Drawing.Point(1133, 5);
             this.cbSort.MinimumSize = new System.Drawing.Size(200, 30);
             this.cbSort.Name = "cbSort";
             this.cbSort.Padding = new System.Windows.Forms.Padding(1);
@@ -286,7 +156,7 @@
             this.btnAddPatient.ForeColor = System.Drawing.Color.Transparent;
             this.btnAddPatient.Image = ((System.Drawing.Image)(resources.GetObject("btnAddPatient.Image")));
             this.btnAddPatient.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnAddPatient.Location = new System.Drawing.Point(972, 5);
+            this.btnAddPatient.Location = new System.Drawing.Point(1386, 5);
             this.btnAddPatient.Name = "btnAddPatient";
             this.btnAddPatient.Padding = new System.Windows.Forms.Padding(5, 5, 20, 0);
             this.btnAddPatient.Size = new System.Drawing.Size(150, 48);
@@ -369,10 +239,10 @@
             this.PatientHolder.BorderRadius = 10;
             this.PatientHolder.Color = System.Drawing.Color.White;
             this.PatientHolder.ForeColor = System.Drawing.Color.Black;
-            this.PatientHolder.Location = new System.Drawing.Point(62, 244);
+            this.PatientHolder.Location = new System.Drawing.Point(42, 243);
             this.PatientHolder.Name = "PatientHolder";
             this.PatientHolder.Padding = new System.Windows.Forms.Padding(5);
-            this.PatientHolder.Size = new System.Drawing.Size(1129, 496);
+            this.PatientHolder.Size = new System.Drawing.Size(1563, 497);
             this.PatientHolder.TabIndex = 7;
             // 
             // panelBorder1
@@ -387,7 +257,7 @@
             this.panelBorder1.Controls.Add(this.pictureBox1);
             this.panelBorder1.Controls.Add(this.txtSearchBar);
             this.panelBorder1.ForeColor = System.Drawing.Color.Black;
-            this.panelBorder1.Location = new System.Drawing.Point(692, 44);
+            this.panelBorder1.Location = new System.Drawing.Point(1106, 44);
             this.panelBorder1.Name = "panelBorder1";
             this.panelBorder1.Padding = new System.Windows.Forms.Padding(5);
             this.panelBorder1.Size = new System.Drawing.Size(499, 51);
@@ -450,25 +320,201 @@
             this.txtSearchBar.Enter += new System.EventHandler(this.txtSearchBar_Enter);
             this.txtSearchBar.Leave += new System.EventHandler(this.txtSearchBar_Leave);
             // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.AutoSize = true;
+            this.flowLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanel2);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(42, 225);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(3, 6);
+            this.flowLayoutPanel1.TabIndex = 14;
+            // 
+            // txtPatientID
+            // 
+            this.txtPatientID.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtPatientID.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPatientID.ForeColor = System.Drawing.Color.Black;
+            this.txtPatientID.Location = new System.Drawing.Point(0, 0);
+            this.txtPatientID.Margin = new System.Windows.Forms.Padding(0);
+            this.txtPatientID.Name = "txtPatientID";
+            this.txtPatientID.Padding = new System.Windows.Forms.Padding(0, 10, 50, 0);
+            this.txtPatientID.Size = new System.Drawing.Size(134, 32);
+            this.txtPatientID.TabIndex = 8;
+            this.txtPatientID.Text = "Patient ID";
+            this.txtPatientID.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // flowLayoutPanel3
+            // 
+            this.flowLayoutPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.flowLayoutPanel3.AutoSize = true;
+            this.flowLayoutPanel3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flowLayoutPanel3.Controls.Add(this.txtPatientID);
+            this.flowLayoutPanel3.Controls.Add(this.status);
+            this.flowLayoutPanel3.Controls.Add(this.txtPatientName);
+            this.flowLayoutPanel3.Controls.Add(this.txtGender);
+            this.flowLayoutPanel3.Controls.Add(this.txtAge);
+            this.flowLayoutPanel3.Controls.Add(this.txtContact);
+            this.flowLayoutPanel3.Controls.Add(this.label2);
+            this.flowLayoutPanel3.Controls.Add(this.label3);
+            this.flowLayoutPanel3.Controls.Add(this.label4);
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(45, 205);
+            this.flowLayoutPanel3.Margin = new System.Windows.Forms.Padding(3, 3, 0, 3);
+            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(1526, 32);
+            this.flowLayoutPanel3.TabIndex = 10;
+            // 
+            // status
+            // 
+            this.status.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.status.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.status.ForeColor = System.Drawing.Color.Black;
+            this.status.Location = new System.Drawing.Point(134, 0);
+            this.status.Margin = new System.Windows.Forms.Padding(0);
+            this.status.Name = "status";
+            this.status.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            this.status.Size = new System.Drawing.Size(174, 32);
+            this.status.TabIndex = 4;
+            this.status.Text = "Status";
+            this.status.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtPatientName
+            // 
+            this.txtPatientName.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPatientName.Location = new System.Drawing.Point(308, 0);
+            this.txtPatientName.Margin = new System.Windows.Forms.Padding(0);
+            this.txtPatientName.Name = "txtPatientName";
+            this.txtPatientName.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            this.txtPatientName.Size = new System.Drawing.Size(375, 32);
+            this.txtPatientName.TabIndex = 0;
+            this.txtPatientName.Text = "Patient Name";
+            this.txtPatientName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtGender
+            // 
+            this.txtGender.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtGender.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtGender.ForeColor = System.Drawing.Color.Black;
+            this.txtGender.Location = new System.Drawing.Point(683, 0);
+            this.txtGender.Margin = new System.Windows.Forms.Padding(0);
+            this.txtGender.Name = "txtGender";
+            this.txtGender.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            this.txtGender.Size = new System.Drawing.Size(173, 32);
+            this.txtGender.TabIndex = 2;
+            this.txtGender.Text = "Gender";
+            this.txtGender.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtAge
+            // 
+            this.txtAge.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtAge.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAge.ForeColor = System.Drawing.Color.Black;
+            this.txtAge.Location = new System.Drawing.Point(856, 0);
+            this.txtAge.Margin = new System.Windows.Forms.Padding(0);
+            this.txtAge.Name = "txtAge";
+            this.txtAge.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            this.txtAge.Size = new System.Drawing.Size(149, 32);
+            this.txtAge.TabIndex = 1;
+            this.txtAge.Text = "Age";
+            this.txtAge.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtContact
+            // 
+            this.txtContact.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtContact.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtContact.ForeColor = System.Drawing.Color.Black;
+            this.txtContact.Location = new System.Drawing.Point(1005, 0);
+            this.txtContact.Margin = new System.Windows.Forms.Padding(0);
+            this.txtContact.Name = "txtContact";
+            this.txtContact.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            this.txtContact.Size = new System.Drawing.Size(273, 32);
+            this.txtContact.TabIndex = 3;
+            this.txtContact.Text = "Contact Number";
+            this.txtContact.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.label2.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(1278, 0);
+            this.label2.Margin = new System.Windows.Forms.Padding(0);
+            this.label2.Name = "label2";
+            this.label2.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            this.label2.Size = new System.Drawing.Size(49, 32);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "EMR";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.label3.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(1327, 0);
+            this.label3.Margin = new System.Windows.Forms.Padding(0);
+            this.label3.Name = "label3";
+            this.label3.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            this.label3.Size = new System.Drawing.Size(61, 32);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "Edit";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.label4.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Black;
+            this.label4.Location = new System.Drawing.Point(1388, 0);
+            this.label4.Margin = new System.Windows.Forms.Padding(0);
+            this.label4.Name = "label4";
+            this.label4.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            this.label4.Size = new System.Drawing.Size(138, 32);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "Archive / Unarchive";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.AutoSize = true;
+            this.flowLayoutPanel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 3);
+            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(0, 0);
+            this.flowLayoutPanel2.TabIndex = 9;
+            // 
             // PatientsPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.flowLayoutPanel3);
+            this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.panelBorder2);
             this.Controls.Add(this.lblHiddenForFocus);
-            this.Controls.Add(this.dataGridPatients);
             this.Controls.Add(this.PatientHolder);
             this.Controls.Add(this.panelBorder1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.nameHolder);
             this.Name = "PatientsPage";
-            this.Size = new System.Drawing.Size(1249, 758);
+            this.Size = new System.Drawing.Size(1663, 758);
             this.Load += new System.EventHandler(this.PatientsPage_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridPatients)).EndInit();
             this.panelBorder2.ResumeLayout(false);
             this.panelBorder1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
+            this.flowLayoutPanel3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -482,7 +528,6 @@
         private WindowsFormsApp2.CustomButton.PanelBorder panelBorder1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private OrganizationProfile.CustomButton btnAddPatient;
-        private System.Windows.Forms.DataGridView dataGridPatients;
         private WindowsFormsApp2.CustomButton.PanelBorder PatientHolder;
         private OrganizationProfile.CustomButton btnAll;
         private OrganizationProfile.CustomButton btnActive;
@@ -491,14 +536,17 @@
         private System.Windows.Forms.Label lblHiddenForFocus;
         private OrganizationProfile.CustomButton btnSearch;
         private CustomControls.RJControls.RJComboBox cbSort;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PatientID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameHeader;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ageHeader;
-        private System.Windows.Forms.DataGridViewTextBoxColumn genderHeader;
-        private System.Windows.Forms.DataGridViewTextBoxColumn contactNumHeader;
-        private System.Windows.Forms.DataGridViewTextBoxColumn statusHeader;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EMRHeader;
-        private System.Windows.Forms.DataGridViewTextBoxColumn editHeader;
-        private System.Windows.Forms.DataGridViewTextBoxColumn archiveHeader;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
+        private System.Windows.Forms.Label txtPatientID;
+        private System.Windows.Forms.Label status;
+        private System.Windows.Forms.Label txtPatientName;
+        private System.Windows.Forms.Label txtGender;
+        private System.Windows.Forms.Label txtAge;
+        private System.Windows.Forms.Label txtContact;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
     }
 }

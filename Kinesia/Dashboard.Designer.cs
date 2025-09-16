@@ -41,7 +41,7 @@
             this.ContentsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ContentsPanel.Location = new System.Drawing.Point(269, 69);
             this.ContentsPanel.Name = "ContentsPanel";
-            this.ContentsPanel.Size = new System.Drawing.Size(936, 620);
+            this.ContentsPanel.Size = new System.Drawing.Size(967, 831);
             this.ContentsPanel.TabIndex = 2;
             // 
             // sidebar1
@@ -52,7 +52,7 @@
             this.sidebar1.Dock = System.Windows.Forms.DockStyle.Left;
             this.sidebar1.Location = new System.Drawing.Point(0, 69);
             this.sidebar1.Name = "sidebar1";
-            this.sidebar1.Size = new System.Drawing.Size(269, 620);
+            this.sidebar1.Size = new System.Drawing.Size(269, 831);
             this.sidebar1.TabIndex = 1;
             // 
             // header1
@@ -63,7 +63,7 @@
             this.header1.Dock = System.Windows.Forms.DockStyle.Top;
             this.header1.Location = new System.Drawing.Point(0, 0);
             this.header1.Name = "header1";
-            this.header1.Size = new System.Drawing.Size(1205, 69);
+            this.header1.Size = new System.Drawing.Size(1236, 69);
             this.header1.TabIndex = 0;
             this.header1.Load += new System.EventHandler(this.header1_Load);
             // 
@@ -74,7 +74,7 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1205, 689);
+            this.ClientSize = new System.Drawing.Size(1236, 900);
             this.Controls.Add(this.ContentsPanel);
             this.Controls.Add(this.sidebar1);
             this.Controls.Add(this.header1);

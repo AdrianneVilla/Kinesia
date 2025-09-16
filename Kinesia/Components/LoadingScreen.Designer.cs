@@ -37,9 +37,9 @@
             // 
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.Image = global::Kinesia.Properties.Resources.GreenLoading;
-            this.pictureBox1.Location = new System.Drawing.Point(148, 30);
+            this.pictureBox1.Location = new System.Drawing.Point(155, 44);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(250, 240);
+            this.pictureBox1.Size = new System.Drawing.Size(248, 222);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -48,7 +48,8 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Poppins", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(192, 273);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
+            this.label1.Location = new System.Drawing.Point(199, 269);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(161, 37);
             this.label1.TabIndex = 2;
