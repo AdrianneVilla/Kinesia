@@ -342,7 +342,7 @@ namespace Kinesia
                     Queries.LogsQueries.AddLog("Has Logged In", "Sessions");
           
                 } 
-                else if(loginResult.Message == "Username or Password incorrect")
+                else
                 {
                     loadingScreen.Close();
                     // will show an error dialog if the password and hashed + salted password input is different
