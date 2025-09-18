@@ -264,28 +264,6 @@ namespace Kinesia.Users
                     return true;
                 }
             }
-            //Connection.conn.Open();
-
-            //Connection.cmd = new MySqlCommand("SELECT FirstName, LastName, MiddleName FROM Users WHERE FirstName = @firstName AND LastName = @lastName AND " +
-            //    "MiddleName = @middleName", Connection.conn);
-            //Connection.cmd.Parameters.AddWithValue("@firstName", userData.FirstName);
-            //Connection.cmd.Parameters.AddWithValue("@lastName", userData.LastName);
-            //Connection.cmd.Parameters.AddWithValue("@middleName", userData.MiddleName);
-            //Connection.reader = Connection.cmd.ExecuteReader();
-
-            //// will return true if the user was already existing
-            //// will return false if the user was not already existing
-            //if (Connection.reader.Read())
-            //{
-            //    CustomDialog.Show("User was already existing!", "Existing User", CustomDialogButtons.OK, CustomDialogIcons.Error);
-            //    Connection.reader.Close();
-            //    Connection.conn.Close();
-            //    return true;
-            //}
-
-            //Connection.reader.Close();
-            //Connection.conn.Close();
-            //return false;
         }
 
         public bool IsUserDetailsComplete(UserDataHolder userData)
