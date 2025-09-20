@@ -7,10 +7,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using KinesiaAPI.Data;
 using KinesiaAPI.Models.Entities;
+using KinesiaLibrary.DTOs;
 
 namespace KinesiaAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/logs")]
     [ApiController]
     public class LogsController : ControllerBase
     {
@@ -23,9 +24,46 @@ namespace KinesiaAPI.Controllers
 
         // GET: api/Logs
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Logs>>> GetLogs()
+        public async Task<ActionResult<IEnumerable<LogDTO>>> GetLogs(
+            string? searchData,
+            string? currentTab = "All",
+            string? sortColumn = "Latest")
         {
-            return await _context.Logs.ToListAsync();
+            var query = from l in _context.Logs
+                        join u in _context.Users on l.UserID equals u.UserID
+                        select new LogDTO
+                        {
+                            LogID = l.LogID,
+                            LogType = l.LogType,
+                            FullName = $"{u.FirstName} {u.MiddleName} {u.LastName}",
+                            Description = l.Description,
+                            LogDate = l.LogDate.ToString()
+                        };
+
+            // will apply filters
+            if(!string.IsNullOrEmpty(currentTab) && currentTab != "All")
+            {
+                query = query.Where(x => x.LogType == currentTab);
+            }
+
+            if (!string.IsNullOrEmpty(searchData))
+            {
+                query = query.Where(x =>
+                        x.LogID.Contains(searchData) ||
+                        x.FullName.Contains(searchData));
+            }
+
+            // will apply sorting
+            if(sortColumn == "Latest")
+            {
+                query = query.OrderBy(x => x.LogDate);
+            }
+            else
+            {
+                query = query.OrderByDescending(x => x.LogDate);
+            }
+
+            return await query.ToListAsync();
         }
 
         // GET: api/Logs/5

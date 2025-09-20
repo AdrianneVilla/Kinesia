@@ -24,11 +24,11 @@ namespace Kinesia.Logs
 
         public PanelBorder getLogHolder { get { return LogHolder; } }
 
-        private void LogsPage_Load(object sender, EventArgs e)
+        private async void LogsPage_Load(object sender, EventArgs e)
         {
             currentTab = "All";
 
-            Queries.LogsQueries.DisplayLogs(searchData, currentTab, cbSort.Texts);
+            await Queries.LogsQueries.DisplayLogs(searchData, currentTab, cbSort.Texts);
 
             // will get the TextBox inside the RJTextBox
             TextBox innerTxtSearchBar = txtSearchBar.Controls.OfType<TextBox>().FirstOrDefault();
@@ -39,7 +39,7 @@ namespace Kinesia.Logs
             }
         }
 
-        private void InnerTxtSearchBar_KeyDown(object sender, KeyEventArgs e)
+        private async void InnerTxtSearchBar_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)
             {
@@ -51,15 +51,15 @@ namespace Kinesia.Logs
             {
                 // will do search query if "enter" was pressed
                 // while txtSearchBar was being focused
-                Queries.LogsQueries.DisplayLogs(searchData, currentTab, cbSort.Texts);
+                await Queries.LogsQueries.DisplayLogs(searchData, currentTab, cbSort.Texts);
 
                 e.SuppressKeyPress = true; // will prevent windows from making the beep sounds when pressing "enter"
             }
         }
 
-        private void cbSort_OnSelectedIndexChanged(object sender, EventArgs e)
+        private async void cbSort_OnSelectedIndexChanged(object sender, EventArgs e)
         {
-            Queries.LogsQueries.DisplayLogs(searchData, currentTab, cbSort.Texts);
+            await Queries.LogsQueries.DisplayLogs(searchData, currentTab, cbSort.Texts);
         }
 
         private void txtSearchBar_Enter(object sender, EventArgs e)
@@ -79,9 +79,9 @@ namespace Kinesia.Logs
             }
         }
 
-        private void btnSearch_Click(object sender, EventArgs e)
+        private async void btnSearch_Click(object sender, EventArgs e)
         {
-            Queries.LogsQueries.DisplayLogs(searchData, currentTab, cbSort.Texts);
+            await Queries.LogsQueries.DisplayLogs(searchData, currentTab, cbSort.Texts);
         }
 
         private void txtSearchBar__TextChanged(object sender, EventArgs e)
@@ -96,7 +96,7 @@ namespace Kinesia.Logs
             }
         }
 
-        private void btnAll_Click(object sender, EventArgs e)
+        private async void btnAll_Click(object sender, EventArgs e)
         {
             // will only refresh the logs list if the currentTab was not already All
             if (currentTab != "All")
@@ -105,11 +105,11 @@ namespace Kinesia.Logs
                 switchTab(currentTab);
                 txtSearchBar.Texts = "Search for User name or Log ID";
                 searchData = "";
-                Queries.LogsQueries.DisplayLogs(searchData, currentTab, cbSort.Texts);
+                await Queries.LogsQueries.DisplayLogs(searchData, currentTab, cbSort.Texts);
             }
         }
 
-        private void btnSessions_Click(object sender, EventArgs e)
+        private async void btnSessions_Click(object sender, EventArgs e)
         {
             // will only refresh the logs list if the currentTab was not already Sessions
             if (currentTab != "Sessions")
@@ -118,11 +118,11 @@ namespace Kinesia.Logs
                 switchTab(currentTab);
                 txtSearchBar.Texts = "Search for User name or Log ID";
                 searchData = "";
-                Queries.LogsQueries.DisplayLogs(searchData, currentTab, cbSort.Texts);
+                await Queries.LogsQueries.DisplayLogs(searchData, currentTab, cbSort.Texts);
             }
         }
 
-        private void btnUsers_Click(object sender, EventArgs e)
+        private async void btnUsers_Click(object sender, EventArgs e)
         {
             // will only refresh the logs list if the currentTab was not already Users
             if (currentTab != "Users")
@@ -131,11 +131,11 @@ namespace Kinesia.Logs
                 switchTab(currentTab);
                 txtSearchBar.Texts = "Search for User name or Log ID";
                 searchData = "";
-                Queries.LogsQueries.DisplayLogs(searchData, currentTab, cbSort.Texts);
+                await Queries.LogsQueries.DisplayLogs(searchData, currentTab, cbSort.Texts);
             }
         }
 
-        private void btnPatients_Click(object sender, EventArgs e)
+        private async void btnPatients_Click(object sender, EventArgs e)
         {
             // will only refresh the logs list if the currentTab was not already Patients
             if (currentTab != "Patients")
@@ -144,7 +144,7 @@ namespace Kinesia.Logs
                 switchTab(currentTab);
                 txtSearchBar.Texts = "Search for User name or Log ID";
                 searchData = "";
-                Queries.LogsQueries.DisplayLogs(searchData, currentTab, cbSort.Texts);
+                await Queries.LogsQueries.DisplayLogs(searchData, currentTab, cbSort.Texts);
             }
         }
 
