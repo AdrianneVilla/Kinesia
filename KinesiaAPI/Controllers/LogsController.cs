@@ -35,9 +35,11 @@ namespace KinesiaAPI.Controllers
                         {
                             LogID = l.LogID,
                             LogType = l.LogType,
-                            FullName = $"{u.FirstName} {u.MiddleName} {u.LastName}",
+                            FirstName = u.FirstName,
+                            MiddleName = u.MiddleName,
+                            LastName = u.LastName,
                             Description = l.Description,
-                            LogDate = l.LogDate.ToString()
+                            LogDate = l.LogDate
                         };
 
             // will apply filters
@@ -50,7 +52,9 @@ namespace KinesiaAPI.Controllers
             {
                 query = query.Where(x =>
                         x.LogID.Contains(searchData) ||
-                        x.FullName.Contains(searchData));
+                        x.FirstName.Contains(searchData) ||
+                        x.MiddleName.Contains(searchData) ||
+                        x.LastName.Contains(searchData));
             }
 
             // will apply sorting

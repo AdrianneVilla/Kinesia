@@ -28,9 +28,9 @@ namespace Kinesia.Logs
 
                     displayLogControl.LogID = log.LogID;
                     displayLogControl.LogType = log.LogType;
-                    displayLogControl.UserName = log.FullName;
+                    displayLogControl.UserName = $"{log.FirstName} {log.MiddleName} {log.LastName}";
                     displayLogControl.Description = log.Description;
-                    displayLogControl.LogDate = log.LogDate;
+                    displayLogControl.LogDate = log.LogDate.ToString();
 
                     PageObjects.logsPage.getLogHolder.Controls.Add(displayLogControl);
                 }
