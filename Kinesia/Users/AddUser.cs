@@ -61,7 +61,7 @@ namespace Kinesia.Users
                     if (success)
                     {
                         // will add a log for adding user
-                        Queries.LogsQueries.AddLog($"Added {userData.UserID}", "Users");
+                        await Queries.LogsQueries.AddLog($"Added {userData.UserID}", "Users");
 
                         clearInputs();
                         CustomDialog.Show("User has been added successfully!", "Add User Successful", CustomDialogButtons.OK, CustomDialogIcons.Information);

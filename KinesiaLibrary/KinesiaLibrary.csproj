@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomSecurity.cs" />
+    <Compile Include="DTOs\AddLogDTO.cs" />
     <Compile Include="DTOs\AddUserDTO.cs" />
     <Compile Include="DTOs\CheckExistingPatientDTO.cs" />
     <Compile Include="DTOs\CheckExistingUserDTO.cs" />

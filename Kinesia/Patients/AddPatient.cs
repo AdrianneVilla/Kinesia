@@ -157,7 +157,7 @@ namespace Kinesia.Patients
                         // will clear all inputs
                         // will show a success message
                         // will redirect to Patient Details page
-                        Queries.LogsQueries.AddLog($"Added {DataHolder.PatientDataHolder.PatientID}", "Patients");
+                        await Queries.LogsQueries.AddLog($"Added {DataHolder.PatientDataHolder.PatientID}", "Patients");
 
                         clearAllInputs();
                         MessageBox.Show("Patient added successfully!", "Add Patient Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);

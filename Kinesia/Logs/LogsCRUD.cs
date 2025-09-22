@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -37,27 +38,52 @@ namespace Kinesia.Logs
             }
         }
         
-        public void AddLog(string description, string logType)
+        public async Task AddLog(string description, string logType)
         {
-            Connection.conn.Open();
+            using(var client = new HttpClient())
+            {
+                var newLog = new AddLogDTO();
 
-            var logID = SetLogID();
+                newLog.LogID = SetLogID();
+                newLog.UserID = SessionManager.UserID;
+                newLog.Description = description;
+                newLog.LogType = logType;
+                newLog.LogDate = DateTime.Now;
 
-            Connection.cmd = new MySqlCommand("INSERT INTO Logs VALUES(@logID, @userID, @description, @logType, @logDate)", Connection.conn);
-            Connection.cmd.Parameters.AddWithValue("@logID", logID);
-            Connection.cmd.Parameters.AddWithValue("@userID", SessionManager.UserID);
-            Connection.cmd.Parameters.AddWithValue("@description", description);
-            Connection.cmd.Parameters.AddWithValue("@logType", logType);
-            Connection.cmd.Parameters.AddWithValue("@logDate", DateTime.Now);
-            Connection.cmd.ExecuteNonQuery();
+                client.BaseAddress = new Uri("https://localhost:5001/api/");
+                var json = JsonConvert.SerializeObject(newLog);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-            Connection.conn.Close();
+                var response = await client.PostAsync("logs", content);
+
+                if(!response.IsSuccessStatusCode)
+                {
+                    Debug.WriteLine(response.StatusCode);
+                }
+            }
+
+            //Connection.conn.Open();
+
+            //var logID = SetLogID();
+
+            //Connection.cmd = new MySqlCommand("INSERT INTO Logs VALUES(@logID, @userID, @description, @logType, @logDate)", Connection.conn);
+            //Connection.cmd.Parameters.AddWithValue("@logID", logID);
+            //Connection.cmd.Parameters.AddWithValue("@userID", SessionManager.UserID);
+            //Connection.cmd.Parameters.AddWithValue("@description", description);
+            //Connection.cmd.Parameters.AddWithValue("@logType", logType);
+            //Connection.cmd.Parameters.AddWithValue("@logDate", DateTime.Now);
+            //Connection.cmd.ExecuteNonQuery();
+
+            //Connection.conn.Close();
         }
 
         public string SetLogID()
         {
+            Connection.conn.Open();
             Connection.cmd = new MySqlCommand("SELECT COUNT(LogID) FROM Logs", Connection.conn);
-            return $"LOG{Convert.ToInt32(Connection.cmd.ExecuteScalar()) + 1}";
+            string logID = $"LOG{Convert.ToInt32(Connection.cmd.ExecuteScalar()) + 1}";
+            Connection.conn.Close();
+            return logID;
         }
     }
 }

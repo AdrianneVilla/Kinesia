@@ -75,7 +75,7 @@ namespace Kinesia.Users
                     if (success)
                     {
                         // will add a log for archiving user
-                        Queries.LogsQueries.AddLog($"Archived {lblUserID.Text}", "Users");
+                        await Queries.LogsQueries.AddLog($"Archived {lblUserID.Text}", "Users");
 
                         CustomDialog.Show($"Failed to archive {lblUserID.Text}", "Archive Alert", CustomDialogButtons.OK, CustomDialogIcons.Error);
 
@@ -98,7 +98,7 @@ namespace Kinesia.Users
                     if (success)
                     {
                         // will add a log for unarchiving user
-                        Queries.LogsQueries.AddLog($"Unarchived {lblUserID.Text}", "Users");
+                        await Queries.LogsQueries.AddLog($"Unarchived {lblUserID.Text}", "Users");
 
                         CustomDialog.Show($"{lblUserID.Text} has been unarchived successfully!", "Unarchive Alert", CustomDialogButtons.OK, CustomDialogIcons.Information);
 

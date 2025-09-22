@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Kinesia.Components;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -29,7 +30,7 @@ namespace Kinesia.Logs
             currentTab = "All";
 
             await Queries.LogsQueries.DisplayLogs(searchData, currentTab, cbSort.Texts);
-
+            
             // will get the TextBox inside the RJTextBox
             TextBox innerTxtSearchBar = txtSearchBar.Controls.OfType<TextBox>().FirstOrDefault();
 
