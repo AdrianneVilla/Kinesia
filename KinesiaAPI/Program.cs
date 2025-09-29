@@ -26,7 +26,7 @@ namespace KinesiaAPI
             {
                 options.AddPolicy("AllowLocalhost",
                     policy => policy
-                        .WithOrigins("https://localhost:5001")
+                        .WithOrigins("https://localhost:5174")
                         .AllowAnyHeader()
                         .AllowAnyMethod());
             });
