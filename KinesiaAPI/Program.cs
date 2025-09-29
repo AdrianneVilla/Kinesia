@@ -21,7 +21,19 @@ namespace KinesiaAPI
                 builder.Configuration.GetConnectionString("DefaultConnection"),
                 new MySqlServerVersion(new Version(10, 2, 32))));
 
+            // Cors Configuration
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowLocalhost",
+                    policy => policy
+                        .WithOrigins("https://localhost:5001")
+                        .AllowAnyHeader()
+                        .AllowAnyMethod());
+            });
+
             var app = builder.Build();
+
+            app.UseCors("AllowLocalhost");
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
