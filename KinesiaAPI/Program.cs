@@ -21,19 +21,29 @@ namespace KinesiaAPI
                 builder.Configuration.GetConnectionString("DefaultConnection"),
                 new MySqlServerVersion(new Version(10, 2, 32))));
 
-            // Cors Configuration
+            //Cors Configuration
             builder.Services.AddCors(options =>
             {
-                options.AddPolicy("AllowLocalhost",
-                    policy => policy
-                        .WithOrigins("https://localhost:5174")
-                        .AllowAnyHeader()
-                        .AllowAnyMethod());
+               options.AddPolicy("AllowLocalhost",
+                   policy => policy
+                       .WithOrigins("https://localhost:5173", "http://localhost:5173")
+                      .AllowAnyHeader()
+                      .AllowAnyMethod());
+
+                options.AddPolicy("AllowReactApp", policy =>
+                {
+                    policy.WithOrigins("https://localhost:5173", "http://localhost:5173")
+                    .AllowAnyHeader()
+                    .AllowAnyMethod();
+                });
             });
 
+
+          
+            builder.Services.AddControllers();
             var app = builder.Build();
 
-            app.UseCors("AllowLocalhost");
+           
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
@@ -46,7 +56,8 @@ namespace KinesiaAPI
 
             app.UseAuthorization();
 
-
+            app.UseCors("AllowLocalhost");
+            app.UseCors("AllowReactApp");
             app.MapControllers();
 
             app.Run();

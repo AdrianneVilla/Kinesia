@@ -24,6 +24,7 @@ namespace KinesiaAPI.Controllers
 
         // GET: api/patients?searchData={}&currentTab={}&sortColumn={}
         [HttpGet]
+
         public async Task<ActionResult<IEnumerable<PatientsDTO>>> GetPatients(
             string? searchData = null,
             string? currentTab = null,
