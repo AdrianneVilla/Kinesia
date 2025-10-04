@@ -38,7 +38,7 @@
             label2 = new Label();
             cbSort = new CustomControls.RJControls.RJComboBox();
             flowLayoutPanel2 = new FlowLayoutPanel();
-            customButton1 = new OrganizationProfile.CustomButton();
+            btnStartSession = new OrganizationProfile.CustomButton();
             customButton2 = new OrganizationProfile.CustomButton();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -164,7 +164,7 @@
             // 
             // flowLayoutPanel2
             // 
-            flowLayoutPanel2.Controls.Add(customButton1);
+            flowLayoutPanel2.Controls.Add(btnStartSession);
             flowLayoutPanel2.Controls.Add(customButton2);
             flowLayoutPanel2.Dock = DockStyle.Fill;
             flowLayoutPanel2.Location = new Point(4, 502);
@@ -173,28 +173,29 @@
             flowLayoutPanel2.Size = new Size(606, 115);
             flowLayoutPanel2.TabIndex = 16;
             // 
-            // customButton1
+            // btnStartSession
             // 
-            customButton1.BackColor = Color.FromArgb(18, 90, 211);
-            customButton1.BackgroundColor = Color.FromArgb(18, 90, 211);
-            customButton1.BorderColor = Color.PaleVioletRed;
-            customButton1.BorderRadius = 10;
-            customButton1.BorderSize = 0;
-            customButton1.FlatAppearance.BorderSize = 0;
-            customButton1.FlatStyle = FlatStyle.Flat;
-            customButton1.Font = new Font("Poppins", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            customButton1.ForeColor = Color.White;
-            customButton1.Image = (Image)resources.GetObject("customButton1.Image");
-            customButton1.ImageAlign = ContentAlignment.MiddleLeft;
-            customButton1.Location = new Point(4, 3);
-            customButton1.Margin = new Padding(4, 3, 4, 3);
-            customButton1.Name = "customButton1";
-            customButton1.Padding = new Padding(12, 1, 0, 0);
-            customButton1.Size = new Size(295, 59);
-            customButton1.TabIndex = 0;
-            customButton1.Text = "Start Session";
-            customButton1.TextColor = Color.White;
-            customButton1.UseVisualStyleBackColor = false;
+            btnStartSession.BackColor = Color.FromArgb(18, 90, 211);
+            btnStartSession.BackgroundColor = Color.FromArgb(18, 90, 211);
+            btnStartSession.BorderColor = Color.PaleVioletRed;
+            btnStartSession.BorderRadius = 10;
+            btnStartSession.BorderSize = 0;
+            btnStartSession.FlatAppearance.BorderSize = 0;
+            btnStartSession.FlatStyle = FlatStyle.Flat;
+            btnStartSession.Font = new Font("Poppins", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnStartSession.ForeColor = Color.White;
+            btnStartSession.Image = (Image)resources.GetObject("btnStartSession.Image");
+            btnStartSession.ImageAlign = ContentAlignment.MiddleLeft;
+            btnStartSession.Location = new Point(4, 3);
+            btnStartSession.Margin = new Padding(4, 3, 4, 3);
+            btnStartSession.Name = "btnStartSession";
+            btnStartSession.Padding = new Padding(12, 1, 0, 0);
+            btnStartSession.Size = new Size(295, 59);
+            btnStartSession.TabIndex = 0;
+            btnStartSession.Text = "Start Session";
+            btnStartSession.TextColor = Color.White;
+            btnStartSession.UseVisualStyleBackColor = false;
+            btnStartSession.Click += btnStartSession_Click;
             // 
             // customButton2
             // 
@@ -227,12 +228,11 @@
             ClientSize = new Size(1406, 795);
             Controls.Add(flowLayoutPanel1);
             Controls.Add(pictureBox1);
-            FormBorderStyle = FormBorderStyle.None;
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Margin = new Padding(4, 3, 4, 3);
             Name = "NewAssessmentForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "NewAssessmentForm";
-            WindowState = FormWindowState.Maximized;
             Load += NewAssessmentForm_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
@@ -254,7 +254,7 @@
         private System.Windows.Forms.Label label2;
         private CustomControls.RJControls.RJComboBox cbSort;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
-        private OrganizationProfile.CustomButton customButton1;
+        private OrganizationProfile.CustomButton btnStartSession;
         private OrganizationProfile.CustomButton customButton2;
     }
 }

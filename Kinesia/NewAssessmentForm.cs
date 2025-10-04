@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Kinesia.Assessment;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,6 +21,13 @@ namespace Kinesia
         private void NewAssessmentForm_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnStartSession_Click(object sender, EventArgs e)
+        {
+            var AssessmentRom = new AssessmentROM();
+            AssessmentRom.ShowDialog();
+            this.Close();
         }
     }
 }
