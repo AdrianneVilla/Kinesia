@@ -16,5 +16,10 @@ namespace Kinesia
         {
             InitializeComponent();
         }
+
+        private void NewAssessmentForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

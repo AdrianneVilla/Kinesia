@@ -29,209 +29,217 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewAssessmentForm));
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.txtPatientName = new System.Windows.Forms.Label();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.txtPatientID = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.cbSort = new CustomControls.RJControls.RJComboBox();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.customButton1 = new OrganizationProfile.CustomButton();
-            this.customButton2 = new OrganizationProfile.CustomButton();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            this.flowLayoutPanel1.SuspendLayout();
-            this.flowLayoutPanel2.SuspendLayout();
-            this.SuspendLayout();
+            pictureBox1 = new PictureBox();
+            pictureBox2 = new PictureBox();
+            txtPatientName = new Label();
+            flowLayoutPanel1 = new FlowLayoutPanel();
+            txtPatientID = new Label();
+            label1 = new Label();
+            label2 = new Label();
+            cbSort = new CustomControls.RJControls.RJComboBox();
+            flowLayoutPanel2 = new FlowLayoutPanel();
+            customButton1 = new OrganizationProfile.CustomButton();
+            customButton2 = new OrganizationProfile.CustomButton();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            flowLayoutPanel1.SuspendLayout();
+            flowLayoutPanel2.SuspendLayout();
+            SuspendLayout();
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::Kinesia.Properties.Resources.large_logo;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(121, 67);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            pictureBox1.Image = Properties.Resources.large_logo;
+            pictureBox1.Location = new Point(14, 14);
+            pictureBox1.Margin = new Padding(4, 3, 4, 3);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(141, 77);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 0;
+            pictureBox1.TabStop = false;
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = global::Kinesia.Properties.Resources.Orbbec_camera_icon;
-            this.pictureBox2.Location = new System.Drawing.Point(3, 98);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(519, 192);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox2.TabIndex = 1;
-            this.pictureBox2.TabStop = false;
+            pictureBox2.Image = Properties.Resources.Orbbec_camera_icon;
+            pictureBox2.Location = new Point(4, 98);
+            pictureBox2.Margin = new Padding(4, 3, 4, 3);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(606, 222);
+            pictureBox2.SizeMode = PictureBoxSizeMode.CenterImage;
+            pictureBox2.TabIndex = 1;
+            pictureBox2.TabStop = false;
             // 
             // txtPatientName
             // 
-            this.txtPatientName.AutoSize = true;
-            this.txtPatientName.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtPatientName.Font = new System.Drawing.Font("Poppins Black", 30F, System.Drawing.FontStyle.Bold);
-            this.txtPatientName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.txtPatientName.Location = new System.Drawing.Point(3, 0);
-            this.txtPatientName.Name = "txtPatientName";
-            this.txtPatientName.Size = new System.Drawing.Size(519, 70);
-            this.txtPatientName.TabIndex = 2;
-            this.txtPatientName.Text = "<PatientName>";
-            this.txtPatientName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            txtPatientName.AutoSize = true;
+            txtPatientName.Dock = DockStyle.Top;
+            txtPatientName.Font = new Font("Poppins Black", 30F, FontStyle.Bold);
+            txtPatientName.ForeColor = Color.FromArgb(18, 90, 211);
+            txtPatientName.Location = new Point(4, 0);
+            txtPatientName.Margin = new Padding(4, 0, 4, 0);
+            txtPatientName.Name = "txtPatientName";
+            txtPatientName.Size = new Size(606, 70);
+            txtPatientName.TabIndex = 2;
+            txtPatientName.Text = "<PatientName>";
+            txtPatientName.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.Controls.Add(this.txtPatientName);
-            this.flowLayoutPanel1.Controls.Add(this.txtPatientID);
-            this.flowLayoutPanel1.Controls.Add(this.pictureBox2);
-            this.flowLayoutPanel1.Controls.Add(this.label1);
-            this.flowLayoutPanel1.Controls.Add(this.label2);
-            this.flowLayoutPanel1.Controls.Add(this.cbSort);
-            this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanel2);
-            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(293, 85);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(526, 558);
-            this.flowLayoutPanel1.TabIndex = 4;
+            flowLayoutPanel1.Controls.Add(txtPatientName);
+            flowLayoutPanel1.Controls.Add(txtPatientID);
+            flowLayoutPanel1.Controls.Add(pictureBox2);
+            flowLayoutPanel1.Controls.Add(label1);
+            flowLayoutPanel1.Controls.Add(label2);
+            flowLayoutPanel1.Controls.Add(cbSort);
+            flowLayoutPanel1.Controls.Add(flowLayoutPanel2);
+            flowLayoutPanel1.FlowDirection = FlowDirection.TopDown;
+            flowLayoutPanel1.Location = new Point(342, 98);
+            flowLayoutPanel1.Margin = new Padding(4, 3, 4, 3);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            flowLayoutPanel1.Size = new Size(614, 644);
+            flowLayoutPanel1.TabIndex = 4;
             // 
             // txtPatientID
             // 
-            this.txtPatientID.AutoSize = true;
-            this.txtPatientID.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtPatientID.Font = new System.Drawing.Font("Poppins Black", 10F, System.Drawing.FontStyle.Bold);
-            this.txtPatientID.ForeColor = System.Drawing.Color.Black;
-            this.txtPatientID.Location = new System.Drawing.Point(3, 70);
-            this.txtPatientID.Name = "txtPatientID";
-            this.txtPatientID.Size = new System.Drawing.Size(519, 25);
-            this.txtPatientID.TabIndex = 3;
-            this.txtPatientID.Text = "<patientID>";
-            this.txtPatientID.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            txtPatientID.AutoSize = true;
+            txtPatientID.Dock = DockStyle.Fill;
+            txtPatientID.Font = new Font("Poppins Black", 10F, FontStyle.Bold);
+            txtPatientID.ForeColor = Color.Black;
+            txtPatientID.Location = new Point(4, 70);
+            txtPatientID.Margin = new Padding(4, 0, 4, 0);
+            txtPatientID.Name = "txtPatientID";
+            txtPatientID.Size = new Size(606, 25);
+            txtPatientID.TabIndex = 3;
+            txtPatientID.Text = "<patientID>";
+            txtPatientID.TextAlign = ContentAlignment.TopCenter;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Font = new System.Drawing.Font("Poppins", 10F, System.Drawing.FontStyle.Bold);
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(3, 293);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(519, 25);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Astra Pro Plus";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            label1.AutoSize = true;
+            label1.Dock = DockStyle.Fill;
+            label1.Font = new Font("Poppins", 10F, FontStyle.Bold);
+            label1.ForeColor = Color.Black;
+            label1.Location = new Point(4, 323);
+            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(606, 25);
+            label1.TabIndex = 4;
+            label1.Text = "Astra Pro Plus";
+            label1.TextAlign = ContentAlignment.TopCenter;
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.label2.Location = new System.Drawing.Point(3, 348);
-            this.label2.Margin = new System.Windows.Forms.Padding(3, 30, 3, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(519, 23);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Body Group";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            label2.AutoSize = true;
+            label2.Dock = DockStyle.Fill;
+            label2.Font = new Font("Poppins", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.ForeColor = Color.FromArgb(18, 90, 211);
+            label2.Location = new Point(4, 383);
+            label2.Margin = new Padding(4, 35, 4, 0);
+            label2.Name = "label2";
+            label2.Size = new Size(606, 23);
+            label2.TabIndex = 5;
+            label2.Text = "Body Group";
+            label2.TextAlign = ContentAlignment.TopCenter;
             // 
             // cbSort
             // 
-            this.cbSort.BackColor = System.Drawing.Color.White;
-            this.cbSort.BorderColor = System.Drawing.Color.Gray;
-            this.cbSort.BorderSize = 1;
-            this.cbSort.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbSort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
-            this.cbSort.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbSort.ForeColor = System.Drawing.Color.DimGray;
-            this.cbSort.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.cbSort.Items.AddRange(new object[] {
-            "Lower Extremities",
-            "Upper Extremities"});
-            this.cbSort.ListBackColor = System.Drawing.Color.White;
-            this.cbSort.ListTextColor = System.Drawing.Color.Black;
-            this.cbSort.Location = new System.Drawing.Point(100, 374);
-            this.cbSort.Margin = new System.Windows.Forms.Padding(100, 3, 100, 3);
-            this.cbSort.MinimumSize = new System.Drawing.Size(200, 30);
-            this.cbSort.Name = "cbSort";
-            this.cbSort.Padding = new System.Windows.Forms.Padding(1);
-            this.cbSort.Size = new System.Drawing.Size(325, 48);
-            this.cbSort.TabIndex = 15;
-            this.cbSort.Texts = "Select body group";
+            cbSort.BackColor = Color.White;
+            cbSort.BorderColor = Color.Gray;
+            cbSort.BorderSize = 1;
+            cbSort.Dock = DockStyle.Fill;
+            cbSort.DropDownStyle = ComboBoxStyle.DropDown;
+            cbSort.Font = new Font("Poppins", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            cbSort.ForeColor = Color.DimGray;
+            cbSort.IconColor = Color.FromArgb(24, 90, 211);
+            cbSort.Items.AddRange(new object[] { "Lower Extremities", "Upper Extremities" });
+            cbSort.ListBackColor = Color.White;
+            cbSort.ListTextColor = Color.Black;
+            cbSort.Location = new Point(117, 409);
+            cbSort.Margin = new Padding(117, 3, 117, 3);
+            cbSort.MinimumSize = new Size(233, 35);
+            cbSort.Name = "cbSort";
+            cbSort.Padding = new Padding(1);
+            cbSort.Size = new Size(380, 55);
+            cbSort.TabIndex = 15;
+            cbSort.Texts = "Select body group";
             // 
             // flowLayoutPanel2
             // 
-            this.flowLayoutPanel2.Controls.Add(this.customButton1);
-            this.flowLayoutPanel2.Controls.Add(this.customButton2);
-            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 455);
-            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(3, 30, 3, 3);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(519, 100);
-            this.flowLayoutPanel2.TabIndex = 16;
+            flowLayoutPanel2.Controls.Add(customButton1);
+            flowLayoutPanel2.Controls.Add(customButton2);
+            flowLayoutPanel2.Dock = DockStyle.Fill;
+            flowLayoutPanel2.Location = new Point(4, 502);
+            flowLayoutPanel2.Margin = new Padding(4, 35, 4, 3);
+            flowLayoutPanel2.Name = "flowLayoutPanel2";
+            flowLayoutPanel2.Size = new Size(606, 115);
+            flowLayoutPanel2.TabIndex = 16;
             // 
             // customButton1
             // 
-            this.customButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.customButton1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.customButton1.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.customButton1.BorderRadius = 10;
-            this.customButton1.BorderSize = 0;
-            this.customButton1.FlatAppearance.BorderSize = 0;
-            this.customButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.customButton1.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customButton1.ForeColor = System.Drawing.Color.White;
-            this.customButton1.Image = ((System.Drawing.Image)(resources.GetObject("customButton1.Image")));
-            this.customButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.customButton1.Location = new System.Drawing.Point(3, 3);
-            this.customButton1.Name = "customButton1";
-            this.customButton1.Padding = new System.Windows.Forms.Padding(10, 1, 0, 0);
-            this.customButton1.Size = new System.Drawing.Size(253, 51);
-            this.customButton1.TabIndex = 0;
-            this.customButton1.Text = "Start Session";
-            this.customButton1.TextColor = System.Drawing.Color.White;
-            this.customButton1.UseVisualStyleBackColor = false;
+            customButton1.BackColor = Color.FromArgb(18, 90, 211);
+            customButton1.BackgroundColor = Color.FromArgb(18, 90, 211);
+            customButton1.BorderColor = Color.PaleVioletRed;
+            customButton1.BorderRadius = 10;
+            customButton1.BorderSize = 0;
+            customButton1.FlatAppearance.BorderSize = 0;
+            customButton1.FlatStyle = FlatStyle.Flat;
+            customButton1.Font = new Font("Poppins", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            customButton1.ForeColor = Color.White;
+            customButton1.Image = (Image)resources.GetObject("customButton1.Image");
+            customButton1.ImageAlign = ContentAlignment.MiddleLeft;
+            customButton1.Location = new Point(4, 3);
+            customButton1.Margin = new Padding(4, 3, 4, 3);
+            customButton1.Name = "customButton1";
+            customButton1.Padding = new Padding(12, 1, 0, 0);
+            customButton1.Size = new Size(295, 59);
+            customButton1.TabIndex = 0;
+            customButton1.Text = "Start Session";
+            customButton1.TextColor = Color.White;
+            customButton1.UseVisualStyleBackColor = false;
             // 
             // customButton2
             // 
-            this.customButton2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(251)))), ((int)(((byte)(237)))));
-            this.customButton2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(251)))), ((int)(((byte)(237)))));
-            this.customButton2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(134)))), ((int)(((byte)(105)))));
-            this.customButton2.BorderRadius = 10;
-            this.customButton2.BorderSize = 1;
-            this.customButton2.FlatAppearance.BorderSize = 0;
-            this.customButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.customButton2.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customButton2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(134)))), ((int)(((byte)(105)))));
-            this.customButton2.Image = ((System.Drawing.Image)(resources.GetObject("customButton2.Image")));
-            this.customButton2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.customButton2.Location = new System.Drawing.Point(262, 3);
-            this.customButton2.Name = "customButton2";
-            this.customButton2.Padding = new System.Windows.Forms.Padding(10, 1, 0, 0);
-            this.customButton2.Size = new System.Drawing.Size(253, 51);
-            this.customButton2.TabIndex = 1;
-            this.customButton2.Text = "Patient Selection";
-            this.customButton2.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(134)))), ((int)(((byte)(105)))));
-            this.customButton2.UseVisualStyleBackColor = false;
+            customButton2.BackColor = Color.FromArgb(195, 251, 237);
+            customButton2.BackgroundColor = Color.FromArgb(195, 251, 237);
+            customButton2.BorderColor = Color.FromArgb(21, 134, 105);
+            customButton2.BorderRadius = 10;
+            customButton2.BorderSize = 1;
+            customButton2.FlatAppearance.BorderSize = 0;
+            customButton2.FlatStyle = FlatStyle.Flat;
+            customButton2.Font = new Font("Poppins", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            customButton2.ForeColor = Color.FromArgb(21, 134, 105);
+            customButton2.Image = (Image)resources.GetObject("customButton2.Image");
+            customButton2.ImageAlign = ContentAlignment.MiddleLeft;
+            customButton2.Location = new Point(307, 3);
+            customButton2.Margin = new Padding(4, 3, 4, 3);
+            customButton2.Name = "customButton2";
+            customButton2.Padding = new Padding(12, 1, 0, 0);
+            customButton2.Size = new Size(295, 59);
+            customButton2.TabIndex = 1;
+            customButton2.Text = "Patient Selection";
+            customButton2.TextColor = Color.FromArgb(21, 134, 105);
+            customButton2.UseVisualStyleBackColor = false;
             // 
             // NewAssessmentForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1205, 689);
-            this.Controls.Add(this.flowLayoutPanel1);
-            this.Controls.Add(this.pictureBox1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "NewAssessmentForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "NewAssessmentForm";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel1.PerformLayout();
-            this.flowLayoutPanel2.ResumeLayout(false);
-            this.ResumeLayout(false);
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.White;
+            ClientSize = new Size(1406, 795);
+            Controls.Add(flowLayoutPanel1);
+            Controls.Add(pictureBox1);
+            FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(4, 3, 4, 3);
+            Name = "NewAssessmentForm";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "NewAssessmentForm";
+            WindowState = FormWindowState.Maximized;
+            Load += NewAssessmentForm_Load;
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            flowLayoutPanel1.ResumeLayout(false);
+            flowLayoutPanel1.PerformLayout();
+            flowLayoutPanel2.ResumeLayout(false);
+            ResumeLayout(false);
 
         }
 
