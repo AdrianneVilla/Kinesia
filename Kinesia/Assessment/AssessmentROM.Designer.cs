@@ -32,6 +32,7 @@
             customButton1 = new OrganizationProfile.CustomButton();
             flowLayoutPanel1 = new FlowLayoutPanel();
             label1 = new Label();
+            rjComboBox1 = new CustomControls.RJControls.RJComboBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             flowLayoutPanel1.SuspendLayout();
             SuspendLayout();
@@ -55,7 +56,7 @@
             customButton1.FlatStyle = FlatStyle.Flat;
             customButton1.Font = new Font("Poppins", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             customButton1.ForeColor = Color.Transparent;
-            customButton1.Location = new Point(3, 430);
+            customButton1.Location = new Point(3, 469);
             customButton1.Name = "customButton1";
             customButton1.Size = new Size(462, 49);
             customButton1.TabIndex = 1;
@@ -67,10 +68,11 @@
             // 
             flowLayoutPanel1.Controls.Add(label1);
             flowLayoutPanel1.Controls.Add(pictureBox1);
+            flowLayoutPanel1.Controls.Add(rjComboBox1);
             flowLayoutPanel1.Controls.Add(customButton1);
-            flowLayoutPanel1.Location = new Point(240, 56);
+            flowLayoutPanel1.Location = new Point(240, 45);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(468, 485);
+            flowLayoutPanel1.Size = new Size(468, 525);
             flowLayoutPanel1.TabIndex = 2;
             // 
             // label1
@@ -85,11 +87,32 @@
             label1.Text = "label1";
             label1.TextAlign = ContentAlignment.TopCenter;
             // 
+            // rjComboBox1
+            // 
+            rjComboBox1.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            rjComboBox1.BackColor = Color.White;
+            rjComboBox1.BorderColor = Color.FromArgb(18, 90, 211);
+            rjComboBox1.BorderSize = 1;
+            rjComboBox1.DropDownStyle = ComboBoxStyle.DropDown;
+            rjComboBox1.Font = new Font("Poppins", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            rjComboBox1.ForeColor = Color.DimGray;
+            rjComboBox1.IconColor = Color.FromArgb(18, 90, 211);
+            rjComboBox1.Items.AddRange(new object[] { "Left Arm", "Right Arm" });
+            rjComboBox1.ListBackColor = Color.White;
+            rjComboBox1.ListTextColor = Color.Black;
+            rjComboBox1.Location = new Point(3, 430);
+            rjComboBox1.MinimumSize = new Size(200, 30);
+            rjComboBox1.Name = "rjComboBox1";
+            rjComboBox1.Padding = new Padding(1);
+            rjComboBox1.Size = new Size(462, 33);
+            rjComboBox1.TabIndex = 4;
+            rjComboBox1.Texts = "Select body part";
+            // 
             // AssessmentROM
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(973, 582);
+            ClientSize = new Size(973, 618);
             ControlBox = false;
             Controls.Add(flowLayoutPanel1);
             FormBorderStyle = FormBorderStyle.None;
@@ -112,5 +135,6 @@
         private OrganizationProfile.CustomButton customButton1;
         private FlowLayoutPanel flowLayoutPanel1;
         private Label label1;
+        private CustomControls.RJControls.RJComboBox rjComboBox1;
     }
 }
