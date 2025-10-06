@@ -1,46 +1,32 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kinesia", "Kinesia\Kinesia.csproj", "{2848B017-4DD2-4ABC-9A7B-AA6D69B597FE}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KinesiaAPI", "KinesiaAPI\KinesiaAPI.csproj", "{34DBF4F7-DF55-45A8-A44B-6CC551DE5C06}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kinesia", "Kinesia\Kinesia.csproj", "{8D420C9C-44C7-48F1-8608-505DE60DE92F}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KinesiaLibrary", "KinesiaLibrary\KinesiaLibrary.csproj", "{76ACD642-9908-4240-AB20-861F0E863A31}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KinesiaLibrary", "KinesiaLibrary\KinesiaLibrary.csproj", "{817D0B47-319C-4007-BC28-82ED8DCD3D94}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
-		Debug|x64 = Debug|x64
 		Release|Any CPU = Release|Any CPU
-		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2848B017-4DD2-4ABC-9A7B-AA6D69B597FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2848B017-4DD2-4ABC-9A7B-AA6D69B597FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2848B017-4DD2-4ABC-9A7B-AA6D69B597FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2848B017-4DD2-4ABC-9A7B-AA6D69B597FE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{34DBF4F7-DF55-45A8-A44B-6CC551DE5C06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{34DBF4F7-DF55-45A8-A44B-6CC551DE5C06}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{34DBF4F7-DF55-45A8-A44B-6CC551DE5C06}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{34DBF4F7-DF55-45A8-A44B-6CC551DE5C06}.Debug|x64.Build.0 = Debug|Any CPU
 		{34DBF4F7-DF55-45A8-A44B-6CC551DE5C06}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{34DBF4F7-DF55-45A8-A44B-6CC551DE5C06}.Release|Any CPU.Build.0 = Release|Any CPU
-		{34DBF4F7-DF55-45A8-A44B-6CC551DE5C06}.Release|x64.ActiveCfg = Release|Any CPU
-		{34DBF4F7-DF55-45A8-A44B-6CC551DE5C06}.Release|x64.Build.0 = Release|Any CPU
-		{8D420C9C-44C7-48F1-8608-505DE60DE92F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8D420C9C-44C7-48F1-8608-505DE60DE92F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8D420C9C-44C7-48F1-8608-505DE60DE92F}.Debug|x64.ActiveCfg = Debug|x64
-		{8D420C9C-44C7-48F1-8608-505DE60DE92F}.Debug|x64.Build.0 = Debug|x64
-		{8D420C9C-44C7-48F1-8608-505DE60DE92F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8D420C9C-44C7-48F1-8608-505DE60DE92F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8D420C9C-44C7-48F1-8608-505DE60DE92F}.Release|x64.ActiveCfg = Release|x64
-		{8D420C9C-44C7-48F1-8608-505DE60DE92F}.Release|x64.Build.0 = Release|x64
-		{76ACD642-9908-4240-AB20-861F0E863A31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{76ACD642-9908-4240-AB20-861F0E863A31}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{76ACD642-9908-4240-AB20-861F0E863A31}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{76ACD642-9908-4240-AB20-861F0E863A31}.Debug|x64.Build.0 = Debug|Any CPU
-		{76ACD642-9908-4240-AB20-861F0E863A31}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{76ACD642-9908-4240-AB20-861F0E863A31}.Release|Any CPU.Build.0 = Release|Any CPU
-		{76ACD642-9908-4240-AB20-861F0E863A31}.Release|x64.ActiveCfg = Release|Any CPU
-		{76ACD642-9908-4240-AB20-861F0E863A31}.Release|x64.Build.0 = Release|Any CPU
+		{817D0B47-319C-4007-BC28-82ED8DCD3D94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{817D0B47-319C-4007-BC28-82ED8DCD3D94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{817D0B47-319C-4007-BC28-82ED8DCD3D94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{817D0B47-319C-4007-BC28-82ED8DCD3D94}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

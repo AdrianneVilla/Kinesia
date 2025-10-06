@@ -1,4 +1,4 @@
-using Kinesia.Components;
+﻿using Kinesia.Components;
 using Kinesia.Patients;
 using MySql.Data.MySqlClient;
 using System;
@@ -23,14 +23,11 @@ namespace Kinesia
     internal static class Program
     {
         /// <summary>
-        ///  The main entry point for the application.
+        /// The main entry point for the application.
         /// </summary>
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
-            ApplicationConfiguration.Initialize();
             Application.SetHighDpiMode(HighDpiMode.PerMonitorV2);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
@@ -38,6 +35,7 @@ namespace Kinesia
         }
     }
 
+    // Contains PageObjects objects
     public class PageObjects
     {
         public static Login loginPage = Login.getLoginInstance();
@@ -49,7 +47,7 @@ namespace Kinesia
         public static PatientDetails patientDetails;
         public static EditPatient editPatient;
         public static DisplayUsers displayUsers;
-        public static UserPage userPage;
+        public static UserPage userPage;    
         public static UserDetails userDetails;
         public static AddUser addUser;
         public static EditUser editUser;
@@ -68,7 +66,7 @@ namespace Kinesia
 
         public static void DisposeHolderControls(PanelBorder panelHolder)
         {
-            foreach (Control control in panelHolder.Controls)
+            foreach(Control control in panelHolder.Controls)
             {
                 control.Dispose();
             }
@@ -81,7 +79,7 @@ namespace Kinesia
     {
         public static DialogResult Show(string description, string title, CustomDialogButtons button, CustomDialogIcons icon)
         {
-            using (var dialog = CreateDialog(button))
+            using(var dialog = CreateDialog(button))
             {
                 if (dialog is ICustomDialog customDialog)
                 {
@@ -91,12 +89,12 @@ namespace Kinesia
                 }
 
                 return dialog.ShowDialog();
-            }
+            }  
         }
 
         private static Form CreateDialog(CustomDialogButtons button)
         {
-            if (button == CustomDialogButtons.OK)
+            if( button == CustomDialogButtons.OK )
             {
                 return new SingleBtnDialog();
             }
@@ -115,7 +113,7 @@ namespace Kinesia
             }
         }
     }
-
+    
     public enum CustomDialogButtons
     {
         // Numbers are indexes
@@ -211,7 +209,7 @@ namespace Kinesia
         public static void CharactersOnly(object sender, KeyPressEventArgs e)
         {
             // will only allow characters on textboxes
-            if (!Regex.IsMatch(e.KeyChar.ToString(), @"^[a-zA-Z\s\b]"))
+            if(!Regex.IsMatch(e.KeyChar.ToString(), @"^[a-zA-Z\s\b]"))
             {
                 e.Handled = true;
             }
@@ -220,7 +218,7 @@ namespace Kinesia
         public static void WholeNumbersOnly(object sender, KeyPressEventArgs e)
         {
             // will only allow whole numbers on textboxes
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            if(!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
             }
@@ -229,13 +227,13 @@ namespace Kinesia
         public static void FloatingNumbersOnly(object sender, KeyPressEventArgs e)
         {
             // will only allow whole numbers and a dot on textboxes
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            if(!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
             {
                 e.Handled = true;
             }
 
             // will only allow one dot on textboxes
-            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            if((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
             {
                 e.Handled = true;
             }

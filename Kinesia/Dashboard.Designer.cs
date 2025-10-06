@@ -29,65 +29,69 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
-            this.ContentsPanel = new System.Windows.Forms.Panel();
-            this.sidebar1 = new Kinesia.Components.Sidebar();
-            this.header1 = new Kinesia.Components.Header();
-            this.SuspendLayout();
+            ContentsPanel = new System.Windows.Forms.Panel();
+            sidebar1 = new Kinesia.Components.Sidebar();
+            header1 = new Kinesia.Components.Header();
+            SuspendLayout();
             // 
             // ContentsPanel
             // 
-            this.ContentsPanel.AutoSize = true;
-            this.ContentsPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ContentsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ContentsPanel.Location = new System.Drawing.Point(269, 69);
-            this.ContentsPanel.Name = "ContentsPanel";
-            this.ContentsPanel.Size = new System.Drawing.Size(967, 831);
-            this.ContentsPanel.TabIndex = 2;
+            ContentsPanel.AutoSize = true;
+            ContentsPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            ContentsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            ContentsPanel.Location = new System.Drawing.Point(314, 80);
+            ContentsPanel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            ContentsPanel.Name = "ContentsPanel";
+            ContentsPanel.Size = new System.Drawing.Size(1128, 958);
+            ContentsPanel.TabIndex = 2;
             // 
             // sidebar1
             // 
-            this.sidebar1.BackColor = System.Drawing.Color.White;
-            this.sidebar1.BackgroundImage = global::Kinesia.Properties.Resources.sidepanel;
-            this.sidebar1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.sidebar1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.sidebar1.Location = new System.Drawing.Point(0, 69);
-            this.sidebar1.Name = "sidebar1";
-            this.sidebar1.Size = new System.Drawing.Size(269, 831);
-            this.sidebar1.TabIndex = 1;
+            sidebar1.BackColor = System.Drawing.Color.White;
+            sidebar1.BackgroundImage = Properties.Resources.sidepanel;
+            sidebar1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            sidebar1.Dock = System.Windows.Forms.DockStyle.Left;
+            sidebar1.Location = new System.Drawing.Point(0, 80);
+            sidebar1.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
+            sidebar1.Name = "sidebar1";
+            sidebar1.Size = new System.Drawing.Size(314, 958);
+            sidebar1.TabIndex = 1;
             // 
             // header1
             // 
-            this.header1.BackColor = System.Drawing.Color.White;
-            this.header1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("header1.BackgroundImage")));
-            this.header1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.header1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.header1.Location = new System.Drawing.Point(0, 0);
-            this.header1.Name = "header1";
-            this.header1.Size = new System.Drawing.Size(1236, 69);
-            this.header1.TabIndex = 0;
-            this.header1.Load += new System.EventHandler(this.header1_Load);
+            header1.BackColor = System.Drawing.Color.White;
+            header1.BackgroundImage = (System.Drawing.Image)resources.GetObject("header1.BackgroundImage");
+            header1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            header1.Dock = System.Windows.Forms.DockStyle.Top;
+            header1.Location = new System.Drawing.Point(0, 0);
+            header1.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
+            header1.Name = "header1";
+            header1.Size = new System.Drawing.Size(1442, 80);
+            header1.TabIndex = 0;
+            header1.Load += header1_Load;
             // 
             // Dashboard
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
-            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1236, 900);
-            this.Controls.Add(this.ContentsPanel);
-            this.Controls.Add(this.sidebar1);
-            this.Controls.Add(this.header1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.HelpButton = true;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Dashboard";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = " ";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.Dashboard_Load);
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            AutoSize = true;
+            AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            BackColor = System.Drawing.Color.White;
+            ClientSize = new System.Drawing.Size(1442, 1038);
+            Controls.Add(ContentsPanel);
+            Controls.Add(sidebar1);
+            Controls.Add(header1);
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            HelpButton = true;
+            Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
+            Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            Name = "Dashboard";
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            Text = " ";
+            WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            Load += Dashboard_Load;
+            ResumeLayout(false);
+            PerformLayout();
 
         }
 

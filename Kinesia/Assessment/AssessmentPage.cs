@@ -28,11 +28,5 @@ namespace Kinesia.Assessment
         {
 
         }
-
-        private void btnAddAssessment_Click(object sender, EventArgs e)
-        {
-            var NewAssessmentForm = new NewAssessmentForm();
-            NewAssessmentForm.ShowDialog();
-        }
     }
 }

@@ -32,8 +32,6 @@
             this.nameHolder = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lblHiddenForFocus = new System.Windows.Forms.Label();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.txtPatientID = new System.Windows.Forms.Label();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.status = new System.Windows.Forms.Label();
@@ -55,7 +53,6 @@
             this.btnSearch = new OrganizationProfile.CustomButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.txtSearchBar = new CustomControls.RJControls.RJTextBox();
-            this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
             this.panelBorder2.SuspendLayout();
             this.panelBorder1.SuspendLayout();
@@ -96,27 +93,6 @@
             this.lblHiddenForFocus.Size = new System.Drawing.Size(120, 13);
             this.lblHiddenForFocus.TabIndex = 9;
             this.lblHiddenForFocus.Text = "<Focus Label (Hidden)>";
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.AutoSize = true;
-            this.flowLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanel2);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(42, 225);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(3, 6);
-            this.flowLayoutPanel1.TabIndex = 14;
-            // 
-            // flowLayoutPanel2
-            // 
-            this.flowLayoutPanel2.AutoSize = true;
-            this.flowLayoutPanel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 3);
-            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(0, 3, 3, 3);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(0, 0);
-            this.flowLayoutPanel2.TabIndex = 9;
             // 
             // txtPatientID
             // 
@@ -500,7 +476,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.flowLayoutPanel3);
-            this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.panelBorder2);
             this.Controls.Add(this.lblHiddenForFocus);
             this.Controls.Add(this.PatientHolder);
@@ -510,8 +485,6 @@
             this.Name = "PatientsPage";
             this.Size = new System.Drawing.Size(1663, 758);
             this.Load += new System.EventHandler(this.PatientsPage_Load);
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel1.PerformLayout();
             this.flowLayoutPanel3.ResumeLayout(false);
             this.flowLayoutPanel3.PerformLayout();
             this.panelBorder2.ResumeLayout(false);
@@ -538,7 +511,6 @@
         private System.Windows.Forms.Label lblHiddenForFocus;
         private OrganizationProfile.CustomButton btnSearch;
         private CustomControls.RJControls.RJComboBox cbSort;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
         private System.Windows.Forms.Label txtPatientID;
         private System.Windows.Forms.Label status;
@@ -546,7 +518,6 @@
         private System.Windows.Forms.Label txtGender;
         private System.Windows.Forms.Label txtAge;
         private System.Windows.Forms.Label txtContact;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         public System.Windows.Forms.Label actionLabel;

@@ -18,7 +18,6 @@ namespace Kinesia.Patients
         string currentTab = "All";
         public PatientsPage()
         {
-            this.AutoScaleMode = AutoScaleMode.None;
             this.Anchor = AnchorStyles.Right | AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Bottom;
             this.Dock = DockStyle.Fill;
             InitializeComponent();
