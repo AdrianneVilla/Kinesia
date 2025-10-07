@@ -30,50 +30,59 @@ namespace KinesiaAPI.Controllers
             string? currentTab = null,
             string? sortColumn = "PatientID")
         {
-            var query = _context.Patients.AsQueryable();
+            try
+            {
+                var query = _context.Patients.AsQueryable();
 
-            // will filter by Active / Inactive
-            if(currentTab == "Active")
-            {
-                query = query.Where(p => p.Status == 1);
-            }
-            else if(currentTab == "Inactive")
-            {
-                query = query.Where(p => p.Status == 0);
-            }
+                // will filter by Active / Inactive
+                if (currentTab == "Active")
+                {
+                    query = query.Where(p => p.Status == 1);
+                }
+                else if (currentTab == "Inactive")
+                {
+                    query = query.Where(p => p.Status == 0);
+                }
 
-            // search
-            if(!string.IsNullOrEmpty(searchData))
-            {
-                query = query.Where(p => 
-                p.PatientID.Contains(searchData) || 
-                p.FirstName.Contains(searchData) || 
-                p.LastName.Contains(searchData) || 
-                p.MiddleName.Contains(searchData));
-            }
-            
-            // sorting
-            bool desc = true;
-            switch (sortColumn)
-            {
-                case "Alphabetic (Name)":
-                    query = query.OrderBy(p => p.FirstName);
-                    break;
-                case "Earliest (Date Added)":
-                    query = query.OrderByDescending(p => p.DateAdded);
-                    break;
-                case "Latest (Date Added)":
-                    query = query.OrderBy(p => p.DateAdded);
-                    desc = false;
-                    break;
-                default:
-                    query = query.OrderByDescending(p => p.PatientID);
-                    break;
-            }
+                // search
+                if (!string.IsNullOrEmpty(searchData))
+                {
+                    query = query.Where(p =>
+                    p.PatientID.Contains(searchData) ||
+                    p.FirstName.Contains(searchData) ||
+                    p.LastName.Contains(searchData) ||
+                    p.MiddleName.Contains(searchData));
+                }
 
-            return await query
-                .Select(p => PatientToDisplayPatientsDTO(p))
-                .ToListAsync();
+                // sorting
+                bool desc = true;
+                switch (sortColumn)
+                {
+                    case "Alphabetic (Name)":
+                        query = query.OrderBy(p => p.FirstName);
+                        break;
+                    case "Earliest (Date Added)":
+                        query = query.OrderByDescending(p => p.DateAdded);
+                        break;
+                    case "Latest (Date Added)":
+                        query = query.OrderBy(p => p.DateAdded);
+                        desc = false;
+                        break;
+                    default:
+                        query = query.OrderByDescending(p => p.PatientID);
+                        break;
+                }
+
+                var patients = await query
+                    .Select(p => PatientToDisplayPatientsDTO(p))
+                    .ToListAsync();
+
+                return Ok(patients);
+            } 
+            catch (Exception ex)
+            {
+                return BadRequest("Unable to connect to the server. Please try again.");
+            }
         }
 
         // GET: api/patients/5

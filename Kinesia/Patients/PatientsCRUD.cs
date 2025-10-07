@@ -20,42 +20,35 @@ namespace Kinesia.Patients
         {
             PageObjects.patientsPage.getPatientHolder.Controls.Clear();
 
-            using(var client = new HttpClient())
+            try
             {
-                var url = $"https://localhost:5001/api/patients?searchData={searchData}&currentTab={currentTab}&sortColumn={sortColumn}";
+                using (var client = new HttpClient())
+                {
+                    var url = $"https://localhost:5001/api/patients?searchData={searchData}&currentTab={currentTab}&sortColumn={sortColumn}";
 
-                var response = await client.GetStringAsync(url);
-                var patients = JsonConvert.DeserializeObject<List<DisplayPatientsDTO>>(response);
-                PageObjects.patientsPage.GetPatientGrid.DataSource = patients;
-                PageObjects.patientsPage.GetPatientGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                //foreach(var patient in patients)
-                //{
-                //    // will set the data of every patient to the labels
-                //    var displayPatientControl = new DisplayPatients
-                //    {
-                //        PatientID = patient.PatientID,
-                //        PatientName = $"{patient.FirstName} {patient.MiddleName} {patient.LastName}",
-                //        Age = patient.Age.ToString(),
-                //        Gender = patient.Gender,
-                //        Contact = patient.Contact
-                //    };
+                    var response = await client.GetAsync(url);
 
-                //    // 1 = Active
-                //    // 2 = Inactive
-                //    if (patient.Status == 1)
-                //    {
-                //        displayPatientControl.Status = "Active";
-                //        displayPatientControl.BtnArchive.Tag = "Archive";
-                //    } 
-                //    else
-                //    {
-                //        displayPatientControl.Status = "Inactive";
-                //        displayPatientControl.BtnArchive.BackgroundImage = Properties.Resources.Unarchive;
-                //        displayPatientControl.BtnArchive.Tag = "Unarchive";
-                //    }
-
-                //    PageObjects.patientsPage.getPatientHolder.Controls.Add(displayPatientControl);
-                //}
+                    if (response.IsSuccessStatusCode)
+                    {
+                        // will continue if the status code is 200
+                        var json = await response.Content.ReadAsStringAsync();
+                        var patients = JsonConvert.DeserializeObject<List<DisplayPatientsDTO>>(json);
+                        PageObjects.patientsPage.GetPatientGrid.DataSource = patients;
+                        PageObjects.patientsPage.GetPatientGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    }
+                    else
+                    {
+                        // will show an error dialog if the status code is not 200 (e.g., 500)
+                        CustomDialog.Show("Unable to connect to the server.\nPlease try again.",
+                            "Connection Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                    }
+                }
+            } 
+            catch(Exception ex)
+            {
+                // will show an error dialog if it catches an error like HttpRequestException or DbException
+                CustomDialog.Show("Unable to connect to the server.\nPlease try again.",
+                            "Connection Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
             }
         }
 
