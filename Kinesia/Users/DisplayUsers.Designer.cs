@@ -29,140 +29,146 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DisplayUsers));
-            this.panelBorder1 = new WindowsFormsApp2.CustomButton.PanelBorder();
-            this.btnEdit = new OrganizationProfile.CustomButton();
-            this.btnArchive = new OrganizationProfile.CustomButton();
-            this.btnView = new OrganizationProfile.CustomButton();
-            this.lblRole = new System.Windows.Forms.Label();
-            this.lblUserID = new System.Windows.Forms.Label();
-            this.lblName = new System.Windows.Forms.Label();
-            this.panelBorder1.SuspendLayout();
-            this.SuspendLayout();
+            panelBorder1 = new WindowsFormsApp2.CustomButton.PanelBorder();
+            btnEdit = new OrganizationProfile.CustomButton();
+            btnArchive = new OrganizationProfile.CustomButton();
+            btnView = new OrganizationProfile.CustomButton();
+            lblRole = new System.Windows.Forms.Label();
+            lblUserID = new System.Windows.Forms.Label();
+            lblName = new System.Windows.Forms.Label();
+            panelBorder1.SuspendLayout();
+            SuspendLayout();
             // 
             // panelBorder1
             // 
-            this.panelBorder1.AutoSize = true;
-            this.panelBorder1.BackColor = System.Drawing.Color.White;
-            this.panelBorder1.BorderRadius = 20;
-            this.panelBorder1.Color = System.Drawing.Color.BurlyWood;
-            this.panelBorder1.Controls.Add(this.btnEdit);
-            this.panelBorder1.Controls.Add(this.btnArchive);
-            this.panelBorder1.Controls.Add(this.btnView);
-            this.panelBorder1.Controls.Add(this.lblRole);
-            this.panelBorder1.Controls.Add(this.lblUserID);
-            this.panelBorder1.Controls.Add(this.lblName);
-            this.panelBorder1.ForeColor = System.Drawing.Color.Black;
-            this.panelBorder1.Location = new System.Drawing.Point(3, 3);
-            this.panelBorder1.Name = "panelBorder1";
-            this.panelBorder1.Size = new System.Drawing.Size(1497, 91);
-            this.panelBorder1.TabIndex = 0;
+            panelBorder1.AutoSize = true;
+            panelBorder1.BackColor = System.Drawing.Color.White;
+            panelBorder1.BorderRadius = 20;
+            panelBorder1.Color = System.Drawing.Color.BurlyWood;
+            panelBorder1.Controls.Add(btnEdit);
+            panelBorder1.Controls.Add(btnArchive);
+            panelBorder1.Controls.Add(btnView);
+            panelBorder1.Controls.Add(lblRole);
+            panelBorder1.Controls.Add(lblUserID);
+            panelBorder1.Controls.Add(lblName);
+            panelBorder1.ForeColor = System.Drawing.Color.Black;
+            panelBorder1.Location = new System.Drawing.Point(0, 0);
+            panelBorder1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            panelBorder1.Name = "panelBorder1";
+            panelBorder1.Size = new System.Drawing.Size(1746, 118);
+            panelBorder1.TabIndex = 0;
             // 
             // btnEdit
             // 
-            this.btnEdit.BackColor = System.Drawing.Color.White;
-            this.btnEdit.BackgroundColor = System.Drawing.Color.White;
-            this.btnEdit.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnEdit.BorderRadius = 34;
-            this.btnEdit.BorderSize = 0;
-            this.btnEdit.FlatAppearance.BorderSize = 0;
-            this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEdit.ForeColor = System.Drawing.Color.Transparent;
-            this.btnEdit.Image = ((System.Drawing.Image)(resources.GetObject("btnEdit.Image")));
-            this.btnEdit.Location = new System.Drawing.Point(1284, 25);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(39, 40);
-            this.btnEdit.TabIndex = 10;
-            this.btnEdit.TextColor = System.Drawing.Color.Transparent;
-            this.btnEdit.UseVisualStyleBackColor = false;
-            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            btnEdit.BackColor = System.Drawing.Color.White;
+            btnEdit.BackgroundColor = System.Drawing.Color.White;
+            btnEdit.BorderColor = System.Drawing.Color.PaleVioletRed;
+            btnEdit.BorderRadius = 34;
+            btnEdit.BorderSize = 0;
+            btnEdit.FlatAppearance.BorderSize = 0;
+            btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnEdit.ForeColor = System.Drawing.Color.Transparent;
+            btnEdit.Image = (System.Drawing.Image)resources.GetObject("btnEdit.Image");
+            btnEdit.Location = new System.Drawing.Point(1498, 29);
+            btnEdit.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            btnEdit.Name = "btnEdit";
+            btnEdit.Size = new System.Drawing.Size(46, 46);
+            btnEdit.TabIndex = 10;
+            btnEdit.TextColor = System.Drawing.Color.Transparent;
+            btnEdit.UseVisualStyleBackColor = false;
+            btnEdit.Click += btnEdit_Click;
             // 
             // btnArchive
             // 
-            this.btnArchive.BackColor = System.Drawing.Color.White;
-            this.btnArchive.BackgroundColor = System.Drawing.Color.White;
-            this.btnArchive.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnArchive.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnArchive.BorderRadius = 40;
-            this.btnArchive.BorderSize = 0;
-            this.btnArchive.FlatAppearance.BorderSize = 0;
-            this.btnArchive.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnArchive.ForeColor = System.Drawing.Color.Transparent;
-            this.btnArchive.Image = ((System.Drawing.Image)(resources.GetObject("btnArchive.Image")));
-            this.btnArchive.Location = new System.Drawing.Point(1385, 25);
-            this.btnArchive.Name = "btnArchive";
-            this.btnArchive.Size = new System.Drawing.Size(39, 40);
-            this.btnArchive.TabIndex = 9;
-            this.btnArchive.TextColor = System.Drawing.Color.Transparent;
-            this.btnArchive.UseVisualStyleBackColor = false;
-            this.btnArchive.Click += new System.EventHandler(this.btnArchive_Click);
+            btnArchive.BackColor = System.Drawing.Color.White;
+            btnArchive.BackgroundColor = System.Drawing.Color.White;
+            btnArchive.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            btnArchive.BorderColor = System.Drawing.Color.PaleVioletRed;
+            btnArchive.BorderRadius = 40;
+            btnArchive.BorderSize = 0;
+            btnArchive.FlatAppearance.BorderSize = 0;
+            btnArchive.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnArchive.ForeColor = System.Drawing.Color.Transparent;
+            btnArchive.Image = (System.Drawing.Image)resources.GetObject("btnArchive.Image");
+            btnArchive.Location = new System.Drawing.Point(1616, 29);
+            btnArchive.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            btnArchive.Name = "btnArchive";
+            btnArchive.Size = new System.Drawing.Size(46, 46);
+            btnArchive.TabIndex = 9;
+            btnArchive.TextColor = System.Drawing.Color.Transparent;
+            btnArchive.UseVisualStyleBackColor = false;
+            btnArchive.Click += btnArchive_Click;
             // 
             // btnView
             // 
-            this.btnView.BackColor = System.Drawing.Color.White;
-            this.btnView.BackgroundColor = System.Drawing.Color.White;
-            this.btnView.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnView.BorderRadius = 33;
-            this.btnView.BorderSize = 0;
-            this.btnView.FlatAppearance.BorderSize = 0;
-            this.btnView.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnView.ForeColor = System.Drawing.Color.Transparent;
-            this.btnView.Image = ((System.Drawing.Image)(resources.GetObject("btnView.Image")));
-            this.btnView.Location = new System.Drawing.Point(1175, 25);
-            this.btnView.Name = "btnView";
-            this.btnView.Size = new System.Drawing.Size(39, 40);
-            this.btnView.TabIndex = 8;
-            this.btnView.TextColor = System.Drawing.Color.Transparent;
-            this.btnView.UseVisualStyleBackColor = false;
-            this.btnView.Click += new System.EventHandler(this.btnView_Click);
+            btnView.BackColor = System.Drawing.Color.White;
+            btnView.BackgroundColor = System.Drawing.Color.White;
+            btnView.BorderColor = System.Drawing.Color.PaleVioletRed;
+            btnView.BorderRadius = 33;
+            btnView.BorderSize = 0;
+            btnView.FlatAppearance.BorderSize = 0;
+            btnView.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnView.ForeColor = System.Drawing.Color.Transparent;
+            btnView.Image = (System.Drawing.Image)resources.GetObject("btnView.Image");
+            btnView.Location = new System.Drawing.Point(1371, 29);
+            btnView.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            btnView.Name = "btnView";
+            btnView.Size = new System.Drawing.Size(46, 46);
+            btnView.TabIndex = 8;
+            btnView.TextColor = System.Drawing.Color.Transparent;
+            btnView.UseVisualStyleBackColor = false;
+            btnView.Click += btnView_Click;
             // 
             // lblRole
             // 
-            this.lblRole.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblRole.AutoSize = true;
-            this.lblRole.Font = new System.Drawing.Font("Poppins", 10F);
-            this.lblRole.Location = new System.Drawing.Point(837, 35);
-            this.lblRole.Name = "lblRole";
-            this.lblRole.Size = new System.Drawing.Size(42, 25);
-            this.lblRole.TabIndex = 3;
-            this.lblRole.Text = "Role";
+            lblRole.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            lblRole.AutoSize = true;
+            lblRole.Font = new System.Drawing.Font("Poppins", 10F);
+            lblRole.Location = new System.Drawing.Point(976, 40);
+            lblRole.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            lblRole.Name = "lblRole";
+            lblRole.Size = new System.Drawing.Size(42, 25);
+            lblRole.TabIndex = 3;
+            lblRole.Text = "Role";
             // 
             // lblUserID
             // 
-            this.lblUserID.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblUserID.AutoSize = true;
-            this.lblUserID.Font = new System.Drawing.Font("Poppins", 10F);
-            this.lblUserID.Location = new System.Drawing.Point(19, 35);
-            this.lblUserID.Name = "lblUserID";
-            this.lblUserID.Size = new System.Drawing.Size(55, 25);
-            this.lblUserID.TabIndex = 2;
-            this.lblUserID.Text = "UserID";
+            lblUserID.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            lblUserID.AutoSize = true;
+            lblUserID.Font = new System.Drawing.Font("Poppins", 10F);
+            lblUserID.Location = new System.Drawing.Point(22, 40);
+            lblUserID.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            lblUserID.Name = "lblUserID";
+            lblUserID.Size = new System.Drawing.Size(55, 25);
+            lblUserID.TabIndex = 2;
+            lblUserID.Text = "UserID";
             // 
             // lblName
             // 
-            this.lblName.AutoSize = true;
-            this.lblName.Font = new System.Drawing.Font("Poppins", 10F, System.Drawing.FontStyle.Bold);
-            this.lblName.Location = new System.Drawing.Point(279, 35);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(57, 25);
-            this.lblName.TabIndex = 0;
-            this.lblName.Text = "Name";
+            lblName.AutoSize = true;
+            lblName.Font = new System.Drawing.Font("Poppins", 10F, System.Drawing.FontStyle.Bold);
+            lblName.Location = new System.Drawing.Point(326, 40);
+            lblName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            lblName.Name = "lblName";
+            lblName.Size = new System.Drawing.Size(57, 25);
+            lblName.TabIndex = 0;
+            lblName.Text = "Name";
             // 
             // DisplayUsers
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
-            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(249)))), ((int)(((byte)(238)))));
-            this.Controls.Add(this.panelBorder1);
-            this.Name = "DisplayUsers";
-            this.Size = new System.Drawing.Size(1503, 97);
-            this.panelBorder1.ResumeLayout(false);
-            this.panelBorder1.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            AutoSize = true;
+            AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            BackColor = System.Drawing.Color.FromArgb(207, 249, 238);
+            Controls.Add(panelBorder1);
+            Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            Name = "DisplayUsers";
+            Size = new System.Drawing.Size(1750, 121);
+            panelBorder1.ResumeLayout(false);
+            panelBorder1.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
 
         }
 
