@@ -308,8 +308,8 @@
             LogHolder.Location = new System.Drawing.Point(72, 282);
             LogHolder.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             LogHolder.Name = "LogHolder";
-            LogHolder.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            LogHolder.Size = new System.Drawing.Size(794, 5180);
+            LogHolder.Padding = new System.Windows.Forms.Padding(6);
+            LogHolder.Size = new System.Drawing.Size(794, 10556);
             LogHolder.TabIndex = 8;
             // 
             // panelBorder1
@@ -327,7 +327,7 @@
             panelBorder1.Location = new System.Drawing.Point(284, 51);
             panelBorder1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             panelBorder1.Name = "panelBorder1";
-            panelBorder1.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            panelBorder1.Padding = new System.Windows.Forms.Padding(6);
             panelBorder1.Size = new System.Drawing.Size(582, 59);
             panelBorder1.TabIndex = 15;
             // 
@@ -375,7 +375,7 @@
             txtSearchBar.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             txtSearchBar.ForeColor = System.Drawing.Color.FromArgb(64, 64, 64);
             txtSearchBar.Location = new System.Drawing.Point(56, 10);
-            txtSearchBar.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            txtSearchBar.Margin = new System.Windows.Forms.Padding(5);
             txtSearchBar.Multiline = false;
             txtSearchBar.Name = "txtSearchBar";
             txtSearchBar.Padding = new System.Windows.Forms.Padding(12, 8, 12, 0);
@@ -394,7 +394,7 @@
             // 
             lblHiddenForFocus.AutoSize = true;
             lblHiddenForFocus.ForeColor = System.Drawing.Color.White;
-            lblHiddenForFocus.Location = new System.Drawing.Point(398, 95);
+            lblHiddenForFocus.Location = new System.Drawing.Point(315, 123);
             lblHiddenForFocus.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             lblHiddenForFocus.Name = "lblHiddenForFocus";
             lblHiddenForFocus.Size = new System.Drawing.Size(135, 15);
@@ -403,8 +403,8 @@
             // 
             // LogsPage
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             AutoSize = true;
             AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             BackColor = System.Drawing.Color.White;
@@ -417,7 +417,7 @@
             Controls.Add(nameHolder);
             Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             Name = "LogsPage";
-            Size = new System.Drawing.Size(726, 5366);
+            Size = new System.Drawing.Size(726, 10742);
             Load += LogsPage_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridPatients).EndInit();
             panelBorder2.ResumeLayout(false);

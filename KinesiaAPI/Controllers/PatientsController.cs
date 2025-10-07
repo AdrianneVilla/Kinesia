@@ -25,7 +25,7 @@ namespace KinesiaAPI.Controllers
         // GET: api/patients?searchData={}&currentTab={}&sortColumn={}
         [HttpGet]
 
-        public async Task<ActionResult<IEnumerable<PatientsDTO>>> GetPatients(
+        public async Task<ActionResult<IEnumerable<DisplayPatientsDTO>>> GetPatients(
             string? searchData = null,
             string? currentTab = null,
             string? sortColumn = "PatientID")
@@ -72,7 +72,7 @@ namespace KinesiaAPI.Controllers
             }
 
             return await query
-                .Select(p => PatientToDTO(p))
+                .Select(p => PatientToDisplayPatientsDTO(p))
                 .ToListAsync();
         }
 
@@ -253,6 +253,16 @@ namespace KinesiaAPI.Controllers
                 DateAdded = patients.DateAdded,
                 LastArchiveDate = patients.LastArchiveDate.HasValue ? patients.LastArchiveDate.Value.ToString() : "N/A",
                 Status = patients.Status
+            };
+
+        public static DisplayPatientsDTO PatientToDisplayPatientsDTO(Patients patients) =>
+            new DisplayPatientsDTO
+            {
+                PatientID = patients.PatientID,
+                PatientName = $"{patients.FirstName} {patients.MiddleName} {patients.LastName}",
+                Age = (int)((DateTime.Now - patients.Birthdate).TotalDays / 365.25),
+                Gender = patients.Gender,
+                Status = patients.Status == 1 ? "Active" : "Inactive"
             };
     }
 }

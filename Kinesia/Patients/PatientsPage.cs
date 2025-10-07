@@ -25,11 +25,11 @@ namespace Kinesia.Patients
             this.Anchor = AnchorStyles.Right | AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Bottom;
             this.Dock = DockStyle.Fill;
 
-            InitializeComponent();
-             LoadDataAsync();  
+            InitializeComponent();  
         }
 
         public PanelBorder getPatientHolder { get { return PatientHolder; } }
+        public DataGridView GetPatientGrid { get { return dataGridPatients; } }
         public string CurrentTab { get { return currentTab; } }
 
         private async void PatientsPage_Load(object sender, EventArgs e)
@@ -157,7 +157,7 @@ namespace Kinesia.Patients
 
                     btnInactive.BackgroundColor = Color.Gainsboro;
                     btnInactive.ForeColor = Color.Gray;
-
+                    //dataGridPatients.Columns[-1].HeaderText = "Archive / Unarchive";
                     //actionLabel.Text = "Archive / Unarchive";
                     //actionLabel.ForeColor = Color.Black;
                     break;
@@ -171,6 +171,7 @@ namespace Kinesia.Patients
 
                     btnInactive.BackgroundColor = Color.Gainsboro;
                     btnInactive.ForeColor = Color.Gray;
+                    //dataGridPatients.Columns[-1].HeaderText = "Archive";
                     //actionLabel.Text = "Archive";
                     //actionLabel.ForeColor = Color.Black;
                     break;
@@ -184,20 +185,21 @@ namespace Kinesia.Patients
 
                     btnActive.BackgroundColor = Color.Gainsboro;
                     btnActive.ForeColor = Color.Gray;
-
+                    //dataGridPatients.Columns[-1].HeaderText = "Unarchive";
                     //actionLabel.Text = "Unarchive";
                     //actionLabel.ForeColor = Color.Black;
                     break;
             }
         }
 
+        private async void cbSort_OnSelectedIndexChanged(object sender, EventArgs e)
+        {
+            // will refresh patients list every time the sort value was changed
+            await Queries.PatientQueries.DisplayPatients(searchData, currentTab, cbSort.Texts);
+        }
+
         //DITO MAG START PRE, NAGPATULONG LANG AKO KAY KUMPARENG PERPLIXITY
 
-        //private async void cbSort_OnSelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    // will refresh patients list every time the sort value was changed
-        //    await Queries.PatientQueries.DisplayPatients(searchData, currentTab, cbSort.Texts);
-        //}
 
         //private async Task LoadDataAsync()
         //{
