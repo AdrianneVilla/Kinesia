@@ -46,7 +46,7 @@ namespace Kinesia.Patients
             } 
             catch(Exception ex)
             {
-                // will show an error dialog if it catches an error like HttpRequestException or DbException
+                // will show an error dialog if it catches a client-side error.
                 CustomDialog.Show("Unable to connect to the server.\nPlease try again.",
                             "Connection Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
             }
@@ -55,50 +55,70 @@ namespace Kinesia.Patients
         public async Task GetPatientDetails(string patientID)
         {
             // GetPatientDetails overload for Patient Details page
-            using (var client = new HttpClient())
+            try
             {
-                var url = $"https://localhost:5001/api/patients/{patientID}";
-
-                var response = await client.GetStringAsync(url);
-                var patient = JsonConvert.DeserializeObject<PatientsDTO>(response);
-
-                // will create PatientDetails user control
-                var patientDetails = new PatientDetails();
-
-                // will set the data of the patient to the labels
-                patientDetails.PatientID = patient.PatientID;
-                patientDetails.SelectedPatient = patient.PatientID;
-                patientDetails.PatientName = $"{patient.FirstName} {patient.MiddleName} {patient.LastName}";
-                patientDetails.Gender = patient.Gender;
-                patientDetails.Contact = patient.Contact;
-                patientDetails.Age = patient.Age.ToString();
-                patientDetails.Address = patient.Address;
-                patientDetails.Birthdate = patient.Birthdate.ToString("yyyy-MM-dd");
-
-                // 1 = Active
-                // 0 = Inactive
-                if(patient.Status == 1)
+                using (var client = new HttpClient())
                 {
-                    patientDetails.Status = "Active";
-                    patientDetails.BtnArchive.Tag = "Archive";
-                } 
-                else
-                {
-                    patientDetails.Status = "Inactive";
-                    patientDetails.BtnArchive.Tag = "Unarchive";
-                    patientDetails.BtnArchive.Image = Properties.Resources.Unarchive;
-                    patientDetails.BtnArchive.Text = "Unarchive Patient";
-                    patientDetails.BtnArchive.ForeColor = Color.FromArgb(18, 90, 211);
-                    patientDetails.BtnArchive.BackColor = Color.FromArgb(223, 236, 250);
-                    patientDetails.BtnArchive.BorderColor = Color.FromArgb(18, 90, 211);
+                    var url = $"https://localhost:5001/api/patients/{patientID}";
+
+                    var response = await client.GetAsync(url);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var json = await response.Content.ReadAsStringAsync();
+                        var patient = JsonConvert.DeserializeObject<PatientsDTO>(json);
+
+                        // will create PatientDetails user control
+                        var patientDetails = new PatientDetails();
+
+                        // will set the data of the patient to the labels
+                        patientDetails.PatientID = patient.PatientID;
+                        patientDetails.SelectedPatient = patient.PatientID;
+                        patientDetails.PatientName = $"{patient.FirstName} {patient.MiddleName} {patient.LastName}";
+                        patientDetails.Gender = patient.Gender;
+                        patientDetails.Contact = patient.Contact;
+                        patientDetails.Age = patient.Age.ToString();
+                        patientDetails.Address = patient.Address;
+                        patientDetails.Birthdate = patient.Birthdate.ToString("yyyy-MM-dd");
+
+                        // 1 = Active
+                        // 0 = Inactive
+                        if (patient.Status == 1)
+                        {
+                            patientDetails.Status = "Active";
+                            patientDetails.BtnArchive.Tag = "Archive";
+                        }
+                        else
+                        {
+                            patientDetails.Status = "Inactive";
+                            patientDetails.BtnArchive.Tag = "Unarchive";
+                            patientDetails.BtnArchive.Image = Properties.Resources.Unarchive;
+                            patientDetails.BtnArchive.Text = "Unarchive Patient";
+                            patientDetails.BtnArchive.ForeColor = Color.FromArgb(18, 90, 211);
+                            patientDetails.BtnArchive.BackColor = Color.FromArgb(223, 236, 250);
+                            patientDetails.BtnArchive.BorderColor = Color.FromArgb(18, 90, 211);
+                        }
+
+                        patientDetails.DateAdded = patient.DateAdded.ToString();
+                        patientDetails.LastArchiveDate = patient.LastArchiveDate;
+
+                        PageObjects.RemoveResources(ref PageObjects.CurrentControl);
+                        PageObjects.dashboard.ContentsPanel.Controls.Add(patientDetails);
+                        PageObjects.CurrentControl = patientDetails;
+                    }
+                    else
+                    {
+                        // will show an error dialog if the status code is not 200 (e.g., 500)
+                        CustomDialog.Show("Unable to connect to the server.\nPlease try again.",
+                            "Connection Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                    }
                 }
-
-                patientDetails.DateAdded = patient.DateAdded.ToString();
-                patientDetails.LastArchiveDate = patient.LastArchiveDate;
-
-                PageObjects.RemoveResources(ref PageObjects.CurrentControl);
-                PageObjects.dashboard.ContentsPanel.Controls.Add(patientDetails);
-                PageObjects.CurrentControl = patientDetails;
+            }
+            catch(Exception ex)
+            {
+                // will show an error dialog if it catches a client-side error.
+                CustomDialog.Show("Unable to connect to the server.\nPlease try again.",
+                            "Connection Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
             }
         }
         

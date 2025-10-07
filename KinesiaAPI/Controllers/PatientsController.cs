@@ -89,14 +89,21 @@ namespace KinesiaAPI.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<PatientsDTO>> GetPatients(string id)
         {
-            var patients = await _context.Patients.FindAsync(id);
-
-            if (patients == null)
+            try
             {
-                return NotFound();
-            }
+                var patients = await _context.Patients.FindAsync(id);
 
-            return PatientToDTO(patients);
+                if (patients == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok(PatientToDTO(patients));
+            }
+            catch(Exception ex)
+            {
+                return BadRequest("Unable to connect to the server. Please try again.");
+            }
         }
 
         // POST: api/patients/check-existing
