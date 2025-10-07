@@ -21,22 +21,29 @@ namespace KinesiaAPI.Controllers
         [HttpPost("login")]
         public async Task<ActionResult<LoginResponse>> Login(LoginRequest request)
         {
-            var user = await _context.Users.FirstOrDefaultAsync(u => u.Username == request.Username);
-
-            if(user == null)
+            try
             {
-                return new LoginResponse { Success = false, Message = "Username cannot be found" };
-            }
+                var user = await _context.Users.FirstOrDefaultAsync(u => u.Username == request.Username);
 
-            // will check if the password and hashed + salted password input is the same
-            var hashedInput = CustomSecurity.HashPassword(request.Password, user.Salt);
+                if (user == null)
+                {
+                    return new LoginResponse { Success = false, Message = "Username cannot be found" };
+                }
 
-            if(hashedInput != user.Password)
+                // will check if the password and hashed + salted password input is the same
+                var hashedInput = CustomSecurity.HashPassword(request.Password, user.Salt);
+
+                if (hashedInput != user.Password)
+                {
+                    return new LoginResponse { Success = false, Message = "Username or Password incorrect" };
+                }
+
+                return new LoginResponse { Success = true, Message = "Login Successful", UserID = user.UserID };
+            } 
+            catch (Exception ex)
             {
-                return new LoginResponse { Success = false, Message = "Username or Password incorrect" };
+                return new LoginResponse { Success = false, Message = "Unable to connect to the server. Please try again." };
             }
-
-            return new LoginResponse { Success = true, Message = "Login Successful", UserID = user.UserID };
         }
     }
 }

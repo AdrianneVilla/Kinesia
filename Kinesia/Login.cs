@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Net.Http;
@@ -341,7 +342,14 @@ namespace Kinesia
                     SessionManager.UserID = loginResult.UserID;
                     await Queries.LogsQueries.AddLog("Has Logged In", "Sessions");
           
-                } 
+                }
+                else if(loginResult.Message.Trim().Equals("Unable to connect to the server. Please try again."))
+                {
+                    loadingScreen.Close();
+                    // will show an error dialog if the password and hashed + salted password input is different
+                    CustomDialog.Show("Unable to connect to the server. Please try again.\n" +
+                        "Please try again.", "Login Alert", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                }
                 else
                 {
                     loadingScreen.Close();
@@ -355,30 +363,37 @@ namespace Kinesia
 
         public async Task<LoginResponse> LoginAsync(string username, string password)
         {
-            using (var client = new HttpClient { BaseAddress = new Uri("https://localhost:5001/") })
+            try
             {
-                var request = new LoginRequest
+                using (var client = new HttpClient { BaseAddress = new Uri("https://localhost:5001/") })
                 {
-                    Username = username,
-                    Password = password
-                };
-
-                var json = JsonConvert.SerializeObject(request);
-                var content = new StringContent(json, Encoding.UTF8, "application/json");
-
-                var response = await client.PostAsync("api/auth/login", content);
-
-                if (!response.IsSuccessStatusCode)
-                {
-                    return new LoginResponse
+                    var request = new LoginRequest
                     {
-                        Success = false,
-                        Message = $"Server error {response.StatusCode}"
+                        Username = username,
+                        Password = password
                     };
-                }
 
-                var responsContent = await response.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<LoginResponse>(responsContent);
+                    var json = JsonConvert.SerializeObject(request);
+                    var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                    var response = await client.PostAsync("api/auth/login", content);
+
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        return new LoginResponse
+                        {
+                            Success = false,
+                            Message = $"Server error {response.StatusCode}"
+                        };
+                    }
+
+                    var responsContent = await response.Content.ReadAsStringAsync();
+                    return JsonConvert.DeserializeObject<LoginResponse>(responsContent);
+                }
+            }
+            catch (HttpRequestException ex)
+            {
+                return new LoginResponse { Success = false, Message = "Unable to connect to the server. Please try again." };
             }
         }
 
