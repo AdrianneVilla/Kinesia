@@ -24,7 +24,7 @@ namespace KinesiaAPI.Controllers
 
         // GET: api/users?searchData={}&currentTab={}&sortColumn={}
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<UsersDTO>>> GetUsers(
+        public async Task<ActionResult<IEnumerable<DisplayUsersDTO>>> GetUsers(
             string? searchData = null,
             string? currentTab = null,
             string? sortColumn = "UserID")
@@ -71,7 +71,7 @@ namespace KinesiaAPI.Controllers
             }
 
             return await query
-                .Select(u => UsersToDTO(u))
+                .Select(u => UsersToDisplayUsersDTO(u))
                 .ToListAsync();
         }
 
@@ -262,6 +262,15 @@ namespace KinesiaAPI.Controllers
                 DateAdded = users.DateAdded,
                 LastArchiveDate = users.LastArchiveDate.HasValue ? users.LastArchiveDate.Value.ToString() : "N/A",
                 Status = users.Status
+            };
+
+        public static DisplayUsersDTO UsersToDisplayUsersDTO(Users users) =>
+            new DisplayUsersDTO
+            {
+                UserID = users.UserID,
+                UserName = $"{users.FirstName} {users.MiddleName} {users.LastName}",
+                Role = users.Role,
+                Status = users.Status == 1 ? "Active" : "Inactive"
             };
     }
 }

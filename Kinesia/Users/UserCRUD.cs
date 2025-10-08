@@ -30,7 +30,7 @@ namespace Kinesia.Users
                 if (response.IsSuccessStatusCode)
                 {
                     var json = await response.Content.ReadAsStringAsync();
-                    var users = JsonConvert.DeserializeObject<List<UsersDTO>>(json);
+                    var users = JsonConvert.DeserializeObject<List<DisplayUsersDTO>>(json);
                     PageObjects.userPage.GetUserGrid.DataSource = users;
                     PageObjects.userPage.GetUserGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                     var dataGrid = PageObjects.userPage.dataGridUsers;
@@ -41,38 +41,8 @@ namespace Kinesia.Users
                     AddActionButtons();
 
                     // Add spacing on the datagridview for better visualization
-                    StyleDataGridWithSpacing(dataGrid);
-
-
-           
+                    StyleDataGridWithSpacing(dataGrid);           
                 }
-
-
-                //foreach(var user in users)
-                //{
-                //    // will create user control for every users
-                //    var displayUserControl = new DisplayUsers();
-
-                //    // will set the data of user to label
-                //    displayUserControl.UserID = user.UserID;
-                //    displayUserControl.Name = $"{user.FirstName} {user.MiddleName} {user.LastName}";
-                //    displayUserControl.Role = user.Role;
-
-                //    // 0 = Inactive
-                //    // 1 = Active
-                //    if (user.Status == 0)
-                //    {
-                //        displayUserControl.BtnArchive.Image = Properties.Resources.Unarchive;
-                //        displayUserControl.BtnArchive.Tag = "Unarchive";
-                //    }
-                //    else
-                //    {
-                //        displayUserControl.BtnArchive.Tag = "Archive";
-                //    }
-
-                //    // will add the user control to UserHolder
-                //    //PageObjects.userPage.getUserHolder.Controls.Add(displayUserControl);
-                //}
             }
         }
 
