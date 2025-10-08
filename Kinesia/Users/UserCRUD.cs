@@ -20,36 +20,49 @@ namespace Kinesia.Users
         public async Task DisplayUsers(string searchData, string currentTab, string sortColumn)
         {
             //PageObjects.userPage.getUserHolder.Controls.Clear();
-
-            using (var client = new HttpClient())
+            try
             {
-                var url = $"https://localhost:5001/api/users?searchData={searchData}&currentTab={currentTab}&sortColumn={sortColumn}";
-
-                var response = await client.GetAsync(url);
-
-                if (response.IsSuccessStatusCode)
+                using (var client = new HttpClient())
                 {
-                    var json = await response.Content.ReadAsStringAsync();
-                    var users = JsonConvert.DeserializeObject<List<DisplayUsersDTO>>(json);
-                    PageObjects.userPage.GetUserGrid.DataSource = users;
-                    PageObjects.userPage.GetUserGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                    var dataGrid = PageObjects.userPage.dataGridUsers;
-                    dataGrid.DataSource = users;
-                    dataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    var url = $"https://localhost:5001/api/users?searchData={searchData}&currentTab={currentTab}&sortColumn={sortColumn}";
 
-                    // Add button column if it doesn't exist
-                    AddActionButtons();
+                    var response = await client.GetAsync(url);
 
-                    // Add spacing on the datagridview for better visualization
-                    StyleDataGridWithSpacing(dataGrid);           
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var json = await response.Content.ReadAsStringAsync();
+                        var users = JsonConvert.DeserializeObject<List<DisplayUsersDTO>>(json);
+                        PageObjects.userPage.GetUserGrid.DataSource = users;
+                        PageObjects.userPage.GetUserGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                        var dataGrid = PageObjects.userPage.GetUserGrid;
+                        dataGrid.DataSource = users;
+                        dataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+                        // Add button column if it doesn't exist
+                        AddActionButtons();
+
+                        // Add spacing on the datagridview for better visualization
+                        StyleDataGridWithSpacing(dataGrid);
+                    }
+                    else
+                    {
+                        // will show an error dialog if the status code is not 200 (e.g., 500)
+                        CustomDialog.Show("Unable to connect to the server.\nPlease try again.",
+                               "Connection Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                // will show an error dialog if it catches a client-side error.
+                CustomDialog.Show("Unable to connect to the server.\nPlease try again.",
+                            "Connection Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
             }
         }
 
         public async Task GetUserDetails(string userID)
         {
             // GetUserDetails overload for User Details page
-
             try
             {
                 using (var client = new HttpClient())
@@ -66,6 +79,7 @@ namespace Kinesia.Users
 
                         // will create user control for user details
                         var userDetails = new UserDetails();
+
                         // will set the data of the user to the labels
                         userDetails.UserID = user.UserID;
                         userDetails.SelectedUser = $"{user.FirstName} {user.MiddleName} {user.LastName}";
@@ -99,14 +113,17 @@ namespace Kinesia.Users
                             userDetails.BtnArchive.BorderColor = Color.FromArgb(18, 90, 211);
                         }
 
-
                         PageObjects.RemoveResources(ref PageObjects.CurrentControl);
                         PageObjects.dashboard.ContentsPanel.Controls.Add(userDetails);
                         PageObjects.CurrentControl = userDetails;
                     }
+                    else
+                    {
+                        // will show an error dialog if the status code is not 200 (e.g., 500)
+                        CustomDialog.Show("Unable to connect to the server.\nPlease try again.",
+                            "Connection Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                    }
                 }
-
-
             }
             catch (Exception ex)
             {
@@ -343,29 +360,15 @@ namespace Kinesia.Users
         {
             var dataGrid = PageObjects.userPage.GetUserGrid;
 
-            dataGrid.CellMouseEnter -= DataGrid_CellMouseEnter;
-            dataGrid.CellMouseLeave -= DataGrid_CellMouseLeave;
-            dataGrid.CellMouseMove -= DataGrid_CellMouseMove;
-            dataGrid.ColumnHeaderMouseClick -= DataGrid_ColumnHeaderMouseClick;
-            dataGrid.CellPainting -= DataGrid_CellPainting;
 
 
-
-            dataGrid.CellMouseEnter += DataGrid_CellMouseEnter;
-            dataGrid.CellMouseLeave += DataGrid_CellMouseLeave;
-            dataGrid.CellMouseMove += DataGrid_CellMouseMove;
-            dataGrid.ColumnHeaderMouseClick += DataGrid_ColumnHeaderMouseClick;
-            dataGrid.CellPainting += DataGrid_CellPainting;
-
-
-
-            if (dataGrid.Columns["Select"] == null)
+            if (dataGrid.Columns["SelectButton"] == null)
             {
                 DataGridViewButtonColumn selectBtn = new DataGridViewButtonColumn();
                 selectBtn.Name = "SelectButton";
                 selectBtn.HeaderText = "Select";
                 selectBtn.UseColumnTextForButtonValue = true;
-                selectBtn.Width = 80;
+                selectBtn.Width = 100;
                 selectBtn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
 
                 dataGrid.Columns.Add(selectBtn);
@@ -397,114 +400,6 @@ namespace Kinesia.Users
             dataGrid.CellPainting += DataGrid_CellPainting;
         }
 
-        private Point hoveredCell = new Point(-1, -1);
-        private void DataGrid_CellMouseMove(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            var dataGrid = PageObjects.userPage.GetUserGrid;
-
-            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
-            {
-                string columnName = dataGrid.Columns[e.ColumnIndex].Name;
-
-                if (columnName == "SelectButton" || columnName == "EditButton" || columnName == "ArchiveButton")
-                {
-                    Point newHoveredCell = new Point(e.ColumnIndex, e.RowIndex);
-
-                    // Only update if hovering over a different cell
-                    if (hoveredCell != newHoveredCell)
-                    {
-                        hoveredCell = newHoveredCell;
-                        dataGrid.Cursor = Cursors.Hand;
-
-                        // Invalidate the entire grid for reliable repaint
-                        dataGrid.Invalidate();
-                    }
-                }
-
-                else
-                {
-                    // not hoverring over a button column
-
-                    if (hoveredCell.X != -1)
-                    {
-                        hoveredCell = new Point(-1, -1);
-                        dataGrid.Cursor = Cursors.Default;
-                        dataGrid.Invalidate();
-                    }
-                }
-            }
-        }
-
-        private void DataGrid_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
-        {
-            var dataGrid = PageObjects.userPage.GetUserGrid;
-
-            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
-            {
-                string columnName = dataGrid.Columns[e.ColumnIndex].Name;
-
-                if (columnName == "SelectButton" || columnName == "EditButton" || columnName == "ArchiveButton")
-                {
-                    hoveredCell = new Point(e.ColumnIndex, e.RowIndex);
-                    dataGrid.Cursor = Cursors.Hand;
-
-                    // Use Invalidate() instead of InvalidateCell()
-                    dataGrid.Invalidate();
-                }
-            }
-
-        }
-
-        private void DataGrid_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
-        {
-            var dataGrid = PageObjects.userPage.GetUserGrid;
-
-            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
-            {
-                string columnName = dataGrid.Columns[e.ColumnIndex].Name;
-
-                if (columnName == "SelectButton" || columnName == "EditButton" || columnName == "ArchiveButton")
-                {
-                    dataGrid.Cursor = Cursors.Default;
-                    hoveredCell = new Point(-1, -1);
-
-                    // Use Invalidate() instead of InvalidateCell()
-                    dataGrid.Invalidate();
-                }
-            }
-        }
-
-        private async void DataGrid_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            var dataGrid = PageObjects.userPage.GetUserGrid;
-
-            // Get the clicked column
-            if (e.ColumnIndex >= 0)
-            {
-                string columnName = dataGrid.Columns[e.ColumnIndex].Name;
-
-                // Don't sort on button columns
-                if (columnName == "Select" || columnName == "EditButton" || columnName == "ArchiveButton")
-                    return;
-
-                // Get current sort order
-                string sortColumn = columnName;
-
-                // Toggle sort direction
-                if (dataGrid.Columns[e.ColumnIndex].HeaderCell.SortGlyphDirection == SortOrder.Ascending)
-                {
-                    sortColumn += " DESC";
-                    dataGrid.Columns[e.ColumnIndex].HeaderCell.SortGlyphDirection = SortOrder.Descending;
-                }
-                else
-                {
-                    sortColumn += " ASC";
-                    dataGrid.Columns[e.ColumnIndex].HeaderCell.SortGlyphDirection = SortOrder.Ascending;
-                }
-
-
-            }
-        }
 
         private void DataGrid_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
@@ -514,22 +409,10 @@ namespace Kinesia.Users
             {
                 string columnName = dataGrid.Columns[e.ColumnIndex].Name;
 
-                if (columnName == "Select" || columnName == "EditButton" || columnName == "ArchiveButton")
+                if (columnName == "SelectButton" || columnName == "EditButton" || columnName == "ArchiveButton")
                 {
-                    bool isHovered = (hoveredCell.X == e.ColumnIndex && hoveredCell.Y == e.RowIndex);
-
-                    if (isHovered)
-                    {
-                        // hovered background
-                        e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(248, 245, 250)), e.CellBounds);
-                    }
-
-                    else
-                    {
-                        // Normal background
-                        e.Graphics.FillRectangle(new SolidBrush(dataGrid.DefaultCellStyle.BackColor), e.CellBounds);
-                    }
-
+                    e.Graphics.FillRectangle(new SolidBrush(dataGrid.DefaultCellStyle.BackColor), e.CellBounds);
+     
                     Image icon = null;
                     if (columnName == "SelectButton")
                         icon = Properties.Resources.newSelect;
@@ -552,8 +435,6 @@ namespace Kinesia.Users
                         }
                     }
 
-
-
                     if (icon != null)
                     {
                         int iconWidth = 20;
@@ -572,15 +453,23 @@ namespace Kinesia.Users
 
         private void StyleDataGridWithSpacing(DataGridView dataGrid)
         {
-            //cell styling with padding
+            
+            EnableDoubleBuffering(dataGrid);
 
+            //cell styling with padding
             dataGrid.DefaultCellStyle.Padding = new Padding(15, 10, 15, 10);
 
             // row height
-
             dataGrid.RowTemplate.Height = 50;
 
             dataGrid.BorderStyle = BorderStyle.None;
+        }
+
+        private void EnableDoubleBuffering(DataGridView dataGridView)
+        {
+            typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
+                System.Reflection.BindingFlags.Instance |
+                System.Reflection.BindingFlags.SetProperty, null, dataGridView, new object[] { true });
         }
 
     }

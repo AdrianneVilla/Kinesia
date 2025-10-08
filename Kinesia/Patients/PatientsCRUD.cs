@@ -340,20 +340,6 @@ namespace Kinesia.Patients
         {
             var dataGrid = PageObjects.patientsPage.GetPatientGrid;
 
-            dataGrid.CellMouseEnter -= DataGrid_CellMouseEnter;
-            dataGrid.CellMouseLeave -= DataGrid_CellMouseLeave;
-            dataGrid.CellMouseMove -= DataGrid_CellMouseMove;
-            dataGrid.ColumnHeaderMouseClick -= DataGrid_ColumnHeaderMouseClick;
-            dataGrid.CellPainting -= DataGrid_CellPainting;
-          
-
-         
-            dataGrid.CellMouseEnter += DataGrid_CellMouseEnter;
-            dataGrid.CellMouseLeave += DataGrid_CellMouseLeave;
-            dataGrid.CellMouseMove += DataGrid_CellMouseMove;  
-            dataGrid.ColumnHeaderMouseClick += DataGrid_ColumnHeaderMouseClick;
-            dataGrid.CellPainting += DataGrid_CellPainting;
-            
 
           
             if (dataGrid.Columns["ViewButton"] == null)
@@ -397,116 +383,6 @@ namespace Kinesia.Patients
             dataGrid.CellPainting += DataGrid_CellPainting;
         }
 
-        // for smooth hover tracking
-        private Point hoveredCell = new Point(-1, -1);
-        private void DataGrid_CellMouseMove(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            var dataGrid = PageObjects.patientsPage.GetPatientGrid;
-
-            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
-            {
-                string columnName = dataGrid.Columns[e.ColumnIndex].Name;
-
-                if (columnName == "ViewButton" || columnName == "EditButton" || columnName == "ArchiveButton")
-                {
-                    Point newHoveredCell = new Point(e.ColumnIndex, e.RowIndex);
-
-                    // Only update if hovering over a different cell
-                    if (hoveredCell != newHoveredCell)
-                    {
-                        hoveredCell = newHoveredCell;
-                        dataGrid.Cursor = Cursors.Hand;
-
-                        // Invalidate the entire grid for reliable repaint
-                        dataGrid.Invalidate();
-                    }
-                }
-                else
-                {
-                    // Not hovering over a button column
-                    if (hoveredCell.X != -1)
-                    {
-                        hoveredCell = new Point(-1, -1);
-                        dataGrid.Cursor = Cursors.Default;
-                        dataGrid.Invalidate();
-                    }
-                }
-            }
-        }
-
-        private void DataGrid_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
-        {
-            var dataGrid = PageObjects.patientsPage.GetPatientGrid;
-
-
-            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
-            {
-                string columnName = dataGrid.Columns[e.ColumnIndex].Name;
-
-                if (columnName == "ViewButton" || columnName == "EditButton" || columnName == "ArchiveButton")
-                {
-                    hoveredCell = new Point(e.ColumnIndex, e.RowIndex);
-                    dataGrid.Cursor = Cursors.Hand;
-
-                    // Use Invalidate() instead of InvalidateCell()
-                    dataGrid.Invalidate();
-                }
-            }
-
-        }
-
-        private void DataGrid_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
-        {
-            var dataGrid = PageObjects.patientsPage.GetPatientGrid;
-
-            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
-            {
-                string columnName = dataGrid.Columns[e.ColumnIndex].Name;
-
-                if (columnName == "ViewButton" || columnName == "EditButton" || columnName == "ArchiveButton")
-                {
-                    dataGrid.Cursor = Cursors.Default;
-                    hoveredCell = new Point(-1, -1);
-
-                    // Use Invalidate() instead of InvalidateCell()
-                    dataGrid.Invalidate();
-                }
-            }
-        }
-      
-
-
-        private async void DataGrid_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            var dataGrid = PageObjects.patientsPage.GetPatientGrid;
-
-            // Get the clicked column
-            if (e.ColumnIndex >= 0)
-            {
-                string columnName = dataGrid.Columns[e.ColumnIndex].Name;
-
-                // Don't sort on button columns
-                if (columnName == "ViewButton" || columnName == "EditButton" || columnName == "ArchiveButton")
-                    return;
-
-                // Get current sort order
-                string sortColumn = columnName;
-
-                // Toggle sort direction
-                if (dataGrid.Columns[e.ColumnIndex].HeaderCell.SortGlyphDirection == SortOrder.Ascending)
-                {
-                    sortColumn += " DESC";
-                    dataGrid.Columns[e.ColumnIndex].HeaderCell.SortGlyphDirection = SortOrder.Descending;
-                }
-                else
-                {
-                    sortColumn += " ASC";
-                    dataGrid.Columns[e.ColumnIndex].HeaderCell.SortGlyphDirection = SortOrder.Ascending;
-                }
-
-          
-            }
-        }
 
         private void DataGrid_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
@@ -518,19 +394,10 @@ namespace Kinesia.Patients
 
                 if (columnName == "ViewButton" || columnName == "EditButton" || columnName == "ArchiveButton")
                 {
-                    bool isHovered = (hoveredCell.X == e.ColumnIndex && hoveredCell.Y == e.RowIndex);
-
-                    if (isHovered)
-                    {
-                        // hovered background
-                        e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(248, 245, 250)), e.CellBounds);
-                    }
-
-                    else
-                    {
+                 
                         // Normal background
                         e.Graphics.FillRectangle(new SolidBrush(dataGrid.DefaultCellStyle.BackColor), e.CellBounds);
-                    }
+                    
 
                     Image icon = null;
                     if (columnName == "ViewButton")
@@ -572,8 +439,10 @@ namespace Kinesia.Patients
 
         private void StyleDataGridWithSpacing(DataGridView dataGrid)
         {
-            //cell styling with padding
 
+            EnableDoubleBuffering(dataGrid);
+            //cell styling with padding
+           
             dataGrid.DefaultCellStyle.Padding = new Padding(15, 10, 15, 10);
 
             // row height
@@ -581,6 +450,13 @@ namespace Kinesia.Patients
             dataGrid.RowTemplate.Height = 50;
 
             dataGrid.BorderStyle = BorderStyle.None;
+        }
+
+        private void EnableDoubleBuffering(DataGridView dataGridView)
+        {
+            typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
+                System.Reflection.BindingFlags.Instance |
+                System.Reflection.BindingFlags.SetProperty, null, dataGridView, new object[] { true });
         }
     }
 }

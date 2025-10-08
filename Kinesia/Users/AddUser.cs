@@ -22,8 +22,7 @@ namespace Kinesia.Users
         private async void btnAddUser_Click(object sender, EventArgs e)
         {
             DialogResult addUserDiag = CustomDialog.Show("Are you sure you want to add this user?", "Add User Alert", CustomDialogButtons.YesNo, CustomDialogIcons.Question);
-
-            if(addUserDiag == DialogResult.Yes)
+            if (addUserDiag == DialogResult.Yes)
             {
                 // will remove extra white spaces on beginning and end of the textboxes
                 txtFirstName.Texts.Trim();
@@ -51,7 +50,7 @@ namespace Kinesia.Users
                     Role = cbRole.Texts
                 };
 
-                if(Queries.UserQueries.IsUserDetailsComplete(userData) && !await Queries.UserQueries.CheckExistingUser(userData) &&
+                if (Queries.UserQueries.IsUserDetailsComplete(userData) && !await Queries.UserQueries.CheckExistingUser(userData) &&
                     Queries.UserQueries.IsContactValid(userData) && Queries.UserQueries.IsEmailValid(userData))
                 {
                     // will continue to add the user if UserDataHolder passed the data validations
@@ -66,10 +65,10 @@ namespace Kinesia.Users
                         clearInputs();
                         CustomDialog.Show("User has been added successfully!", "Add User Successful", CustomDialogButtons.OK, CustomDialogIcons.Information);
                         await Queries.UserQueries.GetUserDetails(userData.UserID);
-                    } 
+                    }
                     else
                     {
-                        CustomDialog.Show("Add user failed!", "Add User Successful", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                        CustomDialog.Show("Add user failed!", "Add User Unsuccessful", CustomDialogButtons.OK, CustomDialogIcons.Error);
                     }
                 }
             }
@@ -100,13 +99,13 @@ namespace Kinesia.Users
 
         private void btnClearInput_Click(object sender, EventArgs e)
         {
-            if(areInputsBlank())
+            if (areInputsBlank())
             {
                 // will only show dialog if there's an unsaved inputs
                 DialogResult clearInputDiag = CustomDialog.Show("Are you sure you want to clear inputs?\n" +
                     "Any unsaved inputs will be lost!", "Clear Input Alert", CustomDialogButtons.YesNo, CustomDialogIcons.Question);
 
-                if(clearInputDiag == DialogResult.Yes)
+                if (clearInputDiag == DialogResult.Yes)
                 {
                     clearInputs(); // will clear all inputs
                 }
@@ -159,7 +158,7 @@ namespace Kinesia.Users
                 DialogResult backDialog = CustomDialog.Show("Are you sure you want to go back to User page?\n" +
                     "Any unsaved changes will be lost!", "Go back to user page?", CustomDialogButtons.YesNo, CustomDialogIcons.Question);
 
-                if(backDialog == DialogResult.Yes)
+                if (backDialog == DialogResult.Yes)
                 {
                     PageObjects.RemoveResources(ref PageObjects.CurrentControl);
                     PageObjects.userPage = new UserPage();
@@ -178,5 +177,7 @@ namespace Kinesia.Users
                 PageObjects.CurrentControl = PageObjects.userPage;
             }
         }
+
+        
     }
 }
