@@ -28,18 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserPage));
-            dataGridUsers = new System.Windows.Forms.DataGridView();
-            UserIDHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            nameHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            EmpPosition = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            editHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             label1 = new System.Windows.Forms.Label();
             nameHolder = new System.Windows.Forms.Label();
             panelBorder2 = new WindowsFormsApp2.CustomButton.PanelBorder();
@@ -48,121 +39,17 @@
             btnActive = new OrganizationProfile.CustomButton();
             btnAll = new OrganizationProfile.CustomButton();
             btnAddPatient = new OrganizationProfile.CustomButton();
-            UserHolder = new WindowsFormsApp2.CustomButton.PanelBorder();
             panelBorder1 = new WindowsFormsApp2.CustomButton.PanelBorder();
             btnSearch = new OrganizationProfile.CustomButton();
             pictureBox1 = new System.Windows.Forms.PictureBox();
             txtSearchBar = new CustomControls.RJControls.RJTextBox();
             lblHiddenForFocus = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)dataGridUsers).BeginInit();
+            dataGridUsers = new System.Windows.Forms.DataGridView();
             panelBorder2.SuspendLayout();
-            UserHolder.SuspendLayout();
             panelBorder1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridUsers).BeginInit();
             SuspendLayout();
-            // 
-            // dataGridUsers
-            // 
-            dataGridUsers.AllowUserToAddRows = false;
-            dataGridUsers.AllowUserToDeleteRows = false;
-            dataGridUsers.AllowUserToResizeColumns = false;
-            dataGridUsers.AllowUserToResizeRows = false;
-            dataGridUsers.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            dataGridUsers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridUsers.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders;
-            dataGridUsers.BackgroundColor = System.Drawing.Color.White;
-            dataGridUsers.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridUsers.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridUsers.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
-            dataGridUsers.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            dataGridUsers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            dataGridUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridUsers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { UserIDHeader, nameHeader, EmpPosition, editHeader, Column1, Column2 });
-            dataGridUsers.Enabled = false;
-            dataGridUsers.GridColor = System.Drawing.Color.White;
-            dataGridUsers.Location = new System.Drawing.Point(2, 9);
-            dataGridUsers.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            dataGridUsers.Name = "dataGridUsers";
-            dataGridUsers.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            dataGridUsers.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            dataGridUsers.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            dataGridUsers.ShowCellErrors = false;
-            dataGridUsers.ShowCellToolTips = false;
-            dataGridUsers.ShowEditingIcon = false;
-            dataGridUsers.ShowRowErrors = false;
-            dataGridUsers.Size = new System.Drawing.Size(1307, 517);
-            dataGridUsers.TabIndex = 14;
-            // 
-            // UserIDHeader
-            // 
-            UserIDHeader.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            UserIDHeader.FillWeight = 50F;
-            UserIDHeader.HeaderText = "User ID";
-            UserIDHeader.Name = "UserIDHeader";
-            UserIDHeader.ReadOnly = true;
-            // 
-            // nameHeader
-            // 
-            nameHeader.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
-            nameHeader.DefaultCellStyle = dataGridViewCellStyle2;
-            nameHeader.HeaderText = "Name";
-            nameHeader.Name = "nameHeader";
-            nameHeader.ReadOnly = true;
-            nameHeader.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // EmpPosition
-            // 
-            EmpPosition.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            EmpPosition.FillWeight = 60F;
-            EmpPosition.HeaderText = "Position";
-            EmpPosition.Name = "EmpPosition";
-            EmpPosition.ReadOnly = true;
-            // 
-            // editHeader
-            // 
-            editHeader.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            editHeader.DefaultCellStyle = dataGridViewCellStyle3;
-            editHeader.FillWeight = 20F;
-            editHeader.HeaderText = "Select";
-            editHeader.Name = "editHeader";
-            editHeader.ReadOnly = true;
-            // 
-            // Column1
-            // 
-            Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            Column1.FillWeight = 20F;
-            Column1.HeaderText = "Edit";
-            Column1.Name = "Column1";
-            Column1.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            Column2.FillWeight = 40F;
-            Column2.HeaderText = "Archive / Unarchive";
-            Column2.Name = "Column2";
-            Column2.ReadOnly = true;
             // 
             // label1
             // 
@@ -319,21 +206,6 @@
             btnAddPatient.UseVisualStyleBackColor = false;
             btnAddPatient.Click += btnAddPatient_Click;
             // 
-            // UserHolder
-            // 
-            UserHolder.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            UserHolder.BackColor = System.Drawing.Color.FromArgb(207, 249, 238);
-            UserHolder.BorderRadius = 10;
-            UserHolder.Color = System.Drawing.Color.White;
-            UserHolder.Controls.Add(dataGridUsers);
-            UserHolder.ForeColor = System.Drawing.Color.Black;
-            UserHolder.Location = new System.Drawing.Point(72, 286);
-            UserHolder.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            UserHolder.Name = "UserHolder";
-            UserHolder.Padding = new System.Windows.Forms.Padding(6);
-            UserHolder.Size = new System.Drawing.Size(1317, 535);
-            UserHolder.TabIndex = 13;
-            // 
             // panelBorder1
             // 
             panelBorder1.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
@@ -423,37 +295,76 @@
             lblHiddenForFocus.TabIndex = 16;
             lblHiddenForFocus.Text = "<Focus Label (Hidden)>";
             // 
+            // dataGridUsers
+            // 
+            dataGridUsers.AllowUserToAddRows = false;
+            dataGridUsers.AllowUserToDeleteRows = false;
+            dataGridUsers.AllowUserToResizeColumns = false;
+            dataGridUsers.AllowUserToResizeRows = false;
+            dataGridUsers.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            dataGridUsers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridUsers.BackgroundColor = System.Drawing.Color.White;
+            dataGridUsers.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dataGridUsers.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            dataGridUsers.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
+            dataGridUsers.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            dataGridUsers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridUsers.GridColor = System.Drawing.Color.White;
+            dataGridUsers.Location = new System.Drawing.Point(86, 245);
+            dataGridUsers.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            dataGridUsers.Name = "dataGridUsers";
+            dataGridUsers.ReadOnly = true;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            dataGridUsers.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridUsers.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            dataGridUsers.ShowCellErrors = false;
+            dataGridUsers.ShowCellToolTips = false;
+            dataGridUsers.ShowEditingIcon = false;
+            dataGridUsers.ShowRowErrors = false;
+            dataGridUsers.Size = new System.Drawing.Size(1299, 592);
+            dataGridUsers.TabIndex = 14;
+            // 
             // UserPage
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             BackColor = System.Drawing.Color.White;
+            Controls.Add(dataGridUsers);
             Controls.Add(lblHiddenForFocus);
             Controls.Add(panelBorder2);
             Controls.Add(label1);
             Controls.Add(nameHolder);
-            Controls.Add(UserHolder);
             Controls.Add(panelBorder1);
             Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             Name = "UserPage";
             Size = new System.Drawing.Size(1457, 875);
             Load += UserPage_Load;
-            ((System.ComponentModel.ISupportInitialize)dataGridUsers).EndInit();
             panelBorder2.ResumeLayout(false);
-            UserHolder.ResumeLayout(false);
             panelBorder1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridUsers).EndInit();
             ResumeLayout(false);
             PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dataGridUsers;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label nameHolder;
-        private WindowsFormsApp2.CustomButton.PanelBorder UserHolder;
         private OrganizationProfile.CustomButton btnAddPatient;
         private WindowsFormsApp2.CustomButton.PanelBorder panelBorder1;
         private System.Windows.Forms.PictureBox pictureBox1;
@@ -465,11 +376,6 @@
         private OrganizationProfile.CustomButton btnSearch;
         private CustomControls.RJControls.RJComboBox cbSort;
         private System.Windows.Forms.Label lblHiddenForFocus;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UserIDHeader;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameHeader;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EmpPosition;
-        private System.Windows.Forms.DataGridViewTextBoxColumn editHeader;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        public System.Windows.Forms.DataGridView dataGridUsers;
     }
 }

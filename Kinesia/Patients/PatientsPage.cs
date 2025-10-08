@@ -20,17 +20,19 @@ namespace Kinesia.Patients
     {
         string searchData = "";
         string currentTab = "All";
+
+      
         public PatientsPage()
         {
             this.Anchor = AnchorStyles.Right | AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Bottom;
             this.Dock = DockStyle.Fill;
 
-            InitializeComponent();  
+            InitializeComponent();
         }
 
-        public PanelBorder getPatientHolder { get { return PatientHolder; } }
         public DataGridView GetPatientGrid { get { return dataGridPatients; } }
         public string CurrentTab { get { return currentTab; } }
+
 
         private async void PatientsPage_Load(object sender, EventArgs e)
         {
@@ -196,6 +198,11 @@ namespace Kinesia.Patients
         {
             // will refresh patients list every time the sort value was changed
             await Queries.PatientQueries.DisplayPatients(searchData, currentTab, cbSort.Texts);
+        }
+
+        private void PatientHolder_Paint(object sender, PaintEventArgs e)
+        {
+            
         }
 
         //DITO MAG START PRE, NAGPATULONG LANG AKO KAY KUMPARENG PERPLIXITY

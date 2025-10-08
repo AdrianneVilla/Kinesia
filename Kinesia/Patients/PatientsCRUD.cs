@@ -18,7 +18,7 @@ namespace Kinesia.Patients
     {
         public async Task DisplayPatients(string searchData, string currentTab, string sortColumn)
         {
-            PageObjects.patientsPage.getPatientHolder.Controls.Clear();
+            //PageObjects.patientsPage.getPatientHolder.Controls.Clear();
 
             try
             {
@@ -35,6 +35,15 @@ namespace Kinesia.Patients
                         var patients = JsonConvert.DeserializeObject<List<DisplayPatientsDTO>>(json);
                         PageObjects.patientsPage.GetPatientGrid.DataSource = patients;
                         PageObjects.patientsPage.GetPatientGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                        var dataGrid = PageObjects.patientsPage.GetPatientGrid;
+                        dataGrid.DataSource = patients;
+                        dataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+                        // Add button column if it doesn't exist
+                        AddActionButtons();
+
+                        // Add spacing on the datagridview for better visualization
+                        StyleDataGridWithSpacing(dataGrid);
                     }
                     else
                     {
@@ -43,8 +52,8 @@ namespace Kinesia.Patients
                             "Connection Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
                     }
                 }
-            } 
-            catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 // will show an error dialog if it catches a client-side error.
                 CustomDialog.Show("Unable to connect to the server.\nPlease try again.",
@@ -114,18 +123,18 @@ namespace Kinesia.Patients
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 // will show an error dialog if it catches a client-side error.
                 CustomDialog.Show("Unable to connect to the server.\nPlease try again.",
                             "Connection Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
             }
         }
-        
+
         public async Task GetPatientDetails(string patientID, PatientDataHolder patientData)
         {
             // GetPatientDetails overload for Edit Patient page
-            using(var client = new HttpClient())
+            using (var client = new HttpClient())
             {
                 var url = $"https://localhost:5001/api/patients/{patientID}";
 
@@ -149,7 +158,7 @@ namespace Kinesia.Patients
                 PageObjects.CurrentControl = PageObjects.editPatient;
             }
         }
-        
+
         public void SetPatientID(PatientDataHolder patientData)
         {
             Connection.conn.Open();
@@ -190,7 +199,7 @@ namespace Kinesia.Patients
 
         public async Task<bool> UpdatePatient(PatientDataHolder patientData)
         {
-            using(var client = new HttpClient())
+            using (var client = new HttpClient())
             {
                 var url = $"https://localhost:5001/api/patients/{patientData.PatientID}";
 
@@ -217,7 +226,7 @@ namespace Kinesia.Patients
 
         public async Task<bool> UpdatePatientStatus(string patientID, int status)
         {
-            using(var client = new HttpClient())
+            using (var client = new HttpClient())
             {
                 var url = $"https://localhost:5001/api/patients/{patientID}/status";
 
@@ -237,7 +246,7 @@ namespace Kinesia.Patients
 
         public async Task<bool> CheckExistingPatient(PatientDataHolder patientData)
         {
-            using(var client = new HttpClient())
+            using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri("https://localhost:5001/");
 
@@ -249,17 +258,17 @@ namespace Kinesia.Patients
 
                 var response = await client.PostAsJsonAsync("api/patients/check-existing", existingPatient);
 
-                if(response.StatusCode == System.Net.HttpStatusCode.Conflict)
+                if (response.StatusCode == System.Net.HttpStatusCode.Conflict)
                 {
                     // will return true if patient exists
                     MessageBox.Show("Patient was already existing", "Add Patient Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return true;
                 }
-                else if(response.IsSuccessStatusCode)
+                else if (response.IsSuccessStatusCode)
                 {
                     // will return false if patient does not exists
                     return false;
-                } 
+                }
                 else
                 {
                     // will handle unexpected errors
@@ -283,7 +292,7 @@ namespace Kinesia.Patients
         }
         public bool IsAgeValid(PatientDataHolder patientData)
         {
-            if(patientData.Age <= 0)
+            if (patientData.Age <= 0)
             {
                 MessageBox.Show("Patient age was invalid!", "Add Patient Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
@@ -293,14 +302,14 @@ namespace Kinesia.Patients
 
         public bool IsContactValid(PatientDataHolder patientData)
         {
-            if(patientData.Contact.Length > 11 || patientData.Contact.Length < 10)
+            if (patientData.Contact.Length > 11 || patientData.Contact.Length < 10)
             {
                 // will show an error if the length of contact number is not 10 or 11 (PH contact number)
                 MessageBox.Show("Invalid contact number! Contact number length should be 10 or 11", "Add Patient Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
-            if (patientData.Contact.Substring(0,2) != "09" && patientData.Contact[0] != '9')
+            if (patientData.Contact.Substring(0, 2) != "09" && patientData.Contact[0] != '9')
             {
                 // will show an error if the contact number does not start on 09 or 9 (PH contact number)
                 MessageBox.Show("Invalid contact number! Contact number should start with 09 or 9", "Add Patient Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -320,6 +329,258 @@ namespace Kinesia.Patients
             contact = "+63" + contact; // will insert '+63' at the start of contact
 
             return contact;
+        }
+
+
+
+        // MORE ON DESIGN AND MANIPULATION OF DATA GRID VIEW //
+
+    
+        private void AddActionButtons()
+        {
+            var dataGrid = PageObjects.patientsPage.GetPatientGrid;
+
+            dataGrid.CellMouseEnter -= DataGrid_CellMouseEnter;
+            dataGrid.CellMouseLeave -= DataGrid_CellMouseLeave;
+            dataGrid.CellMouseMove -= DataGrid_CellMouseMove;
+            dataGrid.ColumnHeaderMouseClick -= DataGrid_ColumnHeaderMouseClick;
+            dataGrid.CellPainting -= DataGrid_CellPainting;
+          
+
+         
+            dataGrid.CellMouseEnter += DataGrid_CellMouseEnter;
+            dataGrid.CellMouseLeave += DataGrid_CellMouseLeave;
+            dataGrid.CellMouseMove += DataGrid_CellMouseMove;  
+            dataGrid.ColumnHeaderMouseClick += DataGrid_ColumnHeaderMouseClick;
+            dataGrid.CellPainting += DataGrid_CellPainting;
+            
+
+          
+            if (dataGrid.Columns["ViewButton"] == null)
+            {
+                // Create View Details button column
+                DataGridViewButtonColumn viewBtn = new DataGridViewButtonColumn();
+                viewBtn.Name = "ViewButton";
+                viewBtn.HeaderText = "EMR";
+                viewBtn.UseColumnTextForButtonValue = true;
+                viewBtn.Width = 80;
+                viewBtn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+
+                // Add the button column
+                dataGrid.Columns.Add(viewBtn);
+            }
+
+            // Add Edit button
+            if (dataGrid.Columns["EditButton"] == null)
+            {
+                DataGridViewButtonColumn editBtn = new DataGridViewButtonColumn();
+                editBtn.Name = "EditButton";
+                editBtn.HeaderText = "Edit";
+                editBtn.UseColumnTextForButtonValue = true;
+                editBtn.Width = 80;
+                editBtn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                dataGrid.Columns.Add(editBtn);
+            }
+
+            // Add Archive/Unarchive button
+            if (dataGrid.Columns["ArchiveButton"] == null)
+            {
+                DataGridViewButtonColumn archiveBtn = new DataGridViewButtonColumn();
+                archiveBtn.Name = "ArchiveButton";
+                archiveBtn.HeaderText = "Status";
+                archiveBtn.UseColumnTextForButtonValue = true;
+                archiveBtn.Width = 90;
+                archiveBtn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                dataGrid.Columns.Add(archiveBtn);
+            }
+            dataGrid.CellPainting -= DataGrid_CellPainting;
+            dataGrid.CellPainting += DataGrid_CellPainting;
+        }
+
+        // for smooth hover tracking
+        private Point hoveredCell = new Point(-1, -1);
+        private void DataGrid_CellMouseMove(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            var dataGrid = PageObjects.patientsPage.GetPatientGrid;
+
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                string columnName = dataGrid.Columns[e.ColumnIndex].Name;
+
+                if (columnName == "ViewButton" || columnName == "EditButton" || columnName == "ArchiveButton")
+                {
+                    Point newHoveredCell = new Point(e.ColumnIndex, e.RowIndex);
+
+                    // Only update if hovering over a different cell
+                    if (hoveredCell != newHoveredCell)
+                    {
+                        hoveredCell = newHoveredCell;
+                        dataGrid.Cursor = Cursors.Hand;
+
+                        // Invalidate the entire grid for reliable repaint
+                        dataGrid.Invalidate();
+                    }
+                }
+                else
+                {
+                    // Not hovering over a button column
+                    if (hoveredCell.X != -1)
+                    {
+                        hoveredCell = new Point(-1, -1);
+                        dataGrid.Cursor = Cursors.Default;
+                        dataGrid.Invalidate();
+                    }
+                }
+            }
+        }
+
+        private void DataGrid_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            var dataGrid = PageObjects.patientsPage.GetPatientGrid;
+
+
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                string columnName = dataGrid.Columns[e.ColumnIndex].Name;
+
+                if (columnName == "ViewButton" || columnName == "EditButton" || columnName == "ArchiveButton")
+                {
+                    hoveredCell = new Point(e.ColumnIndex, e.RowIndex);
+                    dataGrid.Cursor = Cursors.Hand;
+
+                    // Use Invalidate() instead of InvalidateCell()
+                    dataGrid.Invalidate();
+                }
+            }
+
+        }
+
+        private void DataGrid_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            var dataGrid = PageObjects.patientsPage.GetPatientGrid;
+
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                string columnName = dataGrid.Columns[e.ColumnIndex].Name;
+
+                if (columnName == "ViewButton" || columnName == "EditButton" || columnName == "ArchiveButton")
+                {
+                    dataGrid.Cursor = Cursors.Default;
+                    hoveredCell = new Point(-1, -1);
+
+                    // Use Invalidate() instead of InvalidateCell()
+                    dataGrid.Invalidate();
+                }
+            }
+        }
+      
+
+
+        private async void DataGrid_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            var dataGrid = PageObjects.patientsPage.GetPatientGrid;
+
+            // Get the clicked column
+            if (e.ColumnIndex >= 0)
+            {
+                string columnName = dataGrid.Columns[e.ColumnIndex].Name;
+
+                // Don't sort on button columns
+                if (columnName == "ViewButton" || columnName == "EditButton" || columnName == "ArchiveButton")
+                    return;
+
+                // Get current sort order
+                string sortColumn = columnName;
+
+                // Toggle sort direction
+                if (dataGrid.Columns[e.ColumnIndex].HeaderCell.SortGlyphDirection == SortOrder.Ascending)
+                {
+                    sortColumn += " DESC";
+                    dataGrid.Columns[e.ColumnIndex].HeaderCell.SortGlyphDirection = SortOrder.Descending;
+                }
+                else
+                {
+                    sortColumn += " ASC";
+                    dataGrid.Columns[e.ColumnIndex].HeaderCell.SortGlyphDirection = SortOrder.Ascending;
+                }
+
+          
+            }
+        }
+
+        private void DataGrid_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            var dataGrid = PageObjects.patientsPage.GetPatientGrid;
+
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                string columnName = dataGrid.Columns[e.ColumnIndex].Name;
+
+                if (columnName == "ViewButton" || columnName == "EditButton" || columnName == "ArchiveButton")
+                {
+                    bool isHovered = (hoveredCell.X == e.ColumnIndex && hoveredCell.Y == e.RowIndex);
+
+                    if (isHovered)
+                    {
+                        // hovered background
+                        e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(248, 245, 250)), e.CellBounds);
+                    }
+
+                    else
+                    {
+                        // Normal background
+                        e.Graphics.FillRectangle(new SolidBrush(dataGrid.DefaultCellStyle.BackColor), e.CellBounds);
+                    }
+
+                    Image icon = null;
+                    if (columnName == "ViewButton")
+                        icon = Properties.Resources.newEMR;
+                    else if (columnName == "EditButton")
+                        icon = Properties.Resources.newEdit;
+                    else if (columnName == "ArchiveButton")
+                    {
+                        var statusCell = dataGrid.Rows[e.RowIndex].Cells["Status"]?.Value;
+                        string status = statusCell.ToString() ?? "";
+
+                        // from archive to unarchive button
+
+                        if(status == "Active" || status== "1")
+                        {
+                            icon = Properties.Resources.newArchive;
+                        } 
+                        else
+                        {
+                            icon = Properties.Resources.Unarchive;
+                        }
+                    }
+                        
+                    if (icon != null)
+                    {
+                        int iconWidth = 20;
+                        int iconHeight = 20;
+                        int x = e.CellBounds.Left + (e.CellBounds.Width - iconWidth) / 2;
+                        int y = e.CellBounds.Top + (e.CellBounds.Height - iconHeight) / 2;
+
+                        // Draw the icon
+                        e.Graphics.DrawImage(icon, new Rectangle(x, y, iconWidth, iconHeight));
+                    }
+                    e.Handled = true;
+                }
+            }
+
+        }
+
+        private void StyleDataGridWithSpacing(DataGridView dataGrid)
+        {
+            //cell styling with padding
+
+            dataGrid.DefaultCellStyle.Padding = new Padding(15, 10, 15, 10);
+
+            // row height
+
+            dataGrid.RowTemplate.Height = 50;
+
+            dataGrid.BorderStyle = BorderStyle.None;
         }
     }
 }

@@ -16,7 +16,8 @@ namespace Kinesia.Users
         string searchData = "";
         string currentTab = "All";
 
-        public PanelBorder getUserHolder { get { return UserHolder; } }
+        //public PanelBorder getUserHolder { get { return UserHolder; } }
+        public DataGridView GetUserGrid { get { return dataGridUsers; } }
         public string CurrentTab { get { return currentTab; } }
         public UserPage()
         {
@@ -88,7 +89,7 @@ namespace Kinesia.Users
             if (txtSearchBar.Texts == "Search for User name or UserID")
             {
                 searchData = "";
-            } 
+            }
             else
             {
                 searchData = txtSearchBar.Texts;
@@ -129,7 +130,7 @@ namespace Kinesia.Users
         private async void btnInactive_Click(object sender, EventArgs e)
         {
             // will only refresh the users list if the currentTab was not already Inactive
-            if(currentTab != "Inactive")
+            if (currentTab != "Inactive")
             {
                 currentTab = "Inactive";
                 switchTab(currentTab);
@@ -188,6 +189,11 @@ namespace Kinesia.Users
         {
             // will refresh users list every time the sort value was changed
             await Queries.UserQueries.DisplayUsers(searchData, currentTab, cbSort.Texts);
+        }
+
+        private void UserHolder_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

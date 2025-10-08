@@ -19,98 +19,137 @@ namespace Kinesia.Users
     {
         public async Task DisplayUsers(string searchData, string currentTab, string sortColumn)
         {
-            PageObjects.userPage.getUserHolder.Controls.Clear();
+            //PageObjects.userPage.getUserHolder.Controls.Clear();
 
-            using(var client = new HttpClient())
+            using (var client = new HttpClient())
             {
                 var url = $"https://localhost:5001/api/users?searchData={searchData}&currentTab={currentTab}&sortColumn={sortColumn}";
 
-                var response = await client.GetStringAsync(url);
-                var users = JsonConvert.DeserializeObject<List<UsersDTO>>(response);
+                var response = await client.GetAsync(url);
 
-                foreach(var user in users)
+                if (response.IsSuccessStatusCode)
                 {
-                    // will create user control for every users
-                    var displayUserControl = new DisplayUsers();
+                    var json = await response.Content.ReadAsStringAsync();
+                    var users = JsonConvert.DeserializeObject<List<UsersDTO>>(json);
+                    PageObjects.userPage.GetUserGrid.DataSource = users;
+                    PageObjects.userPage.GetUserGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    var dataGrid = PageObjects.userPage.dataGridUsers;
+                    dataGrid.DataSource = users;
+                    dataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-                    // will set the data of user to label
-                    displayUserControl.UserID = user.UserID;
-                    displayUserControl.Name = $"{user.FirstName} {user.MiddleName} {user.LastName}";
-                    displayUserControl.Role = user.Role;
+                    // Add button column if it doesn't exist
+                    AddActionButtons();
 
-                    // 0 = Inactive
-                    // 1 = Active
-                    if (user.Status == 0)
-                    {
-                        displayUserControl.BtnArchive.Image = Properties.Resources.Unarchive;
-                        displayUserControl.BtnArchive.Tag = "Unarchive";
-                    }
-                    else
-                    {
-                        displayUserControl.BtnArchive.Tag = "Archive";
-                    }
+                    // Add spacing on the datagridview for better visualization
+                    StyleDataGridWithSpacing(dataGrid);
 
-                    // will add the user control to UserHolder
-                    PageObjects.userPage.getUserHolder.Controls.Add(displayUserControl);
+
+           
                 }
+
+
+                //foreach(var user in users)
+                //{
+                //    // will create user control for every users
+                //    var displayUserControl = new DisplayUsers();
+
+                //    // will set the data of user to label
+                //    displayUserControl.UserID = user.UserID;
+                //    displayUserControl.Name = $"{user.FirstName} {user.MiddleName} {user.LastName}";
+                //    displayUserControl.Role = user.Role;
+
+                //    // 0 = Inactive
+                //    // 1 = Active
+                //    if (user.Status == 0)
+                //    {
+                //        displayUserControl.BtnArchive.Image = Properties.Resources.Unarchive;
+                //        displayUserControl.BtnArchive.Tag = "Unarchive";
+                //    }
+                //    else
+                //    {
+                //        displayUserControl.BtnArchive.Tag = "Archive";
+                //    }
+
+                //    // will add the user control to UserHolder
+                //    //PageObjects.userPage.getUserHolder.Controls.Add(displayUserControl);
+                //}
             }
         }
 
         public async Task GetUserDetails(string userID)
         {
             // GetUserDetails overload for User Details page
-            using(var client = new HttpClient())
+
+            try
             {
-                var url = $"https://localhost:5001/api/users/{userID}";
-
-                var response = await client.GetStringAsync(url);
-                var user = JsonConvert.DeserializeObject<UsersDTO>(response);
-
-                // will create user control for user details
-                var userDetails = new UserDetails();
-
-                // will set the data of the user to the labels
-                userDetails.UserID = user.UserID;
-                userDetails.SelectedUser = $"{user.FirstName} {user.MiddleName} {user.LastName}";
-                userDetails.Name = $"{user.FirstName} {user.MiddleName} {user.LastName}";
-                userDetails.Gender = user.Gender;
-                userDetails.Contact = user.Contact;
-                userDetails.Age = user.Age.ToString();
-                userDetails.Address = user.Address;
-                userDetails.Birthdate = user.Birthdate.ToString("yyyy-MM-dd");
-                userDetails.Role = user.Role;
-                userDetails.Email = user.Email;
-                userDetails.DateAdded = user.DateAdded.ToString();
-                userDetails.LastArchiveDate = user.LastArchiveDate;
-
-                // 1 = Active
-                // 0 = Inactive
-                if (user.Status == 1)
+                using (var client = new HttpClient())
                 {
-                    userDetails.Status = "Active";
-                    userDetails.BtnArchive.Tag = "Archive";
-                }
-                else
-                {
-                    userDetails.Status = "Inactive";
-                    userDetails.BtnArchive.Tag = "Unarchive";
-                    userDetails.BtnArchive.Text = "Unarchive User";
-                    userDetails.BtnArchive.Image = Properties.Resources.Unarchive;
-                    userDetails.BtnArchive.ForeColor = Color.FromArgb(18, 90, 211);
-                    userDetails.BtnArchive.BackColor = Color.FromArgb(223, 236, 250);
-                    userDetails.BtnArchive.BorderColor = Color.FromArgb(18, 90, 211);
+                    var url = $"https://localhost:5001/api/users/{userID}";
+
+                    var response = await client.GetAsync(url);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var json = await response.Content.ReadAsStringAsync();
+                        var user = JsonConvert.DeserializeObject<UsersDTO>(json);
+
+
+                        // will create user control for user details
+                        var userDetails = new UserDetails();
+                        // will set the data of the user to the labels
+                        userDetails.UserID = user.UserID;
+                        userDetails.SelectedUser = $"{user.FirstName} {user.MiddleName} {user.LastName}";
+                        userDetails.Name = $"{user.FirstName} {user.MiddleName} {user.LastName}";
+                        userDetails.Gender = user.Gender;
+                        userDetails.Contact = user.Contact;
+                        userDetails.Age = user.Age.ToString();
+                        userDetails.Address = user.Address;
+                        userDetails.Birthdate = user.Birthdate.ToString("yyyy-MM-dd");
+                        userDetails.Role = user.Role;
+                        userDetails.Email = user.Email;
+                        userDetails.DateAdded = user.DateAdded.ToString();
+                        userDetails.LastArchiveDate = user.LastArchiveDate;
+
+
+                        // 1 = Active
+                        // 0 = Inactive
+                        if (user.Status == 1)
+                        {
+                            userDetails.Status = "Active";
+                            userDetails.BtnArchive.Tag = "Archive";
+                        }
+                        else
+                        {
+                            userDetails.Status = "Inactive";
+                            userDetails.BtnArchive.Tag = "Unarchive";
+                            userDetails.BtnArchive.Text = "Unarchive User";
+                            userDetails.BtnArchive.Image = Properties.Resources.Unarchive;
+                            userDetails.BtnArchive.ForeColor = Color.FromArgb(18, 90, 211);
+                            userDetails.BtnArchive.BackColor = Color.FromArgb(223, 236, 250);
+                            userDetails.BtnArchive.BorderColor = Color.FromArgb(18, 90, 211);
+                        }
+
+
+                        PageObjects.RemoveResources(ref PageObjects.CurrentControl);
+                        PageObjects.dashboard.ContentsPanel.Controls.Add(userDetails);
+                        PageObjects.CurrentControl = userDetails;
+                    }
                 }
 
-                PageObjects.RemoveResources(ref PageObjects.CurrentControl);
-                PageObjects.dashboard.ContentsPanel.Controls.Add(userDetails);
-                PageObjects.CurrentControl = userDetails;
+
+            }
+            catch (Exception ex)
+            {
+                // will show an error dialog if it catches a client-side error.
+                CustomDialog.Show("Unable to connect to the server.\nPlease try again.",
+                            "Connection Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
             }
         }
 
         public async Task GetUserDetails(string userID, UserDataHolder userData)
         {
             // GetUserDetails overload for Edit User page
-            using(var client = new HttpClient())
+            using (var client = new HttpClient())
             {
                 var url = $"https://localhost:5001/api/users/{userID}";
 
@@ -147,7 +186,7 @@ namespace Kinesia.Users
 
         public async Task<bool> AddUser(UserDataHolder userData)
         {
-            using(var client = new HttpClient())
+            using (var client = new HttpClient())
             {
                 // will generate salt for hashing
                 // salt will be unique for every user
@@ -184,9 +223,9 @@ namespace Kinesia.Users
             }
         }
 
-        public async Task <bool> UpdateUser(UserDataHolder userData)
+        public async Task<bool> UpdateUser(UserDataHolder userData)
         {
-            using(var client = new HttpClient())
+            using (var client = new HttpClient())
             {
                 var url = $"https://localhost:5001/api/users/{userData.UserID}";
 
@@ -213,7 +252,7 @@ namespace Kinesia.Users
 
         public async Task<bool> UpdateUserStatus(string userID, int status)
         {
-            using(var client = new HttpClient())
+            using (var client = new HttpClient())
             {
                 var url = $"https://localhost:5001/api/users/{userID}/status";
 
@@ -234,7 +273,7 @@ namespace Kinesia.Users
 
         public async Task<bool> CheckExistingUser(UserDataHolder userData)
         {
-            using(var client = new HttpClient())
+            using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri("https://localhost:5001/");
 
@@ -246,7 +285,7 @@ namespace Kinesia.Users
 
                 var response = await client.PostAsJsonAsync("api/users/check-existing", existingUser);
 
-                if(response.StatusCode == System.Net.HttpStatusCode.Conflict)
+                if (response.StatusCode == System.Net.HttpStatusCode.Conflict)
                 {
                     // will return true if user already exist
                     CustomDialog.Show("User was already existing!", "Existing User", CustomDialogButtons.OK, CustomDialogIcons.Error);
@@ -287,7 +326,7 @@ namespace Kinesia.Users
             if (userData.Contact.Length > 11 || userData.Contact.Length < 10)
             {
                 // will show an error if the length of contact number is not 10 or 11 (PH contact number)
-                CustomDialog.Show("Invalid contact number! \nContact number length should be 10 or 11", 
+                CustomDialog.Show("Invalid contact number! \nContact number length should be 10 or 11",
                     "Invalid Contact Number", CustomDialogButtons.OK, CustomDialogIcons.Error);
                 return false;
             }
@@ -306,7 +345,7 @@ namespace Kinesia.Users
         public bool IsEmailValid(UserDataHolder userData)
         {
             // will return false if the email address does not contains '.' and '@'
-            if(!userData.Email.Contains(".") || !userData.Email.Contains("@"))
+            if (!userData.Email.Contains(".") || !userData.Email.Contains("@"))
             {
                 CustomDialog.Show("Invalid email address! \nPlease enter a valid email address",
                     "Invalid Email Address", CustomDialogButtons.OK, CustomDialogIcons.Error);
@@ -328,5 +367,251 @@ namespace Kinesia.Users
 
             return contact;
         }
+
+
+        private void AddActionButtons()
+        {
+            var dataGrid = PageObjects.userPage.GetUserGrid;
+
+            dataGrid.CellMouseEnter -= DataGrid_CellMouseEnter;
+            dataGrid.CellMouseLeave -= DataGrid_CellMouseLeave;
+            dataGrid.CellMouseMove -= DataGrid_CellMouseMove;
+            dataGrid.ColumnHeaderMouseClick -= DataGrid_ColumnHeaderMouseClick;
+            dataGrid.CellPainting -= DataGrid_CellPainting;
+
+
+
+            dataGrid.CellMouseEnter += DataGrid_CellMouseEnter;
+            dataGrid.CellMouseLeave += DataGrid_CellMouseLeave;
+            dataGrid.CellMouseMove += DataGrid_CellMouseMove;
+            dataGrid.ColumnHeaderMouseClick += DataGrid_ColumnHeaderMouseClick;
+            dataGrid.CellPainting += DataGrid_CellPainting;
+
+
+
+            if (dataGrid.Columns["Select"] == null)
+            {
+                DataGridViewButtonColumn selectBtn = new DataGridViewButtonColumn();
+                selectBtn.Name = "SelectButton";
+                selectBtn.HeaderText = "Select";
+                selectBtn.UseColumnTextForButtonValue = true;
+                selectBtn.Width = 80;
+                selectBtn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+
+                dataGrid.Columns.Add(selectBtn);
+            }
+
+            if (dataGrid.Columns["EditButton"] == null)
+            {
+                DataGridViewButtonColumn editBtn = new DataGridViewButtonColumn();
+                editBtn.Name = "EditButton";
+                editBtn.HeaderText = "Edit";
+                editBtn.UseColumnTextForButtonValue = true;
+                editBtn.Width = 80;
+                editBtn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                dataGrid.Columns.Add(editBtn);
+            }
+
+            // Add Archive/Unarchive button
+            if (dataGrid.Columns["ArchiveButton"] == null)
+            {
+                DataGridViewButtonColumn archiveBtn = new DataGridViewButtonColumn();
+                archiveBtn.Name = "ArchiveButton";
+                archiveBtn.HeaderText = "Status";
+                archiveBtn.UseColumnTextForButtonValue = true;
+                archiveBtn.Width = 90;
+                archiveBtn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                dataGrid.Columns.Add(archiveBtn);
+            }
+            dataGrid.CellPainting -= DataGrid_CellPainting;
+            dataGrid.CellPainting += DataGrid_CellPainting;
+        }
+
+        private Point hoveredCell = new Point(-1, -1);
+        private void DataGrid_CellMouseMove(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            var dataGrid = PageObjects.userPage.GetUserGrid;
+
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                string columnName = dataGrid.Columns[e.ColumnIndex].Name;
+
+                if (columnName == "SelectButton" || columnName == "EditButton" || columnName == "ArchiveButton")
+                {
+                    Point newHoveredCell = new Point(e.ColumnIndex, e.RowIndex);
+
+                    // Only update if hovering over a different cell
+                    if (hoveredCell != newHoveredCell)
+                    {
+                        hoveredCell = newHoveredCell;
+                        dataGrid.Cursor = Cursors.Hand;
+
+                        // Invalidate the entire grid for reliable repaint
+                        dataGrid.Invalidate();
+                    }
+                }
+
+                else
+                {
+                    // not hoverring over a button column
+
+                    if (hoveredCell.X != -1)
+                    {
+                        hoveredCell = new Point(-1, -1);
+                        dataGrid.Cursor = Cursors.Default;
+                        dataGrid.Invalidate();
+                    }
+                }
+            }
+        }
+
+        private void DataGrid_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            var dataGrid = PageObjects.userPage.GetUserGrid;
+
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                string columnName = dataGrid.Columns[e.ColumnIndex].Name;
+
+                if (columnName == "SelectButton" || columnName == "EditButton" || columnName == "ArchiveButton")
+                {
+                    hoveredCell = new Point(e.ColumnIndex, e.RowIndex);
+                    dataGrid.Cursor = Cursors.Hand;
+
+                    // Use Invalidate() instead of InvalidateCell()
+                    dataGrid.Invalidate();
+                }
+            }
+
+        }
+
+        private void DataGrid_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            var dataGrid = PageObjects.userPage.GetUserGrid;
+
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                string columnName = dataGrid.Columns[e.ColumnIndex].Name;
+
+                if (columnName == "SelectButton" || columnName == "EditButton" || columnName == "ArchiveButton")
+                {
+                    dataGrid.Cursor = Cursors.Default;
+                    hoveredCell = new Point(-1, -1);
+
+                    // Use Invalidate() instead of InvalidateCell()
+                    dataGrid.Invalidate();
+                }
+            }
+        }
+
+        private async void DataGrid_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            var dataGrid = PageObjects.userPage.GetUserGrid;
+
+            // Get the clicked column
+            if (e.ColumnIndex >= 0)
+            {
+                string columnName = dataGrid.Columns[e.ColumnIndex].Name;
+
+                // Don't sort on button columns
+                if (columnName == "Select" || columnName == "EditButton" || columnName == "ArchiveButton")
+                    return;
+
+                // Get current sort order
+                string sortColumn = columnName;
+
+                // Toggle sort direction
+                if (dataGrid.Columns[e.ColumnIndex].HeaderCell.SortGlyphDirection == SortOrder.Ascending)
+                {
+                    sortColumn += " DESC";
+                    dataGrid.Columns[e.ColumnIndex].HeaderCell.SortGlyphDirection = SortOrder.Descending;
+                }
+                else
+                {
+                    sortColumn += " ASC";
+                    dataGrid.Columns[e.ColumnIndex].HeaderCell.SortGlyphDirection = SortOrder.Ascending;
+                }
+
+
+            }
+        }
+
+        private void DataGrid_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            var dataGrid = PageObjects.userPage.GetUserGrid;
+
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                string columnName = dataGrid.Columns[e.ColumnIndex].Name;
+
+                if (columnName == "Select" || columnName == "EditButton" || columnName == "ArchiveButton")
+                {
+                    bool isHovered = (hoveredCell.X == e.ColumnIndex && hoveredCell.Y == e.RowIndex);
+
+                    if (isHovered)
+                    {
+                        // hovered background
+                        e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(248, 245, 250)), e.CellBounds);
+                    }
+
+                    else
+                    {
+                        // Normal background
+                        e.Graphics.FillRectangle(new SolidBrush(dataGrid.DefaultCellStyle.BackColor), e.CellBounds);
+                    }
+
+                    Image icon = null;
+                    if (columnName == "SelectButton")
+                        icon = Properties.Resources.newSelect;
+                    else if (columnName == "EditButton")
+                        icon = Properties.Resources.newEdit;
+                    else if (columnName == "ArchiveButton")
+                    {
+                        var statusCell = dataGrid.Rows[e.RowIndex].Cells["Status"]?.Value;
+                        string status = statusCell.ToString() ?? "";
+
+                        // from archive to unarchive button
+
+                        if (status == "Active" || status == "1")
+                        {
+                            icon = Properties.Resources.newArchive;
+                        }
+                        else
+                        {
+                            icon = Properties.Resources.Unarchive;
+                        }
+                    }
+
+
+
+                    if (icon != null)
+                    {
+                        int iconWidth = 20;
+                        int iconHeight = 20;
+                        int x = e.CellBounds.Left + (e.CellBounds.Width - iconWidth) / 2;
+                        int y = e.CellBounds.Top + (e.CellBounds.Height - iconHeight) / 2;
+
+                        // Draw the icon
+                        e.Graphics.DrawImage(icon, new Rectangle(x, y, iconWidth, iconHeight));
+                    }
+                    e.Handled = true;
+                }
+            }
+
+        }
+
+        private void StyleDataGridWithSpacing(DataGridView dataGrid)
+        {
+            //cell styling with padding
+
+            dataGrid.DefaultCellStyle.Padding = new Padding(15, 10, 15, 10);
+
+            // row height
+
+            dataGrid.RowTemplate.Height = 50;
+
+            dataGrid.BorderStyle = BorderStyle.None;
+        }
+
     }
 }

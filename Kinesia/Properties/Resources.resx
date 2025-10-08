@@ -121,20 +121,17 @@
   <data name="login-holder" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\login-holder.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="patients-blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Kinesia Images\patients-blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="close-button" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\close-button.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="quick-add-user" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Kinesia Images\quick-add-user.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Orbbec-camera-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Kinesia Images\Orbbec-camera-icon.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="save-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Kinesia Images\save-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="sidepanel" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sidepanel.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="patients-blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Kinesia Images\patients-blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="clear-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Kinesia Images\clear-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -148,17 +145,14 @@
   <data name="newCalendarWhite" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Kinesia Images\newCalendarWhite.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="newDelete" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\newDelete.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="blue-information-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Kinesia Images\blue-information-icon.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="calendarDark" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Kinesia Images\calendarDark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="quick-assessment" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Kinesia Images\quick-assessment.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="archive-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Kinesia Images\archive-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="information-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Kinesia Images\information-icon.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -166,11 +160,17 @@
   <data name="error-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Kinesia Images\error-icon.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="newEMR" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\newEMR.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="warning-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Kinesia Images\warning-icon.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="calendarDarksmall" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Kinesia Images\calendarDarksmall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="general-information-background" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Kinesia Images\general-information-background.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="quick-user" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Kinesia Images\quick-user.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -184,11 +184,8 @@
   <data name="newCalendarDark" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Kinesia Images\newCalendarDark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="calendarWhite" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Kinesia Images\calendarWhite.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Unarchive" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Kinesia Images\Unarchive.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="search-background-new" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Kinesia Images\search-background-new.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="search-background" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Kinesia Images\search-background.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -196,17 +193,23 @@
   <data name="yellow-triangle-warning-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Kinesia Images\yellow-triangle-warning-icon.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="general-information-background" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Kinesia Images\general-information-background.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Stethoscope" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Stethoscope.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="archive-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Kinesia Images\archive-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="calendarWhite" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Kinesia Images\calendarWhite.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="add-btn" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Kinesia Images\add-btn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="question-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Kinesia Images\question-icon.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="quick-add-user" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Kinesia Images\quick-add-user.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="add-btn" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Kinesia Images\add-btn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="back-button-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Kinesia Images\back-button-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="edit-icon-green" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Kinesia Images\edit-icon-green.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -214,8 +217,14 @@
   <data name="GreenLoading" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\GreenLoading.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="search-background-new" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Kinesia Images\search-background-new.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Header" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Header.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="save-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Kinesia Images\save-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="newArchive" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\newArchive.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="small-logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\small-logo.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -226,16 +235,22 @@
   <data name="Add-Patient-Background" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Kinesia Images\Add-Patient-Background.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="back-button-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Kinesia Images\back-button-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="sidepanel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sidepanel.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="calendarDark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Kinesia Images\calendarDark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="calendarWhitesmall" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Kinesia Images\calendarWhitesmall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Header" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Header.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Unarchive" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Kinesia Images\Unarchive.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Stethoscope" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Stethoscope.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="newEdit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\newEdit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="newSelect" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\newSelect.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

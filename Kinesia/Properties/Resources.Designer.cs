@@ -283,6 +283,16 @@ namespace Kinesia.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap newArchive {
+            get {
+                object obj = ResourceManager.GetObject("newArchive", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap newCalendarDark {
             get {
                 object obj = ResourceManager.GetObject("newCalendarDark", resourceCulture);
@@ -296,6 +306,46 @@ namespace Kinesia.Properties {
         internal static System.Drawing.Bitmap newCalendarWhite {
             get {
                 object obj = ResourceManager.GetObject("newCalendarWhite", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap newDelete {
+            get {
+                object obj = ResourceManager.GetObject("newDelete", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap newEdit {
+            get {
+                object obj = ResourceManager.GetObject("newEdit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap newEMR {
+            get {
+                object obj = ResourceManager.GetObject("newEMR", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap newSelect {
+            get {
+                object obj = ResourceManager.GetObject("newSelect", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
