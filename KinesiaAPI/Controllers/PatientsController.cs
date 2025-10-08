@@ -79,7 +79,7 @@ namespace KinesiaAPI.Controllers
 
                 return Ok(patients);
             } 
-            catch (Exception ex)
+            catch (Exception)
             {
                 return BadRequest("Unable to connect to the server. Please try again.");
             }
@@ -100,7 +100,7 @@ namespace KinesiaAPI.Controllers
 
                 return Ok(PatientToDTO(patients));
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 return BadRequest("Unable to connect to the server. Please try again.");
             }
@@ -110,22 +110,29 @@ namespace KinesiaAPI.Controllers
         [HttpPost("check-existing")]
         public async Task<IActionResult> CheckExistingPatient(CheckExistingPatientDTO existingPatient)
         {
-            if(existingPatient == null)
+            try
             {
-                return BadRequest("Invalid patient data.");
+                if (existingPatient == null)
+                {
+                    return BadRequest("Invalid patient data.");
+                }
+
+                bool exist = await _context.Patients.AnyAsync(p =>
+                    p.FirstName == existingPatient.FirstName &&
+                    p.LastName == existingPatient.LastName &&
+                    p.MiddleName == existingPatient.MiddleName);
+
+                if (exist)
+                {
+                    return Conflict();
+                }
+
+                return Ok();
             }
-
-            bool exist = await _context.Patients.AnyAsync(p =>
-                p.FirstName == existingPatient.FirstName &&
-                p.LastName == existingPatient.LastName && 
-                p.MiddleName == existingPatient.MiddleName);
-
-            if (exist)
+            catch (Exception)
             {
-                return Conflict();
+                return BadRequest("Unable to connect to the server. Please try again.");
             }
-
-            return Ok();
         }
 
         // PUT: api/patients/5

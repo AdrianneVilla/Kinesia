@@ -53,7 +53,7 @@ namespace Kinesia.Patients
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 // will show an error dialog if it catches a client-side error.
                 CustomDialog.Show("Unable to connect to the server.\nPlease try again.",
@@ -123,7 +123,7 @@ namespace Kinesia.Patients
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 // will show an error dialog if it catches a client-side error.
                 CustomDialog.Show("Unable to connect to the server.\nPlease try again.",
@@ -160,7 +160,7 @@ namespace Kinesia.Patients
                     PageObjects.CurrentControl = PageObjects.editPatient;
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 // will show an error dialog if it catches a client-side error.
                 CustomDialog.Show("Unable to connect to the server.\nPlease try again.",
@@ -255,35 +255,45 @@ namespace Kinesia.Patients
 
         public async Task<bool> CheckExistingPatient(PatientDataHolder patientData)
         {
-            using (var client = new HttpClient())
+            try
             {
-                client.BaseAddress = new Uri("https://localhost:5001/");
-
-                var existingPatient = new CheckExistingPatientDTO();
-
-                existingPatient.FirstName = patientData.FirstName;
-                existingPatient.LastName = patientData.LastName;
-                existingPatient.MiddleName = patientData.MiddleName;
-
-                var response = await client.PostAsJsonAsync("api/patients/check-existing", existingPatient);
-
-                if (response.StatusCode == System.Net.HttpStatusCode.Conflict)
+                using (var client = new HttpClient())
                 {
-                    // will return true if patient exists
-                    MessageBox.Show("Patient was already existing", "Add Patient Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return true;
+                    client.BaseAddress = new Uri("https://localhost:5001/");
+
+                    var existingPatient = new CheckExistingPatientDTO();
+
+                    existingPatient.FirstName = patientData.FirstName;
+                    existingPatient.LastName = patientData.LastName;
+                    existingPatient.MiddleName = patientData.MiddleName;
+
+                    var response = await client.PostAsJsonAsync("api/patients/check-existing", existingPatient);
+
+                    if (response.StatusCode == System.Net.HttpStatusCode.Conflict)
+                    {
+                        // will return true if patient exists
+                        MessageBox.Show("Patient was already existing", "Add Patient Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return true;
+                    }
+                    else if (response.IsSuccessStatusCode)
+                    {
+                        // will return false if patient does not exists
+                        return false;
+                    }
+                    else
+                    {
+                        // will handle unexpected errors
+                        string error = await response.Content.ReadAsStringAsync();
+                        return true;
+                    }
                 }
-                else if (response.IsSuccessStatusCode)
-                {
-                    // will return false if patient does not exists
-                    return false;
-                }
-                else
-                {
-                    // will handle unexpected errors
-                    string error = await response.Content.ReadAsStringAsync();
-                    return true;
-                }
+            }
+            catch (Exception)
+            {
+                // will show an error dialog if it catches a client-side error.
+                CustomDialog.Show("Unable to connect to the server.\nPlease try again.",
+                            "Connection Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                return true;
             }
         }
 
