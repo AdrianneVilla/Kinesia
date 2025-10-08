@@ -134,28 +134,37 @@ namespace Kinesia.Patients
         public async Task GetPatientDetails(string patientID, PatientDataHolder patientData)
         {
             // GetPatientDetails overload for Edit Patient page
-            using (var client = new HttpClient())
+            try
             {
-                var url = $"https://localhost:5001/api/patients/{patientID}";
+                using (var client = new HttpClient())
+                {
+                    var url = $"https://localhost:5001/api/patients/{patientID}";
 
-                var response = await client.GetStringAsync(url);
-                var patient = JsonConvert.DeserializeObject<PatientsDTO>(response);
+                    var response = await client.GetStringAsync(url);
+                    var patient = JsonConvert.DeserializeObject<PatientsDTO>(response);
 
-                patientData.PatientID = patient.PatientID;
-                patientData.FirstName = patient.FirstName;
-                patientData.LastName = patient.LastName;
-                patientData.MiddleName = patient.MiddleName;
-                patientData.Birthdate = patient.Birthdate.ToString("yyyy-MM-dd");
-                patientData.Age = patient.Age;
-                patientData.Gender = patient.Gender;
-                patientData.Contact = patient.Contact;
-                patientData.Occupation = patient.Occupation;
-                patientData.Address = patient.Address;
+                    patientData.PatientID = patient.PatientID;
+                    patientData.FirstName = patient.FirstName;
+                    patientData.LastName = patient.LastName;
+                    patientData.MiddleName = patient.MiddleName;
+                    patientData.Birthdate = patient.Birthdate.ToString("yyyy-MM-dd");
+                    patientData.Age = patient.Age;
+                    patientData.Gender = patient.Gender;
+                    patientData.Contact = patient.Contact;
+                    patientData.Occupation = patient.Occupation;
+                    patientData.Address = patient.Address;
 
-                PageObjects.editPatient = new EditPatient();
-                PageObjects.RemoveResources(ref PageObjects.CurrentControl);
-                PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.editPatient);
-                PageObjects.CurrentControl = PageObjects.editPatient;
+                    PageObjects.editPatient = new EditPatient();
+                    PageObjects.RemoveResources(ref PageObjects.CurrentControl);
+                    PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.editPatient);
+                    PageObjects.CurrentControl = PageObjects.editPatient;
+                }
+            }
+            catch (Exception e)
+            {
+                // will show an error dialog if it catches a client-side error.
+                CustomDialog.Show("Unable to connect to the server.\nPlease try again.",
+                            "Connection Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
             }
         }
 
