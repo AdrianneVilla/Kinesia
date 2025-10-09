@@ -145,50 +145,62 @@ namespace KinesiaAPI.Controllers
                 return BadRequest("Patient ID is required and must match the URL parameter");
             }
 
-            var existingPatient = await _context.Patients.FindAsync(id);
-
-            if(existingPatient == null)
+            try
             {
-                return NotFound("Patient data not found.\nPlease try again");
+                var existingPatient = await _context.Patients.FindAsync(id);
+
+                if (existingPatient == null)
+                {
+                    return NotFound("Patient data not found.\nPlease try again");
+                }
+
+                // will only overwrite/update if a new value was sent
+                if (!string.IsNullOrEmpty(updatedPatient.FirstName))
+                    existingPatient.FirstName = updatedPatient.FirstName;
+
+                if (!string.IsNullOrEmpty(updatedPatient.LastName))
+                    existingPatient.LastName = updatedPatient.LastName;
+
+                if (!string.IsNullOrEmpty(updatedPatient.MiddleName))
+                    existingPatient.MiddleName = updatedPatient.MiddleName;
+
+                if (!string.IsNullOrEmpty(updatedPatient.Contact))
+                    existingPatient.Contact = updatedPatient.Contact;
+
+                if (updatedPatient.Birthdate.HasValue)
+                    existingPatient.Birthdate = updatedPatient.Birthdate.Value;
+
+                if (!string.IsNullOrEmpty(updatedPatient.Gender))
+                    existingPatient.Gender = updatedPatient.Gender;
+
+                if (!string.IsNullOrEmpty(updatedPatient.Address))
+                    existingPatient.Address = updatedPatient.Address;
+
+                if (!string.IsNullOrEmpty(updatedPatient.Occupation))
+                    existingPatient.Occupation = updatedPatient.Occupation;
+
+                if (updatedPatient.DateAdded.HasValue)
+                    existingPatient.DateAdded = updatedPatient.DateAdded.Value;
+
+                if (updatedPatient.LastArchiveDate != default(DateTime))
+                    existingPatient.LastArchiveDate = updatedPatient.LastArchiveDate;
+
+                if (updatedPatient.Status.HasValue)
+                    existingPatient.Status = updatedPatient.Status.Value;
+
+                await _context.SaveChangesAsync();
+
+                return NoContent();
             }
-
-            // will only overwrite/update if a new value was sent
-            if(!string.IsNullOrEmpty(updatedPatient.FirstName))
-                existingPatient.FirstName = updatedPatient.FirstName;
-
-            if(!string.IsNullOrEmpty(updatedPatient.LastName))
-                existingPatient.LastName = updatedPatient.LastName;
-
-            if(!string.IsNullOrEmpty(updatedPatient.MiddleName))
-                existingPatient.MiddleName = updatedPatient.MiddleName;
-
-            if(!string.IsNullOrEmpty(updatedPatient.Contact))
-                existingPatient.Contact = updatedPatient.Contact;
-
-            if(updatedPatient.Birthdate.HasValue)
-                existingPatient.Birthdate = updatedPatient.Birthdate.Value;
-
-            if(!string.IsNullOrEmpty(updatedPatient.Gender))
-                existingPatient.Gender = updatedPatient.Gender;
-
-            if(!string.IsNullOrEmpty(updatedPatient.Address))
-                existingPatient.Address = updatedPatient.Address;
-
-            if(!string.IsNullOrEmpty(updatedPatient.Occupation))
-                existingPatient.Occupation = updatedPatient.Occupation;
-
-            if(updatedPatient.DateAdded.HasValue)
-                existingPatient.DateAdded = updatedPatient.DateAdded.Value;
-
-            if(updatedPatient.LastArchiveDate != default(DateTime))
-                existingPatient.LastArchiveDate = updatedPatient.LastArchiveDate;
-
-            if(updatedPatient.Status.HasValue)
-                existingPatient.Status = updatedPatient.Status.Value;
-
-            await _context.SaveChangesAsync();
-
-            return NoContent();
+            catch (DbUpdateException)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An error occured while updating the patient data." +
+                    "\nPlease try again.");
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An unexpected error occured.\nPlease try again.");
+            }
         }
 
         // PUT: api/patients/5/status

@@ -235,28 +235,55 @@ namespace Kinesia.Patients
 
         public async Task<bool> UpdatePatient(PatientDataHolder patientData)
         {
-            using (var client = new HttpClient())
+            try
             {
-                var url = $"https://localhost:5001/api/patients/{patientData.PatientID}";
+                using (var client = new HttpClient())
+                {
+                    var url = $"https://localhost:5001/api/patients/{patientData.PatientID}";
 
-                var updatedPatient = new UpdatedPatientDTO();
+                    var updatedPatient = new UpdatedPatientDTO();
 
-                updatedPatient.PatientID = patientData.PatientID;
-                updatedPatient.FirstName = patientData.FirstName;
-                updatedPatient.LastName = patientData.LastName;
-                updatedPatient.MiddleName = patientData.MiddleName;
-                updatedPatient.Birthdate = DateTime.Parse(patientData.Birthdate);
-                updatedPatient.Gender = patientData.Gender;
-                updatedPatient.Contact = ContactFormatter(patientData.Contact);
-                updatedPatient.Occupation = patientData.Occupation;
-                updatedPatient.Address = patientData.Address;
+                    updatedPatient.PatientID = patientData.PatientID;
+                    updatedPatient.FirstName = patientData.FirstName;
+                    updatedPatient.LastName = patientData.LastName;
+                    updatedPatient.MiddleName = patientData.MiddleName;
+                    updatedPatient.Birthdate = DateTime.Parse(patientData.Birthdate);
+                    updatedPatient.Gender = patientData.Gender;
+                    updatedPatient.Contact = ContactFormatter(patientData.Contact);
+                    updatedPatient.Occupation = patientData.Occupation;
+                    updatedPatient.Address = patientData.Address;
 
-                var json = JsonConvert.SerializeObject(updatedPatient);
-                var content = new StringContent(json, Encoding.UTF8, "application/json");
+                    var json = JsonConvert.SerializeObject(updatedPatient);
+                    var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-                var response = await client.PutAsync(url, content);
+                    var response = await client.PutAsync(url, content);
 
-                return response.IsSuccessStatusCode;
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        // will show an error dialog if it returns a badrequest from API-side.
+                        CustomDialog.Show(await response.Content.ReadAsStringAsync(),
+                                    "Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                        return false;
+                    }
+                }
+            }
+            catch (HttpRequestException)
+            {
+                // will show an error dialog if it catches a http request error from client-side.
+                CustomDialog.Show("Unable to connect to the server.\nPlease try again.",
+                            "Connection Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                return false;
+            }
+            catch (Exception)
+            {
+                // will show an error dialog if it catches an unexpected error from client-side.
+                CustomDialog.Show("Unexpected error occured.\nPlease try again.",
+                            "Unexpected Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                return false;
             }
         }
 
