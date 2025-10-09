@@ -178,31 +178,58 @@ namespace Kinesia.Patients
 
         public async Task<bool> AddPatient(PatientDataHolder patientData)
         {
-            using (var client = new HttpClient())
+            try
             {
-                var newPatient = new PatientsDTO
+                using (var client = new HttpClient())
                 {
-                    PatientID = patientData.PatientID,
-                    FirstName = patientData.FirstName,
-                    LastName = patientData.LastName,
-                    MiddleName = patientData.MiddleName,
-                    Contact = ContactFormatter(patientData.Contact),
-                    Birthdate = DateTime.Parse(patientData.Birthdate),
-                    Gender = patientData.Gender,
-                    Address = patientData.Address,
-                    Occupation = patientData.Occupation,
-                    DateAdded = DateTime.Now,
-                    LastArchiveDate = null,
-                    Status = 1
-                };
+                    var newPatient = new PatientsDTO
+                    {
+                        PatientID = patientData.PatientID,
+                        FirstName = patientData.FirstName,
+                        LastName = patientData.LastName,
+                        MiddleName = patientData.MiddleName,
+                        Contact = ContactFormatter(patientData.Contact),
+                        Birthdate = DateTime.Parse(patientData.Birthdate),
+                        Gender = patientData.Gender,
+                        Address = patientData.Address,
+                        Occupation = patientData.Occupation,
+                        DateAdded = DateTime.Now,
+                        LastArchiveDate = null,
+                        Status = 1
+                    };
 
-                client.BaseAddress = new Uri("https://localhost:5001/api/");
-                var json = JsonConvert.SerializeObject(newPatient);
-                var content = new StringContent(json, Encoding.UTF8, "application/json");
+                    client.BaseAddress = new Uri("https://localhost:5001/api/");
+                    var json = JsonConvert.SerializeObject(newPatient);
+                    var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-                var response = await client.PostAsync("patients", content);
+                    var response = await client.PostAsync("patients", content);
 
-                return response.IsSuccessStatusCode;
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        // will show an error dialog if it returns a badrequest from API-side.
+                        CustomDialog.Show(await response.Content.ReadAsStringAsync(),
+                                    "Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                        return false;
+                    }
+                }
+            }
+            catch (HttpRequestException)
+            {
+                // will show an error dialog if it catches a http request error from client-side.
+                CustomDialog.Show("Unable to connect to the server.\nPlease try again.",
+                            "Connection Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                return false;
+            }
+            catch (Exception)
+            {
+                // will show an error dialog if it catches an unexpected error from client-side.
+                CustomDialog.Show("Unexpected error occured.\nPlease try again.",
+                            "Unexpected Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                return false;
             }
         }
 

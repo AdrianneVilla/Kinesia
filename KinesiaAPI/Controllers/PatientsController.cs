@@ -219,24 +219,38 @@ namespace KinesiaAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<Patients>> PostPatients(Patients patients)
         {
-            _context.Patients.Add(patients);
+            if (patients == null)
+                return BadRequest("Patient data cannot be null.");
+
             try
             {
-                await _context.SaveChangesAsync();
+                _context.Patients.Add(patients);
+                try
+                {
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateException)
+                {
+                    if (PatientsExists(patients.PatientID))
+                    {
+                        return Conflict();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+
+                return CreatedAtAction("GetPatients", new { id = patients.PatientID }, patients);
             }
             catch (DbUpdateException)
             {
-                if (PatientsExists(patients.PatientID))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
+                return BadRequest("An error occured while saving the patient data.\nPlease try again.");
             }
-
-            return CreatedAtAction("GetPatients", new { id = patients.PatientID }, patients);
+            catch (Exception)
+            {
+                return BadRequest("An unexpected error occured.\nPlease try again.");
+            }
         }
 
         // DELETE: api/Patients/5
