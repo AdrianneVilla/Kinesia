@@ -149,7 +149,7 @@ namespace KinesiaAPI.Controllers
 
             if(existingPatient == null)
             {
-                return NotFound();
+                return NotFound("Patient data not found.\nPlease try again");
             }
 
             // will only overwrite/update if a new value was sent
@@ -225,31 +225,17 @@ namespace KinesiaAPI.Controllers
             try
             {
                 _context.Patients.Add(patients);
-                try
-                {
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateException)
-                {
-                    if (PatientsExists(patients.PatientID))
-                    {
-                        return Conflict();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+                await _context.SaveChangesAsync();
 
                 return CreatedAtAction("GetPatients", new { id = patients.PatientID }, patients);
             }
             catch (DbUpdateException)
             {
-                return BadRequest("An error occured while saving the patient data.\nPlease try again.");
+                return StatusCode(StatusCodes.Status500InternalServerError,"An error occured while saving the patient data.\nPlease try again.");
             }
             catch (Exception)
             {
-                return BadRequest("An unexpected error occured.\nPlease try again.");
+                return StatusCode(StatusCodes.Status500InternalServerError,"An unexpected error occured.\nPlease try again.");
             }
         }
 
