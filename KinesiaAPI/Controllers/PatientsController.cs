@@ -212,18 +212,30 @@ namespace KinesiaAPI.Controllers
                 return BadRequest("Patient ID is required and must match the URL parameter");
             }
 
-            var existingPatient = await _context.Patients.FindAsync(id);
-
-            if (existingPatient == null)
+            try
             {
-                return NotFound();
+                var existingPatient = await _context.Patients.FindAsync(id);
+
+                if (existingPatient == null)
+                {
+                    return NotFound();
+                }
+
+                existingPatient.Status = updatedPatient.Status;
+
+                await _context.SaveChangesAsync();
+
+                return NoContent();
             }
-
-            existingPatient.Status = updatedPatient.Status;
-
-            await _context.SaveChangesAsync();
-
-            return NoContent();
+            catch(DbUpdateException)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An error occured while updated patient's status." +
+                    "\nPlease try again.");
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An unexpected error occured.\nPlease try again.");
+            }
         }
 
         // POST: api/patients

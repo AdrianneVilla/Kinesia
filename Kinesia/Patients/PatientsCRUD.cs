@@ -289,21 +289,48 @@ namespace Kinesia.Patients
 
         public async Task<bool> UpdatePatientStatus(string patientID, int status)
         {
-            using (var client = new HttpClient())
+            try
             {
-                var url = $"https://localhost:5001/api/patients/{patientID}/status";
+                using (var client = new HttpClient())
+                {
+                    var url = $"https://localhost:5001/api/patients/{patientID}/status";
 
-                var updatedPatient = new PatientUpdateStatusDTO();
+                    var updatedPatient = new PatientUpdateStatusDTO();
 
-                updatedPatient.PatientID = patientID;
-                updatedPatient.Status = status;
+                    updatedPatient.PatientID = patientID;
+                    updatedPatient.Status = status;
 
-                var json = JsonConvert.SerializeObject(updatedPatient);
-                var content = new StringContent(json, Encoding.UTF8, "application/json");
+                    var json = JsonConvert.SerializeObject(updatedPatient);
+                    var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-                var response = await client.PutAsync(url, content);
+                    var response = await client.PutAsync(url, content);
 
-                return response.IsSuccessStatusCode;
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        // will show an error dialog if it returns a badrequest from API-side.
+                        CustomDialog.Show(await response.Content.ReadAsStringAsync(),
+                                    "Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                        return false;
+                    }
+                }
+            }
+            catch (HttpRequestException)
+            {
+                // will show an error dialog if it catches a http request error from client-side.
+                CustomDialog.Show("Unable to connect to the server.\nPlease try again.",
+                            "Connection Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                return false;
+            }
+            catch(Exception)
+            {
+                // will show an error dialog if it catches an unexpected error from client-side.
+                CustomDialog.Show("Unexpected error occured.\nPlease try again.",
+                            "Unexpected Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                return false;
             }
         }
 
