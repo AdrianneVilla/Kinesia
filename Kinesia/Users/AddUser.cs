@@ -178,6 +178,9 @@ namespace Kinesia.Users
             }
         }
 
-        
+        private void newBtnAddUser_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

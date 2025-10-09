@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserPage));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             label1 = new System.Windows.Forms.Label();
             nameHolder = new System.Windows.Forms.Label();
             panelBorder2 = new WindowsFormsApp2.CustomButton.PanelBorder();
@@ -47,10 +47,12 @@
             txtSearchBar = new CustomControls.RJControls.RJTextBox();
             lblHiddenForFocus = new System.Windows.Forms.Label();
             dataGridUsers = new System.Windows.Forms.DataGridView();
+            panelBorder3 = new WindowsFormsApp2.CustomButton.PanelBorder();
             panelBorder2.SuspendLayout();
             panelBorder1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridUsers).BeginInit();
+            panelBorder3.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -93,7 +95,7 @@
             panelBorder2.Location = new System.Drawing.Point(72, 163);
             panelBorder2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             panelBorder2.Name = "panelBorder2";
-            panelBorder2.Size = new System.Drawing.Size(1317, 67);
+            panelBorder2.Size = new System.Drawing.Size(1800, 67);
             panelBorder2.TabIndex = 15;
             // 
             // cbSort
@@ -109,7 +111,7 @@
             cbSort.Items.AddRange(new object[] { "Default", "Alphabetical (Name)", "Earliest (Date Added)", "Latest (Date Added)" });
             cbSort.ListBackColor = System.Drawing.Color.White;
             cbSort.ListTextColor = System.Drawing.Color.Black;
-            cbSort.Location = new System.Drawing.Point(839, 6);
+            cbSort.Location = new System.Drawing.Point(1322, 6);
             cbSort.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             cbSort.MinimumSize = new System.Drawing.Size(233, 35);
             cbSort.Name = "cbSort";
@@ -196,7 +198,7 @@
             btnAddPatient.ForeColor = System.Drawing.Color.Transparent;
             btnAddPatient.Image = (System.Drawing.Image)resources.GetObject("btnAddPatient.Image");
             btnAddPatient.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            btnAddPatient.Location = new System.Drawing.Point(1134, 6);
+            btnAddPatient.Location = new System.Drawing.Point(1617, 6);
             btnAddPatient.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             btnAddPatient.Name = "btnAddPatient";
             btnAddPatient.Padding = new System.Windows.Forms.Padding(6, 6, 23, 0);
@@ -220,7 +222,7 @@
             panelBorder1.Controls.Add(pictureBox1);
             panelBorder1.Controls.Add(txtSearchBar);
             panelBorder1.ForeColor = System.Drawing.Color.Black;
-            panelBorder1.Location = new System.Drawing.Point(807, 51);
+            panelBorder1.Location = new System.Drawing.Point(1290, 51);
             panelBorder1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             panelBorder1.Name = "panelBorder1";
             panelBorder1.Padding = new System.Windows.Forms.Padding(6);
@@ -303,7 +305,7 @@
             dataGridUsers.AllowUserToDeleteRows = false;
             dataGridUsers.AllowUserToResizeColumns = false;
             dataGridUsers.AllowUserToResizeRows = false;
-            dataGridUsers.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            dataGridUsers.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             dataGridUsers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridUsers.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders;
             dataGridUsers.BackgroundColor = System.Drawing.Color.White;
@@ -311,53 +313,66 @@
             dataGridUsers.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             dataGridUsers.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
             dataGridUsers.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Poppins", 10F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            dataGridUsers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Poppins", 10F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            dataGridUsers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             dataGridUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            dataGridUsers.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            dataGridUsers.DefaultCellStyle = dataGridViewCellStyle6;
             dataGridUsers.GridColor = System.Drawing.Color.White;
-            dataGridUsers.Location = new System.Drawing.Point(86, 245);
+            dataGridUsers.Location = new System.Drawing.Point(10, 10);
             dataGridUsers.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             dataGridUsers.Name = "dataGridUsers";
             dataGridUsers.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            dataGridUsers.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            dataGridUsers.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
             dataGridUsers.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            dataGridUsers.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
+            dataGridUsers.RowsDefaultCellStyle = dataGridViewCellStyle8;
             dataGridUsers.ShowCellErrors = false;
             dataGridUsers.ShowCellToolTips = false;
             dataGridUsers.ShowEditingIcon = false;
             dataGridUsers.ShowRowErrors = false;
-            dataGridUsers.Size = new System.Drawing.Size(1299, 592);
+            dataGridUsers.Size = new System.Drawing.Size(1773, 608);
             dataGridUsers.TabIndex = 14;
+            // 
+            // panelBorder3
+            // 
+            panelBorder3.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            panelBorder3.BackColor = System.Drawing.Color.FromArgb(207, 249, 238);
+            panelBorder3.BorderRadius = 10;
+            panelBorder3.Color = System.Drawing.Color.BurlyWood;
+            panelBorder3.Controls.Add(dataGridUsers);
+            panelBorder3.ForeColor = System.Drawing.Color.Black;
+            panelBorder3.Location = new System.Drawing.Point(74, 236);
+            panelBorder3.Name = "panelBorder3";
+            panelBorder3.Size = new System.Drawing.Size(1793, 628);
+            panelBorder3.TabIndex = 17;
             // 
             // UserPage
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             BackColor = System.Drawing.Color.White;
-            Controls.Add(dataGridUsers);
+            Controls.Add(panelBorder3);
             Controls.Add(lblHiddenForFocus);
             Controls.Add(panelBorder2);
             Controls.Add(label1);
@@ -365,12 +380,13 @@
             Controls.Add(panelBorder1);
             Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             Name = "UserPage";
-            Size = new System.Drawing.Size(1457, 875);
+            Size = new System.Drawing.Size(1940, 875);
             Load += UserPage_Load;
             panelBorder2.ResumeLayout(false);
             panelBorder1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridUsers).EndInit();
+            panelBorder3.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
 
@@ -391,5 +407,6 @@
         private CustomControls.RJControls.RJComboBox cbSort;
         private System.Windows.Forms.Label lblHiddenForFocus;
         public System.Windows.Forms.DataGridView dataGridUsers;
+        private WindowsFormsApp2.CustomButton.PanelBorder panelBorder3;
     }
 }

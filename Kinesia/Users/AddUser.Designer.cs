@@ -63,9 +63,9 @@
             label3 = new System.Windows.Forms.Label();
             btnClearInput = new OrganizationProfile.CustomButton();
             btnAddUser = new OrganizationProfile.CustomButton();
-            customButton1 = new OrganizationProfile.CustomButton();
-            newBtnAddUser = new OrganizationProfile.CustomButton();
+            flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             panelBorder1.SuspendLayout();
+            flowLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -124,7 +124,7 @@
             btnBack.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
             btnBack.Image = Properties.Resources.back_button_icon;
             btnBack.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            btnBack.Location = new System.Drawing.Point(1520, 45);
+            btnBack.Location = new System.Drawing.Point(1558, 44);
             btnBack.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             btnBack.Name = "btnBack";
             btnBack.Padding = new System.Windows.Forms.Padding(0, 3, 35, 0);
@@ -138,13 +138,12 @@
             // 
             // panelBorder1
             // 
+            panelBorder1.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             panelBorder1.BackColor = System.Drawing.Color.White;
             panelBorder1.BackgroundImage = Properties.Resources.Add_Patient_Background;
             panelBorder1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             panelBorder1.BorderRadius = 30;
             panelBorder1.Color = System.Drawing.Color.BurlyWood;
-            panelBorder1.Controls.Add(customButton1);
-            panelBorder1.Controls.Add(newBtnAddUser);
             panelBorder1.Controls.Add(txtEmail);
             panelBorder1.Controls.Add(label16);
             panelBorder1.Controls.Add(label15);
@@ -172,12 +171,11 @@
             panelBorder1.Controls.Add(txtFirstName);
             panelBorder1.Controls.Add(label4);
             panelBorder1.Controls.Add(label3);
-            panelBorder1.Dock = System.Windows.Forms.DockStyle.Fill;
             panelBorder1.ForeColor = System.Drawing.Color.Black;
-            panelBorder1.Location = new System.Drawing.Point(0, 0);
+            panelBorder1.Location = new System.Drawing.Point(78, 132);
             panelBorder1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             panelBorder1.Name = "panelBorder1";
-            panelBorder1.Size = new System.Drawing.Size(1511, 991);
+            panelBorder1.Size = new System.Drawing.Size(1631, 652);
             panelBorder1.TabIndex = 15;
             // 
             // txtEmail
@@ -196,7 +194,7 @@
             txtEmail.Padding = new System.Windows.Forms.Padding(12, 8, 12, 8);
             txtEmail.PasswordChar = false;
             txtEmail.PlaceholderColor = System.Drawing.Color.DarkGray;
-            txtEmail.PlaceholderText = "";
+            txtEmail.PlaceholderText = "e.g. example.gmail.com";
             txtEmail.Size = new System.Drawing.Size(427, 43);
             txtEmail.TabIndex = 7;
             txtEmail.Texts = "";
@@ -217,7 +215,7 @@
             // 
             label15.AutoSize = true;
             label15.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            label15.Location = new System.Drawing.Point(825, 697);
+            label15.Location = new System.Drawing.Point(830, 530);
             label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             label15.Name = "label15";
             label15.Size = new System.Drawing.Size(38, 23);
@@ -236,7 +234,7 @@
             cbRole.Items.AddRange(new object[] { "Admin", "Therapist" });
             cbRole.ListBackColor = System.Drawing.Color.White;
             cbRole.ListTextColor = System.Drawing.Color.Black;
-            cbRole.Location = new System.Drawing.Point(826, 725);
+            cbRole.Location = new System.Drawing.Point(831, 558);
             cbRole.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             cbRole.MinimumSize = new System.Drawing.Size(233, 35);
             cbRole.Name = "cbRole";
@@ -268,11 +266,10 @@
             // 
             // label14
             // 
-            label14.AutoSize = true;
             label14.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             label14.ForeColor = System.Drawing.Color.Gray;
-            label14.Location = new System.Drawing.Point(946, 255);
-            label14.Margin = new System.Windows.Forms.Padding(35, 0, 4, 0);
+            label14.Location = new System.Drawing.Point(992, 254);
+            label14.Margin = new System.Windows.Forms.Padding(0, 0, 4, 0);
             label14.Name = "label14";
             label14.Size = new System.Drawing.Size(34, 23);
             label14.TabIndex = 33;
@@ -287,7 +284,7 @@
             txtPassword.BorderSize = 1;
             txtPassword.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             txtPassword.ForeColor = System.Drawing.Color.Black;
-            txtPassword.Location = new System.Drawing.Point(440, 722);
+            txtPassword.Location = new System.Drawing.Point(445, 555);
             txtPassword.Margin = new System.Windows.Forms.Padding(5);
             txtPassword.Multiline = false;
             txtPassword.Name = "txtPassword";
@@ -304,7 +301,7 @@
             // 
             label13.AutoSize = true;
             label13.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            label13.Location = new System.Drawing.Point(435, 696);
+            label13.Location = new System.Drawing.Point(440, 529);
             label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             label13.Name = "label13";
             label13.Size = new System.Drawing.Size(75, 23);
@@ -320,7 +317,7 @@
             txtUsername.BorderSize = 1;
             txtUsername.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             txtUsername.ForeColor = System.Drawing.Color.Black;
-            txtUsername.Location = new System.Drawing.Point(61, 722);
+            txtUsername.Location = new System.Drawing.Point(66, 555);
             txtUsername.Margin = new System.Windows.Forms.Padding(5);
             txtUsername.Multiline = false;
             txtUsername.Name = "txtUsername";
@@ -337,7 +334,7 @@
             // 
             label12.AutoSize = true;
             label12.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            label12.Location = new System.Drawing.Point(56, 696);
+            label12.Location = new System.Drawing.Point(61, 529);
             label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             label12.Name = "label12";
             label12.Size = new System.Drawing.Size(80, 23);
@@ -349,7 +346,7 @@
             label11.AutoSize = true;
             label11.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             label11.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
-            label11.Location = new System.Drawing.Point(54, 633);
+            label11.Location = new System.Drawing.Point(59, 466);
             label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             label11.Name = "label11";
             label11.Size = new System.Drawing.Size(159, 34);
@@ -450,7 +447,7 @@
             txtAddress.BorderSize = 1;
             txtAddress.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             txtAddress.ForeColor = System.Drawing.Color.Black;
-            txtAddress.Location = new System.Drawing.Point(56, 464);
+            txtAddress.Location = new System.Drawing.Point(541, 352);
             txtAddress.Margin = new System.Windows.Forms.Padding(5);
             txtAddress.Multiline = true;
             txtAddress.Name = "txtAddress";
@@ -458,7 +455,7 @@
             txtAddress.PasswordChar = false;
             txtAddress.PlaceholderColor = System.Drawing.Color.DarkGray;
             txtAddress.PlaceholderText = "";
-            txtAddress.Size = new System.Drawing.Size(1357, 119);
+            txtAddress.Size = new System.Drawing.Size(875, 42);
             txtAddress.TabIndex = 8;
             txtAddress.Texts = "";
             txtAddress.UnderlinedStyle = false;
@@ -467,7 +464,7 @@
             // 
             label9.AutoSize = true;
             label9.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            label9.Location = new System.Drawing.Point(51, 437);
+            label9.Location = new System.Drawing.Point(532, 324);
             label9.Margin = new System.Windows.Forms.Padding(4, 35, 4, 0);
             label9.Name = "label9";
             label9.Size = new System.Drawing.Size(66, 23);
@@ -487,11 +484,11 @@
             txtContact.Margin = new System.Windows.Forms.Padding(35, 5, 5, 5);
             txtContact.Multiline = false;
             txtContact.Name = "txtContact";
-            txtContact.Padding = new System.Windows.Forms.Padding(12, 8, 12, 8);
+            txtContact.Padding = new System.Windows.Forms.Padding(45, 10, 10, 8);
             txtContact.PasswordChar = false;
             txtContact.PlaceholderColor = System.Drawing.Color.DarkGray;
             txtContact.PlaceholderText = "";
-            txtContact.Size = new System.Drawing.Size(427, 43);
+            txtContact.Size = new System.Drawing.Size(427, 45);
             txtContact.TabIndex = 6;
             txtContact.Texts = "";
             txtContact.UnderlinedStyle = false;
@@ -623,7 +620,7 @@
             btnClearInput.ForeColor = System.Drawing.Color.FromArgb(210, 64, 66);
             btnClearInput.Image = (System.Drawing.Image)resources.GetObject("btnClearInput.Image");
             btnClearInput.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnClearInput.Location = new System.Drawing.Point(1416, 1064);
+            btnClearInput.Location = new System.Drawing.Point(214, 3);
             btnClearInput.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             btnClearInput.Name = "btnClearInput";
             btnClearInput.Padding = new System.Windows.Forms.Padding(12, 5, 47, 0);
@@ -649,7 +646,7 @@
             btnAddUser.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
             btnAddUser.Image = (System.Drawing.Image)resources.GetObject("btnAddUser.Image");
             btnAddUser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnAddUser.Location = new System.Drawing.Point(1208, 1064);
+            btnAddUser.Location = new System.Drawing.Point(4, 3);
             btnAddUser.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             btnAddUser.Name = "btnAddUser";
             btnAddUser.Padding = new System.Windows.Forms.Padding(12, 5, 35, 0);
@@ -661,76 +658,35 @@
             btnAddUser.UseVisualStyleBackColor = false;
             btnAddUser.Click += btnAddUser_Click;
             // 
-            // customButton1
+            // flowLayoutPanel1
             // 
-            customButton1.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
-            customButton1.BackColor = System.Drawing.Color.FromArgb(255, 216, 216);
-            customButton1.BackgroundColor = System.Drawing.Color.FromArgb(255, 216, 216);
-            customButton1.BorderColor = System.Drawing.Color.FromArgb(210, 64, 66);
-            customButton1.BorderRadius = 10;
-            customButton1.BorderSize = 1;
-            customButton1.FlatAppearance.BorderSize = 0;
-            customButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            customButton1.Font = new System.Drawing.Font("Poppins", 10F, System.Drawing.FontStyle.Bold);
-            customButton1.ForeColor = System.Drawing.Color.FromArgb(210, 64, 66);
-            customButton1.Image = (System.Drawing.Image)resources.GetObject("customButton1.Image");
-            customButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            customButton1.Location = new System.Drawing.Point(1211, 895);
-            customButton1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            customButton1.Name = "customButton1";
-            customButton1.Padding = new System.Windows.Forms.Padding(12, 5, 60, 0);
-            customButton1.Size = new System.Drawing.Size(202, 58);
-            customButton1.TabIndex = 40;
-            customButton1.Text = "Clear";
-            customButton1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            customButton1.TextColor = System.Drawing.Color.FromArgb(210, 64, 66);
-            customButton1.UseVisualStyleBackColor = false;
-            // 
-            // newBtnAddUser
-            // 
-            newBtnAddUser.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
-            newBtnAddUser.BackColor = System.Drawing.Color.FromArgb(200, 220, 255);
-            newBtnAddUser.BackgroundColor = System.Drawing.Color.FromArgb(200, 220, 255);
-            newBtnAddUser.BorderColor = System.Drawing.Color.FromArgb(18, 90, 211);
-            newBtnAddUser.BorderRadius = 10;
-            newBtnAddUser.BorderSize = 1;
-            newBtnAddUser.FlatAppearance.BorderSize = 0;
-            newBtnAddUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            newBtnAddUser.Font = new System.Drawing.Font("Poppins", 10F, System.Drawing.FontStyle.Bold);
-            newBtnAddUser.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
-            newBtnAddUser.Image = (System.Drawing.Image)resources.GetObject("newBtnAddUser.Image");
-            newBtnAddUser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            newBtnAddUser.Location = new System.Drawing.Point(1002, 895);
-            newBtnAddUser.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            newBtnAddUser.Name = "newBtnAddUser";
-            newBtnAddUser.Padding = new System.Windows.Forms.Padding(12, 5, 45, 0);
-            newBtnAddUser.Size = new System.Drawing.Size(202, 58);
-            newBtnAddUser.TabIndex = 39;
-            newBtnAddUser.Text = "Add User";
-            newBtnAddUser.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            newBtnAddUser.TextColor = System.Drawing.Color.FromArgb(18, 90, 211);
-            newBtnAddUser.UseVisualStyleBackColor = false;
+            flowLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+            flowLayoutPanel1.Controls.Add(btnAddUser);
+            flowLayoutPanel1.Controls.Add(btnClearInput);
+            flowLayoutPanel1.Location = new System.Drawing.Point(1287, 884);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            flowLayoutPanel1.Size = new System.Drawing.Size(422, 67);
+            flowLayoutPanel1.TabIndex = 41;
             // 
             // AddUser
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            AutoSize = true;
             AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             BackColor = System.Drawing.Color.White;
+            Controls.Add(flowLayoutPanel1);
             Controls.Add(btnBack);
             Controls.Add(panelBorder1);
-            Controls.Add(btnClearInput);
             Controls.Add(label1);
             Controls.Add(nameHolder);
-            Controls.Add(btnAddUser);
             Controls.Add(txtTitleLabel);
             Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             Name = "AddUser";
-            Size = new System.Drawing.Size(1511, 991);
+            Size = new System.Drawing.Size(1763, 973);
             Load += AddUser_Load;
             panelBorder1.ResumeLayout(false);
             panelBorder1.PerformLayout();
+            flowLayoutPanel1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
 
@@ -772,7 +728,6 @@
         private CustomControls.RJControls.RJComboBox cbRole;
         private CustomControls.RJControls.RJTextBox txtEmail;
         private System.Windows.Forms.Label label16;
-        private OrganizationProfile.CustomButton customButton1;
-        private OrganizationProfile.CustomButton newBtnAddUser;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }

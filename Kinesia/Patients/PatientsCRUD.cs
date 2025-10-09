@@ -35,15 +35,63 @@ namespace Kinesia.Patients
                         var patients = JsonConvert.DeserializeObject<List<DisplayPatientsDTO>>(json);
                         PageObjects.patientsPage.GetPatientGrid.DataSource = patients;
                         PageObjects.patientsPage.GetPatientGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
                         var dataGrid = PageObjects.patientsPage.GetPatientGrid;
-                        dataGrid.DataSource = patients;
-                        dataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-                        // Add button column if it doesn't exist
-                        AddActionButtons();
+                        SetDoubleBuffering(dataGrid, true);
+                        dataGrid.SuspendLayout();
+                        try
+                        {
+                            dataGrid.AutoGenerateColumns = false;
+                            dataGrid.Columns.Clear();
 
-                        // Add spacing on the datagridview for better visualization
-                        StyleDataGridWithSpacing(dataGrid);
+                            dataGrid.Columns.Add(new DataGridViewTextBoxColumn
+                            {
+                                Name = "PatienID",
+                                DataPropertyName = "PatientID",
+                                HeaderText = "Patient ID"
+                            });
+                            dataGrid.Columns.Add(new DataGridViewTextBoxColumn
+                            {
+                                Name = "PatienName",
+                                DataPropertyName = "PatientName",
+                                HeaderText = "Patient Name"
+                            });
+
+                            dataGrid.Columns.Add(new DataGridViewTextBoxColumn
+                            {
+                                Name = "Age",
+                                DataPropertyName = "Age",
+                                HeaderText = "Age"
+                            });
+
+                            dataGrid.Columns.Add(new DataGridViewTextBoxColumn
+                            {
+                                Name = "Contact",
+                                DataPropertyName = "Contact",
+                                HeaderText = "Contact"
+                            });
+                            dataGrid.Columns.Add(new DataGridViewTextBoxColumn
+                            {
+                                Name = "Status",
+                                DataPropertyName = "Status",
+                                HeaderText = "Status"
+
+                            });
+                            dataGrid.DataSource = patients;
+                            dataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+                            // Add button column if it doesn't exist
+                            AddActionButtons();
+
+                            // Add spacing on the datagridview for better visualization
+                            StyleDataGridWithSpacing(dataGrid);
+                        }
+                        finally
+                        {
+                            dataGrid.ResumeLayout(true);
+                        }
+                       
                     }
                     else
                     {
@@ -439,9 +487,8 @@ namespace Kinesia.Patients
         private void AddActionButtons()
         {
             var dataGrid = PageObjects.patientsPage.GetPatientGrid;
+            dataGrid.SuspendLayout();
 
-
-          
             if (dataGrid.Columns["ViewButton"] == null)
             {
                 // Create View Details button column
@@ -473,17 +520,27 @@ namespace Kinesia.Patients
             {
                 DataGridViewButtonColumn archiveBtn = new DataGridViewButtonColumn();
                 archiveBtn.Name = "ArchiveButton";
-                archiveBtn.HeaderText = "Status";
+                archiveBtn.HeaderText = "Archive/Unarchive";
                 archiveBtn.UseColumnTextForButtonValue = true;
-                archiveBtn.Width = 90;
+                archiveBtn.Width = 190;
                 archiveBtn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
                 dataGrid.Columns.Add(archiveBtn);
             }
+            dataGrid.ResumeLayout();
+
+            // wire up events
             dataGrid.CellPainting -= DataGrid_CellPainting;
             dataGrid.CellPainting += DataGrid_CellPainting;
+
+            // hover events
+            dataGrid.CellMouseEnter -= DataGrid_CellMouseEnter;
+            dataGrid.CellMouseEnter += DataGrid_CellMouseEnter;
+
+            dataGrid.CellMouseLeave -= DataGrid_CellMouseLeave;
+            dataGrid.CellMouseLeave += DataGrid_CellMouseLeave;
         }
 
-
+        Point hoveredCell = new Point(-1, -1);
         private void DataGrid_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
             var dataGrid = PageObjects.patientsPage.GetPatientGrid;
@@ -494,9 +551,11 @@ namespace Kinesia.Patients
 
                 if (columnName == "ViewButton" || columnName == "EditButton" || columnName == "ArchiveButton")
                 {
-                 
+                    bool isHovered = (hoveredCell.X == e.ColumnIndex && hoveredCell.Y == e.RowIndex);
+                    Color backgroundColor = isHovered ? Color.FromArgb(220,220,220) : Color.White;
+
                         // Normal background
-                        e.Graphics.FillRectangle(new SolidBrush(dataGrid.DefaultCellStyle.BackColor), e.CellBounds);
+                        e.Graphics.FillRectangle(new SolidBrush(backgroundColor), e.CellBounds);
                     
 
                     Image icon = null;
@@ -539,9 +598,6 @@ namespace Kinesia.Patients
 
         private void StyleDataGridWithSpacing(DataGridView dataGrid)
         {
-
-            EnableDoubleBuffering(dataGrid);
-            //cell styling with padding
            
             dataGrid.DefaultCellStyle.Padding = new Padding(15, 10, 15, 10);
 
@@ -552,11 +608,38 @@ namespace Kinesia.Patients
             dataGrid.BorderStyle = BorderStyle.None;
         }
 
-        private void EnableDoubleBuffering(DataGridView dataGridView)
+        private void DataGrid_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
         {
-            typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
-                System.Reflection.BindingFlags.Instance |
-                System.Reflection.BindingFlags.SetProperty, null, dataGridView, new object[] { true });
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                var dataGrid = PageObjects.patientsPage.GetPatientGrid;
+                string columnName = dataGrid.Columns[e.ColumnIndex].Name;
+
+                // Only apply hover effect to button columns
+                if (columnName == "ViewButton" || columnName == "EditButton" || columnName == "ArchiveButton")
+                {
+                    hoveredCell = new Point(e.ColumnIndex, e.RowIndex);
+                    dataGrid.InvalidateCell(e.ColumnIndex, e.RowIndex); // Trigger repaint
+                }
+            }
+        }
+
+        private void DataGrid_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                var dataGrid = PageObjects.patientsPage.GetPatientGrid;
+                hoveredCell = new Point(-1, -1);
+                dataGrid.InvalidateCell(e.ColumnIndex, e.RowIndex); // Trigger repaint
+            }
+        }
+
+        private void SetDoubleBuffering(Control control, bool enable)
+        {
+            var propertyInfo = typeof(Control).GetProperty("DoubleBuffered",
+             System.Reflection.BindingFlags.NonPublic |
+             System.Reflection.BindingFlags.Instance);
+            propertyInfo.SetValue(control, enable, null);
         }
     }
 }

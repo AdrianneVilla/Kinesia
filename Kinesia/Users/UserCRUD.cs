@@ -17,6 +17,7 @@ namespace Kinesia.Users
 {
     public class UserCRUD
     {
+        private Point hoveredCell = new Point(-1, -1);
         public async Task DisplayUsers(string searchData, string currentTab, string sortColumn)
         {
             //PageObjects.userPage.getUserHolder.Controls.Clear();
@@ -35,14 +36,57 @@ namespace Kinesia.Users
                         PageObjects.userPage.GetUserGrid.DataSource = users;
                         PageObjects.userPage.GetUserGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                         var dataGrid = PageObjects.userPage.GetUserGrid;
-                        dataGrid.DataSource = users;
-                        dataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-                        // Add button column if it doesn't exist
-                        AddActionButtons();
+                        SetDoubleBuffering(dataGrid, true);
 
-                        // Add spacing on the datagridview for better visualization
-                        StyleDataGridWithSpacing(dataGrid);
+                        dataGrid.SuspendLayout();
+                       
+                        try {
+                            dataGrid.AutoGenerateColumns = false;
+                            dataGrid.Columns.Clear();
+
+                            dataGrid.Columns.Add(new DataGridViewTextBoxColumn
+                            {
+                                Name = "UserID",
+                                DataPropertyName = "UserID",
+                                HeaderText = "User ID"
+                            });
+
+                            dataGrid.Columns.Add(new DataGridViewTextBoxColumn
+                            {
+                                Name = "Name",
+                                DataPropertyName = "UserName",
+                                HeaderText = "Name"
+                            });
+
+                            dataGrid.Columns.Add(new DataGridViewTextBoxColumn
+                            {
+                                Name = "Role",
+                                DataPropertyName = "Role",
+                                HeaderText = "Role"
+                            });
+
+                            dataGrid.Columns.Add(new DataGridViewTextBoxColumn
+                            {
+                                Name = "Status",
+                                DataPropertyName = "Status",
+                                HeaderText = "Status"
+                            });
+
+
+                            dataGrid.DataSource = users;
+                            dataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+                            // Add button column if it doesn't exist
+                            AddActionButtons();
+
+                            // Add spacing on the datagridview for better visualization
+                            StyleDataGridWithSpacing(dataGrid);
+                        }
+                        finally
+                        {
+                            dataGrid.ResumeLayout(true);
+                        }
                     }
                     else
                     {
@@ -360,7 +404,7 @@ namespace Kinesia.Users
         {
             var dataGrid = PageObjects.userPage.GetUserGrid;
 
-
+            dataGrid.SuspendLayout();
 
             if (dataGrid.Columns["SelectButton"] == null)
             {
@@ -390,14 +434,22 @@ namespace Kinesia.Users
             {
                 DataGridViewButtonColumn archiveBtn = new DataGridViewButtonColumn();
                 archiveBtn.Name = "ArchiveButton";
-                archiveBtn.HeaderText = "Status";
+                archiveBtn.HeaderText = "Archive/Unarchive";
                 archiveBtn.UseColumnTextForButtonValue = true;
-                archiveBtn.Width = 90;
+                archiveBtn.Width = 190;
                 archiveBtn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
                 dataGrid.Columns.Add(archiveBtn);
             }
+            // wire up events
             dataGrid.CellPainting -= DataGrid_CellPainting;
             dataGrid.CellPainting += DataGrid_CellPainting;
+
+            // hover events
+            dataGrid.CellMouseEnter -= DataGrid_CellMouseEnter;
+            dataGrid.CellMouseEnter += DataGrid_CellMouseEnter;
+
+            dataGrid.CellMouseLeave -= DataGrid_CellMouseLeave;
+            dataGrid.CellMouseLeave += DataGrid_CellMouseLeave;
         }
 
 
@@ -411,8 +463,14 @@ namespace Kinesia.Users
 
                 if (columnName == "SelectButton" || columnName == "EditButton" || columnName == "ArchiveButton")
                 {
-                    e.Graphics.FillRectangle(new SolidBrush(dataGrid.DefaultCellStyle.BackColor), e.CellBounds);
-     
+                    // checking if the cell of buttons is being hovered
+                
+                    bool isHovered = (hoveredCell.X == e.ColumnIndex && hoveredCell.Y == e.RowIndex);
+                
+                        Color backgroundColor = isHovered ? Color.FromArgb(220, 220, 220) : Color.White;
+                   
+                        e.Graphics.FillRectangle(new SolidBrush(backgroundColor), e.CellBounds);
+
                     Image icon = null;
                     if (columnName == "SelectButton")
                         icon = Properties.Resources.newSelect;
@@ -454,8 +512,6 @@ namespace Kinesia.Users
         private void StyleDataGridWithSpacing(DataGridView dataGrid)
         {
             
-            EnableDoubleBuffering(dataGrid);
-
             //cell styling with padding
             dataGrid.DefaultCellStyle.Padding = new Padding(15, 10, 15, 10);
 
@@ -465,11 +521,38 @@ namespace Kinesia.Users
             dataGrid.BorderStyle = BorderStyle.None;
         }
 
-        private void EnableDoubleBuffering(DataGridView dataGridView)
+        private void SetDoubleBuffering(Control control, bool enable)
         {
-            typeof(DataGridView).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.NonPublic |
-                System.Reflection.BindingFlags.Instance |
-                System.Reflection.BindingFlags.SetProperty, null, dataGridView, new object[] { true });
+            var propertyInfo = typeof(Control).GetProperty("DoubleBuffered",
+            System.Reflection.BindingFlags.NonPublic |
+             System.Reflection.BindingFlags.Instance);
+            propertyInfo.SetValue(control, enable, null);
+        }
+
+        private void DataGrid_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                var dataGrid = PageObjects.userPage.GetUserGrid;
+                string columnName = dataGrid.Columns[e.ColumnIndex].Name;
+
+                // Only apply hover effect to button columns
+                if (columnName == "SelectButton" || columnName == "EditButton" || columnName == "ArchiveButton")
+                {
+                    hoveredCell = new Point(e.ColumnIndex, e.RowIndex);
+                    dataGrid.InvalidateCell(e.ColumnIndex, e.RowIndex); // Trigger repaint
+                }
+            }
+        }
+
+        private void DataGrid_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                var dataGrid = PageObjects.userPage.GetUserGrid;
+                hoveredCell = new Point(-1, -1);
+                dataGrid.InvalidateCell(e.ColumnIndex, e.RowIndex); // Trigger repaint
+            }
         }
 
     }
