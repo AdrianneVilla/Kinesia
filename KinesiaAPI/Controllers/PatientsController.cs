@@ -138,9 +138,13 @@ namespace KinesiaAPI.Controllers
 
                 return Ok();
             }
+            catch (DbException)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An error occured on database.\nPlease try again.");
+            }
             catch (Exception)
             {
-                return BadRequest("Unable to connect to the server. Please try again.");
+                return StatusCode(StatusCodes.Status500InternalServerError, "An unexpected error occured.\nPlease try again.");
             }
         }
 

@@ -435,17 +435,26 @@ namespace Kinesia.Patients
                     else
                     {
                         // will handle unexpected errors
-                        string error = await response.Content.ReadAsStringAsync();
+                        // will show an error dialog if it returns a badrequest from API-side.
+                        CustomDialog.Show(await response.Content.ReadAsStringAsync(),
+                                    "Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
                         return true;
                     }
                 }
             }
-            catch (Exception)
+            catch (HttpRequestException)
             {
-                // will show an error dialog if it catches a client-side error.
+                // will show an error dialog if it catches a http request error from client-side.
                 CustomDialog.Show("Unable to connect to the server.\nPlease try again.",
                             "Connection Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
-                return true;
+                return false;
+            }
+            catch (Exception)
+            {
+                // will show an error dialog if it catches an unexpected error from client-side.
+                CustomDialog.Show("Unexpected error occured.\nPlease try again.",
+                            "Unexpected Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                return false;
             }
         }
 
