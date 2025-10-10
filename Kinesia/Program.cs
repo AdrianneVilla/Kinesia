@@ -53,6 +53,7 @@ namespace Kinesia
         public static EditUser editUser;
         public static AssessmentPage assessmentPage;
         public static LogsPage logsPage;
+        public static newLogsPage newLogsPage;
 
         public static Control CurrentControl;
 

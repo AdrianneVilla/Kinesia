@@ -195,7 +195,7 @@
             txtEmail.PasswordChar = false;
             txtEmail.PlaceholderColor = System.Drawing.Color.DarkGray;
             txtEmail.PlaceholderText = "e.g. example.gmail.com";
-            txtEmail.Size = new System.Drawing.Size(427, 43);
+            txtEmail.Size = new System.Drawing.Size(446, 43);
             txtEmail.TabIndex = 7;
             txtEmail.Texts = "";
             txtEmail.UnderlinedStyle = false;
@@ -396,7 +396,7 @@
             txtLastName.BorderSize = 1;
             txtLastName.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             txtLastName.ForeColor = System.Drawing.Color.Black;
-            txtLastName.Location = new System.Drawing.Point(523, 129);
+            txtLastName.Location = new System.Drawing.Point(541, 129);
             txtLastName.Margin = new System.Windows.Forms.Padding(35, 5, 5, 5);
             txtLastName.Multiline = false;
             txtLastName.Name = "txtLastName";
@@ -404,7 +404,7 @@
             txtLastName.PasswordChar = false;
             txtLastName.PlaceholderColor = System.Drawing.Color.DarkGray;
             txtLastName.PlaceholderText = "";
-            txtLastName.Size = new System.Drawing.Size(427, 43);
+            txtLastName.Size = new System.Drawing.Size(409, 43);
             txtLastName.TabIndex = 2;
             txtLastName.Texts = "";
             txtLastName.UnderlinedStyle = false;
@@ -414,7 +414,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            label2.Location = new System.Drawing.Point(518, 103);
+            label2.Location = new System.Drawing.Point(541, 103);
             label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             label2.Name = "label2";
             label2.Size = new System.Drawing.Size(81, 23);
@@ -577,7 +577,7 @@
             txtFirstName.PasswordChar = false;
             txtFirstName.PlaceholderColor = System.Drawing.Color.DarkGray;
             txtFirstName.PlaceholderText = "";
-            txtFirstName.Size = new System.Drawing.Size(427, 43);
+            txtFirstName.Size = new System.Drawing.Size(446, 43);
             txtFirstName.TabIndex = 1;
             txtFirstName.Texts = "";
             txtFirstName.UnderlinedStyle = false;
