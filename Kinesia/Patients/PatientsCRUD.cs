@@ -40,71 +40,71 @@ namespace Kinesia.Patients
 
                         SetDoubleBuffering(dataGrid, true);
                         dataGrid.SuspendLayout();
-                        try
+                        dataGrid.AutoGenerateColumns = false;
+                        dataGrid.Columns.Clear();
+
+                        dataGrid.Columns.Add(new DataGridViewTextBoxColumn
                         {
-                            dataGrid.AutoGenerateColumns = false;
-                            dataGrid.Columns.Clear();
-
-                            dataGrid.Columns.Add(new DataGridViewTextBoxColumn
-                            {
-                                Name = "PatienID",
-                                DataPropertyName = "PatientID",
-                                HeaderText = "Patient ID"
-                            });
-                            dataGrid.Columns.Add(new DataGridViewTextBoxColumn
-                            {
-                                Name = "PatienName",
-                                DataPropertyName = "PatientName",
-                                HeaderText = "Patient Name"
-                            });
-
-                            dataGrid.Columns.Add(new DataGridViewTextBoxColumn
-                            {
-                                Name = "Age",
-                                DataPropertyName = "Age",
-                                HeaderText = "Age"
-                            });
-
-                            dataGrid.Columns.Add(new DataGridViewTextBoxColumn
-                            {
-                                Name = "Contact",
-                                DataPropertyName = "Contact",
-                                HeaderText = "Contact"
-                            });
-                            dataGrid.Columns.Add(new DataGridViewTextBoxColumn
-                            {
-                                Name = "Status",
-                                DataPropertyName = "Status",
-                                HeaderText = "Status"
-
-                            });
-                            dataGrid.DataSource = patients;
-                            dataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
-                            // Add button column if it doesn't exist
-                            AddActionButtons();
-
-                            // Add spacing on the datagridview for better visualization
-                            StyleDataGridWithSpacing(dataGrid);
-                        }
-                        finally
+                            Name = "PatienID",
+                            DataPropertyName = "PatientID",
+                            HeaderText = "Patient ID"
+                        });
+                        dataGrid.Columns.Add(new DataGridViewTextBoxColumn
                         {
-                            dataGrid.ResumeLayout(true);
-                        }
-                       
+                            Name = "PatienName",
+                            DataPropertyName = "PatientName",
+                            HeaderText = "Patient Name"
+                        });
+
+                        dataGrid.Columns.Add(new DataGridViewTextBoxColumn
+                        {
+                            Name = "Age",
+                            DataPropertyName = "Age",
+                            HeaderText = "Age"
+                        });
+
+                        dataGrid.Columns.Add(new DataGridViewTextBoxColumn
+                        {
+                            Name = "Contact",
+                            DataPropertyName = "Contact",
+                            HeaderText = "Contact"
+                        });
+                        dataGrid.Columns.Add(new DataGridViewTextBoxColumn
+                        {
+                            Name = "Status",
+                            DataPropertyName = "Status",
+                            HeaderText = "Status"
+
+                        });
+                        dataGrid.DataSource = patients;
+                        dataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+                        // Add button column if it doesn't exist
+                        AddActionButtons();
+
+                        // Add spacing on the datagridview for better visualization
+                        StyleDataGridWithSpacing(dataGrid);
+
+                        dataGrid.ResumeLayout(true);
                     }
                     else
                     {
-                        // will show an error dialog if the status code is not 200 (e.g., 500)
-                        CustomDialog.Show("Unable to connect to the server.\nPlease try again.",
-                            "Connection Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                        // will show an error dialog if it returns a badrequest from API
+                        CustomDialog.Show(await response.Content.ReadAsStringAsync(),
+                            "Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
                     }
                 }
             }
+            catch (HttpRequestException)
+            {
+                // will show an error dialog if it catches a http request error from client-side
+                CustomDialog.Show("Unable to connect to the server.\nPlease try again.",
+                    "Connection Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+            }
             catch (Exception)
             {
-                // will show an error dialog if it catches a client-side error.
-                CustomDialog.Show("Unable to connect to the server.\nPlease try again.",
+                // will show an error dialog if it catches an unexpected error from client-side.
+                CustomDialog.Show("An unexpected error occured.\nPlease try again.",
                             "Connection Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
             }
         }

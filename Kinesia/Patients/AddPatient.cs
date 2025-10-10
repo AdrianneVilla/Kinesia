@@ -27,7 +27,7 @@ namespace Kinesia.Patients
                 DialogResult backDialog = MessageBox.Show("Are you sure you want to go back to Patient page?\n" +
                     "Any unsaved changes will be lost!", "Add Patient Notification", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
 
-                if(backDialog == DialogResult.Yes)
+                if (backDialog == DialogResult.Yes)
                 {
                     PageObjects.RemoveResources(ref PageObjects.CurrentControl);
                     PageObjects.patientsPage = new PatientsPage();
@@ -35,7 +35,7 @@ namespace Kinesia.Patients
                     PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.patientsPage);
                     PageObjects.CurrentControl = PageObjects.patientsPage;
                 }
-            } 
+            }
             else
             {
                 // will directly go back to Patient page if there's no unsaved input    
@@ -49,7 +49,7 @@ namespace Kinesia.Patients
 
         private void dpBirthDate_ValueChanged(object sender, EventArgs e)
         {
-             txtAge.Texts = getAge().ToString(); // txtAge value will changed if the value of DatePicker dpBirthDate changed 
+            txtAge.Texts = getAge().ToString(); // txtAge value will changed if the value of DatePicker dpBirthDate changed 
         }
 
         private void AddPatient_Load(object sender, EventArgs e)
@@ -90,7 +90,7 @@ namespace Kinesia.Patients
 
         private void btnClearInput_Click(object sender, EventArgs e)
         {
-            if(areInputsBlank())
+            if (areInputsBlank())
             {
                 // will only show dialog if there's an unsaved input
                 DialogResult clearDialog = MessageBox.Show("Are you sure you want to clear inputs?\n" +
@@ -118,7 +118,7 @@ namespace Kinesia.Patients
             DialogResult addPatientDialog = MessageBox.Show("Are you sure you want to add this patient?", "Add Patient Notification",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
 
-            if(addPatientDialog == DialogResult.Yes)
+            if (addPatientDialog == DialogResult.Yes)
             {
                 // will remove extra whitespaces on beginning and end of the textboxes
                 txtFirstName.Texts.Trim();
@@ -141,7 +141,7 @@ namespace Kinesia.Patients
                     Occupation = txtOccupation.Texts,
                 };
 
-                if(Queries.PatientQueries.IsPatientDetailsComplete(DataHolder.PatientDataHolder) && !await Queries.PatientQueries.CheckExistingPatient(DataHolder.PatientDataHolder) &&
+                if (Queries.PatientQueries.IsPatientDetailsComplete(DataHolder.PatientDataHolder) && !await Queries.PatientQueries.CheckExistingPatient(DataHolder.PatientDataHolder) &&
                     Queries.PatientQueries.IsAgeValid(DataHolder.PatientDataHolder) && Queries.PatientQueries.IsContactValid(DataHolder.PatientDataHolder))
                 {
                     // will continue to add the patient if PatientDataHolder passed the data validations
@@ -150,7 +150,7 @@ namespace Kinesia.Patients
 
                     var success = await Queries.PatientQueries.AddPatient(DataHolder.PatientDataHolder);
 
-                    if(success)
+                    if (success)
                     {
                         // if adding patient was successful
                         // will add a log for adding a patient
@@ -169,8 +169,8 @@ namespace Kinesia.Patients
                         // will show an error message
                         MessageBox.Show("Failed to add patient!", "Add Patient Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    
-                } 
+
+                }
                 else
                 {
                     DataHolder.PatientDataHolder = null; // will remove the instance of PatientDataHolder if it didn't pass the data validations

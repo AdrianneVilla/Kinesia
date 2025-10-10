@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using KinesiaAPI.Data;
 using KinesiaAPI.Models.Entities;
 using KinesiaLibrary.DTOs;
+using System.Data.Common;
 
 namespace KinesiaAPI.Controllers
 {
@@ -78,10 +79,14 @@ namespace KinesiaAPI.Controllers
                     .ToListAsync();
 
                 return Ok(patients);
-            } 
+            }
+            catch (DbException)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An error occured on database.\nPlease try again.");
+            }
             catch (Exception)
             {
-                return BadRequest("Unable to connect to the server. Please try again.");
+                return StatusCode(StatusCodes.Status500InternalServerError, "An unexpected error occured.\nPlease try again.");
             }
         }
 
