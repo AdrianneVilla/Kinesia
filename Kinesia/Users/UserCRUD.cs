@@ -164,45 +164,77 @@ namespace Kinesia.Users
                     }
                     else
                     {
-                        // will show an error dialog if the status code is not 200 (e.g., 500)
-                        CustomDialog.Show("Unable to connect to the server.\nPlease try again.",
-                            "Connection Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                        // will show an error dialog if it returns a badrequest from API
+                        CustomDialog.Show(await response.Content.ReadAsStringAsync(),
+                            "Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
                     }
                 }
             }
-            catch (Exception ex)
+            catch (HttpRequestException)
             {
-                // will show an error dialog if it catches a client-side error.
+                // will show an error dialog if it catches a http request error from client-side
                 CustomDialog.Show("Unable to connect to the server.\nPlease try again.",
-                            "Connection Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                    "Connection Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+            }
+            catch (Exception)
+            {
+                // will show an error dialog if it catches an unexpected error from client-side.
+                CustomDialog.Show("An unexpected error occured.\nPlease try again.",
+                            "Unexpected Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
             }
         }
 
         public async Task GetUserDetails(string userID, UserDataHolder userData)
         {
             // GetUserDetails overload for Edit User page
-            using (var client = new HttpClient())
+            try
             {
-                var url = $"https://localhost:5001/api/users/{userID}";
+                using (var client = new HttpClient())
+                {
+                    var url = $"https://localhost:5001/api/users/{userID}";
 
-                var response = await client.GetStringAsync(url);
-                var user = JsonConvert.DeserializeObject<UsersDTO>(response);
+                    var response = await client.GetAsync(url);
 
-                userData.UserID = user.UserID;
-                userData.FirstName = user.FirstName;
-                userData.LastName = user.LastName;
-                userData.MiddleName = user.MiddleName;
-                userData.BirthDate = user.Birthdate.ToString("yyyy-MM-dd");
-                userData.Age = user.Age;
-                userData.Gender = user.Gender;
-                userData.Contact = user.Contact;
-                userData.Email = user.Email;
-                userData.Address = user.Address;
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var json = await response.Content.ReadAsStringAsync();
+                        var user = JsonConvert.DeserializeObject<UsersDTO>(json);
 
-                PageObjects.editUser = new EditUser();
-                PageObjects.RemoveResources(ref PageObjects.CurrentControl);
-                PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.editUser);
-                PageObjects.CurrentControl = PageObjects.editUser;
+                        userData.UserID = user.UserID;
+                        userData.FirstName = user.FirstName;
+                        userData.LastName = user.LastName;
+                        userData.MiddleName = user.MiddleName;
+                        userData.BirthDate = user.Birthdate.ToString("yyyy-MM-dd");
+                        userData.Age = user.Age;
+                        userData.Gender = user.Gender;
+                        userData.Contact = user.Contact;
+                        userData.Email = user.Email;
+                        userData.Address = user.Address;
+
+                        PageObjects.editUser = new EditUser();
+                        PageObjects.RemoveResources(ref PageObjects.CurrentControl);
+                        PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.editUser);
+                        PageObjects.CurrentControl = PageObjects.editUser;
+                    }
+                    else
+                    {
+                        // will show an error dialog if it returns a badrequest from API
+                        CustomDialog.Show(await response.Content.ReadAsStringAsync(),
+                            "Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                    }
+                }
+            }
+            catch (HttpRequestException)
+            {
+                // will show an error dialog if it catches a http request error from client-side
+                CustomDialog.Show("Unable to connect to the server.\nPlease try again.",
+                    "Connection Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+            }
+            catch (Exception)
+            {
+                // will show an error dialog if it catches an unexpected error from client-side.
+                CustomDialog.Show("An unexpected error occured.\nPlease try again.",
+                            "Unexpected Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
             }
         }
 

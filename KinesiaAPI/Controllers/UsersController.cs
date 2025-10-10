@@ -83,7 +83,7 @@ namespace KinesiaAPI.Controllers
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, "An error occured on database.\nPlease try again.");
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, "An unexpected error occured.\nPlease try again.");
             }
@@ -93,14 +93,25 @@ namespace KinesiaAPI.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<UsersDTO>> GetUsers(string id)
         {
-            var users = await _context.Users.FindAsync(id);
-
-            if (users == null)
+            try
             {
-                return NotFound();
-            }
+                var users = await _context.Users.FindAsync(id);
 
-            return UsersToDTO(users);
+                if (users == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok(UsersToDTO(users));
+            }
+            catch (DbException)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An error occured on database.\nPlease try again.");
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An unexpected error occured.\nPlease try again.");
+            }
         }
 
         // POST: api/users/check-existing
