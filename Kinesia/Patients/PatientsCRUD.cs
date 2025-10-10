@@ -105,7 +105,7 @@ namespace Kinesia.Patients
             {
                 // will show an error dialog if it catches an unexpected error from client-side.
                 CustomDialog.Show("An unexpected error occured.\nPlease try again.",
-                            "Connection Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                            "Unexpected Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
             }
         }
 
@@ -165,17 +165,23 @@ namespace Kinesia.Patients
                     }
                     else
                     {
-                        // will show an error dialog if the status code is not 200 (e.g., 500)
-                        CustomDialog.Show("Unable to connect to the server.\nPlease try again.",
-                            "Connection Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                        // will show an error dialog if it returns a badrequest from API
+                        CustomDialog.Show(await response.Content.ReadAsStringAsync(),
+                            "Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
                     }
                 }
             }
+            catch (HttpRequestException)
+            {
+                // will show an error dialog if it catches a http request error from client-side
+                CustomDialog.Show("Unable to connect to the server.\nPlease try again.",
+                    "Connection Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+            }
             catch (Exception)
             {
-                // will show an error dialog if it catches a client-side error.
+                // will show an error dialog if it catches an unexpected error from client-side
                 CustomDialog.Show("Unable to connect to the server.\nPlease try again.",
-                            "Connection Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                            "Unexpected Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
             }
         }
 
@@ -188,31 +194,48 @@ namespace Kinesia.Patients
                 {
                     var url = $"https://localhost:5001/api/patients/{patientID}";
 
-                    var response = await client.GetStringAsync(url);
-                    var patient = JsonConvert.DeserializeObject<PatientsDTO>(response);
+                    var response = await client.GetAsync(url);
 
-                    patientData.PatientID = patient.PatientID;
-                    patientData.FirstName = patient.FirstName;
-                    patientData.LastName = patient.LastName;
-                    patientData.MiddleName = patient.MiddleName;
-                    patientData.Birthdate = patient.Birthdate.ToString("yyyy-MM-dd");
-                    patientData.Age = patient.Age;
-                    patientData.Gender = patient.Gender;
-                    patientData.Contact = patient.Contact;
-                    patientData.Occupation = patient.Occupation;
-                    patientData.Address = patient.Address;
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var json = await response.Content.ReadAsStringAsync();
+                        var patient = JsonConvert.DeserializeObject<PatientsDTO>(json);
 
-                    PageObjects.editPatient = new EditPatient();
-                    PageObjects.RemoveResources(ref PageObjects.CurrentControl);
-                    PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.editPatient);
-                    PageObjects.CurrentControl = PageObjects.editPatient;
+                        patientData.PatientID = patient.PatientID;
+                        patientData.FirstName = patient.FirstName;
+                        patientData.LastName = patient.LastName;
+                        patientData.MiddleName = patient.MiddleName;
+                        patientData.Birthdate = patient.Birthdate.ToString("yyyy-MM-dd");
+                        patientData.Age = patient.Age;
+                        patientData.Gender = patient.Gender;
+                        patientData.Contact = patient.Contact;
+                        patientData.Occupation = patient.Occupation;
+                        patientData.Address = patient.Address;
+
+                        PageObjects.editPatient = new EditPatient();
+                        PageObjects.RemoveResources(ref PageObjects.CurrentControl);
+                        PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.editPatient);
+                        PageObjects.CurrentControl = PageObjects.editPatient;
+                    }
+                    else
+                    {
+                        // will show an error dialog if it returns a badrequest from API
+                        CustomDialog.Show(await response.Content.ReadAsStringAsync(),
+                            "Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                    }
                 }
+            }
+            catch (HttpRequestException)
+            {
+                // will show an error dialog if it catches a http request error from client-side
+                CustomDialog.Show("Unable to connect to the server.\nPlease try again.",
+                    "Connection Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
             }
             catch (Exception)
             {
-                // will show an error dialog if it catches a client-side error.
+                // will show an error dialog if it catches an unexpected error from client-side
                 CustomDialog.Show("Unable to connect to the server.\nPlease try again.",
-                            "Connection Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                            "Unexpected Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
             }
         }
 
