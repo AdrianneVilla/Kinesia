@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using KinesiaAPI.Data;
 using KinesiaAPI.Models.Entities;
 using KinesiaLibrary.DTOs;
+using System.Data.Common;
 
 namespace KinesiaAPI.Controllers
 {
@@ -29,50 +30,63 @@ namespace KinesiaAPI.Controllers
             string? currentTab = null,
             string? sortColumn = "UserID")
         {
-            var query = _context.Users.AsQueryable();
-
-            // will filter by Active / Inactive
-            if (currentTab == "Active")
+            try
             {
-                query = query.Where(u => u.Status == 1);
-            }
-            else if (currentTab == "Inactive")
-            {
-                query = query.Where(u => u.Status == 0);
-            }
+                var query = _context.Users.AsQueryable();
 
-            // search
-            if (!string.IsNullOrEmpty(searchData))
-            {
-                query = query.Where(u =>
-                u.UserID.Contains(searchData) ||
-                u.FirstName.Contains(searchData) ||
-                u.LastName.Contains(searchData) ||
-                u.MiddleName.Contains(searchData));
-            }
+                // will filter by Active / Inactive
+                if (currentTab == "Active")
+                {
+                    query = query.Where(u => u.Status == 1);
+                }
+                else if (currentTab == "Inactive")
+                {
+                    query = query.Where(u => u.Status == 0);
+                }
 
-            // sorting
-            bool desc = true;
-            switch (sortColumn)
-            {
-                case "Alphabetic (Name)":
-                    query = query.OrderBy(u => u.FirstName);
-                    break;
-                case "Earliest (Date Added)":
-                    query = query.OrderByDescending(u => u.DateAdded);
-                    break;
-                case "Latest (Date Added)":
-                    query = query.OrderBy(u => u.DateAdded);
-                    desc = false;
-                    break;
-                default:
-                    query = query.OrderByDescending(u => u.UserID);
-                    break;
-            }
+                // search
+                if (!string.IsNullOrEmpty(searchData))
+                {
+                    query = query.Where(u =>
+                    u.UserID.Contains(searchData) ||
+                    u.FirstName.Contains(searchData) ||
+                    u.LastName.Contains(searchData) ||
+                    u.MiddleName.Contains(searchData));
+                }
 
-            return await query
-                .Select(u => UsersToDisplayUsersDTO(u))
-                .ToListAsync();
+                // sorting
+                bool desc = true;
+                switch (sortColumn)
+                {
+                    case "Alphabetic (Name)":
+                        query = query.OrderBy(u => u.FirstName);
+                        break;
+                    case "Earliest (Date Added)":
+                        query = query.OrderByDescending(u => u.DateAdded);
+                        break;
+                    case "Latest (Date Added)":
+                        query = query.OrderBy(u => u.DateAdded);
+                        desc = false;
+                        break;
+                    default:
+                        query = query.OrderByDescending(u => u.UserID);
+                        break;
+                }
+
+                var users = await query
+                    .Select(u => UsersToDisplayUsersDTO(u))
+                    .ToListAsync();
+
+                return Ok(users);
+            }
+            catch (DbException)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An error occured on database.\nPlease try again.");
+            }
+            catch(Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An unexpected error occured.\nPlease try again.");
+            }
         }
 
         // GET: api/Users/5

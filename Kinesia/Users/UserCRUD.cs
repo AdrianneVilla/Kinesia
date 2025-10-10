@@ -40,67 +40,68 @@ namespace Kinesia.Users
                         SetDoubleBuffering(dataGrid, true);
 
                         dataGrid.SuspendLayout();
-                       
-                        try {
-                            dataGrid.AutoGenerateColumns = false;
-                            dataGrid.Columns.Clear();
 
-                            dataGrid.Columns.Add(new DataGridViewTextBoxColumn
-                            {
-                                Name = "UserID",
-                                DataPropertyName = "UserID",
-                                HeaderText = "User ID"
-                            });
+                        dataGrid.AutoGenerateColumns = false;
+                        dataGrid.Columns.Clear();
 
-                            dataGrid.Columns.Add(new DataGridViewTextBoxColumn
-                            {
-                                Name = "Name",
-                                DataPropertyName = "UserName",
-                                HeaderText = "Name"
-                            });
-
-                            dataGrid.Columns.Add(new DataGridViewTextBoxColumn
-                            {
-                                Name = "Role",
-                                DataPropertyName = "Role",
-                                HeaderText = "Role"
-                            });
-
-                            dataGrid.Columns.Add(new DataGridViewTextBoxColumn
-                            {
-                                Name = "Status",
-                                DataPropertyName = "Status",
-                                HeaderText = "Status"
-                            });
-
-
-                            dataGrid.DataSource = users;
-                            dataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
-                            // Add button column if it doesn't exist
-                            AddActionButtons();
-
-                            // Add spacing on the datagridview for better visualization
-                            StyleDataGridWithSpacing(dataGrid);
-                        }
-                        finally
+                        dataGrid.Columns.Add(new DataGridViewTextBoxColumn
                         {
-                            dataGrid.ResumeLayout(true);
-                        }
+                            Name = "UserID",
+                            DataPropertyName = "UserID",
+                            HeaderText = "User ID"
+                        });
+
+                        dataGrid.Columns.Add(new DataGridViewTextBoxColumn
+                        {
+                            Name = "Name",
+                            DataPropertyName = "UserName",
+                            HeaderText = "Name"
+                        });
+
+                        dataGrid.Columns.Add(new DataGridViewTextBoxColumn
+                        {
+                            Name = "Role",
+                            DataPropertyName = "Role",
+                            HeaderText = "Role"
+                        });
+
+                        dataGrid.Columns.Add(new DataGridViewTextBoxColumn
+                        {
+                            Name = "Status",
+                            DataPropertyName = "Status",
+                            HeaderText = "Status"
+                        });
+
+
+                        dataGrid.DataSource = users;
+                        dataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+                        // Add button column if it doesn't exist
+                        AddActionButtons();
+
+                        // Add spacing on the datagridview for better visualization
+                        StyleDataGridWithSpacing(dataGrid);
+                        dataGrid.ResumeLayout(true);
                     }
                     else
                     {
-                        // will show an error dialog if the status code is not 200 (e.g., 500)
-                        CustomDialog.Show("Unable to connect to the server.\nPlease try again.",
-                               "Connection Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                        // will show an error dialog if it returns a badrequest from API
+                        CustomDialog.Show(await response.Content.ReadAsStringAsync(),
+                            "Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
                     }
                 }
             }
-            catch (Exception ex)
+            catch (HttpRequestException)
             {
-                // will show an error dialog if it catches a client-side error.
+                // will show an error dialog if it catches a http request error from client-side
                 CustomDialog.Show("Unable to connect to the server.\nPlease try again.",
-                            "Connection Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                    "Connection Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+            }
+            catch (Exception)
+            {
+                // will show an error dialog if it catches an unexpected error from client-side.
+                CustomDialog.Show("An unexpected error occured.\nPlease try again.",
+                            "Unexpected Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
             }
         }
 
