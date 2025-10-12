@@ -123,17 +123,28 @@ namespace KinesiaAPI.Controllers
                 return BadRequest("Invalid user data.");
             }
 
-            bool exist = await _context.Users.AnyAsync(u =>
+            try
+            {
+                bool exist = await _context.Users.AnyAsync(u =>
                 u.FirstName == existingUser.FirstName &&
                 u.LastName == existingUser.LastName &&
                 u.MiddleName == existingUser.MiddleName);
 
-            if (exist)
-            {
-                return Conflict();
-            }
+                if (exist)
+                {
+                    return Conflict();
+                }
 
-            return Ok();
+                return Ok();
+            }
+            catch(DbException)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An error occured on database.\nPlease try again.");
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An unexpected error occured.\nPlease try again.");
+            }
         }
 
         // PUT: api/Users/5

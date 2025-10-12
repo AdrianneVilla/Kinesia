@@ -337,35 +337,53 @@ namespace Kinesia.Users
 
         public async Task<bool> CheckExistingUser(UserDataHolder userData)
         {
-            using (var client = new HttpClient())
+            try
             {
-                client.BaseAddress = new Uri("https://localhost:5001/");
-
-                var existingUser = new CheckExistingUserDTO();
-
-                existingUser.FirstName = userData.FirstName;
-                existingUser.LastName = userData.LastName;
-                existingUser.MiddleName = userData.MiddleName;
-
-                var response = await client.PostAsJsonAsync("api/users/check-existing", existingUser);
-
-                if (response.StatusCode == System.Net.HttpStatusCode.Conflict)
+                using (var client = new HttpClient())
                 {
-                    // will return true if user already exist
-                    CustomDialog.Show("User was already existing!", "Existing User", CustomDialogButtons.OK, CustomDialogIcons.Error);
-                    return true;
+                    client.BaseAddress = new Uri("https://localhost:5001/");
+
+                    var existingUser = new CheckExistingUserDTO();
+
+                    existingUser.FirstName = userData.FirstName;
+                    existingUser.LastName = userData.LastName;
+                    existingUser.MiddleName = userData.MiddleName;
+
+                    var response = await client.PostAsJsonAsync("api/users/check-existing", existingUser);
+
+                    if (response.StatusCode == System.Net.HttpStatusCode.Conflict)
+                    {
+                        // will return true if user already exist
+                        CustomDialog.Show("User was already existing!", "Existing User", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                        return true;
+                    }
+                    else if (response.IsSuccessStatusCode)
+                    {
+                        // will return false if user do not exist
+                        return false;
+                    }
+                    else
+                    {
+                        // will show an error dialog if it returns a badrequest from API-side.
+                        CustomDialog.Show(await response.Content.ReadAsStringAsync(),
+                                    "Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                        return true;
+                    }
                 }
-                else if (response.IsSuccessStatusCode)
-                {
-                    // will return false if user do not exist
-                    return false;
-                }
-                else
-                {
-                    // will handle unexpected errors
-                    string error = await response.Content.ReadAsStringAsync();
-                    return true;
-                }
+            }
+            catch (HttpRequestException)
+            {
+                // will show an error dialog if it catches a http request error from client-side.
+                CustomDialog.Show("Unable to connect to the server.\nPlease try again.",
+                            "Connection Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                return false;
+            }
+            catch (Exception)
+            {
+                // will show an error dialog if it catches an unexpected error from client-side.
+                CustomDialog.Show("Unexpected error occured.\nPlease try again.",
+                            "Unexpected Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                return false;
             }
         }
 
