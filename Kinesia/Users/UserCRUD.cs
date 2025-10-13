@@ -250,40 +250,66 @@ namespace Kinesia.Users
 
         public async Task<bool> AddUser(UserDataHolder userData)
         {
-            using (var client = new HttpClient())
+            try
             {
-                // will generate salt for hashing
-                // salt will be unique for every user
-                var salt = CustomSecurity.GenerateSalt();
-
-                var newUser = new AddUserDTO
+                using (var client = new HttpClient())
                 {
-                    UserID = userData.UserID,
-                    FirstName = userData.FirstName,
-                    LastName = userData.LastName,
-                    MiddleName = userData.MiddleName,
-                    Birthdate = DateTime.Parse(userData.BirthDate),
-                    Gender = userData.Gender,
-                    Contact = ContactFormatter(userData.Contact),
-                    Address = userData.Address,
-                    Role = userData.Role,
-                    Username = userData.UserName,
-                    Password = CustomSecurity.HashPassword(userData.Password, salt),
-                    Salt = salt,
-                    Email = userData.Email,
-                    DateAdded = DateTime.Now,
-                    LastArchiveDate = null,
-                    Status = 1
-                };
+                    // will generate salt for hashing
+                    // salt will be unique for every user
+                    var salt = CustomSecurity.GenerateSalt();
 
-                client.BaseAddress = new Uri("https://localhost:5001/api/");
+                    var newUser = new AddUserDTO
+                    {
+                        UserID = userData.UserID,
+                        FirstName = userData.FirstName,
+                        LastName = userData.LastName,
+                        MiddleName = userData.MiddleName,
+                        Birthdate = DateTime.Parse(userData.BirthDate),
+                        Gender = userData.Gender,
+                        Contact = ContactFormatter(userData.Contact),
+                        Address = userData.Address,
+                        Role = userData.Role,
+                        Username = userData.UserName,
+                        Password = CustomSecurity.HashPassword(userData.Password, salt),
+                        Salt = salt,
+                        Email = userData.Email,
+                        DateAdded = DateTime.Now,
+                        LastArchiveDate = null,
+                        Status = 1
+                    };
 
-                var json = JsonConvert.SerializeObject(newUser);
-                var content = new StringContent(json, Encoding.UTF8, "application/json");
+                    client.BaseAddress = new Uri("https://localhost:5001/api/");
 
-                var response = await client.PostAsync("users", content);
+                    var json = JsonConvert.SerializeObject(newUser);
+                    var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-                return response.IsSuccessStatusCode;
+                    var response = await client.PostAsync("users", content);
+
+                    if (response.IsSuccessStatusCode) { 
+                        return true;
+                    }
+                    else
+                    {
+                        // will show an error dialog if it returns a badrequest from API
+                        CustomDialog.Show(await response.Content.ReadAsStringAsync(),
+                            "Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                        return false;
+                    }
+                }
+            }
+            catch (HttpRequestException)
+            {
+                // will show an error dialog if it catches a http request error from client-side.
+                CustomDialog.Show("Unable to connect to the server.\nPlease try again.",
+                            "Connection Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                return false;
+            }
+            catch (Exception)
+            {
+                // will show an error dialog if it catches an unexpected error from client-side.
+                CustomDialog.Show("Unexpected error occured.\nPlease try again.",
+                            "Unexpected Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                return false;
             }
         }
 

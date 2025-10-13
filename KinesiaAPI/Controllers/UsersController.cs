@@ -240,24 +240,31 @@ namespace KinesiaAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<Users>> PostUsers(Users users)
         {
-            _context.Users.Add(users);
+            if (users == null)
+                return BadRequest("User data cannot be null.");
+
             try
             {
+                _context.Users.Add(users);
                 await _context.SaveChangesAsync();
+                return CreatedAtAction("GetUsers", new { id = users.UserID }, users);
             }
             catch (DbUpdateException)
             {
                 if (UsersExists(users.UserID))
                 {
-                    return Conflict();
+                    return Conflict("User already exists.");
                 }
                 else
                 {
-                    throw;
+                    return StatusCode(StatusCodes.Status500InternalServerError, "An error occured while saving the user data.\n" +
+                        "Please try again.");
                 }
             }
-
-            return CreatedAtAction("GetUsers", new { id = users.UserID }, users);
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An unexpected error occured.\nPlease try again.");
+            } 
         }
 
         // DELETE: api/Users/5
