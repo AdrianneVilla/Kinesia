@@ -37,7 +37,7 @@ namespace Kinesia.Users
                         PageObjects.userPage.GetUserGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                         var dataGrid = PageObjects.userPage.GetUserGrid;
 
-                        SetDoubleBuffering(dataGrid, true);
+                        CustomDataGrid.SetDoubleBuffering(dataGrid, true);
 
                         dataGrid.SuspendLayout();
 
@@ -80,7 +80,7 @@ namespace Kinesia.Users
                         AddActionButtons();
 
                         // Add spacing on the datagridview for better visualization
-                        StyleDataGridWithSpacing(dataGrid);
+                        CustomDataGrid.StyleDataGridWithSpacing(dataGrid);
                         dataGrid.ResumeLayout(true);
                     }
                     else
@@ -584,26 +584,6 @@ namespace Kinesia.Users
                 }
             }
 
-        }
-
-        private void StyleDataGridWithSpacing(DataGridView dataGrid)
-        {
-            
-            //cell styling with padding
-            dataGrid.DefaultCellStyle.Padding = new Padding(15, 10, 15, 10);
-
-            // row height
-            dataGrid.RowTemplate.Height = 50;
-
-            dataGrid.BorderStyle = BorderStyle.None;
-        }
-
-        private void SetDoubleBuffering(Control control, bool enable)
-        {
-            var propertyInfo = typeof(Control).GetProperty("DoubleBuffered",
-            System.Reflection.BindingFlags.NonPublic |
-             System.Reflection.BindingFlags.Instance);
-            propertyInfo.SetValue(control, enable, null);
         }
 
         private void DataGrid_CellMouseEnter(object sender, DataGridViewCellEventArgs e)

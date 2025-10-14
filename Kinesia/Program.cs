@@ -166,6 +166,30 @@ namespace Kinesia
         public static LogsCRUD LogsQueries = new LogsCRUD();
     }
 
+    // Contains methods for customizing DataGridView
+    public class CustomDataGrid
+    {
+        public static void SetDoubleBuffering(Control control, bool enable)
+        {
+            var propertyInfo = typeof(Control).GetProperty("DoubleBuffered",
+             System.Reflection.BindingFlags.NonPublic |
+             System.Reflection.BindingFlags.Instance);
+            propertyInfo.SetValue(control, enable, null);
+        }
+
+        public static void StyleDataGridWithSpacing(DataGridView dataGrid)
+        {
+
+            dataGrid.DefaultCellStyle.Padding = new Padding(15, 10, 15, 10);
+
+            // row height
+
+            dataGrid.RowTemplate.Height = 50;
+
+            dataGrid.BorderStyle = BorderStyle.None;
+        }
+    }
+
     // Contains custom security methods
     public class CustomSecurity
     {

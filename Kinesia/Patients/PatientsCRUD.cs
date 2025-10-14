@@ -38,7 +38,7 @@ namespace Kinesia.Patients
 
                         var dataGrid = PageObjects.patientsPage.GetPatientGrid;
 
-                        SetDoubleBuffering(dataGrid, true);
+                        CustomDataGrid.SetDoubleBuffering(dataGrid, true);
                         dataGrid.SuspendLayout();
                         dataGrid.AutoGenerateColumns = false;
                         dataGrid.Columns.Clear();
@@ -83,7 +83,7 @@ namespace Kinesia.Patients
                         AddActionButtons();
 
                         // Add spacing on the datagridview for better visualization
-                        StyleDataGridWithSpacing(dataGrid);
+                        CustomDataGrid.StyleDataGridWithSpacing(dataGrid);
 
                         dataGrid.ResumeLayout(true);
                     }
@@ -628,18 +628,6 @@ namespace Kinesia.Patients
 
         }
 
-        private void StyleDataGridWithSpacing(DataGridView dataGrid)
-        {
-           
-            dataGrid.DefaultCellStyle.Padding = new Padding(15, 10, 15, 10);
-
-            // row height
-
-            dataGrid.RowTemplate.Height = 50;
-
-            dataGrid.BorderStyle = BorderStyle.None;
-        }
-
         private void DataGrid_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
@@ -664,14 +652,6 @@ namespace Kinesia.Patients
                 hoveredCell = new Point(-1, -1);
                 dataGrid.InvalidateCell(e.ColumnIndex, e.RowIndex); // Trigger repaint
             }
-        }
-
-        private void SetDoubleBuffering(Control control, bool enable)
-        {
-            var propertyInfo = typeof(Control).GetProperty("DoubleBuffered",
-             System.Reflection.BindingFlags.NonPublic |
-             System.Reflection.BindingFlags.Instance);
-            propertyInfo.SetValue(control, enable, null);
         }
     }
 }
