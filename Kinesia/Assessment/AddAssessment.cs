@@ -12,9 +12,18 @@ namespace Kinesia.Assessment
 {
     public partial class AddAssessment : UserControl
     {
+        private static bool isPatientSelected;
+
+        public static bool IsPatientSelected { get { return isPatientSelected; } set { isPatientSelected = value; } }
+
         public AddAssessment()
         {
             InitializeComponent();
+        }
+
+        private void btnSelectPatient_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
