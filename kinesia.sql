@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 19, 2025 at 03:08 PM
+-- Generation Time: Oct 14, 2025 at 11:18 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -20,6 +20,27 @@ SET time_zone = "+00:00";
 --
 -- Database: `kinesia`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `assessments`
+--
+
+CREATE TABLE `assessments` (
+  `AssessmentID` varchar(50) NOT NULL,
+  `PatientID` varchar(50) NOT NULL,
+  `Joint` varchar(50) NOT NULL,
+  `JointType` varchar(50) NOT NULL,
+  `Status` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `assessments`
+--
+
+INSERT INTO `assessments` (`AssessmentID`, `PatientID`, `Joint`, `JointType`, `Status`) VALUES
+('ASS1', 'PATIENT1', 'Left Elbow and Forearm', 'Upper Extremities', 0);
 
 -- --------------------------------------------------------
 
@@ -42,7 +63,27 @@ CREATE TABLE `logs` (
 INSERT INTO `logs` (`LogID`, `UserID`, `Description`, `LogType`, `LogDate`) VALUES
 ('LOG1', 'USER3', 'Has Logged In', 'Sessions', '2025-09-07 19:12:55'),
 ('LOG10', 'USER3', 'Has Logged In', 'Sessions', '2025-09-09 15:41:13'),
+('LOG100', 'USER3', 'Has Logged In', 'Sessions', '2025-10-12 16:10:03'),
+('LOG101', 'USER3', 'Has Logged In', 'Sessions', '2025-10-12 16:10:29'),
+('LOG102', 'USER3', 'Has Logged In', 'Sessions', '2025-10-12 16:25:48'),
+('LOG103', 'USER3', 'Has Logged In', 'Sessions', '2025-10-12 16:32:33'),
+('LOG104', 'USER3', 'Has Logged In', 'Sessions', '2025-10-12 16:43:47'),
+('LOG105', 'USER3', 'Has Logged In', 'Sessions', '2025-10-13 09:32:04'),
+('LOG106', 'USER3', 'Has Logged In', 'Sessions', '2025-10-13 09:46:50'),
+('LOG107', 'USER3', 'Has Logged In', 'Sessions', '2025-10-13 09:48:27'),
+('LOG108', 'USER3', 'Has Logged In', 'Sessions', '2025-10-13 10:09:51'),
+('LOG109', 'USER3', 'Has Logged In', 'Sessions', '2025-10-13 10:26:21'),
 ('LOG11', 'USER3', 'Added PATIENT3', 'Patients', '2025-09-09 15:41:28'),
+('LOG110', 'USER3', 'Has Logged In', 'Sessions', '2025-10-13 11:49:46'),
+('LOG111', 'USER3', 'Has Logged In', 'Sessions', '2025-10-14 08:25:02'),
+('LOG112', 'USER3', 'Has Logged In', 'Sessions', '2025-10-14 08:30:02'),
+('LOG113', 'USER3', 'Has Logged In', 'Sessions', '2025-10-14 08:35:14'),
+('LOG114', 'USER3', 'Has Logged In', 'Sessions', '2025-10-14 08:44:09'),
+('LOG115', 'USER3', 'Has Logged In', 'Sessions', '2025-10-14 08:51:26'),
+('LOG116', 'USER3', 'Has Logged In', 'Sessions', '2025-10-14 10:05:51'),
+('LOG117', 'USER3', 'Has Logged In', 'Sessions', '2025-10-14 10:15:36'),
+('LOG118', 'USER3', 'Has Logged In', 'Sessions', '2025-10-14 10:18:51'),
+('LOG119', 'USER3', 'Has Logged In', 'Sessions', '2025-10-14 10:26:14'),
 ('LOG12', 'USER3', 'Has Logged In', 'Sessions', '2025-09-09 15:44:27'),
 ('LOG13', 'USER3', 'Has Logged In', 'Sessions', '2025-09-09 15:45:22'),
 ('LOG14', 'USER3', 'Added PATIENT4', 'Patients', '2025-09-09 15:45:36'),
@@ -126,7 +167,19 @@ INSERT INTO `logs` (`LogID`, `UserID`, `Description`, `LogType`, `LogDate`) VALU
 ('LOG85', 'USER3', 'Has Logged In', 'Sessions', '2025-09-16 20:14:59'),
 ('LOG86', 'USER3', 'Has Logged In', 'Sessions', '2025-09-16 20:15:22'),
 ('LOG87', 'USER3', 'Has Logged In', 'Sessions', '2025-09-17 07:59:32'),
-('LOG9', 'USER3', 'Has Logged In', 'Sessions', '2025-09-09 15:15:32');
+('LOG88', 'USER3', 'Has Logged In', 'Sessions', '2025-10-10 20:12:11'),
+('LOG89', 'USER3', 'Has Logged In', 'Sessions', '2025-10-11 09:00:35'),
+('LOG9', 'USER3', 'Has Logged In', 'Sessions', '2025-09-09 15:15:32'),
+('LOG90', 'USER3', 'Has Logged In', 'Sessions', '2025-10-11 14:54:17'),
+('LOG91', 'USER3', 'Has Logged In', 'Sessions', '2025-10-11 15:01:38'),
+('LOG92', 'USER3', 'Has Logged In', 'Sessions', '2025-10-11 15:16:10'),
+('LOG93', 'USER3', 'Has Logged In', 'Sessions', '2025-10-11 15:43:48'),
+('LOG94', 'USER3', 'Has Logged In', 'Sessions', '2025-10-11 20:27:56'),
+('LOG95', 'USER3', 'Has Logged In', 'Sessions', '2025-10-12 15:13:52'),
+('LOG96', 'USER3', 'Has Logged In', 'Sessions', '2025-10-12 15:15:07'),
+('LOG97', 'USER3', 'Has Logged In', 'Sessions', '2025-10-12 15:22:32'),
+('LOG98', 'USER3', 'Has Logged In', 'Sessions', '2025-10-12 15:30:22'),
+('LOG99', 'USER3', 'Has Logged In', 'Sessions', '2025-10-12 15:56:43');
 
 -- --------------------------------------------------------
 
@@ -158,6 +211,33 @@ INSERT INTO `patients` (`PatientID`, `FirstName`, `LastName`, `MiddleName`, `Con
 ('PATIENT2', 'Mari Nicole', 'Medel', 'Relos', '+639285321382', '2002-11-26', 'Female', 'Sta Clara', 'Student', 1, '2025-07-24 18:35:50', NULL),
 ('PATIENT3', 'asdas', 'dsad', 'sad', '9285321382', '2020-09-09', 'Male', 'sadsad', 'student', 1, '2025-09-09 15:41:28', NULL),
 ('PATIENT4', 'dasdsad', 'dsffds', 'dsfs', '+639285321382', '2019-09-09', 'Male', 'dsad', 'sadas', 1, '2025-09-09 15:45:35', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rom`
+--
+
+CREATE TABLE `rom` (
+  `ROMID` varchar(50) NOT NULL,
+  `AssessmentID` varchar(50) NOT NULL,
+  `UserID` varchar(50) NOT NULL,
+  `InitialROM` int(11) NOT NULL,
+  `EndROM` int(11) NOT NULL,
+  `Movement` varchar(50) NOT NULL,
+  `MotionType` varchar(50) NOT NULL,
+  `Subjective` varchar(255) DEFAULT NULL,
+  `Objective` varchar(255) DEFAULT NULL,
+  `Deviation` varchar(255) NOT NULL,
+  `Date` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `rom`
+--
+
+INSERT INTO `rom` (`ROMID`, `AssessmentID`, `UserID`, `InitialROM`, `EndROM`, `Movement`, `MotionType`, `Subjective`, `Objective`, `Deviation`, `Date`) VALUES
+('LEFTELBOW1', 'ASS1', 'USER1', 0, 90, 'Flexion', 'Active', NULL, NULL, 'Lying down', '2025-10-14 11:11:57');
 
 -- --------------------------------------------------------
 
@@ -199,6 +279,13 @@ INSERT INTO `users` (`UserID`, `FirstName`, `LastName`, `MiddleName`, `Birthdate
 --
 
 --
+-- Indexes for table `assessments`
+--
+ALTER TABLE `assessments`
+  ADD PRIMARY KEY (`AssessmentID`),
+  ADD KEY `Assessments->Patients` (`PatientID`);
+
+--
 -- Indexes for table `logs`
 --
 ALTER TABLE `logs`
@@ -212,6 +299,14 @@ ALTER TABLE `patients`
   ADD PRIMARY KEY (`PatientID`);
 
 --
+-- Indexes for table `rom`
+--
+ALTER TABLE `rom`
+  ADD PRIMARY KEY (`ROMID`,`AssessmentID`),
+  ADD KEY `ROM->Assessments` (`AssessmentID`),
+  ADD KEY `ROM->Users` (`UserID`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -222,10 +317,23 @@ ALTER TABLE `users`
 --
 
 --
+-- Constraints for table `assessments`
+--
+ALTER TABLE `assessments`
+  ADD CONSTRAINT `Assessments->Patients` FOREIGN KEY (`PatientID`) REFERENCES `patients` (`PatientID`);
+
+--
 -- Constraints for table `logs`
 --
 ALTER TABLE `logs`
   ADD CONSTRAINT `Logs->Users` FOREIGN KEY (`UserID`) REFERENCES `users` (`UserID`);
+
+--
+-- Constraints for table `rom`
+--
+ALTER TABLE `rom`
+  ADD CONSTRAINT `ROM->Assessments` FOREIGN KEY (`AssessmentID`) REFERENCES `assessments` (`AssessmentID`),
+  ADD CONSTRAINT `ROM->Users` FOREIGN KEY (`UserID`) REFERENCES `users` (`UserID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
