@@ -283,6 +283,16 @@ namespace Kinesia.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap longSearchBar {
+            get {
+                object obj = ResourceManager.GetObject("longSearchBar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap newArchive {
             get {
                 object obj = ResourceManager.GetObject("newArchive", resourceCulture);
@@ -343,9 +353,39 @@ namespace Kinesia.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap newReselect {
+            get {
+                object obj = ResourceManager.GetObject("newReselect", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap newSaveIconWhite {
+            get {
+                object obj = ResourceManager.GetObject("newSaveIconWhite", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap newSelect {
             get {
                 object obj = ResourceManager.GetObject("newSelect", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap newWhiteSelect {
+            get {
+                object obj = ResourceManager.GetObject("newWhiteSelect", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -413,9 +453,29 @@ namespace Kinesia.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap reselectIcon {
+            get {
+                object obj = ResourceManager.GetObject("reselectIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap save_icon {
             get {
                 object obj = ResourceManager.GetObject("save-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap saveWhiteIcon {
+            get {
+                object obj = ResourceManager.GetObject("saveWhiteIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

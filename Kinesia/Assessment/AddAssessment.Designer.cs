@@ -28,383 +28,652 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.customButton3 = new OrganizationProfile.CustomButton();
-            this.customButton2 = new OrganizationProfile.CustomButton();
-            this.customButton4 = new OrganizationProfile.CustomButton();
-            this.panelBorder2 = new WindowsFormsApp2.CustomButton.PanelBorder();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.PatientHolder = new WindowsFormsApp2.CustomButton.PanelBorder();
-            this.label1 = new System.Windows.Forms.Label();
-            this.panelBorder1 = new WindowsFormsApp2.CustomButton.PanelBorder();
-            this.customButton1 = new OrganizationProfile.CustomButton();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.rjTextBox1 = new CustomControls.RJControls.RJTextBox();
-            this.lblSelectedUser = new System.Windows.Forms.Label();
-            this.titleNav = new System.Windows.Forms.Label();
-            this.AssessmentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PatientName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PhysicalTherapist = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BodyGroup = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.editHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panelBorder2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.panelBorder1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.SuspendLayout();
-            // 
-            // customButton3
-            // 
-            this.customButton3.BackColor = System.Drawing.Color.Gainsboro;
-            this.customButton3.BackgroundColor = System.Drawing.Color.Gainsboro;
-            this.customButton3.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.customButton3.BorderRadius = 5;
-            this.customButton3.BorderSize = 0;
-            this.customButton3.FlatAppearance.BorderSize = 0;
-            this.customButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.customButton3.Font = new System.Drawing.Font("Poppins", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))));
-            this.customButton3.ForeColor = System.Drawing.Color.Gray;
-            this.customButton3.Location = new System.Drawing.Point(234, 10);
-            this.customButton3.Margin = new System.Windows.Forms.Padding(1);
-            this.customButton3.Name = "customButton3";
-            this.customButton3.Size = new System.Drawing.Size(134, 40);
-            this.customButton3.TabIndex = 12;
-            this.customButton3.Text = "Lower Extremities";
-            this.customButton3.TextColor = System.Drawing.Color.Gray;
-            this.customButton3.UseVisualStyleBackColor = false;
-            // 
-            // customButton2
-            // 
-            this.customButton2.BackColor = System.Drawing.Color.Gainsboro;
-            this.customButton2.BackgroundColor = System.Drawing.Color.Gainsboro;
-            this.customButton2.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.customButton2.BorderRadius = 5;
-            this.customButton2.BorderSize = 0;
-            this.customButton2.FlatAppearance.BorderSize = 0;
-            this.customButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.customButton2.Font = new System.Drawing.Font("Poppins", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))));
-            this.customButton2.ForeColor = System.Drawing.Color.Gray;
-            this.customButton2.Location = new System.Drawing.Point(96, 9);
-            this.customButton2.Name = "customButton2";
-            this.customButton2.Size = new System.Drawing.Size(134, 40);
-            this.customButton2.TabIndex = 11;
-            this.customButton2.Text = "Upper Extrimities";
-            this.customButton2.TextColor = System.Drawing.Color.Gray;
-            this.customButton2.UseVisualStyleBackColor = false;
-            // 
-            // customButton4
-            // 
-            this.customButton4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.customButton4.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.customButton4.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.customButton4.BorderRadius = 5;
-            this.customButton4.BorderSize = 0;
-            this.customButton4.FlatAppearance.BorderSize = 0;
-            this.customButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.customButton4.Font = new System.Drawing.Font("Poppins", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))));
-            this.customButton4.ForeColor = System.Drawing.Color.White;
-            this.customButton4.Location = new System.Drawing.Point(12, 9);
-            this.customButton4.Margin = new System.Windows.Forms.Padding(1);
-            this.customButton4.Name = "customButton4";
-            this.customButton4.Size = new System.Drawing.Size(80, 40);
-            this.customButton4.TabIndex = 10;
-            this.customButton4.Text = "All";
-            this.customButton4.TextColor = System.Drawing.Color.White;
-            this.customButton4.UseVisualStyleBackColor = false;
-            // 
-            // panelBorder2
-            // 
-            this.panelBorder2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelBorder2.BackColor = System.Drawing.Color.White;
-            this.panelBorder2.BorderRadius = 30;
-            this.panelBorder2.Color = System.Drawing.Color.BurlyWood;
-            this.panelBorder2.Controls.Add(this.customButton3);
-            this.panelBorder2.Controls.Add(this.customButton2);
-            this.panelBorder2.Controls.Add(this.customButton4);
-            this.panelBorder2.ForeColor = System.Drawing.Color.Black;
-            this.panelBorder2.Location = new System.Drawing.Point(62, 141);
-            this.panelBorder2.Name = "panelBorder2";
-            this.panelBorder2.Size = new System.Drawing.Size(1129, 58);
-            this.panelBorder2.TabIndex = 22;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToResizeColumns = false;
-            this.dataGridView1.AllowUserToResizeRows = false;
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dataGridView1.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
-            this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.AssessmentID,
-            this.PatientName,
-            this.PhysicalTherapist,
-            this.BodyGroup,
-            this.dateHeader,
-            this.editHeader});
-            this.dataGridView1.GridColor = System.Drawing.Color.White;
-            this.dataGridView1.Location = new System.Drawing.Point(70, 218);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.dataGridView1.ShowCellErrors = false;
-            this.dataGridView1.ShowCellToolTips = false;
-            this.dataGridView1.ShowEditingIcon = false;
-            this.dataGridView1.ShowRowErrors = false;
-            this.dataGridView1.Size = new System.Drawing.Size(1111, 24);
-            this.dataGridView1.TabIndex = 21;
-            // 
-            // PatientHolder
-            // 
-            this.PatientHolder.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.PatientHolder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(249)))), ((int)(((byte)(238)))));
-            this.PatientHolder.BorderRadius = 10;
-            this.PatientHolder.Color = System.Drawing.Color.White;
-            this.PatientHolder.ForeColor = System.Drawing.Color.Black;
-            this.PatientHolder.Location = new System.Drawing.Point(62, 244);
-            this.PatientHolder.Name = "PatientHolder";
-            this.PatientHolder.Padding = new System.Windows.Forms.Padding(5);
-            this.PatientHolder.Size = new System.Drawing.Size(1129, 468);
-            this.PatientHolder.TabIndex = 20;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddAssessment));
+            label1 = new System.Windows.Forms.Label();
+            lblSelectedUser = new System.Windows.Forms.Label();
+            titleNav = new System.Windows.Forms.Label();
+            label2 = new System.Windows.Forms.Label();
+            label3 = new System.Windows.Forms.Label();
+            btnAddPatient = new OrganizationProfile.CustomButton();
+            panelBorder1 = new WindowsFormsApp2.CustomButton.PanelBorder();
+            flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            customButton2 = new OrganizationProfile.CustomButton();
+            rjComboBox1 = new CustomControls.RJControls.RJComboBox();
+            customButton1 = new OrganizationProfile.CustomButton();
+            selectedPatientDetails = new WindowsFormsApp2.CustomButton.PanelBorder();
+            pictureBox1 = new System.Windows.Forms.PictureBox();
+            cbGender = new CustomControls.RJControls.RJComboBox();
+            label13 = new System.Windows.Forms.Label();
+            txtOccupation = new CustomControls.RJControls.RJTextBox();
+            label4 = new System.Windows.Forms.Label();
+            label5 = new System.Windows.Forms.Label();
+            txtAge = new CustomControls.RJControls.RJTextBox();
+            label6 = new System.Windows.Forms.Label();
+            txtMiddleName = new CustomControls.RJControls.RJTextBox();
+            label10 = new System.Windows.Forms.Label();
+            txtLastName = new CustomControls.RJControls.RJTextBox();
+            label7 = new System.Windows.Forms.Label();
+            txtFirstName = new CustomControls.RJControls.RJTextBox();
+            label11 = new System.Windows.Forms.Label();
+            label12 = new System.Windows.Forms.Label();
+            dpBirthDate = new CustomControls.RJControls.RJDatePicker();
+            txtAddress = new CustomControls.RJControls.RJTextBox();
+            label9 = new System.Windows.Forms.Label();
+            txtContact = new CustomControls.RJControls.RJTextBox();
+            label8 = new System.Windows.Forms.Label();
+            label14 = new System.Windows.Forms.Label();
+            panelBorder1.SuspendLayout();
+            flowLayoutPanel1.SuspendLayout();
+            selectedPatientDetails.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            SuspendLayout();
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(65, 72);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(248, 23);
-            this.label1.TabIndex = 19;
-            this.label1.Text = "Select patient to see the assessment";
-            // 
-            // panelBorder1
-            // 
-            this.panelBorder1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelBorder1.BackColor = System.Drawing.Color.White;
-            this.panelBorder1.BackgroundImage = global::Kinesia.Properties.Resources.search_background_new;
-            this.panelBorder1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panelBorder1.BorderRadius = 10;
-            this.panelBorder1.Color = System.Drawing.Color.BurlyWood;
-            this.panelBorder1.Controls.Add(this.customButton1);
-            this.panelBorder1.Controls.Add(this.pictureBox1);
-            this.panelBorder1.Controls.Add(this.rjTextBox1);
-            this.panelBorder1.ForeColor = System.Drawing.Color.Black;
-            this.panelBorder1.Location = new System.Drawing.Point(692, 44);
-            this.panelBorder1.Name = "panelBorder1";
-            this.panelBorder1.Padding = new System.Windows.Forms.Padding(5);
-            this.panelBorder1.Size = new System.Drawing.Size(499, 51);
-            this.panelBorder1.TabIndex = 23;
-            // 
-            // customButton1
-            // 
-            this.customButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.customButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(210)))), ((int)(((byte)(173)))));
-            this.customButton1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(210)))), ((int)(((byte)(173)))));
-            this.customButton1.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.customButton1.BorderRadius = 10;
-            this.customButton1.BorderSize = 0;
-            this.customButton1.FlatAppearance.BorderSize = 0;
-            this.customButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.customButton1.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customButton1.ForeColor = System.Drawing.Color.White;
-            this.customButton1.Location = new System.Drawing.Point(388, 7);
-            this.customButton1.Name = "customButton1";
-            this.customButton1.Padding = new System.Windows.Forms.Padding(2, 3, 0, 0);
-            this.customButton1.Size = new System.Drawing.Size(101, 35);
-            this.customButton1.TabIndex = 15;
-            this.customButton1.Text = "Search";
-            this.customButton1.TextColor = System.Drawing.Color.White;
-            this.customButton1.UseVisualStyleBackColor = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Kinesia.Properties.Resources.search_icon;
-            this.pictureBox1.Location = new System.Drawing.Point(14, 15);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(28, 24);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 5;
-            this.pictureBox1.TabStop = false;
-            // 
-            // rjTextBox1
-            // 
-            this.rjTextBox1.BackColor = System.Drawing.Color.White;
-            this.rjTextBox1.BorderColor = System.Drawing.Color.White;
-            this.rjTextBox1.BorderFocusColor = System.Drawing.Color.White;
-            this.rjTextBox1.BorderRadius = 5;
-            this.rjTextBox1.BorderSize = 1;
-            this.rjTextBox1.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rjTextBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.rjTextBox1.Location = new System.Drawing.Point(48, 8);
-            this.rjTextBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.rjTextBox1.Multiline = false;
-            this.rjTextBox1.Name = "rjTextBox1";
-            this.rjTextBox1.Padding = new System.Windows.Forms.Padding(10, 7, 10, 0);
-            this.rjTextBox1.PasswordChar = false;
-            this.rjTextBox1.PlaceholderColor = System.Drawing.Color.DarkGray;
-            this.rjTextBox1.PlaceholderText = "Search Patient";
-            this.rjTextBox1.Size = new System.Drawing.Size(333, 34);
-            this.rjTextBox1.TabIndex = 4;
-            this.rjTextBox1.Texts = "";
-            this.rjTextBox1.UnderlinedStyle = false;
+            label1.AutoSize = true;
+            label1.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            label1.Location = new System.Drawing.Point(76, 83);
+            label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(228, 23);
+            label1.TabIndex = 19;
+            label1.Text = "Select patient to add assessment";
             // 
             // lblSelectedUser
             // 
-            this.lblSelectedUser.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblSelectedUser.AutoSize = true;
-            this.lblSelectedUser.BackColor = System.Drawing.Color.Transparent;
-            this.lblSelectedUser.Font = new System.Drawing.Font("Poppins", 20.25F, System.Drawing.FontStyle.Bold);
-            this.lblSelectedUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.lblSelectedUser.Location = new System.Drawing.Point(206, 30);
-            this.lblSelectedUser.Margin = new System.Windows.Forms.Padding(0);
-            this.lblSelectedUser.Name = "lblSelectedUser";
-            this.lblSelectedUser.Size = new System.Drawing.Size(254, 48);
-            this.lblSelectedUser.TabIndex = 32;
-            this.lblSelectedUser.Text = "Add Assessment";
-            this.lblSelectedUser.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            lblSelectedUser.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
+            lblSelectedUser.AutoSize = true;
+            lblSelectedUser.BackColor = System.Drawing.Color.Transparent;
+            lblSelectedUser.Font = new System.Drawing.Font("Poppins", 20.25F, System.Drawing.FontStyle.Bold);
+            lblSelectedUser.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            lblSelectedUser.Location = new System.Drawing.Point(240, 35);
+            lblSelectedUser.Margin = new System.Windows.Forms.Padding(0);
+            lblSelectedUser.Name = "lblSelectedUser";
+            lblSelectedUser.Size = new System.Drawing.Size(254, 48);
+            lblSelectedUser.TabIndex = 32;
+            lblSelectedUser.Text = "Add Assessment";
+            lblSelectedUser.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // titleNav
             // 
-            this.titleNav.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.titleNav.AutoSize = true;
-            this.titleNav.Font = new System.Drawing.Font("Poppins", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.titleNav.ForeColor = System.Drawing.Color.DarkGray;
-            this.titleNav.Location = new System.Drawing.Point(61, 38);
-            this.titleNav.Margin = new System.Windows.Forms.Padding(0);
-            this.titleNav.Name = "titleNav";
-            this.titleNav.Size = new System.Drawing.Size(155, 36);
-            this.titleNav.TabIndex = 31;
-            this.titleNav.Text = "Assessment >";
-            this.titleNav.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            titleNav.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
+            titleNav.AutoSize = true;
+            titleNav.Font = new System.Drawing.Font("Poppins", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            titleNav.ForeColor = System.Drawing.Color.DarkGray;
+            titleNav.Location = new System.Drawing.Point(71, 44);
+            titleNav.Margin = new System.Windows.Forms.Padding(0);
+            titleNav.Name = "titleNav";
+            titleNav.Size = new System.Drawing.Size(155, 36);
+            titleNav.TabIndex = 31;
+            titleNav.Text = "Assessment >";
+            titleNav.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // AssessmentID
+            // label2
             // 
-            this.AssessmentID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.AssessmentID.FillWeight = 60F;
-            this.AssessmentID.HeaderText = "Assesment ID";
-            this.AssessmentID.Name = "AssessmentID";
-            this.AssessmentID.ReadOnly = true;
+            label2.Font = new System.Drawing.Font("Poppins", 20.25F, System.Drawing.FontStyle.Bold);
+            label2.ForeColor = System.Drawing.Color.Black;
+            label2.Location = new System.Drawing.Point(219, 38);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(229, 49);
+            label2.TabIndex = 1;
+            label2.Text = "Select patient";
+            label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // PatientName
+            // label3
             // 
-            this.PatientName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.PatientName.DefaultCellStyle = dataGridViewCellStyle2;
-            this.PatientName.FillWeight = 110F;
-            this.PatientName.HeaderText = "Patient Name";
-            this.PatientName.Name = "PatientName";
-            this.PatientName.ReadOnly = true;
-            this.PatientName.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            label3.Font = new System.Drawing.Font("Poppins", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            label3.ForeColor = System.Drawing.Color.Gray;
+            label3.Location = new System.Drawing.Point(22, 87);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(628, 49);
+            label3.TabIndex = 2;
+            label3.Text = "Search and select a patient to begin assessment";
+            label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // PhysicalTherapist
+            // btnAddPatient
             // 
-            this.PhysicalTherapist.FillWeight = 63.63636F;
-            this.PhysicalTherapist.HeaderText = "Physical Therapist";
-            this.PhysicalTherapist.Name = "PhysicalTherapist";
-            this.PhysicalTherapist.ReadOnly = true;
+            btnAddPatient.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            btnAddPatient.BackColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            btnAddPatient.BackgroundColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            btnAddPatient.BorderColor = System.Drawing.Color.White;
+            btnAddPatient.BorderRadius = 10;
+            btnAddPatient.BorderSize = 0;
+            btnAddPatient.Cursor = System.Windows.Forms.Cursors.Hand;
+            btnAddPatient.FlatAppearance.BorderSize = 0;
+            btnAddPatient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnAddPatient.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            btnAddPatient.ForeColor = System.Drawing.Color.White;
+            btnAddPatient.Image = Properties.Resources.newWhiteSelect;
+            btnAddPatient.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            btnAddPatient.Location = new System.Drawing.Point(221, 160);
+            btnAddPatient.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            btnAddPatient.Name = "btnAddPatient";
+            btnAddPatient.Padding = new System.Windows.Forms.Padding(10, 3, 30, 0);
+            btnAddPatient.Size = new System.Drawing.Size(199, 51);
+            btnAddPatient.TabIndex = 9;
+            btnAddPatient.Text = "Select Patient";
+            btnAddPatient.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            btnAddPatient.TextColor = System.Drawing.Color.White;
+            btnAddPatient.UseVisualStyleBackColor = false;
             // 
-            // BodyGroup
+            // panelBorder1
             // 
-            this.BodyGroup.FillWeight = 63.63636F;
-            this.BodyGroup.HeaderText = "Body Group";
-            this.BodyGroup.Name = "BodyGroup";
-            this.BodyGroup.ReadOnly = true;
+            panelBorder1.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            panelBorder1.BackColor = System.Drawing.Color.White;
+            panelBorder1.BackgroundImage = Properties.Resources.Add_Patient_Background;
+            panelBorder1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            panelBorder1.BorderRadius = 30;
+            panelBorder1.Color = System.Drawing.Color.BurlyWood;
+            panelBorder1.Controls.Add(btnAddPatient);
+            panelBorder1.Controls.Add(label3);
+            panelBorder1.Controls.Add(label2);
+            panelBorder1.ForeColor = System.Drawing.Color.Black;
+            panelBorder1.Location = new System.Drawing.Point(429, 129);
+            panelBorder1.Margin = new System.Windows.Forms.Padding(70);
+            panelBorder1.Name = "panelBorder1";
+            panelBorder1.Size = new System.Drawing.Size(661, 242);
+            panelBorder1.TabIndex = 0;
             // 
-            // dateHeader
+            // flowLayoutPanel1
             // 
-            this.dateHeader.FillWeight = 63.63636F;
-            this.dateHeader.HeaderText = "Date";
-            this.dateHeader.Name = "dateHeader";
-            this.dateHeader.ReadOnly = true;
+            flowLayoutPanel1.Controls.Add(customButton1);
+            flowLayoutPanel1.Controls.Add(customButton2);
+            flowLayoutPanel1.Controls.Add(rjComboBox1);
+            flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
+            flowLayoutPanel1.Location = new System.Drawing.Point(89, 132);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            flowLayoutPanel1.Size = new System.Drawing.Size(1291, 58);
+            flowLayoutPanel1.TabIndex = 34;
             // 
-            // editHeader
+            // customButton2
             // 
-            this.editHeader.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.editHeader.FillWeight = 25F;
-            this.editHeader.HeaderText = "Select";
-            this.editHeader.Name = "editHeader";
-            this.editHeader.ReadOnly = true;
+            customButton2.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            customButton2.BackColor = System.Drawing.Color.FromArgb(64, 64, 64);
+            customButton2.BackgroundColor = System.Drawing.Color.FromArgb(64, 64, 64);
+            customButton2.BorderColor = System.Drawing.Color.White;
+            customButton2.BorderRadius = 10;
+            customButton2.BorderSize = 0;
+            customButton2.Cursor = System.Windows.Forms.Cursors.Hand;
+            customButton2.FlatAppearance.BorderSize = 0;
+            customButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            customButton2.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            customButton2.ForeColor = System.Drawing.Color.White;
+            customButton2.Image = Properties.Resources.newReselect;
+            customButton2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            customButton2.Location = new System.Drawing.Point(878, 3);
+            customButton2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            customButton2.Name = "customButton2";
+            customButton2.Padding = new System.Windows.Forms.Padding(10, 3, 30, 0);
+            customButton2.Size = new System.Drawing.Size(199, 51);
+            customButton2.TabIndex = 11;
+            customButton2.Text = "Change Patient";
+            customButton2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            customButton2.TextColor = System.Drawing.Color.White;
+            customButton2.UseVisualStyleBackColor = false;
+            // 
+            // rjComboBox1
+            // 
+            rjComboBox1.BackColor = System.Drawing.Color.White;
+            rjComboBox1.BorderColor = System.Drawing.Color.Black;
+            rjComboBox1.BorderSize = 1;
+            rjComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
+            rjComboBox1.Font = new System.Drawing.Font("Segoe UI", 10F);
+            rjComboBox1.ForeColor = System.Drawing.Color.DimGray;
+            rjComboBox1.IconColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            rjComboBox1.ListBackColor = System.Drawing.Color.White;
+            rjComboBox1.ListTextColor = System.Drawing.Color.Black;
+            rjComboBox1.Location = new System.Drawing.Point(564, 3);
+            rjComboBox1.MinimumSize = new System.Drawing.Size(200, 30);
+            rjComboBox1.Name = "rjComboBox1";
+            rjComboBox1.Padding = new System.Windows.Forms.Padding(1);
+            rjComboBox1.Size = new System.Drawing.Size(307, 51);
+            rjComboBox1.TabIndex = 12;
+            rjComboBox1.Texts = "";
+            // 
+            // customButton1
+            // 
+            customButton1.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+            customButton1.BackColor = System.Drawing.Color.FromArgb(200, 220, 255);
+            customButton1.BackgroundColor = System.Drawing.Color.FromArgb(200, 220, 255);
+            customButton1.BorderColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            customButton1.BorderRadius = 10;
+            customButton1.BorderSize = 1;
+            customButton1.FlatAppearance.BorderSize = 0;
+            customButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            customButton1.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            customButton1.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            customButton1.Image = (System.Drawing.Image)resources.GetObject("customButton1.Image");
+            customButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            customButton1.Location = new System.Drawing.Point(1085, 3);
+            customButton1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            customButton1.Name = "customButton1";
+            customButton1.Padding = new System.Windows.Forms.Padding(12, 5, 23, 0);
+            customButton1.Size = new System.Drawing.Size(202, 51);
+            customButton1.TabIndex = 13;
+            customButton1.Text = "Save Assessment";
+            customButton1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            customButton1.TextColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            customButton1.UseVisualStyleBackColor = false;
+            // 
+            // selectedPatientDetails
+            // 
+            selectedPatientDetails.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            selectedPatientDetails.BackColor = System.Drawing.Color.White;
+            selectedPatientDetails.BackgroundImage = Properties.Resources.Add_Patient_Background;
+            selectedPatientDetails.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            selectedPatientDetails.BorderRadius = 30;
+            selectedPatientDetails.Color = System.Drawing.Color.BurlyWood;
+            selectedPatientDetails.Controls.Add(panelBorder1);
+            selectedPatientDetails.Controls.Add(pictureBox1);
+            selectedPatientDetails.Controls.Add(cbGender);
+            selectedPatientDetails.Controls.Add(label13);
+            selectedPatientDetails.Controls.Add(txtOccupation);
+            selectedPatientDetails.Controls.Add(label4);
+            selectedPatientDetails.Controls.Add(label5);
+            selectedPatientDetails.Controls.Add(txtAge);
+            selectedPatientDetails.Controls.Add(label6);
+            selectedPatientDetails.Controls.Add(txtMiddleName);
+            selectedPatientDetails.Controls.Add(label10);
+            selectedPatientDetails.Controls.Add(txtLastName);
+            selectedPatientDetails.Controls.Add(label7);
+            selectedPatientDetails.Controls.Add(txtFirstName);
+            selectedPatientDetails.Controls.Add(label11);
+            selectedPatientDetails.Controls.Add(label12);
+            selectedPatientDetails.Controls.Add(dpBirthDate);
+            selectedPatientDetails.Controls.Add(txtAddress);
+            selectedPatientDetails.Controls.Add(label9);
+            selectedPatientDetails.Controls.Add(txtContact);
+            selectedPatientDetails.Controls.Add(label8);
+            selectedPatientDetails.Controls.Add(label14);
+            selectedPatientDetails.ForeColor = System.Drawing.Color.Black;
+            selectedPatientDetails.Location = new System.Drawing.Point(76, 239);
+            selectedPatientDetails.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            selectedPatientDetails.Name = "selectedPatientDetails";
+            selectedPatientDetails.Size = new System.Drawing.Size(1631, 540);
+            selectedPatientDetails.TabIndex = 35;
+            selectedPatientDetails.Visible = false;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (System.Drawing.Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new System.Drawing.Point(576, 213);
+            pictureBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new System.Drawing.Size(23, 23);
+            pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 34;
+            pictureBox1.TabStop = false;
+            // 
+            // cbGender
+            // 
+            cbGender.BackColor = System.Drawing.Color.White;
+            cbGender.BorderColor = System.Drawing.Color.Black;
+            cbGender.BorderSize = 1;
+            cbGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
+            cbGender.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            cbGender.ForeColor = System.Drawing.Color.Black;
+            cbGender.IconColor = System.Drawing.Color.Black;
+            cbGender.Items.AddRange(new object[] { "Male", "Female", "Prefer not to say" });
+            cbGender.ListBackColor = System.Drawing.Color.FromArgb(230, 228, 245);
+            cbGender.ListTextColor = System.Drawing.Color.DimGray;
+            cbGender.Location = new System.Drawing.Point(693, 242);
+            cbGender.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            cbGender.MinimumSize = new System.Drawing.Size(233, 35);
+            cbGender.Name = "cbGender";
+            cbGender.Padding = new System.Windows.Forms.Padding(1);
+            cbGender.Size = new System.Drawing.Size(233, 47);
+            cbGender.TabIndex = 5;
+            cbGender.Texts = "";
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            label13.ForeColor = System.Drawing.Color.Gray;
+            label13.Location = new System.Drawing.Point(980, 254);
+            label13.Margin = new System.Windows.Forms.Padding(35, 0, 4, 0);
+            label13.Name = "label13";
+            label13.Size = new System.Drawing.Size(34, 23);
+            label13.TabIndex = 32;
+            label13.Text = "+63";
+            // 
+            // txtOccupation
+            // 
+            txtOccupation.BackColor = System.Drawing.SystemColors.Window;
+            txtOccupation.BorderColor = System.Drawing.Color.DimGray;
+            txtOccupation.BorderFocusColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            txtOccupation.BorderRadius = 5;
+            txtOccupation.BorderSize = 1;
+            txtOccupation.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            txtOccupation.ForeColor = System.Drawing.Color.Black;
+            txtOccupation.Location = new System.Drawing.Point(1206, 242);
+            txtOccupation.Margin = new System.Windows.Forms.Padding(35, 5, 5, 5);
+            txtOccupation.Multiline = false;
+            txtOccupation.Name = "txtOccupation";
+            txtOccupation.Padding = new System.Windows.Forms.Padding(12, 8, 12, 8);
+            txtOccupation.PasswordChar = false;
+            txtOccupation.PlaceholderColor = System.Drawing.Color.DarkGray;
+            txtOccupation.PlaceholderText = "";
+            txtOccupation.Size = new System.Drawing.Size(210, 43);
+            txtOccupation.TabIndex = 7;
+            txtOccupation.Texts = "";
+            txtOccupation.UnderlinedStyle = false;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            label4.Location = new System.Drawing.Point(1202, 213);
+            label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label4.Name = "label4";
+            label4.Size = new System.Drawing.Size(89, 23);
+            label4.TabIndex = 31;
+            label4.Text = "Occupation";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            label5.Location = new System.Drawing.Point(688, 215);
+            label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label5.Name = "label5";
+            label5.Size = new System.Drawing.Size(60, 23);
+            label5.TabIndex = 29;
+            label5.Text = "Gender";
+            // 
+            // txtAge
+            // 
+            txtAge.BackColor = System.Drawing.SystemColors.Window;
+            txtAge.BorderColor = System.Drawing.Color.DimGray;
+            txtAge.BorderFocusColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            txtAge.BorderRadius = 5;
+            txtAge.BorderSize = 1;
+            txtAge.Enabled = false;
+            txtAge.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            txtAge.ForeColor = System.Drawing.Color.Black;
+            txtAge.Location = new System.Drawing.Point(541, 242);
+            txtAge.Margin = new System.Windows.Forms.Padding(35, 5, 5, 5);
+            txtAge.Multiline = false;
+            txtAge.Name = "txtAge";
+            txtAge.Padding = new System.Windows.Forms.Padding(12, 8, 12, 8);
+            txtAge.PasswordChar = false;
+            txtAge.PlaceholderColor = System.Drawing.Color.DarkGray;
+            txtAge.PlaceholderText = "";
+            txtAge.Size = new System.Drawing.Size(112, 43);
+            txtAge.TabIndex = 26;
+            txtAge.Texts = "";
+            txtAge.UnderlinedStyle = false;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            label6.Location = new System.Drawing.Point(537, 213);
+            label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label6.Name = "label6";
+            label6.Size = new System.Drawing.Size(37, 23);
+            label6.TabIndex = 27;
+            label6.Text = "Age";
+            // 
+            // txtMiddleName
+            // 
+            txtMiddleName.BackColor = System.Drawing.SystemColors.Window;
+            txtMiddleName.BorderColor = System.Drawing.Color.DimGray;
+            txtMiddleName.BorderFocusColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            txtMiddleName.BorderRadius = 5;
+            txtMiddleName.BorderSize = 1;
+            txtMiddleName.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            txtMiddleName.ForeColor = System.Drawing.Color.Black;
+            txtMiddleName.Location = new System.Drawing.Point(989, 129);
+            txtMiddleName.Margin = new System.Windows.Forms.Padding(35, 5, 5, 5);
+            txtMiddleName.Multiline = false;
+            txtMiddleName.Name = "txtMiddleName";
+            txtMiddleName.Padding = new System.Windows.Forms.Padding(12, 8, 12, 8);
+            txtMiddleName.PasswordChar = false;
+            txtMiddleName.PlaceholderColor = System.Drawing.Color.DarkGray;
+            txtMiddleName.PlaceholderText = "";
+            txtMiddleName.Size = new System.Drawing.Size(427, 43);
+            txtMiddleName.TabIndex = 3;
+            txtMiddleName.Texts = "";
+            txtMiddleName.UnderlinedStyle = false;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            label10.Location = new System.Drawing.Point(985, 103);
+            label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label10.Name = "label10";
+            label10.Size = new System.Drawing.Size(173, 23);
+            label10.TabIndex = 25;
+            label10.Text = "Middle Name (Optional)";
+            // 
+            // txtLastName
+            // 
+            txtLastName.BackColor = System.Drawing.SystemColors.Window;
+            txtLastName.BorderColor = System.Drawing.Color.DimGray;
+            txtLastName.BorderFocusColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            txtLastName.BorderRadius = 5;
+            txtLastName.BorderSize = 1;
+            txtLastName.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            txtLastName.ForeColor = System.Drawing.Color.Black;
+            txtLastName.Location = new System.Drawing.Point(523, 129);
+            txtLastName.Margin = new System.Windows.Forms.Padding(35, 5, 5, 5);
+            txtLastName.Multiline = false;
+            txtLastName.Name = "txtLastName";
+            txtLastName.Padding = new System.Windows.Forms.Padding(12, 8, 12, 8);
+            txtLastName.PasswordChar = false;
+            txtLastName.PlaceholderColor = System.Drawing.Color.DarkGray;
+            txtLastName.PlaceholderText = "";
+            txtLastName.Size = new System.Drawing.Size(427, 43);
+            txtLastName.TabIndex = 2;
+            txtLastName.Texts = "";
+            txtLastName.UnderlinedStyle = false;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            label7.Location = new System.Drawing.Point(518, 103);
+            label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label7.Name = "label7";
+            label7.Size = new System.Drawing.Size(81, 23);
+            label7.TabIndex = 23;
+            label7.Text = "Last Name";
+            // 
+            // txtFirstName
+            // 
+            txtFirstName.BackColor = System.Drawing.SystemColors.Window;
+            txtFirstName.BorderColor = System.Drawing.Color.DimGray;
+            txtFirstName.BorderFocusColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            txtFirstName.BorderRadius = 5;
+            txtFirstName.BorderSize = 1;
+            txtFirstName.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            txtFirstName.ForeColor = System.Drawing.Color.Black;
+            txtFirstName.Location = new System.Drawing.Point(56, 129);
+            txtFirstName.Margin = new System.Windows.Forms.Padding(5);
+            txtFirstName.Multiline = false;
+            txtFirstName.Name = "txtFirstName";
+            txtFirstName.Padding = new System.Windows.Forms.Padding(12, 8, 12, 8);
+            txtFirstName.PasswordChar = false;
+            txtFirstName.PlaceholderColor = System.Drawing.Color.DarkGray;
+            txtFirstName.PlaceholderText = "";
+            txtFirstName.Size = new System.Drawing.Size(427, 43);
+            txtFirstName.TabIndex = 1;
+            txtFirstName.Texts = "";
+            txtFirstName.UnderlinedStyle = false;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            label11.Location = new System.Drawing.Point(51, 103);
+            label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label11.Name = "label11";
+            label11.Size = new System.Drawing.Size(86, 23);
+            label11.TabIndex = 21;
+            label11.Text = "First Name ";
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            label12.Location = new System.Drawing.Point(47, 28);
+            label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label12.Name = "label12";
+            label12.Size = new System.Drawing.Size(224, 34);
+            label12.TabIndex = 19;
+            label12.Text = "Personal Information";
+            // 
+            // dpBirthDate
+            // 
+            dpBirthDate.BorderColor = System.Drawing.Color.DimGray;
+            dpBirthDate.BorderSize = 1;
+            dpBirthDate.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            dpBirthDate.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right;
+            dpBirthDate.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            dpBirthDate.Location = new System.Drawing.Point(59, 246);
+            dpBirthDate.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            dpBirthDate.MinimumSize = new System.Drawing.Size(4, 35);
+            dpBirthDate.Name = "dpBirthDate";
+            dpBirthDate.Size = new System.Drawing.Size(443, 35);
+            dpBirthDate.SkinColor = System.Drawing.Color.White;
+            dpBirthDate.TabIndex = 4;
+            dpBirthDate.TextColor = System.Drawing.Color.Black;
+            // 
+            // txtAddress
+            // 
+            txtAddress.BackColor = System.Drawing.SystemColors.Window;
+            txtAddress.BorderColor = System.Drawing.Color.DimGray;
+            txtAddress.BorderFocusColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            txtAddress.BorderRadius = 5;
+            txtAddress.BorderSize = 1;
+            txtAddress.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            txtAddress.ForeColor = System.Drawing.Color.Black;
+            txtAddress.Location = new System.Drawing.Point(59, 353);
+            txtAddress.Margin = new System.Windows.Forms.Padding(5);
+            txtAddress.Multiline = true;
+            txtAddress.Name = "txtAddress";
+            txtAddress.Padding = new System.Windows.Forms.Padding(12, 8, 12, 8);
+            txtAddress.PasswordChar = false;
+            txtAddress.PlaceholderColor = System.Drawing.Color.DarkGray;
+            txtAddress.PlaceholderText = "";
+            txtAddress.Size = new System.Drawing.Size(1357, 119);
+            txtAddress.TabIndex = 8;
+            txtAddress.Texts = "";
+            txtAddress.UnderlinedStyle = false;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            label9.Location = new System.Drawing.Point(55, 324);
+            label9.Margin = new System.Windows.Forms.Padding(4, 35, 4, 0);
+            label9.Name = "label9";
+            label9.Size = new System.Drawing.Size(66, 23);
+            label9.TabIndex = 12;
+            label9.Text = "Address";
+            // 
+            // txtContact
+            // 
+            txtContact.BackColor = System.Drawing.SystemColors.Window;
+            txtContact.BorderColor = System.Drawing.Color.DimGray;
+            txtContact.BorderFocusColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            txtContact.BorderRadius = 5;
+            txtContact.BorderSize = 1;
+            txtContact.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            txtContact.ForeColor = System.Drawing.Color.Black;
+            txtContact.Location = new System.Drawing.Point(971, 242);
+            txtContact.Margin = new System.Windows.Forms.Padding(35, 5, 5, 5);
+            txtContact.Multiline = false;
+            txtContact.Name = "txtContact";
+            txtContact.Padding = new System.Windows.Forms.Padding(45, 8, 12, 8);
+            txtContact.PasswordChar = false;
+            txtContact.PlaceholderColor = System.Drawing.Color.DarkGray;
+            txtContact.PlaceholderText = "";
+            txtContact.Size = new System.Drawing.Size(209, 43);
+            txtContact.TabIndex = 6;
+            txtContact.Texts = "";
+            txtContact.UnderlinedStyle = false;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            label8.Location = new System.Drawing.Point(966, 213);
+            label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label8.Name = "label8";
+            label8.Size = new System.Drawing.Size(123, 23);
+            label8.TabIndex = 10;
+            label8.Text = "Contact Number";
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            label14.Location = new System.Drawing.Point(55, 216);
+            label14.Margin = new System.Windows.Forms.Padding(4, 35, 4, 0);
+            label14.Name = "label14";
+            label14.Size = new System.Drawing.Size(74, 23);
+            label14.TabIndex = 8;
+            label14.Text = "Birthdate";
             // 
             // AddAssessment
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.lblSelectedUser);
-            this.Controls.Add(this.titleNav);
-            this.Controls.Add(this.panelBorder1);
-            this.Controls.Add(this.panelBorder2);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.PatientHolder);
-            this.Controls.Add(this.label1);
-            this.Name = "AddAssessment";
-            this.Size = new System.Drawing.Size(1249, 758);
-            this.panelBorder2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.panelBorder1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            BackColor = System.Drawing.Color.White;
+            Controls.Add(selectedPatientDetails);
+            Controls.Add(flowLayoutPanel1);
+            Controls.Add(lblSelectedUser);
+            Controls.Add(titleNav);
+            Controls.Add(label1);
+            Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            Name = "AddAssessment";
+            Size = new System.Drawing.Size(1827, 875);
+            panelBorder1.ResumeLayout(false);
+            flowLayoutPanel1.ResumeLayout(false);
+            selectedPatientDetails.ResumeLayout(false);
+            selectedPatientDetails.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
 
         }
 
         #endregion
-
-        private OrganizationProfile.CustomButton customButton1;
-        private CustomControls.RJControls.RJTextBox rjTextBox1;
-        private WindowsFormsApp2.CustomButton.PanelBorder panelBorder1;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private OrganizationProfile.CustomButton customButton3;
-        private OrganizationProfile.CustomButton customButton2;
-        private OrganizationProfile.CustomButton customButton4;
-        private WindowsFormsApp2.CustomButton.PanelBorder panelBorder2;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private WindowsFormsApp2.CustomButton.PanelBorder PatientHolder;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblSelectedUser;
         private System.Windows.Forms.Label titleNav;
-        private System.Windows.Forms.DataGridViewTextBoxColumn AssessmentID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PatientName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PhysicalTherapist;
-        private System.Windows.Forms.DataGridViewTextBoxColumn BodyGroup;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dateHeader;
-        private System.Windows.Forms.DataGridViewTextBoxColumn editHeader;
+        private WindowsFormsApp2.CustomButton.PanelBorder panelBorder1;
+        private OrganizationProfile.CustomButton btnAddPatient;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private OrganizationProfile.CustomButton customButton2;
+        private CustomControls.RJControls.RJComboBox rjComboBox1;
+        private OrganizationProfile.CustomButton customButton1;
+        private WindowsFormsApp2.CustomButton.PanelBorder selectedPatientDetails;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private CustomControls.RJControls.RJComboBox cbGender;
+        private System.Windows.Forms.Label label13;
+        private CustomControls.RJControls.RJTextBox txtOccupation;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private CustomControls.RJControls.RJTextBox txtAge;
+        private System.Windows.Forms.Label label6;
+        private CustomControls.RJControls.RJTextBox txtMiddleName;
+        private System.Windows.Forms.Label label10;
+        private CustomControls.RJControls.RJTextBox txtLastName;
+        private System.Windows.Forms.Label label7;
+        private CustomControls.RJControls.RJTextBox txtFirstName;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private CustomControls.RJControls.RJDatePicker dpBirthDate;
+        private CustomControls.RJControls.RJTextBox txtAddress;
+        private System.Windows.Forms.Label label9;
+        private CustomControls.RJControls.RJTextBox txtContact;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label14;
     }
 }

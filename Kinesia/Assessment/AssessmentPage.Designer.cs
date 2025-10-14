@@ -38,8 +38,7 @@
             dataGridView1 = new System.Windows.Forms.DataGridView();
             AssessmentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             PatientName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            PhysicalTherapist = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            BodyGroup = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            Joint = new System.Windows.Forms.DataGridViewTextBoxColumn();
             dateHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
             editHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
             archiveHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -92,11 +91,11 @@
             PatientHolder.Color = System.Drawing.Color.White;
             PatientHolder.Controls.Add(dataGridView1);
             PatientHolder.ForeColor = System.Drawing.Color.Black;
-            PatientHolder.Location = new System.Drawing.Point(72, 282);
+            PatientHolder.Location = new System.Drawing.Point(72, 236);
             PatientHolder.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             PatientHolder.Name = "PatientHolder";
-            PatientHolder.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            PatientHolder.Size = new System.Drawing.Size(1317, 540);
+            PatientHolder.Padding = new System.Windows.Forms.Padding(6);
+            PatientHolder.Size = new System.Drawing.Size(1317, 586);
             PatientHolder.TabIndex = 10;
             // 
             // dataGridView1
@@ -105,7 +104,7 @@
             dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.AllowUserToResizeColumns = false;
             dataGridView1.AllowUserToResizeRows = false;
-            dataGridView1.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            dataGridView1.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders;
             dataGridView1.BackgroundColor = System.Drawing.Color.White;
@@ -122,10 +121,10 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { AssessmentID, PatientName, PhysicalTherapist, BodyGroup, dateHeader, editHeader, archiveHeader });
+            dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { AssessmentID, PatientName, Joint, dateHeader, editHeader, archiveHeader });
             dataGridView1.GridColor = System.Drawing.Color.White;
-            dataGridView1.Location = new System.Drawing.Point(4, 9);
-            dataGridView1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            dataGridView1.Location = new System.Drawing.Point(16, 16);
+            dataGridView1.Margin = new System.Windows.Forms.Padding(10);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -141,7 +140,7 @@
             dataGridView1.ShowCellToolTips = false;
             dataGridView1.ShowEditingIcon = false;
             dataGridView1.ShowRowErrors = false;
-            dataGridView1.Size = new System.Drawing.Size(1306, 283);
+            dataGridView1.Size = new System.Drawing.Size(1285, 554);
             dataGridView1.TabIndex = 11;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
@@ -169,24 +168,17 @@
             PatientName.ReadOnly = true;
             PatientName.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
-            // PhysicalTherapist
+            // Joint
             // 
-            PhysicalTherapist.FillWeight = 63.63636F;
-            PhysicalTherapist.HeaderText = "Physical Therapist";
-            PhysicalTherapist.Name = "PhysicalTherapist";
-            PhysicalTherapist.ReadOnly = true;
-            // 
-            // BodyGroup
-            // 
-            BodyGroup.FillWeight = 63.63636F;
-            BodyGroup.HeaderText = "Body Group";
-            BodyGroup.Name = "BodyGroup";
-            BodyGroup.ReadOnly = true;
+            Joint.FillWeight = 63.63636F;
+            Joint.HeaderText = "Joint";
+            Joint.Name = "Joint";
+            Joint.ReadOnly = true;
             // 
             // dateHeader
             // 
             dateHeader.FillWeight = 63.63636F;
-            dateHeader.HeaderText = "Date";
+            dateHeader.HeaderText = "Status";
             dateHeader.Name = "dateHeader";
             dateHeader.ReadOnly = true;
             // 
@@ -218,18 +210,18 @@
             btnAddPatient.FlatAppearance.BorderSize = 0;
             btnAddPatient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnAddPatient.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 238);
-            btnAddPatient.ForeColor = System.Drawing.Color.Transparent;
+            btnAddPatient.ForeColor = System.Drawing.Color.White;
             btnAddPatient.Image = (System.Drawing.Image)resources.GetObject("btnAddPatient.Image");
-            btnAddPatient.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            btnAddPatient.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             btnAddPatient.Location = new System.Drawing.Point(1096, 7);
             btnAddPatient.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             btnAddPatient.Name = "btnAddPatient";
-            btnAddPatient.Padding = new System.Windows.Forms.Padding(6, 6, 23, 0);
+            btnAddPatient.Padding = new System.Windows.Forms.Padding(10, 0, 23, 0);
             btnAddPatient.Size = new System.Drawing.Size(214, 55);
             btnAddPatient.TabIndex = 7;
             btnAddPatient.Text = "Add Assessment";
             btnAddPatient.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            btnAddPatient.TextColor = System.Drawing.Color.Transparent;
+            btnAddPatient.TextColor = System.Drawing.Color.White;
             btnAddPatient.UseVisualStyleBackColor = false;
             // 
             // panelBorder2
@@ -324,7 +316,7 @@
             panelBorder1.Location = new System.Drawing.Point(807, 51);
             panelBorder1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             panelBorder1.Name = "panelBorder1";
-            panelBorder1.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            panelBorder1.Padding = new System.Windows.Forms.Padding(6);
             panelBorder1.Size = new System.Drawing.Size(582, 59);
             panelBorder1.TabIndex = 17;
             // 
@@ -371,7 +363,7 @@
             rjTextBox1.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             rjTextBox1.ForeColor = System.Drawing.Color.FromArgb(64, 64, 64);
             rjTextBox1.Location = new System.Drawing.Point(56, 9);
-            rjTextBox1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            rjTextBox1.Margin = new System.Windows.Forms.Padding(5);
             rjTextBox1.Multiline = false;
             rjTextBox1.Name = "rjTextBox1";
             rjTextBox1.Padding = new System.Windows.Forms.Padding(12, 8, 12, 0);
@@ -414,13 +406,6 @@
         private OrganizationProfile.CustomButton btnAddPatient;
         private WindowsFormsApp2.CustomButton.PanelBorder PatientHolder;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn AssessmentID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PatientName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PhysicalTherapist;
-        private System.Windows.Forms.DataGridViewTextBoxColumn BodyGroup;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dateHeader;
-        private System.Windows.Forms.DataGridViewTextBoxColumn editHeader;
-        private System.Windows.Forms.DataGridViewTextBoxColumn archiveHeader;
         private WindowsFormsApp2.CustomButton.PanelBorder panelBorder2;
         private OrganizationProfile.CustomButton customButton3;
         private OrganizationProfile.CustomButton customButton2;
@@ -429,5 +414,11 @@
         private OrganizationProfile.CustomButton customButton1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private CustomControls.RJControls.RJTextBox rjTextBox1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AssessmentID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PatientName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Joint;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dateHeader;
+        private System.Windows.Forms.DataGridViewTextBoxColumn editHeader;
+        private System.Windows.Forms.DataGridViewTextBoxColumn archiveHeader;
     }
 }
