@@ -233,6 +233,16 @@ namespace Kinesia.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap goniometerLogo {
+            get {
+                object obj = ResourceManager.GetObject("goniometerLogo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap GreenLoading {
             get {
                 object obj = ResourceManager.GetObject("GreenLoading", resourceCulture);
@@ -383,6 +393,26 @@ namespace Kinesia.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap newSmallClose {
+            get {
+                object obj = ResourceManager.GetObject("newSmallClose", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap newSmallOrbbec {
+            get {
+                object obj = ResourceManager.GetObject("newSmallOrbbec", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap newWhiteSelect {
             get {
                 object obj = ResourceManager.GetObject("newWhiteSelect", resourceCulture);
@@ -446,6 +476,16 @@ namespace Kinesia.Properties {
         internal static System.Drawing.Bitmap quick_user {
             get {
                 object obj = ResourceManager.GetObject("quick-user", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap redCancelBtn {
+            get {
+                object obj = ResourceManager.GetObject("redCancelBtn", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -533,6 +573,26 @@ namespace Kinesia.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap smallClose {
+            get {
+                object obj = ResourceManager.GetObject("smallClose", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap smallOrbbec {
+            get {
+                object obj = ResourceManager.GetObject("smallOrbbec", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Stethoscope {
             get {
                 object obj = ResourceManager.GetObject("Stethoscope", resourceCulture);
@@ -556,6 +616,16 @@ namespace Kinesia.Properties {
         internal static System.Drawing.Bitmap warning_icon {
             get {
                 object obj = ResourceManager.GetObject("warning-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap whiteSve {
+            get {
+                object obj = ResourceManager.GetObject("whiteSve", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

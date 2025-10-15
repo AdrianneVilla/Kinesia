@@ -41,6 +41,7 @@
             txtSearchBar = new CustomControls.RJControls.RJTextBox();
             splitter2 = new System.Windows.Forms.Splitter();
             dataGridPatients = new System.Windows.Forms.DataGridView();
+            label1 = new System.Windows.Forms.Label();
             flowLayoutPanel2.SuspendLayout();
             panelBorder1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -238,6 +239,15 @@
             dataGridPatients.Size = new System.Drawing.Size(770, 425);
             dataGridPatients.TabIndex = 20;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(346, 33);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(38, 15);
+            label1.TabIndex = 21;
+            label1.Text = "label1";
+            // 
             // SelectPatient
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -245,6 +255,7 @@
             BackColor = System.Drawing.Color.White;
             BackgroundImage = Properties.Resources.Add_Patient_Background;
             BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            Controls.Add(label1);
             Controls.Add(dataGridPatients);
             Controls.Add(splitter2);
             Controls.Add(panelBorder1);
@@ -259,6 +270,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridPatients).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -274,5 +286,6 @@
         private System.Windows.Forms.Splitter splitter2;
         private System.Windows.Forms.DataGridView dataGridPatients;
         private OrganizationProfile.CustomButton btnAddPatient;
+        private System.Windows.Forms.Label label1;
     }
 }

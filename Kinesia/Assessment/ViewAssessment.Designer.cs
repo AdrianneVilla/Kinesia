@@ -35,11 +35,11 @@
             flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
-            flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             label2 = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
             label4 = new System.Windows.Forms.Label();
             label5 = new System.Windows.Forms.Label();
+            flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             label6 = new System.Windows.Forms.Label();
             label7 = new System.Windows.Forms.Label();
             label8 = new System.Windows.Forms.Label();
@@ -51,6 +51,10 @@
             btnEdit = new OrganizationProfile.CustomButton();
             customButton1 = new OrganizationProfile.CustomButton();
             btnBack = new OrganizationProfile.CustomButton();
+            label10 = new System.Windows.Forms.Label();
+            label11 = new System.Windows.Forms.Label();
+            label12 = new System.Windows.Forms.Label();
+            label13 = new System.Windows.Forms.Label();
             flowLayoutPanel1.SuspendLayout();
             flowLayoutPanel2.SuspendLayout();
             flowLayoutPanel3.SuspendLayout();
@@ -112,7 +116,7 @@
             flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             flowLayoutPanel1.Location = new System.Drawing.Point(71, 95);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new System.Drawing.Size(533, 316);
+            flowLayoutPanel1.Size = new System.Drawing.Size(533, 371);
             flowLayoutPanel1.TabIndex = 36;
             // 
             // flowLayoutPanel2
@@ -121,60 +125,50 @@
             flowLayoutPanel2.Controls.Add(flowLayoutPanel4);
             flowLayoutPanel2.Location = new System.Drawing.Point(3, 51);
             flowLayoutPanel2.Name = "flowLayoutPanel2";
-            flowLayoutPanel2.Size = new System.Drawing.Size(413, 192);
+            flowLayoutPanel2.Size = new System.Drawing.Size(413, 257);
             flowLayoutPanel2.TabIndex = 36;
             // 
             // flowLayoutPanel3
             // 
-            flowLayoutPanel3.Controls.Add(label2);
-            flowLayoutPanel3.Controls.Add(label3);
-            flowLayoutPanel3.Controls.Add(label4);
             flowLayoutPanel3.Controls.Add(label5);
+            flowLayoutPanel3.Controls.Add(label2);
+            flowLayoutPanel3.Controls.Add(label10);
+            flowLayoutPanel3.Controls.Add(label4);
+            flowLayoutPanel3.Controls.Add(label11);
+            flowLayoutPanel3.Controls.Add(label3);
             flowLayoutPanel3.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             flowLayoutPanel3.Location = new System.Drawing.Point(3, 3);
             flowLayoutPanel3.Name = "flowLayoutPanel3";
-            flowLayoutPanel3.Size = new System.Drawing.Size(200, 189);
+            flowLayoutPanel3.Size = new System.Drawing.Size(200, 254);
             flowLayoutPanel3.TabIndex = 37;
-            // 
-            // flowLayoutPanel4
-            // 
-            flowLayoutPanel4.Controls.Add(label6);
-            flowLayoutPanel4.Controls.Add(label7);
-            flowLayoutPanel4.Controls.Add(label8);
-            flowLayoutPanel4.Controls.Add(label9);
-            flowLayoutPanel4.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            flowLayoutPanel4.Location = new System.Drawing.Point(209, 3);
-            flowLayoutPanel4.Name = "flowLayoutPanel4";
-            flowLayoutPanel4.Size = new System.Drawing.Size(200, 189);
-            flowLayoutPanel4.TabIndex = 38;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold);
-            label2.Location = new System.Drawing.Point(3, 0);
+            label2.Location = new System.Drawing.Point(3, 33);
             label2.Margin = new System.Windows.Forms.Padding(3, 0, 3, 10);
             label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(74, 23);
+            label2.Size = new System.Drawing.Size(64, 23);
             label2.TabIndex = 0;
-            label2.Text = "Patient ID";
+            label2.Text = "Gender:";
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold);
-            label3.Location = new System.Drawing.Point(3, 33);
+            label3.Location = new System.Drawing.Point(3, 165);
             label3.Margin = new System.Windows.Forms.Padding(3, 0, 3, 10);
             label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(53, 23);
+            label3.Size = new System.Drawing.Size(142, 23);
             label3.TabIndex = 1;
-            label3.Text = "Status";
+            label3.Text = "Assessment Status:";
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold);
-            label4.Location = new System.Drawing.Point(3, 66);
+            label4.Location = new System.Drawing.Point(3, 99);
             label4.Margin = new System.Windows.Forms.Padding(3, 0, 3, 10);
             label4.Name = "label4";
             label4.Size = new System.Drawing.Size(44, 23);
@@ -185,11 +179,26 @@
             // 
             label5.AutoSize = true;
             label5.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold);
-            label5.Location = new System.Drawing.Point(3, 99);
+            label5.Location = new System.Drawing.Point(3, 0);
+            label5.Margin = new System.Windows.Forms.Padding(3, 0, 3, 10);
             label5.Name = "label5";
-            label5.Size = new System.Drawing.Size(37, 23);
+            label5.Size = new System.Drawing.Size(41, 23);
             label5.TabIndex = 3;
-            label5.Text = "Age";
+            label5.Text = "Age:";
+            // 
+            // flowLayoutPanel4
+            // 
+            flowLayoutPanel4.Controls.Add(label6);
+            flowLayoutPanel4.Controls.Add(label8);
+            flowLayoutPanel4.Controls.Add(label9);
+            flowLayoutPanel4.Controls.Add(label7);
+            flowLayoutPanel4.Controls.Add(label12);
+            flowLayoutPanel4.Controls.Add(label13);
+            flowLayoutPanel4.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            flowLayoutPanel4.Location = new System.Drawing.Point(209, 3);
+            flowLayoutPanel4.Name = "flowLayoutPanel4";
+            flowLayoutPanel4.Size = new System.Drawing.Size(200, 254);
+            flowLayoutPanel4.TabIndex = 38;
             // 
             // label6
             // 
@@ -198,47 +207,48 @@
             label6.Location = new System.Drawing.Point(3, 0);
             label6.Margin = new System.Windows.Forms.Padding(3, 0, 3, 10);
             label6.Name = "label6";
-            label6.Size = new System.Drawing.Size(71, 23);
+            label6.Size = new System.Drawing.Size(50, 23);
             label6.TabIndex = 4;
-            label6.Text = "Patient ID";
+            label6.Text = "<Age>";
             // 
             // label7
             // 
             label7.AutoSize = true;
             label7.Font = new System.Drawing.Font("Poppins", 9.75F);
-            label7.Location = new System.Drawing.Point(3, 33);
+            label7.Location = new System.Drawing.Point(3, 99);
             label7.Margin = new System.Windows.Forms.Padding(3, 0, 3, 10);
             label7.Name = "label7";
-            label7.Size = new System.Drawing.Size(66, 23);
+            label7.Size = new System.Drawing.Size(55, 23);
             label7.TabIndex = 5;
-            label7.Text = "<Status>";
+            label7.Text = "<Joint>";
             // 
             // label8
             // 
             label8.AutoSize = true;
             label8.Font = new System.Drawing.Font("Poppins", 9.75F);
-            label8.Location = new System.Drawing.Point(3, 66);
+            label8.Location = new System.Drawing.Point(3, 33);
             label8.Margin = new System.Windows.Forms.Padding(3, 0, 3, 10);
             label8.Name = "label8";
-            label8.Size = new System.Drawing.Size(55, 23);
+            label8.Size = new System.Drawing.Size(72, 23);
             label8.TabIndex = 6;
-            label8.Text = "<Joint>";
+            label8.Text = "<Gender>";
             // 
             // label9
             // 
             label9.AutoSize = true;
             label9.Font = new System.Drawing.Font("Poppins", 9.75F);
-            label9.Location = new System.Drawing.Point(3, 99);
+            label9.Location = new System.Drawing.Point(3, 66);
+            label9.Margin = new System.Windows.Forms.Padding(3, 0, 3, 10);
             label9.Name = "label9";
-            label9.Size = new System.Drawing.Size(50, 23);
+            label9.Size = new System.Drawing.Size(83, 23);
             label9.TabIndex = 7;
-            label9.Text = "<Age>";
+            label9.Text = "<Extremity>";
             // 
             // btnAddPatient
             // 
             btnAddPatient.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
-            btnAddPatient.BackColor = System.Drawing.Color.FromArgb(18, 90, 211);
-            btnAddPatient.BackgroundColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            btnAddPatient.BackColor = System.Drawing.Color.FromArgb(64, 210, 173);
+            btnAddPatient.BackgroundColor = System.Drawing.Color.FromArgb(64, 210, 173);
             btnAddPatient.BorderColor = System.Drawing.Color.White;
             btnAddPatient.BorderRadius = 10;
             btnAddPatient.BorderSize = 0;
@@ -249,7 +259,7 @@
             btnAddPatient.ForeColor = System.Drawing.Color.White;
             btnAddPatient.Image = Properties.Resources.newWhiteSelect;
             btnAddPatient.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnAddPatient.Location = new System.Drawing.Point(9, 249);
+            btnAddPatient.Location = new System.Drawing.Point(9, 314);
             btnAddPatient.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             btnAddPatient.Name = "btnAddPatient";
             btnAddPatient.Padding = new System.Windows.Forms.Padding(20, 3, 30, 0);
@@ -381,6 +391,50 @@
             btnBack.TextColor = System.Drawing.Color.FromArgb(18, 90, 211);
             btnBack.UseVisualStyleBackColor = false;
             // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold);
+            label10.Location = new System.Drawing.Point(3, 66);
+            label10.Margin = new System.Windows.Forms.Padding(3, 0, 3, 10);
+            label10.Name = "label10";
+            label10.Size = new System.Drawing.Size(79, 23);
+            label10.TabIndex = 4;
+            label10.Text = "Extremity:";
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold);
+            label11.Location = new System.Drawing.Point(3, 132);
+            label11.Margin = new System.Windows.Forms.Padding(3, 0, 3, 10);
+            label11.Name = "label11";
+            label11.Size = new System.Drawing.Size(80, 23);
+            label11.TabIndex = 5;
+            label11.Text = "Joint Side:";
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Font = new System.Drawing.Font("Poppins", 9.75F);
+            label12.Location = new System.Drawing.Point(3, 132);
+            label12.Margin = new System.Windows.Forms.Padding(3, 0, 3, 10);
+            label12.Name = "label12";
+            label12.Size = new System.Drawing.Size(89, 23);
+            label12.TabIndex = 8;
+            label12.Text = " <Joint Side>";
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Font = new System.Drawing.Font("Poppins", 9.75F);
+            label13.Location = new System.Drawing.Point(3, 165);
+            label13.Margin = new System.Windows.Forms.Padding(3, 0, 3, 10);
+            label13.Name = "label13";
+            label13.Size = new System.Drawing.Size(151, 23);
+            label13.TabIndex = 9;
+            label13.Text = " <Assessment Status>";
+            // 
             // ViewAssessment
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -432,5 +486,9 @@
         private OrganizationProfile.CustomButton btnEdit;
         private OrganizationProfile.CustomButton customButton1;
         private OrganizationProfile.CustomButton btnBack;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
     }
 }
