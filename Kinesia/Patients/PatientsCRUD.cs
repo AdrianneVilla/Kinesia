@@ -8,6 +8,7 @@ using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Kinesia.Assessment;
 using KinesiaLibrary.DTOs;
 using MySql.Data.MySqlClient;
 using Newtonsoft.Json;
@@ -107,6 +108,87 @@ namespace Kinesia.Patients
                 CustomDialog.Show("An unexpected error occured.\nPlease try again.",
                             "Unexpected Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
             }
+        }
+
+        public async Task DisplayPatientSelection(string searchData)
+        {
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    var url = $"https://localhost:5001/api/patients/selection?searchData={searchData}";
+
+                    var response = await client.GetAsync(url);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var json = await response.Content.ReadAsStringAsync();
+                        var patients = JsonConvert.DeserializeObject<List<DisplayPatientSelectionDTO>>(json);
+
+                        var patientSelectionPage = new SelectPatient();
+
+                        CustomDataGrid.SetDoubleBuffering(patientSelectionPage, true);
+                        patientSelectionPage.GetPatientSelectionGrid.SuspendLayout();
+                        patientSelectionPage.GetPatientSelectionGrid.AutoGenerateColumns = false;
+                        patientSelectionPage.GetPatientSelectionGrid.Columns.Clear();
+
+                        patientSelectionPage.GetPatientSelectionGrid.Columns.Add(new DataGridViewTextBoxColumn
+                        {
+                            Name = "PatientID",
+                            DataPropertyName = "PatientID",
+                            HeaderText = "Patient ID"
+                        });
+
+                        patientSelectionPage.GetPatientSelectionGrid.Columns.Add(new DataGridViewTextBoxColumn
+                        {
+                            Name = "PatientName",
+                            DataPropertyName = "PatientName",
+                            HeaderText = "Patient Name"
+                        });
+
+                        patientSelectionPage.GetPatientSelectionGrid.Columns.Add(new DataGridViewTextBoxColumn
+                        {
+                            Name = "Age",
+                            DataPropertyName = "Age",
+                            HeaderText = "Age"
+                        });
+
+                        patientSelectionPage.GetPatientSelectionGrid.Columns.Add(new DataGridViewTextBoxColumn
+                        {
+                            Name = "Gender",
+                            DataPropertyName = "Gender",
+                            HeaderText = "Gender"
+                        });
+
+                        patientSelectionPage.GetPatientSelectionGrid.DataSource = patients;
+                        patientSelectionPage.GetPatientSelectionGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+                        CustomDataGrid.StyleDataGridWithSpacing(patientSelectionPage.GetPatientSelectionGrid);
+                        patientSelectionPage.GetPatientSelectionGrid.ResumeLayout();
+
+                        patientSelectionPage.ShowDialog();
+                    }
+                    else
+                    {
+                        // will show an error dialog if it returns a badrequest from API
+                        CustomDialog.Show(await response.Content.ReadAsStringAsync(),
+                            "Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                    }
+                }
+            }
+            catch (HttpRequestException)
+            {
+                // will show an error dialog if it catches a http request error from client-side
+                CustomDialog.Show("Unable to connect to the server.\nPlease try again.",
+                    "Connection Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+            }
+            catch (Exception)
+            {
+                // will show an error dialog if it catches an unexpected error from client-side
+                CustomDialog.Show("Unable to connect to the server.\nPlease try again.",
+                            "Unexpected Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+            }
+
         }
 
         public async Task GetPatientDetails(string patientID)

@@ -90,6 +90,40 @@ namespace KinesiaAPI.Controllers
             }
         }
 
+        // GET: api/patients/selection?searchData{}
+        [HttpGet("selection")]
+        public async Task<ActionResult<DisplayPatientSelectionDTO>> GetPatientSelection(string? searchData = null)
+        {
+            try
+            {
+                var query = _context.Patients.AsQueryable();
+
+                // search
+                if (!string.IsNullOrEmpty(searchData))
+                {
+                    query = query.Where(p =>
+                    p.PatientID.Contains(searchData) ||
+                    p.FirstName.Contains(searchData) ||
+                    p.LastName.Contains(searchData) ||
+                    p.MiddleName.Contains(searchData));
+                }
+
+                var patients = await query
+                        .Select(p => PatientToDisplayPatientSelectionDTO(p))
+                        .ToListAsync();
+
+                return Ok(patients);
+            }
+            catch (DbException)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An error occured on database.\nPlease try again.");
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An unexpected error occured.\nPlease try again.");
+            }
+        }
+
         // GET: api/patients/5
         [HttpGet("{id}")]
         public async Task<ActionResult<PatientsDTO>> GetPatients(string id)
@@ -323,6 +357,15 @@ namespace KinesiaAPI.Controllers
                 Age = (int)((DateTime.Now - patients.Birthdate).TotalDays / 365.25),
                 Gender = patients.Gender,
                 Status = patients.Status == 1 ? "Active" : "Inactive"
+            };
+
+        public static DisplayPatientSelectionDTO PatientToDisplayPatientSelectionDTO(Patients patients) =>
+            new DisplayPatientSelectionDTO
+            {
+                PatientID = patients.PatientID,
+                PatientName = $"{patients.FirstName} {patients.MiddleName} {patients.LastName}",
+                Age = (int)((DateTime.Now - patients.Birthdate).TotalDays / 365.25),
+                Gender = patients.Gender
             };
     }
 }

@@ -10,17 +10,13 @@ using System.Windows.Forms;
 
 namespace Kinesia.Assessment
 {
-    public partial class SelectPatient : UserControl
+    public partial class SelectPatient : Form
     {
         public SelectPatient()
         {
-            this.Anchor = AnchorStyles.Right | AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Bottom;
             InitializeComponent();
         }
 
-        private void SelectPatient_Load(object sender, EventArgs e)
-        {
-
-        }
+        public DataGridView GetPatientSelectionGrid { get { return dataGridPatientSelection; } }
     }
 }
