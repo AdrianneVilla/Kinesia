@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace KinesiaLibrary.DTOs
+namespace KinesiaLibrary.DTOs.UserDTOs
 {
     public class DisplayUsersDTO
     {

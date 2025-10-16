@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Kinesia.Assessment;
 using KinesiaLibrary.DTOs;
+using KinesiaLibrary.DTOs.PatientDTOs;
 using MySql.Data.MySqlClient;
 using Newtonsoft.Json;
 

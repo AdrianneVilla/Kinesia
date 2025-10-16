@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KinesiaLibrary.DTOs
+namespace KinesiaLibrary.DTOs.PatientDTOs
 {
-    public class CheckExistingUserDTO
+    public class CheckExistingPatientDTO
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }

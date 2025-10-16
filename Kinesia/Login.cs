@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Kinesia.Components;
-using KinesiaLibrary.DTOs;
+using KinesiaLibrary.DTOs.AuthDTOs;
 using MySql.Data.MySqlClient;
 using Newtonsoft.Json;
 

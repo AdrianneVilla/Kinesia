@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using KinesiaAPI.Data;
 using KinesiaAPI.Models.Entities;
-using KinesiaLibrary.DTOs;
+using KinesiaLibrary.DTOs.LogDTOs;
 
 namespace KinesiaAPI.Controllers
 {

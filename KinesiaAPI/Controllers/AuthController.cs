@@ -1,9 +1,9 @@
 ﻿using KinesiaAPI.Data;
-using KinesiaLibrary.DTOs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using KinesiaLibrary;
+using KinesiaLibrary.DTOs.AuthDTOs;
 
 namespace KinesiaAPI.Controllers
 {

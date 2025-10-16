@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 14, 2025 at 11:18 AM
+-- Generation Time: Oct 16, 2025 at 02:58 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -30,17 +30,11 @@ SET time_zone = "+00:00";
 CREATE TABLE `assessments` (
   `AssessmentID` varchar(50) NOT NULL,
   `PatientID` varchar(50) NOT NULL,
+  `Extremity` varchar(50) NOT NULL,
   `Joint` varchar(50) NOT NULL,
-  `JointType` varchar(50) NOT NULL,
-  `Status` int(11) NOT NULL
+  `JointSide` varchar(50) NOT NULL,
+  `AssessmentStatus` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `assessments`
---
-
-INSERT INTO `assessments` (`AssessmentID`, `PatientID`, `Joint`, `JointType`, `Status`) VALUES
-('ASS1', 'PATIENT1', 'Left Elbow and Forearm', 'Upper Extremities', 0);
 
 -- --------------------------------------------------------
 
@@ -61,125 +55,7 @@ CREATE TABLE `logs` (
 --
 
 INSERT INTO `logs` (`LogID`, `UserID`, `Description`, `LogType`, `LogDate`) VALUES
-('LOG1', 'USER3', 'Has Logged In', 'Sessions', '2025-09-07 19:12:55'),
-('LOG10', 'USER3', 'Has Logged In', 'Sessions', '2025-09-09 15:41:13'),
-('LOG100', 'USER3', 'Has Logged In', 'Sessions', '2025-10-12 16:10:03'),
-('LOG101', 'USER3', 'Has Logged In', 'Sessions', '2025-10-12 16:10:29'),
-('LOG102', 'USER3', 'Has Logged In', 'Sessions', '2025-10-12 16:25:48'),
-('LOG103', 'USER3', 'Has Logged In', 'Sessions', '2025-10-12 16:32:33'),
-('LOG104', 'USER3', 'Has Logged In', 'Sessions', '2025-10-12 16:43:47'),
-('LOG105', 'USER3', 'Has Logged In', 'Sessions', '2025-10-13 09:32:04'),
-('LOG106', 'USER3', 'Has Logged In', 'Sessions', '2025-10-13 09:46:50'),
-('LOG107', 'USER3', 'Has Logged In', 'Sessions', '2025-10-13 09:48:27'),
-('LOG108', 'USER3', 'Has Logged In', 'Sessions', '2025-10-13 10:09:51'),
-('LOG109', 'USER3', 'Has Logged In', 'Sessions', '2025-10-13 10:26:21'),
-('LOG11', 'USER3', 'Added PATIENT3', 'Patients', '2025-09-09 15:41:28'),
-('LOG110', 'USER3', 'Has Logged In', 'Sessions', '2025-10-13 11:49:46'),
-('LOG111', 'USER3', 'Has Logged In', 'Sessions', '2025-10-14 08:25:02'),
-('LOG112', 'USER3', 'Has Logged In', 'Sessions', '2025-10-14 08:30:02'),
-('LOG113', 'USER3', 'Has Logged In', 'Sessions', '2025-10-14 08:35:14'),
-('LOG114', 'USER3', 'Has Logged In', 'Sessions', '2025-10-14 08:44:09'),
-('LOG115', 'USER3', 'Has Logged In', 'Sessions', '2025-10-14 08:51:26'),
-('LOG116', 'USER3', 'Has Logged In', 'Sessions', '2025-10-14 10:05:51'),
-('LOG117', 'USER3', 'Has Logged In', 'Sessions', '2025-10-14 10:15:36'),
-('LOG118', 'USER3', 'Has Logged In', 'Sessions', '2025-10-14 10:18:51'),
-('LOG119', 'USER3', 'Has Logged In', 'Sessions', '2025-10-14 10:26:14'),
-('LOG12', 'USER3', 'Has Logged In', 'Sessions', '2025-09-09 15:44:27'),
-('LOG13', 'USER3', 'Has Logged In', 'Sessions', '2025-09-09 15:45:22'),
-('LOG14', 'USER3', 'Added PATIENT4', 'Patients', '2025-09-09 15:45:36'),
-('LOG15', 'USER3', 'Has Logged In', 'Sessions', '2025-09-10 09:02:30'),
-('LOG16', 'USER3', 'Has Logged In', 'Sessions', '2025-09-10 09:11:36'),
-('LOG17', 'USER3', 'Has Logged In', 'Sessions', '2025-09-10 09:14:00'),
-('LOG18', 'USER3', 'Has Logged In', 'Sessions', '2025-09-10 09:15:34'),
-('LOG19', 'USER3', 'Has Logged In', 'Sessions', '2025-09-10 09:17:52'),
-('LOG2', 'USER3', 'Has Logged In', 'Sessions', '2025-09-08 06:53:38'),
-('LOG20', 'USER3', 'Has Logged In', 'Sessions', '2025-09-10 09:47:04'),
-('LOG21', 'USER3', 'Has Logged In', 'Sessions', '2025-09-10 20:59:13'),
-('LOG22', 'USER3', 'Has Logged In', 'Sessions', '2025-09-10 21:08:03'),
-('LOG23', 'USER3', 'Has Logged In', 'Sessions', '2025-09-10 21:08:57'),
-('LOG24', 'USER3', 'Edited PATIENT1\'s personal information', 'Patients', '2025-09-10 21:09:03'),
-('LOG25', 'USER3', 'Has Logged In', 'Sessions', '2025-09-10 21:09:35'),
-('LOG26', 'USER3', 'Edited PATIENT1\'s personal information', 'Patients', '2025-09-10 21:09:40'),
-('LOG27', 'USER3', 'Has Logged In', 'Sessions', '2025-09-11 18:03:17'),
-('LOG28', 'USER3', 'Has Logged In', 'Sessions', '2025-09-11 18:05:15'),
-('LOG29', 'USER3', 'Has Logged In', 'Sessions', '2025-09-11 18:05:44'),
-('LOG3', 'USER3', 'Has Logged In', 'Sessions', '2025-09-08 06:55:34'),
-('LOG30', 'USER3', 'Has Logged In', 'Sessions', '2025-09-11 18:07:11'),
-('LOG31', 'USER3', 'Has Logged In', 'Sessions', '2025-09-11 18:07:49'),
-('LOG32', 'USER3', 'Unarchived PATIENT1', 'Patients', '2025-09-11 18:07:51'),
-('LOG33', 'USER3', 'Archived PATIENT1', 'Patients', '2025-09-11 18:07:54'),
-('LOG34', 'USER3', 'Has Logged In', 'Sessions', '2025-09-11 19:29:03'),
-('LOG35', 'USER3', 'Has Logged In', 'Sessions', '2025-09-12 16:58:42'),
-('LOG36', 'USER3', 'Has Logged In', 'Sessions', '2025-09-12 17:00:05'),
-('LOG37', 'USER3', 'Has Logged In', 'Sessions', '2025-09-12 17:02:25'),
-('LOG38', 'USER3', 'Has Logged In', 'Sessions', '2025-09-12 17:08:44'),
-('LOG39', 'USER3', 'Has Logged In', 'Sessions', '2025-09-12 20:32:37'),
-('LOG4', 'USER3', 'Has Logged In', 'Sessions', '2025-09-08 06:58:54'),
-('LOG40', 'USER3', 'Has Logged In', 'Sessions', '2025-09-12 20:33:47'),
-('LOG41', 'USER3', 'Has Logged In', 'Sessions', '2025-09-12 20:35:22'),
-('LOG42', 'USER3', 'Has Logged In', 'Sessions', '2025-09-13 15:41:43'),
-('LOG43', 'USER3', 'Has Logged In', 'Sessions', '2025-09-13 15:44:44'),
-('LOG44', 'USER3', 'Added USER4', 'Users', '2025-09-13 15:45:06'),
-('LOG45', 'USER4', 'Has Logged In', 'Sessions', '2025-09-13 15:45:17'),
-('LOG46', 'USER3', 'Has Logged In', 'Sessions', '2025-09-14 08:43:58'),
-('LOG47', 'USER3', 'Edited USER1\'s personal information', 'Users', '2025-09-14 08:44:06'),
-('LOG48', 'USER3', 'Has Logged In', 'Sessions', '2025-09-15 06:35:45'),
-('LOG49', 'USER3', 'Has Logged In', 'Sessions', '2025-09-15 06:35:45'),
-('LOG5', 'USER3', 'Has Logged In', 'Sessions', '2025-09-09 10:07:07'),
-('LOG50', 'USER3', 'Unarchived USER1', 'Users', '2025-09-15 06:35:51'),
-('LOG51', 'USER3', 'Archived USER1', 'Users', '2025-09-15 06:35:53'),
-('LOG52', 'USER3', 'Unarchived USER1', 'Users', '2025-09-15 06:35:58'),
-('LOG53', 'USER3', 'Archived USER1', 'Users', '2025-09-15 06:36:00'),
-('LOG54', 'USER3', 'Has Logged In', 'Sessions', '2025-09-16 09:20:57'),
-('LOG55', 'USER3', 'Has Logged In', 'Sessions', '2025-09-16 09:20:58'),
-('LOG56', 'USER3', 'Has Logged In', 'Sessions', '2025-09-16 09:23:15'),
-('LOG57', 'USER3', 'Has Logged In', 'Sessions', '2025-09-16 09:56:26'),
-('LOG58', 'USER3', 'Has Logged In', 'Sessions', '2025-09-16 10:02:40'),
-('LOG59', 'USER3', 'Has Logged In', 'Sessions', '2025-09-16 10:05:11'),
-('LOG6', 'USER3', 'Has Logged In', 'Sessions', '2025-09-09 10:07:07'),
-('LOG60', 'USER3', 'Has Logged In', 'Sessions', '2025-09-16 14:19:04'),
-('LOG61', 'USER3', 'Has Logged In', 'Sessions', '2025-09-16 14:19:10'),
-('LOG62', 'USER3', 'Has Logged In', 'Sessions', '2025-09-16 14:22:00'),
-('LOG63', 'USER3', 'Has Logged In', 'Sessions', '2025-09-16 14:23:14'),
-('LOG64', 'USER3', 'Has Logged In', 'Sessions', '2025-09-16 14:24:24'),
-('LOG65', 'USER3', 'Has Logged In', 'Sessions', '2025-09-16 14:27:02'),
-('LOG66', 'USER3', 'Has Logged In', 'Sessions', '2025-09-16 14:28:52'),
-('LOG67', 'USER3', 'Has Logged In', 'Sessions', '2025-09-16 19:39:55'),
-('LOG68', 'USER3', 'Has Logged In', 'Sessions', '2025-09-16 19:40:53'),
-('LOG69', 'USER3', 'Has Logged In', 'Sessions', '2025-09-16 19:42:17'),
-('LOG7', 'USER3', 'Has Logged In', 'Sessions', '2025-09-09 10:08:44'),
-('LOG70', 'USER3', 'Has Logged In', 'Sessions', '2025-09-16 19:42:47'),
-('LOG71', 'USER3', 'Has Logged In', 'Sessions', '2025-09-16 19:43:45'),
-('LOG72', 'USER3', 'Has Logged In', 'Sessions', '2025-09-16 19:44:41'),
-('LOG73', 'USER3', 'Has Logged In', 'Sessions', '2025-09-16 19:47:22'),
-('LOG74', 'USER3', 'Has Logged In', 'Sessions', '2025-09-16 19:53:28'),
-('LOG75', 'USER3', 'Has Logged In', 'Sessions', '2025-09-16 19:53:28'),
-('LOG76', 'USER3', 'Has Logged In', 'Sessions', '2025-09-16 19:55:36'),
-('LOG77', 'USER3', 'Has Logged In', 'Sessions', '2025-09-16 19:56:10'),
-('LOG78', 'USER3', 'Has Logged In', 'Sessions', '2025-09-16 20:03:12'),
-('LOG79', 'USER3', 'Has Logged In', 'Sessions', '2025-09-16 20:03:40'),
-('LOG8', 'USER3', 'Has Logged In', 'Sessions', '2025-09-09 10:09:29'),
-('LOG80', 'USER3', 'Has Logged In', 'Sessions', '2025-09-16 20:04:25'),
-('LOG81', 'USER3', 'Has Logged In', 'Sessions', '2025-09-16 20:05:21'),
-('LOG82', 'USER3', 'Has Logged In', 'Sessions', '2025-09-16 20:10:36'),
-('LOG83', 'USER3', 'Has Logged In', 'Sessions', '2025-09-16 20:10:55'),
-('LOG84', 'USER3', 'Has Logged In', 'Sessions', '2025-09-16 20:14:09'),
-('LOG85', 'USER3', 'Has Logged In', 'Sessions', '2025-09-16 20:14:59'),
-('LOG86', 'USER3', 'Has Logged In', 'Sessions', '2025-09-16 20:15:22'),
-('LOG87', 'USER3', 'Has Logged In', 'Sessions', '2025-09-17 07:59:32'),
-('LOG88', 'USER3', 'Has Logged In', 'Sessions', '2025-10-10 20:12:11'),
-('LOG89', 'USER3', 'Has Logged In', 'Sessions', '2025-10-11 09:00:35'),
-('LOG9', 'USER3', 'Has Logged In', 'Sessions', '2025-09-09 15:15:32'),
-('LOG90', 'USER3', 'Has Logged In', 'Sessions', '2025-10-11 14:54:17'),
-('LOG91', 'USER3', 'Has Logged In', 'Sessions', '2025-10-11 15:01:38'),
-('LOG92', 'USER3', 'Has Logged In', 'Sessions', '2025-10-11 15:16:10'),
-('LOG93', 'USER3', 'Has Logged In', 'Sessions', '2025-10-11 15:43:48'),
-('LOG94', 'USER3', 'Has Logged In', 'Sessions', '2025-10-11 20:27:56'),
-('LOG95', 'USER3', 'Has Logged In', 'Sessions', '2025-10-12 15:13:52'),
-('LOG96', 'USER3', 'Has Logged In', 'Sessions', '2025-10-12 15:15:07'),
-('LOG97', 'USER3', 'Has Logged In', 'Sessions', '2025-10-12 15:22:32'),
-('LOG98', 'USER3', 'Has Logged In', 'Sessions', '2025-10-12 15:30:22'),
-('LOG99', 'USER3', 'Has Logged In', 'Sessions', '2025-10-12 15:56:43');
+('LOG1', 'USER3', 'Has Logged In', 'Sessions', '2025-10-16 08:58:15');
 
 -- --------------------------------------------------------
 
@@ -231,13 +107,6 @@ CREATE TABLE `rom` (
   `Deviation` varchar(255) NOT NULL,
   `Date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `rom`
---
-
-INSERT INTO `rom` (`ROMID`, `AssessmentID`, `UserID`, `InitialROM`, `EndROM`, `Movement`, `MotionType`, `Subjective`, `Objective`, `Deviation`, `Date`) VALUES
-('LEFTELBOW1', 'ASS1', 'USER1', 0, 90, 'Flexion', 'Active', NULL, NULL, 'Lying down', '2025-10-14 11:11:57');
 
 -- --------------------------------------------------------
 

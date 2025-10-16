@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace KinesiaLibrary.DTOs
+namespace KinesiaLibrary.DTOs.PatientDTOs
 {
     public class PatientsDTO
     {

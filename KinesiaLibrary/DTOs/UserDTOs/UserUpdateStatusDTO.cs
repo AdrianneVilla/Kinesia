@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KinesiaLibrary.DTOs
+namespace KinesiaLibrary.DTOs.UserDTOs
 {
     public class UserUpdateStatusDTO
     {

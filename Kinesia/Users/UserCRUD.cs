@@ -1,5 +1,6 @@
 ﻿using Kinesia.Patients;
 using KinesiaLibrary.DTOs;
+using KinesiaLibrary.DTOs.UserDTOs;
 using Microsoft.Win32;
 using MySql.Data.MySqlClient;
 using Newtonsoft.Json;

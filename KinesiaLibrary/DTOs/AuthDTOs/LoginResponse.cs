@@ -1,4 +1,4 @@
-﻿namespace KinesiaLibrary.DTOs
+﻿namespace KinesiaLibrary.DTOs.AuthDTOs
 {
     public class LoginResponse
     {

@@ -1,4 +1,4 @@
-﻿    using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -7,8 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using KinesiaAPI.Data;
 using KinesiaAPI.Models.Entities;
-using KinesiaLibrary.DTOs;
 using System.Data.Common;
+using KinesiaLibrary.DTOs.PatientDTOs;
 
 namespace KinesiaAPI.Controllers
 {
