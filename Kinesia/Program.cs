@@ -149,15 +149,6 @@ namespace Kinesia
         }
     }
 
-    // Contains MySQL objects
-    public class Connection
-    {
-        public static string connectionString = "server=localhost;port=3306;database=kinesia;uid=root;pwd=;";
-        public static MySqlConnection conn = new MySqlConnection(connectionString);
-        public static MySqlCommand cmd;
-        public static MySqlDataReader reader;
-    }
-
     // Contains quries objects intantiation
     public class Queries
     {

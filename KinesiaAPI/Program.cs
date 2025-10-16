@@ -8,6 +8,7 @@ namespace KinesiaAPI
     {
         public static void Main(string[] args)
         {
+            DotNetEnv.Env.Load();
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
@@ -17,8 +18,15 @@ namespace KinesiaAPI
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            var dbHost = Environment.GetEnvironmentVariable("DB_HOST");
+            var dbName = Environment.GetEnvironmentVariable("DB_NAME");
+            var dbUser = Environment.GetEnvironmentVariable("DB_USERNAME");
+            var dbPass = Environment.GetEnvironmentVariable("DB_PASSWORD");
+
+            var connectionString = $"server={dbHost};port=3306;database={dbName};uid={dbUser};pwd={dbPass}";
+
             builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseMySql(
-                builder.Configuration.GetConnectionString("DefaultConnection"),
+                connectionString,
                 new MySqlServerVersion(new Version(10, 2, 32))));
 
             //Cors Configuration
@@ -30,12 +38,11 @@ namespace KinesiaAPI
                       .AllowAnyHeader()
                       .AllowAnyMethod());
 
-                options.AddPolicy("AllowReactApp", policy =>
-                {
-                    policy.WithOrigins("https://localhost:5173", "http://localhost:5173")
-                    .AllowAnyHeader()
-                    .AllowAnyMethod();
-                });
+                options.AddPolicy("ProductionPolicy",
+                   policy => policy
+                        .AllowAnyOrigin()
+                        .AllowAnyHeader()
+                        .AllowAnyMethod());
             });
 
 
@@ -56,8 +63,16 @@ namespace KinesiaAPI
 
             app.UseAuthorization();
 
-            app.UseCors("AllowLocalhost");
-            app.UseCors("AllowReactApp");
+            if (app.Environment.IsDevelopment())
+            {
+                // Only use the localhost policy when developing
+                app.UseCors("AllowLocalhost");
+            }
+            else
+            {
+                // Use the flexible policy when on the live server
+                app.UseCors("ProductionPolicy");
+            }
             app.MapControllers();
 
             app.Run();

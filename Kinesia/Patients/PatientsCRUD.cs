@@ -322,12 +322,39 @@ namespace Kinesia.Patients
             }
         }
 
-        public void SetPatientID(PatientDataHolder patientData)
+        public async Task SetPatientID(PatientDataHolder patientData)
         {
-            Connection.conn.Open();
-            Connection.cmd = new MySqlCommand("SELECT COUNT(PatientID) FROM Patients", Connection.conn);
-            patientData.PatientID = $"PATIENT{Convert.ToInt32(Connection.cmd.ExecuteScalar()) + 1}";
-            Connection.conn.Close();
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    var url = "https://localhost:5001/api/patients/generate-patientid";
+                    var response = await client.GetAsync(url);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        patientData.PatientID = await response.Content.ReadAsStringAsync();
+                    }
+                    else
+                    {
+                        // will show an error dialog if it returns a badrequest from API
+                        CustomDialog.Show(await response.Content.ReadAsStringAsync(),
+                            "Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                    }
+                }
+            }
+            catch (HttpRequestException)
+            {
+                // will show an error dialog if it catches a http request error from client-side
+                CustomDialog.Show("Unable to connect to the server.\nPlease try again.",
+                    "Connection Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+            }
+            catch (Exception)
+            {
+                // will show an error dialog if it catches an unexpected error from client-side
+                CustomDialog.Show("Unable to connect to the server.\nPlease try again.",
+                            "Unexpected Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+            }
         }
 
         public async Task<bool> AddPatient(PatientDataHolder patientData)

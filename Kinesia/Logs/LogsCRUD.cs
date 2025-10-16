@@ -44,7 +44,13 @@ namespace Kinesia.Logs
             {
                 var newLog = new AddLogDTO();
 
-                newLog.LogID = SetLogID();
+                newLog.LogID = await GetLogID();
+
+                if (string.IsNullOrEmpty(newLog.LogID))
+                {
+                    return;
+                }
+
                 newLog.UserID = SessionManager.UserID;
                 newLog.Description = description;
                 newLog.LogType = logType;
@@ -61,29 +67,44 @@ namespace Kinesia.Logs
                     Debug.WriteLine(response.StatusCode);
                 }
             }
-
-            //Connection.conn.Open();
-
-            //var logID = SetLogID();
-
-            //Connection.cmd = new MySqlCommand("INSERT INTO Logs VALUES(@logID, @userID, @description, @logType, @logDate)", Connection.conn);
-            //Connection.cmd.Parameters.AddWithValue("@logID", logID);
-            //Connection.cmd.Parameters.AddWithValue("@userID", SessionManager.UserID);
-            //Connection.cmd.Parameters.AddWithValue("@description", description);
-            //Connection.cmd.Parameters.AddWithValue("@logType", logType);
-            //Connection.cmd.Parameters.AddWithValue("@logDate", DateTime.Now);
-            //Connection.cmd.ExecuteNonQuery();
-
-            //Connection.conn.Close();
         }
 
-        public string SetLogID()
+        public async Task<string> GetLogID()
         {
-            Connection.conn.Open();
-            Connection.cmd = new MySqlCommand("SELECT COUNT(LogID) FROM Logs", Connection.conn);
-            string logID = $"LOG{Convert.ToInt32(Connection.cmd.ExecuteScalar()) + 1}";
-            Connection.conn.Close();
-            return logID;
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    var url = "https://localhost:5001/api/logs/generate-logid";
+                    var response = await client.GetAsync(url);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return await response.Content.ReadAsStringAsync();
+                    }
+                    else
+                    {
+                        // will show an error dialog if it returns a badrequest from API
+                        CustomDialog.Show(await response.Content.ReadAsStringAsync(),
+                            "Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                        return null;
+                    }
+                }
+            }
+            catch (HttpRequestException)
+            {
+                // will show an error dialog if it catches a http request error from client-side
+                CustomDialog.Show("Unable to connect to the server.\nPlease try again.",
+                    "Connection Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                return null;
+            }
+            catch (Exception)
+            {
+                // will show an error dialog if it catches an unexpected error from client-side
+                CustomDialog.Show("Unable to connect to the server.\nPlease try again.",
+                            "Unexpected Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                return null;
+            }
         }
     }
 }

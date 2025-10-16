@@ -149,6 +149,27 @@ namespace KinesiaAPI.Controllers
             }
         }
 
+        // GET: api/patients/generate-patientid
+        [HttpGet("generate-patientid")]
+        public async Task<ActionResult<string>> GenerateNewPatientID()
+        {
+            try
+            {
+                var patientCount = await _context.Patients.CountAsync();
+                string newPatientID = $"PATIENT{patientCount + 1}";
+
+                return Ok(newPatientID);
+            }
+            catch (DbException)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An error occured on database.\nPlease try again.");
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An unexpected error occured.\nPlease try again.");
+            }
+        }
+
         // POST: api/patients/check-existing
         [HttpPost("check-existing")]
         public async Task<IActionResult> CheckExistingPatient(CheckExistingPatientDTO existingPatient)

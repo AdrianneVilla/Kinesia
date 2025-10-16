@@ -1,13 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using KinesiaAPI.Data;
+using KinesiaAPI.Models.Entities;
+using KinesiaLibrary.DTOs.LogDTOs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using KinesiaAPI.Data;
-using KinesiaAPI.Models.Entities;
-using KinesiaLibrary.DTOs.LogDTOs;
+using System;
+using System.Collections.Generic;
+using System.Data.Common;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace KinesiaAPI.Controllers
 {
@@ -82,6 +83,27 @@ namespace KinesiaAPI.Controllers
             }
 
             return logs;
+        }
+
+        // GET: api/logs/generate-logid
+        [HttpGet("generate-logid")]
+        public async Task<ActionResult<string>> GenerateNewLogID()
+        {
+            try
+            {
+                var logCount = await _context.Logs.CountAsync();
+                string newLogID = $"LOG{logCount + 1}";
+
+                return Ok(newLogID);
+            }
+            catch (DbException)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An error occured on database.\nPlease try again.");
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An unexpected error occured.\nPlease try again.");
+            }
         }
 
         // PUT: api/Logs/5

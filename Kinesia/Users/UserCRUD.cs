@@ -239,14 +239,39 @@ namespace Kinesia.Users
             }
         }
 
-        public void SetUserID(UserDataHolder userData)
+        public async Task SetUserID(UserDataHolder userData)
         {
-            Connection.conn.Open();
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    var url = "https://localhost:5001/api/users/generate-userid";
+                    var response = await client.GetAsync(url);
 
-            Connection.cmd = new MySqlCommand("SELECT COUNT(UserID) FROM Users", Connection.conn);
-            userData.UserID = $"USER{Convert.ToInt32(Connection.cmd.ExecuteScalar()) + 1}";
-
-            Connection.conn.Close();
+                    if (response.IsSuccessStatusCode)
+                    {
+                        userData.UserID = await response.Content.ReadAsStringAsync();
+                    }
+                    else
+                    {
+                        // will show an error dialog if it returns a badrequest from API
+                        CustomDialog.Show(await response.Content.ReadAsStringAsync(),
+                            "Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                    }
+                }
+            }
+            catch (HttpRequestException)
+            {
+                // will show an error dialog if it catches a http request error from client-side
+                CustomDialog.Show("Unable to connect to the server.\nPlease try again.",
+                    "Connection Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+            }
+            catch (Exception)
+            {
+                // will show an error dialog if it catches an unexpected error from client-side.
+                CustomDialog.Show("An unexpected error occured.\nPlease try again.",
+                            "Unexpected Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+            }
         }
 
         public async Task<bool> AddUser(UserDataHolder userData)
