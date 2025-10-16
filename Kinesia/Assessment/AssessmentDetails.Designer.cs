@@ -1,6 +1,6 @@
 ﻿namespace Kinesia.Assessment
 {
-    partial class ViewAssessment
+    partial class AssessmentDetails
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,33 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ViewAssessment));
-            lblSelectedUser = new System.Windows.Forms.Label();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AssessmentDetails));
+            lblSelectedAssessment = new System.Windows.Forms.Label();
             titleNav = new System.Windows.Forms.Label();
-            label1 = new System.Windows.Forms.Label();
+            lblPatientID = new System.Windows.Forms.Label();
             flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
-            label2 = new System.Windows.Forms.Label();
-            label3 = new System.Windows.Forms.Label();
-            label4 = new System.Windows.Forms.Label();
             label5 = new System.Windows.Forms.Label();
+            label2 = new System.Windows.Forms.Label();
+            label10 = new System.Windows.Forms.Label();
+            label4 = new System.Windows.Forms.Label();
+            label11 = new System.Windows.Forms.Label();
+            label3 = new System.Windows.Forms.Label();
             flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
-            label6 = new System.Windows.Forms.Label();
-            label7 = new System.Windows.Forms.Label();
-            label8 = new System.Windows.Forms.Label();
-            label9 = new System.Windows.Forms.Label();
-            btnAddPatient = new OrganizationProfile.CustomButton();
+            lblAge = new System.Windows.Forms.Label();
+            lblGender = new System.Windows.Forms.Label();
+            lblExtremity = new System.Windows.Forms.Label();
+            lblJoint = new System.Windows.Forms.Label();
+            lblJointSide = new System.Windows.Forms.Label();
+            lblAssessmentStatus = new System.Windows.Forms.Label();
+            btnFinishAssessment = new OrganizationProfile.CustomButton();
             dataGridView1 = new System.Windows.Forms.DataGridView();
             flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
             btnArchive = new OrganizationProfile.CustomButton();
             btnEdit = new OrganizationProfile.CustomButton();
-            customButton1 = new OrganizationProfile.CustomButton();
+            btnAddRom = new OrganizationProfile.CustomButton();
             btnBack = new OrganizationProfile.CustomButton();
-            label10 = new System.Windows.Forms.Label();
-            label11 = new System.Windows.Forms.Label();
-            label12 = new System.Windows.Forms.Label();
-            label13 = new System.Windows.Forms.Label();
             flowLayoutPanel1.SuspendLayout();
             flowLayoutPanel2.SuspendLayout();
             flowLayoutPanel3.SuspendLayout();
@@ -63,20 +63,20 @@
             flowLayoutPanel5.SuspendLayout();
             SuspendLayout();
             // 
-            // lblSelectedUser
+            // lblSelectedAssessment
             // 
-            lblSelectedUser.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
-            lblSelectedUser.AutoSize = true;
-            lblSelectedUser.BackColor = System.Drawing.Color.Transparent;
-            lblSelectedUser.Font = new System.Drawing.Font("Poppins", 20.25F, System.Drawing.FontStyle.Bold);
-            lblSelectedUser.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
-            lblSelectedUser.Location = new System.Drawing.Point(236, 36);
-            lblSelectedUser.Margin = new System.Windows.Forms.Padding(0);
-            lblSelectedUser.Name = "lblSelectedUser";
-            lblSelectedUser.Size = new System.Drawing.Size(148, 48);
-            lblSelectedUser.TabIndex = 34;
-            lblSelectedUser.Text = "PatientID";
-            lblSelectedUser.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            lblSelectedAssessment.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
+            lblSelectedAssessment.AutoSize = true;
+            lblSelectedAssessment.BackColor = System.Drawing.Color.Transparent;
+            lblSelectedAssessment.Font = new System.Drawing.Font("Poppins", 20.25F, System.Drawing.FontStyle.Bold);
+            lblSelectedAssessment.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            lblSelectedAssessment.Location = new System.Drawing.Point(236, 36);
+            lblSelectedAssessment.Margin = new System.Windows.Forms.Padding(0);
+            lblSelectedAssessment.Name = "lblSelectedAssessment";
+            lblSelectedAssessment.Size = new System.Drawing.Size(220, 48);
+            lblSelectedAssessment.TabIndex = 34;
+            lblSelectedAssessment.Text = "AssessmentID";
+            lblSelectedAssessment.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // titleNav
             // 
@@ -92,27 +92,27 @@
             titleNav.Text = "Assessment >";
             titleNav.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label1
+            // lblPatientID
             // 
-            label1.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
-            label1.AutoSize = true;
-            label1.BackColor = System.Drawing.Color.Transparent;
-            label1.Font = new System.Drawing.Font("Poppins", 20.25F, System.Drawing.FontStyle.Bold);
-            label1.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
-            label1.Location = new System.Drawing.Point(0, 0);
-            label1.Margin = new System.Windows.Forms.Padding(0);
-            label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(148, 48);
-            label1.TabIndex = 35;
-            label1.Text = "PatientID";
-            label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            lblPatientID.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
+            lblPatientID.AutoSize = true;
+            lblPatientID.BackColor = System.Drawing.Color.Transparent;
+            lblPatientID.Font = new System.Drawing.Font("Poppins", 20.25F, System.Drawing.FontStyle.Bold);
+            lblPatientID.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            lblPatientID.Location = new System.Drawing.Point(0, 0);
+            lblPatientID.Margin = new System.Windows.Forms.Padding(0);
+            lblPatientID.Name = "lblPatientID";
+            lblPatientID.Size = new System.Drawing.Size(148, 48);
+            lblPatientID.TabIndex = 35;
+            lblPatientID.Text = "PatientID";
+            lblPatientID.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // flowLayoutPanel1
             // 
             flowLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            flowLayoutPanel1.Controls.Add(label1);
+            flowLayoutPanel1.Controls.Add(lblPatientID);
             flowLayoutPanel1.Controls.Add(flowLayoutPanel2);
-            flowLayoutPanel1.Controls.Add(btnAddPatient);
+            flowLayoutPanel1.Controls.Add(btnFinishAssessment);
             flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             flowLayoutPanel1.Location = new System.Drawing.Point(71, 95);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -142,6 +142,17 @@
             flowLayoutPanel3.Size = new System.Drawing.Size(200, 254);
             flowLayoutPanel3.TabIndex = 37;
             // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold);
+            label5.Location = new System.Drawing.Point(3, 0);
+            label5.Margin = new System.Windows.Forms.Padding(3, 0, 3, 10);
+            label5.Name = "label5";
+            label5.Size = new System.Drawing.Size(41, 23);
+            label5.TabIndex = 3;
+            label5.Text = "Age:";
+            // 
             // label2
             // 
             label2.AutoSize = true;
@@ -153,16 +164,16 @@
             label2.TabIndex = 0;
             label2.Text = "Gender:";
             // 
-            // label3
+            // label10
             // 
-            label3.AutoSize = true;
-            label3.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold);
-            label3.Location = new System.Drawing.Point(3, 165);
-            label3.Margin = new System.Windows.Forms.Padding(3, 0, 3, 10);
-            label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(142, 23);
-            label3.TabIndex = 1;
-            label3.Text = "Assessment Status:";
+            label10.AutoSize = true;
+            label10.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold);
+            label10.Location = new System.Drawing.Point(3, 66);
+            label10.Margin = new System.Windows.Forms.Padding(3, 0, 3, 10);
+            label10.Name = "label10";
+            label10.Size = new System.Drawing.Size(79, 23);
+            label10.TabIndex = 4;
+            label10.Text = "Extremity:";
             // 
             // label4
             // 
@@ -175,99 +186,132 @@
             label4.TabIndex = 2;
             label4.Text = "Joint";
             // 
-            // label5
+            // label11
             // 
-            label5.AutoSize = true;
-            label5.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold);
-            label5.Location = new System.Drawing.Point(3, 0);
-            label5.Margin = new System.Windows.Forms.Padding(3, 0, 3, 10);
-            label5.Name = "label5";
-            label5.Size = new System.Drawing.Size(41, 23);
-            label5.TabIndex = 3;
-            label5.Text = "Age:";
+            label11.AutoSize = true;
+            label11.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold);
+            label11.Location = new System.Drawing.Point(3, 132);
+            label11.Margin = new System.Windows.Forms.Padding(3, 0, 3, 10);
+            label11.Name = "label11";
+            label11.Size = new System.Drawing.Size(80, 23);
+            label11.TabIndex = 5;
+            label11.Text = "Joint Side:";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold);
+            label3.Location = new System.Drawing.Point(3, 165);
+            label3.Margin = new System.Windows.Forms.Padding(3, 0, 3, 10);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(142, 23);
+            label3.TabIndex = 1;
+            label3.Text = "Assessment Status:";
             // 
             // flowLayoutPanel4
             // 
-            flowLayoutPanel4.Controls.Add(label6);
-            flowLayoutPanel4.Controls.Add(label8);
-            flowLayoutPanel4.Controls.Add(label9);
-            flowLayoutPanel4.Controls.Add(label7);
-            flowLayoutPanel4.Controls.Add(label12);
-            flowLayoutPanel4.Controls.Add(label13);
+            flowLayoutPanel4.Controls.Add(lblAge);
+            flowLayoutPanel4.Controls.Add(lblGender);
+            flowLayoutPanel4.Controls.Add(lblExtremity);
+            flowLayoutPanel4.Controls.Add(lblJoint);
+            flowLayoutPanel4.Controls.Add(lblJointSide);
+            flowLayoutPanel4.Controls.Add(lblAssessmentStatus);
             flowLayoutPanel4.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             flowLayoutPanel4.Location = new System.Drawing.Point(209, 3);
             flowLayoutPanel4.Name = "flowLayoutPanel4";
             flowLayoutPanel4.Size = new System.Drawing.Size(200, 254);
             flowLayoutPanel4.TabIndex = 38;
             // 
-            // label6
+            // lblAge
             // 
-            label6.AutoSize = true;
-            label6.Font = new System.Drawing.Font("Poppins", 9.75F);
-            label6.Location = new System.Drawing.Point(3, 0);
-            label6.Margin = new System.Windows.Forms.Padding(3, 0, 3, 10);
-            label6.Name = "label6";
-            label6.Size = new System.Drawing.Size(50, 23);
-            label6.TabIndex = 4;
-            label6.Text = "<Age>";
+            lblAge.AutoSize = true;
+            lblAge.Font = new System.Drawing.Font("Poppins", 9.75F);
+            lblAge.Location = new System.Drawing.Point(3, 0);
+            lblAge.Margin = new System.Windows.Forms.Padding(3, 0, 3, 10);
+            lblAge.Name = "lblAge";
+            lblAge.Size = new System.Drawing.Size(50, 23);
+            lblAge.TabIndex = 4;
+            lblAge.Text = "<Age>";
             // 
-            // label7
+            // lblGender
             // 
-            label7.AutoSize = true;
-            label7.Font = new System.Drawing.Font("Poppins", 9.75F);
-            label7.Location = new System.Drawing.Point(3, 99);
-            label7.Margin = new System.Windows.Forms.Padding(3, 0, 3, 10);
-            label7.Name = "label7";
-            label7.Size = new System.Drawing.Size(55, 23);
-            label7.TabIndex = 5;
-            label7.Text = "<Joint>";
+            lblGender.AutoSize = true;
+            lblGender.Font = new System.Drawing.Font("Poppins", 9.75F);
+            lblGender.Location = new System.Drawing.Point(3, 33);
+            lblGender.Margin = new System.Windows.Forms.Padding(3, 0, 3, 10);
+            lblGender.Name = "lblGender";
+            lblGender.Size = new System.Drawing.Size(72, 23);
+            lblGender.TabIndex = 6;
+            lblGender.Text = "<Gender>";
             // 
-            // label8
+            // lblExtremity
             // 
-            label8.AutoSize = true;
-            label8.Font = new System.Drawing.Font("Poppins", 9.75F);
-            label8.Location = new System.Drawing.Point(3, 33);
-            label8.Margin = new System.Windows.Forms.Padding(3, 0, 3, 10);
-            label8.Name = "label8";
-            label8.Size = new System.Drawing.Size(72, 23);
-            label8.TabIndex = 6;
-            label8.Text = "<Gender>";
+            lblExtremity.AutoSize = true;
+            lblExtremity.Font = new System.Drawing.Font("Poppins", 9.75F);
+            lblExtremity.Location = new System.Drawing.Point(3, 66);
+            lblExtremity.Margin = new System.Windows.Forms.Padding(3, 0, 3, 10);
+            lblExtremity.Name = "lblExtremity";
+            lblExtremity.Size = new System.Drawing.Size(83, 23);
+            lblExtremity.TabIndex = 7;
+            lblExtremity.Text = "<Extremity>";
             // 
-            // label9
+            // lblJoint
             // 
-            label9.AutoSize = true;
-            label9.Font = new System.Drawing.Font("Poppins", 9.75F);
-            label9.Location = new System.Drawing.Point(3, 66);
-            label9.Margin = new System.Windows.Forms.Padding(3, 0, 3, 10);
-            label9.Name = "label9";
-            label9.Size = new System.Drawing.Size(83, 23);
-            label9.TabIndex = 7;
-            label9.Text = "<Extremity>";
+            lblJoint.AutoSize = true;
+            lblJoint.Font = new System.Drawing.Font("Poppins", 9.75F);
+            lblJoint.Location = new System.Drawing.Point(3, 99);
+            lblJoint.Margin = new System.Windows.Forms.Padding(3, 0, 3, 10);
+            lblJoint.Name = "lblJoint";
+            lblJoint.Size = new System.Drawing.Size(55, 23);
+            lblJoint.TabIndex = 5;
+            lblJoint.Text = "<Joint>";
             // 
-            // btnAddPatient
+            // lblJointSide
             // 
-            btnAddPatient.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
-            btnAddPatient.BackColor = System.Drawing.Color.FromArgb(64, 210, 173);
-            btnAddPatient.BackgroundColor = System.Drawing.Color.FromArgb(64, 210, 173);
-            btnAddPatient.BorderColor = System.Drawing.Color.White;
-            btnAddPatient.BorderRadius = 10;
-            btnAddPatient.BorderSize = 0;
-            btnAddPatient.Cursor = System.Windows.Forms.Cursors.Hand;
-            btnAddPatient.FlatAppearance.BorderSize = 0;
-            btnAddPatient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            btnAddPatient.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            btnAddPatient.ForeColor = System.Drawing.Color.White;
-            btnAddPatient.Image = Properties.Resources.newWhiteSelect;
-            btnAddPatient.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnAddPatient.Location = new System.Drawing.Point(9, 314);
-            btnAddPatient.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            btnAddPatient.Name = "btnAddPatient";
-            btnAddPatient.Padding = new System.Windows.Forms.Padding(20, 3, 30, 0);
-            btnAddPatient.Size = new System.Drawing.Size(406, 51);
-            btnAddPatient.TabIndex = 37;
-            btnAddPatient.Text = "Finish Assessment";
-            btnAddPatient.TextColor = System.Drawing.Color.White;
-            btnAddPatient.UseVisualStyleBackColor = false;
+            lblJointSide.AutoSize = true;
+            lblJointSide.Font = new System.Drawing.Font("Poppins", 9.75F);
+            lblJointSide.Location = new System.Drawing.Point(3, 132);
+            lblJointSide.Margin = new System.Windows.Forms.Padding(3, 0, 3, 10);
+            lblJointSide.Name = "lblJointSide";
+            lblJointSide.Size = new System.Drawing.Size(89, 23);
+            lblJointSide.TabIndex = 8;
+            lblJointSide.Text = " <Joint Side>";
+            // 
+            // lblAssessmentStatus
+            // 
+            lblAssessmentStatus.AutoSize = true;
+            lblAssessmentStatus.Font = new System.Drawing.Font("Poppins", 9.75F);
+            lblAssessmentStatus.Location = new System.Drawing.Point(3, 165);
+            lblAssessmentStatus.Margin = new System.Windows.Forms.Padding(3, 0, 3, 10);
+            lblAssessmentStatus.Name = "lblAssessmentStatus";
+            lblAssessmentStatus.Size = new System.Drawing.Size(151, 23);
+            lblAssessmentStatus.TabIndex = 9;
+            lblAssessmentStatus.Text = " <Assessment Status>";
+            // 
+            // btnFinishAssessment
+            // 
+            btnFinishAssessment.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            btnFinishAssessment.BackColor = System.Drawing.Color.FromArgb(64, 210, 173);
+            btnFinishAssessment.BackgroundColor = System.Drawing.Color.FromArgb(64, 210, 173);
+            btnFinishAssessment.BorderColor = System.Drawing.Color.White;
+            btnFinishAssessment.BorderRadius = 10;
+            btnFinishAssessment.BorderSize = 0;
+            btnFinishAssessment.Cursor = System.Windows.Forms.Cursors.Hand;
+            btnFinishAssessment.FlatAppearance.BorderSize = 0;
+            btnFinishAssessment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnFinishAssessment.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            btnFinishAssessment.ForeColor = System.Drawing.Color.White;
+            btnFinishAssessment.Image = Properties.Resources.newWhiteSelect;
+            btnFinishAssessment.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            btnFinishAssessment.Location = new System.Drawing.Point(9, 314);
+            btnFinishAssessment.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            btnFinishAssessment.Name = "btnFinishAssessment";
+            btnFinishAssessment.Padding = new System.Windows.Forms.Padding(20, 3, 30, 0);
+            btnFinishAssessment.Size = new System.Drawing.Size(406, 51);
+            btnFinishAssessment.TabIndex = 37;
+            btnFinishAssessment.Text = "Finish Assessment";
+            btnFinishAssessment.TextColor = System.Drawing.Color.White;
+            btnFinishAssessment.UseVisualStyleBackColor = false;
             // 
             // dataGridView1
             // 
@@ -340,30 +384,30 @@
             btnEdit.TextColor = System.Drawing.Color.FromArgb(21, 134, 105);
             btnEdit.UseVisualStyleBackColor = false;
             // 
-            // customButton1
+            // btnAddRom
             // 
-            customButton1.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
-            customButton1.BackColor = System.Drawing.Color.FromArgb(18, 90, 211);
-            customButton1.BackgroundColor = System.Drawing.Color.FromArgb(18, 90, 211);
-            customButton1.BorderColor = System.Drawing.Color.White;
-            customButton1.BorderRadius = 10;
-            customButton1.BorderSize = 0;
-            customButton1.Cursor = System.Windows.Forms.Cursors.Hand;
-            customButton1.FlatAppearance.BorderSize = 0;
-            customButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            customButton1.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            customButton1.ForeColor = System.Drawing.Color.White;
-            customButton1.Image = Properties.Resources.add_btn;
-            customButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            customButton1.Location = new System.Drawing.Point(916, 415);
-            customButton1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            customButton1.Name = "customButton1";
-            customButton1.Padding = new System.Windows.Forms.Padding(10, 3, 10, 0);
-            customButton1.Size = new System.Drawing.Size(243, 51);
-            customButton1.TabIndex = 38;
-            customButton1.Text = "Add ROM";
-            customButton1.TextColor = System.Drawing.Color.White;
-            customButton1.UseVisualStyleBackColor = false;
+            btnAddRom.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            btnAddRom.BackColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            btnAddRom.BackgroundColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            btnAddRom.BorderColor = System.Drawing.Color.White;
+            btnAddRom.BorderRadius = 10;
+            btnAddRom.BorderSize = 0;
+            btnAddRom.Cursor = System.Windows.Forms.Cursors.Hand;
+            btnAddRom.FlatAppearance.BorderSize = 0;
+            btnAddRom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnAddRom.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            btnAddRom.ForeColor = System.Drawing.Color.White;
+            btnAddRom.Image = Properties.Resources.add_btn;
+            btnAddRom.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            btnAddRom.Location = new System.Drawing.Point(916, 415);
+            btnAddRom.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            btnAddRom.Name = "btnAddRom";
+            btnAddRom.Padding = new System.Windows.Forms.Padding(10, 3, 10, 0);
+            btnAddRom.Size = new System.Drawing.Size(243, 51);
+            btnAddRom.TabIndex = 38;
+            btnAddRom.Text = "Add ROM";
+            btnAddRom.TextColor = System.Drawing.Color.White;
+            btnAddRom.UseVisualStyleBackColor = false;
             // 
             // btnBack
             // 
@@ -391,51 +435,7 @@
             btnBack.TextColor = System.Drawing.Color.FromArgb(18, 90, 211);
             btnBack.UseVisualStyleBackColor = false;
             // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold);
-            label10.Location = new System.Drawing.Point(3, 66);
-            label10.Margin = new System.Windows.Forms.Padding(3, 0, 3, 10);
-            label10.Name = "label10";
-            label10.Size = new System.Drawing.Size(79, 23);
-            label10.TabIndex = 4;
-            label10.Text = "Extremity:";
-            // 
-            // label11
-            // 
-            label11.AutoSize = true;
-            label11.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold);
-            label11.Location = new System.Drawing.Point(3, 132);
-            label11.Margin = new System.Windows.Forms.Padding(3, 0, 3, 10);
-            label11.Name = "label11";
-            label11.Size = new System.Drawing.Size(80, 23);
-            label11.TabIndex = 5;
-            label11.Text = "Joint Side:";
-            // 
-            // label12
-            // 
-            label12.AutoSize = true;
-            label12.Font = new System.Drawing.Font("Poppins", 9.75F);
-            label12.Location = new System.Drawing.Point(3, 132);
-            label12.Margin = new System.Windows.Forms.Padding(3, 0, 3, 10);
-            label12.Name = "label12";
-            label12.Size = new System.Drawing.Size(89, 23);
-            label12.TabIndex = 8;
-            label12.Text = " <Joint Side>";
-            // 
-            // label13
-            // 
-            label13.AutoSize = true;
-            label13.Font = new System.Drawing.Font("Poppins", 9.75F);
-            label13.Location = new System.Drawing.Point(3, 165);
-            label13.Margin = new System.Windows.Forms.Padding(3, 0, 3, 10);
-            label13.Name = "label13";
-            label13.Size = new System.Drawing.Size(151, 23);
-            label13.TabIndex = 9;
-            label13.Text = " <Assessment Status>";
-            // 
-            // ViewAssessment
+            // AssessmentDetails
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -443,11 +443,11 @@
             Controls.Add(btnBack);
             Controls.Add(dataGridView1);
             Controls.Add(flowLayoutPanel1);
-            Controls.Add(lblSelectedUser);
-            Controls.Add(customButton1);
+            Controls.Add(lblSelectedAssessment);
+            Controls.Add(btnAddRom);
             Controls.Add(flowLayoutPanel5);
             Controls.Add(titleNav);
-            Name = "ViewAssessment";
+            Name = "AssessmentDetails";
             Size = new System.Drawing.Size(1186, 712);
             flowLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel1.PerformLayout();
@@ -464,9 +464,9 @@
 
         #endregion
 
-        private System.Windows.Forms.Label lblSelectedUser;
+        private System.Windows.Forms.Label lblSelectedAssessment;
         private System.Windows.Forms.Label titleNav;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblPatientID;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
@@ -475,20 +475,20 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
-        private OrganizationProfile.CustomButton btnAddPatient;
+        private System.Windows.Forms.Label lblAge;
+        private System.Windows.Forms.Label lblJoint;
+        private System.Windows.Forms.Label lblGender;
+        private System.Windows.Forms.Label lblExtremity;
+        private OrganizationProfile.CustomButton btnFinishAssessment;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
         private OrganizationProfile.CustomButton btnArchive;
         private OrganizationProfile.CustomButton btnEdit;
-        private OrganizationProfile.CustomButton customButton1;
+        private OrganizationProfile.CustomButton btnAddRom;
         private OrganizationProfile.CustomButton btnBack;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label lblJointSide;
+        private System.Windows.Forms.Label lblAssessmentStatus;
     }
 }

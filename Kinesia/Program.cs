@@ -52,6 +52,7 @@ namespace Kinesia
         public static AddUser addUser;
         public static EditUser editUser;
         public static AssessmentPage assessmentPage;
+        public static AssessmentDetails assessmentDetails;
         public static LogsPage logsPage;
         public static newLogsPage newLogsPage;
 
@@ -155,6 +156,7 @@ namespace Kinesia
         public static PatientsCRUD PatientQueries = new PatientsCRUD();
         public static UserCRUD UserQueries = new UserCRUD();
         public static LogsCRUD LogsQueries = new LogsCRUD();
+        public static AssessmentCRUD AssessmentQueries = new AssessmentCRUD();
     }
 
     // Contains methods for customizing DataGridView

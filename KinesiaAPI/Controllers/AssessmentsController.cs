@@ -1,16 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using KinesiaAPI.Data;
+using KinesiaAPI.Models.Entities;
+using KinesiaLibrary.DTOs.AssessmentDTOs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using KinesiaAPI.Data;
-using KinesiaAPI.Models.Entities;
+using System;
+using System.Collections.Generic;
+using System.Data.Common;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace KinesiaAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/assessment")]
     [ApiController]
     public class AssessmentsController : ControllerBase
     {
@@ -30,16 +32,56 @@ namespace KinesiaAPI.Controllers
 
         // GET: api/Assessments/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Assessments>> GetAssessments(string id)
+        public async Task<ActionResult<AssessmentDTO>> GetAssessments(string id)
         {
-            var assessments = await _context.Assessments.FindAsync(id);
-
-            if (assessments == null)
+            try
             {
-                return NotFound();
-            }
+                var result = await (from a in _context.Assessments
+                                    join p in _context.Patients on a.PatientID equals p.PatientID
+                                    where a.AssessmentID == id
+                                    select new
+                                    {
+                                        a.AssessmentID,
+                                        p.PatientID,
+                                        p.FirstName,
+                                        p.MiddleName,
+                                        p.LastName,
+                                        p.Birthdate,
+                                        p.Gender,
+                                        a.Extremity,
+                                        a.Joint,
+                                        a.JointSide,
+                                        a.AssessmentStatus
+                                    }).FirstOrDefaultAsync();
 
-            return assessments;
+                var assessment = new AssessmentDTO
+                {
+                    AssessmentID = result.AssessmentID,
+                    PatientID = result.PatientID,
+                    PatientName = $"{result.FirstName} {result.MiddleName} {result.LastName}",
+                    Age = (int)((DateTime.Now - result.Birthdate).TotalDays / 365.25),
+                    Gender = result.Gender,
+                    Extremity = result.Extremity,
+                    Joint = result.Joint,
+                    JointSide = result.JointSide,
+                    AssessmentStatus = result.AssessmentStatus == 1 ? "Ongoing" : "Finished"
+                };
+
+                if (assessment == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok(assessment);
+            }
+            catch (DbException)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An error occured on database.\nPlease try again.");
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An unexpected error occured.\nPlease try again.");
+            }
         }
 
         // PUT: api/Assessments/5
