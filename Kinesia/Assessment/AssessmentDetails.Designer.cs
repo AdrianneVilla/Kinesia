@@ -408,6 +408,7 @@
             btnAddRom.Text = "Add ROM";
             btnAddRom.TextColor = System.Drawing.Color.White;
             btnAddRom.UseVisualStyleBackColor = false;
+            btnAddRom.Click += btnAddRom_Click;
             // 
             // btnBack
             // 

@@ -17,6 +17,7 @@ using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
 using Kinesia.Logs;
+using CustomControls.RJControls;
 
 namespace Kinesia
 {
@@ -157,6 +158,7 @@ namespace Kinesia
         public static UserCRUD UserQueries = new UserCRUD();
         public static LogsCRUD LogsQueries = new LogsCRUD();
         public static AssessmentCRUD AssessmentQueries = new AssessmentCRUD();
+        public static ROMCRUD ROMQueries = new ROMCRUD();
     }
 
     // Contains methods for customizing DataGridView
@@ -251,13 +253,13 @@ namespace Kinesia
             }
 
             // will only allow one dot on textboxes
-            if((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            if((e.KeyChar == '.') && ((sender as RJTextBox).Text.IndexOf('.') > -1))
             {
                 e.Handled = true;
             }
 
             // will not allow dot as first character on a textbox
-            if (((sender as TextBox).Text.Length == 0) && e.KeyChar == '.')
+            if (((sender as RJTextBox).Text.Length == 0) && e.KeyChar == '.')
             {
                 e.Handled = true;
             }

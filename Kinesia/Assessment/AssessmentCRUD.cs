@@ -25,20 +25,20 @@ namespace Kinesia.Assessment
                         var json = await response.Content.ReadAsStringAsync();
                         var assessment = JsonConvert.DeserializeObject<AssessmentDTO>(json);
 
-                        var assessmentDetailsPage = new AssessmentDetails();
+                        PageObjects.assessmentDetails = new AssessmentDetails();
 
-                        assessmentDetailsPage.AssessmentID = assessment.AssessmentID;
-                        assessmentDetailsPage.PatientID = assessment.PatientID;
-                        assessmentDetailsPage.Age = assessment.Age.ToString();
-                        assessmentDetailsPage.Gender = assessment.Gender;
-                        assessmentDetailsPage.Extremity = assessment.Extremity;
-                        assessmentDetailsPage.Joint = assessment.Joint;
-                        assessmentDetailsPage.JointSide = assessment.JointSide;
-                        assessmentDetailsPage.AssessmentStatus = assessment.AssessmentStatus;
+                        PageObjects.assessmentDetails.AssessmentID = assessment.AssessmentID;
+                        PageObjects.assessmentDetails.PatientID = assessment.PatientID;
+                        PageObjects.assessmentDetails.Age = assessment.Age.ToString();
+                        PageObjects.assessmentDetails.Gender = assessment.Gender;
+                        PageObjects.assessmentDetails.Extremity = assessment.Extremity;
+                        PageObjects.assessmentDetails.Joint = assessment.Joint;
+                        PageObjects.assessmentDetails.JointSide = assessment.JointSide;
+                        PageObjects.assessmentDetails.AssessmentStatus = assessment.AssessmentStatus;
 
                         PageObjects.RemoveResources(ref PageObjects.CurrentControl);
-                        PageObjects.dashboard.ContentsPanel.Controls.Add(assessmentDetailsPage);
-                        PageObjects.CurrentControl = assessmentDetailsPage;
+                        PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.assessmentDetails);
+                        PageObjects.CurrentControl = PageObjects.assessmentDetails;
                     }
                     else
                     {

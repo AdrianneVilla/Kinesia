@@ -10,11 +10,18 @@ using System.Windows.Forms;
 
 namespace Kinesia.Assessment
 {
-    public partial class ManualPopup : Form
+    public partial class SelectTool : Form
     {
-        public ManualPopup()
+        public SelectTool()
         {
             InitializeComponent();
+        }
+
+        private void btnGoniometer_Click(object sender, EventArgs e)
+        {
+            var manualAddROMPage = new ManualAddROM();
+            manualAddROMPage.ShowDialog();
+            this.Close();
         }
     }
 }

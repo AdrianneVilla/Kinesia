@@ -1,16 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using KinesiaAPI.Data;
+using KinesiaAPI.Models.Entities;
+using KinesiaLibrary.DTOs.ROMDTOs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using KinesiaAPI.Data;
-using KinesiaAPI.Models.Entities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Intrinsics.Arm;
+using System.Threading.Tasks;
 
 namespace KinesiaAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/rom")]
     [ApiController]
     public class ROMsController : ControllerBase
     {
@@ -30,7 +32,7 @@ namespace KinesiaAPI.Controllers
 
         // GET: api/ROMs/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<ROM>> GetROM(string id)
+        public async Task<ActionResult<ROM>> GetROM(int id)
         {
             var rOM = await _context.ROM.FindAsync(id);
 
@@ -45,7 +47,7 @@ namespace KinesiaAPI.Controllers
         // PUT: api/ROMs/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutROM(string id, ROM rOM)
+        public async Task<IActionResult> PutROM(int id, ROM rOM)
         {
             if (id != rOM.ROMID)
             {
@@ -73,34 +75,49 @@ namespace KinesiaAPI.Controllers
             return NoContent();
         }
 
-        // POST: api/ROMs
+        // POST: api/rom
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<ROM>> PostROM(ROM rOM)
+        public async Task<ActionResult<ROM>> PostROM(AddROMDTO romDTO)
         {
-            _context.ROM.Add(rOM);
+            if (romDTO == null)
+                return BadRequest("ROM data cannot be null.");
+
+            var newROM = new ROM
+            {
+                AssessmentID = romDTO.AssessmentID,
+                UserID = romDTO.UserID,
+                GoniometerType = romDTO.GoniometerType,
+                InitialROM = romDTO.InitialROM,
+                EndROM = romDTO.EndROM,
+                Movement = romDTO.Movement,
+                MotionType = romDTO.MotionType,
+                Subjective = romDTO.Subjective,
+                Objective = romDTO.Objective,
+                Deviation = romDTO.Deviation,
+                Date = romDTO.Date
+            };
+
             try
             {
+                _context.ROM.Add(newROM);
                 await _context.SaveChangesAsync();
+
+                return CreatedAtAction("GetROM", new { id = newROM.ROMID }, newROM);
             }
             catch (DbUpdateException)
             {
-                if (ROMExists(rOM.ROMID))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
+                return StatusCode(StatusCodes.Status500InternalServerError, "An error occured while saving the patient data.\nPlease try again.");
             }
-
-            return CreatedAtAction("GetROM", new { id = rOM.ROMID }, rOM);
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An unexpected error occured.\nPlease try again.");
+            }
         }
 
         // DELETE: api/ROMs/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteROM(string id)
+        public async Task<IActionResult> DeleteROM(int id)
         {
             var rOM = await _context.ROM.FindAsync(id);
             if (rOM == null)
@@ -114,7 +131,7 @@ namespace KinesiaAPI.Controllers
             return NoContent();
         }
 
-        private bool ROMExists(string id)
+        private bool ROMExists(int id)
         {
             return _context.ROM.Any(e => e.ROMID == id);
         }

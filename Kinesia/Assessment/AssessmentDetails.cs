@@ -27,5 +27,11 @@ namespace Kinesia.Assessment
         public string Joint { get { return lblJoint.Text; } set { lblJoint.Text = value; } }
         public string JointSide { get { return lblJointSide.Text; } set { lblJointSide.Text = value; } }
         public string AssessmentStatus { get { return lblAssessmentStatus.Text; } set { lblAssessmentStatus.Text = value; } }
+
+        private void btnAddRom_Click(object sender, EventArgs e)
+        {
+            var toolSelectionPage = new SelectTool();
+            toolSelectionPage.ShowDialog();
+        }
     }
 }
