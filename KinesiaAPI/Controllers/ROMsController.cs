@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Runtime.Intrinsics.Arm;
 using System.Threading.Tasks;
@@ -23,11 +24,36 @@ namespace KinesiaAPI.Controllers
             _context = context;
         }
 
-        // GET: api/ROMs
+        // GET: api/rom?assessmentID={}
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ROM>>> GetROM()
+        public async Task<ActionResult<IEnumerable<DisplayROMsDTO>>> GetROM(string assessmentID)
         {
-            return await _context.ROM.ToListAsync();
+            try
+            {
+                var query = from r in _context.ROM
+                            join u in _context.Users on r.UserID equals u.UserID
+                            where r.AssessmentID == assessmentID
+                            select new DisplayROMsDTO
+                            {
+                                TherapistName = $"{u.FirstName} {u.MiddleName} {u.LastName}",
+                                InitialROM = r.InitialROM,
+                                EndROM = r.EndROM,
+                                Movement = r.Movement,
+                                Date = r.Date.ToString("yyyy-MM-dd hh:mm")
+                            };
+
+                var ROMs = await query.ToListAsync();
+
+                return Ok(ROMs);
+            }
+            catch (DbException)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An error occured on database.\nPlease try again.");
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An unexpected error occured.\nPlease try again.");
+            }
         }
 
         // GET: api/ROMs/5

@@ -49,7 +49,7 @@
             lblJointSide = new System.Windows.Forms.Label();
             lblAssessmentStatus = new System.Windows.Forms.Label();
             btnFinishAssessment = new OrganizationProfile.CustomButton();
-            dataGridView1 = new System.Windows.Forms.DataGridView();
+            dataGridROM = new System.Windows.Forms.DataGridView();
             flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
             btnArchive = new OrganizationProfile.CustomButton();
             btnEdit = new OrganizationProfile.CustomButton();
@@ -59,7 +59,7 @@
             flowLayoutPanel2.SuspendLayout();
             flowLayoutPanel3.SuspendLayout();
             flowLayoutPanel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridROM).BeginInit();
             flowLayoutPanel5.SuspendLayout();
             SuspendLayout();
             // 
@@ -313,15 +313,15 @@
             btnFinishAssessment.TextColor = System.Drawing.Color.White;
             btnFinishAssessment.UseVisualStyleBackColor = false;
             // 
-            // dataGridView1
+            // dataGridROM
             // 
-            dataGridView1.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new System.Drawing.Point(68, 472);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new System.Drawing.Size(1091, 212);
-            dataGridView1.TabIndex = 37;
+            dataGridROM.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            dataGridROM.BackgroundColor = System.Drawing.Color.White;
+            dataGridROM.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridROM.Location = new System.Drawing.Point(68, 472);
+            dataGridROM.Name = "dataGridROM";
+            dataGridROM.Size = new System.Drawing.Size(1091, 237);
+            dataGridROM.TabIndex = 37;
             // 
             // flowLayoutPanel5
             // 
@@ -442,7 +442,7 @@
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             BackColor = System.Drawing.Color.White;
             Controls.Add(btnBack);
-            Controls.Add(dataGridView1);
+            Controls.Add(dataGridROM);
             Controls.Add(flowLayoutPanel1);
             Controls.Add(lblSelectedAssessment);
             Controls.Add(btnAddRom);
@@ -450,6 +450,7 @@
             Controls.Add(titleNav);
             Name = "AssessmentDetails";
             Size = new System.Drawing.Size(1186, 712);
+            Load += AssessmentDetails_Load;
             flowLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel1.PerformLayout();
             flowLayoutPanel2.ResumeLayout(false);
@@ -457,7 +458,7 @@
             flowLayoutPanel3.PerformLayout();
             flowLayoutPanel4.ResumeLayout(false);
             flowLayoutPanel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridROM).EndInit();
             flowLayoutPanel5.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
@@ -481,7 +482,7 @@
         private System.Windows.Forms.Label lblGender;
         private System.Windows.Forms.Label lblExtremity;
         private OrganizationProfile.CustomButton btnFinishAssessment;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridROM;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
         private OrganizationProfile.CustomButton btnArchive;
         private OrganizationProfile.CustomButton btnEdit;
