@@ -3,6 +3,7 @@ using KinesiaLibrary.DTOs;
 using KinesiaLibrary.DTOs.UserDTOs;
 using Microsoft.Win32;
 using MySql.Data.MySqlClient;
+using Mysqlx;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -282,11 +283,16 @@ namespace Kinesia.Users
                 {
                     // will generate salt for hashing
                     // salt will be unique for every user
+                    client.BaseAddress = new Uri("https://localhost:5001/api/");
+
+                    string generatedUserId = await client.GetStringAsync("users/generate-userid");
+                    generatedUserId = generatedUserId.Trim('"');
+
                     var salt = CustomSecurity.GenerateSalt();
 
                     var newUser = new AddUserDTO
                     {
-                        UserID = userData.UserID,
+                        UserID = generatedUserId,
                         FirstName = userData.FirstName,
                         LastName = userData.LastName,
                         MiddleName = userData.MiddleName,
@@ -304,7 +310,7 @@ namespace Kinesia.Users
                         Status = 1
                     };
 
-                    client.BaseAddress = new Uri("https://localhost:5001/api/");
+                    
 
                     var json = JsonConvert.SerializeObject(newUser);
                     var content = new StringContent(json, Encoding.UTF8, "application/json");
@@ -316,6 +322,7 @@ namespace Kinesia.Users
                     }
                     else
                     {
+                        Console.WriteLine(response.Content.ReadAsStringAsync());
                         // will show an error dialog if it returns a badrequest from API
                         CustomDialog.Show(await response.Content.ReadAsStringAsync(),
                             "Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
