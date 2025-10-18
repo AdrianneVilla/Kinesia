@@ -55,6 +55,7 @@
             btnEdit = new OrganizationProfile.CustomButton();
             btnAddRom = new OrganizationProfile.CustomButton();
             btnBack = new OrganizationProfile.CustomButton();
+            btnPrint = new OrganizationProfile.CustomButton();
             flowLayoutPanel1.SuspendLayout();
             flowLayoutPanel2.SuspendLayout();
             flowLayoutPanel3.SuspendLayout();
@@ -399,11 +400,11 @@
             btnAddRom.ForeColor = System.Drawing.Color.White;
             btnAddRom.Image = Properties.Resources.add_btn;
             btnAddRom.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnAddRom.Location = new System.Drawing.Point(916, 415);
+            btnAddRom.Location = new System.Drawing.Point(976, 415);
             btnAddRom.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             btnAddRom.Name = "btnAddRom";
             btnAddRom.Padding = new System.Windows.Forms.Padding(10, 3, 10, 0);
-            btnAddRom.Size = new System.Drawing.Size(243, 51);
+            btnAddRom.Size = new System.Drawing.Size(183, 51);
             btnAddRom.TabIndex = 38;
             btnAddRom.Text = "Add ROM";
             btnAddRom.TextColor = System.Drawing.Color.White;
@@ -436,11 +437,37 @@
             btnBack.TextColor = System.Drawing.Color.FromArgb(18, 90, 211);
             btnBack.UseVisualStyleBackColor = false;
             // 
+            // btnPrint
+            // 
+            btnPrint.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            btnPrint.BackColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            btnPrint.BackgroundColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            btnPrint.BorderColor = System.Drawing.Color.White;
+            btnPrint.BorderRadius = 10;
+            btnPrint.BorderSize = 0;
+            btnPrint.Cursor = System.Windows.Forms.Cursors.Hand;
+            btnPrint.FlatAppearance.BorderSize = 0;
+            btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnPrint.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            btnPrint.ForeColor = System.Drawing.Color.White;
+            btnPrint.Image = Properties.Resources.add_btn;
+            btnPrint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            btnPrint.Location = new System.Drawing.Point(785, 417);
+            btnPrint.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            btnPrint.Name = "btnPrint";
+            btnPrint.Padding = new System.Windows.Forms.Padding(10, 3, 10, 0);
+            btnPrint.Size = new System.Drawing.Size(183, 51);
+            btnPrint.TabIndex = 40;
+            btnPrint.Text = "Print";
+            btnPrint.TextColor = System.Drawing.Color.White;
+            btnPrint.UseVisualStyleBackColor = false;
+            // 
             // AssessmentDetails
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             BackColor = System.Drawing.Color.White;
+            Controls.Add(btnPrint);
             Controls.Add(btnBack);
             Controls.Add(dataGridROM);
             Controls.Add(flowLayoutPanel1);
@@ -492,5 +519,6 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label lblJointSide;
         private System.Windows.Forms.Label lblAssessmentStatus;
+        private OrganizationProfile.CustomButton btnPrint;
     }
 }
