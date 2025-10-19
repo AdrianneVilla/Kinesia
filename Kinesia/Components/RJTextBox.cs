@@ -191,6 +191,21 @@ namespace CustomControls.RJControls
                 SetPlaceholder();
             }
         }
+
+        [Category("RJ Code Advance")]
+        public int SelectionStart
+        {
+            get { return textBox1.SelectionStart; }
+            set { textBox1.SelectionStart = value; }
+        }
+
+        [Category("RJ Code Advance")]
+        public int SelectionLength
+        {
+            get { return textBox1.SelectionLength; }
+            set { textBox1.SelectionLength = value; }
+        }
+
         #endregion
 
         #region -> Overridden methods

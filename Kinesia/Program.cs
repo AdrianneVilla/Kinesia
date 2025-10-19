@@ -247,23 +247,40 @@ namespace Kinesia
 
         public static void FloatingNumbersOnly(object sender, KeyPressEventArgs e)
         {
-            // will only allow whole numbers and a dot on textboxes
-            if(!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            var textBox = sender as CustomControls.RJControls.RJTextBox;
+
+            if (textBox == null)
+                return;
+
+            string text = textBox.Texts; // use the exposed property
+
+            // Allow control keys (Backspace, Delete, etc.)
+            if (char.IsControl(e.KeyChar))
+                return;
+
+            // Allow digits and dot only
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != '.')
             {
                 e.Handled = true;
+                return;
             }
 
-            // will only allow one dot on textboxes
-            if((e.KeyChar == '.') && ((sender as RJTextBox).Text.IndexOf('.') > -1))
+            // Allow only one dot
+            if (e.KeyChar == '.' && text.Contains('.'))
             {
                 e.Handled = true;
+                return;
             }
 
-            // will not allow dot as first character on a textbox
-            if (((sender as RJTextBox).Text.Length == 0) && e.KeyChar == '.')
+            // Allow dot as first character but typing it will convert to 0.
+            if (e.KeyChar == '.' && textBox.SelectionStart == 0)
             {
+                textBox.Texts = "0.";
+                textBox.SelectionStart = textBox.Texts.Length;
                 e.Handled = true;
             }
         }
+
+
     }
 }
