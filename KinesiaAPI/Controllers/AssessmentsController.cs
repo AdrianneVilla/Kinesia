@@ -1,6 +1,7 @@
 ﻿using KinesiaAPI.Data;
 using KinesiaAPI.Models.Entities;
 using KinesiaLibrary.DTOs.AssessmentDTOs;
+using KinesiaLibrary.DTOs.ReportDTOs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -82,6 +83,41 @@ namespace KinesiaAPI.Controllers
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, "An unexpected error occured.\nPlease try again.");
             }
+        }
+
+        // GET: api/assessment/generate-report?assessmentID={}
+        [HttpGet("generate-report")]
+        public async Task<ActionResult<AssessmentReportDTO>> GenerateAssessmentReport(string assessmentID)
+        {
+            var result = await (from a in _context.Assessments
+                                join p in _context.Patients on a.PatientID equals p.PatientID
+                                where a.AssessmentID == assessmentID
+                                select new
+                                {
+                                    a.AssessmentID,
+                                    p.PatientID,
+                                    p.FirstName,
+                                    p.MiddleName,
+                                    p.LastName,
+                                    p.Birthdate,
+                                    p.Gender,
+                                    a.Extremity,
+                                    a.Joint,
+                                    a.JointSide,
+                                }).FirstOrDefaultAsync();
+
+            var assessment = new AssessmentReportDTO
+            {
+                AssessmentID = assessmentID,
+                PatientName = $"{result.FirstName} {result.MiddleName} {result.LastName}",
+                Age = (int)((DateTime.Now - result.Birthdate).TotalDays / 365.25),
+                Gender = result.Gender,
+                Extremity = result.Extremity,
+                Joint = result.Joint,
+                JointSide = result.JointSide
+            };
+
+            return Ok(assessment);
         }
 
         // PUT: api/Assessments/5

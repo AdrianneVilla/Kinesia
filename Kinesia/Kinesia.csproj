@@ -13,6 +13,12 @@
     <InformationalVersion>1.0.0-beta</InformationalVersion>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="Reports\RDLCs\ROMReport.rdlc" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Reports\RDLCs\ROMReport.rdlc" />
+  </ItemGroup>
+  <ItemGroup>
     <!-- NuGet dependencies -->
     <PackageReference Include="BouncyCastle.Cryptography" Version="2.5.1" />
     <PackageReference Include="Google.Protobuf" Version="3.30.0" />
@@ -22,6 +28,7 @@
     <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="9.0.8" />
     <PackageReference Include="MySql.Data" Version="9.3.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+    <PackageReference Include="ReportViewerCore.WinForms" Version="15.1.26" />
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="8.0.1" />
     <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="8.0.1" />
     <PackageReference Include="System.IO.Pipelines" Version="9.0.8" />

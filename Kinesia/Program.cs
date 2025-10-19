@@ -18,6 +18,7 @@ using System.Security.Cryptography;
 using System.Text;
 using Kinesia.Logs;
 using CustomControls.RJControls;
+using Kinesia.Reports;
 
 namespace Kinesia
 {

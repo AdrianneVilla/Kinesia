@@ -1,5 +1,6 @@
 ﻿using KinesiaAPI.Data;
 using KinesiaAPI.Models.Entities;
+using KinesiaLibrary.DTOs.ReportDTOs;
 using KinesiaLibrary.DTOs.ROMDTOs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -68,6 +69,32 @@ namespace KinesiaAPI.Controllers
             }
 
             return rOM;
+        }
+
+        // GET: api/rom/generate-report?assessmentID={}
+        [HttpGet("generate-report")]
+        public async Task<ActionResult<ROMReportDTO>> GenerateROMReport(string assessmentID)
+        {
+            var query = from r in _context.ROM
+                        join u in _context.Users on r.UserID equals u.UserID
+                        where r.AssessmentID == assessmentID
+                        select new ROMReportDTO
+                        {
+                            TherapistName = $"{u.FirstName} {u.MiddleName} {u.LastName}",
+                            GoniometerType = r.GoniometerType,
+                            InitialROM = r.InitialROM,
+                            EndROM = r.EndROM,
+                            Movement = r.Movement,
+                            MotionType = r.MotionType,
+                            Subjective = r.Subjective,
+                            Objective = r.Objective,
+                            Deviation = r.Deviation,
+                            Date = r.Date
+                        };
+
+            var ROMs = await query.ToListAsync();
+
+            return Ok(ROMs);
         }
 
         // PUT: api/ROMs/5
