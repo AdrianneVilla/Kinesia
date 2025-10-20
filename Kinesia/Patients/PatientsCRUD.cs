@@ -27,7 +27,7 @@ namespace Kinesia.Patients
             {
                 using (var client = new HttpClient())
                 {
-                    var url = $"https://localhost:5001/api/patients?searchData={searchData}&currentTab={currentTab}&sortColumn={sortColumn}";
+                    var url = $"http://localhost:5000/api/patients?searchData={searchData}&currentTab={currentTab}&sortColumn={sortColumn}";
 
                     var response = await client.GetAsync(url);
 
@@ -127,7 +127,7 @@ namespace Kinesia.Patients
             {
                 using (var client = new HttpClient())
                 {
-                    var url = $"https://localhost:5001/api/patients/selection?searchData={searchData}";
+                    var url = $"http://localhost:5000/api/patients/selection?searchData={searchData}";
 
                     var response = await client.GetAsync(url);
 
@@ -209,7 +209,7 @@ namespace Kinesia.Patients
             {
                 using (var client = new HttpClient())
                 {
-                    var url = $"https://localhost:5001/api/patients/{patientID}";
+                    var url = $"http://localhost:5000/api/patients/{patientID}";
 
                     var response = await client.GetAsync(url);
 
@@ -285,7 +285,7 @@ namespace Kinesia.Patients
             {
                 using (var client = new HttpClient())
                 {
-                    var url = $"https://localhost:5001/api/patients/{patientID}";
+                    var url = $"http://localhost:5000/api/patients/{patientID}";
 
                     var response = await client.GetAsync(url);
 
@@ -338,7 +338,7 @@ namespace Kinesia.Patients
             {
                 using (var client = new HttpClient())
                 {
-                    var url = "https://localhost:5001/api/patients/generate-patientid";
+                    var url = "http://localhost:5000/api/patients/generate-patientid";
                     var response = await client.GetAsync(url);
 
                     if (response.IsSuccessStatusCode)
@@ -389,7 +389,7 @@ namespace Kinesia.Patients
                         Status = 1
                     };
 
-                    client.BaseAddress = new Uri("https://localhost:5001/api/");
+                    client.BaseAddress = new Uri("http://localhost:5000/api/");
                     var json = JsonConvert.SerializeObject(newPatient);
                     var content = new StringContent(json, Encoding.UTF8, "application/json");
 
@@ -430,7 +430,7 @@ namespace Kinesia.Patients
             {
                 using (var client = new HttpClient())
                 {
-                    var url = $"https://localhost:5001/api/patients/{patientData.PatientID}";
+                    var url = $"http://localhost:5000/api/patients/{patientData.PatientID}";
 
                     var updatedPatient = new UpdatedPatientDTO();
 
@@ -484,7 +484,7 @@ namespace Kinesia.Patients
             {
                 using (var client = new HttpClient())
                 {
-                    var url = $"https://localhost:5001/api/patients/{patientID}/status";
+                    var url = $"http://localhost:5000/api/patients/{patientID}/status";
 
                     var updatedPatient = new PatientUpdateStatusDTO();
 
@@ -531,7 +531,7 @@ namespace Kinesia.Patients
             {
                 using (var client = new HttpClient())
                 {
-                    client.BaseAddress = new Uri("https://localhost:5001/");
+                    client.BaseAddress = new Uri("http://localhost:5000/");
 
                     var existingPatient = new CheckExistingPatientDTO();
 

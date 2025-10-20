@@ -17,7 +17,7 @@ namespace Kinesia.Assessment
             {
                 using (var client = new HttpClient())
                 {
-                    var url = $"https://localhost:5001/api/assessment/{assessmentID}";
+                    var url = $"http://localhost:5000/api/assessment/{assessmentID}";
                     var response = await client.GetAsync(url);
 
                     if (response.IsSuccessStatusCode)

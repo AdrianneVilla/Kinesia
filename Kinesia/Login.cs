@@ -365,7 +365,7 @@ namespace Kinesia
         {
             try
             {
-                using (var client = new HttpClient { BaseAddress = new Uri("https://localhost:5001/") })
+                using (var client = new HttpClient { BaseAddress = new Uri("http://localhost:5000/") })
                 {
                     var request = new LoginRequest
                     {

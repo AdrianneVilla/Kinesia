@@ -20,7 +20,7 @@ namespace Kinesia.Assessment
             {
                 using (var client = new HttpClient())
                 {
-                    var url = $"https://localhost:5001/api/rom?assessmentID={assessmentID}";
+                    var url = $"http://localhost:5000/api/rom?assessmentID={assessmentID}";
                     var response = await client.GetAsync(url);
 
                     if (response.IsSuccessStatusCode)
@@ -101,7 +101,7 @@ namespace Kinesia.Assessment
             {
                 using (var client = new HttpClient())
                 {
-                    client.BaseAddress = new Uri("https://localhost:5001/api/");
+                    client.BaseAddress = new Uri("http://localhost:5000/api/");
                     var json = JsonConvert.SerializeObject(newROM);
                     var content = new StringContent(json, Encoding.UTF8, "application/json");
 

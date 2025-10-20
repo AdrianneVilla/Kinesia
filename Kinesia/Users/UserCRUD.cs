@@ -29,7 +29,7 @@ namespace Kinesia.Users
             {
                 using (var client = new HttpClient())
                 {
-                    var url = $"https://localhost:5001/api/users?searchData={searchData}&currentTab={currentTab}&sortColumn={sortColumn}";
+                    var url = $"http://localhost:5000/api/users?searchData={searchData}&currentTab={currentTab}&sortColumn={sortColumn}";
 
                     var response = await client.GetAsync(url);
 
@@ -125,7 +125,7 @@ namespace Kinesia.Users
             {
                 using (var client = new HttpClient())
                 {
-                    var url = $"https://localhost:5001/api/users/{userID}";
+                    var url = $"http://localhost:5000/api/users/{userID}";
 
                     var response = await client.GetAsync(url);
 
@@ -204,7 +204,7 @@ namespace Kinesia.Users
             {
                 using (var client = new HttpClient())
                 {
-                    var url = $"https://localhost:5001/api/users/{userID}";
+                    var url = $"http://localhost:5000/api/users/{userID}";
 
                     var response = await client.GetAsync(url);
 
@@ -257,7 +257,7 @@ namespace Kinesia.Users
             {
                 using (var client = new HttpClient())
                 {
-                    var url = "https://localhost:5001/api/users/generate-userid";
+                    var url = "http://localhost:5000/api/users/generate-userid";
                     var response = await client.GetAsync(url);
 
                     if (response.IsSuccessStatusCode)
@@ -294,7 +294,7 @@ namespace Kinesia.Users
                 {
                     // will generate salt for hashing
                     // salt will be unique for every user
-                    client.BaseAddress = new Uri("https://localhost:5001/api/");
+                    client.BaseAddress = new Uri("http://localhost:5000/api/");
 
                     string generatedUserId = await client.GetStringAsync("users/generate-userid");
                     generatedUserId = generatedUserId.Trim('"');
@@ -361,7 +361,7 @@ namespace Kinesia.Users
         {
             using (var client = new HttpClient())
             {
-                var url = $"https://localhost:5001/api/users/{userData.UserID}";
+                var url = $"http://localhost:5000/api/users/{userData.UserID}";
 
                 var updatedUser = new UpdateUserDTO();
 
@@ -388,7 +388,7 @@ namespace Kinesia.Users
         {
             using (var client = new HttpClient())
             {
-                var url = $"https://localhost:5001/api/users/{userID}/status";
+                var url = $"http://localhost:5000/api/users/{userID}/status";
 
                 var updatedUser = new UserUpdateStatusDTO();
 
@@ -411,7 +411,7 @@ namespace Kinesia.Users
             {
                 using (var client = new HttpClient())
                 {
-                    client.BaseAddress = new Uri("https://localhost:5001/");
+                    client.BaseAddress = new Uri("http://localhost:5000/");
 
                     var existingUser = new CheckExistingUserDTO();
 

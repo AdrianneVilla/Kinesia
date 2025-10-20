@@ -19,7 +19,7 @@ namespace Kinesia.Logs
             PageObjects.logsPage.getLogHolder.Controls.Clear();
             using(var client = new HttpClient())
             {
-                var url = $"https://localhost:5001/api/logs?searchData={searchData}&currentTab={currentTab}&sortColumn={sortColumn}";
+                var url = $"http://localhost:5000/api/logs?searchData={searchData}&currentTab={currentTab}&sortColumn={sortColumn}";
 
                 var response = await client.GetStringAsync(url);
                 var logs = JsonConvert.DeserializeObject<List<LogDTO>>(response);
@@ -43,7 +43,7 @@ namespace Kinesia.Logs
         {
             using(var client = new HttpClient())
             {
-                var url = "https://localhost:5001/api/logs/dashboard";
+                var url = "http://localhost:5000/api/logs/dashboard";
                 var response = await client.GetAsync(url);
 
                 if (response.IsSuccessStatusCode)
@@ -117,7 +117,7 @@ namespace Kinesia.Logs
                 newLog.LogType = logType;
                 newLog.LogDate = DateTime.Now;
 
-                client.BaseAddress = new Uri("https://localhost:5001/api/");
+                client.BaseAddress = new Uri("http://localhost:5000/api/");
                 var json = JsonConvert.SerializeObject(newLog);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
 
@@ -136,7 +136,7 @@ namespace Kinesia.Logs
             {
                 using (var client = new HttpClient())
                 {
-                    var url = "https://localhost:5001/api/logs/generate-logid";
+                    var url = "http://localhost:5000/api/logs/generate-logid";
                     var response = await client.GetAsync(url);
 
                     if (response.IsSuccessStatusCode)
