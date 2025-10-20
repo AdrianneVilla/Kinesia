@@ -19,9 +19,11 @@ namespace Kinesia.Components
             InitializeComponent();
         }
 
-        private void DashboardPage_Load(object sender, EventArgs e)
-        {
+        public DataGridView GetLogsGrid { get { return dataGridLogs; } }
 
+        private async void DashboardPage_Load(object sender, EventArgs e)
+        {
+            await Queries.LogsQueries.DisplayDashboardLogs();
         }
 
         private void label2_Click(object sender, EventArgs e)

@@ -71,6 +71,27 @@ namespace KinesiaAPI.Controllers
             return await query.ToListAsync();
         }
 
+        // GET: api/logs/dashboard
+        [HttpGet("dashboard")]
+        public async Task<ActionResult<IEnumerable<DisplayDashboardLogsDTO>>> GetDashboardLogs()
+        {
+            var query = (from l in _context.Logs
+                         join u in _context.Users on l.UserID equals u.UserID
+                         orderby l.LogDate descending
+                         select new DisplayDashboardLogsDTO
+                         {
+                             LogID = l.LogID,
+                             LogType = l.LogType,
+                             User = $"{u.FirstName} {u.MiddleName} {u.LastName}",
+                             LogDescription = l.Description,
+                             LogDate = l.LogDate
+                         }).Take(10);
+
+            var logs = await query.ToListAsync();
+
+            return Ok(logs);
+        }
+
         // GET: api/Logs/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Logs>> GetLogs(string id)

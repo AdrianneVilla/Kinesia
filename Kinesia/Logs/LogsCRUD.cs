@@ -1,13 +1,14 @@
-﻿using System;
+﻿using KinesiaLibrary.DTOs.LogDTOs;
+using MySql.Data.MySqlClient;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using KinesiaLibrary.DTOs.LogDTOs;
-using MySql.Data.MySqlClient;
-using Newtonsoft.Json;
+using System.Windows.Forms;
 
 namespace Kinesia.Logs
 {
@@ -34,6 +35,66 @@ namespace Kinesia.Logs
                     displayLogControl.LogDate = log.LogDate.ToString();
 
                     PageObjects.logsPage.getLogHolder.Controls.Add(displayLogControl);
+                }
+            }
+        }
+
+        public async Task DisplayDashboardLogs()
+        {
+            using(var client = new HttpClient())
+            {
+                var url = "https://localhost:5001/api/logs/dashboard";
+                var response = await client.GetAsync(url);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var json = await response.Content.ReadAsStringAsync();
+                    var logs = JsonConvert.DeserializeObject<List<DisplayDashboardLogsDTO>>(json);
+
+                    CustomDataGrid.SetDoubleBuffering(PageObjects.dashboardPage.GetLogsGrid, true);
+                    PageObjects.dashboardPage.GetLogsGrid.AutoGenerateColumns = false;
+                    PageObjects.dashboardPage.GetLogsGrid.Columns.Clear();
+
+                    PageObjects.dashboardPage.GetLogsGrid.Columns.Add(new DataGridViewTextBoxColumn
+                    {
+                        Name = "LogID",
+                        DataPropertyName = "LogID",
+                        HeaderText = "Log ID"
+                    });
+
+                    PageObjects.dashboardPage.GetLogsGrid.Columns.Add(new DataGridViewTextBoxColumn
+                    {
+                        Name = "LogType",
+                        DataPropertyName = "logType",
+                        HeaderText = "Log Type"
+                    });
+
+                    PageObjects.dashboardPage.GetLogsGrid.Columns.Add(new DataGridViewTextBoxColumn
+                    {
+                        Name = "User",
+                        DataPropertyName = "user",
+                        HeaderText = "User"
+                    });
+
+                    PageObjects.dashboardPage.GetLogsGrid.Columns.Add(new DataGridViewTextBoxColumn
+                    {
+                        Name = "LogDescription",
+                        DataPropertyName = "logDescription",
+                        HeaderText = "Log Description"
+                    });
+
+                    PageObjects.dashboardPage.GetLogsGrid.Columns.Add(new DataGridViewTextBoxColumn
+                    {
+                        Name = "LogDate",
+                        DataPropertyName = "logDate",
+                        HeaderText = "Log Date"
+                    });
+
+                    PageObjects.dashboardPage.GetLogsGrid.DataSource = logs;
+                    PageObjects.dashboardPage.GetLogsGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+                    CustomDataGrid.StyleDataGridWithSpacing(PageObjects.dashboardPage.GetLogsGrid);
+                    PageObjects.dashboardPage.GetLogsGrid.Refresh();
                 }
             }
         }
