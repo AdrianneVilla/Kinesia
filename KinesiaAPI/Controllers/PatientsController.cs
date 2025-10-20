@@ -156,7 +156,7 @@ namespace KinesiaAPI.Controllers
             try
             {
                 var nextCount = await _context.Database
-                    .SqlQueryRaw<long>("SELECT NEXT VALUE FOR patient_id_seq as value")
+                    .SqlQueryRaw<long>("SELECT NEXTVAL(patient_id_seq) as value")
                     .FirstAsync();
 
                 string newPatientID = $"PATIENT{nextCount}";
