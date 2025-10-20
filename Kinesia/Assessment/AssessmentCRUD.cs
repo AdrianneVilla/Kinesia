@@ -35,6 +35,7 @@ namespace Kinesia.Assessment
                         PageObjects.assessmentDetails.Joint = assessment.Joint;
                         PageObjects.assessmentDetails.JointSide = assessment.JointSide;
                         PageObjects.assessmentDetails.AssessmentStatus = assessment.AssessmentStatus;
+                        PageObjects.assessmentDetails.AssessmentDate = assessment.AssessmentDate;
 
                         PageObjects.RemoveResources(ref PageObjects.CurrentControl);
                         PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.assessmentDetails);

@@ -56,6 +56,8 @@
             btnAddRom = new OrganizationProfile.CustomButton();
             btnBack = new OrganizationProfile.CustomButton();
             btnPrint = new OrganizationProfile.CustomButton();
+            label1 = new System.Windows.Forms.Label();
+            lblAssessmentDate = new System.Windows.Forms.Label();
             flowLayoutPanel1.SuspendLayout();
             flowLayoutPanel2.SuspendLayout();
             flowLayoutPanel3.SuspendLayout();
@@ -137,6 +139,7 @@
             flowLayoutPanel3.Controls.Add(label4);
             flowLayoutPanel3.Controls.Add(label11);
             flowLayoutPanel3.Controls.Add(label3);
+            flowLayoutPanel3.Controls.Add(label1);
             flowLayoutPanel3.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             flowLayoutPanel3.Location = new System.Drawing.Point(3, 3);
             flowLayoutPanel3.Name = "flowLayoutPanel3";
@@ -217,6 +220,7 @@
             flowLayoutPanel4.Controls.Add(lblJoint);
             flowLayoutPanel4.Controls.Add(lblJointSide);
             flowLayoutPanel4.Controls.Add(lblAssessmentStatus);
+            flowLayoutPanel4.Controls.Add(lblAssessmentDate);
             flowLayoutPanel4.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             flowLayoutPanel4.Location = new System.Drawing.Point(209, 3);
             flowLayoutPanel4.Name = "flowLayoutPanel4";
@@ -462,6 +466,28 @@
             btnPrint.TextColor = System.Drawing.Color.White;
             btnPrint.UseVisualStyleBackColor = false;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold);
+            label1.Location = new System.Drawing.Point(3, 198);
+            label1.Margin = new System.Windows.Forms.Padding(3, 0, 3, 10);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(166, 23);
+            label1.TabIndex = 6;
+            label1.Text = "Assessment Start Date:";
+            // 
+            // lblAssessmentDate
+            // 
+            lblAssessmentDate.AutoSize = true;
+            lblAssessmentDate.Font = new System.Drawing.Font("Poppins", 9.75F);
+            lblAssessmentDate.Location = new System.Drawing.Point(3, 198);
+            lblAssessmentDate.Margin = new System.Windows.Forms.Padding(3, 0, 3, 10);
+            lblAssessmentDate.Name = "lblAssessmentDate";
+            lblAssessmentDate.Size = new System.Drawing.Size(140, 23);
+            lblAssessmentDate.TabIndex = 10;
+            lblAssessmentDate.Text = " <Assessment Date>";
+            // 
             // AssessmentDetails
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -520,5 +546,7 @@
         private System.Windows.Forms.Label lblJointSide;
         private System.Windows.Forms.Label lblAssessmentStatus;
         private OrganizationProfile.CustomButton btnPrint;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblAssessmentDate;
     }
 }
