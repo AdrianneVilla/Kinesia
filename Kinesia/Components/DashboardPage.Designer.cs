@@ -31,13 +31,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DashboardPage));
             flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             label1 = new System.Windows.Forms.Label();
-            nameHolder = new System.Windows.Forms.Label();
+            lblName = new System.Windows.Forms.Label();
             panelBorder1 = new WindowsFormsApp2.CustomButton.PanelBorder();
             panelBorder5 = new WindowsFormsApp2.CustomButton.PanelBorder();
             panelBorder3 = new WindowsFormsApp2.CustomButton.PanelBorder();
             panelBorder2 = new WindowsFormsApp2.CustomButton.PanelBorder();
             label3 = new System.Windows.Forms.Label();
-            monthHolder = new System.Windows.Forms.Label();
+            lblMonth = new System.Windows.Forms.Label();
             customButton1 = new OrganizationProfile.CustomButton();
             customButton2 = new OrganizationProfile.CustomButton();
             customButton3 = new OrganizationProfile.CustomButton();
@@ -56,7 +56,7 @@
             // 
             flowLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             flowLayoutPanel1.Controls.Add(label1);
-            flowLayoutPanel1.Controls.Add(nameHolder);
+            flowLayoutPanel1.Controls.Add(lblName);
             flowLayoutPanel1.Location = new System.Drawing.Point(61, 32);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Size = new System.Drawing.Size(1042, 50);
@@ -75,19 +75,19 @@
             label1.Text = "Welcome,";
             label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // nameHolder
+            // lblName
             // 
-            nameHolder.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
-            nameHolder.AutoSize = true;
-            nameHolder.Font = new System.Drawing.Font("Poppins", 20F, System.Drawing.FontStyle.Bold);
-            nameHolder.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
-            nameHolder.Location = new System.Drawing.Point(160, 0);
-            nameHolder.Margin = new System.Windows.Forms.Padding(0);
-            nameHolder.Name = "nameHolder";
-            nameHolder.Size = new System.Drawing.Size(149, 48);
-            nameHolder.TabIndex = 1;
-            nameHolder.Text = " <name>!";
-            nameHolder.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            lblName.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
+            lblName.AutoSize = true;
+            lblName.Font = new System.Drawing.Font("Poppins", 20F, System.Drawing.FontStyle.Bold);
+            lblName.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            lblName.Location = new System.Drawing.Point(160, 0);
+            lblName.Margin = new System.Windows.Forms.Padding(0);
+            lblName.Name = "lblName";
+            lblName.Size = new System.Drawing.Size(149, 48);
+            lblName.TabIndex = 1;
+            lblName.Text = " <name>!";
+            lblName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panelBorder1
             // 
@@ -99,7 +99,7 @@
             panelBorder1.Controls.Add(panelBorder3);
             panelBorder1.Controls.Add(panelBorder2);
             panelBorder1.Controls.Add(label3);
-            panelBorder1.Controls.Add(monthHolder);
+            panelBorder1.Controls.Add(lblMonth);
             panelBorder1.ForeColor = System.Drawing.Color.Black;
             panelBorder1.Location = new System.Drawing.Point(69, 101);
             panelBorder1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 3);
@@ -156,19 +156,19 @@
             label3.Text = "SUMMARY FOR THE MONTH OF";
             label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // monthHolder
+            // lblMonth
             // 
-            monthHolder.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
-            monthHolder.AutoSize = true;
-            monthHolder.Font = new System.Drawing.Font("Poppins", 16F, System.Drawing.FontStyle.Bold);
-            monthHolder.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
-            monthHolder.Location = new System.Drawing.Point(336, 17);
-            monthHolder.Margin = new System.Windows.Forms.Padding(0);
-            monthHolder.Name = "monthHolder";
-            monthHolder.Size = new System.Drawing.Size(174, 39);
-            monthHolder.TabIndex = 2;
-            monthHolder.Text = "<month here>";
-            monthHolder.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            lblMonth.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
+            lblMonth.AutoSize = true;
+            lblMonth.Font = new System.Drawing.Font("Poppins", 16F, System.Drawing.FontStyle.Bold);
+            lblMonth.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            lblMonth.Location = new System.Drawing.Point(336, 17);
+            lblMonth.Margin = new System.Windows.Forms.Padding(0);
+            lblMonth.Name = "lblMonth";
+            lblMonth.Size = new System.Drawing.Size(174, 39);
+            lblMonth.TabIndex = 2;
+            lblMonth.Text = "<month here>";
+            lblMonth.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // customButton1
             // 
@@ -310,6 +310,7 @@
             Name = "DashboardPage";
             Size = new System.Drawing.Size(1195, 1046);
             Load += DashboardPage_Load;
+            Paint += DashboardPage_Paint;
             flowLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel1.PerformLayout();
             panelBorder1.ResumeLayout(false);
@@ -326,13 +327,13 @@
 
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label nameHolder;
+        private System.Windows.Forms.Label lblName;
         private WindowsFormsApp2.CustomButton.PanelBorder panelBorder1;
         private OrganizationProfile.CustomButton customButton1;
         private OrganizationProfile.CustomButton customButton2;
         private OrganizationProfile.CustomButton customButton3;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label monthHolder;
+        private System.Windows.Forms.Label lblMonth;
         private WindowsFormsApp2.CustomButton.PanelBorder panelBorder3;
         private WindowsFormsApp2.CustomButton.PanelBorder panelBorder2;
         private WindowsFormsApp2.CustomButton.PanelBorder panelBorder4;
