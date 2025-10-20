@@ -106,6 +106,8 @@ namespace KinesiaAPI.Controllers
                                     a.Extremity,
                                     a.Joint,
                                     a.JointSide,
+                                    a.AssessmentStatus,
+                                    a.AssessmentDate
                                 }).FirstOrDefaultAsync();
 
             var assessment = new AssessmentReportDTO
@@ -116,7 +118,9 @@ namespace KinesiaAPI.Controllers
                 Gender = result.Gender,
                 Extremity = result.Extremity,
                 Joint = result.Joint,
-                JointSide = result.JointSide
+                JointSide = result.JointSide,
+                AssessmentStatus = result.AssessmentStatus == 1 ? "Ongoing" : "Finished",
+                AssessmentDate = result.AssessmentDate
             };
 
             return Ok(assessment);

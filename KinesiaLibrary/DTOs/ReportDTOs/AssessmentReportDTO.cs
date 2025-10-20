@@ -13,5 +13,7 @@ namespace KinesiaLibrary.DTOs.ReportDTOs
         public string Extremity { get; set; }
         public string Joint { get; set; }
         public string JointSide { get; set; }
+        public string AssessmentStatus { get; set; }
+        public DateTime AssessmentDate { get; set; }
     }
 }
