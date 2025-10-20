@@ -22,7 +22,9 @@ namespace Kinesia.Users
         private Point hoveredCell = new Point(-1, -1);
         public async Task DisplayUsers(string searchData, string currentTab, string sortColumn)
         {
-            //PageObjects.userPage.getUserHolder.Controls.Clear();
+            // will clear UserList to refresh its elements
+            PageObjects.userPage.UserList.Clear();
+
             try
             {
                 using (var client = new HttpClient())
@@ -35,6 +37,15 @@ namespace Kinesia.Users
                     {
                         var json = await response.Content.ReadAsStringAsync();
                         var users = JsonConvert.DeserializeObject<List<DisplayUsersDTO>>(json);
+
+                        foreach(var user in users)
+                        {
+                            // will add each userID to the list
+                            // this will help to easily access the userID of each row
+                            // each userID will be equivalent to its rowindex
+                            PageObjects.userPage.UserList.Add(user.UserID);
+                        }
+
                         PageObjects.userPage.GetUserGrid.DataSource = users;
                         PageObjects.userPage.GetUserGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                         var dataGrid = PageObjects.userPage.GetUserGrid;
