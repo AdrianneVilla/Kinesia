@@ -33,7 +33,7 @@ namespace KinesiaAPI.Controllers
             {
                 var query = from r in _context.ROM
                             join u in _context.Users on r.UserID equals u.UserID
-                            where r.AssessmentID == assessmentID
+                            where r.AssessmentID == assessmentID 
                             select new DisplayROMsDTO
                             {
                                 TherapistName = $"{u.FirstName} {u.MiddleName} {u.LastName}",
@@ -78,6 +78,7 @@ namespace KinesiaAPI.Controllers
             var query = from r in _context.ROM
                         join u in _context.Users on r.UserID equals u.UserID
                         where r.AssessmentID == assessmentID
+                        orderby r.Movement, r.Date ascending 
                         select new ROMReportDTO
                         {
                             TherapistName = $"{u.FirstName} {u.MiddleName} {u.LastName}",
