@@ -112,8 +112,11 @@ namespace KinesiaAPI.Controllers
         {
             try
             {
-                var logCount = await _context.Logs.CountAsync();
-                string newLogID = $"LOG{logCount + 1}";
+                var nextCount = await _context.Database
+                    .SqlQueryRaw<long>("SELECT NEXT VALUE FOR log_id_seq")
+                    .FirstAsync();
+
+                string newLogID = $"LOG{nextCount + 1}";
 
                 return Ok(newLogID);
             }
