@@ -113,22 +113,25 @@ namespace KinesiaAPI.Controllers
             try
             {
                 var nextCount = await _context.Database
-                    .SqlQueryRaw<long>("SELECT NEXT VALUE FOR log_id_seq")
+                    .SqlQueryRaw<long>("SELECT NEXTVAL(log_id_seq) AS value")
                     .FirstAsync();
 
-                string newLogID = $"LOG{nextCount + 1}";
+                string newLogID = $"LOG{nextCount}";
 
                 return Ok(newLogID);
             }
-            catch (DbException)
+            catch (DbException dbEx)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, "An error occured on database.\nPlease try again.");
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    $"Database error: {dbEx.Message}");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, "An unexpected error occured.\nPlease try again.");
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    $"Unexpected error: {ex.Message}");
             }
         }
+
 
         // PUT: api/Logs/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
