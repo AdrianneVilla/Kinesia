@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp2.CustomButton;
 using System.Net.Http;
-using System.Collections.Generic;
 using Newtonsoft.Json;
 
 
@@ -21,7 +20,10 @@ namespace Kinesia.Patients
         string searchData = "";
         string currentTab = "All";
 
-      
+        List<string> patientList = new List<string>();
+
+        public List<string> PatientList { get { return patientList; } }
+
         public PatientsPage()
         {
             this.Anchor = AnchorStyles.Right | AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Bottom;
@@ -202,100 +204,72 @@ namespace Kinesia.Patients
 
         private void PatientHolder_Paint(object sender, PaintEventArgs e)
         {
-            
+
         }
 
-        //DITO MAG START PRE, NAGPATULONG LANG AKO KAY KUMPARENG PERPLIXITY
+        private async void dataGridPatients_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(e.RowIndex >= 0) // will check if it is a valid row (not header)
+            {
+                if(e.ColumnIndex == 5) // column 5 is for EMR button
+                {
+                    await Queries.PatientQueries.GetPatientDetails(patientList[e.RowIndex]);
+                }
+                else if(e.ColumnIndex == 6) // column 6 is for Edit button
+                {
+                    DataHolder.PatientDataHolder = new PatientDataHolder();
+                    await Queries.PatientQueries.GetPatientDetails(patientList[e.RowIndex], DataHolder.PatientDataHolder);
+                    PageObjects.editPatient.PreviousPage = "Patients Page";
+                }
+                else if(e.ColumnIndex == 7) // column 7 is for Archive / Unarchive button
+                {
+                    if (dataGridPatients.Rows[e.RowIndex].Cells[4].Value.Equals("Active"))
+                    {
+                        // will show message box for Archiving patient
+                        DialogResult archiveDiag = MessageBox.Show($"Are you sure you want to archive {patientList[e.RowIndex]}?", "Archive Patient Notification",
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
 
+                        if (archiveDiag == DialogResult.Yes)
+                        {
+                            var success = await Queries.PatientQueries.UpdatePatientStatus(patientList[e.RowIndex], 0);
 
-        //private async Task LoadDataAsync()
-        //{
-        //    try
-        //    {
-        //        string apiUrl = "https://localhost:5001/api/patients";
-        //        using (HttpClient client = new HttpClient())
-        //        {
-        //            HttpResponseMessage response = await client.GetAsync(apiUrl);
-        //            response.EnsureSuccessStatusCode();
-        //            string responseBody = await response.Content.ReadAsStringAsync();
-        //            var data = JsonConvert.DeserializeObject<List<KinesiaAPI.Models.Entities.Patients>>(responseBody);
-        //            dataGridPatients.DataSource = data;
-        //            dataGridPatients.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                            if (success)
+                            {
+                                // will add a log for archiving a patient
+                                await Queries.LogsQueries.AddLog($"Archived {patientList[e.RowIndex]}", "Patients");
 
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show($"Error: {ex.Message}");
-        //    }
-        //}
+                                MessageBox.Show($"{patientList[e.RowIndex]} has been successfully archived!", "Archive Patient Notification",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                                await Queries.PatientQueries.DisplayPatients("", PageObjects.patientsPage.CurrentTab, "Default");
+                            }
+                        }
+                    }
+                    else if(dataGridPatients.Rows[e.RowIndex].Cells[4].Value.Equals("Inactive"))
+                    {
+                        // will show message box for Unarchiving patient
+                        DialogResult unarchiveDiag = MessageBox.Show($"Are you sure you want to unarchive {patientList[e.RowIndex]}?", "Unarchive Patient Notification",
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
 
-        //private void dataGridPatients_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        //{
-        //    // Check if it's the Status column
-        //    if (dataGridPatients.Columns[e.ColumnIndex].Name == "Status" && e.Value != null)
-        //    {
-        //        // Convert numeric status to text
-        //        if (e.Value.ToString() == "1")
-        //        {
-        //            e.Value = "Active";
-        //            e.FormattingApplied = true;
-        //        }
-        //        else if (e.Value.ToString() == "0")
-        //        {
-        //            e.Value = "Inactive";
-        //            e.FormattingApplied = true;
-        //        }
-        //    }
-        //}
+                        if (unarchiveDiag == DialogResult.Yes)
+                        {
+                            var success = await Queries.PatientQueries.UpdatePatientStatus(patientList[e.RowIndex], 1);
 
+                            if (success)
+                            {
+                                // will add a log for unarchiving a patient
+                                await Queries.LogsQueries.AddLog($"Unarchived {patientList[e.RowIndex]}", "Patients");
 
-        //public class MyDataModel
-        //{
-        //    public string PatientID { get; set; }
-        //    [JsonProperty("status")]
-        //    [Browsable(false)]
-        //    public string StatusCode { get; set; }
+                                MessageBox.Show($"{patientList[e.RowIndex]} has been successfully unarchived!", "Unarchive Patient Notification",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-        //    [JsonIgnore]
-        //    public string Status
-        //    {
-        //        get
-        //        {
-        //            return StatusCode == "1" ? "Active" : "Inactive";
-        //        }
-        //    }
-        //    [JsonProperty("firstName")]
-        //    [Browsable(false)]
-        //    public string firstName { get; set; }
-        //    [Browsable(false)]
-        //    [JsonProperty("lastName")]
-        //    public string lastName { get; set; }
-        //    [Browsable(false)]
-        //    [JsonProperty("middleName")]
-        //    public string middleName { get; set; }
-        //    public string PatientName
-        //    {
-        //        get
-        //        {
-        //            // Combine firstName + middleName + lastName with spaces
-        //            return $"{firstName} {middleName} {lastName}".Trim();
-
-        //            // OR if you want to handle null/empty values more gracefully:
-        //            // var names = new[] { firstName, middleName, lastName }
-        //            //     .Where(n => !string.IsNullOrWhiteSpace(n));
-        //            // return string.Join(" ", names);
-        //        }
-        //        set { }
-        //    }
-
-        //    public string Age { get; set; }
-        //    public string Gender { get; set; }
-        //    public string Contact { get; set; }
-
-
-        //}
+                                await Queries.PatientQueries.DisplayPatients("", PageObjects.patientsPage.CurrentTab, "Default");
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 

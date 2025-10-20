@@ -20,7 +20,8 @@ namespace Kinesia.Patients
     {
         public async Task DisplayPatients(string searchData, string currentTab, string sortColumn)
         {
-            //PageObjects.patientsPage.getPatientHolder.Controls.Clear();
+            // will clear PatientList to refresh its elements
+            PageObjects.patientsPage.PatientList.Clear();
 
             try
             {
@@ -35,6 +36,15 @@ namespace Kinesia.Patients
                         // will continue if the status code is 200
                         var json = await response.Content.ReadAsStringAsync();
                         var patients = JsonConvert.DeserializeObject<List<DisplayPatientsDTO>>(json);
+
+                        foreach(var patient in patients)
+                        {
+                            // will add each patientID to the list
+                            // this will help to easily access the patientID of each row
+                            // each patientID will be equivalent to its rowindex
+                            PageObjects.patientsPage.PatientList.Add(patient.PatientID);
+                        }
+
                         PageObjects.patientsPage.GetPatientGrid.DataSource = patients;
                         PageObjects.patientsPage.GetPatientGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 

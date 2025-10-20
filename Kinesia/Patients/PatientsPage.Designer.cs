@@ -292,6 +292,8 @@
             txtSearchBar.PasswordChar = false;
             txtSearchBar.PlaceholderColor = System.Drawing.Color.DarkGray;
             txtSearchBar.PlaceholderText = "";
+            txtSearchBar.SelectionLength = 0;
+            txtSearchBar.SelectionStart = 0;
             txtSearchBar.Size = new System.Drawing.Size(388, 32);
             txtSearchBar.TabIndex = 4;
             txtSearchBar.Texts = "";
@@ -355,6 +357,7 @@
             dataGridPatients.ShowRowErrors = false;
             dataGridPatients.Size = new System.Drawing.Size(1773, 608);
             dataGridPatients.TabIndex = 15;
+            dataGridPatients.CellContentClick += dataGridPatients_CellContentClick;
             // 
             // panelBorder3
             // 
