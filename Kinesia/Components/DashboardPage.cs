@@ -23,6 +23,8 @@ namespace Kinesia.Components
 
         private async void DashboardPage_Load(object sender, EventArgs e)
         {
+            lblName.Text = SessionManager.UserLastName + "!";
+            lblMonth.Text = DateTime.Now.ToString("MMMM");
             await Queries.LogsQueries.DisplayDashboardLogs();
         }
 
@@ -34,6 +36,13 @@ namespace Kinesia.Components
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private async void DashboardPage_Paint(object sender, PaintEventArgs e)
+        {
+            lblName.Text = SessionManager.UserLastName + "!";
+            lblMonth.Text = DateTime.Now.ToString("MMMM");
+            await Queries.LogsQueries.DisplayDashboardLogs();
         }
     }
 }

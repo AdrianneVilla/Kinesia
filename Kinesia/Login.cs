@@ -340,6 +340,7 @@ namespace Kinesia
                     PageObjects.dashboard.Show();
                     this.Hide();
                     SessionManager.UserID = loginResult.UserID;
+                    SessionManager.UserLastName = loginResult.UserLastName;
                     await Queries.LogsQueries.AddLog("Has Logged In", "Sessions");
           
                 }

@@ -145,10 +145,12 @@ namespace Kinesia
     public class SessionManager
     {
         public static string UserID;
+        public static string UserLastName;
 
         public static void Logout()
         {
             UserID = null;
+            UserLastName = null;
         }
     }
 
