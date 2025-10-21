@@ -78,6 +78,7 @@
             btnSelectPatient.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             btnSelectPatient.TextColor = System.Drawing.Color.White;
             btnSelectPatient.UseVisualStyleBackColor = false;
+            btnSelectPatient.Click += btnSelectPatient_Click;
             // 
             // label3
             // 

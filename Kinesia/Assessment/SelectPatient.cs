@@ -18,5 +18,15 @@ namespace Kinesia.Assessment
         }
 
         public DataGridView GetPatientSelectionGrid { get { return dataGridPatientSelection; } }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void SelectPatient_Load(object sender, EventArgs e)
+        {
+        }
+
     }
 }

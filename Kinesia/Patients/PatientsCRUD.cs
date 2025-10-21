@@ -134,42 +134,40 @@ namespace Kinesia.Patients
                     var json = await response.Content.ReadAsStringAsync();
                     var patients = JsonConvert.DeserializeObject<List<DisplayPatientSelectionDTO>>(json);
 
-                    var patientSelectionPage = new SelectPatient();
+                    CustomDataGrid.SetDoubleBuffering(PageObjects.selectPatientPage, true);
+                    PageObjects.selectPatientPage.GetPatientSelectionGrid.SuspendLayout();
+                    PageObjects.selectPatientPage.GetPatientSelectionGrid.AutoGenerateColumns = false;
+                    PageObjects.selectPatientPage.GetPatientSelectionGrid.Columns.Clear();
 
-                    CustomDataGrid.SetDoubleBuffering(patientSelectionPage, true);
-                    patientSelectionPage.GetPatientSelectionGrid.SuspendLayout();
-                    patientSelectionPage.GetPatientSelectionGrid.AutoGenerateColumns = false;
-                    patientSelectionPage.GetPatientSelectionGrid.Columns.Clear();
-
-                    patientSelectionPage.GetPatientSelectionGrid.Columns.Add(new DataGridViewTextBoxColumn
+                    PageObjects.selectPatientPage.GetPatientSelectionGrid.Columns.Add(new DataGridViewTextBoxColumn
                     {
                         Name = "PatientID",
                         DataPropertyName = "PatientID",
                         HeaderText = "Patient ID"
                     });
 
-                    patientSelectionPage.GetPatientSelectionGrid.Columns.Add(new DataGridViewTextBoxColumn
+                    PageObjects.selectPatientPage.GetPatientSelectionGrid.Columns.Add(new DataGridViewTextBoxColumn
                     {
                         Name = "PatientName",
                         DataPropertyName = "PatientName",
                         HeaderText = "Patient Name"
                     });
 
-                    patientSelectionPage.GetPatientSelectionGrid.Columns.Add(new DataGridViewTextBoxColumn
+                    PageObjects.selectPatientPage.GetPatientSelectionGrid.Columns.Add(new DataGridViewTextBoxColumn
                     {
                         Name = "Age",
                         DataPropertyName = "Age",
                         HeaderText = "Age"
                     });
 
-                    patientSelectionPage.GetPatientSelectionGrid.Columns.Add(new DataGridViewTextBoxColumn
+                    PageObjects.selectPatientPage.GetPatientSelectionGrid.Columns.Add(new DataGridViewTextBoxColumn
                     {
                         Name = "Gender",
                         DataPropertyName = "Gender",
                         HeaderText = "Gender"
                     });
 
-                    patientSelectionPage.GetPatientSelectionGrid.Columns.Add(new DataGridViewButtonColumn
+                    PageObjects.selectPatientPage.GetPatientSelectionGrid.Columns.Add(new DataGridViewButtonColumn
                     {
                         Name = "SelectButton",
                         HeaderText = "Select",
@@ -177,18 +175,23 @@ namespace Kinesia.Patients
                         AutoSizeMode = DataGridViewAutoSizeColumnMode.None,
                     });
 
-                    patientSelectionPage.GetPatientSelectionGrid.DataSource = patients;
-                    patientSelectionPage.GetPatientSelectionGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    PageObjects.selectPatientPage.GetPatientSelectionGrid.DataSource = patients;
+                    PageObjects.selectPatientPage.GetPatientSelectionGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
 
-                    patientSelectionPage.GetPatientSelectionGrid.CellPainting += DataGrid_CellPainting;
-                    patientSelectionPage.GetPatientSelectionGrid.CellMouseEnter += DataGrid_CellMouseEnter;
-                    patientSelectionPage.GetPatientSelectionGrid.CellMouseLeave += DataGrid_CellMouseLeave;
+                    // wire up events
+                    PageObjects.selectPatientPage.GetPatientSelectionGrid.CellPainting -= DataGrid_CellPainting;
+                    PageObjects.selectPatientPage.GetPatientSelectionGrid.CellPainting += DataGrid_CellPainting;
 
-                    CustomDataGrid.StyleDataGridWithSpacing(patientSelectionPage.GetPatientSelectionGrid);
-                    patientSelectionPage.GetPatientSelectionGrid.ResumeLayout();
+                    // hover events
+                    PageObjects.selectPatientPage.GetPatientSelectionGrid.CellMouseEnter -= DataGrid_CellMouseEnter;
+                    PageObjects.selectPatientPage.GetPatientSelectionGrid.CellMouseEnter += DataGrid_CellMouseEnter;
 
-                    patientSelectionPage.ShowDialog();
+                    PageObjects.selectPatientPage.GetPatientSelectionGrid.CellMouseLeave -= DataGrid_CellMouseLeave;
+                    PageObjects.selectPatientPage.GetPatientSelectionGrid.CellMouseLeave += DataGrid_CellMouseLeave;
+
+                    CustomDataGrid.StyleDataGridWithSpacing(PageObjects.selectPatientPage.GetPatientSelectionGrid);
+                    PageObjects.selectPatientPage.GetPatientSelectionGrid.ResumeLayout();
                 }
                 else
                 {
@@ -708,7 +711,7 @@ namespace Kinesia.Patients
         Point hoveredCell = new Point(-1, -1);
         private void DataGrid_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
-            var dataGrid = PageObjects.patientsPage.GetPatientGrid;
+            var dataGrid = (DataGridView)sender;
 
             // pag hindi gumana pre papalitan tong nasa taas ng : 
             // var dataGrid = (DataGridView)sender;
@@ -770,7 +773,7 @@ namespace Kinesia.Patients
         {
             if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
             {
-                var dataGrid = PageObjects.patientsPage.GetPatientGrid;
+                var dataGrid = (DataGridView)sender;
                 string columnName = dataGrid.Columns[e.ColumnIndex].Name;
 
                 // Only apply hover effect to button columns
@@ -786,7 +789,7 @@ namespace Kinesia.Patients
         {
             if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
             {
-                var dataGrid = PageObjects.patientsPage.GetPatientGrid;
+                var dataGrid = (DataGridView)sender;
                 hoveredCell = new Point(-1, -1);
                 dataGrid.InvalidateCell(e.ColumnIndex, e.RowIndex); // Trigger repaint
             }

@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SelectPatient));
             dataGridPatientSelection = new System.Windows.Forms.DataGridView();
             panelBorder1 = new WindowsFormsApp2.CustomButton.PanelBorder();
+            customButton1 = new OrganizationProfile.CustomButton();
             btnSearch = new OrganizationProfile.CustomButton();
             customButton2 = new OrganizationProfile.CustomButton();
             pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -40,8 +41,7 @@
             rjComboBox1 = new CustomControls.RJControls.RJComboBox();
             splitter1 = new System.Windows.Forms.Splitter();
             btnAddPatient = new OrganizationProfile.CustomButton();
-            btnExit = new OrganizationProfile.CustomButton();
-            customButton1 = new OrganizationProfile.CustomButton();
+            btnClose = new OrganizationProfile.CustomButton();
             ((System.ComponentModel.ISupportInitialize)dataGridPatientSelection).BeginInit();
             panelBorder1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -78,6 +78,28 @@
             panelBorder1.Padding = new System.Windows.Forms.Padding(6);
             panelBorder1.Size = new System.Drawing.Size(780, 59);
             panelBorder1.TabIndex = 23;
+            // 
+            // customButton1
+            // 
+            customButton1.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            customButton1.BackColor = System.Drawing.Color.FromArgb(64, 210, 173);
+            customButton1.BackgroundColor = System.Drawing.Color.FromArgb(64, 210, 173);
+            customButton1.BorderColor = System.Drawing.Color.PaleVioletRed;
+            customButton1.BorderRadius = 10;
+            customButton1.BorderSize = 0;
+            customButton1.FlatAppearance.BorderSize = 0;
+            customButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            customButton1.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            customButton1.ForeColor = System.Drawing.Color.White;
+            customButton1.Location = new System.Drawing.Point(645, 10);
+            customButton1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            customButton1.Name = "customButton1";
+            customButton1.Padding = new System.Windows.Forms.Padding(2, 3, 0, 0);
+            customButton1.Size = new System.Drawing.Size(118, 40);
+            customButton1.TabIndex = 17;
+            customButton1.Text = "Search";
+            customButton1.TextColor = System.Drawing.Color.White;
+            customButton1.UseVisualStyleBackColor = false;
             // 
             // btnSearch
             // 
@@ -234,46 +256,25 @@
             btnAddPatient.TextColor = System.Drawing.Color.White;
             btnAddPatient.UseVisualStyleBackColor = false;
             // 
-            // btnExit
+            // btnClose
             // 
-            btnExit.BackColor = System.Drawing.Color.Transparent;
-            btnExit.BackgroundColor = System.Drawing.Color.Transparent;
-            btnExit.BackgroundImage = Properties.Resources.newSmallClose;
-            btnExit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            btnExit.BorderColor = System.Drawing.Color.PaleVioletRed;
-            btnExit.BorderRadius = 15;
-            btnExit.BorderSize = 0;
-            btnExit.FlatAppearance.BorderSize = 0;
-            btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            btnExit.ForeColor = System.Drawing.Color.Transparent;
-            btnExit.Location = new System.Drawing.Point(781, 35);
-            btnExit.Name = "btnExit";
-            btnExit.Size = new System.Drawing.Size(39, 30);
-            btnExit.TabIndex = 25;
-            btnExit.TextColor = System.Drawing.Color.Transparent;
-            btnExit.UseVisualStyleBackColor = false;
-            // 
-            // customButton1
-            // 
-            customButton1.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
-            customButton1.BackColor = System.Drawing.Color.FromArgb(64, 210, 173);
-            customButton1.BackgroundColor = System.Drawing.Color.FromArgb(64, 210, 173);
-            customButton1.BorderColor = System.Drawing.Color.PaleVioletRed;
-            customButton1.BorderRadius = 10;
-            customButton1.BorderSize = 0;
-            customButton1.FlatAppearance.BorderSize = 0;
-            customButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            customButton1.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            customButton1.ForeColor = System.Drawing.Color.White;
-            customButton1.Location = new System.Drawing.Point(645, 10);
-            customButton1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            customButton1.Name = "customButton1";
-            customButton1.Padding = new System.Windows.Forms.Padding(2, 3, 0, 0);
-            customButton1.Size = new System.Drawing.Size(118, 40);
-            customButton1.TabIndex = 17;
-            customButton1.Text = "Search";
-            customButton1.TextColor = System.Drawing.Color.White;
-            customButton1.UseVisualStyleBackColor = false;
+            btnClose.BackColor = System.Drawing.Color.Transparent;
+            btnClose.BackgroundColor = System.Drawing.Color.Transparent;
+            btnClose.BackgroundImage = Properties.Resources.newSmallClose;
+            btnClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            btnClose.BorderColor = System.Drawing.Color.PaleVioletRed;
+            btnClose.BorderRadius = 15;
+            btnClose.BorderSize = 0;
+            btnClose.FlatAppearance.BorderSize = 0;
+            btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnClose.ForeColor = System.Drawing.Color.Transparent;
+            btnClose.Location = new System.Drawing.Point(781, 35);
+            btnClose.Name = "btnClose";
+            btnClose.Size = new System.Drawing.Size(39, 30);
+            btnClose.TabIndex = 25;
+            btnClose.TextColor = System.Drawing.Color.Transparent;
+            btnClose.UseVisualStyleBackColor = false;
+            btnClose.Click += btnClose_Click;
             // 
             // SelectPatient
             // 
@@ -282,14 +283,16 @@
             BackColor = System.Drawing.Color.White;
             ClientSize = new System.Drawing.Size(874, 763);
             ControlBox = false;
-            Controls.Add(btnExit);
+            Controls.Add(btnClose);
             Controls.Add(dataGridPatientSelection);
             Controls.Add(panelBorder1);
             Controls.Add(label2);
             Controls.Add(flowLayoutPanel2);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             Name = "SelectPatient";
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             Text = "NewSelectPatient";
+            Load += SelectPatient_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridPatientSelection).EndInit();
             panelBorder1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -310,7 +313,7 @@
         private CustomControls.RJControls.RJComboBox rjComboBox1;
         private System.Windows.Forms.Splitter splitter1;
         private OrganizationProfile.CustomButton btnAddPatient;
-        private OrganizationProfile.CustomButton btnExit;
+        private OrganizationProfile.CustomButton btnClose;
         private OrganizationProfile.CustomButton customButton1;
     }
 }
