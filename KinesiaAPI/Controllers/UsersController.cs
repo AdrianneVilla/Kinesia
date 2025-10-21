@@ -1,14 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using KinesiaAPI.Data;
+using KinesiaAPI.Models.Entities;
+using KinesiaLibrary;
+using KinesiaLibrary.DTOs.UserDTOs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using KinesiaAPI.Data;
-using KinesiaAPI.Models.Entities;
+using System;
+using System.Collections.Generic;
 using System.Data.Common;
-using KinesiaLibrary.DTOs.UserDTOs;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace KinesiaAPI.Controllers
 {
@@ -262,20 +263,45 @@ namespace KinesiaAPI.Controllers
         // POST: api/Users
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Users>> PostUsers(Users users)
+        public async Task<ActionResult<Users>> PostUsers(AddUserDTO userDTO)
         {
-            if (users == null)
+            if (userDTO == null)
                 return BadRequest("User data cannot be null.");
 
             try
             {
-                _context.Users.Add(users);
+                // will generate salt for hashing
+                // salt will be unique for every user
+                var salt = CustomSecurity.GenerateSalt();
+                var hashedPassword = CustomSecurity.HashPassword(userDTO.Password, salt);
+
+                var newUser = new Users
+                {
+                    UserID = userDTO.UserID,
+                    FirstName = userDTO.FirstName,
+                    LastName = userDTO.LastName,
+                    MiddleName = userDTO.MiddleName,
+                    Birthdate = userDTO.Birthdate,
+                    Gender = userDTO.Gender,
+                    Contact = userDTO.Contact,
+                    Address = userDTO.Address,
+                    Role = userDTO.Role,
+                    Username = userDTO.Username,
+                    Email = userDTO.Email,
+                    Password = hashedPassword,
+                    Salt = salt,
+                    DateAdded = DateTime.Now,
+                    LastArchiveDate = null,
+                    Status = 1
+                };
+
+                _context.Users.Add(newUser);
                 await _context.SaveChangesAsync();
-                return CreatedAtAction("GetUsers", new { id = users.UserID }, users);
+                return CreatedAtAction("GetUsers", new { id = newUser.UserID }, newUser);
             }
             catch (DbUpdateException)
             {
-                if (UsersExists(users.UserID))
+                if (UsersExists(userDTO.UserID))
                 {
                     return Conflict("User already exists.");
                 }

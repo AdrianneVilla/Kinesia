@@ -134,7 +134,6 @@ namespace Kinesia.Users
                         var json = await response.Content.ReadAsStringAsync();
                         var user = JsonConvert.DeserializeObject<UsersDTO>(json);
 
-
                         // will create user control for user details
                         var userDetails = new UserDetails();
 
@@ -292,14 +291,9 @@ namespace Kinesia.Users
             {
                 using (var client = new HttpClient())
                 {
-                    // will generate salt for hashing
-                    // salt will be unique for every user
                     client.BaseAddress = new Uri("http://localhost:5000/api/");
 
                     string generatedUserId = await client.GetStringAsync("users/generate-userid");
-                    generatedUserId = generatedUserId.Trim('"');
-
-                    var salt = CustomSecurity.GenerateSalt();
 
                     var newUser = new AddUserDTO
                     {
@@ -313,15 +307,9 @@ namespace Kinesia.Users
                         Address = userData.Address,
                         Role = userData.Role,
                         Username = userData.UserName,
-                        Password = CustomSecurity.HashPassword(userData.Password, salt),
-                        Salt = salt,
+                        Password = userData.Password,
                         Email = userData.Email,
-                        DateAdded = DateTime.Now,
-                        LastArchiveDate = null,
-                        Status = 1
                     };
-
-                    
 
                     var json = JsonConvert.SerializeObject(newUser);
                     var content = new StringContent(json, Encoding.UTF8, "application/json");
