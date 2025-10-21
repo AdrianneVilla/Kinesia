@@ -202,6 +202,33 @@ namespace Kinesia.Patients
 
         }
 
+        public async Task GetPatientBasicDetails(string patientID)
+        {
+            using(var client = new HttpClient())
+            {
+                var url = $"http://localhost:5000/api/patients/basic?patientID={patientID}";
+                var response = await client.GetAsync(url);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var json = await response.Content.ReadAsStringAsync();
+                    var patient = JsonConvert.DeserializeObject<PatientBasicDTO>(json);
+
+                    PageObjects.addAssessment.PatientInformationPanel.Controls.Clear();
+
+                    PageObjects.patientAssessmentDetails = new PatientAssessmentDetails();
+
+                    PageObjects.patientAssessmentDetails.PatientID = patient.PatientID;
+                    PageObjects.patientAssessmentDetails.PatientName = patient.PatientName;
+                    PageObjects.patientAssessmentDetails.Age = patient.Age.ToString();
+                    PageObjects.patientAssessmentDetails.Gender = patient.Gender;
+
+                    PageObjects.addAssessment.PatientInformationPanel.Controls.Add(PageObjects.patientAssessmentDetails);
+                    PageObjects.addAssessment.IsPatientSelected = true;
+                }
+            }
+        }
+
         public async Task GetPatientDetails(string patientID)
         {
             // GetPatientDetails overload for Patient Details page

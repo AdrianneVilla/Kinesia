@@ -32,14 +32,15 @@
             flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
             flowLayoutPanel7 = new System.Windows.Forms.FlowLayoutPanel();
             label11 = new System.Windows.Forms.Label();
-            rjComboBox2 = new CustomControls.RJControls.RJComboBox();
+            cbExtremity = new CustomControls.RJControls.RJComboBox();
             flowLayoutPanel8 = new System.Windows.Forms.FlowLayoutPanel();
             label13 = new System.Windows.Forms.Label();
-            rjComboBox3 = new CustomControls.RJControls.RJComboBox();
+            cbJoint = new CustomControls.RJControls.RJComboBox();
             flowLayoutPanel9 = new System.Windows.Forms.FlowLayoutPanel();
             label14 = new System.Windows.Forms.Label();
-            rjComboBox4 = new CustomControls.RJControls.RJComboBox();
+            cbJointSide = new CustomControls.RJControls.RJComboBox();
             label10 = new System.Windows.Forms.Label();
+            lblPatientID = new System.Windows.Forms.Label();
             flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             label4 = new System.Windows.Forms.Label();
@@ -72,6 +73,7 @@
             panelPatientInformation.Color = System.Drawing.Color.BurlyWood;
             panelPatientInformation.Controls.Add(flowLayoutPanel6);
             panelPatientInformation.Controls.Add(label10);
+            panelPatientInformation.Controls.Add(lblPatientID);
             panelPatientInformation.Controls.Add(flowLayoutPanel3);
             panelPatientInformation.Controls.Add(label12);
             panelPatientInformation.ForeColor = System.Drawing.Color.Black;
@@ -80,7 +82,6 @@
             panelPatientInformation.Name = "panelPatientInformation";
             panelPatientInformation.Size = new System.Drawing.Size(1457, 404);
             panelPatientInformation.TabIndex = 36;
-            panelPatientInformation.Visible = false;
             // 
             // flowLayoutPanel6
             // 
@@ -95,7 +96,7 @@
             // flowLayoutPanel7
             // 
             flowLayoutPanel7.Controls.Add(label11);
-            flowLayoutPanel7.Controls.Add(rjComboBox2);
+            flowLayoutPanel7.Controls.Add(cbExtremity);
             flowLayoutPanel7.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             flowLayoutPanel7.Location = new System.Drawing.Point(3, 3);
             flowLayoutPanel7.Name = "flowLayoutPanel7";
@@ -112,29 +113,31 @@
             label11.TabIndex = 1;
             label11.Text = "Extremity";
             // 
-            // rjComboBox2
+            // cbExtremity
             // 
-            rjComboBox2.BackColor = System.Drawing.Color.White;
-            rjComboBox2.BorderColor = System.Drawing.Color.Black;
-            rjComboBox2.BorderSize = 1;
-            rjComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
-            rjComboBox2.Font = new System.Drawing.Font("Segoe UI", 10F);
-            rjComboBox2.ForeColor = System.Drawing.Color.DimGray;
-            rjComboBox2.IconColor = System.Drawing.Color.FromArgb(18, 90, 211);
-            rjComboBox2.ListBackColor = System.Drawing.Color.White;
-            rjComboBox2.ListTextColor = System.Drawing.Color.Black;
-            rjComboBox2.Location = new System.Drawing.Point(3, 29);
-            rjComboBox2.MinimumSize = new System.Drawing.Size(200, 30);
-            rjComboBox2.Name = "rjComboBox2";
-            rjComboBox2.Padding = new System.Windows.Forms.Padding(1);
-            rjComboBox2.Size = new System.Drawing.Size(316, 45);
-            rjComboBox2.TabIndex = 0;
-            rjComboBox2.Texts = "Select Extremity";
+            cbExtremity.BackColor = System.Drawing.Color.White;
+            cbExtremity.BorderColor = System.Drawing.Color.Black;
+            cbExtremity.BorderSize = 1;
+            cbExtremity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
+            cbExtremity.Font = new System.Drawing.Font("Segoe UI", 10F);
+            cbExtremity.ForeColor = System.Drawing.Color.DimGray;
+            cbExtremity.IconColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            cbExtremity.Items.AddRange(new object[] { "Upper Extremity", "Lower Extremity" });
+            cbExtremity.ListBackColor = System.Drawing.Color.White;
+            cbExtremity.ListTextColor = System.Drawing.Color.Black;
+            cbExtremity.Location = new System.Drawing.Point(3, 29);
+            cbExtremity.MinimumSize = new System.Drawing.Size(200, 30);
+            cbExtremity.Name = "cbExtremity";
+            cbExtremity.Padding = new System.Windows.Forms.Padding(1);
+            cbExtremity.Size = new System.Drawing.Size(316, 45);
+            cbExtremity.TabIndex = 0;
+            cbExtremity.Texts = "Select Extremity";
+            cbExtremity.OnSelectedIndexChanged += cbExtremity_OnSelectedIndexChanged;
             // 
             // flowLayoutPanel8
             // 
             flowLayoutPanel8.Controls.Add(label13);
-            flowLayoutPanel8.Controls.Add(rjComboBox3);
+            flowLayoutPanel8.Controls.Add(cbJoint);
             flowLayoutPanel8.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             flowLayoutPanel8.Location = new System.Drawing.Point(416, 3);
             flowLayoutPanel8.Name = "flowLayoutPanel8";
@@ -151,29 +154,29 @@
             label13.TabIndex = 3;
             label13.Text = "Joint";
             // 
-            // rjComboBox3
+            // cbJoint
             // 
-            rjComboBox3.BackColor = System.Drawing.Color.White;
-            rjComboBox3.BorderColor = System.Drawing.Color.Black;
-            rjComboBox3.BorderSize = 1;
-            rjComboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
-            rjComboBox3.Font = new System.Drawing.Font("Segoe UI", 10F);
-            rjComboBox3.ForeColor = System.Drawing.Color.DimGray;
-            rjComboBox3.IconColor = System.Drawing.Color.FromArgb(18, 90, 211);
-            rjComboBox3.ListBackColor = System.Drawing.Color.White;
-            rjComboBox3.ListTextColor = System.Drawing.Color.Black;
-            rjComboBox3.Location = new System.Drawing.Point(3, 29);
-            rjComboBox3.MinimumSize = new System.Drawing.Size(200, 30);
-            rjComboBox3.Name = "rjComboBox3";
-            rjComboBox3.Padding = new System.Windows.Forms.Padding(1);
-            rjComboBox3.Size = new System.Drawing.Size(316, 45);
-            rjComboBox3.TabIndex = 2;
-            rjComboBox3.Texts = "Select Joint";
+            cbJoint.BackColor = System.Drawing.Color.White;
+            cbJoint.BorderColor = System.Drawing.Color.Black;
+            cbJoint.BorderSize = 1;
+            cbJoint.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
+            cbJoint.Font = new System.Drawing.Font("Segoe UI", 10F);
+            cbJoint.ForeColor = System.Drawing.Color.DimGray;
+            cbJoint.IconColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            cbJoint.ListBackColor = System.Drawing.Color.White;
+            cbJoint.ListTextColor = System.Drawing.Color.Black;
+            cbJoint.Location = new System.Drawing.Point(3, 29);
+            cbJoint.MinimumSize = new System.Drawing.Size(200, 30);
+            cbJoint.Name = "cbJoint";
+            cbJoint.Padding = new System.Windows.Forms.Padding(1);
+            cbJoint.Size = new System.Drawing.Size(316, 45);
+            cbJoint.TabIndex = 2;
+            cbJoint.Texts = "Select Joint";
             // 
             // flowLayoutPanel9
             // 
             flowLayoutPanel9.Controls.Add(label14);
-            flowLayoutPanel9.Controls.Add(rjComboBox4);
+            flowLayoutPanel9.Controls.Add(cbJointSide);
             flowLayoutPanel9.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             flowLayoutPanel9.Location = new System.Drawing.Point(827, 3);
             flowLayoutPanel9.Name = "flowLayoutPanel9";
@@ -190,24 +193,25 @@
             label14.TabIndex = 5;
             label14.Text = "Joint Side";
             // 
-            // rjComboBox4
+            // cbJointSide
             // 
-            rjComboBox4.BackColor = System.Drawing.Color.White;
-            rjComboBox4.BorderColor = System.Drawing.Color.Black;
-            rjComboBox4.BorderSize = 1;
-            rjComboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
-            rjComboBox4.Font = new System.Drawing.Font("Segoe UI", 10F);
-            rjComboBox4.ForeColor = System.Drawing.Color.DimGray;
-            rjComboBox4.IconColor = System.Drawing.Color.FromArgb(18, 90, 211);
-            rjComboBox4.ListBackColor = System.Drawing.Color.White;
-            rjComboBox4.ListTextColor = System.Drawing.Color.Black;
-            rjComboBox4.Location = new System.Drawing.Point(3, 29);
-            rjComboBox4.MinimumSize = new System.Drawing.Size(200, 30);
-            rjComboBox4.Name = "rjComboBox4";
-            rjComboBox4.Padding = new System.Windows.Forms.Padding(1);
-            rjComboBox4.Size = new System.Drawing.Size(316, 45);
-            rjComboBox4.TabIndex = 4;
-            rjComboBox4.Texts = "Joint Side";
+            cbJointSide.BackColor = System.Drawing.Color.White;
+            cbJointSide.BorderColor = System.Drawing.Color.Black;
+            cbJointSide.BorderSize = 1;
+            cbJointSide.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
+            cbJointSide.Font = new System.Drawing.Font("Segoe UI", 10F);
+            cbJointSide.ForeColor = System.Drawing.Color.DimGray;
+            cbJointSide.IconColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            cbJointSide.Items.AddRange(new object[] { "Right", "Left" });
+            cbJointSide.ListBackColor = System.Drawing.Color.White;
+            cbJointSide.ListTextColor = System.Drawing.Color.Black;
+            cbJointSide.Location = new System.Drawing.Point(3, 29);
+            cbJointSide.MinimumSize = new System.Drawing.Size(200, 30);
+            cbJointSide.Name = "cbJointSide";
+            cbJointSide.Padding = new System.Windows.Forms.Padding(1);
+            cbJointSide.Size = new System.Drawing.Size(316, 45);
+            cbJointSide.TabIndex = 4;
+            cbJointSide.Texts = "Joint Side";
             // 
             // label10
             // 
@@ -219,6 +223,16 @@
             label10.Size = new System.Drawing.Size(187, 34);
             label10.TabIndex = 24;
             label10.Text = "Joint Information";
+            // 
+            // lblPatientID
+            // 
+            lblPatientID.AutoSize = true;
+            lblPatientID.Font = new System.Drawing.Font("Poppins", 10.75F, System.Drawing.FontStyle.Bold);
+            lblPatientID.Location = new System.Drawing.Point(301, 30);
+            lblPatientID.Name = "lblPatientID";
+            lblPatientID.Size = new System.Drawing.Size(100, 26);
+            lblPatientID.TabIndex = 22;
+            lblPatientID.Text = "<Patient ID>";
             // 
             // flowLayoutPanel3
             // 
@@ -324,9 +338,9 @@
             label12.Location = new System.Drawing.Point(47, 28);
             label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             label12.Name = "label12";
-            label12.Size = new System.Drawing.Size(224, 34);
+            label12.Size = new System.Drawing.Size(247, 34);
             label12.TabIndex = 19;
-            label12.Text = "Personal Information";
+            label12.Text = "Personal Information of";
             // 
             // PatientAssessmentDetails
             // 
@@ -361,13 +375,13 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel6;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel7;
         private System.Windows.Forms.Label label11;
-        private CustomControls.RJControls.RJComboBox rjComboBox2;
+        private CustomControls.RJControls.RJComboBox cbExtremity;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel8;
         private System.Windows.Forms.Label label13;
-        private CustomControls.RJControls.RJComboBox rjComboBox3;
+        private CustomControls.RJControls.RJComboBox cbJoint;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel9;
         private System.Windows.Forms.Label label14;
-        private CustomControls.RJControls.RJComboBox rjComboBox4;
+        private CustomControls.RJControls.RJComboBox cbJointSide;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
@@ -380,5 +394,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label lblGender;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label lblPatientID;
     }
 }

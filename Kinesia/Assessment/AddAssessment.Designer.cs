@@ -154,12 +154,11 @@
             panelPatientInformation.Name = "panelPatientInformation";
             panelPatientInformation.Size = new System.Drawing.Size(1457, 404);
             panelPatientInformation.TabIndex = 35;
-            panelPatientInformation.Visible = false;
             // 
             // AddAssessment
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             BackColor = System.Drawing.Color.White;
             Controls.Add(panelPatientInformation);
             Controls.Add(flowLayoutPanel1);
@@ -169,6 +168,7 @@
             Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             Name = "AddAssessment";
             Size = new System.Drawing.Size(1541, 875);
+            Load += AddAssessment_Load;
             flowLayoutPanel1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();

@@ -42,7 +42,7 @@
             dateHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
             editHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
             archiveHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            btnAddPatient = new OrganizationProfile.CustomButton();
+            btnAddAssessment = new OrganizationProfile.CustomButton();
             panelBorder2 = new WindowsFormsApp2.CustomButton.PanelBorder();
             customButton3 = new OrganizationProfile.CustomButton();
             customButton2 = new OrganizationProfile.CustomButton();
@@ -198,31 +198,32 @@
             archiveHeader.Name = "archiveHeader";
             archiveHeader.ReadOnly = true;
             // 
-            // btnAddPatient
+            // btnAddAssessment
             // 
-            btnAddPatient.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
-            btnAddPatient.BackColor = System.Drawing.Color.FromArgb(18, 90, 211);
-            btnAddPatient.BackgroundColor = System.Drawing.Color.FromArgb(18, 90, 211);
-            btnAddPatient.BorderColor = System.Drawing.Color.White;
-            btnAddPatient.BorderRadius = 10;
-            btnAddPatient.BorderSize = 0;
-            btnAddPatient.Cursor = System.Windows.Forms.Cursors.Hand;
-            btnAddPatient.FlatAppearance.BorderSize = 0;
-            btnAddPatient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            btnAddPatient.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 238);
-            btnAddPatient.ForeColor = System.Drawing.Color.White;
-            btnAddPatient.Image = (System.Drawing.Image)resources.GetObject("btnAddPatient.Image");
-            btnAddPatient.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnAddPatient.Location = new System.Drawing.Point(1096, 7);
-            btnAddPatient.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            btnAddPatient.Name = "btnAddPatient";
-            btnAddPatient.Padding = new System.Windows.Forms.Padding(10, 0, 23, 0);
-            btnAddPatient.Size = new System.Drawing.Size(214, 55);
-            btnAddPatient.TabIndex = 7;
-            btnAddPatient.Text = "Add Assessment";
-            btnAddPatient.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            btnAddPatient.TextColor = System.Drawing.Color.White;
-            btnAddPatient.UseVisualStyleBackColor = false;
+            btnAddAssessment.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            btnAddAssessment.BackColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            btnAddAssessment.BackgroundColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            btnAddAssessment.BorderColor = System.Drawing.Color.White;
+            btnAddAssessment.BorderRadius = 10;
+            btnAddAssessment.BorderSize = 0;
+            btnAddAssessment.Cursor = System.Windows.Forms.Cursors.Hand;
+            btnAddAssessment.FlatAppearance.BorderSize = 0;
+            btnAddAssessment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnAddAssessment.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 238);
+            btnAddAssessment.ForeColor = System.Drawing.Color.White;
+            btnAddAssessment.Image = (System.Drawing.Image)resources.GetObject("btnAddAssessment.Image");
+            btnAddAssessment.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            btnAddAssessment.Location = new System.Drawing.Point(1096, 7);
+            btnAddAssessment.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            btnAddAssessment.Name = "btnAddAssessment";
+            btnAddAssessment.Padding = new System.Windows.Forms.Padding(10, 0, 23, 0);
+            btnAddAssessment.Size = new System.Drawing.Size(214, 55);
+            btnAddAssessment.TabIndex = 7;
+            btnAddAssessment.Text = "Add Assessment";
+            btnAddAssessment.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            btnAddAssessment.TextColor = System.Drawing.Color.White;
+            btnAddAssessment.UseVisualStyleBackColor = false;
+            btnAddAssessment.Click += btnAddAssessment_Click;
             // 
             // panelBorder2
             // 
@@ -233,7 +234,7 @@
             panelBorder2.Controls.Add(customButton3);
             panelBorder2.Controls.Add(customButton2);
             panelBorder2.Controls.Add(customButton4);
-            panelBorder2.Controls.Add(btnAddPatient);
+            panelBorder2.Controls.Add(btnAddAssessment);
             panelBorder2.ForeColor = System.Drawing.Color.Black;
             panelBorder2.Location = new System.Drawing.Point(72, 163);
             panelBorder2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -370,6 +371,8 @@
             rjTextBox1.PasswordChar = false;
             rjTextBox1.PlaceholderColor = System.Drawing.Color.DarkGray;
             rjTextBox1.PlaceholderText = "Search Patient";
+            rjTextBox1.SelectionLength = 0;
+            rjTextBox1.SelectionStart = 0;
             rjTextBox1.Size = new System.Drawing.Size(388, 35);
             rjTextBox1.TabIndex = 4;
             rjTextBox1.Texts = "";
@@ -377,8 +380,8 @@
             // 
             // AssessmentPage
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             BackColor = System.Drawing.Color.White;
             Controls.Add(panelBorder1);
             Controls.Add(panelBorder2);
@@ -403,7 +406,7 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label nameHolder;
-        private OrganizationProfile.CustomButton btnAddPatient;
+        private OrganizationProfile.CustomButton btnAddAssessment;
         private WindowsFormsApp2.CustomButton.PanelBorder PatientHolder;
         private System.Windows.Forms.DataGridView dataGridView1;
         private WindowsFormsApp2.CustomButton.PanelBorder panelBorder2;

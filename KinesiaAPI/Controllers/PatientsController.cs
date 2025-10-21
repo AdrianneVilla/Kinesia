@@ -149,6 +149,31 @@ namespace KinesiaAPI.Controllers
             }
         }
 
+        // GET: api/patients/basic?patientID={}
+        [HttpGet("basic")]
+        public async Task<ActionResult<PatientBasicDTO>> GetPatientBasicDetails(string patientID)
+        {
+            try
+            {
+                var patient = await _context.Patients.FindAsync(patientID);
+
+                if (patient == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok(PatientToPatientBasicDTO(patient));
+            }
+            catch (DbException)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An error occured on database.\nPlease try again.");
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An unexpected error occured.\nPlease try again.");
+            }
+        }
+
         // GET: api/patients/generate-patientid
         [HttpGet("generate-patientid")]
         public async Task<ActionResult<string>> GenerateNewPatientID()
@@ -390,6 +415,15 @@ namespace KinesiaAPI.Controllers
                 PatientName = $"{patients.FirstName} {patients.MiddleName} {patients.LastName}",
                 Age = (int)((DateTime.Now - patients.Birthdate).TotalDays / 365.25),
                 Gender = patients.Gender
+            };
+
+        public static PatientBasicDTO PatientToPatientBasicDTO(Patients patient) =>
+            new PatientBasicDTO
+            {
+                PatientID = patient.PatientID,
+                PatientName = $"{patient.FirstName} {patient.MiddleName} {patient.LastName}",
+                Age = (int)((DateTime.Now - patient.Birthdate).TotalDays / 365.25),
+                Gender = patient.Gender
             };
     }
 }

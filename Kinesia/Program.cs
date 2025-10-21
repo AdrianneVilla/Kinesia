@@ -55,6 +55,8 @@ namespace Kinesia
         public static EditUser editUser;
         public static AssessmentPage assessmentPage;
         public static AssessmentDetails assessmentDetails;
+        public static AddAssessment addAssessment;
+        public static PatientAssessmentDetails patientAssessmentDetails;
         public static LogsPage logsPage;
         public static newLogsPage newLogsPage;
 

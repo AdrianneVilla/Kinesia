@@ -28,5 +28,13 @@ namespace Kinesia.Assessment
         {
 
         }
+
+        private void btnAddAssessment_Click(object sender, EventArgs e)
+        {
+            PageObjects.addAssessment = new AddAssessment();
+            PageObjects.RemoveResources(ref PageObjects.CurrentControl);
+            PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.addAssessment);
+            PageObjects.CurrentControl = PageObjects.addAssessment;
+        }
     }
 }
