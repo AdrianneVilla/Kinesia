@@ -14,119 +14,111 @@ namespace Kinesia.Logs
 {
     public class LogsCRUD
     {
+        private readonly HttpClient client = ApiClient.Instance;
+
         public async Task DisplayLogs(string searchData, string currentTab, string sortColumn)
         {
             PageObjects.logsPage.getLogHolder.Controls.Clear();
-            using(var client = new HttpClient())
+            var url = $"http://localhost:5000/api/logs?searchData={searchData}&currentTab={currentTab}&sortColumn={sortColumn}";
+
+            var response = await client.GetStringAsync(url);
+            var logs = JsonConvert.DeserializeObject<List<LogDTO>>(response);
+
+            foreach (var log in logs)
             {
-                var url = $"http://localhost:5000/api/logs?searchData={searchData}&currentTab={currentTab}&sortColumn={sortColumn}";
+                var displayLogControl = new DisplayLogs();
 
-                var response = await client.GetStringAsync(url);
-                var logs = JsonConvert.DeserializeObject<List<LogDTO>>(response);
+                displayLogControl.LogID = log.LogID;
+                displayLogControl.LogType = log.LogType;
+                displayLogControl.UserName = $"{log.FirstName} {log.MiddleName} {log.LastName}";
+                displayLogControl.Description = log.Description;
+                displayLogControl.LogDate = log.LogDate.ToString();
 
-                foreach(var log in logs)
-                {
-                    var displayLogControl = new DisplayLogs();
-
-                    displayLogControl.LogID = log.LogID;
-                    displayLogControl.LogType = log.LogType;
-                    displayLogControl.UserName = $"{log.FirstName} {log.MiddleName} {log.LastName}";
-                    displayLogControl.Description = log.Description;
-                    displayLogControl.LogDate = log.LogDate.ToString();
-
-                    PageObjects.logsPage.getLogHolder.Controls.Add(displayLogControl);
-                }
+                PageObjects.logsPage.getLogHolder.Controls.Add(displayLogControl);
             }
         }
 
         public async Task DisplayDashboardLogs()
         {
-            using(var client = new HttpClient())
+            var url = "http://localhost:5000/api/logs/dashboard";
+            var response = await client.GetAsync(url);
+
+            if (response.IsSuccessStatusCode)
             {
-                var url = "http://localhost:5000/api/logs/dashboard";
-                var response = await client.GetAsync(url);
+                var json = await response.Content.ReadAsStringAsync();
+                var logs = JsonConvert.DeserializeObject<List<DisplayDashboardLogsDTO>>(json);
 
-                if (response.IsSuccessStatusCode)
+                CustomDataGrid.SetDoubleBuffering(PageObjects.dashboardPage.GetLogsGrid, true);
+                PageObjects.dashboardPage.GetLogsGrid.AutoGenerateColumns = false;
+                PageObjects.dashboardPage.GetLogsGrid.Columns.Clear();
+
+                PageObjects.dashboardPage.GetLogsGrid.Columns.Add(new DataGridViewTextBoxColumn
                 {
-                    var json = await response.Content.ReadAsStringAsync();
-                    var logs = JsonConvert.DeserializeObject<List<DisplayDashboardLogsDTO>>(json);
+                    Name = "LogID",
+                    DataPropertyName = "LogID",
+                    HeaderText = "Log ID"
+                });
 
-                    CustomDataGrid.SetDoubleBuffering(PageObjects.dashboardPage.GetLogsGrid, true);
-                    PageObjects.dashboardPage.GetLogsGrid.AutoGenerateColumns = false;
-                    PageObjects.dashboardPage.GetLogsGrid.Columns.Clear();
+                PageObjects.dashboardPage.GetLogsGrid.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "LogType",
+                    DataPropertyName = "logType",
+                    HeaderText = "Log Type"
+                });
 
-                    PageObjects.dashboardPage.GetLogsGrid.Columns.Add(new DataGridViewTextBoxColumn
-                    {
-                        Name = "LogID",
-                        DataPropertyName = "LogID",
-                        HeaderText = "Log ID"
-                    });
+                PageObjects.dashboardPage.GetLogsGrid.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "User",
+                    DataPropertyName = "user",
+                    HeaderText = "User"
+                });
 
-                    PageObjects.dashboardPage.GetLogsGrid.Columns.Add(new DataGridViewTextBoxColumn
-                    {
-                        Name = "LogType",
-                        DataPropertyName = "logType",
-                        HeaderText = "Log Type"
-                    });
+                PageObjects.dashboardPage.GetLogsGrid.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "LogDescription",
+                    DataPropertyName = "logDescription",
+                    HeaderText = "Log Description"
+                });
 
-                    PageObjects.dashboardPage.GetLogsGrid.Columns.Add(new DataGridViewTextBoxColumn
-                    {
-                        Name = "User",
-                        DataPropertyName = "user",
-                        HeaderText = "User"
-                    });
+                PageObjects.dashboardPage.GetLogsGrid.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "LogDate",
+                    DataPropertyName = "logDate",
+                    HeaderText = "Log Date"
+                });
 
-                    PageObjects.dashboardPage.GetLogsGrid.Columns.Add(new DataGridViewTextBoxColumn
-                    {
-                        Name = "LogDescription",
-                        DataPropertyName = "logDescription",
-                        HeaderText = "Log Description"
-                    });
+                PageObjects.dashboardPage.GetLogsGrid.DataSource = logs;
+                PageObjects.dashboardPage.GetLogsGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-                    PageObjects.dashboardPage.GetLogsGrid.Columns.Add(new DataGridViewTextBoxColumn
-                    {
-                        Name = "LogDate",
-                        DataPropertyName = "logDate",
-                        HeaderText = "Log Date"
-                    });
-
-                    PageObjects.dashboardPage.GetLogsGrid.DataSource = logs;
-                    PageObjects.dashboardPage.GetLogsGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
-                    CustomDataGrid.StyleDataGridWithSpacing(PageObjects.dashboardPage.GetLogsGrid);
-                    PageObjects.dashboardPage.GetLogsGrid.Refresh();
-                }
+                CustomDataGrid.StyleDataGridWithSpacing(PageObjects.dashboardPage.GetLogsGrid);
+                PageObjects.dashboardPage.GetLogsGrid.Refresh();
             }
         }
         
         public async Task AddLog(string description, string logType)
         {
-            using(var client = new HttpClient())
+            var newLog = new AddLogDTO();
+
+            newLog.LogID = await GetLogID();
+
+            if (string.IsNullOrEmpty(newLog.LogID))
             {
-                var newLog = new AddLogDTO();
+                return;
+            }
 
-                newLog.LogID = await GetLogID();
+            newLog.UserID = SessionManager.UserID;
+            newLog.Description = description;
+            newLog.LogType = logType;
+            newLog.LogDate = DateTime.Now;
 
-                if (string.IsNullOrEmpty(newLog.LogID))
-                {
-                    return;
-                }
+            var json = JsonConvert.SerializeObject(newLog);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-                newLog.UserID = SessionManager.UserID;
-                newLog.Description = description;
-                newLog.LogType = logType;
-                newLog.LogDate = DateTime.Now;
+            var response = await client.PostAsync("http://localhost:5000/api/logs", content);
 
-                client.BaseAddress = new Uri("http://localhost:5000/api/");
-                var json = JsonConvert.SerializeObject(newLog);
-                var content = new StringContent(json, Encoding.UTF8, "application/json");
-
-                var response = await client.PostAsync("logs", content);
-
-                if(!response.IsSuccessStatusCode)
-                {
-                    Debug.WriteLine(response.StatusCode);
-                }
+            if (!response.IsSuccessStatusCode)
+            {
+                Debug.WriteLine(response.StatusCode);
             }
         }
 
@@ -134,22 +126,19 @@ namespace Kinesia.Logs
         {
             try
             {
-                using (var client = new HttpClient())
-                {
-                    var url = "http://localhost:5000/api/logs/generate-logid";
-                    var response = await client.GetAsync(url);
+                var url = "http://localhost:5000/api/logs/generate-logid";
+                var response = await client.GetAsync(url);
 
-                    if (response.IsSuccessStatusCode)
-                    {
-                        return await response.Content.ReadAsStringAsync();
-                    }
-                    else
-                    {
-                        // will show an error dialog if it returns a badrequest from API
-                        CustomDialog.Show(await response.Content.ReadAsStringAsync(),
-                            "Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
-                        return null;
-                    }
+                if (response.IsSuccessStatusCode)
+                {
+                    return await response.Content.ReadAsStringAsync();
+                }
+                else
+                {
+                    // will show an error dialog if it returns a badrequest from API
+                    CustomDialog.Show(await response.Content.ReadAsStringAsync(),
+                        "Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                    return null;
                 }
             }
             catch (HttpRequestException)

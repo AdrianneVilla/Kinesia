@@ -1,4 +1,5 @@
 ﻿using KinesiaLibrary.DTOs.AssessmentDTOs;
+using MySqlX.XDevAPI;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -11,42 +12,41 @@ namespace Kinesia.Assessment
 {
     public class AssessmentCRUD
     {
+        private readonly HttpClient client = ApiClient.Instance;
+
         public async Task GetAssessmentDetails(string assessmentID)
         {
             try
             {
-                using (var client = new HttpClient())
+                var url = $"http://localhost:5000/api/assessment/{assessmentID}";
+                var response = await client.GetAsync(url);
+
+                if (response.IsSuccessStatusCode)
                 {
-                    var url = $"http://localhost:5000/api/assessment/{assessmentID}";
-                    var response = await client.GetAsync(url);
+                    var json = await response.Content.ReadAsStringAsync();
+                    var assessment = JsonConvert.DeserializeObject<AssessmentDTO>(json);
 
-                    if (response.IsSuccessStatusCode)
-                    {
-                        var json = await response.Content.ReadAsStringAsync();
-                        var assessment = JsonConvert.DeserializeObject<AssessmentDTO>(json);
+                    PageObjects.assessmentDetails = new AssessmentDetails();
 
-                        PageObjects.assessmentDetails = new AssessmentDetails();
+                    PageObjects.assessmentDetails.AssessmentID = assessment.AssessmentID;
+                    PageObjects.assessmentDetails.PatientID = assessment.PatientID;
+                    PageObjects.assessmentDetails.Age = assessment.Age.ToString();
+                    PageObjects.assessmentDetails.Gender = assessment.Gender;
+                    PageObjects.assessmentDetails.Extremity = assessment.Extremity;
+                    PageObjects.assessmentDetails.Joint = assessment.Joint;
+                    PageObjects.assessmentDetails.JointSide = assessment.JointSide;
+                    PageObjects.assessmentDetails.AssessmentStatus = assessment.AssessmentStatus;
+                    PageObjects.assessmentDetails.AssessmentDate = assessment.AssessmentDate;
 
-                        PageObjects.assessmentDetails.AssessmentID = assessment.AssessmentID;
-                        PageObjects.assessmentDetails.PatientID = assessment.PatientID;
-                        PageObjects.assessmentDetails.Age = assessment.Age.ToString();
-                        PageObjects.assessmentDetails.Gender = assessment.Gender;
-                        PageObjects.assessmentDetails.Extremity = assessment.Extremity;
-                        PageObjects.assessmentDetails.Joint = assessment.Joint;
-                        PageObjects.assessmentDetails.JointSide = assessment.JointSide;
-                        PageObjects.assessmentDetails.AssessmentStatus = assessment.AssessmentStatus;
-                        PageObjects.assessmentDetails.AssessmentDate = assessment.AssessmentDate;
-
-                        PageObjects.RemoveResources(ref PageObjects.CurrentControl);
-                        PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.assessmentDetails);
-                        PageObjects.CurrentControl = PageObjects.assessmentDetails;
-                    }
-                    else
-                    {
-                        // will show an error dialog if it returns a badrequest from API
-                        CustomDialog.Show(await response.Content.ReadAsStringAsync(),
-                            "Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
-                    }
+                    PageObjects.RemoveResources(ref PageObjects.CurrentControl);
+                    PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.assessmentDetails);
+                    PageObjects.CurrentControl = PageObjects.assessmentDetails;
+                }
+                else
+                {
+                    // will show an error dialog if it returns a badrequest from API
+                    CustomDialog.Show(await response.Content.ReadAsStringAsync(),
+                        "Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
                 }
             }
             catch (HttpRequestException)
@@ -60,6 +60,124 @@ namespace Kinesia.Assessment
                 // will show an error dialog if it catches an unexpected error from client-side.
                 CustomDialog.Show("An unexpected error occured.\nPlease try again.",
                             "Unexpected Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+            }
+        }
+
+        public async Task<int> GetTotalOngoingAssessments(int month, int year)
+        {
+            try
+            {
+                var url = $"http://localhost:5000/api/assessment/total-ongoing-assessments?month={month}&year={year}";
+                var response = await client.GetAsync(url);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    if (int.TryParse(content, out int totalCount))
+                    {
+                        return totalCount;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+                else
+                {
+                    // will show an error dialog if it returns a badrequest from API
+                    CustomDialog.Show(await response.Content.ReadAsStringAsync(),
+                        "Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                    return 0;
+                }
+            }
+            catch (HttpRequestException)
+            {
+                // will show an error dialog if it catches a http request error from client-side
+                CustomDialog.Show("Unable to connect to the server.\nPlease try again.",
+                    "Connection Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                return 0;
+            }
+            catch (Exception)
+            {
+                // will show an error dialog if it catches an unexpected error from client-side.
+                CustomDialog.Show("An unexpected error occured.\nPlease try again.",
+                            "Unexpected Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                return 0;
+            }
+        }
+
+        public async Task<int> GetTotalAssessments(int month, int year)
+        {
+            try
+            {
+                var url = $"http://localhost:5000/api/assessment/total-assessments?month={month}&year={year}";
+                var response = await client.GetAsync(url);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    if (int.TryParse(content, out int totalCount))
+                    {
+                        return totalCount;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+                else
+                {
+                    // will show an error dialog if it returns a badrequest from API
+                    CustomDialog.Show(await response.Content.ReadAsStringAsync(),
+                        "Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                    return 0;
+                }
+            }
+            catch (HttpRequestException)
+            {
+                // will show an error dialog if it catches a http request error from client-side
+                CustomDialog.Show("Unable to connect to the server.\nPlease try again.",
+                    "Connection Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                return 0;
+            }
+            catch (Exception)
+            {
+                // will show an error dialog if it catches an unexpected error from client-side.
+                CustomDialog.Show("An unexpected error occured.\nPlease try again.",
+                            "Unexpected Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                return 0;
+            }
+        }
+
+        public async Task<string> GetMostTrackedJoint(int month, int year)
+        {
+            try
+            {
+                var url = $"http://localhost:5000/api/assessment/most-tracked-joint?month={month}&year={year}";
+                var response = await client.GetAsync(url);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return await response.Content.ReadAsStringAsync();
+                }
+                else
+                {
+                    return "N/A";
+                }
+            }
+            catch (HttpRequestException)
+            {
+                // will show an error dialog if it catches a http request error from client-side
+                CustomDialog.Show("Unable to connect to the server.\nPlease try again.",
+                    "Connection Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                return "N/A";
+            }
+            catch (Exception)
+            {
+                // will show an error dialog if it catches an unexpected error from client-side.
+                CustomDialog.Show("An unexpected error occured.\nPlease try again.",
+                            "Unexpected Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                return "N/A";
             }
         }
     }

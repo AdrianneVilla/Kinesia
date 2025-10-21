@@ -33,12 +33,15 @@
             label1 = new System.Windows.Forms.Label();
             lblName = new System.Windows.Forms.Label();
             panelBorder5 = new WindowsFormsApp2.CustomButton.PanelBorder();
+            lblTotalAssessments = new System.Windows.Forms.Label();
+            pictureBox3 = new System.Windows.Forms.PictureBox();
+            label432 = new System.Windows.Forms.Label();
             panelBorder3 = new WindowsFormsApp2.CustomButton.PanelBorder();
-            label6 = new System.Windows.Forms.Label();
+            lblMostJointTracked = new System.Windows.Forms.Label();
             label7 = new System.Windows.Forms.Label();
             pictureBox2 = new System.Windows.Forms.PictureBox();
             panelBorder2 = new WindowsFormsApp2.CustomButton.PanelBorder();
-            label5 = new System.Windows.Forms.Label();
+            lblTotalOngoingAssessments = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
             pictureBox1 = new System.Windows.Forms.PictureBox();
             label3 = new System.Windows.Forms.Label();
@@ -50,11 +53,9 @@
             panelBorder6 = new WindowsFormsApp2.CustomButton.PanelBorder();
             dataGridLogs = new System.Windows.Forms.DataGridView();
             label4 = new System.Windows.Forms.Label();
-            pictureBox3 = new System.Windows.Forms.PictureBox();
-            label8 = new System.Windows.Forms.Label();
-            label9 = new System.Windows.Forms.Label();
             flowLayoutPanel1.SuspendLayout();
             panelBorder5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             panelBorder3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             panelBorder2.SuspendLayout();
@@ -62,7 +63,6 @@
             panelBorder4.SuspendLayout();
             panelBorder6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridLogs).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -107,9 +107,9 @@
             panelBorder5.BackColor = System.Drawing.Color.FromArgb(238, 226, 255);
             panelBorder5.BorderRadius = 15;
             panelBorder5.Color = System.Drawing.Color.BurlyWood;
-            panelBorder5.Controls.Add(label8);
+            panelBorder5.Controls.Add(lblTotalAssessments);
             panelBorder5.Controls.Add(pictureBox3);
-            panelBorder5.Controls.Add(label9);
+            panelBorder5.Controls.Add(label432);
             panelBorder5.ForeColor = System.Drawing.Color.Black;
             panelBorder5.Location = new System.Drawing.Point(761, 170);
             panelBorder5.Margin = new System.Windows.Forms.Padding(20, 3, 3, 3);
@@ -117,12 +117,43 @@
             panelBorder5.Size = new System.Drawing.Size(303, 109);
             panelBorder5.TabIndex = 5;
             // 
+            // lblTotalAssessments
+            // 
+            lblTotalAssessments.AutoSize = true;
+            lblTotalAssessments.Font = new System.Drawing.Font("Poppins", 15.25F, System.Drawing.FontStyle.Bold);
+            lblTotalAssessments.ForeColor = System.Drawing.Color.FromArgb(151, 71, 255);
+            lblTotalAssessments.Location = new System.Drawing.Point(105, 22);
+            lblTotalAssessments.Name = "lblTotalAssessments";
+            lblTotalAssessments.Size = new System.Drawing.Size(0, 37);
+            lblTotalAssessments.TabIndex = 6;
+            // 
+            // pictureBox3
+            // 
+            pictureBox3.Image = Properties.Resources.totalAssessmentsPurple;
+            pictureBox3.Location = new System.Drawing.Point(28, 27);
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.Size = new System.Drawing.Size(52, 50);
+            pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            pictureBox3.TabIndex = 5;
+            pictureBox3.TabStop = false;
+            // 
+            // label432
+            // 
+            label432.AutoSize = true;
+            label432.Font = new System.Drawing.Font("Poppins", 10.25F, System.Drawing.FontStyle.Bold);
+            label432.ForeColor = System.Drawing.Color.FromArgb(151, 71, 255);
+            label432.Location = new System.Drawing.Point(105, 57);
+            label432.Name = "label432";
+            label432.Size = new System.Drawing.Size(150, 25);
+            label432.TabIndex = 5;
+            label432.Text = "Total Assessments";
+            // 
             // panelBorder3
             // 
             panelBorder3.BackColor = System.Drawing.Color.FromArgb(161, 196, 255);
             panelBorder3.BorderRadius = 15;
             panelBorder3.Color = System.Drawing.Color.BurlyWood;
-            panelBorder3.Controls.Add(label6);
+            panelBorder3.Controls.Add(lblMostJointTracked);
             panelBorder3.Controls.Add(label7);
             panelBorder3.Controls.Add(pictureBox2);
             panelBorder3.ForeColor = System.Drawing.Color.Black;
@@ -132,16 +163,15 @@
             panelBorder3.Size = new System.Drawing.Size(323, 109);
             panelBorder3.TabIndex = 4;
             // 
-            // label6
+            // lblMostJointTracked
             // 
-            label6.AutoSize = true;
-            label6.Font = new System.Drawing.Font("Poppins", 15.25F, System.Drawing.FontStyle.Bold);
-            label6.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
-            label6.Location = new System.Drawing.Point(102, 22);
-            label6.Name = "label6";
-            label6.Size = new System.Drawing.Size(83, 37);
-            label6.TabIndex = 4;
-            label6.Text = "label6";
+            lblMostJointTracked.AutoSize = true;
+            lblMostJointTracked.Font = new System.Drawing.Font("Poppins", 15.25F, System.Drawing.FontStyle.Bold);
+            lblMostJointTracked.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            lblMostJointTracked.Location = new System.Drawing.Point(102, 22);
+            lblMostJointTracked.Name = "lblMostJointTracked";
+            lblMostJointTracked.Size = new System.Drawing.Size(0, 37);
+            lblMostJointTracked.TabIndex = 4;
             // 
             // label7
             // 
@@ -150,9 +180,9 @@
             label7.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
             label7.Location = new System.Drawing.Point(102, 57);
             label7.Name = "label7";
-            label7.Size = new System.Drawing.Size(158, 25);
+            label7.Size = new System.Drawing.Size(150, 25);
             label7.TabIndex = 3;
-            label7.Text = "Most Joints Tracked";
+            label7.Text = "Most Joint Tracked";
             // 
             // pictureBox2
             // 
@@ -169,7 +199,7 @@
             panelBorder2.BackColor = System.Drawing.Color.FromArgb(207, 249, 238);
             panelBorder2.BorderRadius = 20;
             panelBorder2.Color = System.Drawing.Color.BurlyWood;
-            panelBorder2.Controls.Add(label5);
+            panelBorder2.Controls.Add(lblTotalOngoingAssessments);
             panelBorder2.Controls.Add(label2);
             panelBorder2.Controls.Add(pictureBox1);
             panelBorder2.ForeColor = System.Drawing.Color.Black;
@@ -179,16 +209,15 @@
             panelBorder2.Size = new System.Drawing.Size(323, 109);
             panelBorder2.TabIndex = 3;
             // 
-            // label5
+            // lblTotalOngoingAssessments
             // 
-            label5.AutoSize = true;
-            label5.Font = new System.Drawing.Font("Poppins", 15.25F, System.Drawing.FontStyle.Bold);
-            label5.ForeColor = System.Drawing.Color.FromArgb(21, 134, 105);
-            label5.Location = new System.Drawing.Point(92, 20);
-            label5.Name = "label5";
-            label5.Size = new System.Drawing.Size(84, 37);
-            label5.TabIndex = 2;
-            label5.Text = "label5";
+            lblTotalOngoingAssessments.AutoSize = true;
+            lblTotalOngoingAssessments.Font = new System.Drawing.Font("Poppins", 15.25F, System.Drawing.FontStyle.Bold);
+            lblTotalOngoingAssessments.ForeColor = System.Drawing.Color.FromArgb(21, 134, 105);
+            lblTotalOngoingAssessments.Location = new System.Drawing.Point(92, 20);
+            lblTotalOngoingAssessments.Name = "lblTotalOngoingAssessments";
+            lblTotalOngoingAssessments.Size = new System.Drawing.Size(0, 37);
+            lblTotalOngoingAssessments.TabIndex = 2;
             // 
             // label2
             // 
@@ -235,9 +264,9 @@
             lblMonth.Location = new System.Drawing.Point(393, 115);
             lblMonth.Margin = new System.Windows.Forms.Padding(0);
             lblMonth.Name = "lblMonth";
-            lblMonth.Size = new System.Drawing.Size(174, 39);
+            lblMonth.Size = new System.Drawing.Size(281, 39);
             lblMonth.TabIndex = 2;
-            lblMonth.Text = "<month here>";
+            lblMonth.Text = "<month and year here>";
             lblMonth.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // customButton1
@@ -364,38 +393,6 @@
             label4.Text = "RECENT ACTIVITIES";
             label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // pictureBox3
-            // 
-            pictureBox3.Image = Properties.Resources.totalAssessmentsPurple;
-            pictureBox3.Location = new System.Drawing.Point(28, 27);
-            pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new System.Drawing.Size(52, 50);
-            pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            pictureBox3.TabIndex = 5;
-            pictureBox3.TabStop = false;
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Font = new System.Drawing.Font("Poppins", 15.25F, System.Drawing.FontStyle.Bold);
-            label8.ForeColor = System.Drawing.Color.FromArgb(151, 71, 255);
-            label8.Location = new System.Drawing.Point(105, 22);
-            label8.Name = "label8";
-            label8.Size = new System.Drawing.Size(84, 37);
-            label8.TabIndex = 6;
-            label8.Text = "label8";
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Font = new System.Drawing.Font("Poppins", 10.25F, System.Drawing.FontStyle.Bold);
-            label9.ForeColor = System.Drawing.Color.FromArgb(151, 71, 255);
-            label9.Location = new System.Drawing.Point(105, 57);
-            label9.Name = "label9";
-            label9.Size = new System.Drawing.Size(150, 25);
-            label9.TabIndex = 5;
-            label9.Text = "Total Assessments";
-            // 
             // DashboardPage
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -421,6 +418,7 @@
             flowLayoutPanel1.PerformLayout();
             panelBorder5.ResumeLayout(false);
             panelBorder5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             panelBorder3.ResumeLayout(false);
             panelBorder3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
@@ -430,7 +428,6 @@
             panelBorder4.ResumeLayout(false);
             panelBorder6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridLogs).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ResumeLayout(false);
             PerformLayout();
 
@@ -454,13 +451,13 @@
         private WindowsFormsApp2.CustomButton.PanelBorder panelBorder6;
         private System.Windows.Forms.DataGridView dataGridLogs;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblTotalOngoingAssessments;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblMostJointTracked;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lblTotalAssessments;
         private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label432;
     }
 }

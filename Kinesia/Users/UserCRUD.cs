@@ -20,7 +20,10 @@ namespace Kinesia.Users
 {
     public class UserCRUD
     {
+        private readonly HttpClient client = ApiClient.Instance;
+
         private Point hoveredCell = new Point(-1, -1);
+
         public async Task DisplayUsers(string searchData, string currentTab, string sortColumn)
         {
             // will clear UserList to refresh its elements
@@ -28,81 +31,78 @@ namespace Kinesia.Users
 
             try
             {
-                using (var client = new HttpClient())
+                var url = $"http://localhost:5000/api/users?searchData={searchData}&currentTab={currentTab}&sortColumn={sortColumn}";
+
+                var response = await client.GetAsync(url);
+
+                if (response.IsSuccessStatusCode)
                 {
-                    var url = $"http://localhost:5000/api/users?searchData={searchData}&currentTab={currentTab}&sortColumn={sortColumn}";
+                    var json = await response.Content.ReadAsStringAsync();
+                    var users = JsonConvert.DeserializeObject<List<DisplayUsersDTO>>(json);
 
-                    var response = await client.GetAsync(url);
-
-                    if (response.IsSuccessStatusCode)
+                    foreach (var user in users)
                     {
-                        var json = await response.Content.ReadAsStringAsync();
-                        var users = JsonConvert.DeserializeObject<List<DisplayUsersDTO>>(json);
-
-                        foreach(var user in users)
-                        {
-                            // will add each userID to the list
-                            // this will help to easily access the userID of each row
-                            // each userID will be equivalent to its rowindex
-                            PageObjects.userPage.UserList.Add(user.UserID);
-                        }
-
-                        PageObjects.userPage.GetUserGrid.DataSource = users;
-                        PageObjects.userPage.GetUserGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                        var dataGrid = PageObjects.userPage.GetUserGrid;
-
-                        CustomDataGrid.SetDoubleBuffering(dataGrid, true);
-
-                        dataGrid.SuspendLayout();
-
-                        dataGrid.AutoGenerateColumns = false;
-                        dataGrid.Columns.Clear();
-
-                        dataGrid.Columns.Add(new DataGridViewTextBoxColumn
-                        {
-                            Name = "UserID",
-                            DataPropertyName = "UserID",
-                            HeaderText = "User ID"
-                        });
-
-                        dataGrid.Columns.Add(new DataGridViewTextBoxColumn
-                        {
-                            Name = "Name",
-                            DataPropertyName = "UserName",
-                            HeaderText = "Name"
-                        });
-
-                        dataGrid.Columns.Add(new DataGridViewTextBoxColumn
-                        {
-                            Name = "Role",
-                            DataPropertyName = "Role",
-                            HeaderText = "Role"
-                        });
-
-                        dataGrid.Columns.Add(new DataGridViewTextBoxColumn
-                        {
-                            Name = "Status",
-                            DataPropertyName = "Status",
-                            HeaderText = "Status"
-                        });
-
-
-                        dataGrid.DataSource = users;
-                        dataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
-                        // Add button column if it doesn't exist
-                        AddActionButtons();
-
-                        // Add spacing on the datagridview for better visualization
-                        CustomDataGrid.StyleDataGridWithSpacing(dataGrid);
-                        dataGrid.ResumeLayout(true);
+                        // will add each userID to the list
+                        // this will help to easily access the userID of each row
+                        // each userID will be equivalent to its rowindex
+                        PageObjects.userPage.UserList.Add(user.UserID);
                     }
-                    else
+
+                    PageObjects.userPage.GetUserGrid.DataSource = users;
+                    PageObjects.userPage.GetUserGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    var dataGrid = PageObjects.userPage.GetUserGrid;
+
+                    CustomDataGrid.SetDoubleBuffering(dataGrid, true);
+
+                    dataGrid.SuspendLayout();
+
+                    dataGrid.AutoGenerateColumns = false;
+                    dataGrid.Columns.Clear();
+
+                    dataGrid.Columns.Add(new DataGridViewTextBoxColumn
                     {
-                        // will show an error dialog if it returns a badrequest from API
-                        CustomDialog.Show(await response.Content.ReadAsStringAsync(),
-                            "Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
-                    }
+                        Name = "UserID",
+                        DataPropertyName = "UserID",
+                        HeaderText = "User ID"
+                    });
+
+                    dataGrid.Columns.Add(new DataGridViewTextBoxColumn
+                    {
+                        Name = "Name",
+                        DataPropertyName = "UserName",
+                        HeaderText = "Name"
+                    });
+
+                    dataGrid.Columns.Add(new DataGridViewTextBoxColumn
+                    {
+                        Name = "Role",
+                        DataPropertyName = "Role",
+                        HeaderText = "Role"
+                    });
+
+                    dataGrid.Columns.Add(new DataGridViewTextBoxColumn
+                    {
+                        Name = "Status",
+                        DataPropertyName = "Status",
+                        HeaderText = "Status"
+                    });
+
+
+                    dataGrid.DataSource = users;
+                    dataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+                    // Add button column if it doesn't exist
+                    AddActionButtons();
+
+                    // Add spacing on the datagridview for better visualization
+                    CustomDataGrid.StyleDataGridWithSpacing(dataGrid);
+                    dataGrid.ResumeLayout(true);
+                }
+                else
+                {
+                    // will show an error dialog if it returns a badrequest from API
+                    CustomDialog.Show(await response.Content.ReadAsStringAsync(),
+                        "Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
                 }
             }
             catch (HttpRequestException)
@@ -124,63 +124,60 @@ namespace Kinesia.Users
             // GetUserDetails overload for User Details page
             try
             {
-                using (var client = new HttpClient())
+                var url = $"http://localhost:5000/api/users/{userID}";
+
+                var response = await client.GetAsync(url);
+
+                if (response.IsSuccessStatusCode)
                 {
-                    var url = $"http://localhost:5000/api/users/{userID}";
+                    var json = await response.Content.ReadAsStringAsync();
+                    var user = JsonConvert.DeserializeObject<UsersDTO>(json);
 
-                    var response = await client.GetAsync(url);
+                    // will create user control for user details
+                    var userDetails = new UserDetails();
 
-                    if (response.IsSuccessStatusCode)
+                    // will set the data of the user to the labels
+                    userDetails.UserID = user.UserID;
+                    userDetails.SelectedUser = $"{user.FirstName} {user.MiddleName} {user.LastName}";
+                    userDetails.Name = $"{user.FirstName} {user.MiddleName} {user.LastName}";
+                    userDetails.Gender = user.Gender;
+                    userDetails.Contact = user.Contact;
+                    userDetails.Age = user.Age.ToString();
+                    userDetails.Address = user.Address;
+                    userDetails.Birthdate = user.Birthdate.ToString("yyyy-MM-dd");
+                    userDetails.Role = user.Role;
+                    userDetails.Email = user.Email;
+                    userDetails.DateAdded = user.DateAdded.ToString();
+                    userDetails.LastArchiveDate = user.LastArchiveDate;
+
+
+                    // 1 = Active
+                    // 0 = Inactive
+                    if (user.Status == 1)
                     {
-                        var json = await response.Content.ReadAsStringAsync();
-                        var user = JsonConvert.DeserializeObject<UsersDTO>(json);
-
-                        // will create user control for user details
-                        var userDetails = new UserDetails();
-
-                        // will set the data of the user to the labels
-                        userDetails.UserID = user.UserID;
-                        userDetails.SelectedUser = $"{user.FirstName} {user.MiddleName} {user.LastName}";
-                        userDetails.Name = $"{user.FirstName} {user.MiddleName} {user.LastName}";
-                        userDetails.Gender = user.Gender;
-                        userDetails.Contact = user.Contact;
-                        userDetails.Age = user.Age.ToString();
-                        userDetails.Address = user.Address;
-                        userDetails.Birthdate = user.Birthdate.ToString("yyyy-MM-dd");
-                        userDetails.Role = user.Role;
-                        userDetails.Email = user.Email;
-                        userDetails.DateAdded = user.DateAdded.ToString();
-                        userDetails.LastArchiveDate = user.LastArchiveDate;
-
-
-                        // 1 = Active
-                        // 0 = Inactive
-                        if (user.Status == 1)
-                        {
-                            userDetails.Status = "Active";
-                            userDetails.BtnArchive.Tag = "Active";
-                        }
-                        else
-                        {
-                            userDetails.Status = "Inactive";
-                            userDetails.BtnArchive.Tag = "Inactive";
-                            userDetails.BtnArchive.Text = "Unarchive User";
-                            userDetails.BtnArchive.Image = Properties.Resources.Unarchive;
-                            userDetails.BtnArchive.ForeColor = Color.FromArgb(18, 90, 211);
-                            userDetails.BtnArchive.BackColor = Color.FromArgb(223, 236, 250);
-                            userDetails.BtnArchive.BorderColor = Color.FromArgb(18, 90, 211);
-                        }
-
-                        PageObjects.RemoveResources(ref PageObjects.CurrentControl);
-                        PageObjects.dashboard.ContentsPanel.Controls.Add(userDetails);
-                        PageObjects.CurrentControl = userDetails;
+                        userDetails.Status = "Active";
+                        userDetails.BtnArchive.Tag = "Active";
                     }
                     else
                     {
-                        // will show an error dialog if it returns a badrequest from API
-                        CustomDialog.Show(await response.Content.ReadAsStringAsync(),
-                            "Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                        userDetails.Status = "Inactive";
+                        userDetails.BtnArchive.Tag = "Inactive";
+                        userDetails.BtnArchive.Text = "Unarchive User";
+                        userDetails.BtnArchive.Image = Properties.Resources.Unarchive;
+                        userDetails.BtnArchive.ForeColor = Color.FromArgb(18, 90, 211);
+                        userDetails.BtnArchive.BackColor = Color.FromArgb(223, 236, 250);
+                        userDetails.BtnArchive.BorderColor = Color.FromArgb(18, 90, 211);
                     }
+
+                    PageObjects.RemoveResources(ref PageObjects.CurrentControl);
+                    PageObjects.dashboard.ContentsPanel.Controls.Add(userDetails);
+                    PageObjects.CurrentControl = userDetails;
+                }
+                else
+                {
+                    // will show an error dialog if it returns a badrequest from API
+                    CustomDialog.Show(await response.Content.ReadAsStringAsync(),
+                        "Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
                 }
             }
             catch (HttpRequestException)
@@ -202,40 +199,37 @@ namespace Kinesia.Users
             // GetUserDetails overload for Edit User page
             try
             {
-                using (var client = new HttpClient())
+                var url = $"http://localhost:5000/api/users/{userID}";
+
+                var response = await client.GetAsync(url);
+
+                if (response.IsSuccessStatusCode)
                 {
-                    var url = $"http://localhost:5000/api/users/{userID}";
+                    var json = await response.Content.ReadAsStringAsync();
 
-                    var response = await client.GetAsync(url);
+                    var user = JsonConvert.DeserializeObject<UsersDTO>(json);
 
-                    if (response.IsSuccessStatusCode)
-                    {
-                        var json = await response.Content.ReadAsStringAsync();
+                    userData.UserID = user.UserID;
+                    userData.FirstName = user.FirstName;
+                    userData.LastName = user.LastName;
+                    userData.MiddleName = user.MiddleName;
+                    userData.BirthDate = user.Birthdate.ToString("yyyy-MM-dd");
+                    userData.Age = user.Age;
+                    userData.Gender = user.Gender;
+                    userData.Contact = user.Contact;
+                    userData.Email = user.Email;
+                    userData.Address = user.Address;
 
-                        var user = JsonConvert.DeserializeObject<UsersDTO>(json);
-
-                        userData.UserID = user.UserID;
-                        userData.FirstName = user.FirstName;
-                        userData.LastName = user.LastName;
-                        userData.MiddleName = user.MiddleName;
-                        userData.BirthDate = user.Birthdate.ToString("yyyy-MM-dd");
-                        userData.Age = user.Age;
-                        userData.Gender = user.Gender;
-                        userData.Contact = user.Contact;
-                        userData.Email = user.Email;
-                        userData.Address = user.Address;
-
-                        PageObjects.editUser = new EditUser();
-                        PageObjects.RemoveResources(ref PageObjects.CurrentControl);
-                        PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.editUser);
-                        PageObjects.CurrentControl = PageObjects.editUser;
-                    }
-                    else
-                    {
-                        // will show an error dialog if it returns a badrequest from API
-                        CustomDialog.Show(await response.Content.ReadAsStringAsync(),
-                            "Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
-                    }
+                    PageObjects.editUser = new EditUser();
+                    PageObjects.RemoveResources(ref PageObjects.CurrentControl);
+                    PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.editUser);
+                    PageObjects.CurrentControl = PageObjects.editUser;
+                }
+                else
+                {
+                    // will show an error dialog if it returns a badrequest from API
+                    CustomDialog.Show(await response.Content.ReadAsStringAsync(),
+                        "Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
                 }
             }
             catch (HttpRequestException)
@@ -256,22 +250,19 @@ namespace Kinesia.Users
         {
             try
             {
-                using (var client = new HttpClient())
-                {
-                    var url = "http://localhost:5000/api/users/generate-userid";
-                    var response = await client.GetAsync(url);
+                var url = "http://localhost:5000/api/users/generate-userid";
+                var response = await client.GetAsync(url);
 
-                    if (response.IsSuccessStatusCode)
-                    {
-                        return await response.Content.ReadAsStringAsync();
-                    }
-                    else
-                    {
-                        // will show an error dialog if it returns a badrequest from API
-                        CustomDialog.Show(await response.Content.ReadAsStringAsync(),
-                            "Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
-                        return null;
-                    }
+                if (response.IsSuccessStatusCode)
+                {
+                    return await response.Content.ReadAsStringAsync();
+                }
+                else
+                {
+                    // will show an error dialog if it returns a badrequest from API
+                    CustomDialog.Show(await response.Content.ReadAsStringAsync(),
+                        "Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                    return null;
                 }
             }
             catch (HttpRequestException)
@@ -294,42 +285,38 @@ namespace Kinesia.Users
         {
             try
             {
-                using (var client = new HttpClient())
+                var newUser = new AddUserDTO
                 {
-                    client.BaseAddress = new Uri("http://localhost:5000/api/");
+                    UserID = await SetUserID(),
+                    FirstName = userData.FirstName,
+                    LastName = userData.LastName,
+                    MiddleName = userData.MiddleName,
+                    Birthdate = DateTime.Parse(userData.BirthDate),
+                    Gender = userData.Gender,
+                    Contact = ContactFormatter(userData.Contact),
+                    Address = userData.Address,
+                    Role = userData.Role,
+                    Username = userData.UserName,
+                    Password = userData.Password,
+                    Email = userData.Email,
+                };
 
-                    var newUser = new AddUserDTO
-                    {
-                        UserID = await SetUserID(),
-                        FirstName = userData.FirstName,
-                        LastName = userData.LastName,
-                        MiddleName = userData.MiddleName,
-                        Birthdate = DateTime.Parse(userData.BirthDate),
-                        Gender = userData.Gender,
-                        Contact = ContactFormatter(userData.Contact),
-                        Address = userData.Address,
-                        Role = userData.Role,
-                        Username = userData.UserName,
-                        Password = userData.Password,
-                        Email = userData.Email,
-                    };
+                var json = JsonConvert.SerializeObject(newUser);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-                    var json = JsonConvert.SerializeObject(newUser);
-                    var content = new StringContent(json, Encoding.UTF8, "application/json");
+                var response = await client.PostAsync("http://localhost:5000/api/users", content);
 
-                    var response = await client.PostAsync("users", content);
-
-                    if (response.IsSuccessStatusCode) { 
-                        return newUser.UserID;
-                    }
-                    else
-                    {
-                        Console.WriteLine(response.Content.ReadAsStringAsync());
-                        // will show an error dialog if it returns a badrequest from API
-                        CustomDialog.Show(await response.Content.ReadAsStringAsync(),
-                            "Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
-                        return null;
-                    }
+                if (response.IsSuccessStatusCode)
+                {
+                    return newUser.UserID;
+                }
+                else
+                {
+                    Console.WriteLine(response.Content.ReadAsStringAsync());
+                    // will show an error dialog if it returns a badrequest from API
+                    CustomDialog.Show(await response.Content.ReadAsStringAsync(),
+                        "Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                    return null;
                 }
             }
             catch (HttpRequestException)
@@ -350,86 +337,75 @@ namespace Kinesia.Users
 
         public async Task<bool> UpdateUser(UserDataHolder userData)
         {
-            using (var client = new HttpClient())
-            {
-                var url = $"http://localhost:5000/api/users/{userData.UserID}";
+            var url = $"http://localhost:5000/api/users/{userData.UserID}";
 
-                var updatedUser = new UpdateUserDTO();
+            var updatedUser = new UpdateUserDTO();
 
-                updatedUser.UserID = userData.UserID;
-                updatedUser.FirstName = userData.FirstName;
-                updatedUser.LastName = userData.LastName;
-                updatedUser.MiddleName = userData.MiddleName;
-                updatedUser.Birthdate = DateTime.Parse(userData.BirthDate);
-                updatedUser.Gender = userData.Gender;
-                updatedUser.Contact = ContactFormatter(userData.Contact);
-                updatedUser.Email = userData.Email;
-                updatedUser.Address = userData.Address;
+            updatedUser.UserID = userData.UserID;
+            updatedUser.FirstName = userData.FirstName;
+            updatedUser.LastName = userData.LastName;
+            updatedUser.MiddleName = userData.MiddleName;
+            updatedUser.Birthdate = DateTime.Parse(userData.BirthDate);
+            updatedUser.Gender = userData.Gender;
+            updatedUser.Contact = ContactFormatter(userData.Contact);
+            updatedUser.Email = userData.Email;
+            updatedUser.Address = userData.Address;
 
-                var json = JsonConvert.SerializeObject(updatedUser);
-                var content = new StringContent(json, Encoding.UTF8, "application/json");
+            var json = JsonConvert.SerializeObject(updatedUser);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-                var response = await client.PutAsync(url, content);
+            var response = await client.PutAsync(url, content);
 
-                return response.IsSuccessStatusCode;
-            }
+            return response.IsSuccessStatusCode;
         }
 
         public async Task<bool> UpdateUserStatus(string userID, int status)
         {
-            using (var client = new HttpClient())
-            {
-                var url = $"http://localhost:5000/api/users/{userID}/status";
+            var url = $"http://localhost:5000/api/users/{userID}/status";
 
-                var updatedUser = new UserUpdateStatusDTO();
+            var updatedUser = new UserUpdateStatusDTO();
 
-                updatedUser.UserID = userID;
-                updatedUser.LastArchiveDate = DateTime.Now;
-                updatedUser.Status = status;
+            updatedUser.UserID = userID;
+            updatedUser.LastArchiveDate = DateTime.Now;
+            updatedUser.Status = status;
 
-                var json = JsonConvert.SerializeObject(updatedUser);
-                var content = new StringContent(json, Encoding.UTF8, "application/json");
+            var json = JsonConvert.SerializeObject(updatedUser);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-                var response = await client.PutAsync(url, content);
+            var response = await client.PutAsync(url, content);
 
-                return response.IsSuccessStatusCode;
-            }
+            return response.IsSuccessStatusCode;
         }
 
         public async Task<bool> CheckExistingUser(UserDataHolder userData)
         {
             try
             {
-                using (var client = new HttpClient())
+                var existingUser = new CheckExistingUserDTO();
+
+                existingUser.FirstName = userData.FirstName;
+                existingUser.LastName = userData.LastName;
+                existingUser.MiddleName = userData.MiddleName;
+
+                var response = await client.PostAsJsonAsync("http://localhost:5000/api/users/check-existing", existingUser);
+
+                if (response.StatusCode == System.Net.HttpStatusCode.Conflict)
                 {
-                    client.BaseAddress = new Uri("http://localhost:5000/");
-
-                    var existingUser = new CheckExistingUserDTO();
-
-                    existingUser.FirstName = userData.FirstName;
-                    existingUser.LastName = userData.LastName;
-                    existingUser.MiddleName = userData.MiddleName;
-
-                    var response = await client.PostAsJsonAsync("api/users/check-existing", existingUser);
-
-                    if (response.StatusCode == System.Net.HttpStatusCode.Conflict)
-                    {
-                        // will return true if user already exist
-                        CustomDialog.Show("User was already existing!", "Existing User", CustomDialogButtons.OK, CustomDialogIcons.Error);
-                        return true;
-                    }
-                    else if (response.IsSuccessStatusCode)
-                    {
-                        // will return false if user do not exist
-                        return false;
-                    }
-                    else
-                    {
-                        // will show an error dialog if it returns a badrequest from API-side.
-                        CustomDialog.Show(await response.Content.ReadAsStringAsync(),
-                                    "Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
-                        return true;
-                    }
+                    // will return true if user already exist
+                    CustomDialog.Show("User was already existing!", "Existing User", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                    return true;
+                }
+                else if (response.IsSuccessStatusCode)
+                {
+                    // will return false if user do not exist
+                    return false;
+                }
+                else
+                {
+                    // will show an error dialog if it returns a badrequest from API-side.
+                    CustomDialog.Show(await response.Content.ReadAsStringAsync(),
+                                "Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                    return true;
                 }
             }
             catch (HttpRequestException)

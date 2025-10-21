@@ -17,6 +17,8 @@ namespace Kinesia.Reports
     public partial class PrintReport : Form
     {
         private readonly ReportViewer ROMReportViewer;
+        private readonly HttpClient client = ApiClient.Instance;
+
         public PrintReport()
         {
             InitializeComponent();
@@ -28,36 +30,30 @@ namespace Kinesia.Reports
 
         private async void PrintReport_Load(object sender, EventArgs e)
         {
-            using(var client = new HttpClient())
+            var url1 = $"http://localhost:5000/api/assessment/generate-report?assessmentID={"SAMPLE1"}";
+            var response1 = await client.GetAsync(url1);
+
+            if (response1.IsSuccessStatusCode)
             {
-                var url = $"https://localhost:5001/api/assessment/generate-report?assessmentID={"SAMPLE1"}";
-                var response = await client.GetAsync(url);
+                var json = await response1.Content.ReadAsStringAsync();
+                var assessment = JsonConvert.DeserializeObject<AssessmentReportDTO>(json);
 
-                if (response.IsSuccessStatusCode)
-                {
-                    var json = await response.Content.ReadAsStringAsync();
-                    var assessment = JsonConvert.DeserializeObject<AssessmentReportDTO>(json);
+                var assessments = new List<AssessmentReportDTO> { assessment };
 
-                    var assessments = new List<AssessmentReportDTO> { assessment };
-
-                    var assessmentDatasource = new ReportDataSource("AssessmentDataset", assessments);
-                    ROMReportViewer.LocalReport.DataSources.Add(assessmentDatasource);
-                }
+                var assessmentDatasource = new ReportDataSource("AssessmentDataset", assessments);
+                ROMReportViewer.LocalReport.DataSources.Add(assessmentDatasource);
             }
 
-            using(var client = new HttpClient())
+            var url2 = $"http://localhost:5000/api/rom/generate-report?assessmentID={"SAMPLE1"}";
+            var response2 = await client.GetAsync(url2);
+
+            if (response2.IsSuccessStatusCode)
             {
-                var url = $"https://localhost:5001/api/rom/generate-report?assessmentID={"SAMPLE1"}";
-                var response = await client.GetAsync(url);
+                var json = await response2.Content.ReadAsStringAsync();
+                var ROMs = JsonConvert.DeserializeObject<List<ROMReportDTO>>(json);
 
-                if (response.IsSuccessStatusCode)
-                {
-                    var json = await response.Content.ReadAsStringAsync();
-                    var ROMs = JsonConvert.DeserializeObject<List<ROMReportDTO>>(json);
-
-                    var romDatasource = new ReportDataSource("ROMDataset", ROMs);
-                    ROMReportViewer.LocalReport.DataSources.Add(romDatasource);
-                }
+                var romDatasource = new ReportDataSource("ROMDataset", ROMs);
+                ROMReportViewer.LocalReport.DataSources.Add(romDatasource);
             }
 
             ROMReportViewer.LocalReport.ReportEmbeddedResource = "Kinesia.Reports.RDLCs.ROMReport.rdlc";

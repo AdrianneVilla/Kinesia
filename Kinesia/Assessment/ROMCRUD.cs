@@ -13,73 +13,71 @@ namespace Kinesia.Assessment
 {
     public class ROMCRUD
     {
+        private readonly HttpClient client = ApiClient.Instance;
 
         public async Task DisplayROM(string assessmentID)
         {
             try
             {
-                using (var client = new HttpClient())
+                var url = $"http://localhost:5000/api/rom?assessmentID={assessmentID}";
+                var response = await client.GetAsync(url);
+
+                if (response.IsSuccessStatusCode)
                 {
-                    var url = $"http://localhost:5000/api/rom?assessmentID={assessmentID}";
-                    var response = await client.GetAsync(url);
+                    var json = await response.Content.ReadAsStringAsync();
+                    var ROMs = JsonConvert.DeserializeObject<List<DisplayROMsDTO>>(json);
 
-                    if (response.IsSuccessStatusCode)
+                    CustomDataGrid.SetDoubleBuffering(PageObjects.assessmentDetails.GetROMGrid, true);
+                    PageObjects.assessmentDetails.GetROMGrid.SuspendLayout();
+                    PageObjects.assessmentDetails.GetROMGrid.AutoGenerateColumns = false;
+                    PageObjects.assessmentDetails.GetROMGrid.Columns.Clear();
+
+                    PageObjects.assessmentDetails.GetROMGrid.Columns.Add(new DataGridViewTextBoxColumn
                     {
-                        var json = await response.Content.ReadAsStringAsync();
-                        var ROMs = JsonConvert.DeserializeObject<List<DisplayROMsDTO>>(json);
+                        Name = "TherapistName",
+                        DataPropertyName = "TherapistName",
+                        HeaderText = "Therapist Name"
+                    });
 
-                        CustomDataGrid.SetDoubleBuffering(PageObjects.assessmentDetails.GetROMGrid, true);
-                        PageObjects.assessmentDetails.GetROMGrid.SuspendLayout();
-                        PageObjects.assessmentDetails.GetROMGrid.AutoGenerateColumns = false;
-                        PageObjects.assessmentDetails.GetROMGrid.Columns.Clear();
-
-                        PageObjects.assessmentDetails.GetROMGrid.Columns.Add(new DataGridViewTextBoxColumn
-                        {
-                            Name = "TherapistName",
-                            DataPropertyName = "TherapistName",
-                            HeaderText = "Therapist Name"
-                        });
-
-                        PageObjects.assessmentDetails.GetROMGrid.Columns.Add(new DataGridViewTextBoxColumn
-                        {
-                            Name = "InitialROM",
-                            DataPropertyName = "InitialROM",
-                            HeaderText = "Initial ROM"
-                        });
-
-                        PageObjects.assessmentDetails.GetROMGrid.Columns.Add(new DataGridViewTextBoxColumn
-                        {
-                            Name = "EndROM",
-                            DataPropertyName = "EndROM",
-                            HeaderText = "End ROM"
-                        });
-
-                        PageObjects.assessmentDetails.GetROMGrid.Columns.Add(new DataGridViewTextBoxColumn
-                        {
-                            Name = "Movement",
-                            DataPropertyName = "Movement",
-                            HeaderText = "Movement Type"
-                        });
-
-                        PageObjects.assessmentDetails.GetROMGrid.Columns.Add(new DataGridViewTextBoxColumn
-                        {
-                            Name = "Date",
-                            DataPropertyName = "Date",
-                            HeaderText = "Date"
-                        });
-
-                        PageObjects.assessmentDetails.GetROMGrid.DataSource = ROMs;
-                        PageObjects.assessmentDetails.GetROMGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
-                        CustomDataGrid.StyleDataGridWithSpacing(PageObjects.assessmentDetails.GetROMGrid);
-                        PageObjects.assessmentDetails.GetROMGrid.ResumeLayout();
-                    }
-                    else
+                    PageObjects.assessmentDetails.GetROMGrid.Columns.Add(new DataGridViewTextBoxColumn
                     {
-                        // will show an error dialog if it returns a badrequest from API-side.
-                        CustomDialog.Show(await response.Content.ReadAsStringAsync(),
-                                    "Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
-                    }
+                        Name = "InitialROM",
+                        DataPropertyName = "InitialROM",
+                        HeaderText = "Initial ROM"
+                    });
+
+                    PageObjects.assessmentDetails.GetROMGrid.Columns.Add(new DataGridViewTextBoxColumn
+                    {
+                        Name = "EndROM",
+                        DataPropertyName = "EndROM",
+                        HeaderText = "End ROM"
+                    });
+
+                    PageObjects.assessmentDetails.GetROMGrid.Columns.Add(new DataGridViewTextBoxColumn
+                    {
+                        Name = "Movement",
+                        DataPropertyName = "Movement",
+                        HeaderText = "Movement Type"
+                    });
+
+                    PageObjects.assessmentDetails.GetROMGrid.Columns.Add(new DataGridViewTextBoxColumn
+                    {
+                        Name = "Date",
+                        DataPropertyName = "Date",
+                        HeaderText = "Date"
+                    });
+
+                    PageObjects.assessmentDetails.GetROMGrid.DataSource = ROMs;
+                    PageObjects.assessmentDetails.GetROMGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+                    CustomDataGrid.StyleDataGridWithSpacing(PageObjects.assessmentDetails.GetROMGrid);
+                    PageObjects.assessmentDetails.GetROMGrid.ResumeLayout();
+                }
+                else
+                {
+                    // will show an error dialog if it returns a badrequest from API-side.
+                    CustomDialog.Show(await response.Content.ReadAsStringAsync(),
+                                "Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
                 }
             }
             catch (HttpRequestException)
@@ -99,25 +97,22 @@ namespace Kinesia.Assessment
         {
             try
             {
-                using (var client = new HttpClient())
+                client.BaseAddress = new Uri("http://localhost:5000/api/");
+                var json = JsonConvert.SerializeObject(newROM);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                var response = await client.PostAsync("rom", content);
+
+                if (response.IsSuccessStatusCode)
                 {
-                    client.BaseAddress = new Uri("http://localhost:5000/api/");
-                    var json = JsonConvert.SerializeObject(newROM);
-                    var content = new StringContent(json, Encoding.UTF8, "application/json");
-
-                    var response = await client.PostAsync("rom", content);
-
-                    if (response.IsSuccessStatusCode)
-                    {
-                        return true;
-                    }
-                    else
-                    {
-                        // will show an error dialog if it returns a badrequest from API-side.
-                        CustomDialog.Show(await response.Content.ReadAsStringAsync(),
-                                    "Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
-                        return false;
-                    }
+                    return true;
+                }
+                else
+                {
+                    // will show an error dialog if it returns a badrequest from API-side.
+                    CustomDialog.Show(await response.Content.ReadAsStringAsync(),
+                                "Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                    return false;
                 }
             }
             catch (HttpRequestException)

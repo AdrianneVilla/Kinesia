@@ -23,9 +23,7 @@ namespace Kinesia.Components
 
         private async void DashboardPage_Load(object sender, EventArgs e)
         {
-            lblName.Text = SessionManager.UserLastName + "!";
-            lblMonth.Text = DateTime.Now.ToString("MMMM");
-            await Queries.LogsQueries.DisplayDashboardLogs();
+
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -41,7 +39,10 @@ namespace Kinesia.Components
         private async void DashboardPage_Paint(object sender, PaintEventArgs e)
         {
             lblName.Text = SessionManager.UserLastName + "!";
-            lblMonth.Text = DateTime.Now.ToString("MMMM");
+            lblMonth.Text = DateTime.Now.ToString("MMMM yyyy");
+            lblTotalAssessments.Text = (await Queries.AssessmentQueries.GetTotalAssessments(DateTime.Now.Month, DateTime.Now.Year)).ToString();
+            lblTotalOngoingAssessments.Text = (await Queries.AssessmentQueries.GetTotalOngoingAssessments(DateTime.Now.Month, DateTime.Now.Year)).ToString();
+            lblMostJointTracked.Text = await Queries.AssessmentQueries.GetMostTrackedJoint(DateTime.Now.Month, DateTime.Now.Year);
             await Queries.LogsQueries.DisplayDashboardLogs();
         }
 

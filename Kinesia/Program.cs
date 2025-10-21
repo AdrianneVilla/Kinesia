@@ -1,24 +1,25 @@
-﻿using Kinesia.Components;
+﻿using CustomControls.RJControls;
+using Kinesia.Assessment;
+using Kinesia.Components;
+using Kinesia.Components.Custom_Dialog_Boxes;
+using Kinesia.Logs;
 using Kinesia.Patients;
+using Kinesia.Reports;
+using Kinesia.Users;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Kinesia.Users;
-using System.Text.RegularExpressions;
-using WindowsFormsApp2.CustomButton;
-using Kinesia.Assessment;
-using Kinesia.Components.Custom_Dialog_Boxes;
 using System.Drawing;
+using System.Linq;
+using System.Net.Http;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
-using Kinesia.Logs;
-using CustomControls.RJControls;
-using Kinesia.Reports;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using WindowsFormsApp2.CustomButton;
 
 namespace Kinesia
 {
@@ -78,6 +79,14 @@ namespace Kinesia
             }
             panelHolder.Controls.Clear();
         }
+    }
+
+    public static class ApiClient
+    {
+        public static readonly HttpClient Instance = new HttpClient
+        {
+            Timeout = TimeSpan.FromSeconds(10)
+        };
     }
 
     // Contains custom dialog methods

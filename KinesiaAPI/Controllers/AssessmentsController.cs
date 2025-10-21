@@ -126,6 +126,84 @@ namespace KinesiaAPI.Controllers
             return Ok(assessment);
         }
 
+        // GET: api/assessment/total-ongoing-assessments?month={}&year={}
+        [HttpGet("total-ongoing-assessments")]
+        public async Task<ActionResult<int>> GetTotalOngoingAssessments(int month, int year)
+        {
+            try
+            {
+                var totalCount = await _context.Assessments
+                .CountAsync(a => a.AssessmentStatus == 1 &&
+                            a.AssessmentDate.Year == year &&
+                            a.AssessmentDate.Month == month);
+
+                return Ok(totalCount);
+            }
+            catch (DbException)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An error occured on database.\nPlease try again.");
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An unexpected error occured.\nPlease try again.");
+            }
+        }
+
+        // GET: api/assessment/total-assessments?month={}&year={}
+        [HttpGet("total-assessments")]
+        public async Task<ActionResult<int>> GetTotalAssessments(int month, int year)
+        {
+            try
+            {
+                var totalCount = await _context.Assessments
+                    .CountAsync(a => a.AssessmentDate.Year == year && a.AssessmentDate.Month == month);
+
+                return Ok(totalCount);
+            }
+            catch (DbException)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An error occured on database.\nPlease try again.");
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An unexpected error occured.\nPlease try again.");
+            }
+        }
+
+        // GET: api/assessment/most-tracked-joint?month={}&year{}
+        [HttpGet("most-tracked-joint")]
+        public async Task<ActionResult<string>> GetMostTrackedJoint(int month, int year)
+        {
+            try
+            {
+                var mostTracked = await _context.Assessments
+                .Where(a => a.AssessmentDate.Year == year && a.AssessmentDate.Month == month)
+                .GroupBy(a => a.Joint)
+                .Select(g => new
+                {
+                    Joint = g.Key,
+                    Count = g.Count()
+                })
+                .OrderByDescending(g => g.Count)
+                .FirstOrDefaultAsync();
+
+                if (mostTracked == null)
+                {
+                    return Ok("N/A");
+                }
+
+                return Ok(mostTracked.Joint);
+            }
+            catch (DbException)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An error occured on database.\nPlease try again.");
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An unexpected error occured.\nPlease try again.");
+            }
+        }
+
         // PUT: api/Assessments/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
