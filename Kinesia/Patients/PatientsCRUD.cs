@@ -236,12 +236,12 @@ namespace Kinesia.Patients
                         if (patient.Status == 1)
                         {
                             patientDetails.Status = "Active";
-                            patientDetails.BtnArchive.Tag = "Archive";
+                            patientDetails.BtnArchive.Tag = "Active";
                         }
                         else
                         {
                             patientDetails.Status = "Inactive";
-                            patientDetails.BtnArchive.Tag = "Unarchive";
+                            patientDetails.BtnArchive.Tag = "Inactive";
                             patientDetails.BtnArchive.Image = Properties.Resources.Unarchive;
                             patientDetails.BtnArchive.Text = "Unarchive Patient";
                             patientDetails.BtnArchive.ForeColor = Color.FromArgb(18, 90, 211);

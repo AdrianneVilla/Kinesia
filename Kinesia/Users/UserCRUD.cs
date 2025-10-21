@@ -158,12 +158,12 @@ namespace Kinesia.Users
                         if (user.Status == 1)
                         {
                             userDetails.Status = "Active";
-                            userDetails.BtnArchive.Tag = "Archive";
+                            userDetails.BtnArchive.Tag = "Active";
                         }
                         else
                         {
                             userDetails.Status = "Inactive";
-                            userDetails.BtnArchive.Tag = "Unarchive";
+                            userDetails.BtnArchive.Tag = "Inactive";
                             userDetails.BtnArchive.Text = "Unarchive User";
                             userDetails.BtnArchive.Image = Properties.Resources.Unarchive;
                             userDetails.BtnArchive.ForeColor = Color.FromArgb(18, 90, 211);
