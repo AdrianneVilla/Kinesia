@@ -195,6 +195,8 @@
             txtEmail.PasswordChar = false;
             txtEmail.PlaceholderColor = System.Drawing.Color.DarkGray;
             txtEmail.PlaceholderText = "e.g. example.gmail.com";
+            txtEmail.SelectionLength = 0;
+            txtEmail.SelectionStart = 0;
             txtEmail.Size = new System.Drawing.Size(446, 43);
             txtEmail.TabIndex = 7;
             txtEmail.Texts = "";
@@ -292,6 +294,8 @@
             txtPassword.PasswordChar = false;
             txtPassword.PlaceholderColor = System.Drawing.Color.DarkGray;
             txtPassword.PlaceholderText = "";
+            txtPassword.SelectionLength = 0;
+            txtPassword.SelectionStart = 0;
             txtPassword.Size = new System.Drawing.Size(343, 43);
             txtPassword.TabIndex = 10;
             txtPassword.Texts = "";
@@ -325,6 +329,8 @@
             txtUsername.PasswordChar = false;
             txtUsername.PlaceholderColor = System.Drawing.Color.DarkGray;
             txtUsername.PlaceholderText = "";
+            txtUsername.SelectionLength = 0;
+            txtUsername.SelectionStart = 0;
             txtUsername.Size = new System.Drawing.Size(340, 43);
             txtUsername.TabIndex = 9;
             txtUsername.Texts = "";
@@ -370,6 +376,8 @@
             txtMiddleName.PasswordChar = false;
             txtMiddleName.PlaceholderColor = System.Drawing.Color.DarkGray;
             txtMiddleName.PlaceholderText = "";
+            txtMiddleName.SelectionLength = 0;
+            txtMiddleName.SelectionStart = 0;
             txtMiddleName.Size = new System.Drawing.Size(427, 43);
             txtMiddleName.TabIndex = 3;
             txtMiddleName.Texts = "";
@@ -404,6 +412,8 @@
             txtLastName.PasswordChar = false;
             txtLastName.PlaceholderColor = System.Drawing.Color.DarkGray;
             txtLastName.PlaceholderText = "";
+            txtLastName.SelectionLength = 0;
+            txtLastName.SelectionStart = 0;
             txtLastName.Size = new System.Drawing.Size(409, 43);
             txtLastName.TabIndex = 2;
             txtLastName.Texts = "";
@@ -455,6 +465,8 @@
             txtAddress.PasswordChar = false;
             txtAddress.PlaceholderColor = System.Drawing.Color.DarkGray;
             txtAddress.PlaceholderText = "";
+            txtAddress.SelectionLength = 0;
+            txtAddress.SelectionStart = 0;
             txtAddress.Size = new System.Drawing.Size(875, 42);
             txtAddress.TabIndex = 8;
             txtAddress.Texts = "";
@@ -488,6 +500,8 @@
             txtContact.PasswordChar = false;
             txtContact.PlaceholderColor = System.Drawing.Color.DarkGray;
             txtContact.PlaceholderText = "";
+            txtContact.SelectionLength = 0;
+            txtContact.SelectionStart = 0;
             txtContact.Size = new System.Drawing.Size(427, 45);
             txtContact.TabIndex = 6;
             txtContact.Texts = "";
@@ -533,6 +547,8 @@
             txtAge.PasswordChar = false;
             txtAge.PlaceholderColor = System.Drawing.Color.DarkGray;
             txtAge.PlaceholderText = "";
+            txtAge.SelectionLength = 0;
+            txtAge.SelectionStart = 0;
             txtAge.Size = new System.Drawing.Size(112, 43);
             txtAge.TabIndex = 5;
             txtAge.Texts = "";
@@ -577,6 +593,8 @@
             txtFirstName.PasswordChar = false;
             txtFirstName.PlaceholderColor = System.Drawing.Color.DarkGray;
             txtFirstName.PlaceholderText = "";
+            txtFirstName.SelectionLength = 0;
+            txtFirstName.SelectionStart = 0;
             txtFirstName.Size = new System.Drawing.Size(446, 43);
             txtFirstName.TabIndex = 1;
             txtFirstName.Texts = "";
@@ -670,8 +688,8 @@
             // 
             // AddUser
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             BackColor = System.Drawing.Color.White;
             Controls.Add(flowLayoutPanel1);

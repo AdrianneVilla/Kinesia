@@ -7,6 +7,7 @@ using Mysqlx;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Net.Http;
@@ -210,6 +211,7 @@ namespace Kinesia.Users
                     if (response.IsSuccessStatusCode)
                     {
                         var json = await response.Content.ReadAsStringAsync();
+
                         var user = JsonConvert.DeserializeObject<UsersDTO>(json);
 
                         userData.UserID = user.UserID;
@@ -250,7 +252,7 @@ namespace Kinesia.Users
             }
         }
 
-        public async Task SetUserID(UserDataHolder userData)
+        public async Task<string> SetUserID()
         {
             try
             {
@@ -261,13 +263,14 @@ namespace Kinesia.Users
 
                     if (response.IsSuccessStatusCode)
                     {
-                        userData.UserID = await response.Content.ReadAsStringAsync();
+                        return await response.Content.ReadAsStringAsync();
                     }
                     else
                     {
                         // will show an error dialog if it returns a badrequest from API
                         CustomDialog.Show(await response.Content.ReadAsStringAsync(),
                             "Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                        return null;
                     }
                 }
             }
@@ -276,16 +279,18 @@ namespace Kinesia.Users
                 // will show an error dialog if it catches a http request error from client-side
                 CustomDialog.Show("Unable to connect to the server.\nPlease try again.",
                     "Connection Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                return null;
             }
             catch (Exception)
             {
                 // will show an error dialog if it catches an unexpected error from client-side.
                 CustomDialog.Show("An unexpected error occured.\nPlease try again.",
                             "Unexpected Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                return null;
             }
         }
 
-        public async Task<bool> AddUser(UserDataHolder userData)
+        public async Task<string> AddUser(UserDataHolder userData)
         {
             try
             {
@@ -293,11 +298,9 @@ namespace Kinesia.Users
                 {
                     client.BaseAddress = new Uri("http://localhost:5000/api/");
 
-                    string generatedUserId = await client.GetStringAsync("users/generate-userid");
-
                     var newUser = new AddUserDTO
                     {
-                        UserID = generatedUserId,
+                        UserID = await SetUserID(),
                         FirstName = userData.FirstName,
                         LastName = userData.LastName,
                         MiddleName = userData.MiddleName,
@@ -317,7 +320,7 @@ namespace Kinesia.Users
                     var response = await client.PostAsync("users", content);
 
                     if (response.IsSuccessStatusCode) { 
-                        return true;
+                        return newUser.UserID;
                     }
                     else
                     {
@@ -325,7 +328,7 @@ namespace Kinesia.Users
                         // will show an error dialog if it returns a badrequest from API
                         CustomDialog.Show(await response.Content.ReadAsStringAsync(),
                             "Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
-                        return false;
+                        return null;
                     }
                 }
             }
@@ -334,14 +337,14 @@ namespace Kinesia.Users
                 // will show an error dialog if it catches a http request error from client-side.
                 CustomDialog.Show("Unable to connect to the server.\nPlease try again.",
                             "Connection Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
-                return false;
+                return null;
             }
             catch (Exception)
             {
                 // will show an error dialog if it catches an unexpected error from client-side.
                 CustomDialog.Show("Unexpected error occured.\nPlease try again.",
                             "Unexpected Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
-                return false;
+                return null;
             }
         }
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace Kinesia.Users
@@ -25,14 +26,14 @@ namespace Kinesia.Users
             if (addUserDiag == DialogResult.Yes)
             {
                 // will remove extra white spaces on beginning and end of the textboxes
-                txtFirstName.Texts.Trim();
-                txtLastName.Texts.Trim();
-                txtMiddleName.Texts.Trim();
-                txtContact.Texts.Trim();
-                txtEmail.Texts.Trim();
-                txtAddress.Texts.Trim();
-                txtUsername.Texts.Trim();
-                txtPassword.Texts.Trim();
+                txtFirstName.Texts = txtFirstName.Texts.Trim();
+                txtLastName.Texts = txtLastName.Texts.Trim();
+                txtMiddleName.Texts = txtMiddleName.Texts.Trim();
+                txtContact.Texts = txtContact.Texts.Trim();
+                txtEmail.Texts = txtEmail.Texts.Trim();
+                txtAddress.Texts = txtAddress.Texts.Trim();
+                txtUsername.Texts = txtUsername.Texts.Trim();
+                txtPassword.Texts = txtPassword.Texts.Trim();
 
                 var userData = new UserDataHolder
                 {
@@ -54,17 +55,16 @@ namespace Kinesia.Users
                     Queries.UserQueries.IsContactValid(userData) && Queries.UserQueries.IsEmailValid(userData))
                 {
                     // will continue to add the user if UserDataHolder passed the data validations
-                    Queries.UserQueries.SetUserID(userData);
-                    var success = await Queries.UserQueries.AddUser(userData);
-
-                    if (success)
+                    string newUserID = await Queries.UserQueries.AddUser(userData);
+                    
+                    if (!string.IsNullOrEmpty(newUserID))
                     {
                         // will add a log for adding user
-                        await Queries.LogsQueries.AddLog($"Added {userData.UserID}", "Users");
+                        await Queries.LogsQueries.AddLog($"Added {newUserID}", "Users");
 
                         clearInputs();
                         CustomDialog.Show("User has been added successfully!", "Add User Successful", CustomDialogButtons.OK, CustomDialogIcons.Information);
-                        await Queries.UserQueries.GetUserDetails(userData.UserID);
+                        await Queries.UserQueries.GetUserDetails(newUserID);
                     }
                     else
                     {
