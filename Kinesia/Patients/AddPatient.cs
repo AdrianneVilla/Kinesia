@@ -121,12 +121,12 @@ namespace Kinesia.Patients
             if (addPatientDialog == DialogResult.Yes)
             {
                 // will remove extra whitespaces on beginning and end of the textboxes
-                txtFirstName.Texts.Trim();
-                txtLastName.Texts.Trim();
-                txtMiddleName.Texts.Trim();
-                txtContact.Texts.Trim();
-                txtOccupation.Texts.Trim();
-                txtAddress.Texts.Trim();
+                txtFirstName.Texts = txtFirstName.Texts.Trim();
+                txtLastName.Texts = txtLastName.Texts.Trim();
+                txtMiddleName.Texts = txtMiddleName.Texts.Trim();
+                txtContact.Texts = txtContact.Texts.Trim();
+                txtOccupation.Texts = txtOccupation.Texts.Trim();
+                txtAddress.Texts = txtAddress.Texts.Trim();
 
                 DataHolder.PatientDataHolder = new PatientDataHolder // will create an insatnce of PatientDataHolder and set the values of it
                 {
@@ -145,23 +145,20 @@ namespace Kinesia.Patients
                     Queries.PatientQueries.IsAgeValid(DataHolder.PatientDataHolder) && Queries.PatientQueries.IsContactValid(DataHolder.PatientDataHolder))
                 {
                     // will continue to add the patient if PatientDataHolder passed the data validations
-                    Queries.PatientQueries.SetPatientID(DataHolder.PatientDataHolder);
+                    string newPatientID = await Queries.PatientQueries.AddPatient(DataHolder.PatientDataHolder);
 
-
-                    var success = await Queries.PatientQueries.AddPatient(DataHolder.PatientDataHolder);
-
-                    if (success)
+                    if (!string.IsNullOrEmpty(newPatientID))
                     {
                         // if adding patient was successful
                         // will add a log for adding a patient
                         // will clear all inputs
                         // will show a success message
                         // will redirect to Patient Details page
-                        await Queries.LogsQueries.AddLog($"Added {DataHolder.PatientDataHolder.PatientID}", "Patients");
+                        await Queries.LogsQueries.AddLog($"Added {newPatientID}", "Patients");
 
                         clearAllInputs();
                         MessageBox.Show("Patient added successfully!", "Add Patient Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        await Queries.PatientQueries.GetPatientDetails(DataHolder.PatientDataHolder.PatientID);
+                        await Queries.PatientQueries.GetPatientDetails(newPatientID);
                     }
                     else
                     {

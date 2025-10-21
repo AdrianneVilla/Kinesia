@@ -254,6 +254,8 @@
             txtOccupation.PasswordChar = false;
             txtOccupation.PlaceholderColor = System.Drawing.Color.DarkGray;
             txtOccupation.PlaceholderText = "";
+            txtOccupation.SelectionLength = 0;
+            txtOccupation.SelectionStart = 0;
             txtOccupation.Size = new System.Drawing.Size(210, 43);
             txtOccupation.TabIndex = 7;
             txtOccupation.Texts = "";
@@ -300,6 +302,8 @@
             txtAge.PasswordChar = false;
             txtAge.PlaceholderColor = System.Drawing.Color.DarkGray;
             txtAge.PlaceholderText = "";
+            txtAge.SelectionLength = 0;
+            txtAge.SelectionStart = 0;
             txtAge.Size = new System.Drawing.Size(112, 43);
             txtAge.TabIndex = 26;
             txtAge.Texts = "";
@@ -333,6 +337,8 @@
             txtMiddleName.PasswordChar = false;
             txtMiddleName.PlaceholderColor = System.Drawing.Color.DarkGray;
             txtMiddleName.PlaceholderText = "";
+            txtMiddleName.SelectionLength = 0;
+            txtMiddleName.SelectionStart = 0;
             txtMiddleName.Size = new System.Drawing.Size(427, 43);
             txtMiddleName.TabIndex = 3;
             txtMiddleName.Texts = "";
@@ -367,6 +373,8 @@
             txtLastName.PasswordChar = false;
             txtLastName.PlaceholderColor = System.Drawing.Color.DarkGray;
             txtLastName.PlaceholderText = "";
+            txtLastName.SelectionLength = 0;
+            txtLastName.SelectionStart = 0;
             txtLastName.Size = new System.Drawing.Size(427, 43);
             txtLastName.TabIndex = 2;
             txtLastName.Texts = "";
@@ -401,6 +409,8 @@
             txtFirstName.PasswordChar = false;
             txtFirstName.PlaceholderColor = System.Drawing.Color.DarkGray;
             txtFirstName.PlaceholderText = "";
+            txtFirstName.SelectionLength = 0;
+            txtFirstName.SelectionStart = 0;
             txtFirstName.Size = new System.Drawing.Size(427, 43);
             txtFirstName.TabIndex = 1;
             txtFirstName.Texts = "";
@@ -463,6 +473,8 @@
             txtAddress.PasswordChar = false;
             txtAddress.PlaceholderColor = System.Drawing.Color.DarkGray;
             txtAddress.PlaceholderText = "";
+            txtAddress.SelectionLength = 0;
+            txtAddress.SelectionStart = 0;
             txtAddress.Size = new System.Drawing.Size(1357, 119);
             txtAddress.TabIndex = 8;
             txtAddress.Texts = "";
@@ -496,6 +508,8 @@
             txtContact.PasswordChar = false;
             txtContact.PlaceholderColor = System.Drawing.Color.DarkGray;
             txtContact.PlaceholderText = "";
+            txtContact.SelectionLength = 0;
+            txtContact.SelectionStart = 0;
             txtContact.Size = new System.Drawing.Size(209, 43);
             txtContact.TabIndex = 6;
             txtContact.Texts = "";
@@ -554,8 +568,8 @@
             // 
             // AddPatient
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             BackColor = System.Drawing.Color.White;
             Controls.Add(btnClearInput);
             Controls.Add(btnAddPatient);

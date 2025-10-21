@@ -332,7 +332,7 @@ namespace Kinesia.Patients
             }
         }
 
-        public async Task SetPatientID(PatientDataHolder patientData)
+        public async Task<string> SetPatientID()
         {
             try
             {
@@ -343,13 +343,14 @@ namespace Kinesia.Patients
 
                     if (response.IsSuccessStatusCode)
                     {
-                        patientData.PatientID = await response.Content.ReadAsStringAsync();
+                        return await response.Content.ReadAsStringAsync();
                     }
                     else
                     {
                         // will show an error dialog if it returns a badrequest from API
                         CustomDialog.Show(await response.Content.ReadAsStringAsync(),
                             "Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                        return null;
                     }
                 }
             }
@@ -358,16 +359,18 @@ namespace Kinesia.Patients
                 // will show an error dialog if it catches a http request error from client-side
                 CustomDialog.Show("Unable to connect to the server.\nPlease try again.",
                     "Connection Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                return null;
             }
             catch (Exception)
             {
                 // will show an error dialog if it catches an unexpected error from client-side
                 CustomDialog.Show("Unable to connect to the server.\nPlease try again.",
                             "Unexpected Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                return null;
             }
         }
 
-        public async Task<bool> AddPatient(PatientDataHolder patientData)
+        public async Task<string> AddPatient(PatientDataHolder patientData)
         {
             try
             {
@@ -375,7 +378,7 @@ namespace Kinesia.Patients
                 {
                     var newPatient = new PatientsDTO
                     {
-                        PatientID = patientData.PatientID,
+                        PatientID = await SetPatientID(),
                         FirstName = patientData.FirstName,
                         LastName = patientData.LastName,
                         MiddleName = patientData.MiddleName,
@@ -397,14 +400,14 @@ namespace Kinesia.Patients
 
                     if (response.IsSuccessStatusCode)
                     {
-                        return true;
+                        return newPatient.PatientID;
                     }
                     else
                     {
                         // will show an error dialog if it returns a badrequest from API-side.
                         CustomDialog.Show(await response.Content.ReadAsStringAsync(),
                                     "Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
-                        return false;
+                        return null;
                     }
                 }
             }
@@ -413,14 +416,14 @@ namespace Kinesia.Patients
                 // will show an error dialog if it catches a http request error from client-side.
                 CustomDialog.Show("Unable to connect to the server.\nPlease try again.",
                             "Connection Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
-                return false;
+                return null;
             }
             catch (Exception)
             {
                 // will show an error dialog if it catches an unexpected error from client-side.
                 CustomDialog.Show("Unexpected error occured.\nPlease try again.",
                             "Unexpected Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
-                return false;
+                return null;
             }
         }
 
