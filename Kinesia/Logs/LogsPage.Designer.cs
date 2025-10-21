@@ -309,7 +309,7 @@
             LogHolder.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             LogHolder.Name = "LogHolder";
             LogHolder.Padding = new System.Windows.Forms.Padding(6);
-            LogHolder.Size = new System.Drawing.Size(2794, 21500);
+            LogHolder.Size = new System.Drawing.Size(2794, 28412);
             LogHolder.TabIndex = 8;
             // 
             // panelBorder1
@@ -382,6 +382,8 @@
             txtSearchBar.PasswordChar = false;
             txtSearchBar.PlaceholderColor = System.Drawing.Color.DarkGray;
             txtSearchBar.PlaceholderText = "";
+            txtSearchBar.SelectionLength = 0;
+            txtSearchBar.SelectionStart = 0;
             txtSearchBar.Size = new System.Drawing.Size(388, 32);
             txtSearchBar.TabIndex = 4;
             txtSearchBar.Texts = "Search for User name or Log ID";
@@ -416,7 +418,7 @@
             Controls.Add(nameHolder);
             Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             Name = "LogsPage";
-            Size = new System.Drawing.Size(2726, 21686);
+            Size = new System.Drawing.Size(2726, 28598);
             Load += LogsPage_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridPatients).EndInit();
             panelBorder2.ResumeLayout(false);

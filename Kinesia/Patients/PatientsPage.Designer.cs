@@ -146,7 +146,7 @@
             btnAddPatient.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 238);
             btnAddPatient.ForeColor = System.Drawing.Color.Transparent;
             btnAddPatient.Image = (System.Drawing.Image)resources.GetObject("btnAddPatient.Image");
-            btnAddPatient.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            btnAddPatient.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             btnAddPatient.Location = new System.Drawing.Point(1617, 6);
             btnAddPatient.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             btnAddPatient.Name = "btnAddPatient";

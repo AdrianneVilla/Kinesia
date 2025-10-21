@@ -68,7 +68,7 @@
             btnSelectPatient.ForeColor = System.Drawing.Color.White;
             btnSelectPatient.Image = Properties.Resources.newWhiteSelect;
             btnSelectPatient.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnSelectPatient.Location = new System.Drawing.Point(219, 156);
+            btnSelectPatient.Location = new System.Drawing.Point(211, 156);
             btnSelectPatient.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             btnSelectPatient.Name = "btnSelectPatient";
             btnSelectPatient.Padding = new System.Windows.Forms.Padding(10, 3, 30, 0);
@@ -83,9 +83,9 @@
             // 
             label3.Font = new System.Drawing.Font("Poppins", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             label3.ForeColor = System.Drawing.Color.Gray;
-            label3.Location = new System.Drawing.Point(22, 87);
+            label3.Location = new System.Drawing.Point(3, 87);
             label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(628, 49);
+            label3.Size = new System.Drawing.Size(613, 49);
             label3.TabIndex = 2;
             label3.Text = "Search and select a patient to begin assessment";
             label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -94,7 +94,7 @@
             // 
             label2.Font = new System.Drawing.Font("Poppins", 20.25F, System.Drawing.FontStyle.Bold);
             label2.ForeColor = System.Drawing.Color.Black;
-            label2.Location = new System.Drawing.Point(210, 38);
+            label2.Location = new System.Drawing.Point(196, 38);
             label2.Name = "label2";
             label2.Size = new System.Drawing.Size(229, 49);
             label2.TabIndex = 1;

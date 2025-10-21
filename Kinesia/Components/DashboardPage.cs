@@ -44,5 +44,15 @@ namespace Kinesia.Components
             lblMonth.Text = DateTime.Now.ToString("MMMM");
             await Queries.LogsQueries.DisplayDashboardLogs();
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

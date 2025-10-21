@@ -413,6 +413,26 @@ namespace Kinesia.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap newTotalAssessment {
+            get {
+                object obj = ResourceManager.GetObject("newTotalAssessment", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap newTotalAssessmentIcon {
+            get {
+                object obj = ResourceManager.GetObject("newTotalAssessmentIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap newWhiteSelect {
             get {
                 object obj = ResourceManager.GetObject("newWhiteSelect", resourceCulture);
@@ -596,6 +616,56 @@ namespace Kinesia.Properties {
         internal static System.Drawing.Bitmap Stethoscope {
             get {
                 object obj = ResourceManager.GetObject("Stethoscope", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap totalAssessment {
+            get {
+                object obj = ResourceManager.GetObject("totalAssessment", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap totalAssessmentIcon {
+            get {
+                object obj = ResourceManager.GetObject("totalAssessmentIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap totalAssessmentsPurple {
+            get {
+                object obj = ResourceManager.GetObject("totalAssessmentsPurple", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap totalAssessmentSquare {
+            get {
+                object obj = ResourceManager.GetObject("totalAssessmentSquare", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap totalJointIcon {
+            get {
+                object obj = ResourceManager.GetObject("totalJointIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

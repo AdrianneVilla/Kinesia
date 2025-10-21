@@ -41,6 +41,7 @@
             splitter1 = new System.Windows.Forms.Splitter();
             btnAddPatient = new OrganizationProfile.CustomButton();
             btnExit = new OrganizationProfile.CustomButton();
+            customButton1 = new OrganizationProfile.CustomButton();
             ((System.ComponentModel.ISupportInitialize)dataGridPatientSelection).BeginInit();
             panelBorder1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -65,6 +66,7 @@
             panelBorder1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             panelBorder1.BorderRadius = 10;
             panelBorder1.Color = System.Drawing.Color.BurlyWood;
+            panelBorder1.Controls.Add(customButton1);
             panelBorder1.Controls.Add(btnSearch);
             panelBorder1.Controls.Add(customButton2);
             panelBorder1.Controls.Add(pictureBox1);
@@ -149,6 +151,8 @@
             txtSearchBar.PasswordChar = false;
             txtSearchBar.PlaceholderColor = System.Drawing.Color.DarkGray;
             txtSearchBar.PlaceholderText = "Search Patient";
+            txtSearchBar.SelectionLength = 0;
+            txtSearchBar.SelectionStart = 0;
             txtSearchBar.Size = new System.Drawing.Size(580, 35);
             txtSearchBar.TabIndex = 4;
             txtSearchBar.Texts = "";
@@ -249,6 +253,28 @@
             btnExit.TextColor = System.Drawing.Color.Transparent;
             btnExit.UseVisualStyleBackColor = false;
             // 
+            // customButton1
+            // 
+            customButton1.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            customButton1.BackColor = System.Drawing.Color.FromArgb(64, 210, 173);
+            customButton1.BackgroundColor = System.Drawing.Color.FromArgb(64, 210, 173);
+            customButton1.BorderColor = System.Drawing.Color.PaleVioletRed;
+            customButton1.BorderRadius = 10;
+            customButton1.BorderSize = 0;
+            customButton1.FlatAppearance.BorderSize = 0;
+            customButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            customButton1.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            customButton1.ForeColor = System.Drawing.Color.White;
+            customButton1.Location = new System.Drawing.Point(645, 10);
+            customButton1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            customButton1.Name = "customButton1";
+            customButton1.Padding = new System.Windows.Forms.Padding(2, 3, 0, 0);
+            customButton1.Size = new System.Drawing.Size(118, 40);
+            customButton1.TabIndex = 17;
+            customButton1.Text = "Search";
+            customButton1.TextColor = System.Drawing.Color.White;
+            customButton1.UseVisualStyleBackColor = false;
+            // 
             // SelectPatient
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -285,5 +311,6 @@
         private System.Windows.Forms.Splitter splitter1;
         private OrganizationProfile.CustomButton btnAddPatient;
         private OrganizationProfile.CustomButton btnExit;
+        private OrganizationProfile.CustomButton customButton1;
     }
 }

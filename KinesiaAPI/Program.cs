@@ -34,13 +34,13 @@ namespace KinesiaAPI
             {
                options.AddPolicy("AllowLocalhost",
                    policy => policy
-                       .WithOrigins("https://kinesia.kiri8tives.com", "https://kinesia.kiri8tives.com")
+                       .WithOrigins("https://kinesia.kiri8tives.com", "https://kinesia.kiri8tives.com", "https://localhost:5173", "http://localhost:5173")// adding of localhost for testing
                       .AllowAnyHeader()
                       .AllowAnyMethod());
 
                 options.AddPolicy("ProductionPolicy",
                    policy => policy
-                        .WithOrigins("https://kinesia.kiri8tives.com")
+                        .WithOrigins("https://kinesia.kiri8tives.com" , "https://localhost:5173", "http://localhost:5173") // adding of localhost for testing
                         .AllowAnyHeader()
                         .AllowAnyMethod());
             });

@@ -32,10 +32,15 @@
             flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             label1 = new System.Windows.Forms.Label();
             lblName = new System.Windows.Forms.Label();
-            panelBorder1 = new WindowsFormsApp2.CustomButton.PanelBorder();
             panelBorder5 = new WindowsFormsApp2.CustomButton.PanelBorder();
             panelBorder3 = new WindowsFormsApp2.CustomButton.PanelBorder();
+            label6 = new System.Windows.Forms.Label();
+            label7 = new System.Windows.Forms.Label();
+            pictureBox2 = new System.Windows.Forms.PictureBox();
             panelBorder2 = new WindowsFormsApp2.CustomButton.PanelBorder();
+            label5 = new System.Windows.Forms.Label();
+            label2 = new System.Windows.Forms.Label();
+            pictureBox1 = new System.Windows.Forms.PictureBox();
             label3 = new System.Windows.Forms.Label();
             lblMonth = new System.Windows.Forms.Label();
             customButton1 = new OrganizationProfile.CustomButton();
@@ -45,11 +50,19 @@
             panelBorder6 = new WindowsFormsApp2.CustomButton.PanelBorder();
             dataGridLogs = new System.Windows.Forms.DataGridView();
             label4 = new System.Windows.Forms.Label();
+            pictureBox3 = new System.Windows.Forms.PictureBox();
+            label8 = new System.Windows.Forms.Label();
+            label9 = new System.Windows.Forms.Label();
             flowLayoutPanel1.SuspendLayout();
-            panelBorder1.SuspendLayout();
+            panelBorder5.SuspendLayout();
+            panelBorder3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            panelBorder2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panelBorder4.SuspendLayout();
             panelBorder6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridLogs).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -89,66 +102,123 @@
             lblName.Text = " <name>!";
             lblName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // panelBorder1
-            // 
-            panelBorder1.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            panelBorder1.BackColor = System.Drawing.Color.FromArgb(207, 249, 238);
-            panelBorder1.BorderRadius = 30;
-            panelBorder1.Color = System.Drawing.Color.BurlyWood;
-            panelBorder1.Controls.Add(panelBorder5);
-            panelBorder1.Controls.Add(panelBorder3);
-            panelBorder1.Controls.Add(panelBorder2);
-            panelBorder1.Controls.Add(label3);
-            panelBorder1.Controls.Add(lblMonth);
-            panelBorder1.ForeColor = System.Drawing.Color.Black;
-            panelBorder1.Location = new System.Drawing.Point(69, 101);
-            panelBorder1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 3);
-            panelBorder1.Name = "panelBorder1";
-            panelBorder1.Size = new System.Drawing.Size(1034, 232);
-            panelBorder1.TabIndex = 1;
-            // 
             // panelBorder5
             // 
-            panelBorder5.BackColor = System.Drawing.Color.White;
+            panelBorder5.BackColor = System.Drawing.Color.FromArgb(238, 226, 255);
             panelBorder5.BorderRadius = 15;
             panelBorder5.Color = System.Drawing.Color.BurlyWood;
+            panelBorder5.Controls.Add(label8);
+            panelBorder5.Controls.Add(pictureBox3);
+            panelBorder5.Controls.Add(label9);
             panelBorder5.ForeColor = System.Drawing.Color.Black;
-            panelBorder5.Location = new System.Drawing.Point(685, 59);
+            panelBorder5.Location = new System.Drawing.Point(761, 170);
             panelBorder5.Margin = new System.Windows.Forms.Padding(20, 3, 3, 3);
             panelBorder5.Name = "panelBorder5";
-            panelBorder5.Size = new System.Drawing.Size(303, 157);
+            panelBorder5.Size = new System.Drawing.Size(303, 109);
             panelBorder5.TabIndex = 5;
             // 
             // panelBorder3
             // 
-            panelBorder3.BackColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            panelBorder3.BackColor = System.Drawing.Color.FromArgb(161, 196, 255);
             panelBorder3.BorderRadius = 15;
             panelBorder3.Color = System.Drawing.Color.BurlyWood;
+            panelBorder3.Controls.Add(label6);
+            panelBorder3.Controls.Add(label7);
+            panelBorder3.Controls.Add(pictureBox2);
             panelBorder3.ForeColor = System.Drawing.Color.Black;
-            panelBorder3.Location = new System.Drawing.Point(359, 59);
+            panelBorder3.Location = new System.Drawing.Point(415, 170);
             panelBorder3.Margin = new System.Windows.Forms.Padding(20, 3, 3, 3);
             panelBorder3.Name = "panelBorder3";
-            panelBorder3.Size = new System.Drawing.Size(303, 157);
+            panelBorder3.Size = new System.Drawing.Size(323, 109);
             panelBorder3.TabIndex = 4;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new System.Drawing.Font("Poppins", 15.25F, System.Drawing.FontStyle.Bold);
+            label6.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            label6.Location = new System.Drawing.Point(102, 22);
+            label6.Name = "label6";
+            label6.Size = new System.Drawing.Size(83, 37);
+            label6.TabIndex = 4;
+            label6.Text = "label6";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new System.Drawing.Font("Poppins", 10.25F, System.Drawing.FontStyle.Bold);
+            label7.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            label7.Location = new System.Drawing.Point(102, 57);
+            label7.Name = "label7";
+            label7.Size = new System.Drawing.Size(158, 25);
+            label7.TabIndex = 3;
+            label7.Text = "Most Joints Tracked";
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.Image = Properties.Resources.totalJointIcon;
+            pictureBox2.Location = new System.Drawing.Point(33, 27);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new System.Drawing.Size(52, 50);
+            pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            pictureBox2.TabIndex = 3;
+            pictureBox2.TabStop = false;
             // 
             // panelBorder2
             // 
-            panelBorder2.BackColor = System.Drawing.Color.FromArgb(68, 211, 175);
-            panelBorder2.BorderRadius = 15;
+            panelBorder2.BackColor = System.Drawing.Color.FromArgb(207, 249, 238);
+            panelBorder2.BorderRadius = 20;
             panelBorder2.Color = System.Drawing.Color.BurlyWood;
+            panelBorder2.Controls.Add(label5);
+            panelBorder2.Controls.Add(label2);
+            panelBorder2.Controls.Add(pictureBox1);
             panelBorder2.ForeColor = System.Drawing.Color.Black;
-            panelBorder2.Location = new System.Drawing.Point(33, 59);
+            panelBorder2.Location = new System.Drawing.Point(69, 170);
             panelBorder2.Margin = new System.Windows.Forms.Padding(20, 3, 3, 3);
             panelBorder2.Name = "panelBorder2";
-            panelBorder2.Size = new System.Drawing.Size(303, 157);
+            panelBorder2.Size = new System.Drawing.Size(323, 109);
             panelBorder2.TabIndex = 3;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new System.Drawing.Font("Poppins", 15.25F, System.Drawing.FontStyle.Bold);
+            label5.ForeColor = System.Drawing.Color.FromArgb(21, 134, 105);
+            label5.Location = new System.Drawing.Point(92, 20);
+            label5.Name = "label5";
+            label5.Size = new System.Drawing.Size(84, 37);
+            label5.TabIndex = 2;
+            label5.Text = "label5";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new System.Drawing.Font("Poppins", 10.25F, System.Drawing.FontStyle.Bold);
+            label2.ForeColor = System.Drawing.Color.FromArgb(21, 134, 105);
+            label2.Location = new System.Drawing.Point(92, 57);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(215, 25);
+            label2.TabIndex = 1;
+            label2.Text = "Total Ongoing Assessments";
+            label2.Click += label2_Click_1;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = Properties.Resources.newTotalAssessmentIcon;
+            pictureBox1.Location = new System.Drawing.Point(28, 27);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new System.Drawing.Size(52, 50);
+            pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 0;
+            pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
             // 
             // label3
             // 
             label3.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
             label3.AutoSize = true;
             label3.Font = new System.Drawing.Font("Poppins", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            label3.Location = new System.Drawing.Point(12, 19);
+            label3.Location = new System.Drawing.Point(69, 117);
             label3.Margin = new System.Windows.Forms.Padding(0);
             label3.Name = "label3";
             label3.Size = new System.Drawing.Size(324, 37);
@@ -162,7 +232,7 @@
             lblMonth.AutoSize = true;
             lblMonth.Font = new System.Drawing.Font("Poppins", 16F, System.Drawing.FontStyle.Bold);
             lblMonth.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
-            lblMonth.Location = new System.Drawing.Point(336, 17);
+            lblMonth.Location = new System.Drawing.Point(393, 115);
             lblMonth.Margin = new System.Windows.Forms.Padding(0);
             lblMonth.Name = "lblMonth";
             lblMonth.Size = new System.Drawing.Size(174, 39);
@@ -183,7 +253,7 @@
             customButton1.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             customButton1.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
             customButton1.Image = (System.Drawing.Image)resources.GetObject("customButton1.Image");
-            customButton1.Location = new System.Drawing.Point(69, 356);
+            customButton1.Location = new System.Drawing.Point(69, 343);
             customButton1.Margin = new System.Windows.Forms.Padding(3, 20, 20, 3);
             customButton1.Name = "customButton1";
             customButton1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 30);
@@ -207,7 +277,7 @@
             customButton2.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             customButton2.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
             customButton2.Image = (System.Drawing.Image)resources.GetObject("customButton2.Image");
-            customButton2.Location = new System.Drawing.Point(428, 356);
+            customButton2.Location = new System.Drawing.Point(428, 343);
             customButton2.Margin = new System.Windows.Forms.Padding(3, 20, 20, 3);
             customButton2.Name = "customButton2";
             customButton2.Padding = new System.Windows.Forms.Padding(0, 0, 0, 30);
@@ -231,7 +301,7 @@
             customButton3.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold);
             customButton3.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
             customButton3.Image = (System.Drawing.Image)resources.GetObject("customButton3.Image");
-            customButton3.Location = new System.Drawing.Point(789, 356);
+            customButton3.Location = new System.Drawing.Point(789, 343);
             customButton3.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
             customButton3.Name = "customButton3";
             customButton3.Padding = new System.Windows.Forms.Padding(0, 0, 0, 30);
@@ -249,12 +319,11 @@
             panelBorder4.BorderRadius = 30;
             panelBorder4.Color = System.Drawing.Color.BurlyWood;
             panelBorder4.Controls.Add(panelBorder6);
-            panelBorder4.Controls.Add(label4);
             panelBorder4.ForeColor = System.Drawing.Color.Black;
-            panelBorder4.Location = new System.Drawing.Point(69, 571);
+            panelBorder4.Location = new System.Drawing.Point(69, 600);
             panelBorder4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 3);
             panelBorder4.Name = "panelBorder4";
-            panelBorder4.Size = new System.Drawing.Size(1034, 410);
+            panelBorder4.Size = new System.Drawing.Size(1034, 391);
             panelBorder4.TabIndex = 5;
             // 
             // panelBorder6
@@ -265,10 +334,10 @@
             panelBorder6.Color = System.Drawing.Color.BurlyWood;
             panelBorder6.Controls.Add(dataGridLogs);
             panelBorder6.ForeColor = System.Drawing.Color.Black;
-            panelBorder6.Location = new System.Drawing.Point(19, 57);
+            panelBorder6.Location = new System.Drawing.Point(19, 18);
             panelBorder6.Name = "panelBorder6";
             panelBorder6.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
-            panelBorder6.Size = new System.Drawing.Size(990, 332);
+            panelBorder6.Size = new System.Drawing.Size(990, 352);
             panelBorder6.TabIndex = 4;
             // 
             // dataGridLogs
@@ -278,7 +347,7 @@
             dataGridLogs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridLogs.Location = new System.Drawing.Point(3, 0);
             dataGridLogs.Name = "dataGridLogs";
-            dataGridLogs.Size = new System.Drawing.Size(987, 329);
+            dataGridLogs.Size = new System.Drawing.Size(987, 349);
             dataGridLogs.TabIndex = 25;
             // 
             // label4
@@ -286,8 +355,8 @@
             label4.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
             label4.AutoSize = true;
             label4.Font = new System.Drawing.Font("Poppins", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            label4.ForeColor = System.Drawing.Color.Black;
-            label4.Location = new System.Drawing.Point(13, 16);
+            label4.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            label4.Location = new System.Drawing.Point(88, 561);
             label4.Margin = new System.Windows.Forms.Padding(0);
             label4.Name = "label4";
             label4.Size = new System.Drawing.Size(213, 37);
@@ -295,17 +364,54 @@
             label4.Text = "RECENT ACTIVITIES";
             label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // pictureBox3
+            // 
+            pictureBox3.Image = Properties.Resources.totalAssessmentsPurple;
+            pictureBox3.Location = new System.Drawing.Point(28, 27);
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.Size = new System.Drawing.Size(52, 50);
+            pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            pictureBox3.TabIndex = 5;
+            pictureBox3.TabStop = false;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new System.Drawing.Font("Poppins", 15.25F, System.Drawing.FontStyle.Bold);
+            label8.ForeColor = System.Drawing.Color.FromArgb(151, 71, 255);
+            label8.Location = new System.Drawing.Point(105, 22);
+            label8.Name = "label8";
+            label8.Size = new System.Drawing.Size(84, 37);
+            label8.TabIndex = 6;
+            label8.Text = "label8";
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new System.Drawing.Font("Poppins", 10.25F, System.Drawing.FontStyle.Bold);
+            label9.ForeColor = System.Drawing.Color.FromArgb(151, 71, 255);
+            label9.Location = new System.Drawing.Point(105, 57);
+            label9.Name = "label9";
+            label9.Size = new System.Drawing.Size(150, 25);
+            label9.TabIndex = 5;
+            label9.Text = "Total Assessments";
+            // 
             // DashboardPage
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             BackColor = System.Drawing.Color.White;
+            Controls.Add(panelBorder5);
+            Controls.Add(label4);
             Controls.Add(panelBorder4);
+            Controls.Add(panelBorder3);
             Controls.Add(customButton3);
+            Controls.Add(panelBorder2);
             Controls.Add(customButton2);
+            Controls.Add(label3);
             Controls.Add(customButton1);
-            Controls.Add(panelBorder1);
+            Controls.Add(lblMonth);
             Controls.Add(flowLayoutPanel1);
             Name = "DashboardPage";
             Size = new System.Drawing.Size(1195, 1046);
@@ -313,13 +419,20 @@
             Paint += DashboardPage_Paint;
             flowLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel1.PerformLayout();
-            panelBorder1.ResumeLayout(false);
-            panelBorder1.PerformLayout();
+            panelBorder5.ResumeLayout(false);
+            panelBorder5.PerformLayout();
+            panelBorder3.ResumeLayout(false);
+            panelBorder3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            panelBorder2.ResumeLayout(false);
+            panelBorder2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panelBorder4.ResumeLayout(false);
-            panelBorder4.PerformLayout();
             panelBorder6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridLogs).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ResumeLayout(false);
+            PerformLayout();
 
         }
 
@@ -328,7 +441,6 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblName;
-        private WindowsFormsApp2.CustomButton.PanelBorder panelBorder1;
         private OrganizationProfile.CustomButton customButton1;
         private OrganizationProfile.CustomButton customButton2;
         private OrganizationProfile.CustomButton customButton3;
@@ -341,5 +453,14 @@
         private WindowsFormsApp2.CustomButton.PanelBorder panelBorder5;
         private WindowsFormsApp2.CustomButton.PanelBorder panelBorder6;
         private System.Windows.Forms.DataGridView dataGridLogs;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Label label9;
     }
 }

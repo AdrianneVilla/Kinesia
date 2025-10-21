@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using Kinesia.Assessment;
 using KinesiaLibrary.DTOs;
 using KinesiaLibrary.DTOs.PatientDTOs;
+using Microsoft.CodeAnalysis.VisualBasic.Syntax;
 using MySql.Data.MySqlClient;
 using Newtonsoft.Json;
 
@@ -171,11 +172,24 @@ namespace Kinesia.Patients
                             HeaderText = "Gender"
                         });
 
+                        patientSelectionPage.GetPatientSelectionGrid.Columns.Add(new DataGridViewButtonColumn
+                        {
+                            Name = "SelectButton",
+                            HeaderText = "Select",
+                            Width = 80,
+                            AutoSizeMode = DataGridViewAutoSizeColumnMode.None,
+                        });
+
                         patientSelectionPage.GetPatientSelectionGrid.DataSource = patients;
                         patientSelectionPage.GetPatientSelectionGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
+
+                        patientSelectionPage.GetPatientSelectionGrid.CellPainting += DataGrid_CellPainting;
+                        patientSelectionPage.GetPatientSelectionGrid.CellMouseEnter += DataGrid_CellMouseEnter;
+                        patientSelectionPage.GetPatientSelectionGrid.CellMouseLeave += DataGrid_CellMouseLeave;
+
                         CustomDataGrid.StyleDataGridWithSpacing(patientSelectionPage.GetPatientSelectionGrid);
-                        patientSelectionPage.GetPatientSelectionGrid.ResumeLayout();
+                        patientSelectionPage.GetPatientSelectionGrid.ResumeLayout(); 
 
                         patientSelectionPage.ShowDialog();
                     }
@@ -727,11 +741,14 @@ namespace Kinesia.Patients
         {
             var dataGrid = PageObjects.patientsPage.GetPatientGrid;
 
+            // pag hindi gumana pre papalitan tong nasa taas ng : 
+            // var dataGrid = (DataGridView)sender;
+
             if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
             {
                 string columnName = dataGrid.Columns[e.ColumnIndex].Name;
 
-                if (columnName == "ViewButton" || columnName == "EditButton" || columnName == "ArchiveButton")
+                if (columnName == "ViewButton" || columnName == "EditButton" || columnName == "ArchiveButton" || columnName == "SelectButton")
                 {
                     bool isHovered = (hoveredCell.X == e.ColumnIndex && hoveredCell.Y == e.RowIndex);
                     Color backgroundColor = isHovered ? Color.FromArgb(220,220,220) : Color.White;
@@ -745,6 +762,8 @@ namespace Kinesia.Patients
                         icon = Properties.Resources.newEMR;
                     else if (columnName == "EditButton")
                         icon = Properties.Resources.newEdit;
+                    else if (columnName == "SelectButton")
+                        icon = Properties.Resources.newSelect;
                     else if (columnName == "ArchiveButton")
                     {
                         var statusCell = dataGrid.Rows[e.RowIndex].Cells["Status"]?.Value;
@@ -752,10 +771,10 @@ namespace Kinesia.Patients
 
                         // from archive to unarchive button
 
-                        if(status == "Active" || status== "1")
+                        if (status == "Active" || status == "1")
                         {
                             icon = Properties.Resources.newArchive;
-                        } 
+                        }
                         else
                         {
                             icon = Properties.Resources.Unarchive;
@@ -786,7 +805,7 @@ namespace Kinesia.Patients
                 string columnName = dataGrid.Columns[e.ColumnIndex].Name;
 
                 // Only apply hover effect to button columns
-                if (columnName == "ViewButton" || columnName == "EditButton" || columnName == "ArchiveButton")
+                if (columnName == "ViewButton" || columnName == "EditButton" || columnName == "ArchiveButton" || columnName == "SelectButton")
                 {
                     hoveredCell = new Point(e.ColumnIndex, e.RowIndex);
                     dataGrid.InvalidateCell(e.ColumnIndex, e.RowIndex); // Trigger repaint
@@ -803,5 +822,6 @@ namespace Kinesia.Patients
                 dataGrid.InvalidateCell(e.ColumnIndex, e.RowIndex); // Trigger repaint
             }
         }
+
     }
 }
