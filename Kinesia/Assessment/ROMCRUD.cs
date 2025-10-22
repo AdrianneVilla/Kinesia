@@ -97,11 +97,10 @@ namespace Kinesia.Assessment
         {
             try
             {
-                client.BaseAddress = new Uri("http://localhost:5000/api/");
                 var json = JsonConvert.SerializeObject(newROM);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-                var response = await client.PostAsync("rom", content);
+                var response = await client.PostAsync("http://localhost:5000/api/rom", content);
 
                 if (response.IsSuccessStatusCode)
                 {

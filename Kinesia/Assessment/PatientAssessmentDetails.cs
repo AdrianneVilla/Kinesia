@@ -21,6 +21,9 @@ namespace Kinesia.Assessment
         public string PatientName { get { return lblPatientName.Text; } set { lblPatientName.Text = value; } }
         public string Age { get { return lblAge.Text; } set { lblAge.Text = value; } }
         public string Gender { get { return lblGender.Text; } set { lblGender.Text = value; } }
+        public string Extremity { get { return cbExtremity.Texts; } }
+        public string Joint { get { return cbJoint.Texts; } }
+        public string JointSide { get { return cbJointSide.Texts; } }
 
         private void cbExtremity_OnSelectedIndexChanged(object sender, EventArgs e)
         {

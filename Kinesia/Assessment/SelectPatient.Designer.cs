@@ -57,6 +57,7 @@
             dataGridPatientSelection.Name = "dataGridPatientSelection";
             dataGridPatientSelection.Size = new System.Drawing.Size(770, 454);
             dataGridPatientSelection.TabIndex = 24;
+            dataGridPatientSelection.CellContentClick += dataGridPatientSelection_CellContentClick;
             // 
             // panelBorder1
             // 

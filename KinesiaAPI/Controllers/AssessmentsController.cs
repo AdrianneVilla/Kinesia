@@ -204,6 +204,32 @@ namespace KinesiaAPI.Controllers
             }
         }
 
+        // GET: api/assessment/generate-assessmentid
+        [HttpGet("generate-assessmentid")]
+        public async Task<ActionResult<string>> GenerateNewAssessmentID()
+        {
+            try
+            {
+                var nextCount = await _context.Database
+                    .SqlQueryRaw<long>("SELECT NEXTVAL(assessment_id_seq) AS value")
+                    .FirstAsync();
+
+                string newAssessmentID = $"ASSESSMENT{nextCount}";
+
+                return Ok(newAssessmentID);
+            }
+            catch (DbException dbEx)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    $"Database error: {dbEx.Message}");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    $"Unexpected error: {ex.Message}");
+            }
+        }
+
         // PUT: api/Assessments/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
@@ -235,29 +261,41 @@ namespace KinesiaAPI.Controllers
             return NoContent();
         }
 
+
         // POST: api/Assessments
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Assessments>> PostAssessments(Assessments assessments)
+        public async Task<ActionResult<Assessments>> PostAssessments(AddAssessmentDTO assessmentDTO)
         {
-            _context.Assessments.Add(assessments);
+            if(assessmentDTO == null)
+                return BadRequest("ROM data cannot be null.");
+
+            var newAssessment = new Assessments
+            {
+                AssessmentID = assessmentDTO.AssessmentID,
+                PatientID = assessmentDTO.PatientID,
+                Extremity = assessmentDTO.Extremity,
+                Joint = assessmentDTO.Joint,
+                JointSide = assessmentDTO.JointSide,
+                AssessmentStatus = 1,
+                AssessmentDate = DateTime.Now
+            };
+
             try
             {
+                _context.Assessments.Add(newAssessment);
                 await _context.SaveChangesAsync();
+
+                return CreatedAtAction("GetAssessments", new { id = newAssessment.AssessmentID }, newAssessment);
             }
             catch (DbUpdateException)
             {
-                if (AssessmentsExists(assessments.AssessmentID))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
+                return StatusCode(StatusCodes.Status500InternalServerError, "An error occured while saving the assessment data.\nPlease try again.");
             }
-
-            return CreatedAtAction("GetAssessments", new { id = assessments.AssessmentID }, assessments);
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An unexpected error occured.\nPlease try again.");
+            }
         }
 
         // DELETE: api/Assessments/5

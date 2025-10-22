@@ -180,5 +180,77 @@ namespace Kinesia.Assessment
                 return "N/A";
             }
         }
+
+        public async Task<string> AddAssessment(AddAssessmentDTO newAssessment)
+        {
+            try
+            {
+                var json = JsonConvert.SerializeObject(newAssessment);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                var response = await client.PostAsync("http://localhost:5000/api/assessment", content);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return newAssessment.AssessmentID;
+                }
+                else
+                {
+                    // will show an error dialog if it returns a badrequest from API-side.
+                    CustomDialog.Show(await response.Content.ReadAsStringAsync(),
+                                "Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                    return null;
+                }
+            }
+            catch (HttpRequestException)
+            {
+                // will show an error dialog if it catches a http request error from client-side.
+                CustomDialog.Show("Unable to connect to the server.\nPlease try again.",
+                            "Connection Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                return null;
+            }
+            catch (Exception)
+            {
+                // will show an error dialog if it catches an unexpected error from client-side.
+                CustomDialog.Show("Unexpected error occured.\nPlease try again.",
+                            "Unexpected Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                return null;
+            }
+        }
+
+        public async Task<string> SetAssessmentID()
+        {
+            try
+            {
+                var url = "http://localhost:5000/api/assessment/generate-assessmentid";
+                var response = await client.GetAsync(url);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return await response.Content.ReadAsStringAsync();
+                }
+                else
+                {
+                    // will show an error dialog if it returns a badrequest from API-side.
+                    CustomDialog.Show(await response.Content.ReadAsStringAsync(),
+                                "Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                    return null;
+                }
+            }
+            catch (HttpRequestException)
+            {
+                // will show an error dialog if it catches a http request error from client-side.
+                CustomDialog.Show("Unable to connect to the server.\nPlease try again.",
+                            "Connection Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                return null;
+            }
+            catch (Exception)
+            {
+                // will show an error dialog if it catches an unexpected error from client-side.
+                CustomDialog.Show("Unexpected error occured.\nPlease try again.",
+                            "Unexpected Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                return null;
+            }
+        }
     }
 }

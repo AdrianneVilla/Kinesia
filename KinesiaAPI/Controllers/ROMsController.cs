@@ -161,7 +161,7 @@ namespace KinesiaAPI.Controllers
             }
             catch (DbUpdateException)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, "An error occured while saving the patient data.\nPlease try again.");
+                return StatusCode(StatusCodes.Status500InternalServerError, "An error occured while saving the ROM data.\nPlease try again.");
             }
             catch (Exception)
             {

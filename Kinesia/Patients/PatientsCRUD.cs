@@ -123,6 +123,8 @@ namespace Kinesia.Patients
 
         public async Task DisplayPatientSelection(string searchData)
         {
+            PageObjects.selectPatientPage.PatientList.Clear();
+
             try
             {
                 var url = $"http://localhost:5000/api/patients/selection?searchData={searchData}";
@@ -133,6 +135,14 @@ namespace Kinesia.Patients
                 {
                     var json = await response.Content.ReadAsStringAsync();
                     var patients = JsonConvert.DeserializeObject<List<DisplayPatientSelectionDTO>>(json);
+
+                    foreach(var patient in patients)
+                    {
+                        // will add each patientID to the list
+                        // this will help to easily access the patientID of each row
+                        // each patientID will be equivalent to its rowindex
+                        PageObjects.selectPatientPage.PatientList.Add(patient.PatientID);
+                    }
 
                     CustomDataGrid.SetDoubleBuffering(PageObjects.selectPatientPage, true);
                     PageObjects.selectPatientPage.GetPatientSelectionGrid.SuspendLayout();

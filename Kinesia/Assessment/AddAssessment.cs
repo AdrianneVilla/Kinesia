@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KinesiaLibrary.DTOs.AssessmentDTOs;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,7 +17,7 @@ namespace Kinesia.Assessment
         private static bool isPatientSelected;
 
         public bool IsPatientSelected { get { return isPatientSelected; } set { isPatientSelected = value; } }
-        public PanelBorder PatientInformationPanel { get  { return panelPatientInformation; } }
+        public PanelBorder PatientInformationPanel { get { return panelPatientInformation; } }
 
         public AddAssessment()
         {
@@ -35,6 +36,32 @@ namespace Kinesia.Assessment
 
             // will set the location
             selectPatientPopup.Location = new Point(x, y);
+        }
+
+        private async void btnSaveAssessment_Click(object sender, EventArgs e)
+        {
+            if (isPatientSelected)
+            {
+                var newAssessment = new AddAssessmentDTO
+                {
+                    AssessmentID = await Queries.AssessmentQueries.SetAssessmentID(),
+                    PatientID = PageObjects.patientAssessmentDetails.PatientID,
+                    Extremity = PageObjects.patientAssessmentDetails.Extremity,
+                    Joint = PageObjects.patientAssessmentDetails.Joint,
+                    JointSide = PageObjects.patientAssessmentDetails.JointSide
+                };
+
+                string newAssessmentID = await Queries.AssessmentQueries.AddAssessment(newAssessment);
+
+                if (!string.IsNullOrEmpty(newAssessmentID))
+                {
+                    await Queries.LogsQueries.AddLog($"Added {newAssessmentID}", "Assessment");
+
+                    CustomDialog.Show("Assessment added successfully!", "Add Assessment Notification", CustomDialogButtons.OK, CustomDialogIcons.Information);
+
+                    await Queries.AssessmentQueries.GetAssessmentDetails(newAssessmentID);
+                }
+            }
         }
     }
 }

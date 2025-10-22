@@ -33,7 +33,7 @@
             lblSelectedUser = new System.Windows.Forms.Label();
             titleNav = new System.Windows.Forms.Label();
             flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            customButton1 = new OrganizationProfile.CustomButton();
+            btnSaveAssessment = new OrganizationProfile.CustomButton();
             customButton2 = new OrganizationProfile.CustomButton();
             panelPatientInformation = new WindowsFormsApp2.CustomButton.PanelBorder();
             flowLayoutPanel1.SuspendLayout();
@@ -81,7 +81,7 @@
             // 
             // flowLayoutPanel1
             // 
-            flowLayoutPanel1.Controls.Add(customButton1);
+            flowLayoutPanel1.Controls.Add(btnSaveAssessment);
             flowLayoutPanel1.Controls.Add(customButton2);
             flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
             flowLayoutPanel1.Location = new System.Drawing.Point(89, 132);
@@ -89,30 +89,31 @@
             flowLayoutPanel1.Size = new System.Drawing.Size(1291, 58);
             flowLayoutPanel1.TabIndex = 34;
             // 
-            // customButton1
+            // btnSaveAssessment
             // 
-            customButton1.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
-            customButton1.BackColor = System.Drawing.Color.FromArgb(200, 220, 255);
-            customButton1.BackgroundColor = System.Drawing.Color.FromArgb(200, 220, 255);
-            customButton1.BorderColor = System.Drawing.Color.FromArgb(18, 90, 211);
-            customButton1.BorderRadius = 10;
-            customButton1.BorderSize = 1;
-            customButton1.FlatAppearance.BorderSize = 0;
-            customButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            customButton1.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            customButton1.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
-            customButton1.Image = (System.Drawing.Image)resources.GetObject("customButton1.Image");
-            customButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            customButton1.Location = new System.Drawing.Point(1085, 3);
-            customButton1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            customButton1.Name = "customButton1";
-            customButton1.Padding = new System.Windows.Forms.Padding(12, 5, 23, 0);
-            customButton1.Size = new System.Drawing.Size(202, 51);
-            customButton1.TabIndex = 13;
-            customButton1.Text = "Save Assessment";
-            customButton1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            customButton1.TextColor = System.Drawing.Color.FromArgb(18, 90, 211);
-            customButton1.UseVisualStyleBackColor = false;
+            btnSaveAssessment.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+            btnSaveAssessment.BackColor = System.Drawing.Color.FromArgb(200, 220, 255);
+            btnSaveAssessment.BackgroundColor = System.Drawing.Color.FromArgb(200, 220, 255);
+            btnSaveAssessment.BorderColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            btnSaveAssessment.BorderRadius = 10;
+            btnSaveAssessment.BorderSize = 1;
+            btnSaveAssessment.FlatAppearance.BorderSize = 0;
+            btnSaveAssessment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnSaveAssessment.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            btnSaveAssessment.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            btnSaveAssessment.Image = (System.Drawing.Image)resources.GetObject("btnSaveAssessment.Image");
+            btnSaveAssessment.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            btnSaveAssessment.Location = new System.Drawing.Point(1085, 3);
+            btnSaveAssessment.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            btnSaveAssessment.Name = "btnSaveAssessment";
+            btnSaveAssessment.Padding = new System.Windows.Forms.Padding(12, 5, 23, 0);
+            btnSaveAssessment.Size = new System.Drawing.Size(202, 51);
+            btnSaveAssessment.TabIndex = 13;
+            btnSaveAssessment.Text = "Save Assessment";
+            btnSaveAssessment.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            btnSaveAssessment.TextColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            btnSaveAssessment.UseVisualStyleBackColor = false;
+            btnSaveAssessment.Click += btnSaveAssessment_Click;
             // 
             // customButton2
             // 
@@ -181,7 +182,7 @@
         private System.Windows.Forms.Label titleNav;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private OrganizationProfile.CustomButton customButton2;
-        private OrganizationProfile.CustomButton customButton1;
+        private OrganizationProfile.CustomButton btnSaveAssessment;
         private WindowsFormsApp2.CustomButton.PanelBorder panelPatientInformation;
     }
 }
