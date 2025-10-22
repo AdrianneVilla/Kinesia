@@ -34,6 +34,8 @@
             txtTitleLabel = new System.Windows.Forms.Label();
             btnBack = new OrganizationProfile.CustomButton();
             panelBorder1 = new WindowsFormsApp2.CustomButton.PanelBorder();
+            txtConfirmPassword = new CustomControls.RJControls.RJTextBox();
+            label17 = new System.Windows.Forms.Label();
             txtEmail = new CustomControls.RJControls.RJTextBox();
             label16 = new System.Windows.Forms.Label();
             label15 = new System.Windows.Forms.Label();
@@ -64,8 +66,6 @@
             btnClearInput = new OrganizationProfile.CustomButton();
             btnAddUser = new OrganizationProfile.CustomButton();
             flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            rjTextBox1 = new CustomControls.RJControls.RJTextBox();
-            label17 = new System.Windows.Forms.Label();
             panelBorder1.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
             SuspendLayout();
@@ -146,7 +146,7 @@
             panelBorder1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             panelBorder1.BorderRadius = 30;
             panelBorder1.Color = System.Drawing.Color.BurlyWood;
-            panelBorder1.Controls.Add(rjTextBox1);
+            panelBorder1.Controls.Add(txtConfirmPassword);
             panelBorder1.Controls.Add(label17);
             panelBorder1.Controls.Add(txtEmail);
             panelBorder1.Controls.Add(label16);
@@ -181,6 +181,41 @@
             panelBorder1.Name = "panelBorder1";
             panelBorder1.Size = new System.Drawing.Size(1631, 683);
             panelBorder1.TabIndex = 15;
+            // 
+            // txtConfirmPassword
+            // 
+            txtConfirmPassword.BackColor = System.Drawing.SystemColors.Window;
+            txtConfirmPassword.BorderColor = System.Drawing.Color.DimGray;
+            txtConfirmPassword.BorderFocusColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            txtConfirmPassword.BorderRadius = 5;
+            txtConfirmPassword.BorderSize = 1;
+            txtConfirmPassword.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            txtConfirmPassword.ForeColor = System.Drawing.Color.Black;
+            txtConfirmPassword.Location = new System.Drawing.Point(833, 603);
+            txtConfirmPassword.Margin = new System.Windows.Forms.Padding(5);
+            txtConfirmPassword.Multiline = false;
+            txtConfirmPassword.Name = "txtConfirmPassword";
+            txtConfirmPassword.Padding = new System.Windows.Forms.Padding(12, 8, 12, 8);
+            txtConfirmPassword.PasswordChar = false;
+            txtConfirmPassword.PlaceholderColor = System.Drawing.Color.DarkGray;
+            txtConfirmPassword.PlaceholderText = "";
+            txtConfirmPassword.SelectionLength = 0;
+            txtConfirmPassword.SelectionStart = 0;
+            txtConfirmPassword.Size = new System.Drawing.Size(343, 43);
+            txtConfirmPassword.TabIndex = 39;
+            txtConfirmPassword.Texts = "";
+            txtConfirmPassword.UnderlinedStyle = false;
+            // 
+            // label17
+            // 
+            label17.AutoSize = true;
+            label17.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            label17.Location = new System.Drawing.Point(828, 577);
+            label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label17.Name = "label17";
+            label17.Size = new System.Drawing.Size(134, 23);
+            label17.TabIndex = 40;
+            label17.Text = "Confirm Password";
             // 
             // txtEmail
             // 
@@ -690,41 +725,6 @@
             flowLayoutPanel1.Size = new System.Drawing.Size(422, 67);
             flowLayoutPanel1.TabIndex = 41;
             // 
-            // rjTextBox1
-            // 
-            rjTextBox1.BackColor = System.Drawing.SystemColors.Window;
-            rjTextBox1.BorderColor = System.Drawing.Color.DimGray;
-            rjTextBox1.BorderFocusColor = System.Drawing.Color.FromArgb(18, 90, 211);
-            rjTextBox1.BorderRadius = 5;
-            rjTextBox1.BorderSize = 1;
-            rjTextBox1.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            rjTextBox1.ForeColor = System.Drawing.Color.Black;
-            rjTextBox1.Location = new System.Drawing.Point(833, 603);
-            rjTextBox1.Margin = new System.Windows.Forms.Padding(5);
-            rjTextBox1.Multiline = false;
-            rjTextBox1.Name = "rjTextBox1";
-            rjTextBox1.Padding = new System.Windows.Forms.Padding(12, 8, 12, 8);
-            rjTextBox1.PasswordChar = false;
-            rjTextBox1.PlaceholderColor = System.Drawing.Color.DarkGray;
-            rjTextBox1.PlaceholderText = "";
-            rjTextBox1.SelectionLength = 0;
-            rjTextBox1.SelectionStart = 0;
-            rjTextBox1.Size = new System.Drawing.Size(343, 43);
-            rjTextBox1.TabIndex = 39;
-            rjTextBox1.Texts = "";
-            rjTextBox1.UnderlinedStyle = false;
-            // 
-            // label17
-            // 
-            label17.AutoSize = true;
-            label17.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            label17.Location = new System.Drawing.Point(828, 577);
-            label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            label17.Name = "label17";
-            label17.Size = new System.Drawing.Size(134, 23);
-            label17.TabIndex = 40;
-            label17.Text = "Confirm Password";
-            // 
             // AddUser
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -786,7 +786,7 @@
         private CustomControls.RJControls.RJTextBox txtEmail;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private CustomControls.RJControls.RJTextBox rjTextBox1;
+        private CustomControls.RJControls.RJTextBox txtConfirmPassword;
         private System.Windows.Forms.Label label17;
     }
 }

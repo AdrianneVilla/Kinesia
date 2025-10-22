@@ -554,7 +554,7 @@ namespace Kinesia.Users
 
         public bool IsOldPasswordCorrect(string oldPassword, UserDataHolder userData)
         {
-            if(!CustomSecurity.HashPassword(oldPassword, userData.Salt).Equals(CustomSecurity.HashPassword(userData.Password, userData.Salt)))
+            if(!CustomSecurity.HashPassword(oldPassword, userData.Salt).Equals(userData.Password))
             {
                 CustomDialog.Show("Old password is incorrect!.\nPlease try again.",
                     "Incorrect old password", CustomDialogButtons.OK, CustomDialogIcons.Error);

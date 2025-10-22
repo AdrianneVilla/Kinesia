@@ -76,6 +76,8 @@ namespace Kinesia.Users
                 txtAddress.Texts = txtAddress.Texts.Trim();
                 txtUsername.Texts = txtUsername.Texts.Trim();
                 txtPassword.Texts = txtPassword.Texts.Trim();
+                txtNewPassword.Texts = txtNewPassword.Texts.Trim();
+                txtConfirmPassword.Texts = txtConfirmPassword.Texts.Trim();
 
                 var userData = new UserDataHolder();
                 userData.UserID = DataHolder.UserDataHolder.UserID;
@@ -114,14 +116,14 @@ namespace Kinesia.Users
 
                     if(txtPassword.Texts != "")
                     {
-                        if(!Queries.UserQueries.IsOldPasswordCorrect(txtPassword.Texts, DataHolder.UserDataHolder) &&
+                        if (!Queries.UserQueries.IsOldPasswordCorrect(txtPassword.Texts, DataHolder.UserDataHolder) ||
                             !Queries.UserQueries.IsPasswordConfirmed(txtNewPassword.Texts, txtConfirmPassword.Texts))
                         {
                             return;
                         }
 
                         userData.Salt = CustomSecurity.GenerateSalt();
-                        userData.Password = CustomSecurity.HashPassword(txtPassword.Texts, userData.Salt);
+                        userData.Password = CustomSecurity.HashPassword(txtNewPassword.Texts, userData.Salt);
                     }
 
                     var success = await Queries.UserQueries.UpdateUser(userData);
