@@ -405,7 +405,7 @@ namespace KinesiaAPI.Controllers
                 PatientID = patients.PatientID,
                 PatientName = $"{patients.FirstName} {patients.MiddleName} {patients.LastName}",
                 Age = (int)((DateTime.Now - patients.Birthdate).TotalDays / 365.25),
-                Gender = patients.Gender,
+                Contact = patients.Contact,
                 Status = patients.Status == 1 ? "Active" : "Inactive"
             };
 
