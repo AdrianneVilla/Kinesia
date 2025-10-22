@@ -19,9 +19,14 @@ namespace Kinesia.Assessment
 
         private async void btnSelectPatient_Click(object sender, EventArgs e)
         {
-            PageObjects.selectPatientPage = new SelectPatient();
-            await Queries.PatientQueries.DisplayPatientSelection("");
-            PageObjects.selectPatientPage.ShowDialog();
+            using(Form shadow = new Form())
+            {
+                FormAnimation.ShowFocus(shadow);
+                PageObjects.selectPatientPage = new SelectPatient();
+                await Queries.PatientQueries.DisplayPatientSelection("");
+                PageObjects.selectPatientPage.Owner = shadow;
+                PageObjects.selectPatientPage.ShowDialog();
+            }
         }
     }
 }

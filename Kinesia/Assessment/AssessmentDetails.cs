@@ -33,15 +33,20 @@ namespace Kinesia.Assessment
 
         private void btnAddRom_Click(object sender, EventArgs e)
         {
-            var toolSelectionPage = new SelectTool();
-            toolSelectionPage.ShowDialog();
+            using (Form shadow = new Form())
+            {
+                FormAnimation.ShowFocus(shadow);
+                var toolSelectionPage = new SelectTool();
+                toolSelectionPage.Owner = shadow;
+                toolSelectionPage.ShowDialog();
+            }
         }
 
         private async void AssessmentDetails_Load(object sender, EventArgs e)
         {
             await Queries.ROMQueries.DisplayROM(AssessmentID);
 
-            if(dataGridROM.Rows.Count <= 0)
+            if (dataGridROM.Rows.Count <= 0)
             {
                 btnPrint.Enabled = false;
             }

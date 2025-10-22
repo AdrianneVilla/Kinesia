@@ -82,6 +82,50 @@ namespace Kinesia
         }
     }
 
+    public class FormAnimation
+    {
+        public static void ShowFocus(Form form)
+        {
+            // will try to find the currently active form.
+            // If 'owner' is null, the shadow will use default settings.
+            Form owner = Form.ActiveForm;
+
+            // will set and create a background to help show a focus for message dialogs
+            form.FormBorderStyle = FormBorderStyle.None;
+            form.Opacity = .80;
+            form.BackColor = Color.Black;
+            form.ShowInTaskbar = false;
+
+            if (owner != null)
+            {
+                // will set window state based on the owner's state
+                if (owner.WindowState == FormWindowState.Maximized)
+                {
+                    form.WindowState = FormWindowState.Maximized;
+                }
+                else
+                {
+                    // will make the shadow match the owner's exact size and location
+                    form.WindowState = FormWindowState.Normal;
+                    form.StartPosition = FormStartPosition.Manual;
+                    form.Bounds = owner.Bounds; // will sets both Location and Size
+                }
+
+                // will set the owner of the shadow form
+                form.Owner = owner;
+            }
+            else
+            {
+                // will fallback behavior if no active form is found
+                form.StartPosition = FormStartPosition.CenterScreen;
+                form.Size = new Size(1280, 800); // the original default size
+                form.WindowState = FormWindowState.Normal;
+            }
+
+            form.Show();
+        }
+    }
+
     public static class ApiClient
     {
         public static readonly HttpClient Instance = new HttpClient
@@ -95,17 +139,37 @@ namespace Kinesia
     {
         public static DialogResult Show(string description, string title, CustomDialogButtons button, CustomDialogIcons icon)
         {
-            using(var dialog = CreateDialog(button))
+            // will create a new Form to act as the shadow
+            using (Form shadow = new Form())
             {
-                if (dialog is ICustomDialog customDialog)
-                {
-                    customDialog.Title = title;
-                    customDialog.Description = description;
-                    switchIcon(customDialog.DialogIcon, icon);
-                }
+                // will apply the focus/shadow effect from the FormAnimation class
+                // This method also calls shadow.Show()
+                FormAnimation.ShowFocus(shadow);
 
-                return dialog.ShowDialog();
-            }  
+                // will create the actual dialog
+                using (var dialog = CreateDialog(button))
+                {
+                    if (dialog is ICustomDialog customDialog)
+                    {
+                        customDialog.Title = title;
+                        customDialog.Description = description;
+                        switchIcon(customDialog.DialogIcon, icon);
+                    }
+
+                    // will set the shadow form as the owner of the dialog
+                    // This ensures the dialog stays on top of the shadow.
+                    dialog.Owner = shadow;
+
+                    // will show the dialog modally and the execution will pause here
+                    // until the user closes the dialog
+                    DialogResult result = dialog.ShowDialog();
+
+                    // when the dialog is closed, 'ShowDialog()' returns.
+                    // The 'using' blocks will automatically close and dispose
+                    // of both the 'dialog' and the 'shadow' forms.
+                    return result;
+                }
+            }
         }
 
         private static Form CreateDialog(CustomDialogButtons button)
