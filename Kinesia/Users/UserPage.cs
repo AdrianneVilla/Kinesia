@@ -203,61 +203,69 @@ namespace Kinesia.Users
         {
             if (e.RowIndex >= 0) // will check if it is a valid row (not header)
             {
-                if (e.ColumnIndex == 4) // column 5 is for View button
+                if (e.ColumnIndex == 4) // column 4 is for View button
                 {
                     await Queries.UserQueries.GetUserDetails(userList[e.RowIndex]);
                 }
-                else if (e.ColumnIndex == 5) // column 6 is for Edit button
+                else if (e.ColumnIndex == 5) // column 5 is for Edit button
                 {
                     DataHolder.UserDataHolder = new UserDataHolder();
                     await Queries.UserQueries.GetUserDetails(userList[e.RowIndex], DataHolder.UserDataHolder);
                     PageObjects.editUser.PreviousPage = "Users Page";
                 }
-                else if (e.ColumnIndex == 6) // column 7 is for Archive / Unarchive button
+                else if (e.ColumnIndex == 6) // column 6 is for Archive / Unarchive button
                 {
-                    if (dataGridUsers.Rows[e.RowIndex].Cells[3].Value.Equals("Active"))
+                    if (userList[e.RowIndex] == SessionManager.UserID)
                     {
-                        var archiveDiag = CustomDialog.Show($"Are you sure you want to archive {userList[e.RowIndex]}?", "Archive Alert", CustomDialogButtons.YesNo, CustomDialogIcons.Question);
-
-                        if (archiveDiag == DialogResult.Yes)
+                        CustomDialog.Show("You cannot archive your own data.",
+                            "Archive error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                    }
+                    else
+                    {
+                        if (dataGridUsers.Rows[e.RowIndex].Cells[3].Value.Equals("Active"))
                         {
-                            var success = await Queries.UserQueries.UpdateUserStatus(userList[e.RowIndex], 0);
+                            var archiveDiag = CustomDialog.Show($"Are you sure you want to archive {userList[e.RowIndex]}?", "Archive Alert", CustomDialogButtons.YesNo, CustomDialogIcons.Question);
 
-                            if (success)
+                            if (archiveDiag == DialogResult.Yes)
                             {
-                                // will add a log for archiving user
-                                await Queries.LogsQueries.AddLog($"Archived {userList[e.RowIndex]}", "Users");
+                                var success = await Queries.UserQueries.UpdateUserStatus(userList[e.RowIndex], 0);
 
-                                CustomDialog.Show($"{userList[e.RowIndex]} has been archived successfully!", "Archive Alert", CustomDialogButtons.OK, CustomDialogIcons.Information);
+                                if (success)
+                                {
+                                    // will add a log for archiving user
+                                    await Queries.LogsQueries.AddLog($"Archived {userList[e.RowIndex]}", "Users");
 
-                                await Queries.UserQueries.DisplayUsers("", PageObjects.userPage.CurrentTab, "Default");
-                            }
-                            else
-                            {
-                                CustomDialog.Show($"Failed to archive {userList[e.RowIndex]}", "Archive Alert", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                                    CustomDialog.Show($"{userList[e.RowIndex]} has been archived successfully!", "Archive Alert", CustomDialogButtons.OK, CustomDialogIcons.Information);
+
+                                    await Queries.UserQueries.DisplayUsers("", PageObjects.userPage.CurrentTab, "Default");
+                                }
+                                else
+                                {
+                                    CustomDialog.Show($"Failed to archive {userList[e.RowIndex]}", "Archive Alert", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                                }
                             }
                         }
-                    }
-                    else if (dataGridUsers.Rows[e.RowIndex].Cells[3].Value.Equals("Inactive"))
-                    {
-                        var unarchiveDiag = CustomDialog.Show($"Are you sure you want to unarchive {userList[e.RowIndex]}?", "Unarchive Alert", CustomDialogButtons.YesNo, CustomDialogIcons.Question);
-
-                        if (unarchiveDiag == DialogResult.Yes)
+                        else if (dataGridUsers.Rows[e.RowIndex].Cells[3].Value.Equals("Inactive"))
                         {
-                            var success = await Queries.UserQueries.UpdateUserStatus(userList[e.RowIndex], 1);
+                            var unarchiveDiag = CustomDialog.Show($"Are you sure you want to unarchive {userList[e.RowIndex]}?", "Unarchive Alert", CustomDialogButtons.YesNo, CustomDialogIcons.Question);
 
-                            if (success)
+                            if (unarchiveDiag == DialogResult.Yes)
                             {
-                                // will add a log for unarchiving user
-                                await Queries.LogsQueries.AddLog($"Unarchived {userList[e.RowIndex]}", "Users");
+                                var success = await Queries.UserQueries.UpdateUserStatus(userList[e.RowIndex], 1);
 
-                                CustomDialog.Show($"{userList[e.RowIndex]} has been unarchived successfully!", "Unarchive Alert", CustomDialogButtons.OK, CustomDialogIcons.Information);
+                                if (success)
+                                {
+                                    // will add a log for unarchiving user
+                                    await Queries.LogsQueries.AddLog($"Unarchived {userList[e.RowIndex]}", "Users");
 
-                                await Queries.UserQueries.DisplayUsers("", PageObjects.userPage.CurrentTab, "Default");
-                            }
-                            else
-                            {
-                                CustomDialog.Show($"Failed to unarchive {userList[e.RowIndex]}", "Unarchive Alert", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                                    CustomDialog.Show($"{userList[e.RowIndex]} has been unarchived successfully!", "Unarchive Alert", CustomDialogButtons.OK, CustomDialogIcons.Information);
+
+                                    await Queries.UserQueries.DisplayUsers("", PageObjects.userPage.CurrentTab, "Default");
+                                }
+                                else
+                                {
+                                    CustomDialog.Show($"Failed to unarchive {userList[e.RowIndex]}", "Unarchive Alert", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                                }
                             }
                         }
                     }
