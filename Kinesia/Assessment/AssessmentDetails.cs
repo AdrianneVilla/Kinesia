@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Kinesia.Reports;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -49,6 +50,17 @@ namespace Kinesia.Assessment
             if (dataGridROM.Rows.Count <= 0)
             {
                 btnPrint.Enabled = false;
+            }
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            using(Form shadow = new Form())
+            {
+                FormAnimation.ShowFocus(shadow);
+                var printReportPage = new PrintReport();
+                printReportPage.Owner = shadow;
+                printReportPage.ShowDialog();
             }
         }
     }

@@ -487,6 +487,7 @@
             btnPrint.Text = "Print";
             btnPrint.TextColor = System.Drawing.Color.White;
             btnPrint.UseVisualStyleBackColor = false;
+            btnPrint.Click += btnPrint_Click;
             // 
             // AssessmentDetails
             // 

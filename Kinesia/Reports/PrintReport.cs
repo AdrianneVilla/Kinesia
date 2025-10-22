@@ -30,7 +30,7 @@ namespace Kinesia.Reports
 
         private async void PrintReport_Load(object sender, EventArgs e)
         {
-            var url1 = $"http://localhost:5000/api/assessment/generate-report?assessmentID={"SAMPLE1"}";
+            var url1 = $"http://localhost:5000/api/assessment/generate-report?assessmentID={PageObjects.assessmentDetails.AssessmentID}";
             var response1 = await client.GetAsync(url1);
 
             if (response1.IsSuccessStatusCode)
@@ -44,7 +44,7 @@ namespace Kinesia.Reports
                 ROMReportViewer.LocalReport.DataSources.Add(assessmentDatasource);
             }
 
-            var url2 = $"http://localhost:5000/api/rom/generate-report?assessmentID={"SAMPLE1"}";
+            var url2 = $"http://localhost:5000/api/rom/generate-report?assessmentID={PageObjects.assessmentDetails.AssessmentID}";
             var response2 = await client.GetAsync(url2);
 
             if (response2.IsSuccessStatusCode)
