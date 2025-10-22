@@ -199,7 +199,7 @@ namespace Kinesia.Users
             // GetUserDetails overload for Edit User page
             try
             {
-                var url = $"http://localhost:5000/api/users/{userID}";
+                var url = $"http://localhost:5000/api/users/edit?userID={userID}";
 
                 var response = await client.GetAsync(url);
 
@@ -207,16 +207,19 @@ namespace Kinesia.Users
                 {
                     var json = await response.Content.ReadAsStringAsync();
 
-                    var user = JsonConvert.DeserializeObject<UsersDTO>(json);
+                    var user = JsonConvert.DeserializeObject<UserToEditDTO>(json);
 
                     userData.UserID = user.UserID;
                     userData.FirstName = user.FirstName;
                     userData.LastName = user.LastName;
                     userData.MiddleName = user.MiddleName;
                     userData.BirthDate = user.Birthdate.ToString("yyyy-MM-dd");
-                    userData.Age = user.Age;
                     userData.Gender = user.Gender;
                     userData.Contact = user.Contact;
+                    userData.Role = user.Role;
+                    userData.UserName = user.Username;
+                    userData.Password = user.Password;
+                    userData.Salt = user.Salt;
                     userData.Email = user.Email;
                     userData.Address = user.Address;
 
@@ -348,6 +351,10 @@ namespace Kinesia.Users
             updatedUser.Birthdate = DateTime.Parse(userData.BirthDate);
             updatedUser.Gender = userData.Gender;
             updatedUser.Contact = ContactFormatter(userData.Contact);
+            updatedUser.Role = userData.Role;
+            updatedUser.Username = userData.UserName;
+            updatedUser.Password = userData.Password;
+            updatedUser.Salt = userData.Salt;
             updatedUser.Email = userData.Email;
             updatedUser.Address = userData.Address;
 
@@ -424,6 +431,48 @@ namespace Kinesia.Users
             }
         }
 
+        public async Task<bool> CheckExistingAccount(string username)
+        {
+            try
+            {
+                var url = $"http://localhost:5000/api/users/check-existing-account?username={username}";
+                var response = await client.GetAsync(url);
+
+                if (response.StatusCode == System.Net.HttpStatusCode.Conflict)
+                {
+                    // will return true if username already exist
+                    CustomDialog.Show("Username (Account) was already existing!", "Existing Username", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                    return true;
+                }
+                else if (response.IsSuccessStatusCode)
+                {
+                    // will return false if username do not exist
+                    return false;
+                }
+                else
+                {
+                    // will show an error dialog if it returns a badrequest from API-side.
+                    CustomDialog.Show(await response.Content.ReadAsStringAsync(),
+                                "Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                    return true;
+                }
+            }
+            catch (HttpRequestException)
+            {
+                // will show an error dialog if it catches a http request error from client-side.
+                CustomDialog.Show("Unable to connect to the server.\nPlease try again.",
+                            "Connection Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                return false;
+            }
+            catch (Exception)
+            {
+                // will show an error dialog if it catches an unexpected error from client-side.
+                CustomDialog.Show("Unexpected error occured.\nPlease try again.",
+                            "Unexpected Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                return false;
+            }
+        }
+
         public bool IsUserDetailsComplete(UserDataHolder userData)
         {
             // will return true if the user details on Add User page was complete
@@ -431,6 +480,22 @@ namespace Kinesia.Users
             if (userData.FirstName.Equals("") || userData.LastName.Equals("") ||
                 userData.Gender.Equals("") || userData.Contact.Equals("") || userData.Email.Equals("") || userData.Address.Equals("") ||
                 userData.UserName.Equals("") || userData.Password.Equals("") || userData.Role.Equals(""))
+            {
+                CustomDialog.Show("User details was incomplete! \nPlease fill-out all details to add this user.", "Incomplete User Details",
+                    CustomDialogButtons.OK, CustomDialogIcons.Error);
+                return false;
+            }
+
+            return true;
+        }
+
+        public bool IsUserEditDetailsComplete(UserDataHolder userData)
+        {
+            // will return true if the user details on Add User page was complete
+            // will return false if the user details on Add User page was incomplete
+            if (userData.FirstName.Equals("") || userData.LastName.Equals("") ||
+                userData.Gender.Equals("") || userData.Contact.Equals("") || userData.Email.Equals("") || userData.Address.Equals("") ||
+                userData.UserName.Equals(""))
             {
                 CustomDialog.Show("User details was incomplete! \nPlease fill-out all details to add this user.", "Incomplete User Details",
                     CustomDialogButtons.OK, CustomDialogIcons.Error);
@@ -485,6 +550,30 @@ namespace Kinesia.Users
             contact = "+63" + contact; // will insert '+63' at the start of contact
 
             return contact;
+        }
+
+        public bool IsOldPasswordCorrect(string oldPassword, UserDataHolder userData)
+        {
+            if(!CustomSecurity.HashPassword(oldPassword, userData.Salt).Equals(CustomSecurity.HashPassword(userData.Password, userData.Salt)))
+            {
+                CustomDialog.Show("Old password is incorrect!.\nPlease try again.",
+                    "Incorrect old password", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                return false;
+            }
+
+            return true;
+        }
+
+        public bool IsPasswordConfirmed(string password, string confirmPassword)
+        {
+            if (!password.Equals(confirmPassword))
+            {
+                CustomDialog.Show("Password do not match!.\nPlease try again.",
+                    "Password do not match", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                return false;
+            }
+
+            return true;
         }
 
 

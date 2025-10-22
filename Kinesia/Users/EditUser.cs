@@ -15,7 +15,7 @@ namespace Kinesia.Users
     {
         private string previousPage;
 
-        public string PreviousPage { get { return previousPage; } set { previousPage = value; } }   
+        public string PreviousPage { get { return previousPage; } set { previousPage = value; } }
         public EditUser()
         {
             this.Anchor = AnchorStyles.Right | AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Bottom;
@@ -36,10 +36,10 @@ namespace Kinesia.Users
             dpBirthDate.Value = DateTime.Parse(DataHolder.UserDataHolder.BirthDate);
             txtAge.Texts = getAge().ToString();
 
-            if(DataHolder.UserDataHolder.Gender == "Male")
+            if (DataHolder.UserDataHolder.Gender == "Male")
             {
                 cbGender.SelectedIndex = 0; // will set the cbGender value to Male
-            } 
+            }
             else
             {
                 cbGender.SelectedIndex = 1; // will set the cbGender value to Female
@@ -49,12 +49,12 @@ namespace Kinesia.Users
             txtEmail.Texts = DataHolder.UserDataHolder.Email;
             txtAddress.Texts = DataHolder.UserDataHolder.Address;
             txtUsername.Texts = DataHolder.UserDataHolder.UserName;
-            txtPassword.Texts = DataHolder.UserDataHolder.Password;
-            
-            if(DataHolder.UserDataHolder.Role == "Admin")
+            cbRole.Texts = DataHolder.UserDataHolder.Role;
+
+            if (DataHolder.UserDataHolder.Role == "Admin")
             {
                 cbRole.SelectedIndex = 0; // will set the cbRole value to Admin
-            } 
+            }
             else
             {
                 cbRole.SelectedIndex = 1; // will set the cbRole value to Therapist
@@ -66,16 +66,16 @@ namespace Kinesia.Users
             DialogResult updateDiag = CustomDialog.Show("Are you sure you want to update\n" +
                 $"{DataHolder.UserDataHolder.UserID}'s personal Information?", "Save changes", CustomDialogButtons.YesNo, CustomDialogIcons.Question);
 
-            if(updateDiag == DialogResult.Yes)
+            if (updateDiag == DialogResult.Yes)
             {
-                txtFirstName.Texts.Trim();
-                txtLastName.Texts.Trim();
-                txtLastName.Texts.Trim();
-                txtContact.Texts.Trim();
-                txtEmail.Texts.Trim();
-                txtAddress.Texts.Trim();
-                txtUsername.Texts.Trim();
-                txtPassword.Texts.Trim();
+                txtFirstName.Texts = txtFirstName.Texts.Trim();
+                txtLastName.Texts = txtLastName.Texts.Trim();
+                txtLastName.Texts = txtLastName.Texts.Trim();
+                txtContact.Texts = txtContact.Texts.Trim();
+                txtEmail.Texts = txtEmail.Texts.Trim();
+                txtAddress.Texts = txtAddress.Texts.Trim();
+                txtUsername.Texts = txtUsername.Texts.Trim();
+                txtPassword.Texts = txtPassword.Texts.Trim();
 
                 var userData = new UserDataHolder();
                 userData.UserID = DataHolder.UserDataHolder.UserID;
@@ -88,13 +88,12 @@ namespace Kinesia.Users
                 userData.Email = txtEmail.Texts;
                 userData.Address = txtAddress.Texts;
                 userData.UserName = txtUsername.Texts;
-                userData.Password = txtPassword.Texts;
                 userData.Role = cbRole.Texts;
 
-                if(Queries.UserQueries.IsUserDetailsComplete(userData) && Queries.UserQueries.IsContactValid(userData) &&
+                if (Queries.UserQueries.IsUserEditDetailsComplete(userData) && Queries.UserQueries.IsContactValid(userData) &&
                     Queries.UserQueries.IsEmailValid(userData))
                 {
-                    if(DataHolder.UserDataHolder.FirstName != userData.FirstName || DataHolder.UserDataHolder.LastName != userData.LastName || 
+                    if (DataHolder.UserDataHolder.FirstName != userData.FirstName || DataHolder.UserDataHolder.LastName != userData.LastName ||
                         DataHolder.UserDataHolder.MiddleName != userData.MiddleName)
                     {
                         // will only check existing user if
@@ -103,6 +102,26 @@ namespace Kinesia.Users
                         {
                             return; // will exit the update method if user was already existing
                         }
+                    }
+
+                    if(DataHolder.UserDataHolder.UserName != userData.UserName)
+                    {
+                        if(await Queries.UserQueries.CheckExistingAccount(userData.UserName))
+                        {
+                            return;
+                        }
+                    }
+
+                    if(txtPassword.Texts != "")
+                    {
+                        if(!Queries.UserQueries.IsOldPasswordCorrect(txtPassword.Texts, DataHolder.UserDataHolder) &&
+                            !Queries.UserQueries.IsPasswordConfirmed(txtNewPassword.Texts, txtConfirmPassword.Texts))
+                        {
+                            return;
+                        }
+
+                        userData.Salt = CustomSecurity.GenerateSalt();
+                        userData.Password = CustomSecurity.HashPassword(txtPassword.Texts, userData.Salt);
                     }
 
                     var success = await Queries.UserQueries.UpdateUser(userData);
@@ -121,7 +140,7 @@ namespace Kinesia.Users
                         PageObjects.dashboard.ContentsPanel.Controls.Clear();
                         PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.userPage);
                         PageObjects.CurrentControl = PageObjects.userPage;
-                    } 
+                    }
                     else
                     {
                         CustomDialog.Show($"Failed to edit {userData.UserID}'s personal information", "Failed to edit", CustomDialogButtons.OK, CustomDialogIcons.Information);
@@ -157,16 +176,16 @@ namespace Kinesia.Users
                 txtEmail.Texts.Trim() != user.Email ||
                 txtAddress.Texts.Trim() != user.Address ||
                 txtUsername.Texts.Trim() != user.UserName ||
-                txtPassword.Texts.Trim() != user.Password ||
+                (txtPassword.Texts != "" && txtNewPassword.Texts != "" && txtConfirmPassword.Texts != "") ||
                 cbRole.Texts.Trim() != user.Role;
         }
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            if(previousPage == "Users Page")
+            if (previousPage == "Users Page")
             {
                 goBackToUserPage();
-            } 
+            }
             else
             {
                 goBackToUserDetailsPage();
@@ -348,6 +367,30 @@ namespace Kinesia.Users
             }
         }
 
+        private void txtNewPassword__TextChanged(object sender, EventArgs e)
+        {
+            if (hasChanged())
+            {
+                btnSaveChanges.Visible = true;
+            }
+            else
+            {
+                btnSaveChanges.Visible = false;
+            }
+        }
+
+        private void txtConfirmPassword__TextChanged(object sender, EventArgs e)
+        {
+            if (hasChanged())
+            {
+                btnSaveChanges.Visible = true;
+            }
+            else
+            {
+                btnSaveChanges.Visible = false;
+            }
+        }
+
         private void cbRole_OnSelectedIndexChanged(object sender, EventArgs e)
         {
             if (hasChanged())
@@ -383,5 +426,6 @@ namespace Kinesia.Users
             InputValidation.WholeNumbersOnly(sender, e);
         }
         #endregion
+
     }
 }

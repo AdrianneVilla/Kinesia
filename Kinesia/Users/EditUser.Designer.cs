@@ -44,8 +44,10 @@
             txtPassword = new CustomControls.RJControls.RJTextBox();
             flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             label6 = new System.Windows.Forms.Label();
-            rjTextBox1 = new CustomControls.RJControls.RJTextBox();
+            txtNewPassword = new CustomControls.RJControls.RJTextBox();
             flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
+            label7 = new System.Windows.Forms.Label();
+            txtConfirmPassword = new CustomControls.RJControls.RJTextBox();
             cbRole = new CustomControls.RJControls.RJComboBox();
             txtEmail = new CustomControls.RJControls.RJTextBox();
             label16 = new System.Windows.Forms.Label();
@@ -70,8 +72,6 @@
             label3 = new System.Windows.Forms.Label();
             btnBack = new OrganizationProfile.CustomButton();
             lblUserID = new System.Windows.Forms.Label();
-            label7 = new System.Windows.Forms.Label();
-            rjTextBox2 = new CustomControls.RJControls.RJTextBox();
             panelBorder1.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
             flowLayoutPanel2.SuspendLayout();
@@ -289,7 +289,7 @@
             txtPassword.Multiline = false;
             txtPassword.Name = "txtPassword";
             txtPassword.Padding = new System.Windows.Forms.Padding(12, 8, 12, 8);
-            txtPassword.PasswordChar = false;
+            txtPassword.PasswordChar = true;
             txtPassword.PlaceholderColor = System.Drawing.Color.DarkGray;
             txtPassword.PlaceholderText = "";
             txtPassword.SelectionLength = 0;
@@ -303,7 +303,7 @@
             // flowLayoutPanel4
             // 
             flowLayoutPanel4.Controls.Add(label6);
-            flowLayoutPanel4.Controls.Add(rjTextBox1);
+            flowLayoutPanel4.Controls.Add(txtNewPassword);
             flowLayoutPanel4.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             flowLayoutPanel4.Location = new System.Drawing.Point(657, 3);
             flowLayoutPanel4.Name = "flowLayoutPanel4";
@@ -321,39 +321,76 @@
             label6.TabIndex = 42;
             label6.Text = "New Password";
             // 
-            // rjTextBox1
+            // txtNewPassword
             // 
-            rjTextBox1.BackColor = System.Drawing.SystemColors.Window;
-            rjTextBox1.BorderColor = System.Drawing.Color.DimGray;
-            rjTextBox1.BorderFocusColor = System.Drawing.Color.FromArgb(18, 90, 211);
-            rjTextBox1.BorderRadius = 5;
-            rjTextBox1.BorderSize = 1;
-            rjTextBox1.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            rjTextBox1.ForeColor = System.Drawing.Color.Black;
-            rjTextBox1.Location = new System.Drawing.Point(5, 28);
-            rjTextBox1.Margin = new System.Windows.Forms.Padding(5);
-            rjTextBox1.Multiline = false;
-            rjTextBox1.Name = "rjTextBox1";
-            rjTextBox1.Padding = new System.Windows.Forms.Padding(12, 8, 12, 8);
-            rjTextBox1.PasswordChar = false;
-            rjTextBox1.PlaceholderColor = System.Drawing.Color.DarkGray;
-            rjTextBox1.PlaceholderText = "";
-            rjTextBox1.SelectionLength = 0;
-            rjTextBox1.SelectionStart = 0;
-            rjTextBox1.Size = new System.Drawing.Size(309, 43);
-            rjTextBox1.TabIndex = 41;
-            rjTextBox1.Texts = "";
-            rjTextBox1.UnderlinedStyle = false;
+            txtNewPassword.BackColor = System.Drawing.SystemColors.Window;
+            txtNewPassword.BorderColor = System.Drawing.Color.DimGray;
+            txtNewPassword.BorderFocusColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            txtNewPassword.BorderRadius = 5;
+            txtNewPassword.BorderSize = 1;
+            txtNewPassword.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            txtNewPassword.ForeColor = System.Drawing.Color.Black;
+            txtNewPassword.Location = new System.Drawing.Point(5, 28);
+            txtNewPassword.Margin = new System.Windows.Forms.Padding(5);
+            txtNewPassword.Multiline = false;
+            txtNewPassword.Name = "txtNewPassword";
+            txtNewPassword.Padding = new System.Windows.Forms.Padding(12, 8, 12, 8);
+            txtNewPassword.PasswordChar = true;
+            txtNewPassword.PlaceholderColor = System.Drawing.Color.DarkGray;
+            txtNewPassword.PlaceholderText = "";
+            txtNewPassword.SelectionLength = 0;
+            txtNewPassword.SelectionStart = 0;
+            txtNewPassword.Size = new System.Drawing.Size(309, 43);
+            txtNewPassword.TabIndex = 41;
+            txtNewPassword.Texts = "";
+            txtNewPassword.UnderlinedStyle = false;
+            txtNewPassword._TextChanged += txtNewPassword__TextChanged;
             // 
             // flowLayoutPanel5
             // 
             flowLayoutPanel5.Controls.Add(label7);
-            flowLayoutPanel5.Controls.Add(rjTextBox2);
+            flowLayoutPanel5.Controls.Add(txtConfirmPassword);
             flowLayoutPanel5.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             flowLayoutPanel5.Location = new System.Drawing.Point(994, 3);
             flowLayoutPanel5.Name = "flowLayoutPanel5";
             flowLayoutPanel5.Size = new System.Drawing.Size(347, 87);
             flowLayoutPanel5.TabIndex = 3;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            label7.Location = new System.Drawing.Point(4, 0);
+            label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label7.Name = "label7";
+            label7.Size = new System.Drawing.Size(134, 23);
+            label7.TabIndex = 44;
+            label7.Text = "Confirm Password";
+            // 
+            // txtConfirmPassword
+            // 
+            txtConfirmPassword.BackColor = System.Drawing.SystemColors.Window;
+            txtConfirmPassword.BorderColor = System.Drawing.Color.DimGray;
+            txtConfirmPassword.BorderFocusColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            txtConfirmPassword.BorderRadius = 5;
+            txtConfirmPassword.BorderSize = 1;
+            txtConfirmPassword.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            txtConfirmPassword.ForeColor = System.Drawing.Color.Black;
+            txtConfirmPassword.Location = new System.Drawing.Point(5, 28);
+            txtConfirmPassword.Margin = new System.Windows.Forms.Padding(5);
+            txtConfirmPassword.Multiline = false;
+            txtConfirmPassword.Name = "txtConfirmPassword";
+            txtConfirmPassword.Padding = new System.Windows.Forms.Padding(12, 8, 12, 8);
+            txtConfirmPassword.PasswordChar = true;
+            txtConfirmPassword.PlaceholderColor = System.Drawing.Color.DarkGray;
+            txtConfirmPassword.PlaceholderText = "";
+            txtConfirmPassword.SelectionLength = 0;
+            txtConfirmPassword.SelectionStart = 0;
+            txtConfirmPassword.Size = new System.Drawing.Size(309, 43);
+            txtConfirmPassword.TabIndex = 43;
+            txtConfirmPassword.Texts = "";
+            txtConfirmPassword.UnderlinedStyle = false;
+            txtConfirmPassword._TextChanged += txtConfirmPassword__TextChanged;
             // 
             // cbRole
             // 
@@ -770,41 +807,6 @@
             lblUserID.Text = "<User>";
             lblUserID.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            label7.Location = new System.Drawing.Point(4, 0);
-            label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            label7.Name = "label7";
-            label7.Size = new System.Drawing.Size(134, 23);
-            label7.TabIndex = 44;
-            label7.Text = "Confirm Password";
-            // 
-            // rjTextBox2
-            // 
-            rjTextBox2.BackColor = System.Drawing.SystemColors.Window;
-            rjTextBox2.BorderColor = System.Drawing.Color.DimGray;
-            rjTextBox2.BorderFocusColor = System.Drawing.Color.FromArgb(18, 90, 211);
-            rjTextBox2.BorderRadius = 5;
-            rjTextBox2.BorderSize = 1;
-            rjTextBox2.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            rjTextBox2.ForeColor = System.Drawing.Color.Black;
-            rjTextBox2.Location = new System.Drawing.Point(5, 28);
-            rjTextBox2.Margin = new System.Windows.Forms.Padding(5);
-            rjTextBox2.Multiline = false;
-            rjTextBox2.Name = "rjTextBox2";
-            rjTextBox2.Padding = new System.Windows.Forms.Padding(12, 8, 12, 8);
-            rjTextBox2.PasswordChar = false;
-            rjTextBox2.PlaceholderColor = System.Drawing.Color.DarkGray;
-            rjTextBox2.PlaceholderText = "";
-            rjTextBox2.SelectionLength = 0;
-            rjTextBox2.SelectionStart = 0;
-            rjTextBox2.Size = new System.Drawing.Size(309, 43);
-            rjTextBox2.TabIndex = 43;
-            rjTextBox2.Texts = "";
-            rjTextBox2.UnderlinedStyle = false;
-            // 
             // EditUser
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -873,7 +875,7 @@
         private CustomControls.RJControls.RJTextBox txtEmail;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label lblUserID;
-        private CustomControls.RJControls.RJTextBox rjTextBox1;
+        private CustomControls.RJControls.RJTextBox txtNewPassword;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
@@ -881,6 +883,6 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
         private System.Windows.Forms.Label label7;
-        private CustomControls.RJControls.RJTextBox rjTextBox2;
+        private CustomControls.RJControls.RJTextBox txtConfirmPassword;
     }
 }

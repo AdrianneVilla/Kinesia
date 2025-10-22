@@ -115,6 +115,31 @@ namespace KinesiaAPI.Controllers
             }
         }
 
+        // GET: api/users/edit?userID={}
+        [HttpGet("edit")]
+        public async Task<ActionResult<UserToEditDTO>> GetUserToEdit(string userID)
+        {
+            try
+            {
+                var user = await _context.Users.FindAsync(userID);
+
+                if (user == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok(user);
+            }
+            catch (DbException)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An error occured on database.\nPlease try again.");
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An unexpected error occured.\nPlease try again.");
+            }
+        }
+
         // GET: api/users/generate-userid
         [HttpGet("generate-userid")]
         public async Task<ActionResult<string>> GenerateNewUserID()
@@ -172,6 +197,36 @@ namespace KinesiaAPI.Controllers
             }
         }
 
+        // POST: api/users/check-existing-account?username={}
+        [HttpGet("check-existing-account")]
+        public async Task<IActionResult> CheckExistingAccount(string username)
+        {
+            if (string.IsNullOrEmpty(username))
+            {
+                return BadRequest("Invalid username.");
+            }
+
+            try
+            {
+                bool exist = await _context.Users.AnyAsync(u => u.Username == username);
+
+                if (exist)
+                {
+                    return Conflict();
+                }
+
+                return Ok();
+            }
+            catch (DbException)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An error occured on database.\nPlease try again.");
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An unexpected error occured.\nPlease try again.");
+            }
+        } 
+
         // PUT: api/Users/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
@@ -201,6 +256,18 @@ namespace KinesiaAPI.Controllers
 
             if (!string.IsNullOrEmpty(updatedUser.Contact))
                 existingUser.Contact = updatedUser.Contact;
+
+            if (!string.IsNullOrEmpty(updatedUser.Role))
+                existingUser.Role = updatedUser.Role;
+
+            if (!string.IsNullOrEmpty(updatedUser.Username))
+                existingUser.Username = updatedUser.Username;
+
+            if (!string.IsNullOrEmpty(updatedUser.Password))
+                existingUser.Password = updatedUser.Password;
+
+            if (!string.IsNullOrEmpty(updatedUser.Salt))
+                existingUser.Salt = updatedUser.Salt;
 
             if (!string.IsNullOrEmpty(updatedUser.Email))
                 existingUser.Email = updatedUser.Email;
