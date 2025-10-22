@@ -196,7 +196,7 @@
             txtConfirmPassword.Multiline = false;
             txtConfirmPassword.Name = "txtConfirmPassword";
             txtConfirmPassword.Padding = new System.Windows.Forms.Padding(12, 8, 12, 8);
-            txtConfirmPassword.PasswordChar = false;
+            txtConfirmPassword.PasswordChar = true;
             txtConfirmPassword.PlaceholderColor = System.Drawing.Color.DarkGray;
             txtConfirmPassword.PlaceholderText = "";
             txtConfirmPassword.SelectionLength = 0;
@@ -330,7 +330,7 @@
             txtPassword.Multiline = false;
             txtPassword.Name = "txtPassword";
             txtPassword.Padding = new System.Windows.Forms.Padding(12, 8, 12, 8);
-            txtPassword.PasswordChar = false;
+            txtPassword.PasswordChar = true;
             txtPassword.PlaceholderColor = System.Drawing.Color.DarkGray;
             txtPassword.PlaceholderText = "";
             txtPassword.SelectionLength = 0;

@@ -52,7 +52,9 @@ namespace Kinesia.Users
                 };
 
                 if (Queries.UserQueries.IsUserDetailsComplete(userData) && !await Queries.UserQueries.CheckExistingUser(userData) &&
-                    Queries.UserQueries.IsContactValid(userData) && Queries.UserQueries.IsEmailValid(userData))
+                    Queries.UserQueries.IsContactValid(userData) && Queries.UserQueries.IsEmailValid(userData) && 
+                    Queries.UserQueries.IsPasswordConfirmed(txtPassword.Texts, txtConfirmPassword.Texts) && 
+                    !await Queries.UserQueries.CheckExistingAccount(txtUsername.Texts))
                 {
                     // will continue to add the user if UserDataHolder passed the data validations
                     string newUserID = await Queries.UserQueries.AddUser(userData);
@@ -85,6 +87,7 @@ namespace Kinesia.Users
             txtAddress.Texts = "";
             txtUsername.Texts = "";
             txtPassword.Texts = "";
+            txtConfirmPassword.Texts = "";
         }
 
         private bool areInputsBlank()
