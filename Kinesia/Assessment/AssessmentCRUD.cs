@@ -15,9 +15,9 @@ namespace Kinesia.Assessment
     {
         private readonly HttpClient client = ApiClient.Instance;
 
-        public async Task DisplayAssessments(string searchData, string currentTab, string sortColumn)
+        public async Task DisplayAssessments(string searchData, string currentExtremityTab, string currentStatusTab, string sortColumn)
         {
-            var url = $"http://localhost:5000/api/assessment?searchData={searchData}&currentTab={currentTab}&sortColumn={sortColumn}";
+            var url = $"http://localhost:5000/api/assessment?searchData={searchData}&currentExtremityTab={currentExtremityTab}&currentStatusTab={currentStatusTab}&sortColumn={sortColumn}";
             var response = await client.GetAsync(url);
 
             if (response.IsSuccessStatusCode)

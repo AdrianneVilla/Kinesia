@@ -24,25 +24,35 @@ namespace KinesiaAPI.Controllers
             _context = context;
         }
 
-        // GET: api/assessment?search={}&currentTab={}&sortColumn={}
+        // GET: api/assessment?search={}&currentExtremityTab={}&currentStatusTab={}&sortColumn={}
         [HttpGet]
         public async Task<ActionResult<IEnumerable<DisplayAssessmentsDTO>>> GetAssessments(
             string? searchData = null,
-            string? currentTab = null,
+            string? currentExtremityTab = null,
+            string? currentStatusTab = null,
             string? sortColumn = null)
         {
             try
             {
                 var query = _context.Assessments.AsQueryable();
 
-                // will filter by Active / Inactive
-                if (currentTab == "Upper Extremities")
-                {
+                // will filter by Extremity
+                if (currentExtremityTab == "Upper Extremity")
                     query = query.Where(a => a.Extremity == "Upper Extremity");
-                }
-                else if (currentTab == "Lower Extremities")
-                {
+                else if (currentExtremityTab == "Lower Extremity")
                     query = query.Where(a => a.Extremity == "Lower Extremity");
+
+                switch (currentStatusTab)
+                {
+                    case "Archived":
+                        query = query.Where(a => a.AssessmentStatus == 0);
+                        break;
+                    case "Ongoing":
+                        query = query.Where(a => a.AssessmentStatus == 1);
+                        break;
+                    case "Finished":
+                        query = query.Where(a => a.AssessmentStatus == 2);
+                        break;
                 }
 
                 if (!string.IsNullOrEmpty(searchData))
@@ -119,7 +129,12 @@ namespace KinesiaAPI.Controllers
                     Extremity = result.Extremity,
                     Joint = result.Joint,
                     JointSide = result.JointSide,
-                    AssessmentStatus = result.AssessmentStatus == 1 ? "Ongoing" : "Finished",
+                    AssessmentStatus = result.AssessmentStatus switch
+                    {
+                        0 => "Archived",
+                        1 => "Ongoing",
+                        2 => "Finished",
+                    },
                     AssessmentDate = result.AssessmentDate.ToString("yyyy-MM-dd hh:mm")
                 };
 
@@ -379,7 +394,12 @@ namespace KinesiaAPI.Controllers
                 PatientID = assessment.PatientID,
                 Extremity = assessment.Extremity,
                 Joint = assessment.Joint,
-                AssessmentStatus = assessment.AssessmentStatus == 1 ? "Ongoing" : "Finished"
+                AssessmentStatus = assessment.AssessmentStatus switch
+                {
+                    0 => "Archived",
+                    1 => "Ongoing",
+                    2 => "Finished",
+                }
             };
     }
 }
