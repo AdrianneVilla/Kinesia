@@ -108,7 +108,7 @@
             assessmentModule.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
             assessmentModule.Image = (System.Drawing.Image)resources.GetObject("assessmentModule.Image");
             assessmentModule.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            assessmentModule.Location = new System.Drawing.Point(24, 353);
+            assessmentModule.Location = new System.Drawing.Point(24, 269);
             assessmentModule.Margin = new System.Windows.Forms.Padding(4, 17, 4, 3);
             assessmentModule.Name = "assessmentModule";
             assessmentModule.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
@@ -136,7 +136,7 @@
             usersModule.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
             usersModule.Image = (System.Drawing.Image)resources.GetObject("usersModule.Image");
             usersModule.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            usersModule.Location = new System.Drawing.Point(24, 270);
+            usersModule.Location = new System.Drawing.Point(24, 354);
             usersModule.Margin = new System.Windows.Forms.Padding(4, 17, 4, 3);
             usersModule.Name = "usersModule";
             usersModule.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
@@ -242,6 +242,7 @@
             Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             Name = "Sidebar";
             Size = new System.Drawing.Size(301, 733);
+            Load += Sidebar_Load;
             ResumeLayout(false);
 
         }

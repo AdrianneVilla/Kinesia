@@ -61,8 +61,8 @@ namespace Kinesia.Assessment
 
                 PageObjects.assessmentPage.AssessmentGrid.Columns.Add(new DataGridViewTextBoxColumn
                 {
-                    Name = "Status",
-                    DataPropertyName = "Status",
+                    Name = "AssessmentStatus",
+                    DataPropertyName = "AssessmentStatus",
                     HeaderText = "Status"
                 });
 
@@ -70,8 +70,7 @@ namespace Kinesia.Assessment
                 PageObjects.assessmentPage.AssessmentGrid.DataSource = assessments;
                 PageObjects.assessmentPage.AssessmentGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-                var assessmentCRUD = new AssessmentCRUD();
-                assessmentCRUD.AddActionButtons(PageObjects.assessmentPage.AssessmentGrid, currentStatusTab);
+                //AddActionButtons(PageObjects.assessmentPage.AssessmentGrid, currentStatusTab);
 
                 CustomDataGrid.StyleDataGridWithSpacing(PageObjects.assessmentPage.AssessmentGrid);
                 PageObjects.assessmentPage.AssessmentGrid.ResumeLayout();
@@ -469,8 +468,5 @@ namespace Kinesia.Assessment
             }
         }
     }
-
-
-
 
 }

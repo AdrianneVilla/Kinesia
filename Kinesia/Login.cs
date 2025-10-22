@@ -391,6 +391,7 @@ namespace Kinesia
                     this.Hide();
                     SessionManager.UserID = loginResult.UserID;
                     SessionManager.UserLastName = loginResult.UserLastName;
+                    SessionManager.Role = loginResult.Role;
                     await Queries.LogsQueries.AddLog("Has Logged In", "Sessions");
           
                 }

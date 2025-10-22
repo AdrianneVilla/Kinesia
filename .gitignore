@@ -9,7 +9,6 @@
 # Ignore build results
 bin/
 obj/
-*.dll
 *.exe
 *.pdb
 

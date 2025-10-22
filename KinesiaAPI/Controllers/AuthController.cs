@@ -38,7 +38,7 @@ namespace KinesiaAPI.Controllers
                     return new LoginResponse { Success = false, Message = "Username or Password incorrect" };
                 }
 
-                return new LoginResponse { Success = true, Message = "Login Successful", UserID = user.UserID, UserLastName = user.LastName };
+                return new LoginResponse { Success = true, Message = "Login Successful", UserID = user.UserID, UserLastName = user.LastName, Role = user.Role };
             } 
             catch (Exception ex)
             {

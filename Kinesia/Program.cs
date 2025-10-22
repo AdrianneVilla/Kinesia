@@ -222,11 +222,13 @@ namespace Kinesia
     {
         public static string UserID;
         public static string UserLastName;
+        public static string Role;
 
         public static void Logout()
         {
             UserID = null;
             UserLastName = null;
+            Role = null;
         }
     }
 

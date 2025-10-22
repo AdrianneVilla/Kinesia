@@ -16,7 +16,7 @@ namespace Kinesia.Components
 {
     public partial class Sidebar : UserControl
     {
-       static String tags;
+        static String tags;
         public Sidebar()
         {
             InitializeComponent();
@@ -44,7 +44,7 @@ namespace Kinesia.Components
             PageObjects.userPage = new UserPage();
             PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.userPage);
             PageObjects.CurrentControl = PageObjects.userPage;
-            
+
         }
 
         private void assessmentModule_Click(object sender, EventArgs e)
@@ -67,11 +67,20 @@ namespace Kinesia.Components
         {
             DialogResult logoutDiag = CustomDialog.Show("Are you sure you want to logout?", "Logout Alert", CustomDialogButtons.YesNo, CustomDialogIcons.Question);
 
-            if(logoutDiag == DialogResult.Yes)
+            if (logoutDiag == DialogResult.Yes)
             {
                 SessionManager.Logout();
                 PageObjects.dashboard.Close();
                 PageObjects.loginPage.Show();
+            }
+        }
+
+        private void Sidebar_Load(object sender, EventArgs e)
+        {
+            if(SessionManager.Role != "Admin")
+            {
+                btnLogs.Visible = false;
+                usersModule.Visible = false;
             }
         }
     }
