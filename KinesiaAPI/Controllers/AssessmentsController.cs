@@ -24,11 +24,64 @@ namespace KinesiaAPI.Controllers
             _context = context;
         }
 
-        // GET: api/Assessments
+        // GET: api/assessment?search={}&currentTab={}&sortColumn={}
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Assessments>>> GetAssessments()
+        public async Task<ActionResult<IEnumerable<DisplayAssessmentsDTO>>> GetAssessments(
+            string? searchData = null,
+            string? currentTab = null,
+            string? sortColumn = null)
         {
-            return await _context.Assessments.ToListAsync();
+            try
+            {
+                var query = _context.Assessments.AsQueryable();
+
+                // will filter by Active / Inactive
+                if (currentTab == "Upper Extremities")
+                {
+                    query = query.Where(a => a.Extremity == "Upper Extremity");
+                }
+                else if (currentTab == "Lower Extremities")
+                {
+                    query = query.Where(a => a.Extremity == "Lower Extremity");
+                }
+
+                if (!string.IsNullOrEmpty(searchData))
+                {
+                    query = query.Where(a =>
+                    a.AssessmentID.Contains(searchData) ||
+                    a.PatientID.Contains(searchData));
+                }
+
+                switch (sortColumn)
+                {
+                    case "Alphabetic (Name)":
+                        query = query.OrderBy(a => a.AssessmentID);
+                        break;
+                    case "Earliest (Date Added)":
+                        query = query.OrderBy(a => a.AssessmentDate);
+                        break;
+                    case "Latest (Date Added)":
+                        query = query.OrderByDescending(a => a.AssessmentDate);
+                        break;
+                    default:
+                        query = query.OrderBy(a => a.AssessmentID);
+                        break;
+                }
+
+                var assessments = await query
+                    .Select(a => AssessmentToDisplayAssessmentsDTO(a))
+                    .ToListAsync();
+
+                return Ok(assessments);
+            }
+            catch (DbException)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An error occured on database.\nPlease try again.");
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An unexpected error occured.\nPlease try again.");
+            }
         }
 
         // GET: api/Assessments/5
@@ -318,5 +371,15 @@ namespace KinesiaAPI.Controllers
         {
             return _context.Assessments.Any(e => e.AssessmentID == id);
         }
+
+        public static DisplayAssessmentsDTO AssessmentToDisplayAssessmentsDTO(Assessments assessment) =>
+            new DisplayAssessmentsDTO
+            {
+                AssessmentID = assessment.AssessmentID,
+                PatientID = assessment.PatientID,
+                Extremity = assessment.Extremity,
+                Joint = assessment.Joint,
+                AssessmentStatus = assessment.AssessmentStatus == 1 ? "Ongoing" : "Finished"
+            };
     }
 }

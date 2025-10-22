@@ -12,6 +12,9 @@ namespace Kinesia.Assessment
 {
     public partial class AssessmentPage : UserControl
     {
+        string searchData = "";
+        string currentTab = "All";
+
         public AssessmentPage()
         {
             this.Anchor = AnchorStyles.Right | AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Bottom;
@@ -19,14 +22,16 @@ namespace Kinesia.Assessment
             InitializeComponent();
         }
 
+        public DataGridView AssessmentGrid { get { return dataGridAssessments; } }
+
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
 
-        private void AssessmentPage_Load(object sender, EventArgs e)
+        private async void AssessmentPage_Load(object sender, EventArgs e)
         {
-
+            await Queries.AssessmentQueries.DisplayAssessments(searchData, currentTab, "");
         }
 
         private void btnAddAssessment_Click(object sender, EventArgs e)

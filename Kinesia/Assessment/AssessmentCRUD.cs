@@ -7,12 +7,72 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Kinesia.Assessment
 {
     public class AssessmentCRUD
     {
         private readonly HttpClient client = ApiClient.Instance;
+
+        public async Task DisplayAssessments(string searchData, string currentTab, string sortColumn)
+        {
+            var url = $"http://localhost:5000/api/assessment?searchData={searchData}&currentTab={currentTab}&sortColumn={sortColumn}";
+            var response = await client.GetAsync(url);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var json = await response.Content.ReadAsStringAsync();
+                var assessments = JsonConvert.DeserializeObject<List<DisplayAssessmentsDTO>>(json);
+
+                CustomDataGrid.SetDoubleBuffering(PageObjects.assessmentPage, true);
+                PageObjects.assessmentPage.AssessmentGrid.SuspendLayout();
+                PageObjects.assessmentPage.AssessmentGrid.AutoGenerateColumns = false;
+                PageObjects.assessmentPage.AssessmentGrid.Columns.Clear();
+
+                PageObjects.assessmentPage.AssessmentGrid.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "AssessmentID",
+                    DataPropertyName = "AssessmentID",
+                    HeaderText = "Assessment ID"
+                });
+
+                PageObjects.assessmentPage.AssessmentGrid.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "PatientID",
+                    DataPropertyName = "PatientID",
+                    HeaderText = "Patient ID"
+                });
+
+                PageObjects.assessmentPage.AssessmentGrid.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "Extremity",
+                    DataPropertyName = "Extremity",
+                    HeaderText = "Extremity"
+                });
+
+                PageObjects.assessmentPage.AssessmentGrid.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "Joint",
+                    DataPropertyName = "Joint",
+                    HeaderText = "Joint"
+                });
+
+                PageObjects.assessmentPage.AssessmentGrid.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "Status",
+                    DataPropertyName = "Status",
+                    HeaderText = "Status"
+                });
+
+
+                PageObjects.assessmentPage.AssessmentGrid.DataSource = assessments;
+                PageObjects.assessmentPage.AssessmentGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+                CustomDataGrid.StyleDataGridWithSpacing(PageObjects.assessmentPage.AssessmentGrid);
+                PageObjects.assessmentPage.AssessmentGrid.ResumeLayout();
+            }
+        }
 
         public async Task GetAssessmentDetails(string assessmentID)
         {
