@@ -77,7 +77,12 @@ namespace Kinesia.Components
 
         private void Sidebar_Load(object sender, EventArgs e)
         {
-            if(SessionManager.Role != "Admin")
+
+        }
+
+        private void btnLogs_Paint(object sender, PaintEventArgs e)
+        {
+            if (!SessionManager.Role.Equals("Admin"))
             {
                 btnLogs.Visible = false;
                 usersModule.Visible = false;

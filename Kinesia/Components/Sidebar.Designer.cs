@@ -91,6 +91,7 @@
             btnLogs.TextColor = System.Drawing.Color.FromArgb(18, 90, 211);
             btnLogs.UseVisualStyleBackColor = false;
             btnLogs.Click += btnLogs_Click;
+            btnLogs.Paint += btnLogs_Paint;
             // 
             // assessmentModule
             // 
