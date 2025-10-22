@@ -81,12 +81,13 @@
             // 
             // flowLayoutPanel1
             // 
+            flowLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             flowLayoutPanel1.Controls.Add(btnSaveAssessment);
             flowLayoutPanel1.Controls.Add(customButton2);
             flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
             flowLayoutPanel1.Location = new System.Drawing.Point(89, 132);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new System.Drawing.Size(1291, 58);
+            flowLayoutPanel1.Size = new System.Drawing.Size(1410, 58);
             flowLayoutPanel1.TabIndex = 34;
             // 
             // btnSaveAssessment
@@ -103,7 +104,7 @@
             btnSaveAssessment.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
             btnSaveAssessment.Image = (System.Drawing.Image)resources.GetObject("btnSaveAssessment.Image");
             btnSaveAssessment.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnSaveAssessment.Location = new System.Drawing.Point(1085, 3);
+            btnSaveAssessment.Location = new System.Drawing.Point(1204, 3);
             btnSaveAssessment.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             btnSaveAssessment.Name = "btnSaveAssessment";
             btnSaveAssessment.Padding = new System.Windows.Forms.Padding(12, 5, 23, 0);
@@ -130,7 +131,7 @@
             customButton2.ForeColor = System.Drawing.Color.White;
             customButton2.Image = Properties.Resources.newReselect;
             customButton2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            customButton2.Location = new System.Drawing.Point(878, 3);
+            customButton2.Location = new System.Drawing.Point(997, 3);
             customButton2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             customButton2.Name = "customButton2";
             customButton2.Padding = new System.Windows.Forms.Padding(10, 3, 30, 0);
@@ -153,7 +154,7 @@
             panelPatientInformation.Location = new System.Drawing.Point(76, 239);
             panelPatientInformation.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             panelPatientInformation.Name = "panelPatientInformation";
-            panelPatientInformation.Size = new System.Drawing.Size(1457, 404);
+            panelPatientInformation.Size = new System.Drawing.Size(1423, 404);
             panelPatientInformation.TabIndex = 35;
             // 
             // AddAssessment
@@ -168,7 +169,7 @@
             Controls.Add(label1);
             Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             Name = "AddAssessment";
-            Size = new System.Drawing.Size(1541, 875);
+            Size = new System.Drawing.Size(1541, 671);
             Load += AddAssessment_Load;
             flowLayoutPanel1.ResumeLayout(false);
             ResumeLayout(false);

@@ -30,22 +30,20 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SelectPatient));
             dataGridPatientSelection = new System.Windows.Forms.DataGridView();
-            panelBorder1 = new WindowsFormsApp2.CustomButton.PanelBorder();
-            customButton1 = new OrganizationProfile.CustomButton();
-            btnSearch = new OrganizationProfile.CustomButton();
-            customButton2 = new OrganizationProfile.CustomButton();
-            pictureBox1 = new System.Windows.Forms.PictureBox();
-            txtSearchBar = new CustomControls.RJControls.RJTextBox();
             label2 = new System.Windows.Forms.Label();
             flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             rjComboBox1 = new CustomControls.RJControls.RJComboBox();
             splitter1 = new System.Windows.Forms.Splitter();
             btnAddPatient = new OrganizationProfile.CustomButton();
             btnClose = new OrganizationProfile.CustomButton();
+            panelBorder2 = new WindowsFormsApp2.CustomButton.PanelBorder();
+            pictureBox2 = new System.Windows.Forms.PictureBox();
+            rjTextBox1 = new CustomControls.RJControls.RJTextBox();
+            btnSearch = new OrganizationProfile.CustomButton();
             ((System.ComponentModel.ISupportInitialize)dataGridPatientSelection).BeginInit();
-            panelBorder1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             flowLayoutPanel2.SuspendLayout();
+            panelBorder2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
             // dataGridPatientSelection
@@ -58,128 +56,6 @@
             dataGridPatientSelection.Size = new System.Drawing.Size(770, 454);
             dataGridPatientSelection.TabIndex = 24;
             dataGridPatientSelection.CellContentClick += dataGridPatientSelection_CellContentClick;
-            // 
-            // panelBorder1
-            // 
-            panelBorder1.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            panelBorder1.BackColor = System.Drawing.Color.White;
-            panelBorder1.BackgroundImage = Properties.Resources.longSearchBar;
-            panelBorder1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            panelBorder1.BorderRadius = 10;
-            panelBorder1.Color = System.Drawing.Color.BurlyWood;
-            panelBorder1.Controls.Add(customButton1);
-            panelBorder1.Controls.Add(btnSearch);
-            panelBorder1.Controls.Add(customButton2);
-            panelBorder1.Controls.Add(pictureBox1);
-            panelBorder1.Controls.Add(txtSearchBar);
-            panelBorder1.ForeColor = System.Drawing.Color.Black;
-            panelBorder1.Location = new System.Drawing.Point(44, 94);
-            panelBorder1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            panelBorder1.Name = "panelBorder1";
-            panelBorder1.Padding = new System.Windows.Forms.Padding(6);
-            panelBorder1.Size = new System.Drawing.Size(780, 59);
-            panelBorder1.TabIndex = 23;
-            // 
-            // customButton1
-            // 
-            customButton1.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
-            customButton1.BackColor = System.Drawing.Color.FromArgb(64, 210, 173);
-            customButton1.BackgroundColor = System.Drawing.Color.FromArgb(64, 210, 173);
-            customButton1.BorderColor = System.Drawing.Color.PaleVioletRed;
-            customButton1.BorderRadius = 10;
-            customButton1.BorderSize = 0;
-            customButton1.FlatAppearance.BorderSize = 0;
-            customButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            customButton1.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            customButton1.ForeColor = System.Drawing.Color.White;
-            customButton1.Location = new System.Drawing.Point(645, 10);
-            customButton1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            customButton1.Name = "customButton1";
-            customButton1.Padding = new System.Windows.Forms.Padding(2, 3, 0, 0);
-            customButton1.Size = new System.Drawing.Size(118, 40);
-            customButton1.TabIndex = 17;
-            customButton1.Text = "Search";
-            customButton1.TextColor = System.Drawing.Color.White;
-            customButton1.UseVisualStyleBackColor = false;
-            // 
-            // btnSearch
-            // 
-            btnSearch.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
-            btnSearch.BackColor = System.Drawing.Color.FromArgb(64, 210, 173);
-            btnSearch.BackgroundColor = System.Drawing.Color.FromArgb(64, 210, 173);
-            btnSearch.BorderColor = System.Drawing.Color.PaleVioletRed;
-            btnSearch.BorderRadius = 10;
-            btnSearch.BorderSize = 0;
-            btnSearch.FlatAppearance.BorderSize = 0;
-            btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            btnSearch.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            btnSearch.ForeColor = System.Drawing.Color.White;
-            btnSearch.Location = new System.Drawing.Point(1073, 15);
-            btnSearch.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            btnSearch.Name = "btnSearch";
-            btnSearch.Padding = new System.Windows.Forms.Padding(2, 3, 0, 0);
-            btnSearch.Size = new System.Drawing.Size(118, 40);
-            btnSearch.TabIndex = 16;
-            btnSearch.Text = "Search";
-            btnSearch.TextColor = System.Drawing.Color.White;
-            btnSearch.UseVisualStyleBackColor = false;
-            // 
-            // customButton2
-            // 
-            customButton2.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
-            customButton2.BackColor = System.Drawing.Color.FromArgb(64, 210, 173);
-            customButton2.BackgroundColor = System.Drawing.Color.FromArgb(64, 210, 173);
-            customButton2.BorderColor = System.Drawing.Color.PaleVioletRed;
-            customButton2.BorderRadius = 10;
-            customButton2.BorderSize = 0;
-            customButton2.FlatAppearance.BorderSize = 0;
-            customButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            customButton2.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            customButton2.ForeColor = System.Drawing.Color.White;
-            customButton2.Location = new System.Drawing.Point(1301, 20);
-            customButton2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            customButton2.Name = "customButton2";
-            customButton2.Padding = new System.Windows.Forms.Padding(2, 3, 0, 0);
-            customButton2.Size = new System.Drawing.Size(118, 40);
-            customButton2.TabIndex = 15;
-            customButton2.Text = "Search";
-            customButton2.TextColor = System.Drawing.Color.White;
-            customButton2.UseVisualStyleBackColor = false;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = Properties.Resources.search_icon;
-            pictureBox1.Location = new System.Drawing.Point(16, 17);
-            pictureBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new System.Drawing.Size(33, 28);
-            pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 5;
-            pictureBox1.TabStop = false;
-            // 
-            // txtSearchBar
-            // 
-            txtSearchBar.BackColor = System.Drawing.Color.White;
-            txtSearchBar.BorderColor = System.Drawing.Color.White;
-            txtSearchBar.BorderFocusColor = System.Drawing.Color.White;
-            txtSearchBar.BorderRadius = 5;
-            txtSearchBar.BorderSize = 1;
-            txtSearchBar.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            txtSearchBar.ForeColor = System.Drawing.Color.FromArgb(64, 64, 64);
-            txtSearchBar.Location = new System.Drawing.Point(56, 9);
-            txtSearchBar.Margin = new System.Windows.Forms.Padding(5);
-            txtSearchBar.Multiline = false;
-            txtSearchBar.Name = "txtSearchBar";
-            txtSearchBar.Padding = new System.Windows.Forms.Padding(12, 8, 12, 0);
-            txtSearchBar.PasswordChar = false;
-            txtSearchBar.PlaceholderColor = System.Drawing.Color.DarkGray;
-            txtSearchBar.PlaceholderText = "Search Patient";
-            txtSearchBar.SelectionLength = 0;
-            txtSearchBar.SelectionStart = 0;
-            txtSearchBar.Size = new System.Drawing.Size(580, 35);
-            txtSearchBar.TabIndex = 4;
-            txtSearchBar.Texts = "";
-            txtSearchBar.UnderlinedStyle = false;
             // 
             // label2
             // 
@@ -269,13 +145,84 @@
             btnClose.FlatAppearance.BorderSize = 0;
             btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnClose.ForeColor = System.Drawing.Color.Transparent;
-            btnClose.Location = new System.Drawing.Point(781, 35);
+            btnClose.Location = new System.Drawing.Point(785, 35);
             btnClose.Name = "btnClose";
             btnClose.Size = new System.Drawing.Size(39, 30);
             btnClose.TabIndex = 25;
             btnClose.TextColor = System.Drawing.Color.Transparent;
             btnClose.UseVisualStyleBackColor = false;
             btnClose.Click += btnClose_Click;
+            // 
+            // panelBorder2
+            // 
+            panelBorder2.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            panelBorder2.BackColor = System.Drawing.Color.White;
+            panelBorder2.BackgroundImage = Properties.Resources.search_background_new;
+            panelBorder2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            panelBorder2.BorderRadius = 30;
+            panelBorder2.Color = System.Drawing.Color.BurlyWood;
+            panelBorder2.Controls.Add(btnSearch);
+            panelBorder2.Controls.Add(rjTextBox1);
+            panelBorder2.Controls.Add(pictureBox2);
+            panelBorder2.ForeColor = System.Drawing.Color.Black;
+            panelBorder2.Location = new System.Drawing.Point(44, 99);
+            panelBorder2.Name = "panelBorder2";
+            panelBorder2.Size = new System.Drawing.Size(789, 53);
+            panelBorder2.TabIndex = 26;
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.Image = Properties.Resources.search_icon;
+            pictureBox2.Location = new System.Drawing.Point(23, 12);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new System.Drawing.Size(29, 27);
+            pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            pictureBox2.TabIndex = 0;
+            pictureBox2.TabStop = false;
+            pictureBox2.Click += pictureBox2_Click;
+            // 
+            // rjTextBox1
+            // 
+            rjTextBox1.BackColor = System.Drawing.Color.White;
+            rjTextBox1.BorderColor = System.Drawing.Color.White;
+            rjTextBox1.BorderFocusColor = System.Drawing.Color.White;
+            rjTextBox1.BorderRadius = 5;
+            rjTextBox1.BorderSize = 1;
+            rjTextBox1.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            rjTextBox1.ForeColor = System.Drawing.Color.FromArgb(64, 64, 64);
+            rjTextBox1.Location = new System.Drawing.Point(60, 6);
+            rjTextBox1.Margin = new System.Windows.Forms.Padding(5);
+            rjTextBox1.Multiline = false;
+            rjTextBox1.Name = "rjTextBox1";
+            rjTextBox1.Padding = new System.Windows.Forms.Padding(12, 8, 12, 0);
+            rjTextBox1.PasswordChar = false;
+            rjTextBox1.PlaceholderColor = System.Drawing.Color.DarkGray;
+            rjTextBox1.PlaceholderText = "Search Patient";
+            rjTextBox1.SelectionLength = 0;
+            rjTextBox1.SelectionStart = 0;
+            rjTextBox1.Size = new System.Drawing.Size(558, 35);
+            rjTextBox1.TabIndex = 5;
+            rjTextBox1.Texts = "";
+            rjTextBox1.UnderlinedStyle = false;
+            // 
+            // btnSearch
+            // 
+            btnSearch.BackColor = System.Drawing.Color.FromArgb(64, 210, 173);
+            btnSearch.BackgroundColor = System.Drawing.Color.FromArgb(64, 210, 173);
+            btnSearch.BorderColor = System.Drawing.Color.PaleVioletRed;
+            btnSearch.BorderRadius = 10;
+            btnSearch.BorderSize = 0;
+            btnSearch.FlatAppearance.BorderSize = 0;
+            btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnSearch.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            btnSearch.ForeColor = System.Drawing.Color.Transparent;
+            btnSearch.Location = new System.Drawing.Point(626, 6);
+            btnSearch.Name = "btnSearch";
+            btnSearch.Size = new System.Drawing.Size(150, 40);
+            btnSearch.TabIndex = 6;
+            btnSearch.Text = "Search";
+            btnSearch.TextColor = System.Drawing.Color.Transparent;
+            btnSearch.UseVisualStyleBackColor = false;
             // 
             // SelectPatient
             // 
@@ -284,9 +231,9 @@
             BackColor = System.Drawing.Color.White;
             ClientSize = new System.Drawing.Size(874, 763);
             ControlBox = false;
+            Controls.Add(panelBorder2);
             Controls.Add(btnClose);
             Controls.Add(dataGridPatientSelection);
-            Controls.Add(panelBorder1);
             Controls.Add(label2);
             Controls.Add(flowLayoutPanel2);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -295,26 +242,24 @@
             Text = "NewSelectPatient";
             Load += SelectPatient_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridPatientSelection).EndInit();
-            panelBorder1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             flowLayoutPanel2.ResumeLayout(false);
+            panelBorder2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridPatientSelection;
-        private WindowsFormsApp2.CustomButton.PanelBorder panelBorder1;
-        private OrganizationProfile.CustomButton btnSearch;
-        private OrganizationProfile.CustomButton customButton2;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private CustomControls.RJControls.RJTextBox txtSearchBar;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private CustomControls.RJControls.RJComboBox rjComboBox1;
         private System.Windows.Forms.Splitter splitter1;
         private OrganizationProfile.CustomButton btnAddPatient;
         private OrganizationProfile.CustomButton btnClose;
-        private OrganizationProfile.CustomButton customButton1;
+        private WindowsFormsApp2.CustomButton.PanelBorder panelBorder2;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private OrganizationProfile.CustomButton btnSearch;
+        private CustomControls.RJControls.RJTextBox rjTextBox1;
     }
 }

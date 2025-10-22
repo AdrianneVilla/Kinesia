@@ -29,198 +29,220 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Sidebar));
-            this.btnLogout = new OrganizationProfile.CustomButton();
-            this.btnLogs = new OrganizationProfile.CustomButton();
-            this.assessmentModule = new OrganizationProfile.CustomButton();
-            this.usersModule = new OrganizationProfile.CustomButton();
-            this.patientModule = new OrganizationProfile.CustomButton();
-            this.dashboardModule = new OrganizationProfile.CustomButton();
-            this.SuspendLayout();
+            btnLogout = new OrganizationProfile.CustomButton();
+            btnLogs = new OrganizationProfile.CustomButton();
+            assessmentModule = new OrganizationProfile.CustomButton();
+            usersModule = new OrganizationProfile.CustomButton();
+            patientModule = new OrganizationProfile.CustomButton();
+            dashboardModule = new OrganizationProfile.CustomButton();
+            customButton1 = new OrganizationProfile.CustomButton();
+            SuspendLayout();
             // 
             // btnLogout
             // 
-            this.btnLogout.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnLogout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(210)))), ((int)(((byte)(173)))));
-            this.btnLogout.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(210)))), ((int)(((byte)(173)))));
-            this.btnLogout.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnLogout.BorderColor = System.Drawing.Color.White;
-            this.btnLogout.BorderRadius = 10;
-            this.btnLogout.BorderSize = 0;
-            this.btnLogout.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnLogout.FlatAppearance.BorderSize = 0;
-            this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLogout.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogout.ForeColor = System.Drawing.Color.White;
-            this.btnLogout.Image = ((System.Drawing.Image)(resources.GetObject("btnLogout.Image")));
-            this.btnLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLogout.Location = new System.Drawing.Point(21, 568);
-            this.btnLogout.Margin = new System.Windows.Forms.Padding(3, 15, 3, 3);
-            this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnLogout.Size = new System.Drawing.Size(206, 54);
-            this.btnLogout.TabIndex = 5;
-            this.btnLogout.Text = "Logout";
-            this.btnLogout.TextColor = System.Drawing.Color.White;
-            this.btnLogout.UseVisualStyleBackColor = false;
-            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            btnLogout.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            btnLogout.BackColor = System.Drawing.Color.FromArgb(64, 210, 173);
+            btnLogout.BackgroundColor = System.Drawing.Color.FromArgb(64, 210, 173);
+            btnLogout.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            btnLogout.BorderColor = System.Drawing.Color.White;
+            btnLogout.BorderRadius = 10;
+            btnLogout.BorderSize = 0;
+            btnLogout.Cursor = System.Windows.Forms.Cursors.Hand;
+            btnLogout.FlatAppearance.BorderSize = 0;
+            btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnLogout.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            btnLogout.ForeColor = System.Drawing.Color.White;
+            btnLogout.Image = (System.Drawing.Image)resources.GetObject("btnLogout.Image");
+            btnLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            btnLogout.Location = new System.Drawing.Point(24, 655);
+            btnLogout.Margin = new System.Windows.Forms.Padding(4, 17, 4, 3);
+            btnLogout.Name = "btnLogout";
+            btnLogout.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            btnLogout.Size = new System.Drawing.Size(240, 62);
+            btnLogout.TabIndex = 5;
+            btnLogout.Text = "Logout";
+            btnLogout.TextColor = System.Drawing.Color.White;
+            btnLogout.UseVisualStyleBackColor = false;
+            btnLogout.Click += btnLogout_Click;
             // 
             // btnLogs
             // 
-            this.btnLogs.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnLogs.BackColor = System.Drawing.Color.White;
-            this.btnLogs.BackgroundColor = System.Drawing.Color.White;
-            this.btnLogs.BackgroundImage = global::Kinesia.Properties.Resources.btn_back;
-            this.btnLogs.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnLogs.BorderColor = System.Drawing.Color.White;
-            this.btnLogs.BorderRadius = 10;
-            this.btnLogs.BorderSize = 0;
-            this.btnLogs.FlatAppearance.BorderSize = 0;
-            this.btnLogs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLogs.Font = new System.Drawing.Font("Poppins", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.btnLogs.Image = ((System.Drawing.Image)(resources.GetObject("btnLogs.Image")));
-            this.btnLogs.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLogs.Location = new System.Drawing.Point(21, 378);
-            this.btnLogs.Margin = new System.Windows.Forms.Padding(3, 15, 3, 3);
-            this.btnLogs.Name = "btnLogs";
-            this.btnLogs.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnLogs.Size = new System.Drawing.Size(206, 54);
-            this.btnLogs.TabIndex = 4;
-            this.btnLogs.Text = "Logs";
-            this.btnLogs.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.btnLogs.UseVisualStyleBackColor = false;
-            this.btnLogs.Click += new System.EventHandler(this.btnLogs_Click);
+            btnLogs.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            btnLogs.BackColor = System.Drawing.Color.White;
+            btnLogs.BackgroundColor = System.Drawing.Color.White;
+            btnLogs.BackgroundImage = Properties.Resources.btn_back;
+            btnLogs.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            btnLogs.BorderColor = System.Drawing.Color.White;
+            btnLogs.BorderRadius = 10;
+            btnLogs.BorderSize = 0;
+            btnLogs.FlatAppearance.BorderSize = 0;
+            btnLogs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnLogs.Font = new System.Drawing.Font("Poppins", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            btnLogs.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            btnLogs.Image = (System.Drawing.Image)resources.GetObject("btnLogs.Image");
+            btnLogs.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            btnLogs.Location = new System.Drawing.Point(24, 436);
+            btnLogs.Margin = new System.Windows.Forms.Padding(4, 17, 4, 3);
+            btnLogs.Name = "btnLogs";
+            btnLogs.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            btnLogs.Size = new System.Drawing.Size(240, 62);
+            btnLogs.TabIndex = 4;
+            btnLogs.Text = "Logs";
+            btnLogs.TextColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            btnLogs.UseVisualStyleBackColor = false;
+            btnLogs.Click += btnLogs_Click;
             // 
             // assessmentModule
             // 
-            this.assessmentModule.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.assessmentModule.BackColor = System.Drawing.Color.White;
-            this.assessmentModule.BackgroundColor = System.Drawing.Color.White;
-            this.assessmentModule.BackgroundImage = global::Kinesia.Properties.Resources.btn_back;
-            this.assessmentModule.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.assessmentModule.BorderColor = System.Drawing.Color.White;
-            this.assessmentModule.BorderRadius = 10;
-            this.assessmentModule.BorderSize = 0;
-            this.assessmentModule.FlatAppearance.BorderSize = 0;
-            this.assessmentModule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.assessmentModule.Font = new System.Drawing.Font("Poppins", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.assessmentModule.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.assessmentModule.Image = ((System.Drawing.Image)(resources.GetObject("assessmentModule.Image")));
-            this.assessmentModule.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.assessmentModule.Location = new System.Drawing.Point(21, 306);
-            this.assessmentModule.Margin = new System.Windows.Forms.Padding(3, 15, 3, 3);
-            this.assessmentModule.Name = "assessmentModule";
-            this.assessmentModule.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.assessmentModule.Size = new System.Drawing.Size(206, 54);
-            this.assessmentModule.TabIndex = 3;
-            this.assessmentModule.Text = "Assessment";
-            this.assessmentModule.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.assessmentModule.UseVisualStyleBackColor = false;
-            this.assessmentModule.Click += new System.EventHandler(this.assessmentModule_Click);
+            assessmentModule.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            assessmentModule.BackColor = System.Drawing.Color.White;
+            assessmentModule.BackgroundColor = System.Drawing.Color.White;
+            assessmentModule.BackgroundImage = Properties.Resources.btn_back;
+            assessmentModule.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            assessmentModule.BorderColor = System.Drawing.Color.White;
+            assessmentModule.BorderRadius = 10;
+            assessmentModule.BorderSize = 0;
+            assessmentModule.FlatAppearance.BorderSize = 0;
+            assessmentModule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            assessmentModule.Font = new System.Drawing.Font("Poppins", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            assessmentModule.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            assessmentModule.Image = (System.Drawing.Image)resources.GetObject("assessmentModule.Image");
+            assessmentModule.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            assessmentModule.Location = new System.Drawing.Point(24, 353);
+            assessmentModule.Margin = new System.Windows.Forms.Padding(4, 17, 4, 3);
+            assessmentModule.Name = "assessmentModule";
+            assessmentModule.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            assessmentModule.Size = new System.Drawing.Size(240, 62);
+            assessmentModule.TabIndex = 3;
+            assessmentModule.Text = "Assessment";
+            assessmentModule.TextColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            assessmentModule.UseVisualStyleBackColor = false;
+            assessmentModule.Click += assessmentModule_Click;
             // 
             // usersModule
             // 
-            this.usersModule.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.usersModule.BackColor = System.Drawing.Color.White;
-            this.usersModule.BackgroundColor = System.Drawing.Color.White;
-            this.usersModule.BackgroundImage = global::Kinesia.Properties.Resources.btn_back;
-            this.usersModule.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.usersModule.BorderColor = System.Drawing.Color.White;
-            this.usersModule.BorderRadius = 10;
-            this.usersModule.BorderSize = 0;
-            this.usersModule.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.usersModule.FlatAppearance.BorderSize = 0;
-            this.usersModule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.usersModule.Font = new System.Drawing.Font("Poppins", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.usersModule.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.usersModule.Image = ((System.Drawing.Image)(resources.GetObject("usersModule.Image")));
-            this.usersModule.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.usersModule.Location = new System.Drawing.Point(21, 234);
-            this.usersModule.Margin = new System.Windows.Forms.Padding(3, 15, 3, 3);
-            this.usersModule.Name = "usersModule";
-            this.usersModule.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.usersModule.Size = new System.Drawing.Size(206, 54);
-            this.usersModule.TabIndex = 2;
-            this.usersModule.Text = "Users";
-            this.usersModule.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.usersModule.UseVisualStyleBackColor = false;
-            this.usersModule.Click += new System.EventHandler(this.usersModule_Click);
+            usersModule.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            usersModule.BackColor = System.Drawing.Color.White;
+            usersModule.BackgroundColor = System.Drawing.Color.White;
+            usersModule.BackgroundImage = Properties.Resources.btn_back;
+            usersModule.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            usersModule.BorderColor = System.Drawing.Color.White;
+            usersModule.BorderRadius = 10;
+            usersModule.BorderSize = 0;
+            usersModule.Cursor = System.Windows.Forms.Cursors.Hand;
+            usersModule.FlatAppearance.BorderSize = 0;
+            usersModule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            usersModule.Font = new System.Drawing.Font("Poppins", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            usersModule.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            usersModule.Image = (System.Drawing.Image)resources.GetObject("usersModule.Image");
+            usersModule.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            usersModule.Location = new System.Drawing.Point(24, 270);
+            usersModule.Margin = new System.Windows.Forms.Padding(4, 17, 4, 3);
+            usersModule.Name = "usersModule";
+            usersModule.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            usersModule.Size = new System.Drawing.Size(240, 62);
+            usersModule.TabIndex = 2;
+            usersModule.Text = "Users";
+            usersModule.TextColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            usersModule.UseVisualStyleBackColor = false;
+            usersModule.Click += usersModule_Click;
             // 
             // patientModule
             // 
-            this.patientModule.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.patientModule.BackColor = System.Drawing.Color.White;
-            this.patientModule.BackgroundColor = System.Drawing.Color.White;
-            this.patientModule.BackgroundImage = global::Kinesia.Properties.Resources.btn_back;
-            this.patientModule.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.patientModule.BorderColor = System.Drawing.Color.White;
-            this.patientModule.BorderRadius = 10;
-            this.patientModule.BorderSize = 1;
-            this.patientModule.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.patientModule.FlatAppearance.BorderSize = 0;
-            this.patientModule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.patientModule.Font = new System.Drawing.Font("Poppins", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.patientModule.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.patientModule.Image = ((System.Drawing.Image)(resources.GetObject("patientModule.Image")));
-            this.patientModule.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.patientModule.Location = new System.Drawing.Point(21, 161);
-            this.patientModule.Margin = new System.Windows.Forms.Padding(3, 15, 3, 3);
-            this.patientModule.Name = "patientModule";
-            this.patientModule.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.patientModule.Size = new System.Drawing.Size(206, 55);
-            this.patientModule.TabIndex = 1;
-            this.patientModule.Text = "Patients";
-            this.patientModule.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.patientModule.UseVisualStyleBackColor = false;
-            this.patientModule.Click += new System.EventHandler(this.patientModule_Click);
+            patientModule.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            patientModule.BackColor = System.Drawing.Color.White;
+            patientModule.BackgroundColor = System.Drawing.Color.White;
+            patientModule.BackgroundImage = Properties.Resources.btn_back;
+            patientModule.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            patientModule.BorderColor = System.Drawing.Color.White;
+            patientModule.BorderRadius = 10;
+            patientModule.BorderSize = 1;
+            patientModule.Cursor = System.Windows.Forms.Cursors.Hand;
+            patientModule.FlatAppearance.BorderSize = 0;
+            patientModule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            patientModule.Font = new System.Drawing.Font("Poppins", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            patientModule.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            patientModule.Image = (System.Drawing.Image)resources.GetObject("patientModule.Image");
+            patientModule.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            patientModule.Location = new System.Drawing.Point(24, 186);
+            patientModule.Margin = new System.Windows.Forms.Padding(4, 17, 4, 3);
+            patientModule.Name = "patientModule";
+            patientModule.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            patientModule.Size = new System.Drawing.Size(240, 63);
+            patientModule.TabIndex = 1;
+            patientModule.Text = "Patients";
+            patientModule.TextColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            patientModule.UseVisualStyleBackColor = false;
+            patientModule.Click += patientModule_Click;
             // 
             // dashboardModule
             // 
-            this.dashboardModule.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dashboardModule.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.dashboardModule.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.dashboardModule.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.dashboardModule.BorderColor = System.Drawing.Color.Transparent;
-            this.dashboardModule.BorderRadius = 10;
-            this.dashboardModule.BorderSize = 0;
-            this.dashboardModule.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.dashboardModule.FlatAppearance.BorderSize = 0;
-            this.dashboardModule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.dashboardModule.Font = new System.Drawing.Font("Poppins", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dashboardModule.ForeColor = System.Drawing.Color.Transparent;
-            this.dashboardModule.Image = ((System.Drawing.Image)(resources.GetObject("dashboardModule.Image")));
-            this.dashboardModule.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.dashboardModule.Location = new System.Drawing.Point(21, 93);
-            this.dashboardModule.Name = "dashboardModule";
-            this.dashboardModule.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.dashboardModule.Size = new System.Drawing.Size(206, 50);
-            this.dashboardModule.TabIndex = 0;
-            this.dashboardModule.Text = "Dashboard";
-            this.dashboardModule.TextColor = System.Drawing.Color.Transparent;
-            this.dashboardModule.UseVisualStyleBackColor = false;
-            this.dashboardModule.Click += new System.EventHandler(this.dashboardModule_Click);
+            dashboardModule.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            dashboardModule.BackColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            dashboardModule.BackgroundColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            dashboardModule.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            dashboardModule.BorderColor = System.Drawing.Color.Transparent;
+            dashboardModule.BorderRadius = 10;
+            dashboardModule.BorderSize = 0;
+            dashboardModule.Cursor = System.Windows.Forms.Cursors.Hand;
+            dashboardModule.FlatAppearance.BorderSize = 0;
+            dashboardModule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            dashboardModule.Font = new System.Drawing.Font("Poppins", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            dashboardModule.ForeColor = System.Drawing.Color.Transparent;
+            dashboardModule.Image = (System.Drawing.Image)resources.GetObject("dashboardModule.Image");
+            dashboardModule.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            dashboardModule.Location = new System.Drawing.Point(24, 107);
+            dashboardModule.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            dashboardModule.Name = "dashboardModule";
+            dashboardModule.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            dashboardModule.Size = new System.Drawing.Size(240, 58);
+            dashboardModule.TabIndex = 0;
+            dashboardModule.Text = "Dashboard";
+            dashboardModule.TextColor = System.Drawing.Color.Transparent;
+            dashboardModule.UseVisualStyleBackColor = false;
+            dashboardModule.Click += dashboardModule_Click;
+            // 
+            // customButton1
+            // 
+            customButton1.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            customButton1.BackColor = System.Drawing.Color.FromArgb(200, 220, 255);
+            customButton1.BackgroundColor = System.Drawing.Color.FromArgb(200, 220, 255);
+            customButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            customButton1.BorderColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            customButton1.BorderRadius = 10;
+            customButton1.BorderSize = 1;
+            customButton1.FlatAppearance.BorderSize = 0;
+            customButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            customButton1.Font = new System.Drawing.Font("Poppins", 8.25F, System.Drawing.FontStyle.Bold);
+            customButton1.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            customButton1.Image = Properties.Resources.newHelpIcon;
+            customButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            customButton1.Location = new System.Drawing.Point(24, 598);
+            customButton1.Name = "customButton1";
+            customButton1.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            customButton1.Size = new System.Drawing.Size(240, 47);
+            customButton1.TabIndex = 6;
+            customButton1.Text = "System Guide";
+            customButton1.TextColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            customButton1.UseVisualStyleBackColor = false;
             // 
             // Sidebar
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.Controls.Add(this.btnLogout);
-            this.Controls.Add(this.btnLogs);
-            this.Controls.Add(this.assessmentModule);
-            this.Controls.Add(this.usersModule);
-            this.Controls.Add(this.patientModule);
-            this.Controls.Add(this.dashboardModule);
-            this.Name = "Sidebar";
-            this.Size = new System.Drawing.Size(258, 635);
-            this.ResumeLayout(false);
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            BackColor = System.Drawing.Color.White;
+            BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            Controls.Add(customButton1);
+            Controls.Add(btnLogout);
+            Controls.Add(btnLogs);
+            Controls.Add(assessmentModule);
+            Controls.Add(usersModule);
+            Controls.Add(patientModule);
+            Controls.Add(dashboardModule);
+            Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            Name = "Sidebar";
+            Size = new System.Drawing.Size(301, 733);
+            ResumeLayout(false);
 
         }
 
@@ -232,5 +254,6 @@
         private OrganizationProfile.CustomButton btnLogs;
         private OrganizationProfile.CustomButton btnLogout;
         public OrganizationProfile.CustomButton patientModule;
+        private OrganizationProfile.CustomButton customButton1;
     }
 }

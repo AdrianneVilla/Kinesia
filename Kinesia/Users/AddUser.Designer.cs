@@ -64,6 +64,8 @@
             btnClearInput = new OrganizationProfile.CustomButton();
             btnAddUser = new OrganizationProfile.CustomButton();
             flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            rjTextBox1 = new CustomControls.RJControls.RJTextBox();
+            label17 = new System.Windows.Forms.Label();
             panelBorder1.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
             SuspendLayout();
@@ -144,6 +146,8 @@
             panelBorder1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             panelBorder1.BorderRadius = 30;
             panelBorder1.Color = System.Drawing.Color.BurlyWood;
+            panelBorder1.Controls.Add(rjTextBox1);
+            panelBorder1.Controls.Add(label17);
             panelBorder1.Controls.Add(txtEmail);
             panelBorder1.Controls.Add(label16);
             panelBorder1.Controls.Add(label15);
@@ -175,7 +179,7 @@
             panelBorder1.Location = new System.Drawing.Point(78, 132);
             panelBorder1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             panelBorder1.Name = "panelBorder1";
-            panelBorder1.Size = new System.Drawing.Size(1631, 652);
+            panelBorder1.Size = new System.Drawing.Size(1631, 683);
             panelBorder1.TabIndex = 15;
             // 
             // txtEmail
@@ -217,7 +221,7 @@
             // 
             label15.AutoSize = true;
             label15.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            label15.Location = new System.Drawing.Point(830, 530);
+            label15.Location = new System.Drawing.Point(540, 321);
             label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             label15.Name = "label15";
             label15.Size = new System.Drawing.Size(38, 23);
@@ -236,7 +240,7 @@
             cbRole.Items.AddRange(new object[] { "Admin", "Therapist" });
             cbRole.ListBackColor = System.Drawing.Color.White;
             cbRole.ListTextColor = System.Drawing.Color.Black;
-            cbRole.Location = new System.Drawing.Point(831, 558);
+            cbRole.Location = new System.Drawing.Point(541, 349);
             cbRole.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             cbRole.MinimumSize = new System.Drawing.Size(233, 35);
             cbRole.Name = "cbRole";
@@ -286,7 +290,7 @@
             txtPassword.BorderSize = 1;
             txtPassword.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             txtPassword.ForeColor = System.Drawing.Color.Black;
-            txtPassword.Location = new System.Drawing.Point(445, 555);
+            txtPassword.Location = new System.Drawing.Point(445, 603);
             txtPassword.Margin = new System.Windows.Forms.Padding(5);
             txtPassword.Multiline = false;
             txtPassword.Name = "txtPassword";
@@ -305,12 +309,12 @@
             // 
             label13.AutoSize = true;
             label13.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            label13.Location = new System.Drawing.Point(440, 529);
+            label13.Location = new System.Drawing.Point(440, 577);
             label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             label13.Name = "label13";
-            label13.Size = new System.Drawing.Size(75, 23);
+            label13.Size = new System.Drawing.Size(113, 23);
             label13.TabIndex = 23;
-            label13.Text = "Password";
+            label13.Text = "Enter Password";
             // 
             // txtUsername
             // 
@@ -321,7 +325,7 @@
             txtUsername.BorderSize = 1;
             txtUsername.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             txtUsername.ForeColor = System.Drawing.Color.Black;
-            txtUsername.Location = new System.Drawing.Point(66, 555);
+            txtUsername.Location = new System.Drawing.Point(66, 603);
             txtUsername.Margin = new System.Windows.Forms.Padding(5);
             txtUsername.Multiline = false;
             txtUsername.Name = "txtUsername";
@@ -340,7 +344,7 @@
             // 
             label12.AutoSize = true;
             label12.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            label12.Location = new System.Drawing.Point(61, 529);
+            label12.Location = new System.Drawing.Point(61, 577);
             label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             label12.Name = "label12";
             label12.Size = new System.Drawing.Size(80, 23);
@@ -352,7 +356,7 @@
             label11.AutoSize = true;
             label11.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             label11.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
-            label11.Location = new System.Drawing.Point(59, 466);
+            label11.Location = new System.Drawing.Point(59, 514);
             label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             label11.Name = "label11";
             label11.Size = new System.Drawing.Size(159, 34);
@@ -457,7 +461,7 @@
             txtAddress.BorderSize = 1;
             txtAddress.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             txtAddress.ForeColor = System.Drawing.Color.Black;
-            txtAddress.Location = new System.Drawing.Point(541, 352);
+            txtAddress.Location = new System.Drawing.Point(56, 456);
             txtAddress.Margin = new System.Windows.Forms.Padding(5);
             txtAddress.Multiline = true;
             txtAddress.Name = "txtAddress";
@@ -467,7 +471,7 @@
             txtAddress.PlaceholderText = "";
             txtAddress.SelectionLength = 0;
             txtAddress.SelectionStart = 0;
-            txtAddress.Size = new System.Drawing.Size(875, 42);
+            txtAddress.Size = new System.Drawing.Size(1360, 42);
             txtAddress.TabIndex = 8;
             txtAddress.Texts = "";
             txtAddress.UnderlinedStyle = false;
@@ -476,7 +480,7 @@
             // 
             label9.AutoSize = true;
             label9.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            label9.Location = new System.Drawing.Point(532, 324);
+            label9.Location = new System.Drawing.Point(47, 428);
             label9.Margin = new System.Windows.Forms.Padding(4, 35, 4, 0);
             label9.Name = "label9";
             label9.Size = new System.Drawing.Size(66, 23);
@@ -686,6 +690,41 @@
             flowLayoutPanel1.Size = new System.Drawing.Size(422, 67);
             flowLayoutPanel1.TabIndex = 41;
             // 
+            // rjTextBox1
+            // 
+            rjTextBox1.BackColor = System.Drawing.SystemColors.Window;
+            rjTextBox1.BorderColor = System.Drawing.Color.DimGray;
+            rjTextBox1.BorderFocusColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            rjTextBox1.BorderRadius = 5;
+            rjTextBox1.BorderSize = 1;
+            rjTextBox1.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            rjTextBox1.ForeColor = System.Drawing.Color.Black;
+            rjTextBox1.Location = new System.Drawing.Point(833, 603);
+            rjTextBox1.Margin = new System.Windows.Forms.Padding(5);
+            rjTextBox1.Multiline = false;
+            rjTextBox1.Name = "rjTextBox1";
+            rjTextBox1.Padding = new System.Windows.Forms.Padding(12, 8, 12, 8);
+            rjTextBox1.PasswordChar = false;
+            rjTextBox1.PlaceholderColor = System.Drawing.Color.DarkGray;
+            rjTextBox1.PlaceholderText = "";
+            rjTextBox1.SelectionLength = 0;
+            rjTextBox1.SelectionStart = 0;
+            rjTextBox1.Size = new System.Drawing.Size(343, 43);
+            rjTextBox1.TabIndex = 39;
+            rjTextBox1.Texts = "";
+            rjTextBox1.UnderlinedStyle = false;
+            // 
+            // label17
+            // 
+            label17.AutoSize = true;
+            label17.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            label17.Location = new System.Drawing.Point(828, 577);
+            label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label17.Name = "label17";
+            label17.Size = new System.Drawing.Size(134, 23);
+            label17.TabIndex = 40;
+            label17.Text = "Confirm Password";
+            // 
             // AddUser
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -747,5 +786,7 @@
         private CustomControls.RJControls.RJTextBox txtEmail;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private CustomControls.RJControls.RJTextBox rjTextBox1;
+        private System.Windows.Forms.Label label17;
     }
 }

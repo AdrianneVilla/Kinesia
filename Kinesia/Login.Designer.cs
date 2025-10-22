@@ -39,6 +39,9 @@
         private CustomControls.RJControls.RJTextBox txtPassword;
         private Components.Header header1;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.Label label4;
+        private OrganizationProfile.CustomButton customButton1;
+        private System.Windows.Forms.Label label5;
     }
 }
 

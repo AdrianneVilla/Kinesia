@@ -227,10 +227,11 @@
             // lblPatientID
             // 
             lblPatientID.AutoSize = true;
-            lblPatientID.Font = new System.Drawing.Font("Poppins", 10.75F, System.Drawing.FontStyle.Bold);
-            lblPatientID.Location = new System.Drawing.Point(301, 30);
+            lblPatientID.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Bold);
+            lblPatientID.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            lblPatientID.Location = new System.Drawing.Point(288, 28);
             lblPatientID.Name = "lblPatientID";
-            lblPatientID.Size = new System.Drawing.Size(100, 26);
+            lblPatientID.Size = new System.Drawing.Size(131, 34);
             lblPatientID.TabIndex = 22;
             lblPatientID.Text = "<Patient ID>";
             // 
@@ -257,6 +258,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new System.Drawing.Font("Poppins", 10.75F, System.Drawing.FontStyle.Bold);
+            label4.ForeColor = System.Drawing.Color.Gray;
             label4.Location = new System.Drawing.Point(3, 0);
             label4.Name = "label4";
             label4.Size = new System.Drawing.Size(119, 26);
@@ -286,6 +288,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new System.Drawing.Font("Poppins", 10.75F, System.Drawing.FontStyle.Bold);
+            label6.ForeColor = System.Drawing.Color.Gray;
             label6.Location = new System.Drawing.Point(3, 0);
             label6.Name = "label6";
             label6.Size = new System.Drawing.Size(46, 26);
@@ -315,6 +318,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new System.Drawing.Font("Poppins", 10.75F, System.Drawing.FontStyle.Bold);
+            label8.ForeColor = System.Drawing.Color.Gray;
             label8.Location = new System.Drawing.Point(3, 0);
             label8.Name = "label8";
             label8.Size = new System.Drawing.Size(67, 26);

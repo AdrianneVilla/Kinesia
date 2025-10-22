@@ -18,6 +18,8 @@ namespace Kinesia.Users
         public string PreviousPage { get { return previousPage; } set { previousPage = value; } }   
         public EditUser()
         {
+            this.Anchor = AnchorStyles.Right | AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Bottom;
+            this.Dock = DockStyle.Fill;
             InitializeComponent();
         }
 

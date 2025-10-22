@@ -29,643 +29,811 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditUser));
-            this.label1 = new System.Windows.Forms.Label();
-            this.nameHolder = new System.Windows.Forms.Label();
-            this.txtTitleLabel = new System.Windows.Forms.Label();
-            this.btnSaveChanges = new OrganizationProfile.CustomButton();
-            this.panelBorder1 = new WindowsFormsApp2.CustomButton.PanelBorder();
-            this.txtEmail = new CustomControls.RJControls.RJTextBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.cbRole = new CustomControls.RJControls.RJComboBox();
-            this.cbGender = new CustomControls.RJControls.RJComboBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.txtPassword = new CustomControls.RJControls.RJTextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.txtUsername = new CustomControls.RJControls.RJTextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.txtMiddleName = new CustomControls.RJControls.RJTextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.txtLastName = new CustomControls.RJControls.RJTextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.dpBirthDate = new CustomControls.RJControls.RJDatePicker();
-            this.txtAddress = new CustomControls.RJControls.RJTextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.txtContact = new CustomControls.RJControls.RJTextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.lblBirthDate = new System.Windows.Forms.Label();
-            this.txtAge = new CustomControls.RJControls.RJTextBox();
-            this.lblAge = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtFirstName = new CustomControls.RJControls.RJTextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.btnBack = new OrganizationProfile.CustomButton();
-            this.lblUserID = new System.Windows.Forms.Label();
-            this.panelBorder1.SuspendLayout();
-            this.SuspendLayout();
+            label1 = new System.Windows.Forms.Label();
+            nameHolder = new System.Windows.Forms.Label();
+            txtTitleLabel = new System.Windows.Forms.Label();
+            btnSaveChanges = new OrganizationProfile.CustomButton();
+            panelBorder1 = new WindowsFormsApp2.CustomButton.PanelBorder();
+            label15 = new System.Windows.Forms.Label();
+            flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            label12 = new System.Windows.Forms.Label();
+            txtUsername = new CustomControls.RJControls.RJTextBox();
+            flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            label13 = new System.Windows.Forms.Label();
+            txtPassword = new CustomControls.RJControls.RJTextBox();
+            flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
+            label6 = new System.Windows.Forms.Label();
+            rjTextBox1 = new CustomControls.RJControls.RJTextBox();
+            flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
+            cbRole = new CustomControls.RJControls.RJComboBox();
+            txtEmail = new CustomControls.RJControls.RJTextBox();
+            label16 = new System.Windows.Forms.Label();
+            cbGender = new CustomControls.RJControls.RJComboBox();
+            label14 = new System.Windows.Forms.Label();
+            label11 = new System.Windows.Forms.Label();
+            txtMiddleName = new CustomControls.RJControls.RJTextBox();
+            label10 = new System.Windows.Forms.Label();
+            txtLastName = new CustomControls.RJControls.RJTextBox();
+            label2 = new System.Windows.Forms.Label();
+            dpBirthDate = new CustomControls.RJControls.RJDatePicker();
+            txtAddress = new CustomControls.RJControls.RJTextBox();
+            label9 = new System.Windows.Forms.Label();
+            txtContact = new CustomControls.RJControls.RJTextBox();
+            label8 = new System.Windows.Forms.Label();
+            lblBirthDate = new System.Windows.Forms.Label();
+            txtAge = new CustomControls.RJControls.RJTextBox();
+            lblAge = new System.Windows.Forms.Label();
+            label5 = new System.Windows.Forms.Label();
+            txtFirstName = new CustomControls.RJControls.RJTextBox();
+            label4 = new System.Windows.Forms.Label();
+            label3 = new System.Windows.Forms.Label();
+            btnBack = new OrganizationProfile.CustomButton();
+            lblUserID = new System.Windows.Forms.Label();
+            label7 = new System.Windows.Forms.Label();
+            rjTextBox2 = new CustomControls.RJControls.RJTextBox();
+            panelBorder1.SuspendLayout();
+            flowLayoutPanel1.SuspendLayout();
+            flowLayoutPanel2.SuspendLayout();
+            flowLayoutPanel3.SuspendLayout();
+            flowLayoutPanel4.SuspendLayout();
+            flowLayoutPanel5.SuspendLayout();
+            SuspendLayout();
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(65, 72);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(258, 23);
-            this.label1.TabIndex = 19;
-            this.label1.Text = "edit personal information and account";
+            label1.AutoSize = true;
+            label1.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            label1.Location = new System.Drawing.Point(76, 83);
+            label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(258, 23);
+            label1.TabIndex = 19;
+            label1.Text = "edit personal information and account";
             // 
             // nameHolder
             // 
-            this.nameHolder.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.nameHolder.AutoSize = true;
-            this.nameHolder.Font = new System.Drawing.Font("Poppins", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nameHolder.ForeColor = System.Drawing.Color.DarkGray;
-            this.nameHolder.Location = new System.Drawing.Point(61, 38);
-            this.nameHolder.Margin = new System.Windows.Forms.Padding(0);
-            this.nameHolder.Name = "nameHolder";
-            this.nameHolder.Size = new System.Drawing.Size(87, 36);
-            this.nameHolder.TabIndex = 18;
-            this.nameHolder.Text = "Users >";
-            this.nameHolder.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            nameHolder.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
+            nameHolder.AutoSize = true;
+            nameHolder.Font = new System.Drawing.Font("Poppins", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            nameHolder.ForeColor = System.Drawing.Color.DarkGray;
+            nameHolder.Location = new System.Drawing.Point(71, 44);
+            nameHolder.Margin = new System.Windows.Forms.Padding(0);
+            nameHolder.Name = "nameHolder";
+            nameHolder.Size = new System.Drawing.Size(87, 36);
+            nameHolder.TabIndex = 18;
+            nameHolder.Text = "Users >";
+            nameHolder.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txtTitleLabel
             // 
-            this.txtTitleLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtTitleLabel.AutoSize = true;
-            this.txtTitleLabel.BackColor = System.Drawing.Color.Transparent;
-            this.txtTitleLabel.Font = new System.Drawing.Font("Poppins", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTitleLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.txtTitleLabel.Location = new System.Drawing.Point(141, 30);
-            this.txtTitleLabel.Margin = new System.Windows.Forms.Padding(0);
-            this.txtTitleLabel.Name = "txtTitleLabel";
-            this.txtTitleLabel.Size = new System.Drawing.Size(72, 48);
-            this.txtTitleLabel.TabIndex = 20;
-            this.txtTitleLabel.Text = "Edit";
-            this.txtTitleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            txtTitleLabel.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
+            txtTitleLabel.AutoSize = true;
+            txtTitleLabel.BackColor = System.Drawing.Color.Transparent;
+            txtTitleLabel.Font = new System.Drawing.Font("Poppins", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            txtTitleLabel.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            txtTitleLabel.Location = new System.Drawing.Point(158, 35);
+            txtTitleLabel.Margin = new System.Windows.Forms.Padding(0);
+            txtTitleLabel.Name = "txtTitleLabel";
+            txtTitleLabel.Size = new System.Drawing.Size(72, 48);
+            txtTitleLabel.TabIndex = 20;
+            txtTitleLabel.Text = "Edit";
+            txtTitleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnSaveChanges
             // 
-            this.btnSaveChanges.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSaveChanges.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(220)))), ((int)(((byte)(255)))));
-            this.btnSaveChanges.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(220)))), ((int)(((byte)(255)))));
-            this.btnSaveChanges.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.btnSaveChanges.BorderRadius = 10;
-            this.btnSaveChanges.BorderSize = 1;
-            this.btnSaveChanges.FlatAppearance.BorderSize = 0;
-            this.btnSaveChanges.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSaveChanges.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSaveChanges.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.btnSaveChanges.Image = ((System.Drawing.Image)(resources.GetObject("btnSaveChanges.Image")));
-            this.btnSaveChanges.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSaveChanges.Location = new System.Drawing.Point(1286, 881);
-            this.btnSaveChanges.Name = "btnSaveChanges";
-            this.btnSaveChanges.Padding = new System.Windows.Forms.Padding(10, 4, 30, 0);
-            this.btnSaveChanges.Size = new System.Drawing.Size(173, 50);
-            this.btnSaveChanges.TabIndex = 23;
-            this.btnSaveChanges.Text = "Save Changes";
-            this.btnSaveChanges.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSaveChanges.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.btnSaveChanges.UseVisualStyleBackColor = false;
-            this.btnSaveChanges.Click += new System.EventHandler(this.btnSaveChanges_Click);
+            btnSaveChanges.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            btnSaveChanges.BackColor = System.Drawing.Color.FromArgb(200, 220, 255);
+            btnSaveChanges.BackgroundColor = System.Drawing.Color.FromArgb(200, 220, 255);
+            btnSaveChanges.BorderColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            btnSaveChanges.BorderRadius = 0;
+            btnSaveChanges.BorderSize = 1;
+            btnSaveChanges.FlatAppearance.BorderSize = 0;
+            btnSaveChanges.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnSaveChanges.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            btnSaveChanges.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            btnSaveChanges.Image = (System.Drawing.Image)resources.GetObject("btnSaveChanges.Image");
+            btnSaveChanges.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            btnSaveChanges.Location = new System.Drawing.Point(1310, 933);
+            btnSaveChanges.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            btnSaveChanges.Name = "btnSaveChanges";
+            btnSaveChanges.Padding = new System.Windows.Forms.Padding(12, 5, 35, 0);
+            btnSaveChanges.Size = new System.Drawing.Size(202, 58);
+            btnSaveChanges.TabIndex = 23;
+            btnSaveChanges.Text = "Save Changes";
+            btnSaveChanges.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            btnSaveChanges.TextColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            btnSaveChanges.UseVisualStyleBackColor = false;
+            btnSaveChanges.Click += btnSaveChanges_Click;
             // 
             // panelBorder1
             // 
-            this.panelBorder1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelBorder1.BackColor = System.Drawing.Color.White;
-            this.panelBorder1.BackgroundImage = global::Kinesia.Properties.Resources.Add_Patient_Background;
-            this.panelBorder1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panelBorder1.BorderRadius = 30;
-            this.panelBorder1.Color = System.Drawing.Color.BurlyWood;
-            this.panelBorder1.Controls.Add(this.txtEmail);
-            this.panelBorder1.Controls.Add(this.label16);
-            this.panelBorder1.Controls.Add(this.label15);
-            this.panelBorder1.Controls.Add(this.cbRole);
-            this.panelBorder1.Controls.Add(this.cbGender);
-            this.panelBorder1.Controls.Add(this.label14);
-            this.panelBorder1.Controls.Add(this.txtPassword);
-            this.panelBorder1.Controls.Add(this.label13);
-            this.panelBorder1.Controls.Add(this.txtUsername);
-            this.panelBorder1.Controls.Add(this.label12);
-            this.panelBorder1.Controls.Add(this.label11);
-            this.panelBorder1.Controls.Add(this.txtMiddleName);
-            this.panelBorder1.Controls.Add(this.label10);
-            this.panelBorder1.Controls.Add(this.txtLastName);
-            this.panelBorder1.Controls.Add(this.label2);
-            this.panelBorder1.Controls.Add(this.dpBirthDate);
-            this.panelBorder1.Controls.Add(this.txtAddress);
-            this.panelBorder1.Controls.Add(this.label9);
-            this.panelBorder1.Controls.Add(this.txtContact);
-            this.panelBorder1.Controls.Add(this.label8);
-            this.panelBorder1.Controls.Add(this.lblBirthDate);
-            this.panelBorder1.Controls.Add(this.txtAge);
-            this.panelBorder1.Controls.Add(this.lblAge);
-            this.panelBorder1.Controls.Add(this.label5);
-            this.panelBorder1.Controls.Add(this.txtFirstName);
-            this.panelBorder1.Controls.Add(this.label4);
-            this.panelBorder1.Controls.Add(this.label3);
-            this.panelBorder1.ForeColor = System.Drawing.Color.Black;
-            this.panelBorder1.Location = new System.Drawing.Point(67, 114);
-            this.panelBorder1.Name = "panelBorder1";
-            this.panelBorder1.Size = new System.Drawing.Size(1421, 742);
-            this.panelBorder1.TabIndex = 22;
-            // 
-            // txtEmail
-            // 
-            this.txtEmail.BackColor = System.Drawing.SystemColors.Window;
-            this.txtEmail.BorderColor = System.Drawing.Color.DimGray;
-            this.txtEmail.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.txtEmail.BorderRadius = 5;
-            this.txtEmail.BorderSize = 1;
-            this.txtEmail.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail.ForeColor = System.Drawing.Color.Black;
-            this.txtEmail.Location = new System.Drawing.Point(48, 304);
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(4);
-            this.txtEmail.Multiline = false;
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.txtEmail.PasswordChar = false;
-            this.txtEmail.PlaceholderColor = System.Drawing.Color.DarkGray;
-            this.txtEmail.PlaceholderText = "";
-            this.txtEmail.Size = new System.Drawing.Size(366, 41);
-            this.txtEmail.TabIndex = 39;
-            this.txtEmail.Texts = "";
-            this.txtEmail.UnderlinedStyle = false;
-            this.txtEmail._TextChanged += new System.EventHandler(this.txtEmail__TextChanged);
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(47, 281);
-            this.label16.Margin = new System.Windows.Forms.Padding(3, 30, 3, 0);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(107, 23);
-            this.label16.TabIndex = 40;
-            this.label16.Text = "Email Address";
+            panelBorder1.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            panelBorder1.BackColor = System.Drawing.Color.White;
+            panelBorder1.BackgroundImage = Properties.Resources.Add_Patient_Background;
+            panelBorder1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            panelBorder1.BorderRadius = 30;
+            panelBorder1.Color = System.Drawing.Color.BurlyWood;
+            panelBorder1.Controls.Add(label15);
+            panelBorder1.Controls.Add(flowLayoutPanel1);
+            panelBorder1.Controls.Add(cbRole);
+            panelBorder1.Controls.Add(txtEmail);
+            panelBorder1.Controls.Add(label16);
+            panelBorder1.Controls.Add(cbGender);
+            panelBorder1.Controls.Add(label14);
+            panelBorder1.Controls.Add(label11);
+            panelBorder1.Controls.Add(txtMiddleName);
+            panelBorder1.Controls.Add(label10);
+            panelBorder1.Controls.Add(txtLastName);
+            panelBorder1.Controls.Add(label2);
+            panelBorder1.Controls.Add(dpBirthDate);
+            panelBorder1.Controls.Add(txtAddress);
+            panelBorder1.Controls.Add(label9);
+            panelBorder1.Controls.Add(txtContact);
+            panelBorder1.Controls.Add(label8);
+            panelBorder1.Controls.Add(lblBirthDate);
+            panelBorder1.Controls.Add(txtAge);
+            panelBorder1.Controls.Add(lblAge);
+            panelBorder1.Controls.Add(label5);
+            panelBorder1.Controls.Add(txtFirstName);
+            panelBorder1.Controls.Add(label4);
+            panelBorder1.Controls.Add(label3);
+            panelBorder1.ForeColor = System.Drawing.Color.Black;
+            panelBorder1.Location = new System.Drawing.Point(71, 109);
+            panelBorder1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            panelBorder1.Name = "panelBorder1";
+            panelBorder1.Size = new System.Drawing.Size(1456, 801);
+            panelBorder1.TabIndex = 22;
             // 
             // label15
             // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(707, 604);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(38, 23);
-            this.label15.TabIndex = 36;
-            this.label15.Text = "Role";
+            label15.AutoSize = true;
+            label15.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            label15.Location = new System.Drawing.Point(541, 325);
+            label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label15.Name = "label15";
+            label15.Size = new System.Drawing.Size(38, 23);
+            label15.TabIndex = 36;
+            label15.Text = "Role";
             // 
-            // cbRole
+            // flowLayoutPanel1
             // 
-            this.cbRole.BackColor = System.Drawing.Color.White;
-            this.cbRole.BorderColor = System.Drawing.Color.Black;
-            this.cbRole.BorderSize = 1;
-            this.cbRole.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
-            this.cbRole.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbRole.ForeColor = System.Drawing.Color.Black;
-            this.cbRole.IconColor = System.Drawing.Color.Black;
-            this.cbRole.Items.AddRange(new object[] {
-            "Admin",
-            "Therapist"});
-            this.cbRole.ListBackColor = System.Drawing.Color.White;
-            this.cbRole.ListTextColor = System.Drawing.Color.Black;
-            this.cbRole.Location = new System.Drawing.Point(708, 628);
-            this.cbRole.MinimumSize = new System.Drawing.Size(200, 30);
-            this.cbRole.Name = "cbRole";
-            this.cbRole.Padding = new System.Windows.Forms.Padding(1);
-            this.cbRole.Size = new System.Drawing.Size(228, 39);
-            this.cbRole.TabIndex = 35;
-            this.cbRole.Texts = "";
-            this.cbRole.OnSelectedIndexChanged += new System.EventHandler(this.cbRole_OnSelectedIndexChanged);
+            flowLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            flowLayoutPanel1.Controls.Add(flowLayoutPanel2);
+            flowLayoutPanel1.Controls.Add(flowLayoutPanel3);
+            flowLayoutPanel1.Controls.Add(flowLayoutPanel4);
+            flowLayoutPanel1.Controls.Add(flowLayoutPanel5);
+            flowLayoutPanel1.Location = new System.Drawing.Point(59, 670);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            flowLayoutPanel1.Size = new System.Drawing.Size(1382, 90);
+            flowLayoutPanel1.TabIndex = 43;
             // 
-            // cbGender
+            // flowLayoutPanel2
             // 
-            this.cbGender.BackColor = System.Drawing.Color.White;
-            this.cbGender.BorderColor = System.Drawing.Color.Black;
-            this.cbGender.BorderSize = 1;
-            this.cbGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
-            this.cbGender.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.cbGender.ForeColor = System.Drawing.Color.DimGray;
-            this.cbGender.IconColor = System.Drawing.Color.Black;
-            this.cbGender.Items.AddRange(new object[] {
-            "Male",
-            "Female"});
-            this.cbGender.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
-            this.cbGender.ListTextColor = System.Drawing.Color.Black;
-            this.cbGender.Location = new System.Drawing.Point(594, 210);
-            this.cbGender.Margin = new System.Windows.Forms.Padding(30, 3, 3, 3);
-            this.cbGender.MinimumSize = new System.Drawing.Size(200, 30);
-            this.cbGender.Name = "cbGender";
-            this.cbGender.Padding = new System.Windows.Forms.Padding(1);
-            this.cbGender.Size = new System.Drawing.Size(200, 41);
-            this.cbGender.TabIndex = 34;
-            this.cbGender.Texts = "";
-            this.cbGender.OnSelectedIndexChanged += new System.EventHandler(this.cbGender_OnSelectedIndexChanged);
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.ForeColor = System.Drawing.Color.Gray;
-            this.label14.Location = new System.Drawing.Point(809, 221);
-            this.label14.Margin = new System.Windows.Forms.Padding(30, 0, 3, 0);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(34, 23);
-            this.label14.TabIndex = 33;
-            this.label14.Text = "+63";
-            // 
-            // txtPassword
-            // 
-            this.txtPassword.BackColor = System.Drawing.SystemColors.Window;
-            this.txtPassword.BorderColor = System.Drawing.Color.DimGray;
-            this.txtPassword.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.txtPassword.BorderRadius = 5;
-            this.txtPassword.BorderSize = 1;
-            this.txtPassword.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPassword.ForeColor = System.Drawing.Color.Black;
-            this.txtPassword.Location = new System.Drawing.Point(377, 626);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(4);
-            this.txtPassword.Multiline = false;
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.txtPassword.PasswordChar = false;
-            this.txtPassword.PlaceholderColor = System.Drawing.Color.DarkGray;
-            this.txtPassword.PlaceholderText = "";
-            this.txtPassword.Size = new System.Drawing.Size(294, 41);
-            this.txtPassword.TabIndex = 22;
-            this.txtPassword.Texts = "";
-            this.txtPassword.UnderlinedStyle = false;
-            this.txtPassword._TextChanged += new System.EventHandler(this.txtPassword__TextChanged);
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(373, 603);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(75, 23);
-            this.label13.TabIndex = 23;
-            this.label13.Text = "Password";
-            // 
-            // txtUsername
-            // 
-            this.txtUsername.BackColor = System.Drawing.SystemColors.Window;
-            this.txtUsername.BorderColor = System.Drawing.Color.DimGray;
-            this.txtUsername.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.txtUsername.BorderRadius = 5;
-            this.txtUsername.BorderSize = 1;
-            this.txtUsername.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsername.ForeColor = System.Drawing.Color.Black;
-            this.txtUsername.Location = new System.Drawing.Point(52, 626);
-            this.txtUsername.Margin = new System.Windows.Forms.Padding(4);
-            this.txtUsername.Multiline = false;
-            this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.txtUsername.PasswordChar = false;
-            this.txtUsername.PlaceholderColor = System.Drawing.Color.DarkGray;
-            this.txtUsername.PlaceholderText = "";
-            this.txtUsername.Size = new System.Drawing.Size(291, 41);
-            this.txtUsername.TabIndex = 20;
-            this.txtUsername.Texts = "";
-            this.txtUsername.UnderlinedStyle = false;
-            this.txtUsername._TextChanged += new System.EventHandler(this.txtUsername__TextChanged);
+            flowLayoutPanel2.Controls.Add(label12);
+            flowLayoutPanel2.Controls.Add(txtUsername);
+            flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            flowLayoutPanel2.Location = new System.Drawing.Point(3, 3);
+            flowLayoutPanel2.Name = "flowLayoutPanel2";
+            flowLayoutPanel2.Size = new System.Drawing.Size(322, 87);
+            flowLayoutPanel2.TabIndex = 0;
             // 
             // label12
             // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(48, 603);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(80, 23);
-            this.label12.TabIndex = 21;
-            this.label12.Text = "Username";
+            label12.AutoSize = true;
+            label12.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            label12.Location = new System.Drawing.Point(4, 0);
+            label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label12.Name = "label12";
+            label12.Size = new System.Drawing.Size(80, 23);
+            label12.TabIndex = 21;
+            label12.Text = "Username";
+            // 
+            // txtUsername
+            // 
+            txtUsername.BackColor = System.Drawing.SystemColors.Window;
+            txtUsername.BorderColor = System.Drawing.Color.DimGray;
+            txtUsername.BorderFocusColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            txtUsername.BorderRadius = 5;
+            txtUsername.BorderSize = 1;
+            txtUsername.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            txtUsername.ForeColor = System.Drawing.Color.Black;
+            txtUsername.Location = new System.Drawing.Point(5, 28);
+            txtUsername.Margin = new System.Windows.Forms.Padding(5);
+            txtUsername.Multiline = false;
+            txtUsername.Name = "txtUsername";
+            txtUsername.Padding = new System.Windows.Forms.Padding(12, 8, 12, 8);
+            txtUsername.PasswordChar = false;
+            txtUsername.PlaceholderColor = System.Drawing.Color.DarkGray;
+            txtUsername.PlaceholderText = "";
+            txtUsername.SelectionLength = 0;
+            txtUsername.SelectionStart = 0;
+            txtUsername.Size = new System.Drawing.Size(309, 43);
+            txtUsername.TabIndex = 20;
+            txtUsername.Texts = "";
+            txtUsername.UnderlinedStyle = false;
+            txtUsername._TextChanged += txtUsername__TextChanged;
+            // 
+            // flowLayoutPanel3
+            // 
+            flowLayoutPanel3.Controls.Add(label13);
+            flowLayoutPanel3.Controls.Add(txtPassword);
+            flowLayoutPanel3.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            flowLayoutPanel3.Location = new System.Drawing.Point(331, 3);
+            flowLayoutPanel3.Name = "flowLayoutPanel3";
+            flowLayoutPanel3.Size = new System.Drawing.Size(320, 87);
+            flowLayoutPanel3.TabIndex = 1;
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            label13.Location = new System.Drawing.Point(4, 0);
+            label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label13.Name = "label13";
+            label13.Size = new System.Drawing.Size(101, 23);
+            label13.TabIndex = 23;
+            label13.Text = "Old Password";
+            // 
+            // txtPassword
+            // 
+            txtPassword.BackColor = System.Drawing.SystemColors.Window;
+            txtPassword.BorderColor = System.Drawing.Color.DimGray;
+            txtPassword.BorderFocusColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            txtPassword.BorderRadius = 5;
+            txtPassword.BorderSize = 1;
+            txtPassword.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            txtPassword.ForeColor = System.Drawing.Color.Black;
+            txtPassword.Location = new System.Drawing.Point(5, 28);
+            txtPassword.Margin = new System.Windows.Forms.Padding(5);
+            txtPassword.Multiline = false;
+            txtPassword.Name = "txtPassword";
+            txtPassword.Padding = new System.Windows.Forms.Padding(12, 8, 12, 8);
+            txtPassword.PasswordChar = false;
+            txtPassword.PlaceholderColor = System.Drawing.Color.DarkGray;
+            txtPassword.PlaceholderText = "";
+            txtPassword.SelectionLength = 0;
+            txtPassword.SelectionStart = 0;
+            txtPassword.Size = new System.Drawing.Size(309, 43);
+            txtPassword.TabIndex = 22;
+            txtPassword.Texts = "";
+            txtPassword.UnderlinedStyle = false;
+            txtPassword._TextChanged += txtPassword__TextChanged;
+            // 
+            // flowLayoutPanel4
+            // 
+            flowLayoutPanel4.Controls.Add(label6);
+            flowLayoutPanel4.Controls.Add(rjTextBox1);
+            flowLayoutPanel4.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            flowLayoutPanel4.Location = new System.Drawing.Point(657, 3);
+            flowLayoutPanel4.Name = "flowLayoutPanel4";
+            flowLayoutPanel4.Size = new System.Drawing.Size(331, 87);
+            flowLayoutPanel4.TabIndex = 2;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            label6.Location = new System.Drawing.Point(4, 0);
+            label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label6.Name = "label6";
+            label6.Size = new System.Drawing.Size(107, 23);
+            label6.TabIndex = 42;
+            label6.Text = "New Password";
+            // 
+            // rjTextBox1
+            // 
+            rjTextBox1.BackColor = System.Drawing.SystemColors.Window;
+            rjTextBox1.BorderColor = System.Drawing.Color.DimGray;
+            rjTextBox1.BorderFocusColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            rjTextBox1.BorderRadius = 5;
+            rjTextBox1.BorderSize = 1;
+            rjTextBox1.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            rjTextBox1.ForeColor = System.Drawing.Color.Black;
+            rjTextBox1.Location = new System.Drawing.Point(5, 28);
+            rjTextBox1.Margin = new System.Windows.Forms.Padding(5);
+            rjTextBox1.Multiline = false;
+            rjTextBox1.Name = "rjTextBox1";
+            rjTextBox1.Padding = new System.Windows.Forms.Padding(12, 8, 12, 8);
+            rjTextBox1.PasswordChar = false;
+            rjTextBox1.PlaceholderColor = System.Drawing.Color.DarkGray;
+            rjTextBox1.PlaceholderText = "";
+            rjTextBox1.SelectionLength = 0;
+            rjTextBox1.SelectionStart = 0;
+            rjTextBox1.Size = new System.Drawing.Size(309, 43);
+            rjTextBox1.TabIndex = 41;
+            rjTextBox1.Texts = "";
+            rjTextBox1.UnderlinedStyle = false;
+            // 
+            // flowLayoutPanel5
+            // 
+            flowLayoutPanel5.Controls.Add(label7);
+            flowLayoutPanel5.Controls.Add(rjTextBox2);
+            flowLayoutPanel5.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            flowLayoutPanel5.Location = new System.Drawing.Point(994, 3);
+            flowLayoutPanel5.Name = "flowLayoutPanel5";
+            flowLayoutPanel5.Size = new System.Drawing.Size(347, 87);
+            flowLayoutPanel5.TabIndex = 3;
+            // 
+            // cbRole
+            // 
+            cbRole.BackColor = System.Drawing.Color.White;
+            cbRole.BorderColor = System.Drawing.Color.Black;
+            cbRole.BorderSize = 1;
+            cbRole.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
+            cbRole.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            cbRole.ForeColor = System.Drawing.Color.Black;
+            cbRole.IconColor = System.Drawing.Color.Black;
+            cbRole.Items.AddRange(new object[] { "Admin", "Therapist" });
+            cbRole.ListBackColor = System.Drawing.Color.White;
+            cbRole.ListTextColor = System.Drawing.Color.Black;
+            cbRole.Location = new System.Drawing.Point(541, 351);
+            cbRole.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            cbRole.MinimumSize = new System.Drawing.Size(233, 35);
+            cbRole.Name = "cbRole";
+            cbRole.Padding = new System.Windows.Forms.Padding(1);
+            cbRole.Size = new System.Drawing.Size(233, 45);
+            cbRole.TabIndex = 35;
+            cbRole.Texts = "";
+            cbRole.OnSelectedIndexChanged += cbRole_OnSelectedIndexChanged;
+            // 
+            // txtEmail
+            // 
+            txtEmail.BackColor = System.Drawing.SystemColors.Window;
+            txtEmail.BorderColor = System.Drawing.Color.DimGray;
+            txtEmail.BorderFocusColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            txtEmail.BorderRadius = 5;
+            txtEmail.BorderSize = 1;
+            txtEmail.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            txtEmail.ForeColor = System.Drawing.Color.Black;
+            txtEmail.Location = new System.Drawing.Point(56, 351);
+            txtEmail.Margin = new System.Windows.Forms.Padding(5);
+            txtEmail.Multiline = false;
+            txtEmail.Name = "txtEmail";
+            txtEmail.Padding = new System.Windows.Forms.Padding(12, 8, 12, 8);
+            txtEmail.PasswordChar = false;
+            txtEmail.PlaceholderColor = System.Drawing.Color.DarkGray;
+            txtEmail.PlaceholderText = "";
+            txtEmail.SelectionLength = 0;
+            txtEmail.SelectionStart = 0;
+            txtEmail.Size = new System.Drawing.Size(427, 43);
+            txtEmail.TabIndex = 39;
+            txtEmail.Texts = "";
+            txtEmail.UnderlinedStyle = false;
+            txtEmail._TextChanged += txtEmail__TextChanged;
+            // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            label16.Location = new System.Drawing.Point(55, 324);
+            label16.Margin = new System.Windows.Forms.Padding(4, 35, 4, 0);
+            label16.Name = "label16";
+            label16.Size = new System.Drawing.Size(107, 23);
+            label16.TabIndex = 40;
+            label16.Text = "Email Address";
+            // 
+            // cbGender
+            // 
+            cbGender.BackColor = System.Drawing.Color.White;
+            cbGender.BorderColor = System.Drawing.Color.Black;
+            cbGender.BorderSize = 1;
+            cbGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
+            cbGender.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            cbGender.ForeColor = System.Drawing.Color.DimGray;
+            cbGender.IconColor = System.Drawing.Color.Black;
+            cbGender.Items.AddRange(new object[] { "Male", "Female" });
+            cbGender.ListBackColor = System.Drawing.Color.FromArgb(230, 228, 245);
+            cbGender.ListTextColor = System.Drawing.Color.Black;
+            cbGender.Location = new System.Drawing.Point(693, 242);
+            cbGender.Margin = new System.Windows.Forms.Padding(35, 3, 4, 3);
+            cbGender.MinimumSize = new System.Drawing.Size(233, 35);
+            cbGender.Name = "cbGender";
+            cbGender.Padding = new System.Windows.Forms.Padding(1);
+            cbGender.Size = new System.Drawing.Size(233, 43);
+            cbGender.TabIndex = 34;
+            cbGender.Texts = "";
+            cbGender.OnSelectedIndexChanged += cbGender_OnSelectedIndexChanged;
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            label14.ForeColor = System.Drawing.Color.Gray;
+            label14.Location = new System.Drawing.Point(1000, 254);
+            label14.Margin = new System.Windows.Forms.Padding(35, 0, 4, 0);
+            label14.Name = "label14";
+            label14.Size = new System.Drawing.Size(34, 23);
+            label14.TabIndex = 33;
+            label14.Text = "+63";
             // 
             // label11
             // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(46, 549);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(159, 34);
-            this.label11.TabIndex = 19;
-            this.label11.Text = "Setup Account";
+            label11.AutoSize = true;
+            label11.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            label11.Location = new System.Drawing.Point(54, 633);
+            label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label11.Name = "label11";
+            label11.Size = new System.Drawing.Size(159, 34);
+            label11.TabIndex = 19;
+            label11.Text = "Setup Account";
             // 
             // txtMiddleName
             // 
-            this.txtMiddleName.BackColor = System.Drawing.SystemColors.Window;
-            this.txtMiddleName.BorderColor = System.Drawing.Color.DimGray;
-            this.txtMiddleName.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.txtMiddleName.BorderRadius = 5;
-            this.txtMiddleName.BorderSize = 1;
-            this.txtMiddleName.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMiddleName.ForeColor = System.Drawing.Color.Black;
-            this.txtMiddleName.Location = new System.Drawing.Point(848, 112);
-            this.txtMiddleName.Margin = new System.Windows.Forms.Padding(30, 4, 4, 4);
-            this.txtMiddleName.Multiline = false;
-            this.txtMiddleName.Name = "txtMiddleName";
-            this.txtMiddleName.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.txtMiddleName.PasswordChar = false;
-            this.txtMiddleName.PlaceholderColor = System.Drawing.Color.DarkGray;
-            this.txtMiddleName.PlaceholderText = "";
-            this.txtMiddleName.Size = new System.Drawing.Size(366, 41);
-            this.txtMiddleName.TabIndex = 17;
-            this.txtMiddleName.Texts = "";
-            this.txtMiddleName.UnderlinedStyle = false;
-            this.txtMiddleName._TextChanged += new System.EventHandler(this.txtMiddleName__TextChanged);
-            this.txtMiddleName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMiddleName_KeyPress);
+            txtMiddleName.BackColor = System.Drawing.SystemColors.Window;
+            txtMiddleName.BorderColor = System.Drawing.Color.DimGray;
+            txtMiddleName.BorderFocusColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            txtMiddleName.BorderRadius = 5;
+            txtMiddleName.BorderSize = 1;
+            txtMiddleName.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            txtMiddleName.ForeColor = System.Drawing.Color.Black;
+            txtMiddleName.Location = new System.Drawing.Point(989, 129);
+            txtMiddleName.Margin = new System.Windows.Forms.Padding(35, 5, 5, 5);
+            txtMiddleName.Multiline = false;
+            txtMiddleName.Name = "txtMiddleName";
+            txtMiddleName.Padding = new System.Windows.Forms.Padding(12, 8, 12, 8);
+            txtMiddleName.PasswordChar = false;
+            txtMiddleName.PlaceholderColor = System.Drawing.Color.DarkGray;
+            txtMiddleName.PlaceholderText = "";
+            txtMiddleName.SelectionLength = 0;
+            txtMiddleName.SelectionStart = 0;
+            txtMiddleName.Size = new System.Drawing.Size(427, 43);
+            txtMiddleName.TabIndex = 17;
+            txtMiddleName.Texts = "";
+            txtMiddleName.UnderlinedStyle = false;
+            txtMiddleName._TextChanged += txtMiddleName__TextChanged;
+            txtMiddleName.KeyPress += txtMiddleName_KeyPress;
             // 
             // label10
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(844, 89);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(100, 23);
-            this.label10.TabIndex = 18;
-            this.label10.Text = "Middle Name";
+            label10.AutoSize = true;
+            label10.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            label10.Location = new System.Drawing.Point(985, 103);
+            label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label10.Name = "label10";
+            label10.Size = new System.Drawing.Size(100, 23);
+            label10.TabIndex = 18;
+            label10.Text = "Middle Name";
             // 
             // txtLastName
             // 
-            this.txtLastName.BackColor = System.Drawing.SystemColors.Window;
-            this.txtLastName.BorderColor = System.Drawing.Color.DimGray;
-            this.txtLastName.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.txtLastName.BorderRadius = 5;
-            this.txtLastName.BorderSize = 1;
-            this.txtLastName.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLastName.ForeColor = System.Drawing.Color.Black;
-            this.txtLastName.Location = new System.Drawing.Point(448, 112);
-            this.txtLastName.Margin = new System.Windows.Forms.Padding(30, 4, 4, 4);
-            this.txtLastName.Multiline = false;
-            this.txtLastName.Name = "txtLastName";
-            this.txtLastName.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.txtLastName.PasswordChar = false;
-            this.txtLastName.PlaceholderColor = System.Drawing.Color.DarkGray;
-            this.txtLastName.PlaceholderText = "";
-            this.txtLastName.Size = new System.Drawing.Size(366, 41);
-            this.txtLastName.TabIndex = 15;
-            this.txtLastName.Texts = "";
-            this.txtLastName.UnderlinedStyle = false;
-            this.txtLastName._TextChanged += new System.EventHandler(this.txtLastName__TextChanged);
-            this.txtLastName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLastName_KeyPress);
+            txtLastName.BackColor = System.Drawing.SystemColors.Window;
+            txtLastName.BorderColor = System.Drawing.Color.DimGray;
+            txtLastName.BorderFocusColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            txtLastName.BorderRadius = 5;
+            txtLastName.BorderSize = 1;
+            txtLastName.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            txtLastName.ForeColor = System.Drawing.Color.Black;
+            txtLastName.Location = new System.Drawing.Point(523, 129);
+            txtLastName.Margin = new System.Windows.Forms.Padding(35, 5, 5, 5);
+            txtLastName.Multiline = false;
+            txtLastName.Name = "txtLastName";
+            txtLastName.Padding = new System.Windows.Forms.Padding(12, 8, 12, 8);
+            txtLastName.PasswordChar = false;
+            txtLastName.PlaceholderColor = System.Drawing.Color.DarkGray;
+            txtLastName.PlaceholderText = "";
+            txtLastName.SelectionLength = 0;
+            txtLastName.SelectionStart = 0;
+            txtLastName.Size = new System.Drawing.Size(427, 43);
+            txtLastName.TabIndex = 15;
+            txtLastName.Texts = "";
+            txtLastName.UnderlinedStyle = false;
+            txtLastName._TextChanged += txtLastName__TextChanged;
+            txtLastName.KeyPress += txtLastName_KeyPress;
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(444, 89);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(81, 23);
-            this.label2.TabIndex = 16;
-            this.label2.Text = "Last Name";
+            label2.AutoSize = true;
+            label2.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            label2.Location = new System.Drawing.Point(518, 103);
+            label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(81, 23);
+            label2.TabIndex = 16;
+            label2.Text = "Last Name";
             // 
             // dpBirthDate
             // 
-            this.dpBirthDate.BorderColor = System.Drawing.Color.DimGray;
-            this.dpBirthDate.BorderSize = 1;
-            this.dpBirthDate.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dpBirthDate.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right;
-            this.dpBirthDate.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dpBirthDate.Location = new System.Drawing.Point(51, 213);
-            this.dpBirthDate.MinimumSize = new System.Drawing.Size(4, 35);
-            this.dpBirthDate.Name = "dpBirthDate";
-            this.dpBirthDate.Size = new System.Drawing.Size(380, 35);
-            this.dpBirthDate.SkinColor = System.Drawing.Color.White;
-            this.dpBirthDate.TabIndex = 14;
-            this.dpBirthDate.TextColor = System.Drawing.Color.Black;
-            this.dpBirthDate.ValueChanged += new System.EventHandler(this.dpBirthDate_ValueChanged);
+            dpBirthDate.BorderColor = System.Drawing.Color.DimGray;
+            dpBirthDate.BorderSize = 1;
+            dpBirthDate.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            dpBirthDate.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right;
+            dpBirthDate.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            dpBirthDate.Location = new System.Drawing.Point(59, 246);
+            dpBirthDate.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            dpBirthDate.MinimumSize = new System.Drawing.Size(4, 35);
+            dpBirthDate.Name = "dpBirthDate";
+            dpBirthDate.Size = new System.Drawing.Size(443, 35);
+            dpBirthDate.SkinColor = System.Drawing.Color.White;
+            dpBirthDate.TabIndex = 14;
+            dpBirthDate.TextColor = System.Drawing.Color.Black;
+            dpBirthDate.ValueChanged += dpBirthDate_ValueChanged;
             // 
             // txtAddress
             // 
-            this.txtAddress.BackColor = System.Drawing.SystemColors.Window;
-            this.txtAddress.BorderColor = System.Drawing.Color.DimGray;
-            this.txtAddress.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.txtAddress.BorderRadius = 5;
-            this.txtAddress.BorderSize = 1;
-            this.txtAddress.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAddress.ForeColor = System.Drawing.Color.Black;
-            this.txtAddress.Location = new System.Drawing.Point(48, 402);
-            this.txtAddress.Margin = new System.Windows.Forms.Padding(4);
-            this.txtAddress.Multiline = true;
-            this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.txtAddress.PasswordChar = false;
-            this.txtAddress.PlaceholderColor = System.Drawing.Color.DarkGray;
-            this.txtAddress.PlaceholderText = "";
-            this.txtAddress.Size = new System.Drawing.Size(1163, 103);
-            this.txtAddress.TabIndex = 11;
-            this.txtAddress.Texts = "";
-            this.txtAddress.UnderlinedStyle = false;
-            this.txtAddress._TextChanged += new System.EventHandler(this.txtAddress__TextChanged);
+            txtAddress.BackColor = System.Drawing.SystemColors.Window;
+            txtAddress.BorderColor = System.Drawing.Color.DimGray;
+            txtAddress.BorderFocusColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            txtAddress.BorderRadius = 5;
+            txtAddress.BorderSize = 1;
+            txtAddress.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            txtAddress.ForeColor = System.Drawing.Color.Black;
+            txtAddress.Location = new System.Drawing.Point(56, 464);
+            txtAddress.Margin = new System.Windows.Forms.Padding(5);
+            txtAddress.Multiline = true;
+            txtAddress.Name = "txtAddress";
+            txtAddress.Padding = new System.Windows.Forms.Padding(12, 8, 12, 8);
+            txtAddress.PasswordChar = false;
+            txtAddress.PlaceholderColor = System.Drawing.Color.DarkGray;
+            txtAddress.PlaceholderText = "";
+            txtAddress.SelectionLength = 0;
+            txtAddress.SelectionStart = 0;
+            txtAddress.Size = new System.Drawing.Size(1357, 119);
+            txtAddress.TabIndex = 11;
+            txtAddress.Texts = "";
+            txtAddress.UnderlinedStyle = false;
+            txtAddress._TextChanged += txtAddress__TextChanged;
             // 
             // label9
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(44, 379);
-            this.label9.Margin = new System.Windows.Forms.Padding(3, 30, 3, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(66, 23);
-            this.label9.TabIndex = 12;
-            this.label9.Text = "Address";
+            label9.AutoSize = true;
+            label9.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            label9.Location = new System.Drawing.Point(51, 437);
+            label9.Margin = new System.Windows.Forms.Padding(4, 35, 4, 0);
+            label9.Name = "label9";
+            label9.Size = new System.Drawing.Size(66, 23);
+            label9.TabIndex = 12;
+            label9.Text = "Address";
             // 
             // txtContact
             // 
-            this.txtContact.BackColor = System.Drawing.SystemColors.Window;
-            this.txtContact.BorderColor = System.Drawing.Color.DimGray;
-            this.txtContact.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.txtContact.BorderRadius = 5;
-            this.txtContact.BorderSize = 1;
-            this.txtContact.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtContact.ForeColor = System.Drawing.Color.Black;
-            this.txtContact.Location = new System.Drawing.Point(848, 210);
-            this.txtContact.Margin = new System.Windows.Forms.Padding(30, 4, 4, 4);
-            this.txtContact.Multiline = false;
-            this.txtContact.Name = "txtContact";
-            this.txtContact.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.txtContact.PasswordChar = false;
-            this.txtContact.PlaceholderColor = System.Drawing.Color.DarkGray;
-            this.txtContact.PlaceholderText = "";
-            this.txtContact.Size = new System.Drawing.Size(363, 41);
-            this.txtContact.TabIndex = 9;
-            this.txtContact.Texts = "";
-            this.txtContact.UnderlinedStyle = false;
-            this.txtContact._TextChanged += new System.EventHandler(this.txtContact__TextChanged);
-            this.txtContact.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtContact_KeyPress);
+            txtContact.BackColor = System.Drawing.SystemColors.Window;
+            txtContact.BorderColor = System.Drawing.Color.DimGray;
+            txtContact.BorderFocusColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            txtContact.BorderRadius = 5;
+            txtContact.BorderSize = 1;
+            txtContact.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            txtContact.ForeColor = System.Drawing.Color.Black;
+            txtContact.Location = new System.Drawing.Point(989, 242);
+            txtContact.Margin = new System.Windows.Forms.Padding(35, 5, 5, 5);
+            txtContact.Multiline = false;
+            txtContact.Name = "txtContact";
+            txtContact.Padding = new System.Windows.Forms.Padding(12, 8, 12, 8);
+            txtContact.PasswordChar = false;
+            txtContact.PlaceholderColor = System.Drawing.Color.DarkGray;
+            txtContact.PlaceholderText = "";
+            txtContact.SelectionLength = 0;
+            txtContact.SelectionStart = 0;
+            txtContact.Size = new System.Drawing.Size(424, 43);
+            txtContact.TabIndex = 9;
+            txtContact.Texts = "";
+            txtContact.UnderlinedStyle = false;
+            txtContact._TextChanged += txtContact__TextChanged;
+            txtContact.KeyPress += txtContact_KeyPress;
             // 
             // label8
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(844, 185);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(123, 23);
-            this.label8.TabIndex = 10;
-            this.label8.Text = "Contact Number";
+            label8.AutoSize = true;
+            label8.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            label8.Location = new System.Drawing.Point(985, 213);
+            label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label8.Name = "label8";
+            label8.Size = new System.Drawing.Size(123, 23);
+            label8.TabIndex = 10;
+            label8.Text = "Contact Number";
             // 
             // lblBirthDate
             // 
-            this.lblBirthDate.AutoSize = true;
-            this.lblBirthDate.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBirthDate.Location = new System.Drawing.Point(47, 187);
-            this.lblBirthDate.Margin = new System.Windows.Forms.Padding(3, 30, 3, 0);
-            this.lblBirthDate.Name = "lblBirthDate";
-            this.lblBirthDate.Size = new System.Drawing.Size(74, 23);
-            this.lblBirthDate.TabIndex = 8;
-            this.lblBirthDate.Text = "Birthdate";
+            lblBirthDate.AutoSize = true;
+            lblBirthDate.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            lblBirthDate.Location = new System.Drawing.Point(55, 216);
+            lblBirthDate.Margin = new System.Windows.Forms.Padding(4, 35, 4, 0);
+            lblBirthDate.Name = "lblBirthDate";
+            lblBirthDate.Size = new System.Drawing.Size(74, 23);
+            lblBirthDate.TabIndex = 8;
+            lblBirthDate.Text = "Birthdate";
             // 
             // txtAge
             // 
-            this.txtAge.BackColor = System.Drawing.SystemColors.Window;
-            this.txtAge.BorderColor = System.Drawing.Color.DimGray;
-            this.txtAge.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.txtAge.BorderRadius = 5;
-            this.txtAge.BorderSize = 1;
-            this.txtAge.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAge.ForeColor = System.Drawing.Color.Black;
-            this.txtAge.Location = new System.Drawing.Point(464, 210);
-            this.txtAge.Margin = new System.Windows.Forms.Padding(30, 4, 4, 4);
-            this.txtAge.Multiline = false;
-            this.txtAge.Name = "txtAge";
-            this.txtAge.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.txtAge.PasswordChar = false;
-            this.txtAge.PlaceholderColor = System.Drawing.Color.DarkGray;
-            this.txtAge.PlaceholderText = "";
-            this.txtAge.Size = new System.Drawing.Size(96, 41);
-            this.txtAge.TabIndex = 5;
-            this.txtAge.Texts = "";
-            this.txtAge.UnderlinedStyle = false;
+            txtAge.BackColor = System.Drawing.SystemColors.Window;
+            txtAge.BorderColor = System.Drawing.Color.DimGray;
+            txtAge.BorderFocusColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            txtAge.BorderRadius = 5;
+            txtAge.BorderSize = 1;
+            txtAge.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            txtAge.ForeColor = System.Drawing.Color.Black;
+            txtAge.Location = new System.Drawing.Point(541, 242);
+            txtAge.Margin = new System.Windows.Forms.Padding(35, 5, 5, 5);
+            txtAge.Multiline = false;
+            txtAge.Name = "txtAge";
+            txtAge.Padding = new System.Windows.Forms.Padding(12, 8, 12, 8);
+            txtAge.PasswordChar = false;
+            txtAge.PlaceholderColor = System.Drawing.Color.DarkGray;
+            txtAge.PlaceholderText = "";
+            txtAge.SelectionLength = 0;
+            txtAge.SelectionStart = 0;
+            txtAge.Size = new System.Drawing.Size(112, 43);
+            txtAge.TabIndex = 5;
+            txtAge.Texts = "";
+            txtAge.UnderlinedStyle = false;
             // 
             // lblAge
             // 
-            this.lblAge.AutoSize = true;
-            this.lblAge.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAge.Location = new System.Drawing.Point(460, 185);
-            this.lblAge.Name = "lblAge";
-            this.lblAge.Size = new System.Drawing.Size(37, 23);
-            this.lblAge.TabIndex = 6;
-            this.lblAge.Text = "Age";
+            lblAge.AutoSize = true;
+            lblAge.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            lblAge.Location = new System.Drawing.Point(537, 213);
+            lblAge.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            lblAge.Name = "lblAge";
+            lblAge.Size = new System.Drawing.Size(37, 23);
+            lblAge.TabIndex = 6;
+            lblAge.Text = "Age";
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(590, 185);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(60, 23);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Gender";
+            label5.AutoSize = true;
+            label5.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            label5.Location = new System.Drawing.Point(688, 213);
+            label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label5.Name = "label5";
+            label5.Size = new System.Drawing.Size(60, 23);
+            label5.TabIndex = 4;
+            label5.Text = "Gender";
             // 
             // txtFirstName
             // 
-            this.txtFirstName.BackColor = System.Drawing.SystemColors.Window;
-            this.txtFirstName.BorderColor = System.Drawing.Color.DimGray;
-            this.txtFirstName.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.txtFirstName.BorderRadius = 5;
-            this.txtFirstName.BorderSize = 1;
-            this.txtFirstName.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFirstName.ForeColor = System.Drawing.Color.Black;
-            this.txtFirstName.Location = new System.Drawing.Point(48, 112);
-            this.txtFirstName.Margin = new System.Windows.Forms.Padding(4);
-            this.txtFirstName.Multiline = false;
-            this.txtFirstName.Name = "txtFirstName";
-            this.txtFirstName.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.txtFirstName.PasswordChar = false;
-            this.txtFirstName.PlaceholderColor = System.Drawing.Color.DarkGray;
-            this.txtFirstName.PlaceholderText = "";
-            this.txtFirstName.Size = new System.Drawing.Size(366, 41);
-            this.txtFirstName.TabIndex = 1;
-            this.txtFirstName.Texts = "";
-            this.txtFirstName.UnderlinedStyle = false;
-            this.txtFirstName._TextChanged += new System.EventHandler(this.txtFirstName__TextChanged);
-            this.txtFirstName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFirstName_KeyPress);
+            txtFirstName.BackColor = System.Drawing.SystemColors.Window;
+            txtFirstName.BorderColor = System.Drawing.Color.DimGray;
+            txtFirstName.BorderFocusColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            txtFirstName.BorderRadius = 5;
+            txtFirstName.BorderSize = 1;
+            txtFirstName.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            txtFirstName.ForeColor = System.Drawing.Color.Black;
+            txtFirstName.Location = new System.Drawing.Point(56, 129);
+            txtFirstName.Margin = new System.Windows.Forms.Padding(5);
+            txtFirstName.Multiline = false;
+            txtFirstName.Name = "txtFirstName";
+            txtFirstName.Padding = new System.Windows.Forms.Padding(12, 8, 12, 8);
+            txtFirstName.PasswordChar = false;
+            txtFirstName.PlaceholderColor = System.Drawing.Color.DarkGray;
+            txtFirstName.PlaceholderText = "";
+            txtFirstName.SelectionLength = 0;
+            txtFirstName.SelectionStart = 0;
+            txtFirstName.Size = new System.Drawing.Size(427, 43);
+            txtFirstName.TabIndex = 1;
+            txtFirstName.Texts = "";
+            txtFirstName.UnderlinedStyle = false;
+            txtFirstName._TextChanged += txtFirstName__TextChanged;
+            txtFirstName.KeyPress += txtFirstName_KeyPress;
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(44, 89);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(83, 23);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "First Name";
+            label4.AutoSize = true;
+            label4.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            label4.Location = new System.Drawing.Point(51, 103);
+            label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label4.Name = "label4";
+            label4.Size = new System.Drawing.Size(83, 23);
+            label4.TabIndex = 2;
+            label4.Text = "First Name";
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(40, 24);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(224, 34);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Personal Information";
+            label3.AutoSize = true;
+            label3.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            label3.Location = new System.Drawing.Point(47, 28);
+            label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(181, 34);
+            label3.TabIndex = 0;
+            label3.Text = "User Information";
             // 
             // btnBack
             // 
-            this.btnBack.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBack.BackColor = System.Drawing.Color.White;
-            this.btnBack.BackgroundColor = System.Drawing.Color.White;
-            this.btnBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnBack.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnBack.BorderRadius = 10;
-            this.btnBack.BorderSize = 0;
-            this.btnBack.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnBack.FlatAppearance.BorderSize = 0;
-            this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBack.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBack.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.btnBack.Image = global::Kinesia.Properties.Resources.back_button_icon;
-            this.btnBack.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnBack.Location = new System.Drawing.Point(1303, 39);
-            this.btnBack.Name = "btnBack";
-            this.btnBack.Padding = new System.Windows.Forms.Padding(0, 3, 30, 0);
-            this.btnBack.Size = new System.Drawing.Size(124, 40);
-            this.btnBack.TabIndex = 21;
-            this.btnBack.Text = "Back";
-            this.btnBack.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnBack.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.btnBack.UseVisualStyleBackColor = false;
-            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            btnBack.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            btnBack.BackColor = System.Drawing.Color.White;
+            btnBack.BackgroundColor = System.Drawing.Color.White;
+            btnBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            btnBack.BorderColor = System.Drawing.Color.PaleVioletRed;
+            btnBack.BorderRadius = 10;
+            btnBack.BorderSize = 0;
+            btnBack.Cursor = System.Windows.Forms.Cursors.Hand;
+            btnBack.FlatAppearance.BorderSize = 0;
+            btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnBack.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            btnBack.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            btnBack.Image = Properties.Resources.back_button_icon;
+            btnBack.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            btnBack.Location = new System.Drawing.Point(1382, 44);
+            btnBack.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            btnBack.Name = "btnBack";
+            btnBack.Padding = new System.Windows.Forms.Padding(0, 3, 35, 0);
+            btnBack.Size = new System.Drawing.Size(145, 46);
+            btnBack.TabIndex = 21;
+            btnBack.Text = "Back";
+            btnBack.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            btnBack.TextColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            btnBack.UseVisualStyleBackColor = false;
+            btnBack.Click += btnBack_Click;
             // 
             // lblUserID
             // 
-            this.lblUserID.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblUserID.AutoSize = true;
-            this.lblUserID.BackColor = System.Drawing.Color.Transparent;
-            this.lblUserID.Font = new System.Drawing.Font("Poppins", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUserID.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.lblUserID.Location = new System.Drawing.Point(200, 30);
-            this.lblUserID.Margin = new System.Windows.Forms.Padding(0);
-            this.lblUserID.Name = "lblUserID";
-            this.lblUserID.Size = new System.Drawing.Size(113, 48);
-            this.lblUserID.TabIndex = 25;
-            this.lblUserID.Text = "<User>";
-            this.lblUserID.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            lblUserID.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
+            lblUserID.AutoSize = true;
+            lblUserID.BackColor = System.Drawing.Color.Transparent;
+            lblUserID.Font = new System.Drawing.Font("Poppins", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            lblUserID.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            lblUserID.Location = new System.Drawing.Point(221, 35);
+            lblUserID.Margin = new System.Windows.Forms.Padding(0);
+            lblUserID.Name = "lblUserID";
+            lblUserID.Size = new System.Drawing.Size(113, 48);
+            lblUserID.TabIndex = 25;
+            lblUserID.Text = "<User>";
+            lblUserID.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            label7.Location = new System.Drawing.Point(4, 0);
+            label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label7.Name = "label7";
+            label7.Size = new System.Drawing.Size(134, 23);
+            label7.TabIndex = 44;
+            label7.Text = "Confirm Password";
+            // 
+            // rjTextBox2
+            // 
+            rjTextBox2.BackColor = System.Drawing.SystemColors.Window;
+            rjTextBox2.BorderColor = System.Drawing.Color.DimGray;
+            rjTextBox2.BorderFocusColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            rjTextBox2.BorderRadius = 5;
+            rjTextBox2.BorderSize = 1;
+            rjTextBox2.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            rjTextBox2.ForeColor = System.Drawing.Color.Black;
+            rjTextBox2.Location = new System.Drawing.Point(5, 28);
+            rjTextBox2.Margin = new System.Windows.Forms.Padding(5);
+            rjTextBox2.Multiline = false;
+            rjTextBox2.Name = "rjTextBox2";
+            rjTextBox2.Padding = new System.Windows.Forms.Padding(12, 8, 12, 8);
+            rjTextBox2.PasswordChar = false;
+            rjTextBox2.PlaceholderColor = System.Drawing.Color.DarkGray;
+            rjTextBox2.PlaceholderText = "";
+            rjTextBox2.SelectionLength = 0;
+            rjTextBox2.SelectionStart = 0;
+            rjTextBox2.Size = new System.Drawing.Size(309, 43);
+            rjTextBox2.TabIndex = 43;
+            rjTextBox2.Texts = "";
+            rjTextBox2.UnderlinedStyle = false;
             // 
             // EditUser
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
-            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.lblUserID);
-            this.Controls.Add(this.btnSaveChanges);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.nameHolder);
-            this.Controls.Add(this.txtTitleLabel);
-            this.Controls.Add(this.panelBorder1);
-            this.Controls.Add(this.btnBack);
-            this.Name = "EditUser";
-            this.Size = new System.Drawing.Size(1511, 944);
-            this.Load += new System.EventHandler(this.EditUser_Load);
-            this.panelBorder1.ResumeLayout(false);
-            this.panelBorder1.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            BackColor = System.Drawing.Color.White;
+            Controls.Add(btnSaveChanges);
+            Controls.Add(lblUserID);
+            Controls.Add(label1);
+            Controls.Add(nameHolder);
+            Controls.Add(txtTitleLabel);
+            Controls.Add(panelBorder1);
+            Controls.Add(btnBack);
+            Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            Name = "EditUser";
+            Size = new System.Drawing.Size(1557, 1139);
+            Load += EditUser_Load;
+            panelBorder1.ResumeLayout(false);
+            panelBorder1.PerformLayout();
+            flowLayoutPanel1.ResumeLayout(false);
+            flowLayoutPanel2.ResumeLayout(false);
+            flowLayoutPanel2.PerformLayout();
+            flowLayoutPanel3.ResumeLayout(false);
+            flowLayoutPanel3.PerformLayout();
+            flowLayoutPanel4.ResumeLayout(false);
+            flowLayoutPanel4.PerformLayout();
+            flowLayoutPanel5.ResumeLayout(false);
+            flowLayoutPanel5.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
 
         }
 
@@ -705,5 +873,14 @@
         private CustomControls.RJControls.RJTextBox txtEmail;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label lblUserID;
+        private CustomControls.RJControls.RJTextBox rjTextBox1;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
+        private System.Windows.Forms.Label label7;
+        private CustomControls.RJControls.RJTextBox rjTextBox2;
     }
 }

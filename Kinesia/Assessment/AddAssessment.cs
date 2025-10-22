@@ -21,6 +21,8 @@ namespace Kinesia.Assessment
 
         public AddAssessment()
         {
+            this.Anchor = AnchorStyles.Right | AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Bottom;
+            this.Dock = DockStyle.Fill;
             InitializeComponent();
         }
 

@@ -34,14 +34,19 @@ namespace Kinesia.Assessment
 
         private async void dataGridPatientSelection_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(e.RowIndex >= 0)
+            if (e.RowIndex >= 0)
             {
-                if(e.ColumnIndex == 4)
+                if (e.ColumnIndex == 4)
                 {
                     await Queries.PatientQueries.GetPatientBasicDetails(patientList[e.RowIndex]);
                     this.Close();
                 }
             }
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

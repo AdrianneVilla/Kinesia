@@ -14,6 +14,8 @@ namespace Kinesia.Assessment
     {
         public PatientAssessmentDetails()
         {
+            this.Anchor = AnchorStyles.Right | AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Bottom;
+            this.Dock = DockStyle.Fill;
             InitializeComponent();
         }
 

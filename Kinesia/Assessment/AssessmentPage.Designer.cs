@@ -28,19 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AssessmentPage));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AssessmentPage));
             label1 = new System.Windows.Forms.Label();
             nameHolder = new System.Windows.Forms.Label();
             PatientHolder = new WindowsFormsApp2.CustomButton.PanelBorder();
-            panelBorder3 = new WindowsFormsApp2.CustomButton.PanelBorder();
-            btnArchived = new OrganizationProfile.CustomButton();
-            rjComboBox1 = new CustomControls.RJControls.RJComboBox();
-            btnFinished = new OrganizationProfile.CustomButton();
-            btnOngoing = new OrganizationProfile.CustomButton();
+            flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             btnAllStatus = new OrganizationProfile.CustomButton();
-            customButton5 = new OrganizationProfile.CustomButton();
+            btnOngoing = new OrganizationProfile.CustomButton();
+            btnFinished = new OrganizationProfile.CustomButton();
+            btnArchived = new OrganizationProfile.CustomButton();
             dataGridAssessments = new System.Windows.Forms.DataGridView();
             btnAddAssessment = new OrganizationProfile.CustomButton();
             panelBorder2 = new WindowsFormsApp2.CustomButton.PanelBorder();
@@ -54,7 +52,7 @@
             txtSearchBar = new CustomControls.RJControls.RJTextBox();
             lblHiddenForFocus = new System.Windows.Forms.Label();
             PatientHolder.SuspendLayout();
-            panelBorder3.SuspendLayout();
+            flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridAssessments).BeginInit();
             panelBorder2.SuspendLayout();
             panelBorder1.SuspendLayout();
@@ -92,7 +90,7 @@
             PatientHolder.BackColor = System.Drawing.Color.FromArgb(207, 249, 238);
             PatientHolder.BorderRadius = 10;
             PatientHolder.Color = System.Drawing.Color.White;
-            PatientHolder.Controls.Add(panelBorder3);
+            PatientHolder.Controls.Add(flowLayoutPanel1);
             PatientHolder.Controls.Add(dataGridAssessments);
             PatientHolder.ForeColor = System.Drawing.Color.Black;
             PatientHolder.Location = new System.Drawing.Point(72, 236);
@@ -102,109 +100,17 @@
             PatientHolder.Size = new System.Drawing.Size(1317, 586);
             PatientHolder.TabIndex = 10;
             // 
-            // panelBorder3
+            // flowLayoutPanel1
             // 
-            panelBorder3.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            panelBorder3.BackColor = System.Drawing.Color.Transparent;
-            panelBorder3.BorderRadius = 15;
-            panelBorder3.Color = System.Drawing.Color.BurlyWood;
-            panelBorder3.Controls.Add(btnArchived);
-            panelBorder3.Controls.Add(rjComboBox1);
-            panelBorder3.Controls.Add(btnFinished);
-            panelBorder3.Controls.Add(btnOngoing);
-            panelBorder3.Controls.Add(btnAllStatus);
-            panelBorder3.Controls.Add(customButton5);
-            panelBorder3.ForeColor = System.Drawing.Color.Black;
-            panelBorder3.Location = new System.Drawing.Point(16, 9);
-            panelBorder3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            panelBorder3.Name = "panelBorder3";
-            panelBorder3.Size = new System.Drawing.Size(603, 46);
-            panelBorder3.TabIndex = 17;
-            // 
-            // btnArchived
-            // 
-            btnArchived.BackColor = System.Drawing.Color.Gainsboro;
-            btnArchived.BackgroundColor = System.Drawing.Color.Gainsboro;
-            btnArchived.BorderColor = System.Drawing.Color.PaleVioletRed;
-            btnArchived.BorderRadius = 5;
-            btnArchived.BorderSize = 0;
-            btnArchived.FlatAppearance.BorderSize = 0;
-            btnArchived.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            btnArchived.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline);
-            btnArchived.ForeColor = System.Drawing.Color.Gray;
-            btnArchived.Location = new System.Drawing.Point(434, 12);
-            btnArchived.Margin = new System.Windows.Forms.Padding(1);
-            btnArchived.Name = "btnArchived";
-            btnArchived.Size = new System.Drawing.Size(156, 31);
-            btnArchived.TabIndex = 16;
-            btnArchived.Text = "Archived";
-            btnArchived.TextColor = System.Drawing.Color.Gray;
-            btnArchived.UseVisualStyleBackColor = false;
-            btnArchived.Click += btnArchived_Click;
-            // 
-            // rjComboBox1
-            // 
-            rjComboBox1.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
-            rjComboBox1.BackColor = System.Drawing.Color.White;
-            rjComboBox1.BorderColor = System.Drawing.Color.Gray;
-            rjComboBox1.BorderSize = 1;
-            rjComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
-            rjComboBox1.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            rjComboBox1.ForeColor = System.Drawing.Color.DimGray;
-            rjComboBox1.IconColor = System.Drawing.Color.FromArgb(24, 90, 211);
-            rjComboBox1.Items.AddRange(new object[] { "Default", "Alphabetical (Name)", "Earliest (Date Added)", "Latest (Date Added)" });
-            rjComboBox1.ListBackColor = System.Drawing.Color.White;
-            rjComboBox1.ListTextColor = System.Drawing.Color.Black;
-            rjComboBox1.Location = new System.Drawing.Point(1057, 7);
-            rjComboBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            rjComboBox1.MinimumSize = new System.Drawing.Size(233, 35);
-            rjComboBox1.Name = "rjComboBox1";
-            rjComboBox1.Padding = new System.Windows.Forms.Padding(1);
-            rjComboBox1.Size = new System.Drawing.Size(284, 55);
-            rjComboBox1.TabIndex = 15;
-            rjComboBox1.Texts = "Default";
-            // 
-            // btnFinished
-            // 
-            btnFinished.BackColor = System.Drawing.Color.Gainsboro;
-            btnFinished.BackgroundColor = System.Drawing.Color.Gainsboro;
-            btnFinished.BorderColor = System.Drawing.Color.PaleVioletRed;
-            btnFinished.BorderRadius = 5;
-            btnFinished.BorderSize = 0;
-            btnFinished.FlatAppearance.BorderSize = 0;
-            btnFinished.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            btnFinished.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline);
-            btnFinished.ForeColor = System.Drawing.Color.Gray;
-            btnFinished.Location = new System.Drawing.Point(273, 12);
-            btnFinished.Margin = new System.Windows.Forms.Padding(1);
-            btnFinished.Name = "btnFinished";
-            btnFinished.Size = new System.Drawing.Size(156, 31);
-            btnFinished.TabIndex = 12;
-            btnFinished.Text = "Finished";
-            btnFinished.TextColor = System.Drawing.Color.Gray;
-            btnFinished.UseVisualStyleBackColor = false;
-            btnFinished.Click += btnFinished_Click;
-            // 
-            // btnOngoing
-            // 
-            btnOngoing.BackColor = System.Drawing.Color.Gainsboro;
-            btnOngoing.BackgroundColor = System.Drawing.Color.Gainsboro;
-            btnOngoing.BorderColor = System.Drawing.Color.PaleVioletRed;
-            btnOngoing.BorderRadius = 5;
-            btnOngoing.BorderSize = 0;
-            btnOngoing.FlatAppearance.BorderSize = 0;
-            btnOngoing.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            btnOngoing.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline);
-            btnOngoing.ForeColor = System.Drawing.Color.Gray;
-            btnOngoing.Location = new System.Drawing.Point(112, 10);
-            btnOngoing.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            btnOngoing.Name = "btnOngoing";
-            btnOngoing.Size = new System.Drawing.Size(156, 33);
-            btnOngoing.TabIndex = 11;
-            btnOngoing.Text = "Ongoing";
-            btnOngoing.TextColor = System.Drawing.Color.Gray;
-            btnOngoing.UseVisualStyleBackColor = false;
-            btnOngoing.Click += btnOngoing_Click;
+            flowLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            flowLayoutPanel1.Controls.Add(btnAllStatus);
+            flowLayoutPanel1.Controls.Add(btnOngoing);
+            flowLayoutPanel1.Controls.Add(btnFinished);
+            flowLayoutPanel1.Controls.Add(btnArchived);
+            flowLayoutPanel1.Location = new System.Drawing.Point(722, 18);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            flowLayoutPanel1.Size = new System.Drawing.Size(579, 37);
+            flowLayoutPanel1.TabIndex = 12;
             // 
             // btnAllStatus
             // 
@@ -217,8 +123,8 @@
             btnAllStatus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnAllStatus.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline);
             btnAllStatus.ForeColor = System.Drawing.Color.White;
-            btnAllStatus.Location = new System.Drawing.Point(14, 10);
-            btnAllStatus.Margin = new System.Windows.Forms.Padding(1);
+            btnAllStatus.Location = new System.Drawing.Point(2, 2);
+            btnAllStatus.Margin = new System.Windows.Forms.Padding(2);
             btnAllStatus.Name = "btnAllStatus";
             btnAllStatus.Size = new System.Drawing.Size(93, 33);
             btnAllStatus.TabIndex = 10;
@@ -227,31 +133,68 @@
             btnAllStatus.UseVisualStyleBackColor = false;
             btnAllStatus.Click += btnAllStatus_Click;
             // 
-            // customButton5
+            // btnOngoing
             // 
-            customButton5.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
-            customButton5.BackColor = System.Drawing.Color.FromArgb(18, 90, 211);
-            customButton5.BackgroundColor = System.Drawing.Color.FromArgb(18, 90, 211);
-            customButton5.BorderColor = System.Drawing.Color.White;
-            customButton5.BorderRadius = 10;
-            customButton5.BorderSize = 0;
-            customButton5.Cursor = System.Windows.Forms.Cursors.Hand;
-            customButton5.FlatAppearance.BorderSize = 0;
-            customButton5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            customButton5.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 238);
-            customButton5.ForeColor = System.Drawing.Color.White;
-            customButton5.Image = (System.Drawing.Image)resources.GetObject("customButton5.Image");
-            customButton5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            customButton5.Location = new System.Drawing.Point(1349, 7);
-            customButton5.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            customButton5.Name = "customButton5";
-            customButton5.Padding = new System.Windows.Forms.Padding(10, 0, 23, 0);
-            customButton5.Size = new System.Drawing.Size(214, 55);
-            customButton5.TabIndex = 7;
-            customButton5.Text = "Add Assessment";
-            customButton5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            customButton5.TextColor = System.Drawing.Color.White;
-            customButton5.UseVisualStyleBackColor = false;
+            btnOngoing.BackColor = System.Drawing.Color.Gainsboro;
+            btnOngoing.BackgroundColor = System.Drawing.Color.Gainsboro;
+            btnOngoing.BorderColor = System.Drawing.Color.PaleVioletRed;
+            btnOngoing.BorderRadius = 5;
+            btnOngoing.BorderSize = 0;
+            btnOngoing.FlatAppearance.BorderSize = 0;
+            btnOngoing.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnOngoing.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline);
+            btnOngoing.ForeColor = System.Drawing.Color.Gray;
+            btnOngoing.Location = new System.Drawing.Point(99, 2);
+            btnOngoing.Margin = new System.Windows.Forms.Padding(2);
+            btnOngoing.Name = "btnOngoing";
+            btnOngoing.Size = new System.Drawing.Size(156, 33);
+            btnOngoing.TabIndex = 11;
+            btnOngoing.Text = "Ongoing";
+            btnOngoing.TextColor = System.Drawing.Color.Gray;
+            btnOngoing.UseVisualStyleBackColor = false;
+            btnOngoing.Click += btnOngoing_Click;
+            // 
+            // btnFinished
+            // 
+            btnFinished.BackColor = System.Drawing.Color.Gainsboro;
+            btnFinished.BackgroundColor = System.Drawing.Color.Gainsboro;
+            btnFinished.BorderColor = System.Drawing.Color.PaleVioletRed;
+            btnFinished.BorderRadius = 5;
+            btnFinished.BorderSize = 0;
+            btnFinished.FlatAppearance.BorderSize = 0;
+            btnFinished.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnFinished.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline);
+            btnFinished.ForeColor = System.Drawing.Color.Gray;
+            btnFinished.Location = new System.Drawing.Point(259, 2);
+            btnFinished.Margin = new System.Windows.Forms.Padding(2);
+            btnFinished.Name = "btnFinished";
+            btnFinished.Size = new System.Drawing.Size(156, 33);
+            btnFinished.TabIndex = 12;
+            btnFinished.Text = "Finished";
+            btnFinished.TextColor = System.Drawing.Color.Gray;
+            btnFinished.UseVisualStyleBackColor = false;
+            btnFinished.Click += btnFinished_Click;
+            // 
+            // btnArchived
+            // 
+            btnArchived.BackColor = System.Drawing.Color.Gainsboro;
+            btnArchived.BackgroundColor = System.Drawing.Color.Gainsboro;
+            btnArchived.BorderColor = System.Drawing.Color.PaleVioletRed;
+            btnArchived.BorderRadius = 5;
+            btnArchived.BorderSize = 0;
+            btnArchived.FlatAppearance.BorderSize = 0;
+            btnArchived.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnArchived.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline);
+            btnArchived.ForeColor = System.Drawing.Color.Gray;
+            btnArchived.Location = new System.Drawing.Point(419, 2);
+            btnArchived.Margin = new System.Windows.Forms.Padding(2);
+            btnArchived.Name = "btnArchived";
+            btnArchived.Size = new System.Drawing.Size(156, 33);
+            btnArchived.TabIndex = 16;
+            btnArchived.Text = "Archived";
+            btnArchived.TextColor = System.Drawing.Color.Gray;
+            btnArchived.UseVisualStyleBackColor = false;
+            btnArchived.Click += btnArchived_Click;
             // 
             // dataGridAssessments
             // 
@@ -377,7 +320,7 @@
             btnLowerExtremities.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnLowerExtremities.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline);
             btnLowerExtremities.ForeColor = System.Drawing.Color.Gray;
-            btnLowerExtremities.Location = new System.Drawing.Point(273, 12);
+            btnLowerExtremities.Location = new System.Drawing.Point(273, 10);
             btnLowerExtremities.Margin = new System.Windows.Forms.Padding(1);
             btnLowerExtremities.Name = "btnLowerExtremities";
             btnLowerExtremities.Size = new System.Drawing.Size(156, 46);
@@ -536,7 +479,7 @@
             Size = new System.Drawing.Size(1457, 875);
             Load += AssessmentPage_Load;
             PatientHolder.ResumeLayout(false);
-            panelBorder3.ResumeLayout(false);
+            flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridAssessments).EndInit();
             panelBorder2.ResumeLayout(false);
             panelBorder1.ResumeLayout(false);
@@ -561,14 +504,12 @@
         private OrganizationProfile.CustomButton btnSearch;
         private System.Windows.Forms.PictureBox pictureBox1;
         private CustomControls.RJControls.RJTextBox txtSearchBar;
-        private WindowsFormsApp2.CustomButton.PanelBorder panelBorder3;
-        private OrganizationProfile.CustomButton btnArchived;
-        private CustomControls.RJControls.RJComboBox rjComboBox1;
-        private OrganizationProfile.CustomButton btnFinished;
-        private OrganizationProfile.CustomButton btnOngoing;
-        private OrganizationProfile.CustomButton btnAllStatus;
-        private OrganizationProfile.CustomButton customButton5;
-        private CustomControls.RJControls.RJComboBox cbSort;
         private System.Windows.Forms.Label lblHiddenForFocus;
+        private CustomControls.RJControls.RJComboBox cbSort;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private OrganizationProfile.CustomButton btnAllStatus;
+        private OrganizationProfile.CustomButton btnOngoing;
+        private OrganizationProfile.CustomButton btnFinished;
+        private OrganizationProfile.CustomButton btnArchived;
     }
 }
