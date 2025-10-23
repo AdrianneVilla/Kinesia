@@ -39,11 +39,12 @@ namespace Kinesia.Assessment
         private async void btnSave_Click(object sender, EventArgs e)
         {
             // will remove extra white spaces at the beginning and end of inputs
-            txtInitialROM.Texts.Trim();
-            txtEndROM.Texts.Trim();
-            txtSubjective.Texts.Trim();
-            txtObjective.Texts.Trim();
-            txtDeviation.Texts.Trim();
+            txtGoniometer.Texts = txtGoniometer.Texts.Trim();
+            txtInitialROM.Texts = txtInitialROM.Texts.Trim();
+            txtEndROM.Texts = txtEndROM.Texts.Trim();
+            txtSubjective.Texts = txtSubjective.Texts.Trim();
+            txtObjective.Texts = txtObjective.Texts.Trim();
+            txtDeviation.Texts = txtDeviation.Texts.Trim();
 
             double initialROM, endROM;
 
@@ -67,7 +68,7 @@ namespace Kinesia.Assessment
 
             newROM.AssessmentID = PageObjects.assessmentDetails.AssessmentID;
             newROM.UserID = SessionManager.UserID;
-            newROM.GoniometerType = "Goniometer";
+            newROM.GoniometerType = txtGoniometer.Texts;
             newROM.InitialROM = Convert.ToDouble(txtInitialROM.Texts);
             newROM.EndROM = Convert.ToDouble(txtEndROM.Texts);
             newROM.Movement = cbMovement.Texts;

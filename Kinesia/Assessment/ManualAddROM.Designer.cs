@@ -46,13 +46,15 @@
             btnCancel = new OrganizationProfile.CustomButton();
             btnSave = new OrganizationProfile.CustomButton();
             btnClose = new OrganizationProfile.CustomButton();
+            txtGoniometer = new CustomControls.RJControls.RJTextBox();
+            label9 = new System.Windows.Forms.Label();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            label1.Location = new System.Drawing.Point(52, 114);
+            label1.Location = new System.Drawing.Point(52, 146);
             label1.Name = "label1";
             label1.Size = new System.Drawing.Size(82, 23);
             label1.TabIndex = 0;
@@ -67,7 +69,7 @@
             txtInitialROM.BorderSize = 1;
             txtInitialROM.Font = new System.Drawing.Font("Poppins", 10.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             txtInitialROM.ForeColor = System.Drawing.Color.FromArgb(64, 64, 64);
-            txtInitialROM.Location = new System.Drawing.Point(52, 141);
+            txtInitialROM.Location = new System.Drawing.Point(52, 173);
             txtInitialROM.Margin = new System.Windows.Forms.Padding(4);
             txtInitialROM.Multiline = false;
             txtInitialROM.Name = "txtInitialROM";
@@ -75,6 +77,8 @@
             txtInitialROM.PasswordChar = false;
             txtInitialROM.PlaceholderColor = System.Drawing.Color.DarkGray;
             txtInitialROM.PlaceholderText = "";
+            txtInitialROM.SelectionLength = 0;
+            txtInitialROM.SelectionStart = 0;
             txtInitialROM.Size = new System.Drawing.Size(250, 41);
             txtInitialROM.TabIndex = 1;
             txtInitialROM.Texts = "";
@@ -90,7 +94,7 @@
             txtEndROM.BorderSize = 1;
             txtEndROM.Font = new System.Drawing.Font("Poppins", 10.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             txtEndROM.ForeColor = System.Drawing.Color.FromArgb(64, 64, 64);
-            txtEndROM.Location = new System.Drawing.Point(347, 141);
+            txtEndROM.Location = new System.Drawing.Point(347, 173);
             txtEndROM.Margin = new System.Windows.Forms.Padding(4);
             txtEndROM.Multiline = false;
             txtEndROM.Name = "txtEndROM";
@@ -98,6 +102,8 @@
             txtEndROM.PasswordChar = false;
             txtEndROM.PlaceholderColor = System.Drawing.Color.DarkGray;
             txtEndROM.PlaceholderText = "";
+            txtEndROM.SelectionLength = 0;
+            txtEndROM.SelectionStart = 0;
             txtEndROM.Size = new System.Drawing.Size(250, 41);
             txtEndROM.TabIndex = 3;
             txtEndROM.Texts = "";
@@ -108,7 +114,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            label2.Location = new System.Drawing.Point(347, 114);
+            label2.Location = new System.Drawing.Point(347, 146);
             label2.Name = "label2";
             label2.Size = new System.Drawing.Size(68, 23);
             label2.TabIndex = 2;
@@ -118,7 +124,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            label3.Location = new System.Drawing.Point(347, 209);
+            label3.Location = new System.Drawing.Point(347, 241);
             label3.Name = "label3";
             label3.Size = new System.Drawing.Size(92, 23);
             label3.TabIndex = 5;
@@ -128,7 +134,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            label4.Location = new System.Drawing.Point(52, 209);
+            label4.Location = new System.Drawing.Point(52, 241);
             label4.Name = "label4";
             label4.Size = new System.Drawing.Size(82, 23);
             label4.TabIndex = 4;
@@ -146,7 +152,7 @@
             cbMovement.IconColor = System.Drawing.Color.FromArgb(18, 90, 211);
             cbMovement.ListBackColor = System.Drawing.Color.White;
             cbMovement.ListTextColor = System.Drawing.Color.Black;
-            cbMovement.Location = new System.Drawing.Point(52, 235);
+            cbMovement.Location = new System.Drawing.Point(52, 267);
             cbMovement.MinimumSize = new System.Drawing.Size(200, 30);
             cbMovement.Name = "cbMovement";
             cbMovement.Padding = new System.Windows.Forms.Padding(1);
@@ -166,7 +172,7 @@
             cbMotionType.Items.AddRange(new object[] { "Active", "Passive" });
             cbMotionType.ListBackColor = System.Drawing.Color.White;
             cbMotionType.ListTextColor = System.Drawing.Color.Black;
-            cbMotionType.Location = new System.Drawing.Point(347, 235);
+            cbMotionType.Location = new System.Drawing.Point(347, 267);
             cbMotionType.MinimumSize = new System.Drawing.Size(200, 30);
             cbMotionType.Name = "cbMotionType";
             cbMotionType.Padding = new System.Windows.Forms.Padding(1);
@@ -183,7 +189,7 @@
             txtSubjective.BorderSize = 1;
             txtSubjective.Font = new System.Drawing.Font("Poppins", 10.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             txtSubjective.ForeColor = System.Drawing.Color.FromArgb(64, 64, 64);
-            txtSubjective.Location = new System.Drawing.Point(53, 337);
+            txtSubjective.Location = new System.Drawing.Point(53, 369);
             txtSubjective.Margin = new System.Windows.Forms.Padding(4);
             txtSubjective.Multiline = true;
             txtSubjective.Name = "txtSubjective";
@@ -191,6 +197,8 @@
             txtSubjective.PasswordChar = false;
             txtSubjective.PlaceholderColor = System.Drawing.Color.DarkGray;
             txtSubjective.PlaceholderText = "";
+            txtSubjective.SelectionLength = 0;
+            txtSubjective.SelectionStart = 0;
             txtSubjective.Size = new System.Drawing.Size(545, 70);
             txtSubjective.TabIndex = 9;
             txtSubjective.Texts = "";
@@ -200,7 +208,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            label5.Location = new System.Drawing.Point(53, 310);
+            label5.Location = new System.Drawing.Point(53, 342);
             label5.Name = "label5";
             label5.Size = new System.Drawing.Size(154, 23);
             label5.TabIndex = 8;
@@ -215,7 +223,7 @@
             txtObjective.BorderSize = 1;
             txtObjective.Font = new System.Drawing.Font("Poppins", 10.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             txtObjective.ForeColor = System.Drawing.Color.FromArgb(64, 64, 64);
-            txtObjective.Location = new System.Drawing.Point(52, 470);
+            txtObjective.Location = new System.Drawing.Point(52, 502);
             txtObjective.Margin = new System.Windows.Forms.Padding(4);
             txtObjective.Multiline = true;
             txtObjective.Name = "txtObjective";
@@ -223,6 +231,8 @@
             txtObjective.PasswordChar = false;
             txtObjective.PlaceholderColor = System.Drawing.Color.DarkGray;
             txtObjective.PlaceholderText = "";
+            txtObjective.SelectionLength = 0;
+            txtObjective.SelectionStart = 0;
             txtObjective.Size = new System.Drawing.Size(545, 70);
             txtObjective.TabIndex = 11;
             txtObjective.Texts = "";
@@ -232,7 +242,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            label6.Location = new System.Drawing.Point(52, 443);
+            label6.Location = new System.Drawing.Point(52, 475);
             label6.Name = "label6";
             label6.Size = new System.Drawing.Size(147, 23);
             label6.TabIndex = 10;
@@ -247,7 +257,7 @@
             txtDeviation.BorderSize = 1;
             txtDeviation.Font = new System.Drawing.Font("Poppins", 10.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             txtDeviation.ForeColor = System.Drawing.Color.FromArgb(64, 64, 64);
-            txtDeviation.Location = new System.Drawing.Point(53, 603);
+            txtDeviation.Location = new System.Drawing.Point(53, 635);
             txtDeviation.Margin = new System.Windows.Forms.Padding(4);
             txtDeviation.Multiline = false;
             txtDeviation.Name = "txtDeviation";
@@ -255,6 +265,8 @@
             txtDeviation.PasswordChar = false;
             txtDeviation.PlaceholderColor = System.Drawing.Color.DarkGray;
             txtDeviation.PlaceholderText = "";
+            txtDeviation.SelectionLength = 0;
+            txtDeviation.SelectionStart = 0;
             txtDeviation.Size = new System.Drawing.Size(544, 41);
             txtDeviation.TabIndex = 13;
             txtDeviation.Texts = "";
@@ -264,7 +276,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            label7.Location = new System.Drawing.Point(53, 576);
+            label7.Location = new System.Drawing.Point(53, 608);
             label7.Name = "label7";
             label7.Size = new System.Drawing.Size(74, 23);
             label7.TabIndex = 12;
@@ -274,7 +286,7 @@
             // 
             label8.Font = new System.Drawing.Font("Poppins", 20.25F, System.Drawing.FontStyle.Bold);
             label8.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
-            label8.Location = new System.Drawing.Point(42, 34);
+            label8.Location = new System.Drawing.Point(39, 22);
             label8.Name = "label8";
             label8.Size = new System.Drawing.Size(194, 49);
             label8.TabIndex = 23;
@@ -345,7 +357,7 @@
             btnClose.FlatAppearance.BorderSize = 0;
             btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnClose.ForeColor = System.Drawing.Color.Transparent;
-            btnClose.Location = new System.Drawing.Point(562, 43);
+            btnClose.Location = new System.Drawing.Point(559, 31);
             btnClose.Name = "btnClose";
             btnClose.Size = new System.Drawing.Size(39, 30);
             btnClose.TabIndex = 26;
@@ -353,12 +365,48 @@
             btnClose.UseVisualStyleBackColor = false;
             btnClose.Click += btnClose_Click;
             // 
+            // txtGoniometer
+            // 
+            txtGoniometer.BackColor = System.Drawing.Color.White;
+            txtGoniometer.BorderColor = System.Drawing.Color.Black;
+            txtGoniometer.BorderFocusColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            txtGoniometer.BorderRadius = 5;
+            txtGoniometer.BorderSize = 1;
+            txtGoniometer.Font = new System.Drawing.Font("Poppins", 10.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            txtGoniometer.ForeColor = System.Drawing.Color.FromArgb(64, 64, 64);
+            txtGoniometer.Location = new System.Drawing.Point(52, 98);
+            txtGoniometer.Margin = new System.Windows.Forms.Padding(4);
+            txtGoniometer.Multiline = false;
+            txtGoniometer.Name = "txtGoniometer";
+            txtGoniometer.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            txtGoniometer.PasswordChar = false;
+            txtGoniometer.PlaceholderColor = System.Drawing.Color.DarkGray;
+            txtGoniometer.PlaceholderText = "";
+            txtGoniometer.SelectionLength = 0;
+            txtGoniometer.SelectionStart = 0;
+            txtGoniometer.Size = new System.Drawing.Size(545, 41);
+            txtGoniometer.TabIndex = 28;
+            txtGoniometer.Texts = "";
+            txtGoniometer.UnderlinedStyle = false;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            label9.Location = new System.Drawing.Point(52, 71);
+            label9.Name = "label9";
+            label9.Size = new System.Drawing.Size(126, 23);
+            label9.TabIndex = 27;
+            label9.Text = "Goniometer Type";
+            // 
             // ManualAddROM
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             BackColor = System.Drawing.Color.White;
             ClientSize = new System.Drawing.Size(659, 797);
+            Controls.Add(txtGoniometer);
+            Controls.Add(label9);
             Controls.Add(btnClose);
             Controls.Add(btnCancel);
             Controls.Add(btnSave);
@@ -406,5 +454,7 @@
         private OrganizationProfile.CustomButton btnCancel;
         private OrganizationProfile.CustomButton btnSave;
         private OrganizationProfile.CustomButton btnClose;
+        private CustomControls.RJControls.RJTextBox txtGoniometer;
+        private System.Windows.Forms.Label label9;
     }
 }
