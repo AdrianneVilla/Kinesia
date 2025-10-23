@@ -419,6 +419,7 @@ namespace KinesiaAPI.Controllers
                 Address = users.Address,
                 Role = users.Role,
                 Email = users.Email,
+                Username = users.Username,
                 DateAdded = users.DateAdded,
                 LastArchiveDate = users.LastArchiveDate.HasValue ? users.LastArchiveDate.Value.ToString() : "N/A",
                 Status = users.Status

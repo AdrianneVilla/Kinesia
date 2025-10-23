@@ -15,6 +15,7 @@ namespace KinesiaLibrary.DTOs.UserDTOs
         public string Address { get; set; }
         public string Role { get; set; }
         public string Email { get; set; }
+        public string Username { get; set; }
         public DateTime DateAdded { get; set; }
         public string LastArchiveDate { get; set; } = "";
         public int Status { get; set; }

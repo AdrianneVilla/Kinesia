@@ -44,6 +44,8 @@
             lblUserID = new System.Windows.Forms.Label();
             btnArchive = new OrganizationProfile.CustomButton();
             panelBorder1 = new WindowsFormsApp2.CustomButton.PanelBorder();
+            lblUsername = new System.Windows.Forms.Label();
+            label15 = new System.Windows.Forms.Label();
             lblEmail = new System.Windows.Forms.Label();
             label13 = new System.Windows.Forms.Label();
             flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -63,21 +65,11 @@
             btnEdit = new OrganizationProfile.CustomButton();
             label12 = new System.Windows.Forms.Label();
             lblStatus = new System.Windows.Forms.Label();
-            label17 = new System.Windows.Forms.Label();
-            label2 = new System.Windows.Forms.Label();
-            txtUsername = new CustomControls.RJControls.RJTextBox();
-            label4 = new System.Windows.Forms.Label();
-            txtPassword = new CustomControls.RJControls.RJTextBox();
-            btnEditAccount = new OrganizationProfile.CustomButton();
-            panelBorder2 = new WindowsFormsApp2.CustomButton.PanelBorder();
-            label14 = new System.Windows.Forms.Label();
-            label15 = new System.Windows.Forms.Label();
             panelBorder1.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
             flowLayoutPanel2.SuspendLayout();
             flowLayoutPanel3.SuspendLayout();
             flowLayoutPanel4.SuspendLayout();
-            panelBorder2.SuspendLayout();
             SuspendLayout();
             // 
             // lblBirthdate
@@ -285,7 +277,7 @@
             panelBorder1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             panelBorder1.BorderRadius = 30;
             panelBorder1.Color = System.Drawing.Color.BurlyWood;
-            panelBorder1.Controls.Add(label14);
+            panelBorder1.Controls.Add(lblUsername);
             panelBorder1.Controls.Add(label15);
             panelBorder1.Controls.Add(lblEmail);
             panelBorder1.Controls.Add(label13);
@@ -306,6 +298,32 @@
             panelBorder1.Name = "panelBorder1";
             panelBorder1.Size = new System.Drawing.Size(1281, 200);
             panelBorder1.TabIndex = 35;
+            // 
+            // lblUsername
+            // 
+            lblUsername.AutoSize = true;
+            lblUsername.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            lblUsername.ForeColor = System.Drawing.Color.Black;
+            lblUsername.Location = new System.Drawing.Point(175, 152);
+            lblUsername.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            lblUsername.Name = "lblUsername";
+            lblUsername.Padding = new System.Windows.Forms.Padding(0, 0, 61, 0);
+            lblUsername.Size = new System.Drawing.Size(147, 22);
+            lblUsername.TabIndex = 27;
+            lblUsername.Text = "<username>";
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            label15.ForeColor = System.Drawing.Color.Gray;
+            label15.Location = new System.Drawing.Point(21, 152);
+            label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label15.Name = "label15";
+            label15.Padding = new System.Windows.Forms.Padding(0, 0, 61, 0);
+            label15.Size = new System.Drawing.Size(131, 22);
+            label15.TabIndex = 26;
+            label15.Text = "Username";
             // 
             // lblEmail
             // 
@@ -574,170 +592,6 @@
             lblStatus.TabIndex = 3;
             lblStatus.Text = "<status>";
             // 
-            // label17
-            // 
-            label17.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
-            label17.AutoSize = true;
-            label17.BackColor = System.Drawing.Color.Transparent;
-            label17.Font = new System.Drawing.Font("Poppins", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            label17.ForeColor = System.Drawing.Color.Black;
-            label17.Location = new System.Drawing.Point(20, 9);
-            label17.Margin = new System.Windows.Forms.Padding(0);
-            label17.Name = "label17";
-            label17.Size = new System.Drawing.Size(150, 30);
-            label17.TabIndex = 36;
-            label17.Text = "Account Details";
-            label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            label2.ForeColor = System.Drawing.Color.Gray;
-            label2.Location = new System.Drawing.Point(21, 82);
-            label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            label2.Name = "label2";
-            label2.Padding = new System.Windows.Forms.Padding(0, 0, 61, 0);
-            label2.Size = new System.Drawing.Size(131, 22);
-            label2.TabIndex = 24;
-            label2.Text = "Username";
-            // 
-            // txtUsername
-            // 
-            txtUsername.BackColor = System.Drawing.SystemColors.Window;
-            txtUsername.BorderColor = System.Drawing.Color.Gray;
-            txtUsername.BorderFocusColor = System.Drawing.Color.FromArgb(18, 90, 211);
-            txtUsername.BorderRadius = 5;
-            txtUsername.BorderSize = 1;
-            txtUsername.Enabled = false;
-            txtUsername.Font = new System.Drawing.Font("Poppins", 10.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            txtUsername.ForeColor = System.Drawing.Color.FromArgb(64, 64, 64);
-            txtUsername.Location = new System.Drawing.Point(118, 72);
-            txtUsername.Margin = new System.Windows.Forms.Padding(5);
-            txtUsername.Multiline = false;
-            txtUsername.Name = "txtUsername";
-            txtUsername.Padding = new System.Windows.Forms.Padding(12, 8, 12, 8);
-            txtUsername.PasswordChar = false;
-            txtUsername.PlaceholderColor = System.Drawing.Color.DarkGray;
-            txtUsername.PlaceholderText = "";
-            txtUsername.SelectionLength = 0;
-            txtUsername.SelectionStart = 0;
-            txtUsername.Size = new System.Drawing.Size(292, 43);
-            txtUsername.TabIndex = 37;
-            txtUsername.Texts = "username here";
-            txtUsername.UnderlinedStyle = false;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            label4.ForeColor = System.Drawing.Color.Gray;
-            label4.Location = new System.Drawing.Point(448, 82);
-            label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            label4.Name = "label4";
-            label4.Padding = new System.Windows.Forms.Padding(0, 0, 61, 0);
-            label4.Size = new System.Drawing.Size(128, 22);
-            label4.TabIndex = 38;
-            label4.Text = "Password";
-            // 
-            // txtPassword
-            // 
-            txtPassword.BackColor = System.Drawing.SystemColors.Window;
-            txtPassword.BorderColor = System.Drawing.Color.Gray;
-            txtPassword.BorderFocusColor = System.Drawing.Color.FromArgb(18, 90, 211);
-            txtPassword.BorderRadius = 5;
-            txtPassword.BorderSize = 1;
-            txtPassword.Enabled = false;
-            txtPassword.Font = new System.Drawing.Font("Poppins", 10.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            txtPassword.ForeColor = System.Drawing.Color.FromArgb(64, 64, 64);
-            txtPassword.Location = new System.Drawing.Point(545, 72);
-            txtPassword.Margin = new System.Windows.Forms.Padding(5);
-            txtPassword.Multiline = false;
-            txtPassword.Name = "txtPassword";
-            txtPassword.Padding = new System.Windows.Forms.Padding(12, 8, 12, 8);
-            txtPassword.PasswordChar = false;
-            txtPassword.PlaceholderColor = System.Drawing.Color.DarkGray;
-            txtPassword.PlaceholderText = "";
-            txtPassword.SelectionLength = 0;
-            txtPassword.SelectionStart = 0;
-            txtPassword.Size = new System.Drawing.Size(292, 43);
-            txtPassword.TabIndex = 39;
-            txtPassword.Texts = "password here";
-            txtPassword.UnderlinedStyle = false;
-            // 
-            // btnEditAccount
-            // 
-            btnEditAccount.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
-            btnEditAccount.BackColor = System.Drawing.Color.FromArgb(207, 249, 238);
-            btnEditAccount.BackgroundColor = System.Drawing.Color.FromArgb(207, 249, 238);
-            btnEditAccount.BorderColor = System.Drawing.Color.FromArgb(64, 210, 173);
-            btnEditAccount.BorderRadius = 10;
-            btnEditAccount.BorderSize = 1;
-            btnEditAccount.FlatAppearance.BorderSize = 0;
-            btnEditAccount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            btnEditAccount.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            btnEditAccount.ForeColor = System.Drawing.Color.FromArgb(21, 134, 105);
-            btnEditAccount.Image = (System.Drawing.Image)resources.GetObject("btnEditAccount.Image");
-            btnEditAccount.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
-            btnEditAccount.Location = new System.Drawing.Point(1083, 9);
-            btnEditAccount.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            btnEditAccount.Name = "btnEditAccount";
-            btnEditAccount.Padding = new System.Windows.Forms.Padding(6, 0, 23, 0);
-            btnEditAccount.Size = new System.Drawing.Size(187, 35);
-            btnEditAccount.TabIndex = 43;
-            btnEditAccount.Text = "Edit Account";
-            btnEditAccount.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-            btnEditAccount.TextColor = System.Drawing.Color.FromArgb(21, 134, 105);
-            btnEditAccount.UseVisualStyleBackColor = false;
-            btnEditAccount.Click += btnEditAccount_Click;
-            // 
-            // panelBorder2
-            // 
-            panelBorder2.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            panelBorder2.BackColor = System.Drawing.Color.White;
-            panelBorder2.BackgroundImage = Properties.Resources.general_information_background;
-            panelBorder2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            panelBorder2.BorderRadius = 30;
-            panelBorder2.Color = System.Drawing.Color.BurlyWood;
-            panelBorder2.Controls.Add(btnEditAccount);
-            panelBorder2.Controls.Add(txtPassword);
-            panelBorder2.Controls.Add(label4);
-            panelBorder2.Controls.Add(txtUsername);
-            panelBorder2.Controls.Add(label2);
-            panelBorder2.Controls.Add(label17);
-            panelBorder2.ForeColor = System.Drawing.Color.Black;
-            panelBorder2.Location = new System.Drawing.Point(72, 550);
-            panelBorder2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            panelBorder2.Name = "panelBorder2";
-            panelBorder2.Size = new System.Drawing.Size(1281, 168);
-            panelBorder2.TabIndex = 42;
-            // 
-            // label14
-            // 
-            label14.AutoSize = true;
-            label14.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            label14.ForeColor = System.Drawing.Color.Black;
-            label14.Location = new System.Drawing.Point(175, 152);
-            label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            label14.Name = "label14";
-            label14.Padding = new System.Windows.Forms.Padding(0, 0, 61, 0);
-            label14.Size = new System.Drawing.Size(147, 22);
-            label14.TabIndex = 27;
-            label14.Text = "<username>";
-            // 
-            // label15
-            // 
-            label15.AutoSize = true;
-            label15.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            label15.ForeColor = System.Drawing.Color.Gray;
-            label15.Location = new System.Drawing.Point(21, 152);
-            label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            label15.Name = "label15";
-            label15.Padding = new System.Windows.Forms.Padding(0, 0, 61, 0);
-            label15.Size = new System.Drawing.Size(131, 22);
-            label15.TabIndex = 26;
-            label15.Text = "Username";
-            // 
             // UserDetails
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -748,7 +602,6 @@
             Controls.Add(label12);
             Controls.Add(flowLayoutPanel4);
             Controls.Add(lblStatus);
-            Controls.Add(panelBorder2);
             Controls.Add(flowLayoutPanel2);
             Controls.Add(btnArchive);
             Controls.Add(panelBorder1);
@@ -770,8 +623,6 @@
             flowLayoutPanel3.PerformLayout();
             flowLayoutPanel4.ResumeLayout(false);
             flowLayoutPanel4.PerformLayout();
-            panelBorder2.ResumeLayout(false);
-            panelBorder2.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
 
@@ -813,14 +664,7 @@
         private OrganizationProfile.CustomButton btnEdit;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label lblStatus;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label2;
-        private CustomControls.RJControls.RJTextBox txtUsername;
-        private System.Windows.Forms.Label label4;
-        private CustomControls.RJControls.RJTextBox txtPassword;
-        private OrganizationProfile.CustomButton btnEditAccount;
-        private WindowsFormsApp2.CustomButton.PanelBorder panelBorder2;
-        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label lblUsername;
         private System.Windows.Forms.Label label15;
     }
 }

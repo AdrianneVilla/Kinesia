@@ -491,9 +491,9 @@
             label11.Location = new System.Drawing.Point(54, 633);
             label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             label11.Name = "label11";
-            label11.Size = new System.Drawing.Size(159, 34);
+            label11.Size = new System.Drawing.Size(219, 34);
             label11.TabIndex = 19;
-            label11.Text = "Setup Account";
+            label11.Text = "Account Information";
             // 
             // txtMiddleName
             // 

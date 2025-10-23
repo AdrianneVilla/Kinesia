@@ -20,19 +20,6 @@ namespace Kinesia.Users
             InitializeComponent();
         }
 
-        private void btnEditAccount_Click(object sender, EventArgs e)
-        {
-            txtUsername.Enabled = true;
-            txtPassword.Enabled = true;
-            btnEditAccount.Enabled = false;
-
-            if (btnEditAccount.Enabled == false)
-            {
-                btnEditAccount.BackColor = Color.Gray;
-                btnEditAccount.BorderColor = Color.DarkGray;
-            }
-        }
-
         public string SelectedUser { get { return lblSelectedUser.Text; } set { lblSelectedUser.Text = value; } }
         public string Name { get { return lblName.Text; } set { lblName.Text = value; } }
         public string UserID { get { return lblUserID.Text; } set { lblUserID.Text = value; } }
@@ -43,6 +30,7 @@ namespace Kinesia.Users
         public string Address { get { return lblAddress.Text; } set { lblAddress.Text = value; } }
         public string Birthdate { get { return lblBirthdate.Text; } set { lblBirthdate.Text = value; } }
         public string Email { get { return lblEmail.Text; } set { lblEmail.Text = value; } }
+        public string Username { get { return lblUsername.Text; } set { lblUsername.Text = value; } }
         public string DateAdded { get { return lblDateAdded.Text; } set { lblDateAdded.Text = value; } }
         public string LastArchiveDate { get { return lblArchiveDate.Text; } set { lblArchiveDate.Text = value; } }
         public string Status { get { return lblStatus.Text; } set { lblStatus.Text = value; } }

@@ -146,6 +146,7 @@ namespace Kinesia.Users
                     userDetails.Address = user.Address;
                     userDetails.Birthdate = user.Birthdate.ToString("yyyy-MM-dd");
                     userDetails.Role = user.Role;
+                    userDetails.Username = user.Username;
                     userDetails.Email = user.Email;
                     userDetails.DateAdded = user.DateAdded.ToString();
                     userDetails.LastArchiveDate = user.LastArchiveDate;
