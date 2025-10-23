@@ -35,7 +35,10 @@ namespace Kinesia.Patients
         private async void btnEditInfo_Click(object sender, EventArgs e)
         {
             DataHolder.PatientDataHolder = new PatientDataHolder();
-            await Queries.PatientQueries.GetPatientDetails(lblPatientID.Text, DataHolder.PatientDataHolder);
+            await this.FindForm().RunTaskWithLoading("Fetching patient's data to edit...", async () =>
+            {
+                await Queries.PatientQueries.GetPatientDetails(lblPatientID.Text, DataHolder.PatientDataHolder);
+            });
             PageObjects.editPatient.PreviousPage = "Patient Details Page";
         }
 
@@ -57,7 +60,10 @@ namespace Kinesia.Patients
 
                 if (archiveDiag == DialogResult.Yes)
                 {
-                    var success = await Queries.PatientQueries.UpdatePatientStatus(lblPatientID.Text, 0);
+                    var success = await this.FindForm().RunTaskWithLoading("Archiving patient's data...", async () =>
+                    {
+                        return await Queries.PatientQueries.UpdatePatientStatus(lblPatientID.Text, 0);
+                    });
 
                     if (success)
                     {
@@ -67,7 +73,10 @@ namespace Kinesia.Patients
                         MessageBox.Show($"{lblPatientID.Text} has been successfully archived!", "Archive Patient Notification",
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                        await Queries.PatientQueries.GetPatientDetails(lblPatientID.Text);
+                        await this.FindForm().RunTaskWithLoading("Fetching patient's data..", async () =>
+                        {
+                            await Queries.PatientQueries.GetPatientDetails(lblPatientID.Text);
+                        });
                     }
                 }
             }
@@ -79,7 +88,10 @@ namespace Kinesia.Patients
 
                 if (unarchiveDiag == DialogResult.Yes)
                 {
-                    var success = await Queries.PatientQueries.UpdatePatientStatus(lblPatientID.Text, 1);
+                    var success = await this.FindForm().RunTaskWithLoading("Unarchiving patient's data...", async () =>
+                    {
+                        return await Queries.PatientQueries.UpdatePatientStatus(lblPatientID.Text, 1);
+                    });
 
                     if (success)
                     {
@@ -89,7 +101,10 @@ namespace Kinesia.Patients
                         MessageBox.Show($"{lblPatientID.Text} has been successfully unarchived!", "Unarchive Patient Notification",
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                        await Queries.PatientQueries.GetPatientDetails(lblPatientID.Text);
+                        await this.FindForm().RunTaskWithLoading("Fetching patient's data..", async () =>
+                        {
+                            await Queries.PatientQueries.GetPatientDetails(lblPatientID.Text);
+                        });
                     }
                 }
             }

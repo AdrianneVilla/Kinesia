@@ -24,8 +24,8 @@ namespace Kinesia.Patients
             if (areInputsBlank())
             {
                 // will only show dialog if there's an unsaved input
-                DialogResult backDialog = MessageBox.Show("Are you sure you want to go back to Patient page?\n" +
-                    "Any unsaved changes will be lost!", "Add Patient Notification", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                DialogResult backDialog = CustomDialog.Show("Are you sure you want to go back to Patient page?\n" +
+                    "Any unsaved changes will be lost!", "Edit Patient Notification", CustomDialogButtons.YesNo, CustomDialogIcons.Question);
 
                 if (backDialog == DialogResult.Yes)
                 {
@@ -93,8 +93,8 @@ namespace Kinesia.Patients
             if (areInputsBlank())
             {
                 // will only show dialog if there's an unsaved input
-                DialogResult clearDialog = MessageBox.Show("Are you sure you want to clear inputs?\n" +
-                "Any unsaved inputs will be lost!", "Add Patient Notification", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                DialogResult clearDialog = CustomDialog.Show("Are you sure you want to clear inputs?\n" +
+                    "Any unsaved inputs will be lost!", "Add Patient Notification", CustomDialogButtons.YesNo, CustomDialogIcons.Question);
 
                 if (clearDialog == DialogResult.Yes)
                 {
@@ -115,8 +115,8 @@ namespace Kinesia.Patients
 
         private async void btnAddPatient_Click(object sender, EventArgs e)
         {
-            DialogResult addPatientDialog = MessageBox.Show("Are you sure you want to add this patient?", "Add Patient Notification",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+            DialogResult addPatientDialog = CustomDialog.Show("Are you sure you want to add this patient?",
+                        "Add Patient Notification", CustomDialogButtons.YesNo, CustomDialogIcons.Question);
 
             if (addPatientDialog == DialogResult.Yes)
             {
@@ -145,7 +145,10 @@ namespace Kinesia.Patients
                     Queries.PatientQueries.IsAgeValid(DataHolder.PatientDataHolder) && Queries.PatientQueries.IsContactValid(DataHolder.PatientDataHolder))
                 {
                     // will continue to add the patient if PatientDataHolder passed the data validations
-                    string newPatientID = await Queries.PatientQueries.AddPatient(DataHolder.PatientDataHolder);
+                    string newPatientID = await this.FindForm().RunTaskWithLoading("Adding patient's data...", async () =>
+                    {
+                        return await Queries.PatientQueries.AddPatient(DataHolder.PatientDataHolder);
+                    });
 
                     if (!string.IsNullOrEmpty(newPatientID))
                     {
@@ -157,14 +160,18 @@ namespace Kinesia.Patients
                         await Queries.LogsQueries.AddLog($"Added {newPatientID}", "Patients");
 
                         clearAllInputs();
-                        MessageBox.Show("Patient added successfully!", "Add Patient Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        await Queries.PatientQueries.GetPatientDetails(newPatientID);
+                        CustomDialog.Show("Patient added successfully!",
+                        "Add Patient Notification", CustomDialogButtons.OK, CustomDialogIcons.Information);
+                        await this.FindForm().RunTaskWithLoading("Fetching patient's data...", async () =>
+                        {
+                            await Queries.PatientQueries.GetPatientDetails(newPatientID);
+                        });
                     }
                     else
                     {
                         // if adding patient was not successful
                         // will show an error message
-                        MessageBox.Show("Failed to add patient!", "Add Patient Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        CustomDialog.Show("Failed to add patient!", "Add Patient Notification", CustomDialogButtons.OK, CustomDialogIcons.Error);
                     }
 
                 }

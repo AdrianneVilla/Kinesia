@@ -93,8 +93,8 @@ namespace Kinesia.Patients
             if (hasChanged())
             {
                 // will only show dialog if there's an unsaved input
-                DialogResult backDialog = MessageBox.Show("Are you sure you want to go back to Patient page?\n" +
-                    "Any unsaved changes will be lost!", "Edit Patient Notification", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                DialogResult backDialog = CustomDialog.Show("Are you sure you want to go back to Patient page?\n" +
+                    "Any unsaved changes will be lost!", "Edit Patient Notification", CustomDialogButtons.YesNo, CustomDialogIcons.Question);
 
                 if (backDialog == DialogResult.Yes)
                 {
@@ -121,8 +121,8 @@ namespace Kinesia.Patients
             if (hasChanged())
             {
                 // will only show dialog if there's an unsaved input
-                DialogResult backDialog = MessageBox.Show("Are you sure you want to go back to Patient Details page?\n" +
-                    "Any unsaved changes will be lost!", "Edit Patient Notification", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                DialogResult backDialog = CustomDialog.Show("Are you sure you want to go back to Patient details page?\n" +
+                    "Any unsaved changes will be lost!", "Edit Patient Notification", CustomDialogButtons.YesNo, CustomDialogIcons.Question);
 
                 if (backDialog == DialogResult.Yes)
                 {
@@ -138,8 +138,9 @@ namespace Kinesia.Patients
 
         private async void btnSaveChanges_Click(object sender, EventArgs e)
         {
-            DialogResult updateDialog = MessageBox.Show($"Are you sure you want to update\n" +
-                    $"{DataHolder.PatientDataHolder.PatientID}'s personal information?", "Edit Patient Notification", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+            DialogResult updateDialog = CustomDialog.Show($"Are you sure you want to update\n" +
+                        $"{DataHolder.PatientDataHolder.PatientID}'s personal information?",
+                        "Edit Patient Notification", CustomDialogButtons.YesNo, CustomDialogIcons.Question);
 
             if (updateDialog == DialogResult.Yes)
             {
@@ -177,16 +178,18 @@ namespace Kinesia.Patients
                         }
                     }
                     // will update the patient's personal information if patientData passed all data validations
-                    var success = await Queries.PatientQueries.UpdatePatient(patientData);
+                    var success = await this.FindForm().RunTaskWithLoading("Updating patient's data...", async () =>
+                    {
+                        return await Queries.PatientQueries.UpdatePatient(patientData);
+                    });
 
                     if (success)
                     {
                         // will add a log for editing a patient
                         await Queries.LogsQueries.AddLog($"Edited {DataHolder.PatientDataHolder.PatientID}'s personal information", "Patients");
 
-                        MessageBox.Show($"{DataHolder.PatientDataHolder.PatientID}'s personal information \n" +
-                            $"has been updated successfully!", "Edit Patient Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        DataHolder.PatientDataHolder = null;
+                        CustomDialog.Show($"{DataHolder.PatientDataHolder.PatientID}'s personal information \n" +
+                            $"has been updated successfully!", "Edit Patient Notification", CustomDialogButtons.OK, CustomDialogIcons.Information);
 
                         // will go back to Patient page
                         PageObjects.RemoveResources(ref PageObjects.CurrentControl);
@@ -198,8 +201,13 @@ namespace Kinesia.Patients
                     else
                     {
                         // will display an error message if failed to edit
-                        MessageBox.Show($"Failed to edit {DataHolder.PatientDataHolder.PatientID}'s personal information","Failed to edit" ,MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        CustomDialog.Show($"Failed to edit {DataHolder.PatientDataHolder.PatientID}'s personal information", "Failed to edit",
+                            CustomDialogButtons.OK, CustomDialogIcons.Error);
                     }
+                }
+                else
+                {
+                    DataHolder.PatientDataHolder = null;
                 }
             }
         }

@@ -1,4 +1,11 @@
-﻿using System;
+﻿using Kinesia.Assessment;
+using KinesiaLibrary.DTOs;
+using KinesiaLibrary.DTOs.AuthDTOs;
+using KinesiaLibrary.DTOs.PatientDTOs;
+using Microsoft.CodeAnalysis.VisualBasic.Syntax;
+using MySql.Data.MySqlClient;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
@@ -8,12 +15,6 @@ using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Kinesia.Assessment;
-using KinesiaLibrary.DTOs;
-using KinesiaLibrary.DTOs.PatientDTOs;
-using Microsoft.CodeAnalysis.VisualBasic.Syntax;
-using MySql.Data.MySqlClient;
-using Newtonsoft.Json;
 
 namespace Kinesia.Patients
 {
@@ -26,98 +27,83 @@ namespace Kinesia.Patients
             // will clear PatientList to refresh its elements
             PageObjects.patientsPage.PatientList.Clear();
 
-            try
+            var url = $"http://localhost:5000/api/patients?searchData={searchData}&currentTab={currentTab}&sortColumn={sortColumn}";
+
+            var response = await client.GetAsync(url);
+
+            if (response.IsSuccessStatusCode)
             {
-                var url = $"http://localhost:5000/api/patients?searchData={searchData}&currentTab={currentTab}&sortColumn={sortColumn}";
+                // will continue if the status code is 200
+                var json = await response.Content.ReadAsStringAsync();
+                var patients = JsonConvert.DeserializeObject<List<DisplayPatientsDTO>>(json);
 
-                var response = await client.GetAsync(url);
-
-                if (response.IsSuccessStatusCode)
+                foreach (var patient in patients)
                 {
-                    // will continue if the status code is 200
-                    var json = await response.Content.ReadAsStringAsync();
-                    var patients = JsonConvert.DeserializeObject<List<DisplayPatientsDTO>>(json);
-
-                    foreach (var patient in patients)
-                    {
-                        // will add each patientID to the list
-                        // this will help to easily access the patientID of each row
-                        // each patientID will be equivalent to its rowindex
-                        PageObjects.patientsPage.PatientList.Add(patient.PatientID);
-                    }
-
-                    PageObjects.patientsPage.GetPatientGrid.DataSource = patients;
-                    PageObjects.patientsPage.GetPatientGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
-                    var dataGrid = PageObjects.patientsPage.GetPatientGrid;
-
-                    CustomDataGrid.SetDoubleBuffering(dataGrid, true);
-                    dataGrid.SuspendLayout();
-                    dataGrid.AutoGenerateColumns = false;
-                    dataGrid.Columns.Clear();
-
-                    dataGrid.Columns.Add(new DataGridViewTextBoxColumn
-                    {
-                        Name = "PatienID",
-                        DataPropertyName = "PatientID",
-                        HeaderText = "Patient ID"
-                    });
-                    dataGrid.Columns.Add(new DataGridViewTextBoxColumn
-                    {
-                        Name = "PatienName",
-                        DataPropertyName = "PatientName",
-                        HeaderText = "Patient Name"
-                    });
-
-                    dataGrid.Columns.Add(new DataGridViewTextBoxColumn
-                    {
-                        Name = "Age",
-                        DataPropertyName = "Age",
-                        HeaderText = "Age"
-                    });
-
-                    dataGrid.Columns.Add(new DataGridViewTextBoxColumn
-                    {
-                        Name = "Contact",
-                        DataPropertyName = "Contact",
-                        HeaderText = "Contact"
-                    });
-                    dataGrid.Columns.Add(new DataGridViewTextBoxColumn
-                    {
-                        Name = "Status",
-                        DataPropertyName = "Status",
-                        HeaderText = "Status"
-
-                    });
-                    dataGrid.DataSource = patients;
-                    dataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
-                    // Add button column if it doesn't exist
-                    AddActionButtons();
-
-                    // Add spacing on the datagridview for better visualization
-                    CustomDataGrid.StyleDataGridWithSpacing(dataGrid);
-
-                    dataGrid.ResumeLayout(true);
+                    // will add each patientID to the list
+                    // this will help to easily access the patientID of each row
+                    // each patientID will be equivalent to its rowindex
+                    PageObjects.patientsPage.PatientList.Add(patient.PatientID);
                 }
-                else
+
+                PageObjects.patientsPage.GetPatientGrid.DataSource = patients;
+                PageObjects.patientsPage.GetPatientGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+                var dataGrid = PageObjects.patientsPage.GetPatientGrid;
+
+                CustomDataGrid.SetDoubleBuffering(dataGrid, true);
+                dataGrid.SuspendLayout();
+                dataGrid.AutoGenerateColumns = false;
+                dataGrid.Columns.Clear();
+
+                dataGrid.Columns.Add(new DataGridViewTextBoxColumn
                 {
-                    // will show an error dialog if it returns a badrequest from API
-                    CustomDialog.Show(await response.Content.ReadAsStringAsync(),
-                        "Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
-                }
+                    Name = "PatienID",
+                    DataPropertyName = "PatientID",
+                    HeaderText = "Patient ID"
+                });
+                dataGrid.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "PatienName",
+                    DataPropertyName = "PatientName",
+                    HeaderText = "Patient Name"
+                });
+
+                dataGrid.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "Age",
+                    DataPropertyName = "Age",
+                    HeaderText = "Age"
+                });
+
+                dataGrid.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "Contact",
+                    DataPropertyName = "Contact",
+                    HeaderText = "Contact"
+                });
+                dataGrid.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "Status",
+                    DataPropertyName = "Status",
+                    HeaderText = "Status"
+
+                });
+                dataGrid.DataSource = patients;
+                dataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+                // Add button column if it doesn't exist
+                AddActionButtons();
+
+                // Add spacing on the datagridview for better visualization
+                CustomDataGrid.StyleDataGridWithSpacing(dataGrid);
+
+                dataGrid.ResumeLayout(true);
             }
-            catch (HttpRequestException)
+            else
             {
-                // will show an error dialog if it catches a http request error from client-side
-                CustomDialog.Show("Unable to connect to the server.\nPlease try again.",
-                    "Connection Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
-            }
-            catch (Exception)
-            {
-                // will show an error dialog if it catches an unexpected error from client-side.
-                CustomDialog.Show("An unexpected error occured.\nPlease try again.",
-                            "Unexpected Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                // will throw an exception if it returns a badrequest from API-side.
+                string errorMessage = await response.Content.ReadAsStringAsync();
+                throw new Exception(errorMessage);
             }
         }
 
@@ -252,307 +238,205 @@ namespace Kinesia.Patients
         public async Task GetPatientDetails(string patientID)
         {
             // GetPatientDetails overload for Patient Details page
-            try
+            var url = $"http://localhost:5000/api/patients/{patientID}";
+
+            var response = await client.GetAsync(url);
+
+            if (response.IsSuccessStatusCode)
             {
-                var url = $"http://localhost:5000/api/patients/{patientID}";
+                var json = await response.Content.ReadAsStringAsync();
+                var patient = JsonConvert.DeserializeObject<PatientsDTO>(json);
 
-                var response = await client.GetAsync(url);
+                // will create PatientDetails user control
+                var patientDetails = new PatientDetails();
 
-                if (response.IsSuccessStatusCode)
+                // will set the data of the patient to the labels
+                patientDetails.PatientID = patient.PatientID;
+                patientDetails.SelectedPatient = patient.PatientID;
+                patientDetails.PatientName = $"{patient.FirstName} {patient.MiddleName} {patient.LastName}";
+                patientDetails.Gender = patient.Gender;
+                patientDetails.Contact = patient.Contact;
+                patientDetails.Age = patient.Age.ToString();
+                patientDetails.Address = patient.Address;
+                patientDetails.Birthdate = patient.Birthdate.ToString("yyyy-MM-dd");
+
+                // 1 = Active
+                // 0 = Inactive
+                if (patient.Status == 1)
                 {
-                    var json = await response.Content.ReadAsStringAsync();
-                    var patient = JsonConvert.DeserializeObject<PatientsDTO>(json);
-
-                    // will create PatientDetails user control
-                    var patientDetails = new PatientDetails();
-
-                    // will set the data of the patient to the labels
-                    patientDetails.PatientID = patient.PatientID;
-                    patientDetails.SelectedPatient = patient.PatientID;
-                    patientDetails.PatientName = $"{patient.FirstName} {patient.MiddleName} {patient.LastName}";
-                    patientDetails.Gender = patient.Gender;
-                    patientDetails.Contact = patient.Contact;
-                    patientDetails.Age = patient.Age.ToString();
-                    patientDetails.Address = patient.Address;
-                    patientDetails.Birthdate = patient.Birthdate.ToString("yyyy-MM-dd");
-
-                    // 1 = Active
-                    // 0 = Inactive
-                    if (patient.Status == 1)
-                    {
-                        patientDetails.Status = "Active";
-                        patientDetails.BtnArchive.Tag = "Active";
-                    }
-                    else
-                    {
-                        patientDetails.Status = "Inactive";
-                        patientDetails.BtnArchive.Tag = "Inactive";
-                        patientDetails.BtnArchive.Image = Properties.Resources.Unarchive;
-                        patientDetails.BtnArchive.Text = "Unarchive Patient";
-                        patientDetails.BtnArchive.ForeColor = Color.FromArgb(18, 90, 211);
-                        patientDetails.BtnArchive.BackColor = Color.FromArgb(223, 236, 250);
-                        patientDetails.BtnArchive.BorderColor = Color.FromArgb(18, 90, 211);
-                    }
-
-                    patientDetails.DateAdded = patient.DateAdded.ToString();
-                    patientDetails.LastArchiveDate = patient.LastArchiveDate;
-
-                    PageObjects.RemoveResources(ref PageObjects.CurrentControl);
-                    PageObjects.dashboard.ContentsPanel.Controls.Add(patientDetails);
-                    PageObjects.CurrentControl = patientDetails;
+                    patientDetails.Status = "Active";
+                    patientDetails.BtnArchive.Tag = "Active";
                 }
                 else
                 {
-                    // will show an error dialog if it returns a badrequest from API
-                    CustomDialog.Show(await response.Content.ReadAsStringAsync(),
-                        "Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                    patientDetails.Status = "Inactive";
+                    patientDetails.BtnArchive.Tag = "Inactive";
+                    patientDetails.BtnArchive.Image = Properties.Resources.Unarchive;
+                    patientDetails.BtnArchive.Text = "Unarchive Patient";
+                    patientDetails.BtnArchive.ForeColor = Color.FromArgb(18, 90, 211);
+                    patientDetails.BtnArchive.BackColor = Color.FromArgb(223, 236, 250);
+                    patientDetails.BtnArchive.BorderColor = Color.FromArgb(18, 90, 211);
                 }
+
+                patientDetails.DateAdded = patient.DateAdded.ToString();
+                patientDetails.LastArchiveDate = patient.LastArchiveDate;
+
+                PageObjects.RemoveResources(ref PageObjects.CurrentControl);
+                PageObjects.dashboard.ContentsPanel.Controls.Add(patientDetails);
+                PageObjects.CurrentControl = patientDetails;
             }
-            catch (HttpRequestException)
+            else
             {
-                // will show an error dialog if it catches a http request error from client-side
-                CustomDialog.Show("Unable to connect to the server.\nPlease try again.",
-                    "Connection Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
-            }
-            catch (Exception)
-            {
-                // will show an error dialog if it catches an unexpected error from client-side
-                CustomDialog.Show("Unable to connect to the server.\nPlease try again.",
-                            "Unexpected Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                // will throw an exception if it returns a badrequest from API-side.
+                string errorMessage = await response.Content.ReadAsStringAsync();
+                throw new Exception(errorMessage);
             }
         }
 
         public async Task GetPatientDetails(string patientID, PatientDataHolder patientData)
         {
             // GetPatientDetails overload for Edit Patient page
-            try
+            var url = $"http://localhost:5000/api/patients/{patientID}";
+
+            var response = await client.GetAsync(url);
+
+            if (response.IsSuccessStatusCode)
             {
-                var url = $"http://localhost:5000/api/patients/{patientID}";
+                var json = await response.Content.ReadAsStringAsync();
+                var patient = JsonConvert.DeserializeObject<PatientsDTO>(json);
 
-                var response = await client.GetAsync(url);
+                patientData.PatientID = patient.PatientID;
+                patientData.FirstName = patient.FirstName;
+                patientData.LastName = patient.LastName;
+                patientData.MiddleName = patient.MiddleName;
+                patientData.Birthdate = patient.Birthdate.ToString("yyyy-MM-dd");
+                patientData.Age = patient.Age;
+                patientData.Gender = patient.Gender;
+                patientData.Contact = patient.Contact;
+                patientData.Occupation = patient.Occupation;
+                patientData.Address = patient.Address;
 
-                if (response.IsSuccessStatusCode)
-                {
-                    var json = await response.Content.ReadAsStringAsync();
-                    var patient = JsonConvert.DeserializeObject<PatientsDTO>(json);
-
-                    patientData.PatientID = patient.PatientID;
-                    patientData.FirstName = patient.FirstName;
-                    patientData.LastName = patient.LastName;
-                    patientData.MiddleName = patient.MiddleName;
-                    patientData.Birthdate = patient.Birthdate.ToString("yyyy-MM-dd");
-                    patientData.Age = patient.Age;
-                    patientData.Gender = patient.Gender;
-                    patientData.Contact = patient.Contact;
-                    patientData.Occupation = patient.Occupation;
-                    patientData.Address = patient.Address;
-
-                    PageObjects.editPatient = new EditPatient();
-                    PageObjects.RemoveResources(ref PageObjects.CurrentControl);
-                    PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.editPatient);
-                    PageObjects.CurrentControl = PageObjects.editPatient;
-                }
-                else
-                {
-                    // will show an error dialog if it returns a badrequest from API
-                    CustomDialog.Show(await response.Content.ReadAsStringAsync(),
-                        "Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
-                }
+                PageObjects.editPatient = new EditPatient();
+                PageObjects.RemoveResources(ref PageObjects.CurrentControl);
+                PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.editPatient);
+                PageObjects.CurrentControl = PageObjects.editPatient;
             }
-            catch (HttpRequestException)
+            else
             {
-                // will show an error dialog if it catches a http request error from client-side
-                CustomDialog.Show("Unable to connect to the server.\nPlease try again.",
-                    "Connection Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
-            }
-            catch (Exception)
-            {
-                // will show an error dialog if it catches an unexpected error from client-side
-                CustomDialog.Show("Unable to connect to the server.\nPlease try again.",
-                            "Unexpected Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                // will throw an exception if it returns a badrequest from API-side.
+                string errorMessage = await response.Content.ReadAsStringAsync();
+                throw new Exception(errorMessage);
             }
         }
 
         public async Task<string> SetPatientID()
         {
-            try
-            {
-                var url = "http://localhost:5000/api/patients/generate-patientid";
-                var response = await client.GetAsync(url);
+            var url = "http://localhost:5000/api/patients/generate-patientid";
+            var response = await client.GetAsync(url);
 
-                if (response.IsSuccessStatusCode)
-                {
-                    return await response.Content.ReadAsStringAsync();
-                }
-                else
-                {
-                    // will show an error dialog if it returns a badrequest from API
-                    CustomDialog.Show(await response.Content.ReadAsStringAsync(),
-                        "Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
-                    return null;
-                }
-            }
-            catch (HttpRequestException)
+            if (response.IsSuccessStatusCode)
             {
-                // will show an error dialog if it catches a http request error from client-side
-                CustomDialog.Show("Unable to connect to the server.\nPlease try again.",
-                    "Connection Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
-                return null;
+                return await response.Content.ReadAsStringAsync();
             }
-            catch (Exception)
+            else
             {
-                // will show an error dialog if it catches an unexpected error from client-side
-                CustomDialog.Show("Unable to connect to the server.\nPlease try again.",
-                            "Unexpected Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
-                return null;
+                // will throw an exception if it returns a badrequest from API-side.
+                string errorMessage = await response.Content.ReadAsStringAsync();
+                throw new Exception(errorMessage);
             }
         }
 
         public async Task<string> AddPatient(PatientDataHolder patientData)
         {
-            try
+            var newPatient = new PatientsDTO
             {
-                var newPatient = new PatientsDTO
-                {
-                    PatientID = await SetPatientID(),
-                    FirstName = patientData.FirstName,
-                    LastName = patientData.LastName,
-                    MiddleName = patientData.MiddleName,
-                    Contact = ContactFormatter(patientData.Contact),
-                    Birthdate = DateTime.Parse(patientData.Birthdate),
-                    Gender = patientData.Gender,
-                    Address = patientData.Address,
-                    Occupation = patientData.Occupation,
-                    DateAdded = DateTime.Now,
-                    LastArchiveDate = null,
-                    Status = 1
-                };
+                PatientID = await SetPatientID(),
+                FirstName = patientData.FirstName,
+                LastName = patientData.LastName,
+                MiddleName = patientData.MiddleName,
+                Contact = ContactFormatter(patientData.Contact),
+                Birthdate = DateTime.Parse(patientData.Birthdate),
+                Gender = patientData.Gender,
+                Address = patientData.Address,
+                Occupation = patientData.Occupation,
+                DateAdded = DateTime.Now,
+                LastArchiveDate = null,
+                Status = 1
+            };
 
-                var json = JsonConvert.SerializeObject(newPatient);
-                var content = new StringContent(json, Encoding.UTF8, "application/json");
+            var json = JsonConvert.SerializeObject(newPatient);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-                var response = await client.PostAsync("http://localhost:5000/api/patients", content);
+            var response = await client.PostAsync("http://localhost:5000/api/patients", content);
 
-                if (response.IsSuccessStatusCode)
-                {
-                    return newPatient.PatientID;
-                }
-                else
-                {
-                    // will show an error dialog if it returns a badrequest from API-side.
-                    CustomDialog.Show(await response.Content.ReadAsStringAsync(),
-                                "Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
-                    return null;
-                }
+            if (response.IsSuccessStatusCode)
+            {
+                return newPatient.PatientID;
             }
-            catch (HttpRequestException)
+            else
             {
-                // will show an error dialog if it catches a http request error from client-side.
-                CustomDialog.Show("Unable to connect to the server.\nPlease try again.",
-                            "Connection Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
-                return null;
-            }
-            catch (Exception)
-            {
-                // will show an error dialog if it catches an unexpected error from client-side.
-                CustomDialog.Show("Unexpected error occured.\nPlease try again.",
-                            "Unexpected Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
-                return null;
+                // will throw an exception if it returns a badrequest from API-side.
+                string errorMessage = await response.Content.ReadAsStringAsync();
+                throw new Exception(errorMessage);
             }
         }
 
         public async Task<bool> UpdatePatient(PatientDataHolder patientData)
         {
-            try
+            var url = $"http://localhost:5000/api/patients/{patientData.PatientID}";
+
+            var updatedPatient = new UpdatedPatientDTO();
+
+            updatedPatient.PatientID = patientData.PatientID;
+            updatedPatient.FirstName = patientData.FirstName;
+            updatedPatient.LastName = patientData.LastName;
+            updatedPatient.MiddleName = patientData.MiddleName;
+            updatedPatient.Birthdate = DateTime.Parse(patientData.Birthdate);
+            updatedPatient.Gender = patientData.Gender;
+            updatedPatient.Contact = ContactFormatter(patientData.Contact);
+            updatedPatient.Occupation = patientData.Occupation;
+            updatedPatient.Address = patientData.Address;
+
+            var json = JsonConvert.SerializeObject(updatedPatient);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            var response = await client.PutAsync(url, content);
+
+            if (response.IsSuccessStatusCode)
             {
-                var url = $"http://localhost:5000/api/patients/{patientData.PatientID}";
-
-                var updatedPatient = new UpdatedPatientDTO();
-
-                updatedPatient.PatientID = patientData.PatientID;
-                updatedPatient.FirstName = patientData.FirstName;
-                updatedPatient.LastName = patientData.LastName;
-                updatedPatient.MiddleName = patientData.MiddleName;
-                updatedPatient.Birthdate = DateTime.Parse(patientData.Birthdate);
-                updatedPatient.Gender = patientData.Gender;
-                updatedPatient.Contact = ContactFormatter(patientData.Contact);
-                updatedPatient.Occupation = patientData.Occupation;
-                updatedPatient.Address = patientData.Address;
-
-                var json = JsonConvert.SerializeObject(updatedPatient);
-                var content = new StringContent(json, Encoding.UTF8, "application/json");
-
-                var response = await client.PutAsync(url, content);
-
-                if (response.IsSuccessStatusCode)
-                {
-                    return true;
-                }
-                else
-                {
-                    // will show an error dialog if it returns a badrequest from API-side.
-                    CustomDialog.Show(await response.Content.ReadAsStringAsync(),
-                                "Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
-                    return false;
-                }
+                return true;
             }
-            catch (HttpRequestException)
+            else
             {
-                // will show an error dialog if it catches a http request error from client-side.
-                CustomDialog.Show("Unable to connect to the server.\nPlease try again.",
-                            "Connection Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
-                return false;
-            }
-            catch (Exception)
-            {
-                // will show an error dialog if it catches an unexpected error from client-side.
-                CustomDialog.Show("Unexpected error occured.\nPlease try again.",
-                            "Unexpected Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
-                return false;
+                // will throw an exception if it returns a badrequest from API-side.
+                string errorMessage = await response.Content.ReadAsStringAsync();
+                throw new Exception(errorMessage);
             }
         }
 
         public async Task<bool> UpdatePatientStatus(string patientID, int status)
         {
-            try
+            var url = $"http://localhost:5000/api/patients/{patientID}/status";
+
+            var updatedPatient = new PatientUpdateStatusDTO();
+
+            updatedPatient.PatientID = patientID;
+            updatedPatient.Status = status;
+
+            var json = JsonConvert.SerializeObject(updatedPatient);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            var response = await client.PutAsync(url, content);
+
+            if (response.IsSuccessStatusCode)
             {
-                var url = $"http://localhost:5000/api/patients/{patientID}/status";
-
-                var updatedPatient = new PatientUpdateStatusDTO();
-
-                updatedPatient.PatientID = patientID;
-                updatedPatient.Status = status;
-
-                var json = JsonConvert.SerializeObject(updatedPatient);
-                var content = new StringContent(json, Encoding.UTF8, "application/json");
-
-                var response = await client.PutAsync(url, content);
-
-                if (response.IsSuccessStatusCode)
-                {
-                    return true;
-                }
-                else
-                {
-                    // will show an error dialog if it returns a badrequest from API-side.
-                    CustomDialog.Show(await response.Content.ReadAsStringAsync(),
-                                "Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
-                    return false;
-                }
+                return true;
             }
-            catch (HttpRequestException)
+            else
             {
-                // will show an error dialog if it catches a http request error from client-side.
-                CustomDialog.Show("Unable to connect to the server.\nPlease try again.",
-                            "Connection Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
-                return false;
-            }
-            catch(Exception)
-            {
-                // will show an error dialog if it catches an unexpected error from client-side.
-                CustomDialog.Show("Unexpected error occured.\nPlease try again.",
-                            "Unexpected Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
-                return false;
+                // will throw an exception if it returns a badrequest from API-side.
+                string errorMessage = await response.Content.ReadAsStringAsync();
+                throw new Exception(errorMessage);
             }
         }
 

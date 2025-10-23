@@ -1,16 +1,18 @@
 ﻿using CustomControls.RJControls;
+using KinesiaLibrary.DTOs.AuthDTOs;
+using MySqlX.XDevAPI;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp2.CustomButton;
-using System.Net.Http;
-using Newtonsoft.Json;
 
 
 namespace Kinesia.Patients
@@ -36,9 +38,10 @@ namespace Kinesia.Patients
         public string CurrentTab { get { return currentTab; } }
 
 
-        private async void PatientsPage_Load(object sender, EventArgs e)
+        private void PatientsPage_Load(object sender, EventArgs e)
         {
-            await Queries.PatientQueries.DisplayPatients(searchData, currentTab, cbSort.Texts);
+            GetPatientList();
+
             txtSearchBar.Texts = "Search for Patient name or Patient ID";
 
             // will get the TextBox inside the RJTextBox
@@ -48,6 +51,14 @@ namespace Kinesia.Patients
             {
                 innerTxtSearchBar.KeyDown += InnerTxtSearchBar_KeyDown; // will add KeyDown KeyEvent
             }
+        }
+
+        private async void GetPatientList()
+        {
+            await this.FindForm().RunTaskWithLoading("Fetching patients list...", async () =>
+            {
+                await Queries.PatientQueries.DisplayPatients(searchData, currentTab, cbSort.Texts);
+            });
         }
 
         private async void InnerTxtSearchBar_KeyDown(object sender, KeyEventArgs e)
@@ -105,11 +116,11 @@ namespace Kinesia.Patients
             }
         }
 
-        private async void btnSearch_Click(object sender, EventArgs e)
+        private void btnSearch_Click(object sender, EventArgs e)
         {
-            await Queries.PatientQueries.DisplayPatients(searchData, currentTab, cbSort.Texts); // will do search query
+            GetPatientList(); // will do search query
         }
-        private async void btnAll_Click(object sender, EventArgs e)
+        private void btnAll_Click(object sender, EventArgs e)
         {
             // will only refresh the patients list if the currentTab was not already All
             if (currentTab != "All")
@@ -118,11 +129,11 @@ namespace Kinesia.Patients
                 switchTab(currentTab);
                 txtSearchBar.Texts = "Search for Patient name or Patient ID";
                 searchData = "";
-                await Queries.PatientQueries.DisplayPatients(searchData, currentTab, cbSort.Texts);
+                GetPatientList();
             }
         }
 
-        private async void btnActive_Click(object sender, EventArgs e)
+        private void btnActive_Click(object sender, EventArgs e)
         {
             // will only refresh the patients list if the currentTab was not already Active
             if (currentTab != "Active")
@@ -131,11 +142,11 @@ namespace Kinesia.Patients
                 switchTab(currentTab);
                 txtSearchBar.Texts = "Search for Patient name or Patient ID";
                 searchData = "";
-                await Queries.PatientQueries.DisplayPatients(searchData, currentTab, cbSort.Texts);
+                GetPatientList();
             }
         }
 
-        private async void btnInactive_Click(object sender, EventArgs e)
+        private void btnInactive_Click(object sender, EventArgs e)
         {
             // will only refresh the patients list if the currentTab was not already Inactive
             if (currentTab != "Inactive")
@@ -144,7 +155,7 @@ namespace Kinesia.Patients
                 switchTab(currentTab);
                 txtSearchBar.Texts = "Search for Patient name or Patient ID";
                 searchData = "";
-                await Queries.PatientQueries.DisplayPatients(searchData, currentTab, cbSort.Texts);
+                GetPatientList();
             }
         }
 
@@ -196,10 +207,10 @@ namespace Kinesia.Patients
             }
         }
 
-        private async void cbSort_OnSelectedIndexChanged(object sender, EventArgs e)
+        private void cbSort_OnSelectedIndexChanged(object sender, EventArgs e)
         {
             // will refresh patients list every time the sort value was changed
-            await Queries.PatientQueries.DisplayPatients(searchData, currentTab, cbSort.Texts);
+            GetPatientList();
         }
 
         private void PatientHolder_Paint(object sender, PaintEventArgs e)
@@ -213,12 +224,18 @@ namespace Kinesia.Patients
             {
                 if(e.ColumnIndex == 5) // column 5 is for EMR button
                 {
-                    await Queries.PatientQueries.GetPatientDetails(patientList[e.RowIndex]);
+                    await this.FindForm().RunTaskWithLoading("Fetching patient's data...", async () =>
+                    {
+                        await Queries.PatientQueries.GetPatientDetails(patientList[e.RowIndex]);
+                    });
                 }
                 else if(e.ColumnIndex == 6) // column 6 is for Edit button
                 {
                     DataHolder.PatientDataHolder = new PatientDataHolder();
-                    await Queries.PatientQueries.GetPatientDetails(patientList[e.RowIndex], DataHolder.PatientDataHolder);
+                    await this.FindForm().RunTaskWithLoading("Fetching patient's data to edit...", async () =>
+                    {
+                        await Queries.PatientQueries.GetPatientDetails(patientList[e.RowIndex], DataHolder.PatientDataHolder);
+                    });
                     PageObjects.editPatient.PreviousPage = "Patients Page";
                 }
                 else if(e.ColumnIndex == 7) // column 7 is for Archive / Unarchive button
@@ -226,44 +243,56 @@ namespace Kinesia.Patients
                     if (dataGridPatients.Rows[e.RowIndex].Cells[4].Value.Equals("Active"))
                     {
                         // will show message box for Archiving patient
-                        DialogResult archiveDiag = MessageBox.Show($"Are you sure you want to archive {patientList[e.RowIndex]}?", "Archive Patient Notification",
-                        MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                        DialogResult archiveDiag = CustomDialog.Show($"Are you sure you want to archive {patientList[e.RowIndex]}?", "Archive Patient Notification",
+                        CustomDialogButtons.YesNo, CustomDialogIcons.Question);
 
                         if (archiveDiag == DialogResult.Yes)
                         {
-                            var success = await Queries.PatientQueries.UpdatePatientStatus(patientList[e.RowIndex], 0);
+                            var success = await this.FindForm().RunTaskWithLoading("Archiving patient's data...", async () =>
+                            {
+                                return await Queries.PatientQueries.UpdatePatientStatus(patientList[e.RowIndex], 0);
+                            });
 
                             if (success)
                             {
                                 // will add a log for archiving a patient
                                 await Queries.LogsQueries.AddLog($"Archived {patientList[e.RowIndex]}", "Patients");
 
-                                MessageBox.Show($"{patientList[e.RowIndex]} has been successfully archived!", "Archive Patient Notification",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                CustomDialog.Show($"{patientList[e.RowIndex]} has been successfully archived!", "Archive Patient Notification",
+                                    CustomDialogButtons.OK, CustomDialogIcons.Information);
 
-                                await Queries.PatientQueries.DisplayPatients("", PageObjects.patientsPage.CurrentTab, "Default");
+                                await this.FindForm().RunTaskWithLoading("Fetching patients list...", async () =>
+                                {
+                                    await Queries.PatientQueries.DisplayPatients("", PageObjects.patientsPage.CurrentTab, "Default");
+                                });        
                             }
                         }
                     }
                     else if(dataGridPatients.Rows[e.RowIndex].Cells[4].Value.Equals("Inactive"))
                     {
                         // will show message box for Unarchiving patient
-                        DialogResult unarchiveDiag = MessageBox.Show($"Are you sure you want to unarchive {patientList[e.RowIndex]}?", "Unarchive Patient Notification",
-                        MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                        DialogResult unarchiveDiag = CustomDialog.Show($"Are you sure you want to unarchive {patientList[e.RowIndex]}?", "Unarchive Patient Notification",
+                        CustomDialogButtons.YesNo, CustomDialogIcons.Question);
 
                         if (unarchiveDiag == DialogResult.Yes)
                         {
-                            var success = await Queries.PatientQueries.UpdatePatientStatus(patientList[e.RowIndex], 1);
+                            var success = await this.FindForm().RunTaskWithLoading("Unarchiving patient's data...", async () =>
+                            {
+                                return await Queries.PatientQueries.UpdatePatientStatus(patientList[e.RowIndex], 1);
+                            });
 
                             if (success)
                             {
                                 // will add a log for unarchiving a patient
                                 await Queries.LogsQueries.AddLog($"Unarchived {patientList[e.RowIndex]}", "Patients");
 
-                                MessageBox.Show($"{patientList[e.RowIndex]} has been successfully unarchived!", "Unarchive Patient Notification",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                CustomDialog.Show($"{patientList[e.RowIndex]} has been successfully unarchived!", "Unarchive Patient Notification",
+                                    CustomDialogButtons.OK, CustomDialogIcons.Information);
 
-                                await Queries.PatientQueries.DisplayPatients("", PageObjects.patientsPage.CurrentTab, "Default");
+                                await this.FindForm().RunTaskWithLoading("Fetching patients list...", async () =>
+                                {
+                                    await Queries.PatientQueries.DisplayPatients("", PageObjects.patientsPage.CurrentTab, "Default");
+                                });
                             }
                         }
                     }

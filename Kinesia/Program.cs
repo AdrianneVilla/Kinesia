@@ -202,23 +202,52 @@ namespace Kinesia
 
         public static async Task<T> RunTaskWithLoading<T>(this Form owner, string actionText, Func<Task<T>> taskToRun)
         {
-            try
+            // will store any exceptions here.
+            Exception caughtException = null;
+
+            T result = default(T);
+
+            // the 'using' block handles the loading form.
+            using (new LoadingContext(owner, actionText))
             {
-                // will pass the actionText to the LoadingContext
-                using (new LoadingContext(owner, actionText))
+                try
                 {
-                    // will await the task and will return its result
-                    return await taskToRun();
+                    // will run the task
+                    result = await taskToRun();
+                }
+                catch (HttpRequestException httpEx)
+                {
+                    // If it fails, will just SAVE the exception.
+                    // will not show a dialog here.
+                    caughtException = httpEx;
+                }
+                catch (Exception ex)
+                {
+                    caughtException = ex;
                 }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("An error occurred: " + ex.Message);
 
-                // If an error happens, will return the 'default'
-                // value for T (which is 'null' for any object)
+            if (caughtException != null)
+            {
+                if (caughtException is HttpRequestException)
+                {
+                    // will handle the network error
+                    CustomDialog.Show("Unable to connect to the server.\nPlease try again.",
+                        "Connection Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                }
+                else
+                {
+                    // will handle all other logic errors
+                    CustomDialog.Show("An error occurred: " + caughtException.Message,
+                        "Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                }
+
+                // will return the default value (null) because an error happened
                 return default(T);
             }
+
+            // If no exception, will return the successful result
+            return result;
         }
     }
 
