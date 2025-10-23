@@ -28,32 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            customButton1 = new OrganizationProfile.CustomButton();
+            btnAstraProCamera = new OrganizationProfile.CustomButton();
             btnGoniometer = new OrganizationProfile.CustomButton();
             label2 = new System.Windows.Forms.Label();
             customButton3 = new OrganizationProfile.CustomButton();
             SuspendLayout();
             // 
-            // customButton1
+            // btnAstraProCamera
             // 
-            customButton1.BackColor = System.Drawing.Color.Transparent;
-            customButton1.BackgroundColor = System.Drawing.Color.Transparent;
-            customButton1.BorderColor = System.Drawing.Color.Black;
-            customButton1.BorderRadius = 20;
-            customButton1.BorderSize = 1;
-            customButton1.FlatAppearance.BorderSize = 0;
-            customButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            customButton1.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            customButton1.ForeColor = System.Drawing.Color.Black;
-            customButton1.Image = Properties.Resources.newSmallOrbbec;
-            customButton1.Location = new System.Drawing.Point(39, 122);
-            customButton1.Name = "customButton1";
-            customButton1.Size = new System.Drawing.Size(192, 198);
-            customButton1.TabIndex = 0;
-            customButton1.Text = "Astra Pro Plus";
-            customButton1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            customButton1.TextColor = System.Drawing.Color.Black;
-            customButton1.UseVisualStyleBackColor = false;
+            btnAstraProCamera.BackColor = System.Drawing.Color.Transparent;
+            btnAstraProCamera.BackgroundColor = System.Drawing.Color.Transparent;
+            btnAstraProCamera.BorderColor = System.Drawing.Color.Black;
+            btnAstraProCamera.BorderRadius = 20;
+            btnAstraProCamera.BorderSize = 1;
+            btnAstraProCamera.FlatAppearance.BorderSize = 0;
+            btnAstraProCamera.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnAstraProCamera.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            btnAstraProCamera.ForeColor = System.Drawing.Color.Black;
+            btnAstraProCamera.Image = Properties.Resources.newSmallOrbbec;
+            btnAstraProCamera.Location = new System.Drawing.Point(39, 122);
+            btnAstraProCamera.Name = "btnAstraProCamera";
+            btnAstraProCamera.Size = new System.Drawing.Size(192, 198);
+            btnAstraProCamera.TabIndex = 0;
+            btnAstraProCamera.Text = "Astra Pro Plus";
+            btnAstraProCamera.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            btnAstraProCamera.TextColor = System.Drawing.Color.Black;
+            btnAstraProCamera.UseVisualStyleBackColor = false;
+            btnAstraProCamera.Click += btnAstraProCamera_Click;
             // 
             // btnGoniometer
             // 
@@ -116,7 +117,7 @@
             Controls.Add(customButton3);
             Controls.Add(label2);
             Controls.Add(btnGoniometer);
-            Controls.Add(customButton1);
+            Controls.Add(btnAstraProCamera);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             Name = "SelectTool";
             StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -126,7 +127,7 @@
 
         #endregion
 
-        private OrganizationProfile.CustomButton customButton1;
+        private OrganizationProfile.CustomButton btnAstraProCamera;
         private OrganizationProfile.CustomButton btnGoniometer;
         private System.Windows.Forms.Label label2;
         private OrganizationProfile.CustomButton customButton3;

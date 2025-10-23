@@ -149,7 +149,7 @@ namespace KinesiaAPI.Controllers
                 Subjective = romDTO.Subjective,
                 Objective = romDTO.Objective,
                 Deviation = romDTO.Deviation,
-                Date = romDTO.Date
+                Date = DateTime.Now
             };
 
             try
