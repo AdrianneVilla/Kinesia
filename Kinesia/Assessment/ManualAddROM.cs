@@ -93,10 +93,11 @@ namespace Kinesia.Assessment
                     // will add a log for adding a ROM
                     // will clear all inputs
                     // will show a success message
-                    // will go back to Assessment details page
+                    // will go back to Assessment details page and refresh the ROM table
                     await Queries.LogsQueries.AddLog($"Added ROM for {PageObjects.assessmentDetails.AssessmentID}", "ROM");
                     clearAllInputs();
                     CustomDialog.Show("ROM added successfully!", "Add ROM Notification", CustomDialogButtons.OK, CustomDialogIcons.Information);
+                    await Queries.ROMQueries.DisplayROM(PageObjects.assessmentDetails.AssessmentID);
                     this.Close();
                 }
                 else
