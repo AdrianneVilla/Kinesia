@@ -1,4 +1,5 @@
-﻿using Kinesia.Reports;
+﻿using Kinesia.Patients;
+using Kinesia.Reports;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -45,22 +46,35 @@ namespace Kinesia.Assessment
 
         private async void AssessmentDetails_Load(object sender, EventArgs e)
         {
-            await Queries.ROMQueries.DisplayROM(AssessmentID);
-
-            if (dataGridROM.Rows.Count <= 0)
-            {
-                btnPrint.Enabled = false;
-            }
+            
         }
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            using(Form shadow = new Form())
+            using (Form shadow = new Form())
             {
                 FormAnimation.ShowFocus(shadow);
                 var printReportPage = new PrintReport();
                 printReportPage.Owner = shadow;
                 printReportPage.ShowDialog();
+            }
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            PageObjects.RemoveResources(ref PageObjects.CurrentControl);
+            PageObjects.assessmentPage = new AssessmentPage();
+            PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.assessmentPage);
+            PageObjects.CurrentControl = PageObjects.assessmentPage;
+        }
+
+        private async void AssessmentDetails_Paint(object sender, PaintEventArgs e)
+        {
+            await Queries.ROMQueries.DisplayROM(AssessmentID);
+
+            if (dataGridROM.Rows.Count <= 0)
+            {
+                btnPrint.Enabled = false;
             }
         }
     }

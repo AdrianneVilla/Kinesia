@@ -18,6 +18,8 @@ namespace Kinesia.Assessment
 
         public async Task DisplayAssessments(string searchData, string currentExtremityTab, string currentStatusTab, string sortColumn)
         {
+            PageObjects.assessmentPage.AssessmentList.Clear();
+
             var url = $"http://localhost:5000/api/assessment?searchData={searchData}&currentExtremityTab={currentExtremityTab}&currentStatusTab={currentStatusTab}&sortColumn={sortColumn}";
             var response = await client.GetAsync(url);
 
@@ -25,6 +27,11 @@ namespace Kinesia.Assessment
             {
                 var json = await response.Content.ReadAsStringAsync();
                 var assessments = JsonConvert.DeserializeObject<List<DisplayAssessmentsDTO>>(json);
+
+                foreach(var assessment in assessments)
+                {
+                    PageObjects.assessmentPage.AssessmentList.Add(assessment.AssessmentID);
+                }
 
                 // prevent from flickering the icon buttons
                 typeof(DataGridView).InvokeMember("DoubleBuffered",

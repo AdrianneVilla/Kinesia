@@ -381,7 +381,7 @@
             btnArchive.Padding = new System.Windows.Forms.Padding(6, 3, 18, 0);
             btnArchive.Size = new System.Drawing.Size(198, 46);
             btnArchive.TabIndex = 30;
-            btnArchive.Text = "Archive Patient";
+            btnArchive.Text = "Archive Assessment";
             btnArchive.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             btnArchive.TextColor = System.Drawing.Color.FromArgb(210, 64, 66);
             btnArchive.UseVisualStyleBackColor = false;
@@ -406,7 +406,7 @@
             btnEdit.Padding = new System.Windows.Forms.Padding(6, 3, 18, 0);
             btnEdit.Size = new System.Drawing.Size(198, 46);
             btnEdit.TabIndex = 29;
-            btnEdit.Text = "Edit Information";
+            btnEdit.Text = "Edit Assessment";
             btnEdit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             btnEdit.TextColor = System.Drawing.Color.FromArgb(21, 134, 105);
             btnEdit.UseVisualStyleBackColor = false;
@@ -462,6 +462,7 @@
             btnBack.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             btnBack.TextColor = System.Drawing.Color.FromArgb(18, 90, 211);
             btnBack.UseVisualStyleBackColor = false;
+            btnBack.Click += btnBack_Click;
             // 
             // btnPrint
             // 
@@ -505,6 +506,7 @@
             Name = "AssessmentDetails";
             Size = new System.Drawing.Size(1186, 712);
             Load += AssessmentDetails_Load;
+            Paint += AssessmentDetails_Paint;
             flowLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel1.PerformLayout();
             flowLayoutPanel2.ResumeLayout(false);

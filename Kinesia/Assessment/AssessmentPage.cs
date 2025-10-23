@@ -15,6 +15,7 @@ namespace Kinesia.Assessment
         string searchData = "";
         string currentExtremityTab = "All";
         string currentStatusTab = "All";
+        List<string> assessmentList = new List<string>();
 
         private Dictionary<Control, Rectangle> originalControlBounds = new Dictionary<Control, Rectangle>();
         private Size originalSize;
@@ -27,6 +28,7 @@ namespace Kinesia.Assessment
         }
 
         public DataGridView AssessmentGrid { get { return dataGridAssessments; } }
+        public List<string> AssessmentList { get { return assessmentList; } }
         private void StoreOriginalSizes()
         {
             if (isInitialized) return;
@@ -176,9 +178,15 @@ namespace Kinesia.Assessment
             this.ResumeLayout();
             this.PerformLayout();
         }
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private async void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            if(e.RowIndex >= 0)
+            {
+                if(e.ColumnIndex == 5)
+                {
+                    await Queries.AssessmentQueries.GetAssessmentDetails(assessmentList[e.RowIndex]);
+                }
+            }
         }
 
         private async void AssessmentPage_Load(object sender, EventArgs e)
