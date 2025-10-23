@@ -16,6 +16,9 @@ namespace Kinesia.Assessment
         string currentExtremityTab = "All";
         string currentStatusTab = "All";
 
+        private Dictionary<Control, Rectangle> originalControlBounds = new Dictionary<Control, Rectangle>();
+        private Size originalSize;
+        private bool isInitialized = false;
         public AssessmentPage()
         {
             this.Anchor = AnchorStyles.Right | AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Bottom;
@@ -24,7 +27,155 @@ namespace Kinesia.Assessment
         }
 
         public DataGridView AssessmentGrid { get { return dataGridAssessments; } }
+        private void StoreOriginalSizes()
+        {
+            if (isInitialized) return;
 
+            originalSize = this.Size;
+
+            // Store all controls recursively
+            StoreControlBoundsRecursive(this);
+
+            isInitialized = true;
+        }
+
+        private void StoreControlBoundsRecursive(Control parent)
+        {
+            foreach (Control ctrl in parent.Controls)
+            {
+                if (!originalControlBounds.ContainsKey(ctrl))
+                {
+                    originalControlBounds[ctrl] = new Rectangle(ctrl.Location, ctrl.Size);
+                }
+
+                // Recursively store child controls
+                if (ctrl.HasChildren)
+                {
+                    StoreControlBoundsRecursive(ctrl);
+                }
+            }
+        }
+
+        private void SetupResponsiveLayout()
+        {
+            this.Resize += AssessmentPage_Resize;
+        }
+
+        private void AssessmentPage_Resize(object sender, EventArgs e)
+        {
+            if (!isInitialized || originalSize.Width == 0 || originalSize.Height == 0) return;
+
+            ResizeControls();
+        }
+
+        private void ResizeControls()
+        {
+            float scaleX = (float)this.Width / originalSize.Width;
+            float scaleY = (float)this.Height / originalSize.Height;
+
+            this.SuspendLayout();
+
+            // Resize panelBorder2 (contains buttons and cbSort)
+            if (originalControlBounds.ContainsKey(panelBorder2))
+            {
+                Rectangle origBounds = originalControlBounds[panelBorder2];
+                int newWidth = (int)(origBounds.Width * scaleX);
+                panelBorder2.Size = new Size(newWidth, origBounds.Height);
+
+                // Now resize controls inside panelBorder2
+                panelBorder2.SuspendLayout();
+
+                // Resize cbSort (ComboBox)
+                if (originalControlBounds.ContainsKey(cbSort))
+                {
+                    Rectangle cbOrigBounds = originalControlBounds[cbSort];
+                    int cbNewWidth = (int)(cbOrigBounds.Width * scaleX);
+                    int cbNewX = (int)(cbOrigBounds.X * scaleX);
+
+                    cbSort.Location = new Point(cbNewX, cbOrigBounds.Y);
+                    cbSort.MinimumSize = new Size(cbNewWidth, cbOrigBounds.Height);
+                    cbSort.Size = new Size(cbNewWidth, cbOrigBounds.Height);
+                    cbSort.MaximumSize = new Size(cbNewWidth, cbOrigBounds.Height);
+                }
+
+                // Resize btnAddAssessment
+                if (originalControlBounds.ContainsKey(btnAddAssessment))
+                {
+                    Rectangle btnOrigBounds = originalControlBounds[btnAddAssessment];
+                    int btnNewX = (int)(btnOrigBounds.X * scaleX);
+                    btnAddAssessment.Location = new Point(btnNewX, btnOrigBounds.Y);
+                }
+
+                panelBorder2.ResumeLayout();
+            }
+
+            // Resize panelBorder1 (search bar container)
+            if (originalControlBounds.ContainsKey(panelBorder1))
+            {
+                Rectangle origBounds = originalControlBounds[panelBorder1];
+                int newX = (int)(origBounds.X * scaleX);
+                int newWidth = (int)(origBounds.Width * scaleX);
+
+                // Resize the panel itself
+                panelBorder1.Location = new Point(newX, origBounds.Y);
+                panelBorder1.Size = new Size(newWidth, origBounds.Height);
+
+                panelBorder1.SuspendLayout();
+
+                // Resize txtSearchBar inside panelBorder1
+                if (originalControlBounds.ContainsKey(txtSearchBar))
+                {
+                    Rectangle txtOrigBounds = originalControlBounds[txtSearchBar];
+                    int txtNewWidth = (int)(txtOrigBounds.Width * scaleX);
+                    txtSearchBar.Size = new Size(txtNewWidth, txtOrigBounds.Height);
+                }
+
+                // Reposition btnSearch
+                if (originalControlBounds.ContainsKey(btnSearch))
+                {
+                    Rectangle btnOrigBounds = originalControlBounds[btnSearch];
+                    int btnNewX = (int)(btnOrigBounds.X * scaleX);
+                    btnSearch.Location = new Point(btnNewX, btnOrigBounds.Y);
+                }
+
+                // Reposition pictureBox1 (search icon) - keep at original position
+
+                panelBorder1.ResumeLayout();
+            }
+
+            // Resize PatientHolder
+            if (originalControlBounds.ContainsKey(PatientHolder))
+            {
+                Rectangle origBounds = originalControlBounds[PatientHolder];
+                int newWidth = (int)(origBounds.Width * scaleX);
+                int newHeight = (int)(origBounds.Height * scaleY);
+                PatientHolder.Size = new Size(newWidth, newHeight);
+
+                PatientHolder.SuspendLayout();
+
+                // Resize dataGridAssessments
+                if (originalControlBounds.ContainsKey(dataGridAssessments))
+                {
+                    Rectangle dgOrigBounds = originalControlBounds[dataGridAssessments];
+                    int dgNewWidth = (int)(dgOrigBounds.Width * scaleX);
+                    int dgNewHeight = (int)(dgOrigBounds.Height * scaleY);
+                    dataGridAssessments.Size = new Size(dgNewWidth, dgNewHeight);
+                }
+
+                // Reposition flowLayoutPanel1
+                if (originalControlBounds.ContainsKey(flowLayoutPanel1))
+                {
+                    Rectangle flowOrigBounds = originalControlBounds[flowLayoutPanel1];
+                    int flowNewX = (int)(flowOrigBounds.X * scaleX);
+                    flowLayoutPanel1.Location = new Point(flowNewX, flowOrigBounds.Y);
+                }
+
+                PatientHolder.ResumeLayout();
+            }
+
+            this.ResumeLayout();
+            this.PerformLayout();
+        }
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -32,6 +183,8 @@ namespace Kinesia.Assessment
 
         private async void AssessmentPage_Load(object sender, EventArgs e)
         {
+            StoreOriginalSizes();
+            SetupResponsiveLayout();
             await Queries.AssessmentQueries.DisplayAssessments(searchData, currentExtremityTab, currentStatusTab, cbSort.Texts);
             txtSearchBar.Texts = "Search for Assessment ID or Patient ID";
 

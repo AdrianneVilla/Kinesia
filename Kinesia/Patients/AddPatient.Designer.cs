@@ -568,8 +568,7 @@
             // 
             // AddPatient
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
-            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             BackColor = System.Drawing.Color.White;
             Controls.Add(btnClearInput);
             Controls.Add(btnAddPatient);

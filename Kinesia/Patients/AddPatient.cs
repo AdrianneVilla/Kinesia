@@ -12,12 +12,148 @@ namespace Kinesia.Patients
 {
     public partial class AddPatient : UserControl
     {
+        private Size designResolution = new Size(1763, 973);
+        private Dictionary<Control, Rectangle> originalControlBounds = new Dictionary<Control, Rectangle>();
+        private Rectangle originalPanelBounds;
         public AddPatient()
         {
             this.Anchor = AnchorStyles.Right | AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Bottom;
             this.Dock = DockStyle.Fill;
+            this.MinimumSize = new Size(800, 600);
+            this.AutoScroll = true;
+
             InitializeComponent();
+
+            StoreOriginalSizes();
+            SetupResponsiveLayout();
         }
+
+        private void StoreOriginalSizes()
+        {
+            // Store original panel size
+            originalPanelBounds = panelBorder1.Bounds;
+
+            // Store original sizes of all controls inside the panel
+            foreach (Control ctrl in panelBorder1.Controls)
+            {
+                originalControlBounds[ctrl] = new Rectangle(ctrl.Location, ctrl.Size);
+            }
+
+            // Store button positions
+            originalControlBounds[btnAddPatient] = new Rectangle(btnAddPatient.Location, btnAddPatient.Size);
+            originalControlBounds[btnClearInput] = new Rectangle(btnClearInput.Location, btnClearInput.Size);
+        }
+
+        private void SetupResponsiveLayout()
+        {
+            // Set anchors for header elements
+            nameHolder.Anchor = AnchorStyles.Top | AnchorStyles.Left;
+            txtTitleLabel.Anchor = AnchorStyles.Top | AnchorStyles.Left;
+            label1.Anchor = AnchorStyles.Top | AnchorStyles.Left;
+            btnBack.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+
+            // Main panel - stretch horizontally
+            panelBorder1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+
+            // Bottom buttons - anchor to bottom right
+            btnAddPatient.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnClearInput.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+
+            // Subscribe to resize events
+            this.Resize += AddPatient_Resize;
+            panelBorder1.Resize += PanelBorder1_Resize;
+        }
+
+        private void AddPatient_Resize(object sender, EventArgs e)
+        {
+            AdjustButtonPositions();
+        }
+
+        private void PanelBorder1_Resize(object sender, EventArgs e)
+        {
+            ResizeControlsInPanel();
+        }
+
+        private void ResizeControlsInPanel()
+        {
+            if (originalControlBounds.Count == 0) return;
+
+            // Calculate scale factors
+            float scaleX = (float)panelBorder1.Width / originalPanelBounds.Width;
+            float scaleY = (float)panelBorder1.Height / originalPanelBounds.Height;
+
+            panelBorder1.SuspendLayout();
+
+            foreach (Control ctrl in panelBorder1.Controls)
+            {
+                if (originalControlBounds.ContainsKey(ctrl))
+                {
+                    Rectangle originalBounds = originalControlBounds[ctrl];
+
+                    // Calculate new position and size
+                    int newX = (int)(originalBounds.X * scaleX);
+                    int newY = (int)(originalBounds.Y * scaleY);
+                    int newWidth = (int)(originalBounds.Width * scaleX);
+                    int newHeight = (int)(originalBounds.Height * scaleY);
+
+                    // Apply new location
+                    ctrl.Location = new Point(newX, newY);
+
+                    // Special handling for custom ComboBox
+                    if (ctrl is CustomControls.RJControls.RJComboBox comboBox)
+                    {
+                        // Force resize by setting both Size and MinimumSize
+                        comboBox.MinimumSize = new Size(newWidth, newHeight);
+                        comboBox.Size = new Size(newWidth, newHeight);
+                        comboBox.MaximumSize = new Size(newWidth, newHeight);
+
+                        // Force the control to update its layout
+                        comboBox.Invalidate();
+                        comboBox.Update();
+                    }
+                    else
+                    {
+                        // Regular control resizing
+                        ctrl.Size = new Size(newWidth, newHeight);
+                    }
+
+                    // Adjust font size for labels
+                    if (ctrl is Label)
+                    {
+                        float newFontSize = ctrl.Font.Size * Math.Min(scaleX, scaleY);
+                        newFontSize = Math.Max(8, Math.Min(newFontSize, ctrl.Font.Size));
+                        ctrl.Font = new Font(ctrl.Font.FontFamily, newFontSize, ctrl.Font.Style);
+                    }
+                }
+            }
+
+            panelBorder1.ResumeLayout();
+            panelBorder1.PerformLayout(); // Force layout recalculation
+        }
+
+        private void AdjustButtonPositions()
+        {
+            if (originalControlBounds.ContainsKey(btnClearInput) && originalControlBounds.ContainsKey(btnAddPatient))
+            {
+                Rectangle origClear = originalControlBounds[btnClearInput];
+                Rectangle origAdd = originalControlBounds[btnAddPatient];
+
+                int rightMargin = designResolution.Width - origClear.Right;
+                int bottomMargin = designResolution.Height - origClear.Bottom;
+                int buttonSpacing = origClear.Left - origAdd.Right;
+
+                btnClearInput.Location = new Point(
+                    this.Width - btnClearInput.Width - rightMargin,
+                    this.Height - btnClearInput.Height - bottomMargin
+                );
+
+                btnAddPatient.Location = new Point(
+                    btnClearInput.Left - btnAddPatient.Width - buttonSpacing,
+                    this.Height - btnAddPatient.Height - bottomMargin
+                );
+            }
+        }
+
 
         private void backBtn_Click(object sender, EventArgs e)
         {

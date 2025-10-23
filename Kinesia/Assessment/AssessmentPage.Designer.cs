@@ -51,6 +51,7 @@
             pictureBox1 = new System.Windows.Forms.PictureBox();
             txtSearchBar = new CustomControls.RJControls.RJTextBox();
             lblHiddenForFocus = new System.Windows.Forms.Label();
+            panelBorder3 = new WindowsFormsApp2.CustomButton.PanelBorder();
             PatientHolder.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridAssessments).BeginInit();
@@ -274,6 +275,7 @@
             panelBorder2.BackColor = System.Drawing.Color.White;
             panelBorder2.BorderRadius = 30;
             panelBorder2.Color = System.Drawing.Color.BurlyWood;
+            panelBorder2.Controls.Add(panelBorder3);
             panelBorder2.Controls.Add(cbSort);
             panelBorder2.Controls.Add(btnLowerExtremities);
             panelBorder2.Controls.Add(btnUpperExtremities);
@@ -299,7 +301,7 @@
             cbSort.Items.AddRange(new object[] { "Default", "Alphabetical (Name)", "Earliest (Date Added)", "Latest (Date Added)" });
             cbSort.ListBackColor = System.Drawing.Color.White;
             cbSort.ListTextColor = System.Drawing.Color.Black;
-            cbSort.Location = new System.Drawing.Point(804, 7);
+            cbSort.Location = new System.Drawing.Point(787, 8);
             cbSort.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             cbSort.MinimumSize = new System.Drawing.Size(233, 35);
             cbSort.Name = "cbSort";
@@ -427,6 +429,7 @@
             // 
             // txtSearchBar
             // 
+            txtSearchBar.AutoSize = true;
             txtSearchBar.BackColor = System.Drawing.Color.White;
             txtSearchBar.BorderColor = System.Drawing.Color.White;
             txtSearchBar.BorderFocusColor = System.Drawing.Color.White;
@@ -463,6 +466,17 @@
             lblHiddenForFocus.TabIndex = 18;
             lblHiddenForFocus.Text = "<Focus Label (Hidden)>";
             // 
+            // panelBorder3
+            // 
+            panelBorder3.BackColor = System.Drawing.Color.White;
+            panelBorder3.BorderRadius = 30;
+            panelBorder3.Color = System.Drawing.Color.BurlyWood;
+            panelBorder3.ForeColor = System.Drawing.Color.Black;
+            panelBorder3.Location = new System.Drawing.Point(1078, 8);
+            panelBorder3.Name = "panelBorder3";
+            panelBorder3.Size = new System.Drawing.Size(11, 54);
+            panelBorder3.TabIndex = 16;
+            // 
             // AssessmentPage
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -483,6 +497,7 @@
             ((System.ComponentModel.ISupportInitialize)dataGridAssessments).EndInit();
             panelBorder2.ResumeLayout(false);
             panelBorder1.ResumeLayout(false);
+            panelBorder1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -511,5 +526,6 @@
         private OrganizationProfile.CustomButton btnOngoing;
         private OrganizationProfile.CustomButton btnFinished;
         private OrganizationProfile.CustomButton btnArchived;
+        private WindowsFormsApp2.CustomButton.PanelBorder panelBorder3;
     }
 }

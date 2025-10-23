@@ -26,6 +26,13 @@ namespace Kinesia.Assessment
                 var json = await response.Content.ReadAsStringAsync();
                 var assessments = JsonConvert.DeserializeObject<List<DisplayAssessmentsDTO>>(json);
 
+                // prevent from flickering the icon buttons
+                typeof(DataGridView).InvokeMember("DoubleBuffered",
+                    System.Reflection.BindingFlags.NonPublic |
+                    System.Reflection.BindingFlags.Instance |
+                    System.Reflection.BindingFlags.SetProperty, null, PageObjects.assessmentPage.AssessmentGrid, new object[] {true}
+                    );
+
                 CustomDataGrid.SetDoubleBuffering(PageObjects.assessmentPage, true);
                 PageObjects.assessmentPage.AssessmentGrid.SuspendLayout();
                 PageObjects.assessmentPage.AssessmentGrid.AutoGenerateColumns = false;
@@ -70,7 +77,7 @@ namespace Kinesia.Assessment
                 PageObjects.assessmentPage.AssessmentGrid.DataSource = assessments;
                 PageObjects.assessmentPage.AssessmentGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-                //AddActionButtons(PageObjects.assessmentPage.AssessmentGrid, currentStatusTab);
+                AddActionButtons(PageObjects.assessmentPage.AssessmentGrid, currentStatusTab);
 
                 CustomDataGrid.StyleDataGridWithSpacing(PageObjects.assessmentPage.AssessmentGrid);
                 PageObjects.assessmentPage.AssessmentGrid.ResumeLayout();
@@ -407,16 +414,17 @@ namespace Kinesia.Assessment
                     Color backgroundColor = isHovered ? Color.FromArgb(220, 220, 220) : Color.White;
 
                     e.Graphics.FillRectangle(new SolidBrush(backgroundColor), e.CellBounds);
+                   
 
                     Image icon = null;
                     if (columnName == "SelectButton")
-                        icon = Properties.Resources.newSelect; // Use your view icon
+                        icon = Properties.Resources.newSelect;
                     else if (columnName == "EditButton")
-                        icon = Properties.Resources.newEdit; // Use your edit icon
+                        icon = Properties.Resources.newEdit;
                     else if (columnName == "ArchiveButton")
                     {
                         // Check status from the Status column
-                        var statusCell = dataGrid.Rows[e.RowIndex].Cells["Status"]?.Value;
+                        var statusCell = dataGrid.Rows[e.RowIndex].Cells["AssessmentStatus"]?.Value;
                         string status = statusCell?.ToString() ?? "";
 
                         if (status == "Ongoing" || status == "Finished")
@@ -466,6 +474,13 @@ namespace Kinesia.Assessment
                 hoveredCell = new Point(-1, -1);
                 dataGrid.InvalidateCell(e.ColumnIndex, e.RowIndex);
             }
+        }
+
+        public static void SetDoubleBuffered(DataGridView dgv)
+        {
+            typeof(DataGridView).InvokeMember("DoubleBuffered",
+            System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.SetProperty,
+            null, dgv, new object[] { true });
         }
     }
 

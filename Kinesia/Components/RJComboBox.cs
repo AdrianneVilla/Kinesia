@@ -302,7 +302,7 @@ namespace CustomControls.RJControls
             };
             if (cmbList.Height >= this.Height)
             {
-                this.Height = cmbList.Height + (this.borderSize*2);
+                this.Height = cmbList.Height + (this.borderSize * 2);
             }
         }
         #endregion
@@ -377,8 +377,8 @@ namespace CustomControls.RJControls
         protected override void OnResize(EventArgs e)
         {
             base.OnResize(e);
-            if (DesignMode)
-                AdjustComboBoxDimensions();
+            // FIXED: Remove DesignMode check so it works at runtime too
+            AdjustComboBoxDimensions();
         }
         #endregion
 

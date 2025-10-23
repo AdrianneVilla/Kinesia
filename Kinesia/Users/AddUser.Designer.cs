@@ -727,9 +727,8 @@
             // 
             // AddUser
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
-            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             BackColor = System.Drawing.Color.White;
             Controls.Add(flowLayoutPanel1);
             Controls.Add(btnBack);
