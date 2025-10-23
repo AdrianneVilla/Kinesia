@@ -90,39 +90,135 @@ namespace Kinesia
             // If 'owner' is null, the shadow will use default settings.
             Form owner = Form.ActiveForm;
 
+            // will calls the ShowFocus overload method,
+            // passing along the owner it found.
+            ShowFocus(form, owner);
+        }
+
+        public static void ShowFocus(Form formToStyle, Form owner)
+        {
             // will set and create a background to help show a focus for message dialogs
-            form.FormBorderStyle = FormBorderStyle.None;
-            form.Opacity = .80;
-            form.BackColor = Color.Black;
-            form.ShowInTaskbar = false;
+            formToStyle.FormBorderStyle = FormBorderStyle.None;
+            formToStyle.Opacity = .80;
+            formToStyle.BackColor = Color.Black;
+            formToStyle.ShowInTaskbar = false;
 
             if (owner != null)
             {
                 // will set window state based on the owner's state
                 if (owner.WindowState == FormWindowState.Maximized)
                 {
-                    form.WindowState = FormWindowState.Maximized;
+                    formToStyle.WindowState = FormWindowState.Maximized;
                 }
                 else
                 {
                     // will make the shadow match the owner's exact size and location
-                    form.WindowState = FormWindowState.Normal;
-                    form.StartPosition = FormStartPosition.Manual;
-                    form.Bounds = owner.Bounds; // will sets both Location and Size
+                    formToStyle.WindowState = FormWindowState.Normal;
+                    formToStyle.StartPosition = FormStartPosition.Manual;
+                    formToStyle.Bounds = owner.Bounds; // will sets both Location and Size
                 }
 
                 // will set the owner of the shadow form
-                form.Owner = owner;
+                formToStyle.Owner = owner;
             }
             else
             {
                 // will fallback behavior if no active form is found
-                form.StartPosition = FormStartPosition.CenterScreen;
-                form.Size = new Size(1280, 800); // the original default size
-                form.WindowState = FormWindowState.Normal;
+                formToStyle.StartPosition = FormStartPosition.CenterScreen;
+                formToStyle.Size = new Size(1280, 800); // the original default size
+                formToStyle.WindowState = FormWindowState.Normal;
             }
 
-            form.Show();
+            formToStyle.Show();
+        }
+    }
+
+    public class LoadingContext : IDisposable
+    {
+        private Form _shadowForm;
+        private LoadingScreen _loadingForm;
+
+        public LoadingContext(Form owner, string actionText)
+        {
+            // will create the shadow
+            _shadowForm = new Form();
+            FormAnimation.ShowFocus(_shadowForm, owner);
+
+            // will create your loading form, passing the text
+            _loadingForm = new LoadingScreen(actionText); // will uses the new constructor
+
+            // will show the forms
+            _loadingForm.Owner = _shadowForm;
+            _loadingForm.StartPosition = FormStartPosition.CenterScreen;
+            _loadingForm.Show();
+            _loadingForm.Update();
+        }
+
+        // it will just calls the other constructor with a default one
+        public LoadingContext(Form owner) : this(owner, "Please wait...")
+        {
+            // This constructor is now empty
+            // It just chains to the one above.
+        }
+
+        public void Dispose()
+        {
+            _loadingForm.Close();
+            _shadowForm.Close();
+        }
+    }
+
+    public static class FormHelpers
+    {
+        public static async Task RunTaskWithLoading(this Form owner, string actionText, Func<Task> taskToRun)
+        {
+            try
+            {
+                // will pass the actionText to the LoadingContext
+                using (new LoadingContext(owner, actionText))
+                {
+                    await taskToRun();
+                }
+            }
+            catch (HttpRequestException)
+            {
+                // will show an error dialog if it catches a http request error from client-side
+                CustomDialog.Show("Unable to connect to the server.\nPlease try again.",
+                    "Connection Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+            }
+            catch (Exception)
+            {
+                // will show an error dialog if it catches an unexpected error from client-side.
+                CustomDialog.Show("An unexpected error occured.\nPlease try again.",
+                            "Unexpected Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+            }
+        }
+
+        // will just calls the new one with a default message
+        public static async Task RunTaskWithLoading(this Form owner, Func<Task> taskToRun)
+        {
+            await owner.RunTaskWithLoading("Please wait...", taskToRun);
+        }
+
+        public static async Task<T> RunTaskWithLoading<T>(this Form owner, string actionText, Func<Task<T>> taskToRun)
+        {
+            try
+            {
+                // will pass the actionText to the LoadingContext
+                using (new LoadingContext(owner, actionText))
+                {
+                    // will await the task and will return its result
+                    return await taskToRun();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred: " + ex.Message);
+
+                // If an error happens, will return the 'default'
+                // value for T (which is 'null' for any object)
+                return default(T);
+            }
         }
     }
 

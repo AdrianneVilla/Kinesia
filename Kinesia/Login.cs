@@ -19,7 +19,7 @@ namespace Kinesia
     public partial class Login : Form
     {
         private LoadingScreen loadingScreen;
-       
+        private readonly HttpClient client = ApiClient.Instance;
 
         private static Login loginInstance;
         public Login()
@@ -415,38 +415,31 @@ namespace Kinesia
 
         public async Task<LoginResponse> LoginAsync(string username, string password)
         {
-            try
+            return await this.RunTaskWithLoading("Logging in...", async () =>
             {
-                using (var client = new HttpClient { BaseAddress = new Uri("http://localhost:5000/") })
+                var request = new LoginRequest
                 {
-                    var request = new LoginRequest
+                    Username = username,
+                    Password = password
+                };
+
+                var json = JsonConvert.SerializeObject(request);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                var response = await client.PostAsync("http://localhost:5000/api/auth/login", content);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    return new LoginResponse
                     {
-                        Username = username,
-                        Password = password
+                        Success = false,
+                        Message = $"Server error {response.StatusCode}"
                     };
-
-                    var json = JsonConvert.SerializeObject(request);
-                    var content = new StringContent(json, Encoding.UTF8, "application/json");
-
-                    var response = await client.PostAsync("api/auth/login", content);
-
-                    if (!response.IsSuccessStatusCode)
-                    {
-                        return new LoginResponse
-                        {
-                            Success = false,
-                            Message = $"Server error {response.StatusCode}"
-                        };
-                    }
-
-                    var responsContent = await response.Content.ReadAsStringAsync();
-                    return JsonConvert.DeserializeObject<LoginResponse>(responsContent);
                 }
-            }
-            catch (HttpRequestException ex)
-            {
-                return new LoginResponse { Success = false, Message = "Unable to connect to the server. Please try again." };
-            }
+
+                var responsContent = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<LoginResponse>(responsContent);
+            });
         }
 
         private void header1_Load(object sender, EventArgs e)

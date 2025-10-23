@@ -17,6 +17,11 @@ namespace Kinesia.Components
             InitializeComponent();
         }
 
+        public LoadingScreen(string actionText) : this()
+        {
+            lblActionLabel.Text = actionText;
+        }
+
         private void LoadingScreen_Load(object sender, EventArgs e)
         {
 

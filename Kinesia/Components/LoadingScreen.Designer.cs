@@ -28,58 +28,61 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.SuspendLayout();
+            pictureBox1 = new System.Windows.Forms.PictureBox();
+            lblActionLabel = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            SuspendLayout();
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Image = global::Kinesia.Properties.Resources.GreenLoading;
-            this.pictureBox1.Location = new System.Drawing.Point(155, 44);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(248, 222);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            pictureBox1.Image = Properties.Resources.GreenLoading;
+            pictureBox1.Location = new System.Drawing.Point(181, 51);
+            pictureBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new System.Drawing.Size(289, 256);
+            pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 0;
+            pictureBox1.TabStop = false;
             // 
-            // label1
+            // lblActionLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Poppins", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(90)))), ((int)(((byte)(211)))));
-            this.label1.Location = new System.Drawing.Point(199, 269);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(161, 37);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Please Wait...";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            lblActionLabel.AutoSize = true;
+            lblActionLabel.Font = new System.Drawing.Font("Poppins", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            lblActionLabel.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            lblActionLabel.Location = new System.Drawing.Point(240, 310);
+            lblActionLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            lblActionLabel.Name = "lblActionLabel";
+            lblActionLabel.Size = new System.Drawing.Size(171, 37);
+            lblActionLabel.TabIndex = 3;
+            lblActionLabel.Text = "<Action Label>";
+            lblActionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // LoadingScreen
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
-            this.BackgroundImage = global::Kinesia.Properties.Resources.Add_Patient_Background;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(566, 351);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.pictureBox1);
-            this.DoubleBuffered = true;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "LoadingScreen";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "LoadingScreen";
-            this.Load += new System.EventHandler(this.LoadingScreen_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            BackColor = System.Drawing.Color.White;
+            BackgroundImage = Properties.Resources.Add_Patient_Background;
+            BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            ClientSize = new System.Drawing.Size(660, 405);
+            Controls.Add(lblActionLabel);
+            Controls.Add(pictureBox1);
+            DoubleBuffered = true;
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            Name = "LoadingScreen";
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            Text = "LoadingScreen";
+            Load += LoadingScreen_Load;
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Label label1;
         public System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label lblActionLabel;
     }
 }
