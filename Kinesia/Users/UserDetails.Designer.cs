@@ -57,7 +57,7 @@
             label1 = new System.Windows.Forms.Label();
             lblRole = new System.Windows.Forms.Label();
             flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
-            label10 = new System.Windows.Forms.Label();
+            lastArchiveUnarchiveDateLabel = new System.Windows.Forms.Label();
             lblArchiveDate = new System.Windows.Forms.Label();
             flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             label11 = new System.Windows.Forms.Label();
@@ -471,7 +471,7 @@
             // 
             // flowLayoutPanel3
             // 
-            flowLayoutPanel3.Controls.Add(label10);
+            flowLayoutPanel3.Controls.Add(lastArchiveUnarchiveDateLabel);
             flowLayoutPanel3.Controls.Add(lblArchiveDate);
             flowLayoutPanel3.Location = new System.Drawing.Point(649, 225);
             flowLayoutPanel3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -480,18 +480,18 @@
             flowLayoutPanel3.Size = new System.Drawing.Size(516, 30);
             flowLayoutPanel3.TabIndex = 44;
             // 
-            // label10
+            // lastArchiveUnarchiveDateLabel
             // 
-            label10.AutoSize = true;
-            label10.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            label10.ForeColor = System.Drawing.Color.Gray;
-            label10.Location = new System.Drawing.Point(4, 3);
-            label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            label10.Name = "label10";
-            label10.Padding = new System.Windows.Forms.Padding(0, 0, 23, 0);
-            label10.Size = new System.Drawing.Size(148, 22);
-            label10.TabIndex = 0;
-            label10.Text = "Last Date of Archive";
+            lastArchiveUnarchiveDateLabel.AutoSize = true;
+            lastArchiveUnarchiveDateLabel.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            lastArchiveUnarchiveDateLabel.ForeColor = System.Drawing.Color.Gray;
+            lastArchiveUnarchiveDateLabel.Location = new System.Drawing.Point(4, 3);
+            lastArchiveUnarchiveDateLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            lastArchiveUnarchiveDateLabel.Name = "lastArchiveUnarchiveDateLabel";
+            lastArchiveUnarchiveDateLabel.Padding = new System.Windows.Forms.Padding(0, 0, 23, 0);
+            lastArchiveUnarchiveDateLabel.Size = new System.Drawing.Size(148, 22);
+            lastArchiveUnarchiveDateLabel.TabIndex = 0;
+            lastArchiveUnarchiveDateLabel.Text = "Last Date of Archive";
             // 
             // lblArchiveDate
             // 
@@ -613,6 +613,7 @@
             Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             Name = "UserDetails";
             Size = new System.Drawing.Size(1457, 850);
+            Load += UserDetails_Load;
             panelBorder1.ResumeLayout(false);
             panelBorder1.PerformLayout();
             flowLayoutPanel1.ResumeLayout(false);
@@ -654,7 +655,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblRole;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label lastArchiveUnarchiveDateLabel;
         private System.Windows.Forms.Label lblArchiveDate;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
         private System.Windows.Forms.Label label11;

@@ -99,5 +99,20 @@ namespace Kinesia.Users
                 }
             }
         }
+
+        private void UserDetails_Load(object sender, EventArgs e)
+        {
+            if(lblArchiveDate.Text != "N/A")
+            {
+                if (lblStatus.Text == "Active")
+                {
+                    lastArchiveUnarchiveDateLabel.Text = "Last Unarchive Date:";
+                }
+                else
+                {
+                    lastArchiveUnarchiveDateLabel.Text = "Last Archive Date:";
+                }
+            }
+        }
     }
 }
