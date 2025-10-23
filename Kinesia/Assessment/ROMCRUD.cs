@@ -41,16 +41,30 @@ namespace Kinesia.Assessment
 
                     PageObjects.assessmentDetails.GetROMGrid.Columns.Add(new DataGridViewTextBoxColumn
                     {
-                        Name = "InitialROM",
-                        DataPropertyName = "InitialROM",
-                        HeaderText = "Initial ROM"
+                        Name = "StartingPosition",
+                        DataPropertyName = "StartingPosition",
+                        HeaderText = "Starting Position"
                     });
 
                     PageObjects.assessmentDetails.GetROMGrid.Columns.Add(new DataGridViewTextBoxColumn
                     {
-                        Name = "EndROM",
-                        DataPropertyName = "EndROM",
-                        HeaderText = "End ROM"
+                        Name = "Rom",
+                        DataPropertyName = "Rom",
+                        HeaderText = "Rom"
+                    });
+
+                    PageObjects.assessmentDetails.GetROMGrid.Columns.Add(new DataGridViewTextBoxColumn
+                    {
+                        Name = "NormalRange",
+                        DataPropertyName = "NormalRange",
+                        HeaderText = "Normal Range"
+                    });
+
+                    PageObjects.assessmentDetails.GetROMGrid.Columns.Add(new DataGridViewTextBoxColumn
+                    {
+                        Name = "Deficit",
+                        DataPropertyName = "Deficit",
+                        HeaderText = "Deficit"
                     });
 
                     PageObjects.assessmentDetails.GetROMGrid.Columns.Add(new DataGridViewTextBoxColumn
@@ -133,7 +147,7 @@ namespace Kinesia.Assessment
         {
             // will return true if the ROM details was complete
             // will return false if the ROM details was incomplete
-            if (newROM.EndROM == 0.0 || newROM.Movement.Equals("") || newROM.MotionType.Equals("") || newROM.Deviation.Equals(""))
+            if (newROM.Rom == 0.0 || newROM.Movement.Equals("") || newROM.MotionType.Equals(""))
             {
                 CustomDialog.Show("ROM details was incomplete! \nPlease fill-out all details to add this ROM.", "Incomplete ROM Details",
                     CustomDialogButtons.OK, CustomDialogIcons.Error);

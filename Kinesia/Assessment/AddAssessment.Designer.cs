@@ -36,6 +36,7 @@
             btnSaveAssessment = new OrganizationProfile.CustomButton();
             customButton2 = new OrganizationProfile.CustomButton();
             panelPatientInformation = new WindowsFormsApp2.CustomButton.PanelBorder();
+            btnBack = new OrganizationProfile.CustomButton();
             flowLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -157,11 +158,40 @@
             panelPatientInformation.Size = new System.Drawing.Size(1423, 404);
             panelPatientInformation.TabIndex = 35;
             // 
+            // btnBack
+            // 
+            btnBack.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            btnBack.BackColor = System.Drawing.Color.White;
+            btnBack.BackgroundColor = System.Drawing.Color.White;
+            btnBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            btnBack.BorderColor = System.Drawing.Color.PaleVioletRed;
+            btnBack.BorderRadius = 10;
+            btnBack.BorderSize = 0;
+            btnBack.Cursor = System.Windows.Forms.Cursors.Hand;
+            btnBack.FlatAppearance.BorderSize = 0;
+            btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnBack.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            btnBack.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            btnBack.Image = Properties.Resources.back_button_icon;
+            btnBack.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            btnBack.Location = new System.Drawing.Point(1350, 19);
+            btnBack.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            btnBack.Name = "btnBack";
+            btnBack.Padding = new System.Windows.Forms.Padding(0, 3, 35, 0);
+            btnBack.Size = new System.Drawing.Size(145, 46);
+            btnBack.TabIndex = 36;
+            btnBack.Text = "Back";
+            btnBack.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            btnBack.TextColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            btnBack.UseVisualStyleBackColor = false;
+            btnBack.Click += btnBack_Click;
+            // 
             // AddAssessment
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             BackColor = System.Drawing.Color.White;
+            Controls.Add(btnBack);
             Controls.Add(panelPatientInformation);
             Controls.Add(flowLayoutPanel1);
             Controls.Add(lblSelectedUser);
@@ -185,5 +215,6 @@
         private OrganizationProfile.CustomButton customButton2;
         private OrganizationProfile.CustomButton btnSaveAssessment;
         private WindowsFormsApp2.CustomButton.PanelBorder panelPatientInformation;
+        private OrganizationProfile.CustomButton btnBack;
     }
 }

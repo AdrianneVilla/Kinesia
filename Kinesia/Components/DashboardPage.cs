@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Kinesia.Assessment;
+using Kinesia.Patients;
+using Kinesia.Users;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -54,6 +57,31 @@ namespace Kinesia.Components
         private void label2_Click_1(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnQuickAddPatient_Click(object sender, EventArgs e)
+        {
+            PageObjects.RemoveResources(ref PageObjects.CurrentControl);
+            PageObjects.addPatient = new AddPatient();
+            PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.addPatient);
+            PageObjects.CurrentControl = PageObjects.addPatient;
+        }
+
+        private void btnQuickAddUser_Click(object sender, EventArgs e)
+        {
+            PageObjects.RemoveResources(ref PageObjects.CurrentControl);
+            PageObjects.addUser = new AddUser();
+            PageObjects.dashboard.ContentsPanel.Controls.Clear();
+            PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.addUser);
+            PageObjects.CurrentControl = PageObjects.addUser;
+        }
+
+        private void btnQuickNewAssessment_Click(object sender, EventArgs e)
+        {
+            PageObjects.addAssessment = new AddAssessment();
+            PageObjects.RemoveResources(ref PageObjects.CurrentControl);
+            PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.addAssessment);
+            PageObjects.CurrentControl = PageObjects.addAssessment;
         }
     }
 }

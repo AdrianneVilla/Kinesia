@@ -46,9 +46,9 @@
             pictureBox1 = new System.Windows.Forms.PictureBox();
             label3 = new System.Windows.Forms.Label();
             lblMonth = new System.Windows.Forms.Label();
-            customButton1 = new OrganizationProfile.CustomButton();
-            customButton2 = new OrganizationProfile.CustomButton();
-            customButton3 = new OrganizationProfile.CustomButton();
+            btnQuickAddPatient = new OrganizationProfile.CustomButton();
+            btnQuickAddUser = new OrganizationProfile.CustomButton();
+            btnQuickNewAssessment = new OrganizationProfile.CustomButton();
             panelBorder4 = new WindowsFormsApp2.CustomButton.PanelBorder();
             panelBorder6 = new WindowsFormsApp2.CustomButton.PanelBorder();
             dataGridLogs = new System.Windows.Forms.DataGridView();
@@ -269,77 +269,80 @@
             lblMonth.Text = "<month and year here>";
             lblMonth.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // customButton1
+            // btnQuickAddPatient
             // 
-            customButton1.BackColor = System.Drawing.Color.White;
-            customButton1.BackgroundColor = System.Drawing.Color.White;
-            customButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            customButton1.BorderColor = System.Drawing.Color.Silver;
-            customButton1.BorderRadius = 20;
-            customButton1.BorderSize = 1;
-            customButton1.FlatAppearance.BorderSize = 0;
-            customButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            customButton1.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            customButton1.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
-            customButton1.Image = (System.Drawing.Image)resources.GetObject("customButton1.Image");
-            customButton1.Location = new System.Drawing.Point(69, 343);
-            customButton1.Margin = new System.Windows.Forms.Padding(3, 20, 20, 3);
-            customButton1.Name = "customButton1";
-            customButton1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 30);
-            customButton1.Size = new System.Drawing.Size(323, 173);
-            customButton1.TabIndex = 2;
-            customButton1.Text = "Quick add patient";
-            customButton1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            customButton1.TextColor = System.Drawing.Color.FromArgb(18, 90, 211);
-            customButton1.UseVisualStyleBackColor = false;
+            btnQuickAddPatient.BackColor = System.Drawing.Color.White;
+            btnQuickAddPatient.BackgroundColor = System.Drawing.Color.White;
+            btnQuickAddPatient.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            btnQuickAddPatient.BorderColor = System.Drawing.Color.Silver;
+            btnQuickAddPatient.BorderRadius = 20;
+            btnQuickAddPatient.BorderSize = 1;
+            btnQuickAddPatient.FlatAppearance.BorderSize = 0;
+            btnQuickAddPatient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnQuickAddPatient.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            btnQuickAddPatient.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            btnQuickAddPatient.Image = (System.Drawing.Image)resources.GetObject("btnQuickAddPatient.Image");
+            btnQuickAddPatient.Location = new System.Drawing.Point(69, 343);
+            btnQuickAddPatient.Margin = new System.Windows.Forms.Padding(3, 20, 20, 3);
+            btnQuickAddPatient.Name = "btnQuickAddPatient";
+            btnQuickAddPatient.Padding = new System.Windows.Forms.Padding(0, 0, 0, 30);
+            btnQuickAddPatient.Size = new System.Drawing.Size(323, 173);
+            btnQuickAddPatient.TabIndex = 2;
+            btnQuickAddPatient.Text = "Quick add patient";
+            btnQuickAddPatient.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            btnQuickAddPatient.TextColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            btnQuickAddPatient.UseVisualStyleBackColor = false;
+            btnQuickAddPatient.Click += btnQuickAddPatient_Click;
             // 
-            // customButton2
+            // btnQuickAddUser
             // 
-            customButton2.BackColor = System.Drawing.Color.Transparent;
-            customButton2.BackgroundColor = System.Drawing.Color.Transparent;
-            customButton2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            customButton2.BorderColor = System.Drawing.Color.Silver;
-            customButton2.BorderRadius = 20;
-            customButton2.BorderSize = 1;
-            customButton2.FlatAppearance.BorderSize = 0;
-            customButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            customButton2.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            customButton2.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
-            customButton2.Image = (System.Drawing.Image)resources.GetObject("customButton2.Image");
-            customButton2.Location = new System.Drawing.Point(428, 343);
-            customButton2.Margin = new System.Windows.Forms.Padding(3, 20, 20, 3);
-            customButton2.Name = "customButton2";
-            customButton2.Padding = new System.Windows.Forms.Padding(0, 0, 0, 30);
-            customButton2.Size = new System.Drawing.Size(329, 173);
-            customButton2.TabIndex = 3;
-            customButton2.Text = "Quick add user";
-            customButton2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            customButton2.TextColor = System.Drawing.Color.FromArgb(18, 90, 211);
-            customButton2.UseVisualStyleBackColor = false;
+            btnQuickAddUser.BackColor = System.Drawing.Color.Transparent;
+            btnQuickAddUser.BackgroundColor = System.Drawing.Color.Transparent;
+            btnQuickAddUser.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            btnQuickAddUser.BorderColor = System.Drawing.Color.Silver;
+            btnQuickAddUser.BorderRadius = 20;
+            btnQuickAddUser.BorderSize = 1;
+            btnQuickAddUser.FlatAppearance.BorderSize = 0;
+            btnQuickAddUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnQuickAddUser.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            btnQuickAddUser.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            btnQuickAddUser.Image = (System.Drawing.Image)resources.GetObject("btnQuickAddUser.Image");
+            btnQuickAddUser.Location = new System.Drawing.Point(428, 343);
+            btnQuickAddUser.Margin = new System.Windows.Forms.Padding(3, 20, 20, 3);
+            btnQuickAddUser.Name = "btnQuickAddUser";
+            btnQuickAddUser.Padding = new System.Windows.Forms.Padding(0, 0, 0, 30);
+            btnQuickAddUser.Size = new System.Drawing.Size(329, 173);
+            btnQuickAddUser.TabIndex = 3;
+            btnQuickAddUser.Text = "Quick add user";
+            btnQuickAddUser.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            btnQuickAddUser.TextColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            btnQuickAddUser.UseVisualStyleBackColor = false;
+            btnQuickAddUser.Click += btnQuickAddUser_Click;
             // 
-            // customButton3
+            // btnQuickNewAssessment
             // 
-            customButton3.BackColor = System.Drawing.Color.Transparent;
-            customButton3.BackgroundColor = System.Drawing.Color.Transparent;
-            customButton3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            customButton3.BorderColor = System.Drawing.Color.Silver;
-            customButton3.BorderRadius = 20;
-            customButton3.BorderSize = 1;
-            customButton3.FlatAppearance.BorderSize = 0;
-            customButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            customButton3.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold);
-            customButton3.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
-            customButton3.Image = (System.Drawing.Image)resources.GetObject("customButton3.Image");
-            customButton3.Location = new System.Drawing.Point(789, 343);
-            customButton3.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
-            customButton3.Name = "customButton3";
-            customButton3.Padding = new System.Windows.Forms.Padding(0, 0, 0, 30);
-            customButton3.Size = new System.Drawing.Size(314, 173);
-            customButton3.TabIndex = 4;
-            customButton3.Text = "Quick new assessment";
-            customButton3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            customButton3.TextColor = System.Drawing.Color.FromArgb(18, 90, 211);
-            customButton3.UseVisualStyleBackColor = false;
+            btnQuickNewAssessment.BackColor = System.Drawing.Color.Transparent;
+            btnQuickNewAssessment.BackgroundColor = System.Drawing.Color.Transparent;
+            btnQuickNewAssessment.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            btnQuickNewAssessment.BorderColor = System.Drawing.Color.Silver;
+            btnQuickNewAssessment.BorderRadius = 20;
+            btnQuickNewAssessment.BorderSize = 1;
+            btnQuickNewAssessment.FlatAppearance.BorderSize = 0;
+            btnQuickNewAssessment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnQuickNewAssessment.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold);
+            btnQuickNewAssessment.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            btnQuickNewAssessment.Image = (System.Drawing.Image)resources.GetObject("btnQuickNewAssessment.Image");
+            btnQuickNewAssessment.Location = new System.Drawing.Point(789, 343);
+            btnQuickNewAssessment.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
+            btnQuickNewAssessment.Name = "btnQuickNewAssessment";
+            btnQuickNewAssessment.Padding = new System.Windows.Forms.Padding(0, 0, 0, 30);
+            btnQuickNewAssessment.Size = new System.Drawing.Size(314, 173);
+            btnQuickNewAssessment.TabIndex = 4;
+            btnQuickNewAssessment.Text = "Quick new assessment";
+            btnQuickNewAssessment.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            btnQuickNewAssessment.TextColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            btnQuickNewAssessment.UseVisualStyleBackColor = false;
+            btnQuickNewAssessment.Click += btnQuickNewAssessment_Click;
             // 
             // panelBorder4
             // 
@@ -403,11 +406,11 @@
             Controls.Add(label4);
             Controls.Add(panelBorder4);
             Controls.Add(panelBorder3);
-            Controls.Add(customButton3);
+            Controls.Add(btnQuickNewAssessment);
             Controls.Add(panelBorder2);
-            Controls.Add(customButton2);
+            Controls.Add(btnQuickAddUser);
             Controls.Add(label3);
-            Controls.Add(customButton1);
+            Controls.Add(btnQuickAddPatient);
             Controls.Add(lblMonth);
             Controls.Add(flowLayoutPanel1);
             Name = "DashboardPage";
@@ -438,9 +441,9 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblName;
-        private OrganizationProfile.CustomButton customButton1;
-        private OrganizationProfile.CustomButton customButton2;
-        private OrganizationProfile.CustomButton customButton3;
+        private OrganizationProfile.CustomButton btnQuickAddPatient;
+        private OrganizationProfile.CustomButton btnQuickAddUser;
+        private OrganizationProfile.CustomButton btnQuickNewAssessment;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblMonth;
         private WindowsFormsApp2.CustomButton.PanelBorder panelBorder3;

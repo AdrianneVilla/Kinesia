@@ -1,4 +1,5 @@
-﻿using KinesiaLibrary.DTOs.ROMDTOs;
+﻿using KinesiaLibrary;
+using KinesiaLibrary.DTOs.ROMDTOs;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -26,10 +27,18 @@ namespace Kinesia.Assessment
             {
                 cbMovement.Items.Add("Flexion");
                 cbMovement.Items.Add("Extension");
-                cbMovement.Items.Add("Abduction");
-                cbMovement.Items.Add("Adduction");
             }
             else if (PageObjects.assessmentDetails.Joint == "Elbow and Forearm")
+            {
+                cbMovement.Items.Add("Flexion");
+                cbMovement.Items.Add("Reflexion");
+            }
+            else if (PageObjects.assessmentDetails.Joint == "Hip")
+            {
+                cbMovement.Items.Add("Flexion");
+                cbMovement.Items.Add("Reflexion");
+            }
+            else if (PageObjects.assessmentDetails.Joint == "Knee")
             {
                 cbMovement.Items.Add("Flexion");
                 cbMovement.Items.Add("Reflexion");
@@ -40,16 +49,13 @@ namespace Kinesia.Assessment
         {
             // will remove extra white spaces at the beginning and end of inputs
             txtGoniometer.Texts = txtGoniometer.Texts.Trim();
-            txtInitialROM.Texts = txtInitialROM.Texts.Trim();
-            txtEndROM.Texts = txtEndROM.Texts.Trim();
-            txtSubjective.Texts = txtSubjective.Texts.Trim();
-            txtObjective.Texts = txtObjective.Texts.Trim();
-            txtDeviation.Texts = txtDeviation.Texts.Trim();
+            txtStartingPosition.Texts = txtStartingPosition.Texts.Trim();
+            txtRom.Texts = txtRom.Texts.Trim();
 
             double initialROM, endROM;
 
             // will be triggered if txtInitialROM is null or empty
-            if(!double.TryParse(txtInitialROM.Texts, out initialROM))
+            if (!double.TryParse(txtStartingPosition.Texts, out initialROM))
             {
                 CustomDialog.Show("ROM details was incomplete! \nPlease fill-out all details to add this ROM.", "Incomplete ROM Details",
                     CustomDialogButtons.OK, CustomDialogIcons.Error);
@@ -57,7 +63,7 @@ namespace Kinesia.Assessment
             }
 
             // will be triggered if txtEndROM is null or empty
-            if(!double.TryParse(txtEndROM.Texts, out endROM))
+            if (!double.TryParse(txtRom.Texts, out endROM))
             {
                 CustomDialog.Show("ROM details was incomplete! \nPlease fill-out all details to add this ROM.", "Incomplete ROM Details",
                     CustomDialogButtons.OK, CustomDialogIcons.Error);
@@ -69,13 +75,10 @@ namespace Kinesia.Assessment
             newROM.AssessmentID = PageObjects.assessmentDetails.AssessmentID;
             newROM.UserID = SessionManager.UserID;
             newROM.GoniometerType = txtGoniometer.Texts;
-            newROM.InitialROM = Convert.ToDouble(txtInitialROM.Texts);
-            newROM.EndROM = Convert.ToDouble(txtEndROM.Texts);
+            newROM.StartingPosition = Convert.ToDouble(txtStartingPosition.Texts);
+            newROM.Rom = Convert.ToDouble(txtRom.Texts);
             newROM.Movement = cbMovement.Texts;
             newROM.MotionType = cbMotionType.Texts;
-            newROM.Subjective = txtSubjective.Texts;
-            newROM.Objective = txtObjective.Texts;
-            newROM.Deviation = txtDeviation.Texts;
             newROM.Date = DateTime.Now;
 
 
@@ -141,8 +144,8 @@ namespace Kinesia.Assessment
 
         private bool areInputsBlank()
         {
-            if (!txtInitialROM.Texts.Equals("") || !txtEndROM.Texts.Equals("") || !cbMovement.Texts.Equals("") ||
-                !cbMotionType.Texts.Equals("") || !txtDeviation.Texts.Equals(""))
+            if (!txtStartingPosition.Texts.Equals("") || !txtRom.Texts.Equals("") || !cbMovement.Texts.Equals("") ||
+                !cbMotionType.Texts.Equals(""))
             {
                 return true;
             }
@@ -152,13 +155,10 @@ namespace Kinesia.Assessment
 
         private void clearAllInputs()
         {
-            txtInitialROM.Texts = "";
-            txtEndROM.Texts = "";
+            txtStartingPosition.Texts = "";
+            txtRom.Texts = "";
             cbMovement.Texts = "";
             cbMotionType.Texts = "";
-            txtSubjective.Texts = "";
-            txtObjective.Texts = "";
-            txtDeviation.Texts = "";
         }
 
         private void txtInitialROM_KeyPress(object sender, KeyPressEventArgs e)
@@ -171,5 +171,20 @@ namespace Kinesia.Assessment
             InputValidation.FloatingNumbersOnly(sender, e);
         }
 
+        private void cbMovement_OnSelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbMovement.Texts != "")
+            {
+                lblNormalRom.Text = ROMHelper.GetNormalRange(PageObjects.assessmentDetails.Joint, cbMovement.Texts).ToString();
+            }
+        }
+
+        private void txtRom__TextChanged(object sender, EventArgs e)
+        {
+            if(txtRom.Texts != "")
+            {
+                lblDeficit.Text = ROMHelper.CalculateDeficit(Convert.ToDouble(txtRom.Texts), PageObjects.assessmentDetails.Joint, cbMovement.Texts).ToString();
+            }
+        }
     }
 }

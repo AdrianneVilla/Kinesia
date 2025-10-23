@@ -1,5 +1,6 @@
 ﻿using KinesiaAPI.Data;
 using KinesiaAPI.Models.Entities;
+using KinesiaLibrary;
 using KinesiaLibrary.DTOs.ReportDTOs;
 using KinesiaLibrary.DTOs.ROMDTOs;
 using Microsoft.AspNetCore.Http;
@@ -33,13 +34,16 @@ namespace KinesiaAPI.Controllers
             {
                 var query = from r in _context.ROM
                             join u in _context.Users on r.UserID equals u.UserID
-                            where r.AssessmentID == assessmentID 
+                            join a in _context.Assessments on r.AssessmentID equals a.AssessmentID
+                            where r.AssessmentID == assessmentID
                             select new DisplayROMsDTO
                             {
                                 TherapistName = $"{u.FirstName} {u.MiddleName} {u.LastName}",
-                                InitialROM = r.InitialROM,
-                                EndROM = r.EndROM,
+                                StartingPosition = r.StartingPosition,
+                                Rom = r.Rom,
                                 Movement = r.Movement,
+                                NormalRange = ROMHelper.GetNormalRange(a.Joint, r.Movement),
+                                Deficit = ROMHelper.CalculateDeficit(r.Rom, a.Joint, r.Movement),
                                 Date = r.Date.ToString("yyyy-MM-dd hh:mm")
                             };
 
@@ -77,19 +81,18 @@ namespace KinesiaAPI.Controllers
         {
             var query = from r in _context.ROM
                         join u in _context.Users on r.UserID equals u.UserID
+                        join a in _context.Assessments on r.AssessmentID equals a.AssessmentID
                         where r.AssessmentID == assessmentID
-                        orderby r.Movement, r.Date ascending 
+                        orderby r.Movement, r.Date ascending
                         select new ROMReportDTO
                         {
                             TherapistName = $"{u.FirstName} {u.MiddleName} {u.LastName}",
                             GoniometerType = r.GoniometerType,
-                            InitialROM = r.InitialROM,
-                            EndROM = r.EndROM,
+                            StartingPosition = r.StartingPosition,
+                            Rom = r.Rom,
                             Movement = r.Movement,
                             MotionType = r.MotionType,
-                            Subjective = r.Subjective,
-                            Objective = r.Objective,
-                            Deviation = r.Deviation,
+                            Deficit = ROMHelper.CalculateDeficit(r.Rom, a.Joint, r.Movement),
                             Date = r.Date
                         };
 
@@ -142,13 +145,10 @@ namespace KinesiaAPI.Controllers
                 AssessmentID = romDTO.AssessmentID,
                 UserID = romDTO.UserID,
                 GoniometerType = romDTO.GoniometerType,
-                InitialROM = romDTO.InitialROM,
-                EndROM = romDTO.EndROM,
+                StartingPosition = romDTO.StartingPosition,
+                Rom = romDTO.Rom,
                 Movement = romDTO.Movement,
                 MotionType = romDTO.MotionType,
-                Subjective = romDTO.Subjective,
-                Objective = romDTO.Objective,
-                Deviation = romDTO.Deviation,
                 Date = DateTime.Now
             };
 

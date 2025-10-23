@@ -37,20 +37,24 @@ namespace Kinesia.Assessment
             flowLayoutPanel1 = new FlowLayoutPanel();
             cmbMovementSelection = new CustomControls.RJControls.RJComboBox();
             btnStartStopMeasurement = new OrganizationProfile.CustomButton();
-            lblInitialROM = new Label();
-            lblEndROM = new Label();
+            lblStartingPositionValue = new Label();
+            lblRomValue = new Label();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
-            txtDeviation = new CustomControls.RJControls.RJTextBox();
-            label7 = new Label();
-            txtObjective = new CustomControls.RJControls.RJTextBox();
-            label6 = new Label();
-            txtSubjective = new CustomControls.RJControls.RJTextBox();
-            label5 = new Label();
-            cbMotionType = new CustomControls.RJControls.RJComboBox();
-            label4 = new Label();
             btnSaveROM = new OrganizationProfile.CustomButton();
+            label4 = new Label();
+            lblExtremity = new Label();
+            label5 = new Label();
+            lblJoint = new Label();
+            label6 = new Label();
+            lblJointSide = new Label();
+            label7 = new Label();
+            lblMotionType = new Label();
+            label8 = new Label();
+            lblNormalRange = new Label();
+            lblDeficit = new Label();
+            label10 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBoxRgb).BeginInit();
             flowLayoutPanel1.SuspendLayout();
             SuspendLayout();
@@ -115,25 +119,25 @@ namespace Kinesia.Assessment
             btnStartStopMeasurement.UseVisualStyleBackColor = false;
             btnStartStopMeasurement.Click += btnStartStopMeasurement_Click;
             // 
-            // lblInitialROM
+            // lblStartingPositionValue
             // 
-            lblInitialROM.AutoSize = true;
-            lblInitialROM.Font = new Font("Poppins", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblInitialROM.Location = new Point(618, 71);
-            lblInitialROM.Name = "lblInitialROM";
-            lblInitialROM.Size = new Size(0, 34);
-            lblInitialROM.TabIndex = 8;
-            lblInitialROM.TextAlign = ContentAlignment.TopCenter;
+            lblStartingPositionValue.AutoSize = true;
+            lblStartingPositionValue.Font = new Font("Poppins", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblStartingPositionValue.Location = new Point(671, 236);
+            lblStartingPositionValue.Name = "lblStartingPositionValue";
+            lblStartingPositionValue.Size = new Size(0, 34);
+            lblStartingPositionValue.TabIndex = 8;
+            lblStartingPositionValue.TextAlign = ContentAlignment.TopCenter;
             // 
-            // lblEndROM
+            // lblRomValue
             // 
-            lblEndROM.AutoSize = true;
-            lblEndROM.Font = new Font("Poppins", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblEndROM.Location = new Point(618, 114);
-            lblEndROM.Name = "lblEndROM";
-            lblEndROM.Size = new Size(0, 34);
-            lblEndROM.TabIndex = 9;
-            lblEndROM.TextAlign = ContentAlignment.TopCenter;
+            lblRomValue.AutoSize = true;
+            lblRomValue.Font = new Font("Poppins", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblRomValue.Location = new Point(555, 286);
+            lblRomValue.Name = "lblRomValue";
+            lblRomValue.Size = new Size(0, 34);
+            lblRomValue.TabIndex = 9;
+            lblRomValue.TextAlign = ContentAlignment.TopCenter;
             // 
             // label1
             // 
@@ -150,155 +154,23 @@ namespace Kinesia.Assessment
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Poppins", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(486, 71);
+            label2.Location = new Point(486, 236);
             label2.Name = "label2";
-            label2.Size = new Size(126, 34);
+            label2.Size = new Size(185, 34);
             label2.TabIndex = 11;
-            label2.Text = "Initial ROM:";
+            label2.Text = "Starting Position:";
             label2.TextAlign = ContentAlignment.TopCenter;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Poppins", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(486, 114);
+            label3.Location = new Point(485, 286);
             label3.Name = "label3";
-            label3.Size = new Size(104, 34);
+            label3.Size = new Size(64, 34);
             label3.TabIndex = 12;
-            label3.Text = "End ROM:";
+            label3.Text = "Rom:";
             label3.TextAlign = ContentAlignment.TopCenter;
-            // 
-            // txtDeviation
-            // 
-            txtDeviation.BackColor = Color.White;
-            txtDeviation.BorderColor = Color.Black;
-            txtDeviation.BorderFocusColor = Color.FromArgb(18, 90, 211);
-            txtDeviation.BorderRadius = 5;
-            txtDeviation.BorderSize = 1;
-            txtDeviation.Font = new Font("Poppins", 10.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtDeviation.ForeColor = Color.FromArgb(64, 64, 64);
-            txtDeviation.Location = new Point(487, 490);
-            txtDeviation.Margin = new Padding(4);
-            txtDeviation.Multiline = false;
-            txtDeviation.Name = "txtDeviation";
-            txtDeviation.Padding = new Padding(10, 7, 10, 7);
-            txtDeviation.PasswordChar = false;
-            txtDeviation.PlaceholderColor = Color.DarkGray;
-            txtDeviation.PlaceholderText = "";
-            txtDeviation.SelectionLength = 0;
-            txtDeviation.SelectionStart = 0;
-            txtDeviation.Size = new Size(544, 41);
-            txtDeviation.TabIndex = 23;
-            txtDeviation.Texts = "";
-            txtDeviation.UnderlinedStyle = false;
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Poppins", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label7.Location = new Point(487, 463);
-            label7.Name = "label7";
-            label7.Size = new Size(74, 23);
-            label7.TabIndex = 22;
-            label7.Text = "Deviation";
-            // 
-            // txtObjective
-            // 
-            txtObjective.BackColor = Color.White;
-            txtObjective.BorderColor = Color.Black;
-            txtObjective.BorderFocusColor = Color.FromArgb(18, 90, 211);
-            txtObjective.BorderRadius = 5;
-            txtObjective.BorderSize = 1;
-            txtObjective.Font = new Font("Poppins", 10.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtObjective.ForeColor = Color.FromArgb(64, 64, 64);
-            txtObjective.Location = new Point(486, 375);
-            txtObjective.Margin = new Padding(4);
-            txtObjective.Multiline = true;
-            txtObjective.Name = "txtObjective";
-            txtObjective.Padding = new Padding(10, 7, 10, 7);
-            txtObjective.PasswordChar = false;
-            txtObjective.PlaceholderColor = Color.DarkGray;
-            txtObjective.PlaceholderText = "";
-            txtObjective.SelectionLength = 0;
-            txtObjective.SelectionStart = 0;
-            txtObjective.Size = new Size(545, 70);
-            txtObjective.TabIndex = 21;
-            txtObjective.Texts = "";
-            txtObjective.UnderlinedStyle = false;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Poppins", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.Location = new Point(486, 348);
-            label6.Name = "label6";
-            label6.Size = new Size(147, 23);
-            label6.TabIndex = 20;
-            label6.Text = "Objective (Optional)";
-            // 
-            // txtSubjective
-            // 
-            txtSubjective.BackColor = Color.White;
-            txtSubjective.BorderColor = Color.Black;
-            txtSubjective.BorderFocusColor = Color.FromArgb(18, 90, 211);
-            txtSubjective.BorderRadius = 5;
-            txtSubjective.BorderSize = 1;
-            txtSubjective.Font = new Font("Poppins", 10.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtSubjective.ForeColor = Color.FromArgb(64, 64, 64);
-            txtSubjective.Location = new Point(486, 264);
-            txtSubjective.Margin = new Padding(4);
-            txtSubjective.Multiline = true;
-            txtSubjective.Name = "txtSubjective";
-            txtSubjective.Padding = new Padding(10, 7, 10, 7);
-            txtSubjective.PasswordChar = false;
-            txtSubjective.PlaceholderColor = Color.DarkGray;
-            txtSubjective.PlaceholderText = "";
-            txtSubjective.SelectionLength = 0;
-            txtSubjective.SelectionStart = 0;
-            txtSubjective.Size = new Size(545, 70);
-            txtSubjective.TabIndex = 19;
-            txtSubjective.Texts = "";
-            txtSubjective.UnderlinedStyle = false;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Poppins", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.Location = new Point(486, 237);
-            label5.Name = "label5";
-            label5.Size = new Size(154, 23);
-            label5.TabIndex = 18;
-            label5.Text = "Subjective (Optional)";
-            // 
-            // cbMotionType
-            // 
-            cbMotionType.BackColor = Color.White;
-            cbMotionType.BorderColor = Color.Black;
-            cbMotionType.BorderSize = 1;
-            cbMotionType.DropDownStyle = ComboBoxStyle.DropDown;
-            cbMotionType.Font = new Font("Segoe UI", 10F);
-            cbMotionType.ForeColor = Color.DimGray;
-            cbMotionType.IconColor = Color.FromArgb(18, 90, 211);
-            cbMotionType.Items.AddRange(new object[] { "Active", "Passive" });
-            cbMotionType.ListBackColor = Color.White;
-            cbMotionType.ListTextColor = Color.Black;
-            cbMotionType.Location = new Point(487, 184);
-            cbMotionType.MinimumSize = new Size(200, 30);
-            cbMotionType.Name = "cbMotionType";
-            cbMotionType.Padding = new Padding(1);
-            cbMotionType.Size = new Size(250, 41);
-            cbMotionType.TabIndex = 17;
-            cbMotionType.Texts = "";
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Poppins", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(487, 158);
-            label4.Name = "label4";
-            label4.Size = new Size(92, 23);
-            label4.TabIndex = 15;
-            label4.Text = "Motion Type";
             // 
             // btnSaveROM
             // 
@@ -320,33 +192,169 @@ namespace Kinesia.Assessment
             btnSaveROM.UseVisualStyleBackColor = false;
             btnSaveROM.Click += btnSaveROM_Click;
             // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Poppins", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.Location = new Point(486, 71);
+            label4.Name = "label4";
+            label4.Size = new Size(115, 34);
+            label4.TabIndex = 13;
+            label4.Text = "Extremity:";
+            label4.TextAlign = ContentAlignment.TopCenter;
+            // 
+            // lblExtremity
+            // 
+            lblExtremity.AutoSize = true;
+            lblExtremity.Font = new Font("Poppins", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblExtremity.Location = new Point(607, 71);
+            lblExtremity.Name = "lblExtremity";
+            lblExtremity.Size = new Size(130, 34);
+            lblExtremity.TabIndex = 14;
+            lblExtremity.Text = "<Extremity>";
+            lblExtremity.TextAlign = ContentAlignment.TopCenter;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Poppins", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.Location = new Point(486, 111);
+            label5.Name = "label5";
+            label5.Size = new Size(70, 34);
+            label5.TabIndex = 15;
+            label5.Text = "Joint:";
+            label5.TextAlign = ContentAlignment.TopCenter;
+            // 
+            // lblJoint
+            // 
+            lblJoint.AutoSize = true;
+            lblJoint.Font = new Font("Poppins", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblJoint.Location = new Point(607, 111);
+            lblJoint.Name = "lblJoint";
+            lblJoint.Size = new Size(85, 34);
+            lblJoint.TabIndex = 16;
+            lblJoint.Text = "<Joint>";
+            lblJoint.TextAlign = ContentAlignment.TopCenter;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Poppins", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label6.Location = new Point(486, 154);
+            label6.Name = "label6";
+            label6.Size = new Size(117, 34);
+            label6.TabIndex = 17;
+            label6.Text = "Joint Side:";
+            label6.TextAlign = ContentAlignment.TopCenter;
+            // 
+            // lblJointSide
+            // 
+            lblJointSide.AutoSize = true;
+            lblJointSide.Font = new Font("Poppins", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblJointSide.Location = new Point(609, 154);
+            lblJointSide.Name = "lblJointSide";
+            lblJointSide.Size = new Size(132, 34);
+            lblJointSide.TabIndex = 18;
+            lblJointSide.Text = "<Joint Side>";
+            lblJointSide.TextAlign = ContentAlignment.TopCenter;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Poppins", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label7.Location = new Point(486, 193);
+            label7.Name = "label7";
+            label7.Size = new Size(140, 34);
+            label7.TabIndex = 19;
+            label7.Text = "Motion Type:";
+            label7.TextAlign = ContentAlignment.TopCenter;
+            // 
+            // lblMotionType
+            // 
+            lblMotionType.AutoSize = true;
+            lblMotionType.Font = new Font("Poppins", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblMotionType.Location = new Point(632, 193);
+            lblMotionType.Name = "lblMotionType";
+            lblMotionType.Size = new Size(78, 34);
+            lblMotionType.TabIndex = 20;
+            lblMotionType.Text = "Active";
+            lblMotionType.TextAlign = ContentAlignment.TopCenter;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Poppins", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label8.Location = new Point(486, 329);
+            label8.Name = "label8";
+            label8.Size = new Size(160, 34);
+            label8.TabIndex = 21;
+            label8.Text = "Normal Range:";
+            label8.TextAlign = ContentAlignment.TopCenter;
+            // 
+            // lblNormalRange
+            // 
+            lblNormalRange.AutoSize = true;
+            lblNormalRange.Font = new Font("Poppins", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblNormalRange.Location = new Point(652, 329);
+            lblNormalRange.Name = "lblNormalRange";
+            lblNormalRange.Size = new Size(175, 34);
+            lblNormalRange.TabIndex = 22;
+            lblNormalRange.Text = "<Normal Range>";
+            lblNormalRange.TextAlign = ContentAlignment.TopCenter;
+            // 
+            // lblDeficit
+            // 
+            lblDeficit.AutoSize = true;
+            lblDeficit.Font = new Font("Poppins", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblDeficit.Location = new Point(652, 372);
+            lblDeficit.Name = "lblDeficit";
+            lblDeficit.Size = new Size(99, 34);
+            lblDeficit.TabIndex = 24;
+            lblDeficit.Text = "<Deficit>";
+            lblDeficit.TextAlign = ContentAlignment.TopCenter;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new Font("Poppins", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label10.Location = new Point(486, 372);
+            label10.Name = "label10";
+            label10.Size = new Size(84, 34);
+            label10.TabIndex = 23;
+            label10.Text = "Deficit:";
+            label10.TextAlign = ContentAlignment.TopCenter;
+            // 
             // AssessmentROM
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1061, 599);
-            ControlBox = false;
-            Controls.Add(txtDeviation);
+            Controls.Add(lblDeficit);
+            Controls.Add(label10);
+            Controls.Add(lblNormalRange);
+            Controls.Add(label8);
+            Controls.Add(lblMotionType);
             Controls.Add(label7);
-            Controls.Add(txtObjective);
+            Controls.Add(lblJointSide);
             Controls.Add(label6);
-            Controls.Add(txtSubjective);
-            Controls.Add(btnSaveROM);
+            Controls.Add(lblJoint);
             Controls.Add(label5);
-            Controls.Add(cbMotionType);
+            Controls.Add(lblExtremity);
             Controls.Add(label4);
+            Controls.Add(btnSaveROM);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(flowLayoutPanel1);
-            Controls.Add(lblEndROM);
-            Controls.Add(lblInitialROM);
+            Controls.Add(lblRomValue);
+            Controls.Add(lblStartingPositionValue);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Margin = new Padding(4, 3, 4, 3);
             Name = "AssessmentROM";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "AssessmentROM";
             TopMost = true;
+            Load += AssessmentROM_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBoxRgb).EndInit();
             flowLayoutPanel1.ResumeLayout(false);
             ResumeLayout(false);
@@ -360,19 +368,23 @@ namespace Kinesia.Assessment
         private FlowLayoutPanel flowLayoutPanel1;
         private CustomControls.RJControls.RJComboBox cmbMovementSelection;
         private OrganizationProfile.CustomButton btnStartStopMeasurement;
-        private Label lblInitialROM;
-        private Label lblEndROM;
+        private Label lblStartingPositionValue;
+        private Label lblRomValue;
         private Label label1;
         private Label label2;
         private Label label3;
-        private CustomControls.RJControls.RJTextBox txtDeviation;
-        private Label label7;
-        private CustomControls.RJControls.RJTextBox txtObjective;
-        private Label label6;
-        private CustomControls.RJControls.RJTextBox txtSubjective;
-        private Label label5;
-        private CustomControls.RJControls.RJComboBox cbMotionType;
-        private Label label4;
         private OrganizationProfile.CustomButton btnSaveROM;
+        private Label label4;
+        private Label lblExtremity;
+        private Label label5;
+        private Label lblJoint;
+        private Label label6;
+        private Label lblJointSide;
+        private Label label7;
+        private Label lblMotionType;
+        private Label label8;
+        private Label lblNormalRange;
+        private Label lblDeficit;
+        private Label label10;
     }
 }
