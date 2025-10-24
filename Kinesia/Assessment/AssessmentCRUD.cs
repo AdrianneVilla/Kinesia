@@ -418,6 +418,67 @@ namespace Kinesia.Assessment
             return response.IsSuccessStatusCode;
         }
 
+        public bool IsAssessmentDetailsComplete(AddAssessmentDTO newAssessment)
+        {
+            if(newAssessment.Extremity == "Select Extremity" || newAssessment.Joint == "Select Joint" || newAssessment.Joint == "Select Joint Side")
+            {
+                // will show an error dialog if the assessment details was incomplete
+                CustomDialog.Show("Incomplete assessment details!\nPlease complete Joint Information.", "Add Assessment Alert",
+                    CustomDialogButtons.OK, CustomDialogIcons.Error);
+                return false;
+            }
+
+            return true;
+        }
+
+        public async Task<bool> HasOngoingAssessment(string patientID, string joint, string jointSide)
+        {
+            try
+            {
+                var url = $"http://localhost:5000/api/assessment/check-ongoing-assessment?patientID={patientID}&joint={joint}&jointSide={jointSide}";
+                var response = await client.GetAsync(url);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var jsonString = await response.Content.ReadAsStringAsync();
+
+                    if (bool.TryParse(jsonString, out bool hasOngoing))
+                    {
+                        if (hasOngoing) // will show an error dialog if patient has ongoing assessment
+                        {
+                            CustomDialog.Show($"{patientID} has already ongoing assessment for {jointSide} {joint}",
+                            "Add Assessment Alert", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                        }
+                        return hasOngoing;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    CustomDialog.Show(await response.Content.ReadAsStringAsync(),
+                                    "Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                    return false;
+                }
+            }
+            catch (HttpRequestException)
+            {
+                // will show an error dialog if it catches a http request error from client-side.
+                CustomDialog.Show("Unable to connect to the server.\nPlease try again.",
+                            "Connection Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                return false;
+            }
+            catch (Exception)
+            {
+                // will show an error dialog if it catches an unexpected error from client-side.
+                CustomDialog.Show("Unexpected error occured.\nPlease try again.",
+                            "Unexpected Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                return false;
+            }
+        }
+
         private Point hoveredCell = new Point(-1, -1);
 
         // for cell button

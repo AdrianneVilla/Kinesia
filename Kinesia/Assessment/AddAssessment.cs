@@ -53,15 +53,19 @@ namespace Kinesia.Assessment
                     JointSide = PageObjects.patientAssessmentDetails.JointSide
                 };
 
-                string newAssessmentID = await Queries.AssessmentQueries.AddAssessment(newAssessment);
-
-                if (!string.IsNullOrEmpty(newAssessmentID))
+                if (Queries.AssessmentQueries.IsAssessmentDetailsComplete(newAssessment) && 
+                    !await Queries.AssessmentQueries.HasOngoingAssessment(newAssessment.PatientID, newAssessment.Joint, newAssessment.JointSide))
                 {
-                    await Queries.LogsQueries.AddLog($"Added {newAssessmentID}", "Assessment");
+                    string newAssessmentID = await Queries.AssessmentQueries.AddAssessment(newAssessment);
 
-                    CustomDialog.Show("Assessment added successfully!", "Add Assessment Notification", CustomDialogButtons.OK, CustomDialogIcons.Information);
+                    if (!string.IsNullOrEmpty(newAssessmentID))
+                    {
+                        await Queries.LogsQueries.AddLog($"Added {newAssessmentID}", "Assessment");
 
-                    await Queries.AssessmentQueries.GetAssessmentDetails(newAssessmentID);
+                        CustomDialog.Show("Assessment added successfully!", "Add Assessment Notification", CustomDialogButtons.OK, CustomDialogIcons.Information);
+
+                        await Queries.AssessmentQueries.GetAssessmentDetails(newAssessmentID);
+                    }
                 }
             }
         }
@@ -72,6 +76,18 @@ namespace Kinesia.Assessment
             PageObjects.assessmentPage = new AssessmentPage();
             PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.assessmentPage);
             PageObjects.CurrentControl = PageObjects.assessmentPage;
+        }
+
+        private async void btnChangePatient_Click(object sender, EventArgs e)
+        {
+            using (Form shadow = new Form())
+            {
+                FormAnimation.ShowFocus(shadow);
+                PageObjects.selectPatientPage = new SelectPatient();
+                await Queries.PatientQueries.DisplayPatientSelection("");
+                PageObjects.selectPatientPage.Owner = shadow;
+                PageObjects.selectPatientPage.ShowDialog();
+            }
         }
     }
 }

@@ -228,6 +228,30 @@ namespace KinesiaAPI.Controllers
             return Ok(assessment);
         }
 
+        // GET: api/assessment/check-ongoing-assessment?patientID={}&joint={}&jointSide={}
+        [HttpGet("check-ongoing-assessment")]
+        public async Task<ActionResult<bool>> CheckOngoingAssessment(string patientID, string joint, string jointSide)
+        {
+            try
+            {
+                var hasOngoingAssessment = await _context.Assessments
+                .AnyAsync(a => a.PatientID == patientID &&
+                            a.Joint == joint &&
+                            a.JointSide == jointSide &&
+                            a.AssessmentStatus == 1);
+
+                return hasOngoingAssessment;
+            }
+            catch (DbException)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An error occured on database.\nPlease try again.");
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An unexpected error occured.\nPlease try again.");
+            }
+        }
+
         // GET: api/assessment/total-ongoing-assessments?month={}&year={}
         [HttpGet("total-ongoing-assessments")]
         public async Task<ActionResult<int>> GetTotalOngoingAssessments(int month, int year)

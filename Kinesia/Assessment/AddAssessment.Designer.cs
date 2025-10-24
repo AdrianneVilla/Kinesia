@@ -34,7 +34,7 @@
             titleNav = new System.Windows.Forms.Label();
             flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             btnSaveAssessment = new OrganizationProfile.CustomButton();
-            customButton2 = new OrganizationProfile.CustomButton();
+            btnChangePatient = new OrganizationProfile.CustomButton();
             panelPatientInformation = new WindowsFormsApp2.CustomButton.PanelBorder();
             btnBack = new OrganizationProfile.CustomButton();
             flowLayoutPanel1.SuspendLayout();
@@ -84,7 +84,7 @@
             // 
             flowLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             flowLayoutPanel1.Controls.Add(btnSaveAssessment);
-            flowLayoutPanel1.Controls.Add(customButton2);
+            flowLayoutPanel1.Controls.Add(btnChangePatient);
             flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
             flowLayoutPanel1.Location = new System.Drawing.Point(89, 132);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -117,31 +117,32 @@
             btnSaveAssessment.UseVisualStyleBackColor = false;
             btnSaveAssessment.Click += btnSaveAssessment_Click;
             // 
-            // customButton2
+            // btnChangePatient
             // 
-            customButton2.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
-            customButton2.BackColor = System.Drawing.Color.FromArgb(64, 64, 64);
-            customButton2.BackgroundColor = System.Drawing.Color.FromArgb(64, 64, 64);
-            customButton2.BorderColor = System.Drawing.Color.White;
-            customButton2.BorderRadius = 10;
-            customButton2.BorderSize = 0;
-            customButton2.Cursor = System.Windows.Forms.Cursors.Hand;
-            customButton2.FlatAppearance.BorderSize = 0;
-            customButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            customButton2.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            customButton2.ForeColor = System.Drawing.Color.White;
-            customButton2.Image = Properties.Resources.newReselect;
-            customButton2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            customButton2.Location = new System.Drawing.Point(997, 3);
-            customButton2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            customButton2.Name = "customButton2";
-            customButton2.Padding = new System.Windows.Forms.Padding(10, 3, 30, 0);
-            customButton2.Size = new System.Drawing.Size(199, 51);
-            customButton2.TabIndex = 11;
-            customButton2.Text = "Change Patient";
-            customButton2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            customButton2.TextColor = System.Drawing.Color.White;
-            customButton2.UseVisualStyleBackColor = false;
+            btnChangePatient.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            btnChangePatient.BackColor = System.Drawing.Color.FromArgb(64, 64, 64);
+            btnChangePatient.BackgroundColor = System.Drawing.Color.FromArgb(64, 64, 64);
+            btnChangePatient.BorderColor = System.Drawing.Color.White;
+            btnChangePatient.BorderRadius = 10;
+            btnChangePatient.BorderSize = 0;
+            btnChangePatient.Cursor = System.Windows.Forms.Cursors.Hand;
+            btnChangePatient.FlatAppearance.BorderSize = 0;
+            btnChangePatient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnChangePatient.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            btnChangePatient.ForeColor = System.Drawing.Color.White;
+            btnChangePatient.Image = Properties.Resources.newReselect;
+            btnChangePatient.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            btnChangePatient.Location = new System.Drawing.Point(997, 3);
+            btnChangePatient.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            btnChangePatient.Name = "btnChangePatient";
+            btnChangePatient.Padding = new System.Windows.Forms.Padding(10, 3, 30, 0);
+            btnChangePatient.Size = new System.Drawing.Size(199, 51);
+            btnChangePatient.TabIndex = 11;
+            btnChangePatient.Text = "Change Patient";
+            btnChangePatient.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            btnChangePatient.TextColor = System.Drawing.Color.White;
+            btnChangePatient.UseVisualStyleBackColor = false;
+            btnChangePatient.Click += btnChangePatient_Click;
             // 
             // panelPatientInformation
             // 
@@ -212,7 +213,7 @@
         private System.Windows.Forms.Label lblSelectedUser;
         private System.Windows.Forms.Label titleNav;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private OrganizationProfile.CustomButton customButton2;
+        private OrganizationProfile.CustomButton btnChangePatient;
         private OrganizationProfile.CustomButton btnSaveAssessment;
         private WindowsFormsApp2.CustomButton.PanelBorder panelPatientInformation;
         private OrganizationProfile.CustomButton btnBack;
