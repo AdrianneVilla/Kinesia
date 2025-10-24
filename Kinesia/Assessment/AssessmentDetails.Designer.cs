@@ -58,6 +58,8 @@
             btnAddRom = new OrganizationProfile.CustomButton();
             btnBack = new OrganizationProfile.CustomButton();
             btnPrint = new OrganizationProfile.CustomButton();
+            label6 = new System.Windows.Forms.Label();
+            lblAssessmentEndDate = new System.Windows.Forms.Label();
             flowLayoutPanel1.SuspendLayout();
             flowLayoutPanel2.SuspendLayout();
             flowLayoutPanel3.SuspendLayout();
@@ -119,7 +121,7 @@
             flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             flowLayoutPanel1.Location = new System.Drawing.Point(71, 95);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new System.Drawing.Size(533, 371);
+            flowLayoutPanel1.Size = new System.Drawing.Size(533, 393);
             flowLayoutPanel1.TabIndex = 36;
             // 
             // flowLayoutPanel2
@@ -128,7 +130,7 @@
             flowLayoutPanel2.Controls.Add(flowLayoutPanel4);
             flowLayoutPanel2.Location = new System.Drawing.Point(3, 51);
             flowLayoutPanel2.Name = "flowLayoutPanel2";
-            flowLayoutPanel2.Size = new System.Drawing.Size(413, 257);
+            flowLayoutPanel2.Size = new System.Drawing.Size(413, 281);
             flowLayoutPanel2.TabIndex = 36;
             // 
             // flowLayoutPanel3
@@ -139,11 +141,12 @@
             flowLayoutPanel3.Controls.Add(label4);
             flowLayoutPanel3.Controls.Add(label11);
             flowLayoutPanel3.Controls.Add(label3);
+            flowLayoutPanel3.Controls.Add(label6);
             flowLayoutPanel3.Controls.Add(label1);
             flowLayoutPanel3.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             flowLayoutPanel3.Location = new System.Drawing.Point(3, 3);
             flowLayoutPanel3.Name = "flowLayoutPanel3";
-            flowLayoutPanel3.Size = new System.Drawing.Size(200, 254);
+            flowLayoutPanel3.Size = new System.Drawing.Size(200, 278);
             flowLayoutPanel3.TabIndex = 37;
             // 
             // label5
@@ -216,12 +219,12 @@
             // 
             label1.AutoSize = true;
             label1.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold);
-            label1.Location = new System.Drawing.Point(3, 198);
+            label1.Location = new System.Drawing.Point(3, 231);
             label1.Margin = new System.Windows.Forms.Padding(3, 0, 3, 10);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(166, 23);
+            label1.Size = new System.Drawing.Size(158, 23);
             label1.TabIndex = 6;
-            label1.Text = "Assessment Start Date:";
+            label1.Text = "Assessment End Date:";
             // 
             // flowLayoutPanel4
             // 
@@ -232,10 +235,11 @@
             flowLayoutPanel4.Controls.Add(lblJointSide);
             flowLayoutPanel4.Controls.Add(lblAssessmentStatus);
             flowLayoutPanel4.Controls.Add(lblAssessmentDate);
+            flowLayoutPanel4.Controls.Add(lblAssessmentEndDate);
             flowLayoutPanel4.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             flowLayoutPanel4.Location = new System.Drawing.Point(209, 3);
             flowLayoutPanel4.Name = "flowLayoutPanel4";
-            flowLayoutPanel4.Size = new System.Drawing.Size(200, 254);
+            flowLayoutPanel4.Size = new System.Drawing.Size(200, 278);
             flowLayoutPanel4.TabIndex = 38;
             // 
             // lblAge
@@ -311,9 +315,9 @@
             lblAssessmentDate.Location = new System.Drawing.Point(3, 198);
             lblAssessmentDate.Margin = new System.Windows.Forms.Padding(3, 0, 3, 10);
             lblAssessmentDate.Name = "lblAssessmentDate";
-            lblAssessmentDate.Size = new System.Drawing.Size(140, 23);
+            lblAssessmentDate.Size = new System.Drawing.Size(175, 23);
             lblAssessmentDate.TabIndex = 10;
-            lblAssessmentDate.Text = " <Assessment Date>";
+            lblAssessmentDate.Text = " <Assessment Start Date>";
             // 
             // btnFinishAssessment
             // 
@@ -330,7 +334,7 @@
             btnFinishAssessment.ForeColor = System.Drawing.Color.White;
             btnFinishAssessment.Image = Properties.Resources.newWhiteSelect;
             btnFinishAssessment.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnFinishAssessment.Location = new System.Drawing.Point(9, 314);
+            btnFinishAssessment.Location = new System.Drawing.Point(9, 338);
             btnFinishAssessment.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             btnFinishAssessment.Name = "btnFinishAssessment";
             btnFinishAssessment.Padding = new System.Windows.Forms.Padding(20, 3, 30, 0);
@@ -345,9 +349,9 @@
             dataGridROM.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             dataGridROM.BackgroundColor = System.Drawing.Color.White;
             dataGridROM.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridROM.Location = new System.Drawing.Point(68, 472);
+            dataGridROM.Location = new System.Drawing.Point(68, 530);
             dataGridROM.Name = "dataGridROM";
-            dataGridROM.Size = new System.Drawing.Size(1091, 237);
+            dataGridROM.Size = new System.Drawing.Size(1091, 179);
             dataGridROM.TabIndex = 37;
             // 
             // flowLayoutPanel5
@@ -490,6 +494,28 @@
             btnPrint.UseVisualStyleBackColor = false;
             btnPrint.Click += btnPrint_Click;
             // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold);
+            label6.Location = new System.Drawing.Point(3, 198);
+            label6.Margin = new System.Windows.Forms.Padding(3, 0, 3, 10);
+            label6.Name = "label6";
+            label6.Size = new System.Drawing.Size(166, 23);
+            label6.TabIndex = 7;
+            label6.Text = "Assessment Start Date:";
+            // 
+            // lblAssessmentEndDate
+            // 
+            lblAssessmentEndDate.AutoSize = true;
+            lblAssessmentEndDate.Font = new System.Drawing.Font("Poppins", 9.75F);
+            lblAssessmentEndDate.Location = new System.Drawing.Point(3, 231);
+            lblAssessmentEndDate.Margin = new System.Windows.Forms.Padding(3, 0, 3, 10);
+            lblAssessmentEndDate.Name = "lblAssessmentEndDate";
+            lblAssessmentEndDate.Size = new System.Drawing.Size(167, 23);
+            lblAssessmentEndDate.TabIndex = 11;
+            lblAssessmentEndDate.Text = " <Assessment End Date>";
+            // 
             // AssessmentDetails
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -551,5 +577,7 @@
         private OrganizationProfile.CustomButton btnPrint;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblAssessmentDate;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblAssessmentEndDate;
     }
 }

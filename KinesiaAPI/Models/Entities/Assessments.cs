@@ -12,5 +12,6 @@ namespace KinesiaAPI.Models.Entities
         public required string JointSide { get; set; }
         public required int AssessmentStatus { get; set; }
         public required DateTime AssessmentDate { get; set; }
+        public DateTime? AssessmentEndDate { get; set; }
     }
 }

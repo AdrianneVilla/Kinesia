@@ -116,7 +116,8 @@ namespace KinesiaAPI.Controllers
                                         a.Joint,
                                         a.JointSide,
                                         a.AssessmentStatus,
-                                        a.AssessmentDate
+                                        a.AssessmentDate,
+                                        a.AssessmentEndDate
                                     }).FirstOrDefaultAsync();
 
                 var assessment = new AssessmentDTO
@@ -135,7 +136,8 @@ namespace KinesiaAPI.Controllers
                         1 => "Ongoing",
                         2 => "Finished",
                     },
-                    AssessmentDate = result.AssessmentDate.ToString("yyyy-MM-dd hh:mm")
+                    AssessmentDate = result.AssessmentDate.ToString("yyyy-MM-dd hh:mm tt"),
+                    AssessmentEndDate = result.AssessmentEndDate.HasValue ? result.AssessmentEndDate.Value.ToString("yyyy-MM-dd hh:mm tt") : "N/A"
                 };
 
                 if (assessment == null)
@@ -154,6 +156,38 @@ namespace KinesiaAPI.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, "An unexpected error occured.\nPlease try again.");
             }
         }
+
+        // GET: api/assessment/patient?patientID={}
+        [HttpGet("patient")]
+        public async Task<ActionResult<IEnumerable<DisplayPatientAssessmentsDTO>>> DisplayPatientAssessments(string patientID)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(patientID))
+                    return BadRequest("Patient ID is required");
+
+                var patientExists = await _context.Patients.AnyAsync(p => p.PatientID == patientID);
+
+                if (!patientExists)
+                    return NotFound("Patient not found");
+
+                var assessments = await _context.Assessments
+                    .Where(a => a.PatientID == patientID)
+                    .ToListAsync();
+
+                var assessmentDTOs = assessments.Select(a => AssessmentToPatientAssessmentsDTO(a)).ToList();
+
+                return Ok(assessmentDTOs);
+            }
+            catch (DbException)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An error occured on database.\nPlease try again.");
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An unexpected error occured.\nPlease try again.");
+            }
+        } 
 
         // GET: api/assessment/generate-report?assessmentID={}
         [HttpGet("generate-report")]
@@ -400,6 +434,22 @@ namespace KinesiaAPI.Controllers
                     1 => "Ongoing",
                     2 => "Finished",
                 }
+            };
+
+        public static DisplayPatientAssessmentsDTO AssessmentToPatientAssessmentsDTO(Assessments assessment) =>
+            new DisplayPatientAssessmentsDTO
+            {
+                AssessmentID = assessment.AssessmentID,
+                Extremity = assessment.Extremity,
+                Joint = assessment.Joint,
+                AssessmentStatus = assessment.AssessmentStatus switch
+                {
+                    0 => "Archived",
+                    1 => "Ongoing",
+                    2 => "Finished",
+                },
+                AssessmentStartDate = assessment.AssessmentDate.ToString("yyyy-MM-dd hh:mm tt"),
+                AssessmentEndDate = assessment.AssessmentEndDate.HasValue ? assessment.AssessmentEndDate.Value.ToString("yyyy-MM-dd hh:mm tt") : "N/A"
             };
     }
 }

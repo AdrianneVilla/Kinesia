@@ -91,6 +91,71 @@ namespace Kinesia.Assessment
             }
         }
 
+        public async Task DisplayPatientAssessments(string patientID)
+        {
+            var url = $"http://localhost:5000/api/assessment/patient?patientID={patientID}";
+            var response = await client.GetAsync(url);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var json = await response.Content.ReadAsStringAsync();
+                var assessments = JsonConvert.DeserializeObject<List<DisplayPatientAssessmentsDTO>>(json);
+
+                CustomDataGrid.SetDoubleBuffering(PageObjects.patientDetails.AssessmentGrid, true);
+                PageObjects.patientDetails.AssessmentGrid.SuspendLayout();
+                PageObjects.patientDetails.AssessmentGrid.AutoGenerateColumns = false;
+                PageObjects.patientDetails.AssessmentGrid.Columns.Clear();
+
+                PageObjects.patientDetails.AssessmentGrid.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "AssessmentID",
+                    DataPropertyName = "AssessmentID",
+                    HeaderText = "Assessment ID"
+                });
+
+                PageObjects.patientDetails.AssessmentGrid.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "Extremity",
+                    DataPropertyName = "Extremity",
+                    HeaderText = "Extremity"
+                });
+
+                PageObjects.patientDetails.AssessmentGrid.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "Joint",
+                    DataPropertyName = "Joint",
+                    HeaderText = "Joint"
+                });
+
+                PageObjects.patientDetails.AssessmentGrid.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "AssessmentStatus",
+                    DataPropertyName = "AssessmentStatus",
+                    HeaderText = "Status"
+                });
+
+                PageObjects.patientDetails.AssessmentGrid.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "AssessmentStartDate",
+                    DataPropertyName = "AssessmentStartDate",
+                    HeaderText = "Start Date"
+                });
+
+                PageObjects.patientDetails.AssessmentGrid.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    Name = "AssessmentEndDate",
+                    DataPropertyName = "AssessmentEndDate",
+                    HeaderText = "End Date"
+                });
+
+                PageObjects.patientDetails.AssessmentGrid.DataSource = assessments;
+                PageObjects.patientDetails.AssessmentGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+                CustomDataGrid.StyleDataGridWithSpacing(PageObjects.patientDetails.AssessmentGrid);
+                PageObjects.patientDetails.AssessmentGrid.ResumeLayout();
+            }
+        }
+
         public async Task GetAssessmentDetails(string assessmentID)
         {
             try
@@ -114,6 +179,7 @@ namespace Kinesia.Assessment
                     PageObjects.assessmentDetails.JointSide = assessment.JointSide;
                     PageObjects.assessmentDetails.AssessmentStatus = assessment.AssessmentStatus;
                     PageObjects.assessmentDetails.AssessmentDate = assessment.AssessmentDate;
+                    PageObjects.assessmentDetails.AssessmentEndDate = assessment.AssessmentEndDate;
 
                     PageObjects.RemoveResources(ref PageObjects.CurrentControl);
                     PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.assessmentDetails);

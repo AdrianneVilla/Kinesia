@@ -31,7 +31,7 @@
             btnAstraProCamera = new OrganizationProfile.CustomButton();
             btnGoniometer = new OrganizationProfile.CustomButton();
             label2 = new System.Windows.Forms.Label();
-            customButton3 = new OrganizationProfile.CustomButton();
+            btnClose = new OrganizationProfile.CustomButton();
             SuspendLayout();
             // 
             // btnAstraProCamera
@@ -89,24 +89,25 @@
             label2.Text = "Select Instrument";
             label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // customButton3
+            // btnClose
             // 
-            customButton3.BackColor = System.Drawing.Color.Transparent;
-            customButton3.BackgroundColor = System.Drawing.Color.Transparent;
-            customButton3.BackgroundImage = Properties.Resources.newSmallClose;
-            customButton3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            customButton3.BorderColor = System.Drawing.Color.PaleVioletRed;
-            customButton3.BorderRadius = 15;
-            customButton3.BorderSize = 0;
-            customButton3.FlatAppearance.BorderSize = 0;
-            customButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            customButton3.ForeColor = System.Drawing.Color.Transparent;
-            customButton3.Location = new System.Drawing.Point(476, 29);
-            customButton3.Name = "customButton3";
-            customButton3.Size = new System.Drawing.Size(39, 30);
-            customButton3.TabIndex = 23;
-            customButton3.TextColor = System.Drawing.Color.Transparent;
-            customButton3.UseVisualStyleBackColor = false;
+            btnClose.BackColor = System.Drawing.Color.Transparent;
+            btnClose.BackgroundColor = System.Drawing.Color.Transparent;
+            btnClose.BackgroundImage = Properties.Resources.newSmallClose;
+            btnClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            btnClose.BorderColor = System.Drawing.Color.PaleVioletRed;
+            btnClose.BorderRadius = 15;
+            btnClose.BorderSize = 0;
+            btnClose.FlatAppearance.BorderSize = 0;
+            btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnClose.ForeColor = System.Drawing.Color.Transparent;
+            btnClose.Location = new System.Drawing.Point(476, 29);
+            btnClose.Name = "btnClose";
+            btnClose.Size = new System.Drawing.Size(39, 30);
+            btnClose.TabIndex = 23;
+            btnClose.TextColor = System.Drawing.Color.Transparent;
+            btnClose.UseVisualStyleBackColor = false;
+            btnClose.Click += btnClose_Click;
             // 
             // SelectTool
             // 
@@ -114,7 +115,7 @@
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             BackColor = System.Drawing.Color.White;
             ClientSize = new System.Drawing.Size(539, 450);
-            Controls.Add(customButton3);
+            Controls.Add(btnClose);
             Controls.Add(label2);
             Controls.Add(btnGoniometer);
             Controls.Add(btnAstraProCamera);
@@ -130,6 +131,6 @@
         private OrganizationProfile.CustomButton btnAstraProCamera;
         private OrganizationProfile.CustomButton btnGoniometer;
         private System.Windows.Forms.Label label2;
-        private OrganizationProfile.CustomButton customButton3;
+        private OrganizationProfile.CustomButton btnClose;
     }
 }

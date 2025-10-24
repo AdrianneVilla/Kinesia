@@ -21,7 +21,7 @@ namespace Kinesia.Patients
         }
 
         public string SelectedPatient { get { return lblSelectedPatient.Text; } set { lblSelectedPatient.Text = value; } }
-        public string PatientName { get {  return lblPatientName.Text; } set { lblPatientName.Text = value; } }
+        public string PatientName { get { return lblPatientName.Text; } set { lblPatientName.Text = value; } }
         public string PatientID { get { return lblPatientID.Text; } set { lblPatientID.Text = value; } }
         public string Status { get { return lblStatus.Text; } set { lblStatus.Text = value; } }
         public string DateAdded { get { return lblDateAdded.Text; } set { lblDateAdded.Text = value; } }
@@ -32,6 +32,7 @@ namespace Kinesia.Patients
         public string Address { get { return lblAddress.Text; } set { lblAddress.Text = value; } }
         public string Birthdate { get { return lblBirthdate.Text; } set { lblBirthdate.Text = value; } }
         public CustomButton BtnArchive { get { return btnArchive; } }
+        public DataGridView AssessmentGrid { get { return dataGridAssessment; } }
         private async void btnEditInfo_Click(object sender, EventArgs e)
         {
             DataHolder.PatientDataHolder = new PatientDataHolder();
@@ -109,5 +110,6 @@ namespace Kinesia.Patients
                 }
             }
         }
+
     }
 }

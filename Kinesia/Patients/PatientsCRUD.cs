@@ -248,42 +248,44 @@ namespace Kinesia.Patients
                 var patient = JsonConvert.DeserializeObject<PatientsDTO>(json);
 
                 // will create PatientDetails user control
-                var patientDetails = new PatientDetails();
+                PageObjects.patientDetails = new PatientDetails();
 
                 // will set the data of the patient to the labels
-                patientDetails.PatientID = patient.PatientID;
-                patientDetails.SelectedPatient = patient.PatientID;
-                patientDetails.PatientName = $"{patient.FirstName} {patient.MiddleName} {patient.LastName}";
-                patientDetails.Gender = patient.Gender;
-                patientDetails.Contact = patient.Contact;
-                patientDetails.Age = patient.Age.ToString();
-                patientDetails.Address = patient.Address;
-                patientDetails.Birthdate = patient.Birthdate.ToString("yyyy-MM-dd");
+                PageObjects.patientDetails.PatientID = patient.PatientID;
+                PageObjects.patientDetails.SelectedPatient = patient.PatientID;
+                PageObjects.patientDetails.PatientName = $"{patient.FirstName} {patient.MiddleName} {patient.LastName}";
+                PageObjects.patientDetails.Gender = patient.Gender;
+                PageObjects.patientDetails.Contact = patient.Contact;
+                PageObjects.patientDetails.Age = patient.Age.ToString();
+                PageObjects.patientDetails.Address = patient.Address;
+                PageObjects.patientDetails.Birthdate = patient.Birthdate.ToString("yyyy-MM-dd");
 
                 // 1 = Active
                 // 0 = Inactive
                 if (patient.Status == 1)
                 {
-                    patientDetails.Status = "Active";
-                    patientDetails.BtnArchive.Tag = "Active";
+                    PageObjects.patientDetails.Status = "Active";
+                    PageObjects.patientDetails.BtnArchive.Tag = "Active";
                 }
                 else
                 {
-                    patientDetails.Status = "Inactive";
-                    patientDetails.BtnArchive.Tag = "Inactive";
-                    patientDetails.BtnArchive.Image = Properties.Resources.Unarchive;
-                    patientDetails.BtnArchive.Text = "Unarchive Patient";
-                    patientDetails.BtnArchive.ForeColor = Color.FromArgb(18, 90, 211);
-                    patientDetails.BtnArchive.BackColor = Color.FromArgb(223, 236, 250);
-                    patientDetails.BtnArchive.BorderColor = Color.FromArgb(18, 90, 211);
+                    PageObjects.patientDetails.Status = "Inactive";
+                    PageObjects.patientDetails.BtnArchive.Tag = "Inactive";
+                    PageObjects.patientDetails.BtnArchive.Image = Properties.Resources.Unarchive;
+                    PageObjects.patientDetails.BtnArchive.Text = "Unarchive Patient";
+                    PageObjects.patientDetails.BtnArchive.ForeColor = Color.FromArgb(18, 90, 211);
+                    PageObjects.patientDetails.BtnArchive.BackColor = Color.FromArgb(223, 236, 250);
+                    PageObjects.patientDetails.BtnArchive.BorderColor = Color.FromArgb(18, 90, 211);
                 }
 
-                patientDetails.DateAdded = patient.DateAdded.ToString();
-                patientDetails.LastArchiveDate = patient.LastArchiveDate;
+                PageObjects.patientDetails.DateAdded = patient.DateAdded.ToString();
+                PageObjects.patientDetails.LastArchiveDate = patient.LastArchiveDate;
+
+                await Queries.AssessmentQueries.DisplayPatientAssessments(patientID);
 
                 PageObjects.RemoveResources(ref PageObjects.CurrentControl);
-                PageObjects.dashboard.ContentsPanel.Controls.Add(patientDetails);
-                PageObjects.CurrentControl = patientDetails;
+                PageObjects.dashboard.ContentsPanel.Controls.Add( PageObjects.patientDetails);
+                PageObjects.CurrentControl = PageObjects.patientDetails;
             }
             else
             {

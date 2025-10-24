@@ -31,6 +31,7 @@ namespace Kinesia.Assessment
         public string JointSide { get { return lblJointSide.Text; } set { lblJointSide.Text = value; } }
         public string AssessmentStatus { get { return lblAssessmentStatus.Text; } set { lblAssessmentStatus.Text = value; } }
         public string AssessmentDate { get { return lblAssessmentDate.Text; } set { lblAssessmentDate.Text = value; } }
+        public string AssessmentEndDate { get { return lblAssessmentEndDate.Text; } set { lblAssessmentEndDate.Text = value; } }    
         public DataGridView GetROMGrid { get { return dataGridROM; } set { dataGridROM = value; } }
 
         private void btnAddRom_Click(object sender, EventArgs e)
