@@ -99,7 +99,7 @@ namespace Kinesia.Assessment
                     await Queries.LogsQueries.AddLog($"Added ROM for {PageObjects.assessmentDetails.AssessmentID}", "ROM");
                     clearAllInputs();
                     CustomDialog.Show("ROM added successfully!", "Add ROM Notification", CustomDialogButtons.OK, CustomDialogIcons.Information);
-                    await Queries.ROMQueries.DisplayROM(PageObjects.assessmentDetails.AssessmentID);
+                    await Queries.ROMQueries.DisplayROM(PageObjects.assessmentDetails.AssessmentID, "All");
                     this.Close();
                 }
                 else

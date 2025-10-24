@@ -26,9 +26,9 @@ namespace KinesiaAPI.Controllers
             _context = context;
         }
 
-        // GET: api/rom?assessmentID={}
+        // GET: api/rom?assessmentID={}&movement={}
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<DisplayROMsDTO>>> GetROM(string assessmentID)
+        public async Task<ActionResult<IEnumerable<DisplayROMsDTO>>> GetROM(string assessmentID, string movement)
         {
             try
             {
@@ -46,6 +46,23 @@ namespace KinesiaAPI.Controllers
                                 Deficit = ROMHelper.CalculateDeficit(r.Rom, a.Joint, r.Movement),
                                 Date = r.Date.ToString("yyyy-MM-dd hh:mm")
                             };
+
+                if (movement == "Flexion")
+                {
+                    query = query.Where(r => r.Movement == "Flexion");
+                }
+                else if(movement == "Extension")
+                {
+                    query = query.Where(r => r.Movement == "Extension");
+                }
+                else if(movement == "Abduction")
+                {
+                    query = query.Where(r => r.Movement == "Abduction");
+                }
+                else if(movement == "Adduction")
+                {
+                    query = query.Where(r => r.Movement == "Adduction");
+                }
 
                 var ROMs = await query.ToListAsync();
 
@@ -99,6 +116,23 @@ namespace KinesiaAPI.Controllers
             var ROMs = await query.ToListAsync();
 
             return Ok(ROMs);
+        }
+
+        // GET: api/rom/generate-graph?assessmentID={}&movement={}
+        [HttpGet("generate-graph")]
+        public async Task<ActionResult<IEnumerable<ROMGraphDTO>>> GenerateROMGraph(string assessmentID, string movement)
+        {
+            var result = await (from r in _context.ROM
+                         join a in _context.Assessments on r.AssessmentID equals a.AssessmentID
+                         where a.AssessmentID == assessmentID && r.Movement == movement
+                         orderby r.Date
+                         select new ROMGraphDTO
+                         {
+                             Rom = r.Rom,
+                             Date = r.Date
+                         }).ToListAsync();
+
+            return Ok(result);
         }
 
         // PUT: api/ROMs/5

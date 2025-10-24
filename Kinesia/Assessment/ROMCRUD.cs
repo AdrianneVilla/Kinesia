@@ -1,8 +1,10 @@
 ﻿using KinesiaLibrary.DTOs;
 using KinesiaLibrary.DTOs.ROMDTOs;
 using Newtonsoft.Json;
+using ScottPlot.ArrowShapes;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -15,11 +17,11 @@ namespace Kinesia.Assessment
     {
         private readonly HttpClient client = ApiClient.Instance;
 
-        public async Task DisplayROM(string assessmentID)
+        public async Task DisplayROM(string assessmentID, string movement)
         {
             try
             {
-                var url = $"http://localhost:5000/api/rom?assessmentID={assessmentID}";
+                var url = $"http://localhost:5000/api/rom?assessmentID={assessmentID}&movement={movement}";
                 var response = await client.GetAsync(url);
 
                 if (response.IsSuccessStatusCode)
@@ -143,6 +145,49 @@ namespace Kinesia.Assessment
                 return false;
             }
         }
+
+        public async Task GenerateROMGraph(string assessmentID, string movement)
+        {
+            PageObjects.assessmentDetails.RomPlot.Plot.Clear();
+            var assessmentDatesList = new List<DateTime>();
+            var romValuesList = new List<double>();
+
+            var url = $"http://localhost:5000/api/rom/generate-graph?assessmentID={assessmentID}&movement={movement}";
+            var response = await client.GetAsync(url);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var json = await response.Content.ReadAsStringAsync();
+                var roms = JsonConvert.DeserializeObject<List<ROMGraphDTO>>(json);
+
+                foreach(var rom in roms)
+                {
+                    assessmentDatesList.Add(rom.Date);
+                    romValuesList.Add(rom.Rom);
+                    Debug.WriteLine(rom.Date);
+                    Debug.WriteLine(rom.Rom);
+                }
+
+                double[] dateDoubles = assessmentDatesList.Select(date => date.ToOADate()).ToArray();
+                double[] romValues = romValuesList.ToArray();
+
+                PageObjects.assessmentDetails.RomPlot.Plot.Add.Scatter(dateDoubles, romValues);
+
+                // will use the automatic DateTime generator (my previous suggestion)
+                PageObjects.assessmentDetails.RomPlot.Plot.Axes.Bottom.TickGenerator = new ScottPlot.TickGenerators.DateTimeAutomatic();
+                PageObjects.assessmentDetails.RomPlot.Plot.Axes.Bottom.TickLabelStyle.Rotation = 45;
+
+                PageObjects.assessmentDetails.RomPlot.Plot.Title($"{movement} Progress");
+                PageObjects.assessmentDetails.RomPlot.Plot.XLabel("Date of Tracking");
+                PageObjects.assessmentDetails.RomPlot.Plot.YLabel("Range of Motion (degrees)");
+
+                // will re-scale the axes to fit the new data
+                PageObjects.assessmentDetails.RomPlot.Plot.Axes.AutoScale();
+
+                PageObjects.assessmentDetails.RomPlot.Refresh();
+            }
+        }
+
         public bool IsROMDetailsComplete(AddROMDTO newROM)
         {
             // will return true if the ROM details was complete

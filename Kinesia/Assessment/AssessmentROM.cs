@@ -358,7 +358,7 @@ namespace Kinesia.Assessment
             if (success)
             {
                 MessageBox.Show("Range of Motion data saved successfully!", "Save Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                await Queries.ROMQueries.DisplayROM(PageObjects.assessmentDetails.AssessmentID);
+                await Queries.ROMQueries.DisplayROM(PageObjects.assessmentDetails.AssessmentID, "All");
                 this.Close();
             }
             // Error dialogs are handled within AddROM

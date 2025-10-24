@@ -10,11 +10,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ScottPlot;
+using ScottPlot.WinForms;
 
 namespace Kinesia.Assessment
 {
     public partial class AssessmentDetails : UserControl
     {
+        string currentMovement = "All";
         public AssessmentDetails()
         {
             this.Anchor = AnchorStyles.Right | AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Bottom;
@@ -33,6 +36,7 @@ namespace Kinesia.Assessment
         public string AssessmentDate { get { return lblAssessmentDate.Text; } set { lblAssessmentDate.Text = value; } }
         public string AssessmentEndDate { get { return lblAssessmentEndDate.Text; } set { lblAssessmentEndDate.Text = value; } }
         public DataGridView GetROMGrid { get { return dataGridROM; } set { dataGridROM = value; } }
+        public FormsPlot RomPlot { get { return romPlot; } }
 
         private void btnAddRom_Click(object sender, EventArgs e)
         {
@@ -90,7 +94,7 @@ namespace Kinesia.Assessment
 
         private async void AssessmentDetails_Paint(object sender, PaintEventArgs e)
         {
-            await Queries.ROMQueries.DisplayROM(AssessmentID);
+            await Queries.ROMQueries.DisplayROM(AssessmentID, currentMovement);
         }
 
         private async void btnFinishAssessment_Click(object sender, EventArgs e)
@@ -155,7 +159,7 @@ namespace Kinesia.Assessment
 
         private async void btnArchive_Click(object sender, EventArgs e)
         {
-            if(lblAssessmentStatus.Text == "Ongoing")
+            if (lblAssessmentStatus.Text == "Ongoing")
             {
                 CustomDialog.Show("You cannot archive an ongoing assessment!\nYou need to set the status of assessment as Finished.", "Archive Alert", CustomDialogButtons.OK, CustomDialogIcons.Error);
             }
@@ -178,6 +182,153 @@ namespace Kinesia.Assessment
                         await Queries.AssessmentQueries.GetAssessmentDetails(lblSelectedAssessment.Text);
                     }
                 }
+            }
+        }
+
+        private async void btnAll_Click(object sender, EventArgs e)
+        {
+            if(currentMovement != "All")
+            {
+                currentMovement = "All";
+                switchMovement(currentMovement);
+                romPlot.Plot.Clear();
+                romPlot.Plot.Title("No selected movement");
+                romPlot.Plot.XLabel("Date of Tracking");
+                romPlot.Plot.YLabel("Range of Motion (degrees)");
+                romPlot.Refresh();
+                await Queries.ROMQueries.DisplayROM(AssessmentID, currentMovement);
+            }
+        }
+
+        private async void btnFlexion_Click(object sender, EventArgs e)
+        {
+            if(currentMovement != "Flexion")
+            {
+                currentMovement = "Flexion";
+                switchMovement(currentMovement);
+                await Queries.ROMQueries.GenerateROMGraph(lblSelectedAssessment.Text, "Flexion");
+                await Queries.ROMQueries.DisplayROM(AssessmentID, currentMovement);
+            }
+           
+        }
+
+        private async void btnExtension_Click(object sender, EventArgs e)
+        {
+            if (currentMovement != "Extension")
+            {
+                currentMovement = "Extension";
+                switchMovement(currentMovement);
+                await Queries.ROMQueries.GenerateROMGraph(lblSelectedAssessment.Text, "Extension");
+                await Queries.ROMQueries.DisplayROM(AssessmentID, currentMovement);
+            }
+        }
+
+        private async void btnAbduction_Click(object sender, EventArgs e)
+        {
+            if (currentMovement != "Abduction")
+            {
+                currentMovement = "Abduction";
+                switchMovement(currentMovement);
+                await Queries.ROMQueries.GenerateROMGraph(lblSelectedAssessment.Text, "Abduction");
+                await Queries.ROMQueries.DisplayROM(AssessmentID, currentMovement);
+            }
+        }
+
+        private async void btnAdduction_Click(object sender, EventArgs e)
+        {
+            if (currentMovement != "Adduction")
+            {
+                currentMovement = "Adduction";
+                switchMovement(currentMovement);
+                await Queries.ROMQueries.GenerateROMGraph(lblSelectedAssessment.Text, "Adduction");
+                await Queries.ROMQueries.DisplayROM(AssessmentID, currentMovement);
+            }
+        }
+
+        private void switchMovement(string movement)
+        {
+            switch (movement)
+            {
+                case "All":
+                    btnAll.BackgroundColor = System.Drawing.Color.FromArgb(18, 90, 211);
+                    btnAll.ForeColor = System.Drawing.Color.White;
+
+                    btnFlexion.BackgroundColor = System.Drawing.Color.Gainsboro;
+                    btnFlexion.ForeColor = System.Drawing.Color.Gray;
+
+                    btnExtension.BackgroundColor = System.Drawing.Color.Gainsboro;
+                    btnExtension.ForeColor = System.Drawing.Color.Gray;
+
+                    btnAbduction.BackgroundColor = System.Drawing.Color.Gainsboro;
+                    btnAbduction.ForeColor = System.Drawing.Color.Gray;
+
+                    btnAdduction.BackgroundColor = System.Drawing.Color.Gainsboro;
+                    btnAdduction.ForeColor = System.Drawing.Color.Gray;
+                    break;
+                case "Flexion":
+                    btnAll.BackgroundColor = System.Drawing.Color.Gainsboro;
+                    btnAll.ForeColor = System.Drawing.Color.Gray;
+
+                    btnFlexion.BackgroundColor = System.Drawing.Color.FromArgb(18, 90, 211);
+                    btnFlexion.ForeColor = System.Drawing.Color.White;
+
+                    btnExtension.BackgroundColor = System.Drawing.Color.Gainsboro;
+                    btnExtension.ForeColor = System.Drawing.Color.Gray;
+
+                    btnAbduction.BackgroundColor = System.Drawing.Color.Gainsboro;
+                    btnAbduction.ForeColor = System.Drawing.Color.Gray;
+
+                    btnAdduction.BackgroundColor = System.Drawing.Color.Gainsboro;
+                    btnAdduction.ForeColor = System.Drawing.Color.Gray;
+                    break;
+                case "Extension":
+                    btnAll.BackgroundColor = System.Drawing.Color.Gainsboro;
+                    btnAll.ForeColor = System.Drawing.Color.Gray;
+
+                    btnFlexion.BackgroundColor = System.Drawing.Color.Gainsboro;
+                    btnFlexion.ForeColor = System.Drawing.Color.Gray;
+
+                    btnExtension.BackgroundColor = System.Drawing.Color.FromArgb(18, 90, 211);
+                    btnExtension.ForeColor = System.Drawing.Color.White;
+
+                    btnAbduction.BackgroundColor = System.Drawing.Color.Gainsboro;
+                    btnAbduction.ForeColor = System.Drawing.Color.Gray;
+
+                    btnAdduction.BackgroundColor = System.Drawing.Color.Gainsboro;
+                    btnAdduction.ForeColor = System.Drawing.Color.Gray;
+                    break;
+                case "Abduction":
+                    btnAll.BackgroundColor = System.Drawing.Color.Gainsboro;
+                    btnAll.ForeColor = System.Drawing.Color.Gray;
+
+                    btnFlexion.BackgroundColor = System.Drawing.Color.Gainsboro;
+                    btnFlexion.ForeColor = System.Drawing.Color.Gray;
+
+                    btnExtension.BackgroundColor = System.Drawing.Color.Gainsboro;
+                    btnExtension.ForeColor = System.Drawing.Color.Gray;
+
+                    btnAbduction.BackgroundColor = System.Drawing.Color.FromArgb(18, 90, 211);
+                    btnAbduction.ForeColor = System.Drawing.Color.White;
+
+                    btnAdduction.BackgroundColor = System.Drawing.Color.Gainsboro;
+                    btnAdduction.ForeColor = System.Drawing.Color.Gray;
+                    break;
+                case "Adduction":
+                    btnAll.BackgroundColor = System.Drawing.Color.Gainsboro;
+                    btnAll.ForeColor = System.Drawing.Color.Gray;
+
+                    btnFlexion.BackgroundColor = System.Drawing.Color.Gainsboro;
+                    btnFlexion.ForeColor = System.Drawing.Color.Gray;
+
+                    btnExtension.BackgroundColor = System.Drawing.Color.Gainsboro;
+                    btnExtension.ForeColor = System.Drawing.Color.Gray;
+
+                    btnAbduction.BackgroundColor = System.Drawing.Color.Gainsboro;
+                    btnAbduction.ForeColor = System.Drawing.Color.Gray;
+
+                    btnAdduction.BackgroundColor = System.Drawing.Color.FromArgb(18, 90, 211);
+                    btnAdduction.ForeColor = System.Drawing.Color.White;
+                    break;
             }
         }
     }
