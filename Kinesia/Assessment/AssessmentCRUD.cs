@@ -396,6 +396,28 @@ namespace Kinesia.Assessment
             }
         }
 
+        public async Task<bool> UpdateAssessmentStatus(string assessmentID, int status)
+        {
+            var url = $"http://localhost:5000/api/assessment/{assessmentID}/status";
+
+            var updatedAssessment = new AssessmentUpdateStatusDTO();
+            updatedAssessment.AssessmentID = assessmentID;
+
+            if(status == 2)
+            {
+                updatedAssessment.AssessmentEndDate = DateTime.Now;
+            }
+
+            updatedAssessment.AssessmentStatus = status;
+
+            var json = JsonConvert.SerializeObject(updatedAssessment);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            var response = await client.PutAsync(url, content);
+
+            return response.IsSuccessStatusCode;
+        }
+
         private Point hoveredCell = new Point(-1, -1);
 
         // for cell button
@@ -503,10 +525,6 @@ namespace Kinesia.Assessment
                         if (status == "Ongoing" || status == "Finished")
                         {
                             icon = Properties.Resources.newArchive;
-                        }
-                        else if (status == "Archived")
-                        {
-                            icon = Properties.Resources.Unarchive;
                         }
                     }
 

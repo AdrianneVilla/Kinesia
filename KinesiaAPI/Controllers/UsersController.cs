@@ -300,7 +300,7 @@ namespace KinesiaAPI.Controllers
         {
             if (string.IsNullOrEmpty(updatedUser.UserID) || id != updatedUser.UserID)
             {
-                return BadRequest("Patient ID is required and must match the URL parameter");
+                return BadRequest("User ID is required and must match the URL parameter");
             }
 
             var existingUser = await _context.Users.FindAsync(id);

@@ -363,6 +363,39 @@ namespace KinesiaAPI.Controllers
             return NoContent();
         }
 
+        // PUT: api/assessment/assessmentID/status
+        [HttpPut("{id}/status")]
+        public async Task<IActionResult> UpdateAssessmentStatus(string id, AssessmentUpdateStatusDTO updatedAssessment)
+        {
+            if (string.IsNullOrEmpty(updatedAssessment.AssessmentID) || id != updatedAssessment.AssessmentID)
+            {
+                return BadRequest("Assessment ID is required and must match the URL parameter");
+            }
+
+            try
+            {
+                var existingAssessment = await _context.Assessments.FindAsync(id);
+
+                if (updatedAssessment.AssessmentEndDate.HasValue)
+                    existingAssessment.AssessmentEndDate = updatedAssessment.AssessmentEndDate.Value;
+
+                existingAssessment.AssessmentStatus = updatedAssessment.AssessmentStatus;
+
+                await _context.SaveChangesAsync();
+                return NoContent();
+            }
+            catch (DbException dbEx)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    $"Database error: {dbEx.Message}");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    $"Unexpected error: {ex.Message}");
+            }
+        }
+
 
         // POST: api/Assessments
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754

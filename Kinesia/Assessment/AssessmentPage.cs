@@ -182,9 +182,39 @@ namespace Kinesia.Assessment
         {
             if(e.RowIndex >= 0)
             {
-                if(e.ColumnIndex == 5)
+                if(e.ColumnIndex == 5) // column 5 is for viewing assessment
                 {
                     await Queries.AssessmentQueries.GetAssessmentDetails(assessmentList[e.RowIndex]);
+                }
+                else if(e.ColumnIndex == 7) // column 7 is for archive / unarcive assessment
+                {
+                    if (dataGridAssessments.Rows[e.RowIndex].Cells[4].Value.Equals("Ongoing"))
+                    {
+                        CustomDialog.Show("You cannot archive an ongoing assessment!\nYou need to set the status of assessment as Finished.", "Archive Alert", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                        return;
+                    }
+
+                    if (dataGridAssessments.Rows[e.RowIndex].Cells[4].Value.Equals("Finished"))
+                    {
+                        DialogResult archiveDiag = CustomDialog.Show($"Are you sure you want to archive {assessmentList[e.RowIndex]}?",
+                            "Archive Alert", CustomDialogButtons.YesNo, CustomDialogIcons.Question);
+
+                        if(archiveDiag == DialogResult.Yes)
+                        {
+                            var success = await Queries.AssessmentQueries.UpdateAssessmentStatus(assessmentList[e.RowIndex], 0);
+
+                            if (success)
+                            {
+                                // will add a log for archiving an assessment
+                                await Queries.LogsQueries.AddLog($"Archived {assessmentList[e.RowIndex]}", "Assessment");
+
+                                CustomDialog.Show($"{assessmentList[e.RowIndex]} has been archived successfully!", "Archive Alert", CustomDialogButtons.OK, CustomDialogIcons.Information);
+
+                                await Queries.AssessmentQueries.DisplayAssessments(searchData, currentExtremityTab, currentStatusTab, cbSort.Texts);
+                            }
+                        }
+                    }
+
                 }
             }
         }

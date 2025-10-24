@@ -41,6 +41,7 @@
             label4 = new System.Windows.Forms.Label();
             label11 = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
+            label6 = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
             flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             lblAge = new System.Windows.Forms.Label();
@@ -50,6 +51,7 @@
             lblJointSide = new System.Windows.Forms.Label();
             lblAssessmentStatus = new System.Windows.Forms.Label();
             lblAssessmentDate = new System.Windows.Forms.Label();
+            lblAssessmentEndDate = new System.Windows.Forms.Label();
             btnFinishAssessment = new OrganizationProfile.CustomButton();
             dataGridROM = new System.Windows.Forms.DataGridView();
             flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
@@ -58,8 +60,6 @@
             btnAddRom = new OrganizationProfile.CustomButton();
             btnBack = new OrganizationProfile.CustomButton();
             btnPrint = new OrganizationProfile.CustomButton();
-            label6 = new System.Windows.Forms.Label();
-            lblAssessmentEndDate = new System.Windows.Forms.Label();
             flowLayoutPanel1.SuspendLayout();
             flowLayoutPanel2.SuspendLayout();
             flowLayoutPanel3.SuspendLayout();
@@ -215,6 +215,17 @@
             label3.TabIndex = 1;
             label3.Text = "Assessment Status:";
             // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold);
+            label6.Location = new System.Drawing.Point(3, 198);
+            label6.Margin = new System.Windows.Forms.Padding(3, 0, 3, 10);
+            label6.Name = "label6";
+            label6.Size = new System.Drawing.Size(166, 23);
+            label6.TabIndex = 7;
+            label6.Text = "Assessment Start Date:";
+            // 
             // label1
             // 
             label1.AutoSize = true;
@@ -319,6 +330,17 @@
             lblAssessmentDate.TabIndex = 10;
             lblAssessmentDate.Text = " <Assessment Start Date>";
             // 
+            // lblAssessmentEndDate
+            // 
+            lblAssessmentEndDate.AutoSize = true;
+            lblAssessmentEndDate.Font = new System.Drawing.Font("Poppins", 9.75F);
+            lblAssessmentEndDate.Location = new System.Drawing.Point(3, 231);
+            lblAssessmentEndDate.Margin = new System.Windows.Forms.Padding(3, 0, 3, 10);
+            lblAssessmentEndDate.Name = "lblAssessmentEndDate";
+            lblAssessmentEndDate.Size = new System.Drawing.Size(167, 23);
+            lblAssessmentEndDate.TabIndex = 11;
+            lblAssessmentEndDate.Text = " <Assessment End Date>";
+            // 
             // btnFinishAssessment
             // 
             btnFinishAssessment.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
@@ -343,6 +365,7 @@
             btnFinishAssessment.Text = "Finish Assessment";
             btnFinishAssessment.TextColor = System.Drawing.Color.White;
             btnFinishAssessment.UseVisualStyleBackColor = false;
+            btnFinishAssessment.Click += btnFinishAssessment_Click;
             // 
             // dataGridROM
             // 
@@ -493,28 +516,6 @@
             btnPrint.TextColor = System.Drawing.Color.White;
             btnPrint.UseVisualStyleBackColor = false;
             btnPrint.Click += btnPrint_Click;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold);
-            label6.Location = new System.Drawing.Point(3, 198);
-            label6.Margin = new System.Windows.Forms.Padding(3, 0, 3, 10);
-            label6.Name = "label6";
-            label6.Size = new System.Drawing.Size(166, 23);
-            label6.TabIndex = 7;
-            label6.Text = "Assessment Start Date:";
-            // 
-            // lblAssessmentEndDate
-            // 
-            lblAssessmentEndDate.AutoSize = true;
-            lblAssessmentEndDate.Font = new System.Drawing.Font("Poppins", 9.75F);
-            lblAssessmentEndDate.Location = new System.Drawing.Point(3, 231);
-            lblAssessmentEndDate.Margin = new System.Windows.Forms.Padding(3, 0, 3, 10);
-            lblAssessmentEndDate.Name = "lblAssessmentEndDate";
-            lblAssessmentEndDate.Size = new System.Drawing.Size(167, 23);
-            lblAssessmentEndDate.TabIndex = 11;
-            lblAssessmentEndDate.Text = " <Assessment End Date>";
             // 
             // AssessmentDetails
             // 

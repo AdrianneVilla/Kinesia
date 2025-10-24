@@ -31,7 +31,7 @@ namespace Kinesia.Assessment
         public string JointSide { get { return lblJointSide.Text; } set { lblJointSide.Text = value; } }
         public string AssessmentStatus { get { return lblAssessmentStatus.Text; } set { lblAssessmentStatus.Text = value; } }
         public string AssessmentDate { get { return lblAssessmentDate.Text; } set { lblAssessmentDate.Text = value; } }
-        public string AssessmentEndDate { get { return lblAssessmentEndDate.Text; } set { lblAssessmentEndDate.Text = value; } }    
+        public string AssessmentEndDate { get { return lblAssessmentEndDate.Text; } set { lblAssessmentEndDate.Text = value; } }
         public DataGridView GetROMGrid { get { return dataGridROM; } set { dataGridROM = value; } }
 
         private void btnAddRom_Click(object sender, EventArgs e)
@@ -45,9 +45,22 @@ namespace Kinesia.Assessment
             }
         }
 
-        private async void AssessmentDetails_Load(object sender, EventArgs e)
+        private void AssessmentDetails_Load(object sender, EventArgs e)
         {
-            
+            if (lblAssessmentStatus.Text == "Archived")
+            {
+                btnArchive.Visible = false;
+                btnEdit.Visible = false;
+                btnFinishAssessment.Visible = false;
+                btnAddRom.Enabled = false;
+            }
+
+            if(lblAssessmentStatus.Text == "Finished")
+            {
+                btnEdit.Visible = false;
+                btnFinishAssessment.Visible = false;
+                btnAddRom.Enabled = false;
+            }
         }
 
         private void btnPrint_Click(object sender, EventArgs e)
@@ -76,6 +89,54 @@ namespace Kinesia.Assessment
             if (dataGridROM.Rows.Count <= 0)
             {
                 btnPrint.Enabled = false;
+            }
+        }
+
+        private async void btnFinishAssessment_Click(object sender, EventArgs e)
+        {
+            int status = 2;
+
+            DialogResult finishDiag = CustomDialog.Show("Are you sure you want to set this assessment as Finished?", "Finish Assessment Alert",
+                CustomDialogButtons.YesNo, CustomDialogIcons.Question);
+
+            if(finishDiag == DialogResult.Yes)
+            {
+                if(dataGridROM.Rows.Count <= 0)
+                {
+                    DialogResult confirmFinishDiag = CustomDialog.Show("This assessment has no ROM records. Finishing this assessment will set it to Archived.\n" +
+                        "Do you really want to continue?", "Finish Assessment Alert", CustomDialogButtons.YesNo, CustomDialogIcons.Warning);
+
+                    if(confirmFinishDiag == DialogResult.Yes)
+                    {
+                        status = 0;
+                    }
+                    else
+                    {
+                        return;
+                    }
+                }
+
+                var success = await Queries.AssessmentQueries.UpdateAssessmentStatus(lblSelectedAssessment.Text, status);
+
+                if (success)
+                {
+                    if(status == 0)
+                    {
+                        // will add a log for archiving an assessment
+                        await Queries.LogsQueries.AddLog($"Archived {lblSelectedAssessment.Text}", "Assessment");
+
+                        CustomDialog.Show($"{lblSelectedAssessment.Text} has been archived successfully!", "Finish Assessment Alert", CustomDialogButtons.OK, CustomDialogIcons.Information);
+                    }
+                    else
+                    {
+                        // will add a log for archiving an assessment
+                        await Queries.LogsQueries.AddLog($"Finished {lblSelectedAssessment.Text}", "Assessment");
+
+                        CustomDialog.Show($"{lblSelectedAssessment.Text} has set to Finished successfully!", "Finish Assessment Alert", CustomDialogButtons.OK, CustomDialogIcons.Information);
+                    }
+
+                        await Queries.AssessmentQueries.GetAssessmentDetails(lblSelectedAssessment.Text);
+                }
             }
         }
     }
