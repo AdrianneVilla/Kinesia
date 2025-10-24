@@ -60,6 +60,11 @@
             btnAddRom = new OrganizationProfile.CustomButton();
             btnBack = new OrganizationProfile.CustomButton();
             btnPrint = new OrganizationProfile.CustomButton();
+            btnAll = new OrganizationProfile.CustomButton();
+            btnFlexion = new OrganizationProfile.CustomButton();
+            btnExtension = new OrganizationProfile.CustomButton();
+            btnAbduction = new OrganizationProfile.CustomButton();
+            btnAdduction = new OrganizationProfile.CustomButton();
             flowLayoutPanel1.SuspendLayout();
             flowLayoutPanel2.SuspendLayout();
             flowLayoutPanel3.SuspendLayout();
@@ -372,10 +377,11 @@
             dataGridROM.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             dataGridROM.BackgroundColor = System.Drawing.Color.White;
             dataGridROM.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridROM.Location = new System.Drawing.Point(68, 530);
+            dataGridROM.Location = new System.Drawing.Point(68, 541);
             dataGridROM.Name = "dataGridROM";
-            dataGridROM.Size = new System.Drawing.Size(1091, 179);
+            dataGridROM.Size = new System.Drawing.Size(1091, 168);
             dataGridROM.TabIndex = 37;
+            dataGridROM.RowsAdded += dataGridROM_RowsAdded;
             // 
             // flowLayoutPanel5
             // 
@@ -412,6 +418,7 @@
             btnArchive.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             btnArchive.TextColor = System.Drawing.Color.FromArgb(210, 64, 66);
             btnArchive.UseVisualStyleBackColor = false;
+            btnArchive.Click += btnArchive_Click;
             // 
             // btnEdit
             // 
@@ -517,11 +524,116 @@
             btnPrint.UseVisualStyleBackColor = false;
             btnPrint.Click += btnPrint_Click;
             // 
+            // btnAll
+            // 
+            btnAll.BackColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            btnAll.BackgroundColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            btnAll.BorderColor = System.Drawing.Color.PaleVioletRed;
+            btnAll.BorderRadius = 5;
+            btnAll.BorderSize = 0;
+            btnAll.FlatAppearance.BorderSize = 0;
+            btnAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnAll.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline);
+            btnAll.ForeColor = System.Drawing.Color.White;
+            btnAll.Location = new System.Drawing.Point(68, 492);
+            btnAll.Margin = new System.Windows.Forms.Padding(1);
+            btnAll.Name = "btnAll";
+            btnAll.Size = new System.Drawing.Size(93, 46);
+            btnAll.TabIndex = 41;
+            btnAll.Text = "All";
+            btnAll.TextColor = System.Drawing.Color.White;
+            btnAll.UseVisualStyleBackColor = false;
+            // 
+            // btnFlexion
+            // 
+            btnFlexion.BackColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            btnFlexion.BackgroundColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            btnFlexion.BorderColor = System.Drawing.Color.PaleVioletRed;
+            btnFlexion.BorderRadius = 5;
+            btnFlexion.BorderSize = 0;
+            btnFlexion.FlatAppearance.BorderSize = 0;
+            btnFlexion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnFlexion.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline);
+            btnFlexion.ForeColor = System.Drawing.Color.White;
+            btnFlexion.Location = new System.Drawing.Point(163, 492);
+            btnFlexion.Margin = new System.Windows.Forms.Padding(1);
+            btnFlexion.Name = "btnFlexion";
+            btnFlexion.Size = new System.Drawing.Size(141, 46);
+            btnFlexion.TabIndex = 42;
+            btnFlexion.Text = "Flexion";
+            btnFlexion.TextColor = System.Drawing.Color.White;
+            btnFlexion.UseVisualStyleBackColor = false;
+            // 
+            // btnExtension
+            // 
+            btnExtension.BackColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            btnExtension.BackgroundColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            btnExtension.BorderColor = System.Drawing.Color.PaleVioletRed;
+            btnExtension.BorderRadius = 5;
+            btnExtension.BorderSize = 0;
+            btnExtension.FlatAppearance.BorderSize = 0;
+            btnExtension.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnExtension.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline);
+            btnExtension.ForeColor = System.Drawing.Color.White;
+            btnExtension.Location = new System.Drawing.Point(307, 492);
+            btnExtension.Margin = new System.Windows.Forms.Padding(1);
+            btnExtension.Name = "btnExtension";
+            btnExtension.Size = new System.Drawing.Size(141, 46);
+            btnExtension.TabIndex = 43;
+            btnExtension.Text = "Extension";
+            btnExtension.TextColor = System.Drawing.Color.White;
+            btnExtension.UseVisualStyleBackColor = false;
+            // 
+            // btnAbduction
+            // 
+            btnAbduction.BackColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            btnAbduction.BackgroundColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            btnAbduction.BorderColor = System.Drawing.Color.PaleVioletRed;
+            btnAbduction.BorderRadius = 5;
+            btnAbduction.BorderSize = 0;
+            btnAbduction.FlatAppearance.BorderSize = 0;
+            btnAbduction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnAbduction.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline);
+            btnAbduction.ForeColor = System.Drawing.Color.White;
+            btnAbduction.Location = new System.Drawing.Point(450, 492);
+            btnAbduction.Margin = new System.Windows.Forms.Padding(1);
+            btnAbduction.Name = "btnAbduction";
+            btnAbduction.Size = new System.Drawing.Size(141, 46);
+            btnAbduction.TabIndex = 44;
+            btnAbduction.Text = "Abduction";
+            btnAbduction.TextColor = System.Drawing.Color.White;
+            btnAbduction.UseVisualStyleBackColor = false;
+            // 
+            // btnAdduction
+            // 
+            btnAdduction.BackColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            btnAdduction.BackgroundColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            btnAdduction.BorderColor = System.Drawing.Color.PaleVioletRed;
+            btnAdduction.BorderRadius = 5;
+            btnAdduction.BorderSize = 0;
+            btnAdduction.FlatAppearance.BorderSize = 0;
+            btnAdduction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnAdduction.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline);
+            btnAdduction.ForeColor = System.Drawing.Color.White;
+            btnAdduction.Location = new System.Drawing.Point(593, 492);
+            btnAdduction.Margin = new System.Windows.Forms.Padding(1);
+            btnAdduction.Name = "btnAdduction";
+            btnAdduction.Size = new System.Drawing.Size(141, 46);
+            btnAdduction.TabIndex = 45;
+            btnAdduction.Text = "Adduction";
+            btnAdduction.TextColor = System.Drawing.Color.White;
+            btnAdduction.UseVisualStyleBackColor = false;
+            // 
             // AssessmentDetails
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             BackColor = System.Drawing.Color.White;
+            Controls.Add(btnAdduction);
+            Controls.Add(btnAbduction);
+            Controls.Add(btnExtension);
+            Controls.Add(btnFlexion);
+            Controls.Add(btnAll);
             Controls.Add(btnPrint);
             Controls.Add(btnBack);
             Controls.Add(dataGridROM);
@@ -580,5 +692,10 @@
         private System.Windows.Forms.Label lblAssessmentDate;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label lblAssessmentEndDate;
+        private OrganizationProfile.CustomButton btnAll;
+        private OrganizationProfile.CustomButton btnFlexion;
+        private OrganizationProfile.CustomButton btnExtension;
+        private OrganizationProfile.CustomButton btnAbduction;
+        private OrganizationProfile.CustomButton btnAdduction;
     }
 }

@@ -27,16 +27,18 @@ namespace Kinesia.Assessment
             {
                 cbMovement.Items.Add("Flexion");
                 cbMovement.Items.Add("Extension");
+                cbMovement.Items.Add("Abduction");
+                cbMovement.Items.Add("Adduction");
             }
             else if (PageObjects.assessmentDetails.Joint == "Elbow and Forearm")
             {
                 cbMovement.Items.Add("Flexion");
-                cbMovement.Items.Add("Reflexion");
+                cbMovement.Items.Add("Extension");
             }
             else if (PageObjects.assessmentDetails.Joint == "Hip")
             {
                 cbMovement.Items.Add("Flexion");
-                cbMovement.Items.Add("Reflexion");
+                cbMovement.Items.Add("Extension");
             }
             else if (PageObjects.assessmentDetails.Joint == "Knee")
             {

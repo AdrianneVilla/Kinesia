@@ -55,11 +55,17 @@ namespace Kinesia.Assessment
                 btnAddRom.Enabled = false;
             }
 
-            if(lblAssessmentStatus.Text == "Finished")
+            if (lblAssessmentStatus.Text == "Finished")
             {
                 btnEdit.Visible = false;
                 btnFinishAssessment.Visible = false;
                 btnAddRom.Enabled = false;
+            }
+
+            if (lblJoint.Text != "Shoulder")
+            {
+                btnAdduction.Visible = false;
+                btnAbduction.Visible = false;
             }
         }
 
@@ -85,11 +91,6 @@ namespace Kinesia.Assessment
         private async void AssessmentDetails_Paint(object sender, PaintEventArgs e)
         {
             await Queries.ROMQueries.DisplayROM(AssessmentID);
-
-            if (dataGridROM.Rows.Count <= 0)
-            {
-                btnPrint.Enabled = false;
-            }
         }
 
         private async void btnFinishAssessment_Click(object sender, EventArgs e)
@@ -99,14 +100,14 @@ namespace Kinesia.Assessment
             DialogResult finishDiag = CustomDialog.Show("Are you sure you want to set this assessment as Finished?", "Finish Assessment Alert",
                 CustomDialogButtons.YesNo, CustomDialogIcons.Question);
 
-            if(finishDiag == DialogResult.Yes)
+            if (finishDiag == DialogResult.Yes)
             {
-                if(dataGridROM.Rows.Count <= 0)
+                if (dataGridROM.Rows.Count <= 0)
                 {
                     DialogResult confirmFinishDiag = CustomDialog.Show("This assessment has no ROM records. Finishing this assessment will set it to Archived.\n" +
                         "Do you really want to continue?", "Finish Assessment Alert", CustomDialogButtons.YesNo, CustomDialogIcons.Warning);
 
-                    if(confirmFinishDiag == DialogResult.Yes)
+                    if (confirmFinishDiag == DialogResult.Yes)
                     {
                         status = 0;
                     }
@@ -120,7 +121,7 @@ namespace Kinesia.Assessment
 
                 if (success)
                 {
-                    if(status == 0)
+                    if (status == 0)
                     {
                         // will add a log for archiving an assessment
                         await Queries.LogsQueries.AddLog($"Archived {lblSelectedAssessment.Text}", "Assessment");
@@ -135,7 +136,47 @@ namespace Kinesia.Assessment
                         CustomDialog.Show($"{lblSelectedAssessment.Text} has set to Finished successfully!", "Finish Assessment Alert", CustomDialogButtons.OK, CustomDialogIcons.Information);
                     }
 
+                    await Queries.AssessmentQueries.GetAssessmentDetails(lblSelectedAssessment.Text);
+                }
+            }
+        }
+
+        private void dataGridROM_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            if (dataGridROM.Rows.Count > 1 || (dataGridROM.Rows.Count == 1 && !dataGridROM.Rows[0].IsNewRow))
+            {
+                btnPrint.Enabled = true;
+            }
+            else
+            {
+                btnPrint.Enabled = false;
+            }
+        }
+
+        private async void btnArchive_Click(object sender, EventArgs e)
+        {
+            if(lblAssessmentStatus.Text == "Ongoing")
+            {
+                CustomDialog.Show("You cannot archive an ongoing assessment!\nYou need to set the status of assessment as Finished.", "Archive Alert", CustomDialogButtons.OK, CustomDialogIcons.Error);
+            }
+            else
+            {
+                DialogResult archiveDiag = CustomDialog.Show($"Are you sure you want to archive {lblSelectedAssessment.Text}?",
+                            "Archive Alert", CustomDialogButtons.YesNo, CustomDialogIcons.Question);
+
+                if (archiveDiag == DialogResult.Yes)
+                {
+                    var success = await Queries.AssessmentQueries.UpdateAssessmentStatus(lblSelectedAssessment.Text, 0);
+
+                    if (success)
+                    {
+                        // will add a log for archiving an assessment
+                        await Queries.LogsQueries.AddLog($"Archived {lblSelectedAssessment.Text}", "Assessment");
+
+                        CustomDialog.Show($"{lblSelectedAssessment.Text} has been archived successfully!", "Archive Alert", CustomDialogButtons.OK, CustomDialogIcons.Information);
+
                         await Queries.AssessmentQueries.GetAssessmentDetails(lblSelectedAssessment.Text);
+                    }
                 }
             }
         }
