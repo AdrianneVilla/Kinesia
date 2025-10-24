@@ -62,12 +62,14 @@
             label19 = new System.Windows.Forms.Label();
             label5 = new System.Windows.Forms.Label();
             btnBack = new OrganizationProfile.CustomButton();
+            panelBorder2 = new WindowsFormsApp2.CustomButton.PanelBorder();
             flowLayoutPanel1.SuspendLayout();
             flowLayoutPanel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridAssessment).BeginInit();
             flowLayoutPanel2.SuspendLayout();
             flowLayoutPanel3.SuspendLayout();
             panelBorder1.SuspendLayout();
+            panelBorder2.SuspendLayout();
             SuspendLayout();
             // 
             // lblSelectedPatient
@@ -220,14 +222,14 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             dataGridAssessment.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridAssessment.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridAssessment.Location = new System.Drawing.Point(78, 519);
+            dataGridAssessment.Location = new System.Drawing.Point(15, 18);
             dataGridAssessment.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             dataGridAssessment.Name = "dataGridAssessment";
             dataGridAssessment.ShowCellErrors = false;
             dataGridAssessment.ShowCellToolTips = false;
             dataGridAssessment.ShowEditingIcon = false;
             dataGridAssessment.ShowRowErrors = false;
-            dataGridAssessment.Size = new System.Drawing.Size(1275, 295);
+            dataGridAssessment.Size = new System.Drawing.Size(1243, 259);
             dataGridAssessment.TabIndex = 25;
             // 
             // flowLayoutPanel2
@@ -552,16 +554,29 @@
             btnBack.UseVisualStyleBackColor = false;
             btnBack.Click += btnBack_Click;
             // 
+            // panelBorder2
+            // 
+            panelBorder2.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            panelBorder2.BackColor = System.Drawing.Color.FromArgb(207, 249, 238);
+            panelBorder2.BorderRadius = 15;
+            panelBorder2.Color = System.Drawing.Color.BurlyWood;
+            panelBorder2.Controls.Add(dataGridAssessment);
+            panelBorder2.ForeColor = System.Drawing.Color.Black;
+            panelBorder2.Location = new System.Drawing.Point(78, 528);
+            panelBorder2.Name = "panelBorder2";
+            panelBorder2.Size = new System.Drawing.Size(1275, 294);
+            panelBorder2.TabIndex = 29;
+            // 
             // PatientDetails
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             BackColor = System.Drawing.Color.White;
+            Controls.Add(panelBorder2);
             Controls.Add(btnArchive);
             Controls.Add(btnEdit);
             Controls.Add(flowLayoutPanel3);
             Controls.Add(flowLayoutPanel2);
-            Controls.Add(dataGridAssessment);
             Controls.Add(label17);
             Controls.Add(panelBorder1);
             Controls.Add(flowLayoutPanel5);
@@ -584,6 +599,7 @@
             flowLayoutPanel3.PerformLayout();
             panelBorder1.ResumeLayout(false);
             panelBorder1.PerformLayout();
+            panelBorder2.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
 
@@ -623,5 +639,6 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblArchiveDate;
+        private WindowsFormsApp2.CustomButton.PanelBorder panelBorder2;
     }
 }

@@ -42,6 +42,7 @@
             dataGridAssessments = new System.Windows.Forms.DataGridView();
             btnAddAssessment = new OrganizationProfile.CustomButton();
             panelBorder2 = new WindowsFormsApp2.CustomButton.PanelBorder();
+            panelBorder3 = new WindowsFormsApp2.CustomButton.PanelBorder();
             cbSort = new CustomControls.RJControls.RJComboBox();
             btnLowerExtremities = new OrganizationProfile.CustomButton();
             btnUpperExtremities = new OrganizationProfile.CustomButton();
@@ -51,7 +52,6 @@
             pictureBox1 = new System.Windows.Forms.PictureBox();
             txtSearchBar = new CustomControls.RJControls.RJTextBox();
             lblHiddenForFocus = new System.Windows.Forms.Label();
-            panelBorder3 = new WindowsFormsApp2.CustomButton.PanelBorder();
             PatientHolder.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridAssessments).BeginInit();
@@ -98,7 +98,7 @@
             PatientHolder.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             PatientHolder.Name = "PatientHolder";
             PatientHolder.Padding = new System.Windows.Forms.Padding(6);
-            PatientHolder.Size = new System.Drawing.Size(1317, 586);
+            PatientHolder.Size = new System.Drawing.Size(1317, 636);
             PatientHolder.TabIndex = 10;
             // 
             // flowLayoutPanel1
@@ -238,7 +238,7 @@
             dataGridAssessments.ShowCellToolTips = false;
             dataGridAssessments.ShowEditingIcon = false;
             dataGridAssessments.ShowRowErrors = false;
-            dataGridAssessments.Size = new System.Drawing.Size(1285, 514);
+            dataGridAssessments.Size = new System.Drawing.Size(1285, 564);
             dataGridAssessments.TabIndex = 11;
             dataGridAssessments.CellContentClick += dataGridView1_CellContentClick;
             // 
@@ -287,6 +287,17 @@
             panelBorder2.Name = "panelBorder2";
             panelBorder2.Size = new System.Drawing.Size(1317, 67);
             panelBorder2.TabIndex = 16;
+            // 
+            // panelBorder3
+            // 
+            panelBorder3.BackColor = System.Drawing.Color.White;
+            panelBorder3.BorderRadius = 30;
+            panelBorder3.Color = System.Drawing.Color.BurlyWood;
+            panelBorder3.ForeColor = System.Drawing.Color.Black;
+            panelBorder3.Location = new System.Drawing.Point(1078, 8);
+            panelBorder3.Name = "panelBorder3";
+            panelBorder3.Size = new System.Drawing.Size(11, 54);
+            panelBorder3.TabIndex = 16;
             // 
             // cbSort
             // 
@@ -465,17 +476,6 @@
             lblHiddenForFocus.Size = new System.Drawing.Size(135, 15);
             lblHiddenForFocus.TabIndex = 18;
             lblHiddenForFocus.Text = "<Focus Label (Hidden)>";
-            // 
-            // panelBorder3
-            // 
-            panelBorder3.BackColor = System.Drawing.Color.White;
-            panelBorder3.BorderRadius = 30;
-            panelBorder3.Color = System.Drawing.Color.BurlyWood;
-            panelBorder3.ForeColor = System.Drawing.Color.Black;
-            panelBorder3.Location = new System.Drawing.Point(1078, 8);
-            panelBorder3.Name = "panelBorder3";
-            panelBorder3.Size = new System.Drawing.Size(11, 54);
-            panelBorder3.TabIndex = 16;
             // 
             // AssessmentPage
             // 

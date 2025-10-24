@@ -70,7 +70,6 @@
             btnLogs.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             btnLogs.BackColor = System.Drawing.Color.White;
             btnLogs.BackgroundColor = System.Drawing.Color.White;
-            btnLogs.BackgroundImage = Properties.Resources.btn_back;
             btnLogs.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             btnLogs.BorderColor = System.Drawing.Color.White;
             btnLogs.BorderRadius = 10;
@@ -79,7 +78,7 @@
             btnLogs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnLogs.Font = new System.Drawing.Font("Poppins", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             btnLogs.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
-            btnLogs.Image = (System.Drawing.Image)resources.GetObject("btnLogs.Image");
+            btnLogs.Image = Properties.Resources.logs_icons;
             btnLogs.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             btnLogs.Location = new System.Drawing.Point(24, 436);
             btnLogs.Margin = new System.Windows.Forms.Padding(4, 17, 4, 3);
@@ -98,7 +97,6 @@
             assessmentModule.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             assessmentModule.BackColor = System.Drawing.Color.White;
             assessmentModule.BackgroundColor = System.Drawing.Color.White;
-            assessmentModule.BackgroundImage = Properties.Resources.btn_back;
             assessmentModule.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             assessmentModule.BorderColor = System.Drawing.Color.White;
             assessmentModule.BorderRadius = 10;
@@ -107,7 +105,7 @@
             assessmentModule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             assessmentModule.Font = new System.Drawing.Font("Poppins", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             assessmentModule.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
-            assessmentModule.Image = (System.Drawing.Image)resources.GetObject("assessmentModule.Image");
+            assessmentModule.Image = Properties.Resources.assessment_icon;
             assessmentModule.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             assessmentModule.Location = new System.Drawing.Point(24, 269);
             assessmentModule.Margin = new System.Windows.Forms.Padding(4, 17, 4, 3);
@@ -125,7 +123,6 @@
             usersModule.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             usersModule.BackColor = System.Drawing.Color.White;
             usersModule.BackgroundColor = System.Drawing.Color.White;
-            usersModule.BackgroundImage = Properties.Resources.btn_back;
             usersModule.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             usersModule.BorderColor = System.Drawing.Color.White;
             usersModule.BorderRadius = 10;
@@ -135,7 +132,7 @@
             usersModule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             usersModule.Font = new System.Drawing.Font("Poppins", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             usersModule.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
-            usersModule.Image = (System.Drawing.Image)resources.GetObject("usersModule.Image");
+            usersModule.Image = Properties.Resources.users_icon;
             usersModule.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             usersModule.Location = new System.Drawing.Point(24, 354);
             usersModule.Margin = new System.Windows.Forms.Padding(4, 17, 4, 3);
@@ -153,7 +150,6 @@
             patientModule.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             patientModule.BackColor = System.Drawing.Color.White;
             patientModule.BackgroundColor = System.Drawing.Color.White;
-            patientModule.BackgroundImage = Properties.Resources.btn_back;
             patientModule.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             patientModule.BorderColor = System.Drawing.Color.White;
             patientModule.BorderRadius = 10;
@@ -163,7 +159,7 @@
             patientModule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             patientModule.Font = new System.Drawing.Font("Poppins", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             patientModule.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
-            patientModule.Image = (System.Drawing.Image)resources.GetObject("patientModule.Image");
+            patientModule.Image = Properties.Resources.patients_icon;
             patientModule.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             patientModule.Location = new System.Drawing.Point(24, 186);
             patientModule.Margin = new System.Windows.Forms.Padding(4, 17, 4, 3);
@@ -189,8 +185,8 @@
             dashboardModule.FlatAppearance.BorderSize = 0;
             dashboardModule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             dashboardModule.Font = new System.Drawing.Font("Poppins", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            dashboardModule.ForeColor = System.Drawing.Color.Transparent;
-            dashboardModule.Image = (System.Drawing.Image)resources.GetObject("dashboardModule.Image");
+            dashboardModule.ForeColor = System.Drawing.Color.White;
+            dashboardModule.Image = Properties.Resources.dashboard_icon;
             dashboardModule.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             dashboardModule.Location = new System.Drawing.Point(24, 107);
             dashboardModule.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -199,7 +195,7 @@
             dashboardModule.Size = new System.Drawing.Size(240, 58);
             dashboardModule.TabIndex = 0;
             dashboardModule.Text = "Dashboard";
-            dashboardModule.TextColor = System.Drawing.Color.Transparent;
+            dashboardModule.TextColor = System.Drawing.Color.White;
             dashboardModule.UseVisualStyleBackColor = false;
             dashboardModule.Click += dashboardModule_Click;
             // 

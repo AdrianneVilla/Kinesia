@@ -67,6 +67,7 @@
             btnExtension = new OrganizationProfile.CustomButton();
             btnAbduction = new OrganizationProfile.CustomButton();
             btnAdduction = new OrganizationProfile.CustomButton();
+            panelBorder1 = new WindowsFormsApp2.CustomButton.PanelBorder();
             flowLayoutPanel1.SuspendLayout();
             flowLayoutPanel2.SuspendLayout();
             flowLayoutPanel3.SuspendLayout();
@@ -74,6 +75,7 @@
             ((System.ComponentModel.ISupportInitialize)dataGridROM).BeginInit();
             flowLayoutPanel5.SuspendLayout();
             panelGraph.SuspendLayout();
+            panelBorder1.SuspendLayout();
             SuspendLayout();
             // 
             // lblSelectedAssessment
@@ -129,7 +131,7 @@
             flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             flowLayoutPanel1.Location = new System.Drawing.Point(71, 95);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new System.Drawing.Size(439, 393);
+            flowLayoutPanel1.Size = new System.Drawing.Size(440, 393);
             flowLayoutPanel1.TabIndex = 36;
             // 
             // flowLayoutPanel2
@@ -380,9 +382,9 @@
             dataGridROM.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             dataGridROM.BackgroundColor = System.Drawing.Color.White;
             dataGridROM.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridROM.Location = new System.Drawing.Point(68, 541);
+            dataGridROM.Location = new System.Drawing.Point(16, 14);
             dataGridROM.Name = "dataGridROM";
-            dataGridROM.Size = new System.Drawing.Size(1091, 168);
+            dataGridROM.Size = new System.Drawing.Size(1062, 127);
             dataGridROM.TabIndex = 37;
             dataGridROM.RowsAdded += dataGridROM_RowsAdded;
             // 
@@ -394,7 +396,7 @@
             flowLayoutPanel5.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
             flowLayoutPanel5.Location = new System.Drawing.Point(516, 95);
             flowLayoutPanel5.Name = "flowLayoutPanel5";
-            flowLayoutPanel5.Size = new System.Drawing.Size(643, 54);
+            flowLayoutPanel5.Size = new System.Drawing.Size(644, 54);
             flowLayoutPanel5.TabIndex = 38;
             // 
             // btnArchive
@@ -411,7 +413,7 @@
             btnArchive.ForeColor = System.Drawing.Color.FromArgb(210, 64, 66);
             btnArchive.Image = (System.Drawing.Image)resources.GetObject("btnArchive.Image");
             btnArchive.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            btnArchive.Location = new System.Drawing.Point(441, 3);
+            btnArchive.Location = new System.Drawing.Point(442, 3);
             btnArchive.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             btnArchive.Name = "btnArchive";
             btnArchive.Padding = new System.Windows.Forms.Padding(6, 3, 18, 0);
@@ -437,7 +439,7 @@
             btnEdit.ForeColor = System.Drawing.Color.FromArgb(21, 134, 105);
             btnEdit.Image = (System.Drawing.Image)resources.GetObject("btnEdit.Image");
             btnEdit.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            btnEdit.Location = new System.Drawing.Point(235, 3);
+            btnEdit.Location = new System.Drawing.Point(236, 3);
             btnEdit.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             btnEdit.Name = "btnEdit";
             btnEdit.Padding = new System.Windows.Forms.Padding(6, 3, 18, 0);
@@ -450,19 +452,20 @@
             // 
             // panelGraph
             // 
+            panelGraph.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             panelGraph.Controls.Add(romPlot);
             panelGraph.Location = new System.Drawing.Point(516, 155);
             panelGraph.Name = "panelGraph";
-            panelGraph.Size = new System.Drawing.Size(667, 272);
+            panelGraph.Size = new System.Drawing.Size(644, 272);
             panelGraph.TabIndex = 31;
             // 
             // romPlot
             // 
+            romPlot.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             romPlot.DisplayScale = 1F;
-            romPlot.Dock = System.Windows.Forms.DockStyle.Fill;
             romPlot.Location = new System.Drawing.Point(0, 0);
             romPlot.Name = "romPlot";
-            romPlot.Size = new System.Drawing.Size(667, 272);
+            romPlot.Size = new System.Drawing.Size(644, 272);
             romPlot.TabIndex = 0;
             // 
             // btnAddRom
@@ -480,7 +483,7 @@
             btnAddRom.ForeColor = System.Drawing.Color.White;
             btnAddRom.Image = Properties.Resources.add_btn;
             btnAddRom.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnAddRom.Location = new System.Drawing.Point(976, 438);
+            btnAddRom.Location = new System.Drawing.Point(977, 438);
             btnAddRom.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             btnAddRom.Name = "btnAddRom";
             btnAddRom.Padding = new System.Windows.Forms.Padding(10, 3, 10, 0);
@@ -506,7 +509,7 @@
             btnBack.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
             btnBack.Image = (System.Drawing.Image)resources.GetObject("btnBack.Image");
             btnBack.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            btnBack.Location = new System.Drawing.Point(1014, 40);
+            btnBack.Location = new System.Drawing.Point(1015, 40);
             btnBack.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             btnBack.Name = "btnBack";
             btnBack.Padding = new System.Windows.Forms.Padding(0, 3, 35, 0);
@@ -533,7 +536,7 @@
             btnPrint.ForeColor = System.Drawing.Color.White;
             btnPrint.Image = Properties.Resources.add_btn;
             btnPrint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnPrint.Location = new System.Drawing.Point(785, 439);
+            btnPrint.Location = new System.Drawing.Point(786, 439);
             btnPrint.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             btnPrint.Name = "btnPrint";
             btnPrint.Padding = new System.Windows.Forms.Padding(10, 3, 10, 0);
@@ -649,11 +652,25 @@
             btnAdduction.UseVisualStyleBackColor = false;
             btnAdduction.Click += btnAdduction_Click;
             // 
+            // panelBorder1
+            // 
+            panelBorder1.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            panelBorder1.BackColor = System.Drawing.Color.FromArgb(207, 249, 238);
+            panelBorder1.BorderRadius = 30;
+            panelBorder1.Color = System.Drawing.Color.BurlyWood;
+            panelBorder1.Controls.Add(dataGridROM);
+            panelBorder1.ForeColor = System.Drawing.Color.Black;
+            panelBorder1.Location = new System.Drawing.Point(68, 543);
+            panelBorder1.Name = "panelBorder1";
+            panelBorder1.Size = new System.Drawing.Size(1092, 156);
+            panelBorder1.TabIndex = 46;
+            // 
             // AssessmentDetails
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             BackColor = System.Drawing.Color.White;
+            Controls.Add(panelBorder1);
             Controls.Add(btnAdduction);
             Controls.Add(panelGraph);
             Controls.Add(btnAbduction);
@@ -662,14 +679,13 @@
             Controls.Add(btnAll);
             Controls.Add(btnPrint);
             Controls.Add(btnBack);
-            Controls.Add(dataGridROM);
             Controls.Add(flowLayoutPanel1);
             Controls.Add(lblSelectedAssessment);
             Controls.Add(btnAddRom);
             Controls.Add(flowLayoutPanel5);
             Controls.Add(titleNav);
             Name = "AssessmentDetails";
-            Size = new System.Drawing.Size(1186, 712);
+            Size = new System.Drawing.Size(1187, 712);
             Load += AssessmentDetails_Load;
             Paint += AssessmentDetails_Paint;
             flowLayoutPanel1.ResumeLayout(false);
@@ -682,6 +698,7 @@
             ((System.ComponentModel.ISupportInitialize)dataGridROM).EndInit();
             flowLayoutPanel5.ResumeLayout(false);
             panelGraph.ResumeLayout(false);
+            panelBorder1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -726,5 +743,6 @@
         private OrganizationProfile.CustomButton btnAdduction;
         private System.Windows.Forms.Panel panelGraph;
         private ScottPlot.WinForms.FormsPlot romPlot;
+        private WindowsFormsApp2.CustomButton.PanelBorder panelBorder1;
     }
 }

@@ -31,6 +31,7 @@
             label1 = new System.Windows.Forms.Label();
             nameHolder = new System.Windows.Forms.Label();
             panelBorder2 = new WindowsFormsApp2.CustomButton.PanelBorder();
+            rjComboBox1 = new CustomControls.RJControls.RJComboBox();
             btnROM = new OrganizationProfile.CustomButton();
             btnAssessment = new OrganizationProfile.CustomButton();
             btnPatients = new OrganizationProfile.CustomButton();
@@ -40,9 +41,8 @@
             panelBorder1 = new WindowsFormsApp2.CustomButton.PanelBorder();
             dataGridLogs = new System.Windows.Forms.DataGridView();
             panelBorder3 = new WindowsFormsApp2.CustomButton.PanelBorder();
-            btnSearch = new OrganizationProfile.CustomButton();
             pictureBox1 = new System.Windows.Forms.PictureBox();
-            txtSearchBar = new CustomControls.RJControls.RJTextBox();
+            btnSearch = new OrganizationProfile.CustomButton();
             panelBorder2.SuspendLayout();
             panelBorder1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridLogs).BeginInit();
@@ -81,6 +81,7 @@
             panelBorder2.BackColor = System.Drawing.Color.White;
             panelBorder2.BorderRadius = 30;
             panelBorder2.Color = System.Drawing.Color.BurlyWood;
+            panelBorder2.Controls.Add(rjComboBox1);
             panelBorder2.Controls.Add(btnROM);
             panelBorder2.Controls.Add(btnAssessment);
             panelBorder2.Controls.Add(btnPatients);
@@ -93,6 +94,26 @@
             panelBorder2.Name = "panelBorder2";
             panelBorder2.Size = new System.Drawing.Size(1069, 67);
             panelBorder2.TabIndex = 15;
+            // 
+            // rjComboBox1
+            // 
+            rjComboBox1.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            rjComboBox1.BackColor = System.Drawing.Color.White;
+            rjComboBox1.BorderColor = System.Drawing.Color.Gray;
+            rjComboBox1.BorderSize = 1;
+            rjComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
+            rjComboBox1.Font = new System.Drawing.Font("Segoe UI", 10F);
+            rjComboBox1.ForeColor = System.Drawing.Color.DimGray;
+            rjComboBox1.IconColor = System.Drawing.Color.FromArgb(24, 90, 211);
+            rjComboBox1.ListBackColor = System.Drawing.Color.White;
+            rjComboBox1.ListTextColor = System.Drawing.Color.Black;
+            rjComboBox1.Location = new System.Drawing.Point(790, 10);
+            rjComboBox1.MinimumSize = new System.Drawing.Size(200, 30);
+            rjComboBox1.Name = "rjComboBox1";
+            rjComboBox1.Padding = new System.Windows.Forms.Padding(1);
+            rjComboBox1.Size = new System.Drawing.Size(273, 46);
+            rjComboBox1.TabIndex = 22;
+            rjComboBox1.Texts = "";
             // 
             // btnROM
             // 
@@ -228,9 +249,9 @@
             panelBorder1.Color = System.Drawing.Color.BurlyWood;
             panelBorder1.Controls.Add(dataGridLogs);
             panelBorder1.ForeColor = System.Drawing.Color.Black;
-            panelBorder1.Location = new System.Drawing.Point(86, 252);
+            panelBorder1.Location = new System.Drawing.Point(86, 236);
             panelBorder1.Name = "panelBorder1";
-            panelBorder1.Size = new System.Drawing.Size(1049, 410);
+            panelBorder1.Size = new System.Drawing.Size(1049, 436);
             panelBorder1.TabIndex = 16;
             // 
             // dataGridLogs
@@ -242,7 +263,7 @@
             dataGridLogs.Location = new System.Drawing.Point(10, 10);
             dataGridLogs.Margin = new System.Windows.Forms.Padding(10);
             dataGridLogs.Name = "dataGridLogs";
-            dataGridLogs.Size = new System.Drawing.Size(1029, 390);
+            dataGridLogs.Size = new System.Drawing.Size(1029, 416);
             dataGridLogs.TabIndex = 0;
             // 
             // panelBorder3
@@ -251,18 +272,25 @@
             panelBorder3.BackColor = System.Drawing.Color.White;
             panelBorder3.BackgroundImage = Properties.Resources.search_background_new;
             panelBorder3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            panelBorder3.BorderRadius = 10;
+            panelBorder3.BorderRadius = 30;
             panelBorder3.Color = System.Drawing.Color.BurlyWood;
-            panelBorder3.Controls.Add(btnSearch);
             panelBorder3.Controls.Add(pictureBox1);
-            panelBorder3.Controls.Add(txtSearchBar);
+            panelBorder3.Controls.Add(btnSearch);
             panelBorder3.ForeColor = System.Drawing.Color.Black;
-            panelBorder3.Location = new System.Drawing.Point(553, 47);
-            panelBorder3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            panelBorder3.Location = new System.Drawing.Point(559, 47);
             panelBorder3.Name = "panelBorder3";
-            panelBorder3.Padding = new System.Windows.Forms.Padding(6);
             panelBorder3.Size = new System.Drawing.Size(582, 59);
             panelBorder3.TabIndex = 17;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = Properties.Resources.search_icon;
+            pictureBox1.Location = new System.Drawing.Point(16, 17);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new System.Drawing.Size(33, 28);
+            pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 17;
+            pictureBox1.TabStop = false;
             // 
             // btnSearch
             // 
@@ -276,50 +304,15 @@
             btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnSearch.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             btnSearch.ForeColor = System.Drawing.Color.White;
-            btnSearch.Location = new System.Drawing.Point(679, 14);
+            btnSearch.Location = new System.Drawing.Point(448, 9);
             btnSearch.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             btnSearch.Name = "btnSearch";
             btnSearch.Padding = new System.Windows.Forms.Padding(2, 3, 0, 0);
             btnSearch.Size = new System.Drawing.Size(118, 40);
-            btnSearch.TabIndex = 14;
+            btnSearch.TabIndex = 16;
             btnSearch.Text = "Search";
             btnSearch.TextColor = System.Drawing.Color.White;
             btnSearch.UseVisualStyleBackColor = false;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = Properties.Resources.search_icon;
-            pictureBox1.Location = new System.Drawing.Point(16, 17);
-            pictureBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new System.Drawing.Size(33, 28);
-            pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 5;
-            pictureBox1.TabStop = false;
-            // 
-            // txtSearchBar
-            // 
-            txtSearchBar.BackColor = System.Drawing.Color.White;
-            txtSearchBar.BorderColor = System.Drawing.Color.White;
-            txtSearchBar.BorderFocusColor = System.Drawing.Color.White;
-            txtSearchBar.BorderRadius = 5;
-            txtSearchBar.BorderSize = 1;
-            txtSearchBar.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            txtSearchBar.ForeColor = System.Drawing.Color.FromArgb(64, 64, 64);
-            txtSearchBar.Location = new System.Drawing.Point(56, 10);
-            txtSearchBar.Margin = new System.Windows.Forms.Padding(5);
-            txtSearchBar.Multiline = false;
-            txtSearchBar.Name = "txtSearchBar";
-            txtSearchBar.Padding = new System.Windows.Forms.Padding(12, 8, 12, 0);
-            txtSearchBar.PasswordChar = false;
-            txtSearchBar.PlaceholderColor = System.Drawing.Color.DarkGray;
-            txtSearchBar.PlaceholderText = "";
-            txtSearchBar.SelectionLength = 0;
-            txtSearchBar.SelectionStart = 0;
-            txtSearchBar.Size = new System.Drawing.Size(388, 32);
-            txtSearchBar.TabIndex = 4;
-            txtSearchBar.Texts = "";
-            txtSearchBar.UnderlinedStyle = false;
             // 
             // LogsPage
             // 
@@ -356,11 +349,11 @@
         private CustomControls.RJControls.RJComboBox cbSort;
         private WindowsFormsApp2.CustomButton.PanelBorder panelBorder1;
         private System.Windows.Forms.DataGridView dataGridLogs;
+        private OrganizationProfile.CustomButton btnROM;
+        private OrganizationProfile.CustomButton btnAssessment;
         private WindowsFormsApp2.CustomButton.PanelBorder panelBorder3;
         private OrganizationProfile.CustomButton btnSearch;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private CustomControls.RJControls.RJTextBox txtSearchBar;
-        private OrganizationProfile.CustomButton btnROM;
-        private OrganizationProfile.CustomButton btnAssessment;
+        private CustomControls.RJControls.RJComboBox rjComboBox1;
     }
 }

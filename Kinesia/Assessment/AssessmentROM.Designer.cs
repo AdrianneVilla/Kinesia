@@ -143,6 +143,7 @@ namespace Kinesia.Assessment
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Poppins", 17F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.FromArgb(18, 90, 211);
             label1.Location = new Point(486, 12);
             label1.Name = "label1";
             label1.Size = new Size(224, 40);
@@ -153,10 +154,11 @@ namespace Kinesia.Assessment
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Poppins", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Font = new Font("Poppins", 14.25F);
+            label2.ForeColor = SystemColors.ControlDarkDark;
             label2.Location = new Point(486, 236);
             label2.Name = "label2";
-            label2.Size = new Size(185, 34);
+            label2.Size = new Size(173, 34);
             label2.TabIndex = 11;
             label2.Text = "Starting Position:";
             label2.TextAlign = ContentAlignment.TopCenter;
@@ -164,10 +166,11 @@ namespace Kinesia.Assessment
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Poppins", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Font = new Font("Poppins", 14.25F);
+            label3.ForeColor = SystemColors.ControlDarkDark;
             label3.Location = new Point(485, 286);
             label3.Name = "label3";
-            label3.Size = new Size(64, 34);
+            label3.Size = new Size(63, 34);
             label3.TabIndex = 12;
             label3.Text = "Rom:";
             label3.TextAlign = ContentAlignment.TopCenter;
@@ -195,10 +198,11 @@ namespace Kinesia.Assessment
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Poppins", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.Font = new Font("Poppins", 14.25F);
+            label4.ForeColor = SystemColors.ControlDarkDark;
             label4.Location = new Point(486, 71);
             label4.Name = "label4";
-            label4.Size = new Size(115, 34);
+            label4.Size = new Size(107, 34);
             label4.TabIndex = 13;
             label4.Text = "Extremity:";
             label4.TextAlign = ContentAlignment.TopCenter;
@@ -207,7 +211,8 @@ namespace Kinesia.Assessment
             // 
             lblExtremity.AutoSize = true;
             lblExtremity.Font = new Font("Poppins", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblExtremity.Location = new Point(607, 71);
+            lblExtremity.ForeColor = Color.Black;
+            lblExtremity.Location = new Point(712, 71);
             lblExtremity.Name = "lblExtremity";
             lblExtremity.Size = new Size(130, 34);
             lblExtremity.TabIndex = 14;
@@ -217,10 +222,11 @@ namespace Kinesia.Assessment
             // label5
             // 
             label5.AutoSize = true;
-            label5.Font = new Font("Poppins", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.Font = new Font("Poppins", 14.25F);
+            label5.ForeColor = SystemColors.ControlDarkDark;
             label5.Location = new Point(486, 111);
             label5.Name = "label5";
-            label5.Size = new Size(70, 34);
+            label5.Size = new Size(65, 34);
             label5.TabIndex = 15;
             label5.Text = "Joint:";
             label5.TextAlign = ContentAlignment.TopCenter;
@@ -229,7 +235,8 @@ namespace Kinesia.Assessment
             // 
             lblJoint.AutoSize = true;
             lblJoint.Font = new Font("Poppins", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblJoint.Location = new Point(607, 111);
+            lblJoint.ForeColor = Color.Black;
+            lblJoint.Location = new Point(712, 111);
             lblJoint.Name = "lblJoint";
             lblJoint.Size = new Size(85, 34);
             lblJoint.TabIndex = 16;
@@ -239,10 +246,11 @@ namespace Kinesia.Assessment
             // label6
             // 
             label6.AutoSize = true;
-            label6.Font = new Font("Poppins", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label6.Font = new Font("Poppins", 14.25F);
+            label6.ForeColor = SystemColors.ControlDarkDark;
             label6.Location = new Point(486, 154);
             label6.Name = "label6";
-            label6.Size = new Size(117, 34);
+            label6.Size = new Size(111, 34);
             label6.TabIndex = 17;
             label6.Text = "Joint Side:";
             label6.TextAlign = ContentAlignment.TopCenter;
@@ -251,7 +259,8 @@ namespace Kinesia.Assessment
             // 
             lblJointSide.AutoSize = true;
             lblJointSide.Font = new Font("Poppins", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblJointSide.Location = new Point(609, 154);
+            lblJointSide.ForeColor = Color.Black;
+            lblJointSide.Location = new Point(712, 154);
             lblJointSide.Name = "lblJointSide";
             lblJointSide.Size = new Size(132, 34);
             lblJointSide.TabIndex = 18;
@@ -261,10 +270,11 @@ namespace Kinesia.Assessment
             // label7
             // 
             label7.AutoSize = true;
-            label7.Font = new Font("Poppins", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label7.Font = new Font("Poppins", 14.25F);
+            label7.ForeColor = SystemColors.ControlDarkDark;
             label7.Location = new Point(486, 193);
             label7.Name = "label7";
-            label7.Size = new Size(140, 34);
+            label7.Size = new Size(134, 34);
             label7.TabIndex = 19;
             label7.Text = "Motion Type:";
             label7.TextAlign = ContentAlignment.TopCenter;
@@ -273,7 +283,8 @@ namespace Kinesia.Assessment
             // 
             lblMotionType.AutoSize = true;
             lblMotionType.Font = new Font("Poppins", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblMotionType.Location = new Point(632, 193);
+            lblMotionType.ForeColor = Color.Black;
+            lblMotionType.Location = new Point(712, 193);
             lblMotionType.Name = "lblMotionType";
             lblMotionType.Size = new Size(78, 34);
             lblMotionType.TabIndex = 20;
@@ -283,10 +294,11 @@ namespace Kinesia.Assessment
             // label8
             // 
             label8.AutoSize = true;
-            label8.Font = new Font("Poppins", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label8.Font = new Font("Poppins", 14.25F);
+            label8.ForeColor = SystemColors.ControlDarkDark;
             label8.Location = new Point(486, 329);
             label8.Name = "label8";
-            label8.Size = new Size(160, 34);
+            label8.Size = new Size(156, 34);
             label8.TabIndex = 21;
             label8.Text = "Normal Range:";
             label8.TextAlign = ContentAlignment.TopCenter;
@@ -295,7 +307,8 @@ namespace Kinesia.Assessment
             // 
             lblNormalRange.AutoSize = true;
             lblNormalRange.Font = new Font("Poppins", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblNormalRange.Location = new Point(652, 329);
+            lblNormalRange.ForeColor = Color.Black;
+            lblNormalRange.Location = new Point(712, 329);
             lblNormalRange.Name = "lblNormalRange";
             lblNormalRange.Size = new Size(175, 34);
             lblNormalRange.TabIndex = 22;
@@ -306,7 +319,8 @@ namespace Kinesia.Assessment
             // 
             lblDeficit.AutoSize = true;
             lblDeficit.Font = new Font("Poppins", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblDeficit.Location = new Point(652, 372);
+            lblDeficit.ForeColor = Color.Black;
+            lblDeficit.Location = new Point(712, 372);
             lblDeficit.Name = "lblDeficit";
             lblDeficit.Size = new Size(99, 34);
             lblDeficit.TabIndex = 24;
@@ -316,10 +330,11 @@ namespace Kinesia.Assessment
             // label10
             // 
             label10.AutoSize = true;
-            label10.Font = new Font("Poppins", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label10.Font = new Font("Poppins", 14.25F);
+            label10.ForeColor = SystemColors.ControlDarkDark;
             label10.Location = new Point(486, 372);
             label10.Name = "label10";
-            label10.Size = new Size(84, 34);
+            label10.Size = new Size(79, 34);
             label10.TabIndex = 23;
             label10.Text = "Deficit:";
             label10.TextAlign = ContentAlignment.TopCenter;
@@ -328,6 +343,7 @@ namespace Kinesia.Assessment
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.White;
             ClientSize = new Size(1061, 599);
             Controls.Add(lblDeficit);
             Controls.Add(label10);
