@@ -211,7 +211,7 @@
             cbJointSide.Padding = new System.Windows.Forms.Padding(1);
             cbJointSide.Size = new System.Drawing.Size(316, 45);
             cbJointSide.TabIndex = 4;
-            cbJointSide.Texts = "Joint Side";
+            cbJointSide.Texts = "Joint Joint Side";
             // 
             // label10
             // 

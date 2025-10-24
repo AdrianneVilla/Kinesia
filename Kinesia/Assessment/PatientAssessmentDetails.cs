@@ -32,7 +32,7 @@ namespace Kinesia.Assessment
             cbJoint.Items.Clear();
 
             cbJoint.Texts = "Select Joint";
-            cbJointSide.Texts = "Select Side";
+            cbJointSide.Texts = "Select Joint Side";
 
             if(cbExtremity.Texts.Equals("Upper Extremity"))
             {
@@ -41,7 +41,7 @@ namespace Kinesia.Assessment
             }
             else if(cbExtremity.Texts.Equals("Lower Extremity"))
             {
-                cbJoint.Items.Add("Hips");
+                cbJoint.Items.Add("Hip");
                 cbJoint.Items.Add("Knee");
             }
         }

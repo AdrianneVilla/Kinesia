@@ -24,9 +24,14 @@ namespace Kinesia.Components
 
         public DataGridView GetLogsGrid { get { return dataGridLogs; } }
 
-        private async void DashboardPage_Load(object sender, EventArgs e)
+        private void DashboardPage_Load(object sender, EventArgs e)
         {
-
+            if(SessionManager.Role != "Admin")
+            {
+                btnQuickAddUser.Visible = false;
+                lblRecentActivities.Visible = false;
+                panelRecentActivities.Visible = false;
+            }
         }
 
         private void label2_Click(object sender, EventArgs e)

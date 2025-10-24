@@ -49,10 +49,10 @@
             btnQuickAddPatient = new OrganizationProfile.CustomButton();
             btnQuickAddUser = new OrganizationProfile.CustomButton();
             btnQuickNewAssessment = new OrganizationProfile.CustomButton();
-            panelBorder4 = new WindowsFormsApp2.CustomButton.PanelBorder();
+            panelRecentActivities = new WindowsFormsApp2.CustomButton.PanelBorder();
             panelBorder6 = new WindowsFormsApp2.CustomButton.PanelBorder();
             dataGridLogs = new System.Windows.Forms.DataGridView();
-            label4 = new System.Windows.Forms.Label();
+            lblRecentActivities = new System.Windows.Forms.Label();
             flowLayoutPanel1.SuspendLayout();
             panelBorder5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -60,7 +60,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             panelBorder2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            panelBorder4.SuspendLayout();
+            panelRecentActivities.SuspendLayout();
             panelBorder6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridLogs).BeginInit();
             SuspendLayout();
@@ -307,7 +307,7 @@
             btnQuickAddUser.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             btnQuickAddUser.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
             btnQuickAddUser.Image = (System.Drawing.Image)resources.GetObject("btnQuickAddUser.Image");
-            btnQuickAddUser.Location = new System.Drawing.Point(428, 343);
+            btnQuickAddUser.Location = new System.Drawing.Point(749, 343);
             btnQuickAddUser.Margin = new System.Windows.Forms.Padding(3, 20, 20, 3);
             btnQuickAddUser.Name = "btnQuickAddUser";
             btnQuickAddUser.Padding = new System.Windows.Forms.Padding(0, 0, 0, 30);
@@ -332,7 +332,7 @@
             btnQuickNewAssessment.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold);
             btnQuickNewAssessment.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
             btnQuickNewAssessment.Image = (System.Drawing.Image)resources.GetObject("btnQuickNewAssessment.Image");
-            btnQuickNewAssessment.Location = new System.Drawing.Point(789, 343);
+            btnQuickNewAssessment.Location = new System.Drawing.Point(415, 343);
             btnQuickNewAssessment.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
             btnQuickNewAssessment.Name = "btnQuickNewAssessment";
             btnQuickNewAssessment.Padding = new System.Windows.Forms.Padding(0, 0, 0, 30);
@@ -344,19 +344,19 @@
             btnQuickNewAssessment.UseVisualStyleBackColor = false;
             btnQuickNewAssessment.Click += btnQuickNewAssessment_Click;
             // 
-            // panelBorder4
+            // panelRecentActivities
             // 
-            panelBorder4.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            panelBorder4.BackColor = System.Drawing.Color.FromArgb(207, 249, 238);
-            panelBorder4.BorderRadius = 30;
-            panelBorder4.Color = System.Drawing.Color.BurlyWood;
-            panelBorder4.Controls.Add(panelBorder6);
-            panelBorder4.ForeColor = System.Drawing.Color.Black;
-            panelBorder4.Location = new System.Drawing.Point(69, 600);
-            panelBorder4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 3);
-            panelBorder4.Name = "panelBorder4";
-            panelBorder4.Size = new System.Drawing.Size(1034, 391);
-            panelBorder4.TabIndex = 5;
+            panelRecentActivities.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            panelRecentActivities.BackColor = System.Drawing.Color.FromArgb(207, 249, 238);
+            panelRecentActivities.BorderRadius = 30;
+            panelRecentActivities.Color = System.Drawing.Color.BurlyWood;
+            panelRecentActivities.Controls.Add(panelBorder6);
+            panelRecentActivities.ForeColor = System.Drawing.Color.Black;
+            panelRecentActivities.Location = new System.Drawing.Point(69, 600);
+            panelRecentActivities.Margin = new System.Windows.Forms.Padding(3, 2, 3, 3);
+            panelRecentActivities.Name = "panelRecentActivities";
+            panelRecentActivities.Size = new System.Drawing.Size(1034, 391);
+            panelRecentActivities.TabIndex = 5;
             // 
             // panelBorder6
             // 
@@ -382,19 +382,19 @@
             dataGridLogs.Size = new System.Drawing.Size(987, 349);
             dataGridLogs.TabIndex = 25;
             // 
-            // label4
+            // lblRecentActivities
             // 
-            label4.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
-            label4.AutoSize = true;
-            label4.Font = new System.Drawing.Font("Poppins", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            label4.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
-            label4.Location = new System.Drawing.Point(88, 561);
-            label4.Margin = new System.Windows.Forms.Padding(0);
-            label4.Name = "label4";
-            label4.Size = new System.Drawing.Size(213, 37);
-            label4.TabIndex = 2;
-            label4.Text = "RECENT ACTIVITIES";
-            label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            lblRecentActivities.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
+            lblRecentActivities.AutoSize = true;
+            lblRecentActivities.Font = new System.Drawing.Font("Poppins", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            lblRecentActivities.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            lblRecentActivities.Location = new System.Drawing.Point(88, 561);
+            lblRecentActivities.Margin = new System.Windows.Forms.Padding(0);
+            lblRecentActivities.Name = "lblRecentActivities";
+            lblRecentActivities.Size = new System.Drawing.Size(213, 37);
+            lblRecentActivities.TabIndex = 2;
+            lblRecentActivities.Text = "RECENT ACTIVITIES";
+            lblRecentActivities.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // DashboardPage
             // 
@@ -403,8 +403,8 @@
             AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             BackColor = System.Drawing.Color.White;
             Controls.Add(panelBorder5);
-            Controls.Add(label4);
-            Controls.Add(panelBorder4);
+            Controls.Add(lblRecentActivities);
+            Controls.Add(panelRecentActivities);
             Controls.Add(panelBorder3);
             Controls.Add(btnQuickNewAssessment);
             Controls.Add(panelBorder2);
@@ -428,7 +428,7 @@
             panelBorder2.ResumeLayout(false);
             panelBorder2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            panelBorder4.ResumeLayout(false);
+            panelRecentActivities.ResumeLayout(false);
             panelBorder6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridLogs).EndInit();
             ResumeLayout(false);
@@ -448,8 +448,8 @@
         private System.Windows.Forms.Label lblMonth;
         private WindowsFormsApp2.CustomButton.PanelBorder panelBorder3;
         private WindowsFormsApp2.CustomButton.PanelBorder panelBorder2;
-        private WindowsFormsApp2.CustomButton.PanelBorder panelBorder4;
-        private System.Windows.Forms.Label label4;
+        private WindowsFormsApp2.CustomButton.PanelBorder panelRecentActivities;
+        private System.Windows.Forms.Label lblRecentActivities;
         private WindowsFormsApp2.CustomButton.PanelBorder panelBorder5;
         private WindowsFormsApp2.CustomButton.PanelBorder panelBorder6;
         private System.Windows.Forms.DataGridView dataGridLogs;
