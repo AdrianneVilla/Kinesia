@@ -58,9 +58,9 @@ namespace Kinesia.Components
         private void btnLogs_Click(object sender, EventArgs e)
         {
             PageObjects.RemoveResources(ref PageObjects.CurrentControl);
-            PageObjects.logsPage = new LogsPage();
-            PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.logsPage);
-            PageObjects.CurrentControl = PageObjects.logsPage;
+            PageObjects.LogsPage = new LogsPage();
+            PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.LogsPage);
+            PageObjects.CurrentControl = PageObjects.LogsPage;
         }
 
         private void btnLogout_Click(object sender, EventArgs e)

@@ -18,24 +18,55 @@ namespace Kinesia.Logs
 
         public async Task DisplayLogs(string searchData, string currentTab, string sortColumn)
         {
-            PageObjects.logsPage.getLogHolder.Controls.Clear();
             var url = $"http://localhost:5000/api/logs?searchData={searchData}&currentTab={currentTab}&sortColumn={sortColumn}";
 
             var response = await client.GetStringAsync(url);
             var logs = JsonConvert.DeserializeObject<List<LogDTO>>(response);
 
-            foreach (var log in logs)
+            CustomDataGrid.SetDoubleBuffering(PageObjects.LogsPage, true);
+            PageObjects.LogsPage.LogsGrid.SuspendLayout();
+            PageObjects.LogsPage.LogsGrid.AutoGenerateColumns = false;
+            PageObjects.LogsPage.LogsGrid.Columns.Clear();
+
+            PageObjects.LogsPage.LogsGrid.Columns.Add(new DataGridViewTextBoxColumn
             {
-                var displayLogControl = new DisplayLogs();
+                Name = "LogID",
+                DataPropertyName = "LogID",
+                HeaderText = "Log ID"
+            });
 
-                displayLogControl.LogID = log.LogID;
-                displayLogControl.LogType = log.LogType;
-                displayLogControl.UserName = $"{log.FirstName} {log.MiddleName} {log.LastName}";
-                displayLogControl.Description = log.Description;
-                displayLogControl.LogDate = log.LogDate.ToString();
+            PageObjects.LogsPage.LogsGrid.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "LogType",
+                DataPropertyName = "LogType",
+                HeaderText = "Log Type"
+            });
 
-                PageObjects.logsPage.getLogHolder.Controls.Add(displayLogControl);
-            }
+            PageObjects.LogsPage.LogsGrid.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "Username",
+                DataPropertyName = "Username",
+                HeaderText = "User"
+            });
+
+            PageObjects.LogsPage.LogsGrid.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "Description",
+                DataPropertyName = "Description",
+                HeaderText = "Description"
+            });
+
+            PageObjects.LogsPage.LogsGrid.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "LogDate",
+                DataPropertyName = "LogDate",
+                HeaderText = "Date"
+            });
+
+            PageObjects.LogsPage.LogsGrid.DataSource = logs;
+            PageObjects.LogsPage.LogsGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            CustomDataGrid.StyleDataGridWithSpacing(PageObjects.LogsPage.LogsGrid);
+            PageObjects.LogsPage.LogsGrid.ResumeLayout();
         }
 
         public async Task DisplayDashboardLogs()

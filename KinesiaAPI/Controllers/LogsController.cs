@@ -36,9 +36,7 @@ namespace KinesiaAPI.Controllers
                         {
                             LogID = l.LogID,
                             LogType = l.LogType,
-                            FirstName = u.FirstName,
-                            MiddleName = u.MiddleName,
-                            LastName = u.LastName,
+                            Username = $"{u.FirstName} {u.MiddleName} {u.LastName}",
                             Description = l.Description,
                             LogDate = l.LogDate
                         };
@@ -53,19 +51,17 @@ namespace KinesiaAPI.Controllers
             {
                 query = query.Where(x =>
                         x.LogID.Contains(searchData) ||
-                        x.FirstName.Contains(searchData) ||
-                        x.MiddleName.Contains(searchData) ||
-                        x.LastName.Contains(searchData));
+                        x.Username.Contains(searchData));
             }
 
             // will apply sorting
             if(sortColumn == "Latest")
             {
-                query = query.OrderBy(x => x.LogDate);
+                query = query.OrderByDescending(x => x.LogDate);
             }
             else
             {
-                query = query.OrderByDescending(x => x.LogDate);
+                query = query.OrderBy(x => x.LogDate);
             }
 
             return await query.ToListAsync();
