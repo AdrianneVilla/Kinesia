@@ -13,35 +13,263 @@ namespace Kinesia.Patients
     public partial class EditPatient : UserControl
     {
         private string previousPage;
-
+        private Dictionary<Control, Rectangle> originalControlBounds = new Dictionary<Control, Rectangle>();
+        private Size originalSize;
+        private Rectangle originalPanelBounds;
+        private bool isInitialized = false;
         public string PreviousPage { get { return previousPage; } set { previousPage = value; } }
 
         public EditPatient()
         {
             this.Anchor = AnchorStyles.Right | AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Bottom;
             this.Dock = DockStyle.Fill;
+            this.MinimumSize = new Size(1000, 700);
+            this.AutoScroll = true;
             InitializeComponent();
         }
 
+        private void ConfigureFlowLayoutPanelsForResponsiveness()
+        {
+            // Main FlowLayoutPanel (flowLayoutPanel1)
+            flowLayoutPanel1.AutoSize = false;
+            flowLayoutPanel1.WrapContents = false;
+            flowLayoutPanel1.FlowDirection = FlowDirection.TopDown;
+            flowLayoutPanel1.Resize += FlowLayoutPanel1_Resize;
+
+            // Container panels (flowLayoutPanel11, flowLayoutPanel12, flowLayoutPanel13)
+            ConfigureContainerPanel(flowLayoutPanel11);
+            ConfigureContainerPanel(flowLayoutPanel12);
+            ConfigureContainerPanel(flowLayoutPanel13);
+
+            // Configure the address section separately
+            flowLayoutPanel13.WrapContents = false;
+            flowLayoutPanel13.FlowDirection = FlowDirection.TopDown;
+
+            // Initial resize
+            FlowLayoutPanel1_Resize(flowLayoutPanel1, EventArgs.Empty);
+        }
+
+        private void FlowLayoutPanel1_Resize(object sender, EventArgs e)
+        {
+            if (!isInitialized) return;
+
+            int availableWidth = flowLayoutPanel1.Width - flowLayoutPanel1.Padding.Left - flowLayoutPanel1.Padding.Right - 10;
+
+            // Resize container panels to fill width
+            flowLayoutPanel11.Width = availableWidth;
+            flowLayoutPanel12.Width = availableWidth;
+            flowLayoutPanel13.Width = availableWidth;
+
+            // Resize child panels inside containers
+            ResizeChildPanelsInContainer(flowLayoutPanel11, availableWidth);
+            ResizeChildPanelsInContainer(flowLayoutPanel12, availableWidth);
+
+            // Special handling for flowLayoutPanel13 (Address section)
+            ResizeAddressSection(flowLayoutPanel13, availableWidth);
+        }
+
+        private void ResizeAddressSection(FlowLayoutPanel addressContainer, int containerWidth)
+        {
+            addressContainer.SuspendLayout();
+
+            // Check if address is in a nested panel (flowLayoutPanel10) or directly in flowLayoutPanel13
+            FlowLayoutPanel addressPanel = null;
+            foreach (Control ctrl in addressContainer.Controls)
+            {
+                if (ctrl is FlowLayoutPanel fp)
+                {
+                    addressPanel = fp;
+                    break;
+                }
+            }
+
+            if (addressPanel != null)
+            {
+                // Address is nested in flowLayoutPanel10
+                addressPanel.Width = containerWidth - 20;
+
+                foreach (Control innerCtrl in addressPanel.Controls)
+                {
+                    if (innerCtrl == txtAddress)
+                    {
+                        int addressWidth = addressPanel.Width - addressPanel.Padding.Left - addressPanel.Padding.Right - 10;
+                        txtAddress.Width = addressWidth;
+                    }
+                }
+            }
+            else
+            {
+                // Address is directly in flowLayoutPanel13
+                foreach (Control ctrl in addressContainer.Controls)
+                {
+                    if (ctrl == txtAddress)
+                    {
+                        int addressWidth = containerWidth - addressContainer.Padding.Left - addressContainer.Padding.Right - 20;
+                        txtAddress.Width = addressWidth;
+                    }
+                }
+            }
+
+            addressContainer.ResumeLayout();
+        }
+
+        private void ConfigureContainerPanel(FlowLayoutPanel containerPanel)
+        {
+            containerPanel.AutoSize = false;
+            containerPanel.WrapContents = true;
+            containerPanel.FlowDirection = FlowDirection.LeftToRight;
+        }
+
+
+        private void ResizeChildPanelsInContainer(FlowLayoutPanel containerPanel, int containerWidth)
+        {
+            containerPanel.SuspendLayout();
+
+            // Count how many child flowLayoutPanels
+            List<FlowLayoutPanel> childPanels = new List<FlowLayoutPanel>();
+            foreach (Control ctrl in containerPanel.Controls)
+            {
+                if (ctrl is FlowLayoutPanel childPanel)
+                {
+                    childPanels.Add(childPanel);
+                }
+            }
+
+            if (childPanels.Count == 0)
+            {
+                containerPanel.ResumeLayout();
+                return;
+            }
+
+            // Calculate width for each child panel with margins
+            int margins = 10 * (childPanels.Count - 1); // Space between panels
+            int availableWidth = containerWidth - margins - 20;
+
+            // Distribute width based on panel
+            foreach (var childPanel in childPanels)
+            {
+                int panelWidth = 0;
+
+                // Set widths based on which row/container
+                if (containerPanel == flowLayoutPanel11) // First, Last, Middle Name row
+                {
+                    if (childPanel == flowLayoutPanel2) // First Name
+                        panelWidth = (int)(availableWidth * 0.31f);
+                    else if (childPanel == flowLayoutPanel3) // Last Name
+                        panelWidth = (int)(availableWidth * 0.31f);
+                    else if (childPanel == flowLayoutPanel4) // Middle Name
+                        panelWidth = (int)(availableWidth * 0.31f);
+                }
+                else if (containerPanel == flowLayoutPanel12) // Birthdate, Age, Gender, Contact, Occupation row
+                {
+                    if (childPanel == flowLayoutPanel5) // Birthdate
+                        panelWidth = (int)(availableWidth * 0.22f);
+                    else if (childPanel == flowLayoutPanel6) // Age
+                        panelWidth = (int)(availableWidth * 0.10f);
+                    else if (childPanel == flowLayoutPanel7) // Gender
+                        panelWidth = (int)(availableWidth * 0.20f);
+                    else if (childPanel == flowLayoutPanel8) // Contact
+                        panelWidth = (int)(availableWidth * 0.20f);
+                    else if (childPanel == flowLayoutPanel9) // Occupation
+                        panelWidth = (int)(availableWidth * 0.20f);
+                }
+                else if (containerPanel == flowLayoutPanel13) // Address row
+                {
+                    panelWidth = availableWidth; // Full width
+                }
+
+                childPanel.Width = panelWidth;
+
+                // Resize controls inside each child panel
+                ResizeControlsInChildPanel(childPanel, panelWidth);
+            }
+
+            containerPanel.ResumeLayout();
+        }
+
+        private void ResizeControlsInChildPanel(FlowLayoutPanel childPanel, int panelWidth)
+        {
+            int controlWidth = panelWidth - childPanel.Padding.Left - childPanel.Padding.Right - 10;
+
+            childPanel.SuspendLayout();
+
+            foreach (Control ctrl in childPanel.Controls)
+            {
+                if (ctrl is CustomControls.RJControls.RJTextBox txtBox)
+                {
+                    txtBox.Width = controlWidth;
+                }
+                else if (ctrl is CustomControls.RJControls.RJComboBox comboBox)
+                {
+                    // Set MinimumSize first to prevent size constraints
+                    comboBox.MinimumSize = new Size(50, 30);
+
+                    // Set the actual size
+                    comboBox.Width = controlWidth;
+                    comboBox.Size = new Size(controlWidth, comboBox.Height);
+
+                    // Set MaximumSize to lock the width
+                    comboBox.MaximumSize = new Size(controlWidth, 100);
+
+                    // Force the control to update
+                    comboBox.Refresh();
+                }
+                else if (ctrl is CustomControls.RJControls.RJDatePicker datePicker)
+                {
+                    datePicker.Width = controlWidth;
+                }
+            }
+
+            childPanel.ResumeLayout();
+        }
+
+        private void SetupResponsiveLayout()
+        {
+            // Set anchors for header elements
+            nameHolder.Anchor = AnchorStyles.Top | AnchorStyles.Left;
+            txtTitleLabel.Anchor = AnchorStyles.Top | AnchorStyles.Left;
+            lblPatientID.Anchor = AnchorStyles.Top | AnchorStyles.Left;
+            btnBack.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+
+            // Main panel - stretch horizontally
+            panelBorder1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+
+            // Main FlowLayoutPanel - stretch horizontally
+            flowLayoutPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+
+            // Bottom buttons
+            btnSaveChanges.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+        }
+
+
+
+
         private void EditPatient_Load(object sender, EventArgs e)
         {
+           SetupResponsiveLayout();
+
+
+            ConfigureFlowLayoutPanelsForResponsiveness();
+            isInitialized = true;
+
+
             // will set the value of the textboxes to the values of the patient
             lblPatientID.Text = DataHolder.PatientDataHolder.PatientID + " Personal Information";
             txtFirstName.Texts = DataHolder.PatientDataHolder.FirstName;
             txtLastName.Texts = DataHolder.PatientDataHolder.LastName;
             txtMiddleName.Texts = DataHolder.PatientDataHolder.MiddleName;
             dpBirthDate.Value = DateTime.Parse(DataHolder.PatientDataHolder.Birthdate);
-            
-            if(DataHolder.PatientDataHolder.Gender == "Male")
+
+            if (DataHolder.PatientDataHolder.Gender == "Male")
             {
                 cbGender.SelectedIndex = 0; // will set the cbGender value to Male
-            } 
+            }
             else
             {
                 cbGender.SelectedIndex = 1; // will set the cbGender value to Female
             }
 
-            txtContact.Texts = DataHolder.PatientDataHolder.Contact.Remove(0,3); // will remove the "+63" from the contact
+            txtContact.Texts = DataHolder.PatientDataHolder.Contact.Remove(0, 3); // will remove the "+63" from the contact
             txtOccupation.Texts = DataHolder.PatientDataHolder.Occupation;
             txtAddress.Texts = DataHolder.PatientDataHolder.Address;
 
@@ -78,7 +306,7 @@ namespace Kinesia.Patients
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            if(previousPage == "Patients Page")
+            if (previousPage == "Patients Page")
             {
                 goBackToPatientPage();
             }
@@ -164,15 +392,15 @@ namespace Kinesia.Patients
                 patientData.Occupation = txtOccupation.Texts;
                 patientData.Address = txtAddress.Texts;
 
-                if (Queries.PatientQueries.IsPatientDetailsComplete(patientData) && 
+                if (Queries.PatientQueries.IsPatientDetailsComplete(patientData) &&
                     Queries.PatientQueries.IsAgeValid(patientData) && Queries.PatientQueries.IsContactValid(patientData))
                 {
-                    if(DataHolder.PatientDataHolder.FirstName !=  patientData.FirstName || DataHolder.PatientDataHolder.LastName != patientData.LastName 
+                    if (DataHolder.PatientDataHolder.FirstName != patientData.FirstName || DataHolder.PatientDataHolder.LastName != patientData.LastName
                         || DataHolder.PatientDataHolder.MiddleName != patientData.MiddleName)
                     {
                         // will only check existing patient if
                         // first, last, and middle name data were changed
-                        if (await Queries.PatientQueries.CheckExistingPatient(patientData)) 
+                        if (await Queries.PatientQueries.CheckExistingPatient(patientData))
                         {
                             return; // will exit the update method if patient was already existing
                         }
@@ -197,7 +425,7 @@ namespace Kinesia.Patients
                         PageObjects.dashboard.ContentsPanel.Controls.Clear();
                         PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.patientsPage);
                         PageObjects.CurrentControl = PageObjects.patientsPage;
-                    } 
+                    }
                     else
                     {
                         // will display an error message if failed to edit
@@ -343,5 +571,10 @@ namespace Kinesia.Patients
             InputValidation.CharactersOnly(sender, e);
         }
         #endregion
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

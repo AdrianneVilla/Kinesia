@@ -36,31 +36,59 @@
             btnClearInput = new OrganizationProfile.CustomButton();
             btnAddPatient = new OrganizationProfile.CustomButton();
             panelBorder1 = new WindowsFormsApp2.CustomButton.PanelBorder();
-            pictureBox1 = new System.Windows.Forms.PictureBox();
-            cbGender = new CustomControls.RJControls.RJComboBox();
-            label13 = new System.Windows.Forms.Label();
-            txtOccupation = new CustomControls.RJControls.RJTextBox();
-            label4 = new System.Windows.Forms.Label();
-            label5 = new System.Windows.Forms.Label();
-            txtAge = new CustomControls.RJControls.RJTextBox();
-            label6 = new System.Windows.Forms.Label();
-            txtMiddleName = new CustomControls.RJControls.RJTextBox();
-            label10 = new System.Windows.Forms.Label();
-            txtLastName = new CustomControls.RJControls.RJTextBox();
-            label2 = new System.Windows.Forms.Label();
-            txtFirstName = new CustomControls.RJControls.RJTextBox();
+            flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             label11 = new System.Windows.Forms.Label();
-            label12 = new System.Windows.Forms.Label();
-            dpBirthDate = new CustomControls.RJControls.RJDatePicker();
-            txtAddress = new CustomControls.RJControls.RJTextBox();
-            label9 = new System.Windows.Forms.Label();
-            txtContact = new CustomControls.RJControls.RJTextBox();
-            label8 = new System.Windows.Forms.Label();
+            txtFirstName = new CustomControls.RJControls.RJTextBox();
+            flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            label2 = new System.Windows.Forms.Label();
+            txtLastName = new CustomControls.RJControls.RJTextBox();
+            flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
+            label3 = new System.Windows.Forms.Label();
+            flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
+            label10 = new System.Windows.Forms.Label();
+            txtMiddleName = new CustomControls.RJControls.RJTextBox();
+            flowLayoutPanel7 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanel8 = new System.Windows.Forms.FlowLayoutPanel();
             label7 = new System.Windows.Forms.Label();
+            dpBirthDate = new CustomControls.RJControls.RJDatePicker();
+            flowLayoutPanel9 = new System.Windows.Forms.FlowLayoutPanel();
+            label6 = new System.Windows.Forms.Label();
+            txtAge = new CustomControls.RJControls.RJTextBox();
+            flowLayoutPanel10 = new System.Windows.Forms.FlowLayoutPanel();
+            label5 = new System.Windows.Forms.Label();
+            cbGender = new CustomControls.RJControls.RJComboBox();
+            flowLayoutPanel11 = new System.Windows.Forms.FlowLayoutPanel();
+            label8 = new System.Windows.Forms.Label();
+            txtContact = new CustomControls.RJControls.RJTextBox();
+            flowLayoutPanel12 = new System.Windows.Forms.FlowLayoutPanel();
+            label4 = new System.Windows.Forms.Label();
+            txtOccupation = new CustomControls.RJControls.RJTextBox();
+            flowLayoutPanel13 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanel14 = new System.Windows.Forms.FlowLayoutPanel();
+            label9 = new System.Windows.Forms.Label();
+            txtAddress = new CustomControls.RJControls.RJTextBox();
+            flowLayoutPanel15 = new System.Windows.Forms.FlowLayoutPanel();
+            label12 = new System.Windows.Forms.Label();
             btnBack = new OrganizationProfile.CustomButton();
             toolTipAge = new System.Windows.Forms.ToolTip(components);
             panelBorder1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            flowLayoutPanel5.SuspendLayout();
+            flowLayoutPanel1.SuspendLayout();
+            flowLayoutPanel2.SuspendLayout();
+            flowLayoutPanel3.SuspendLayout();
+            flowLayoutPanel4.SuspendLayout();
+            flowLayoutPanel6.SuspendLayout();
+            flowLayoutPanel7.SuspendLayout();
+            flowLayoutPanel8.SuspendLayout();
+            flowLayoutPanel9.SuspendLayout();
+            flowLayoutPanel10.SuspendLayout();
+            flowLayoutPanel11.SuspendLayout();
+            flowLayoutPanel12.SuspendLayout();
+            flowLayoutPanel13.SuspendLayout();
+            flowLayoutPanel14.SuspendLayout();
+            flowLayoutPanel15.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -105,7 +133,7 @@
             // 
             // btnClearInput
             // 
-            btnClearInput.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+            btnClearInput.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
             btnClearInput.BackColor = System.Drawing.Color.FromArgb(255, 216, 216);
             btnClearInput.BackgroundColor = System.Drawing.Color.FromArgb(255, 216, 216);
             btnClearInput.BorderColor = System.Drawing.Color.FromArgb(210, 64, 66);
@@ -117,7 +145,7 @@
             btnClearInput.ForeColor = System.Drawing.Color.FromArgb(210, 64, 66);
             btnClearInput.Image = (System.Drawing.Image)resources.GetObject("btnClearInput.Image");
             btnClearInput.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnClearInput.Location = new System.Drawing.Point(1505, 892);
+            btnClearInput.Location = new System.Drawing.Point(214, 3);
             btnClearInput.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             btnClearInput.Name = "btnClearInput";
             btnClearInput.Padding = new System.Windows.Forms.Padding(12, 5, 47, 0);
@@ -131,7 +159,7 @@
             // 
             // btnAddPatient
             // 
-            btnAddPatient.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+            btnAddPatient.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
             btnAddPatient.BackColor = System.Drawing.Color.FromArgb(200, 220, 255);
             btnAddPatient.BackgroundColor = System.Drawing.Color.FromArgb(200, 220, 255);
             btnAddPatient.BorderColor = System.Drawing.Color.FromArgb(18, 90, 211);
@@ -143,7 +171,7 @@
             btnAddPatient.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
             btnAddPatient.Image = (System.Drawing.Image)resources.GetObject("btnAddPatient.Image");
             btnAddPatient.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnAddPatient.Location = new System.Drawing.Point(1296, 892);
+            btnAddPatient.Location = new System.Drawing.Point(4, 3);
             btnAddPatient.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             btnAddPatient.Name = "btnAddPatient";
             btnAddPatient.Padding = new System.Windows.Forms.Padding(12, 5, 23, 0);
@@ -163,234 +191,58 @@
             panelBorder1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             panelBorder1.BorderRadius = 30;
             panelBorder1.Color = System.Drawing.Color.BurlyWood;
-            panelBorder1.Controls.Add(pictureBox1);
-            panelBorder1.Controls.Add(cbGender);
-            panelBorder1.Controls.Add(label13);
-            panelBorder1.Controls.Add(txtOccupation);
-            panelBorder1.Controls.Add(label4);
-            panelBorder1.Controls.Add(label5);
-            panelBorder1.Controls.Add(txtAge);
-            panelBorder1.Controls.Add(label6);
-            panelBorder1.Controls.Add(txtMiddleName);
-            panelBorder1.Controls.Add(label10);
-            panelBorder1.Controls.Add(txtLastName);
-            panelBorder1.Controls.Add(label2);
-            panelBorder1.Controls.Add(txtFirstName);
-            panelBorder1.Controls.Add(label11);
+            panelBorder1.Controls.Add(flowLayoutPanel5);
             panelBorder1.Controls.Add(label12);
-            panelBorder1.Controls.Add(dpBirthDate);
-            panelBorder1.Controls.Add(txtAddress);
-            panelBorder1.Controls.Add(label9);
-            panelBorder1.Controls.Add(txtContact);
-            panelBorder1.Controls.Add(label8);
-            panelBorder1.Controls.Add(label7);
             panelBorder1.ForeColor = System.Drawing.Color.Black;
             panelBorder1.Location = new System.Drawing.Point(78, 132);
             panelBorder1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             panelBorder1.Name = "panelBorder1";
-            panelBorder1.Size = new System.Drawing.Size(1631, 540);
+            panelBorder1.Size = new System.Drawing.Size(1658, 580);
             panelBorder1.TabIndex = 8;
+            panelBorder1.Paint += panelBorder1_Paint;
             // 
-            // pictureBox1
+            // flowLayoutPanel5
             // 
-            pictureBox1.Image = (System.Drawing.Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new System.Drawing.Point(576, 213);
-            pictureBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new System.Drawing.Size(23, 23);
-            pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 34;
-            pictureBox1.TabStop = false;
-            toolTipAge.SetToolTip(pictureBox1, "Age is automatically computated when birthdate value changed");
+            flowLayoutPanel5.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            flowLayoutPanel5.Controls.Add(flowLayoutPanel1);
+            flowLayoutPanel5.Controls.Add(flowLayoutPanel7);
+            flowLayoutPanel5.Controls.Add(flowLayoutPanel13);
+            flowLayoutPanel5.Controls.Add(flowLayoutPanel15);
+            flowLayoutPanel5.Location = new System.Drawing.Point(53, 83);
+            flowLayoutPanel5.Name = "flowLayoutPanel5";
+            flowLayoutPanel5.Size = new System.Drawing.Size(1568, 458);
+            flowLayoutPanel5.TabIndex = 35;
             // 
-            // cbGender
+            // flowLayoutPanel1
             // 
-            cbGender.BackColor = System.Drawing.Color.White;
-            cbGender.BorderColor = System.Drawing.Color.Black;
-            cbGender.BorderSize = 1;
-            cbGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
-            cbGender.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            cbGender.ForeColor = System.Drawing.Color.Black;
-            cbGender.IconColor = System.Drawing.Color.Black;
-            cbGender.Items.AddRange(new object[] { "Male", "Female", "Prefer not to say" });
-            cbGender.ListBackColor = System.Drawing.Color.FromArgb(230, 228, 245);
-            cbGender.ListTextColor = System.Drawing.Color.DimGray;
-            cbGender.Location = new System.Drawing.Point(693, 242);
-            cbGender.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            cbGender.MinimumSize = new System.Drawing.Size(233, 35);
-            cbGender.Name = "cbGender";
-            cbGender.Padding = new System.Windows.Forms.Padding(1);
-            cbGender.Size = new System.Drawing.Size(233, 47);
-            cbGender.TabIndex = 5;
-            cbGender.Texts = "";
+            flowLayoutPanel1.Controls.Add(flowLayoutPanel2);
+            flowLayoutPanel1.Controls.Add(flowLayoutPanel3);
+            flowLayoutPanel1.Controls.Add(flowLayoutPanel6);
+            flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            flowLayoutPanel1.Size = new System.Drawing.Size(1478, 90);
+            flowLayoutPanel1.TabIndex = 11;
             // 
-            // label13
+            // flowLayoutPanel2
             // 
-            label13.AutoSize = true;
-            label13.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            label13.ForeColor = System.Drawing.Color.Gray;
-            label13.Location = new System.Drawing.Point(980, 254);
-            label13.Margin = new System.Windows.Forms.Padding(35, 0, 4, 0);
-            label13.Name = "label13";
-            label13.Size = new System.Drawing.Size(34, 23);
-            label13.TabIndex = 32;
-            label13.Text = "+63";
-            label13.Click += label13_Click;
+            flowLayoutPanel2.Controls.Add(label11);
+            flowLayoutPanel2.Controls.Add(txtFirstName);
+            flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            flowLayoutPanel2.Location = new System.Drawing.Point(3, 3);
+            flowLayoutPanel2.Name = "flowLayoutPanel2";
+            flowLayoutPanel2.Size = new System.Drawing.Size(442, 83);
+            flowLayoutPanel2.TabIndex = 0;
             // 
-            // txtOccupation
+            // label11
             // 
-            txtOccupation.BackColor = System.Drawing.SystemColors.Window;
-            txtOccupation.BorderColor = System.Drawing.Color.DimGray;
-            txtOccupation.BorderFocusColor = System.Drawing.Color.FromArgb(18, 90, 211);
-            txtOccupation.BorderRadius = 5;
-            txtOccupation.BorderSize = 1;
-            txtOccupation.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            txtOccupation.ForeColor = System.Drawing.Color.Black;
-            txtOccupation.Location = new System.Drawing.Point(1206, 242);
-            txtOccupation.Margin = new System.Windows.Forms.Padding(35, 5, 5, 5);
-            txtOccupation.Multiline = false;
-            txtOccupation.Name = "txtOccupation";
-            txtOccupation.Padding = new System.Windows.Forms.Padding(12, 8, 12, 8);
-            txtOccupation.PasswordChar = false;
-            txtOccupation.PlaceholderColor = System.Drawing.Color.DarkGray;
-            txtOccupation.PlaceholderText = "";
-            txtOccupation.SelectionLength = 0;
-            txtOccupation.SelectionStart = 0;
-            txtOccupation.Size = new System.Drawing.Size(210, 43);
-            txtOccupation.TabIndex = 7;
-            txtOccupation.Texts = "";
-            txtOccupation.UnderlinedStyle = false;
-            txtOccupation.KeyPress += txtOccupation_KeyPress;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            label4.Location = new System.Drawing.Point(1202, 213);
-            label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            label4.Name = "label4";
-            label4.Size = new System.Drawing.Size(89, 23);
-            label4.TabIndex = 31;
-            label4.Text = "Occupation";
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            label5.Location = new System.Drawing.Point(688, 215);
-            label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            label5.Name = "label5";
-            label5.Size = new System.Drawing.Size(60, 23);
-            label5.TabIndex = 29;
-            label5.Text = "Gender";
-            // 
-            // txtAge
-            // 
-            txtAge.BackColor = System.Drawing.SystemColors.Window;
-            txtAge.BorderColor = System.Drawing.Color.DimGray;
-            txtAge.BorderFocusColor = System.Drawing.Color.FromArgb(18, 90, 211);
-            txtAge.BorderRadius = 5;
-            txtAge.BorderSize = 1;
-            txtAge.Enabled = false;
-            txtAge.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            txtAge.ForeColor = System.Drawing.Color.Black;
-            txtAge.Location = new System.Drawing.Point(541, 242);
-            txtAge.Margin = new System.Windows.Forms.Padding(35, 5, 5, 5);
-            txtAge.Multiline = false;
-            txtAge.Name = "txtAge";
-            txtAge.Padding = new System.Windows.Forms.Padding(12, 8, 12, 8);
-            txtAge.PasswordChar = false;
-            txtAge.PlaceholderColor = System.Drawing.Color.DarkGray;
-            txtAge.PlaceholderText = "";
-            txtAge.SelectionLength = 0;
-            txtAge.SelectionStart = 0;
-            txtAge.Size = new System.Drawing.Size(112, 43);
-            txtAge.TabIndex = 26;
-            txtAge.Texts = "";
-            txtAge.UnderlinedStyle = false;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            label6.Location = new System.Drawing.Point(537, 213);
-            label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            label6.Name = "label6";
-            label6.Size = new System.Drawing.Size(37, 23);
-            label6.TabIndex = 27;
-            label6.Text = "Age";
-            // 
-            // txtMiddleName
-            // 
-            txtMiddleName.BackColor = System.Drawing.SystemColors.Window;
-            txtMiddleName.BorderColor = System.Drawing.Color.DimGray;
-            txtMiddleName.BorderFocusColor = System.Drawing.Color.FromArgb(18, 90, 211);
-            txtMiddleName.BorderRadius = 5;
-            txtMiddleName.BorderSize = 1;
-            txtMiddleName.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            txtMiddleName.ForeColor = System.Drawing.Color.Black;
-            txtMiddleName.Location = new System.Drawing.Point(989, 129);
-            txtMiddleName.Margin = new System.Windows.Forms.Padding(35, 5, 5, 5);
-            txtMiddleName.Multiline = false;
-            txtMiddleName.Name = "txtMiddleName";
-            txtMiddleName.Padding = new System.Windows.Forms.Padding(12, 8, 12, 8);
-            txtMiddleName.PasswordChar = false;
-            txtMiddleName.PlaceholderColor = System.Drawing.Color.DarkGray;
-            txtMiddleName.PlaceholderText = "";
-            txtMiddleName.SelectionLength = 0;
-            txtMiddleName.SelectionStart = 0;
-            txtMiddleName.Size = new System.Drawing.Size(427, 43);
-            txtMiddleName.TabIndex = 3;
-            txtMiddleName.Texts = "";
-            txtMiddleName.UnderlinedStyle = false;
-            txtMiddleName.KeyPress += txtMiddleName_KeyPress;
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            label10.Location = new System.Drawing.Point(985, 103);
-            label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            label10.Name = "label10";
-            label10.Size = new System.Drawing.Size(173, 23);
-            label10.TabIndex = 25;
-            label10.Text = "Middle Name (Optional)";
-            // 
-            // txtLastName
-            // 
-            txtLastName.BackColor = System.Drawing.SystemColors.Window;
-            txtLastName.BorderColor = System.Drawing.Color.DimGray;
-            txtLastName.BorderFocusColor = System.Drawing.Color.FromArgb(18, 90, 211);
-            txtLastName.BorderRadius = 5;
-            txtLastName.BorderSize = 1;
-            txtLastName.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            txtLastName.ForeColor = System.Drawing.Color.Black;
-            txtLastName.Location = new System.Drawing.Point(523, 129);
-            txtLastName.Margin = new System.Windows.Forms.Padding(35, 5, 5, 5);
-            txtLastName.Multiline = false;
-            txtLastName.Name = "txtLastName";
-            txtLastName.Padding = new System.Windows.Forms.Padding(12, 8, 12, 8);
-            txtLastName.PasswordChar = false;
-            txtLastName.PlaceholderColor = System.Drawing.Color.DarkGray;
-            txtLastName.PlaceholderText = "";
-            txtLastName.SelectionLength = 0;
-            txtLastName.SelectionStart = 0;
-            txtLastName.Size = new System.Drawing.Size(427, 43);
-            txtLastName.TabIndex = 2;
-            txtLastName.Texts = "";
-            txtLastName.UnderlinedStyle = false;
-            txtLastName.KeyPress += txtLastName_KeyPress;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            label2.Location = new System.Drawing.Point(518, 103);
-            label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(81, 23);
-            label2.TabIndex = 23;
-            label2.Text = "Last Name";
+            label11.AutoSize = true;
+            label11.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            label11.Location = new System.Drawing.Point(4, 0);
+            label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label11.Name = "label11";
+            label11.Size = new System.Drawing.Size(86, 23);
+            label11.TabIndex = 21;
+            label11.Text = "First Name ";
             // 
             // txtFirstName
             // 
@@ -401,7 +253,7 @@
             txtFirstName.BorderSize = 1;
             txtFirstName.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             txtFirstName.ForeColor = System.Drawing.Color.Black;
-            txtFirstName.Location = new System.Drawing.Point(56, 129);
+            txtFirstName.Location = new System.Drawing.Point(5, 28);
             txtFirstName.Margin = new System.Windows.Forms.Padding(5);
             txtFirstName.Multiline = false;
             txtFirstName.Name = "txtFirstName";
@@ -417,27 +269,151 @@
             txtFirstName.UnderlinedStyle = false;
             txtFirstName.KeyPress += txtFirstName_KeyPress;
             // 
-            // label11
+            // flowLayoutPanel3
             // 
-            label11.AutoSize = true;
-            label11.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            label11.Location = new System.Drawing.Point(51, 103);
-            label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            label11.Name = "label11";
-            label11.Size = new System.Drawing.Size(86, 23);
-            label11.TabIndex = 21;
-            label11.Text = "First Name ";
+            flowLayoutPanel3.Controls.Add(label2);
+            flowLayoutPanel3.Controls.Add(txtLastName);
+            flowLayoutPanel3.Controls.Add(flowLayoutPanel4);
+            flowLayoutPanel3.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            flowLayoutPanel3.Location = new System.Drawing.Point(451, 3);
+            flowLayoutPanel3.Name = "flowLayoutPanel3";
+            flowLayoutPanel3.Size = new System.Drawing.Size(442, 83);
+            flowLayoutPanel3.TabIndex = 1;
             // 
-            // label12
+            // label2
             // 
-            label12.AutoSize = true;
-            label12.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            label12.Location = new System.Drawing.Point(47, 28);
-            label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            label12.Name = "label12";
-            label12.Size = new System.Drawing.Size(224, 34);
-            label12.TabIndex = 19;
-            label12.Text = "Personal Information";
+            label2.AutoSize = true;
+            label2.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            label2.Location = new System.Drawing.Point(4, 0);
+            label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(81, 23);
+            label2.TabIndex = 23;
+            label2.Text = "Last Name";
+            // 
+            // txtLastName
+            // 
+            txtLastName.BackColor = System.Drawing.SystemColors.Window;
+            txtLastName.BorderColor = System.Drawing.Color.DimGray;
+            txtLastName.BorderFocusColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            txtLastName.BorderRadius = 5;
+            txtLastName.BorderSize = 1;
+            txtLastName.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            txtLastName.ForeColor = System.Drawing.Color.Black;
+            txtLastName.Location = new System.Drawing.Point(5, 28);
+            txtLastName.Margin = new System.Windows.Forms.Padding(5);
+            txtLastName.Multiline = false;
+            txtLastName.Name = "txtLastName";
+            txtLastName.Padding = new System.Windows.Forms.Padding(12, 8, 12, 8);
+            txtLastName.PasswordChar = false;
+            txtLastName.PlaceholderColor = System.Drawing.Color.DarkGray;
+            txtLastName.PlaceholderText = "";
+            txtLastName.SelectionLength = 0;
+            txtLastName.SelectionStart = 0;
+            txtLastName.Size = new System.Drawing.Size(427, 43);
+            txtLastName.TabIndex = 2;
+            txtLastName.Texts = "";
+            txtLastName.UnderlinedStyle = false;
+            txtLastName.KeyPress += txtLastName_KeyPress;
+            // 
+            // flowLayoutPanel4
+            // 
+            flowLayoutPanel4.Controls.Add(label3);
+            flowLayoutPanel4.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            flowLayoutPanel4.Location = new System.Drawing.Point(440, 3);
+            flowLayoutPanel4.Name = "flowLayoutPanel4";
+            flowLayoutPanel4.Size = new System.Drawing.Size(442, 83);
+            flowLayoutPanel4.TabIndex = 24;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            label3.Location = new System.Drawing.Point(4, 0);
+            label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(81, 23);
+            label3.TabIndex = 23;
+            label3.Text = "Last Name";
+            // 
+            // flowLayoutPanel6
+            // 
+            flowLayoutPanel6.Controls.Add(label10);
+            flowLayoutPanel6.Controls.Add(txtMiddleName);
+            flowLayoutPanel6.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            flowLayoutPanel6.Location = new System.Drawing.Point(899, 3);
+            flowLayoutPanel6.Name = "flowLayoutPanel6";
+            flowLayoutPanel6.Size = new System.Drawing.Size(442, 83);
+            flowLayoutPanel6.TabIndex = 24;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            label10.Location = new System.Drawing.Point(4, 0);
+            label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label10.Name = "label10";
+            label10.Size = new System.Drawing.Size(173, 23);
+            label10.TabIndex = 25;
+            label10.Text = "Middle Name (Optional)";
+            // 
+            // txtMiddleName
+            // 
+            txtMiddleName.BackColor = System.Drawing.SystemColors.Window;
+            txtMiddleName.BorderColor = System.Drawing.Color.DimGray;
+            txtMiddleName.BorderFocusColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            txtMiddleName.BorderRadius = 5;
+            txtMiddleName.BorderSize = 1;
+            txtMiddleName.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            txtMiddleName.ForeColor = System.Drawing.Color.Black;
+            txtMiddleName.Location = new System.Drawing.Point(5, 28);
+            txtMiddleName.Margin = new System.Windows.Forms.Padding(5);
+            txtMiddleName.Multiline = false;
+            txtMiddleName.Name = "txtMiddleName";
+            txtMiddleName.Padding = new System.Windows.Forms.Padding(12, 8, 12, 8);
+            txtMiddleName.PasswordChar = false;
+            txtMiddleName.PlaceholderColor = System.Drawing.Color.DarkGray;
+            txtMiddleName.PlaceholderText = "";
+            txtMiddleName.SelectionLength = 0;
+            txtMiddleName.SelectionStart = 0;
+            txtMiddleName.Size = new System.Drawing.Size(427, 43);
+            txtMiddleName.TabIndex = 3;
+            txtMiddleName.Texts = "";
+            txtMiddleName.UnderlinedStyle = false;
+            txtMiddleName.KeyPress += txtMiddleName_KeyPress;
+            // 
+            // flowLayoutPanel7
+            // 
+            flowLayoutPanel7.Controls.Add(flowLayoutPanel8);
+            flowLayoutPanel7.Controls.Add(flowLayoutPanel9);
+            flowLayoutPanel7.Controls.Add(flowLayoutPanel10);
+            flowLayoutPanel7.Controls.Add(flowLayoutPanel11);
+            flowLayoutPanel7.Controls.Add(flowLayoutPanel12);
+            flowLayoutPanel7.Location = new System.Drawing.Point(3, 99);
+            flowLayoutPanel7.Name = "flowLayoutPanel7";
+            flowLayoutPanel7.Size = new System.Drawing.Size(1478, 93);
+            flowLayoutPanel7.TabIndex = 11;
+            // 
+            // flowLayoutPanel8
+            // 
+            flowLayoutPanel8.Controls.Add(label7);
+            flowLayoutPanel8.Controls.Add(dpBirthDate);
+            flowLayoutPanel8.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            flowLayoutPanel8.Location = new System.Drawing.Point(3, 3);
+            flowLayoutPanel8.Name = "flowLayoutPanel8";
+            flowLayoutPanel8.Size = new System.Drawing.Size(360, 90);
+            flowLayoutPanel8.TabIndex = 1;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            label7.Location = new System.Drawing.Point(4, 0);
+            label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label7.Name = "label7";
+            label7.Size = new System.Drawing.Size(74, 23);
+            label7.TabIndex = 8;
+            label7.Text = "Birthdate";
             // 
             // dpBirthDate
             // 
@@ -446,15 +422,226 @@
             dpBirthDate.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             dpBirthDate.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right;
             dpBirthDate.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            dpBirthDate.Location = new System.Drawing.Point(59, 246);
-            dpBirthDate.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            dpBirthDate.MinimumSize = new System.Drawing.Size(4, 35);
+            dpBirthDate.Location = new System.Drawing.Point(4, 33);
+            dpBirthDate.Margin = new System.Windows.Forms.Padding(4, 10, 4, 3);
+            dpBirthDate.MinimumSize = new System.Drawing.Size(4, 40);
             dpBirthDate.Name = "dpBirthDate";
-            dpBirthDate.Size = new System.Drawing.Size(443, 35);
+            dpBirthDate.Size = new System.Drawing.Size(342, 40);
             dpBirthDate.SkinColor = System.Drawing.Color.White;
             dpBirthDate.TabIndex = 4;
             dpBirthDate.TextColor = System.Drawing.Color.Black;
             dpBirthDate.ValueChanged += dpBirthDate_ValueChanged;
+            // 
+            // flowLayoutPanel9
+            // 
+            flowLayoutPanel9.Controls.Add(label6);
+            flowLayoutPanel9.Controls.Add(txtAge);
+            flowLayoutPanel9.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            flowLayoutPanel9.Location = new System.Drawing.Point(369, 3);
+            flowLayoutPanel9.Name = "flowLayoutPanel9";
+            flowLayoutPanel9.Size = new System.Drawing.Size(128, 90);
+            flowLayoutPanel9.TabIndex = 2;
+            // 
+            // label6
+            // 
+            label6.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            label6.Image = Properties.Resources.helpIcon;
+            label6.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label6.Location = new System.Drawing.Point(4, 0);
+            label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label6.Name = "label6";
+            label6.Size = new System.Drawing.Size(71, 23);
+            label6.TabIndex = 27;
+            label6.Text = "Age";
+            toolTipAge.SetToolTip(label6, "Age is automatically computated when birthdate value changed");
+            // 
+            // txtAge
+            // 
+            txtAge.BackColor = System.Drawing.SystemColors.Window;
+            txtAge.BorderColor = System.Drawing.Color.DimGray;
+            txtAge.BorderFocusColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            txtAge.BorderRadius = 5;
+            txtAge.BorderSize = 1;
+            txtAge.Enabled = false;
+            txtAge.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            txtAge.ForeColor = System.Drawing.Color.Black;
+            txtAge.Location = new System.Drawing.Point(5, 28);
+            txtAge.Margin = new System.Windows.Forms.Padding(5);
+            txtAge.Multiline = false;
+            txtAge.Name = "txtAge";
+            txtAge.Padding = new System.Windows.Forms.Padding(12, 8, 12, 8);
+            txtAge.PasswordChar = false;
+            txtAge.PlaceholderColor = System.Drawing.Color.DarkGray;
+            txtAge.PlaceholderText = "";
+            txtAge.SelectionLength = 0;
+            txtAge.SelectionStart = 0;
+            txtAge.Size = new System.Drawing.Size(112, 43);
+            txtAge.TabIndex = 26;
+            txtAge.Texts = "";
+            txtAge.UnderlinedStyle = false;
+            // 
+            // flowLayoutPanel10
+            // 
+            flowLayoutPanel10.Controls.Add(label5);
+            flowLayoutPanel10.Controls.Add(cbGender);
+            flowLayoutPanel10.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            flowLayoutPanel10.Location = new System.Drawing.Point(503, 3);
+            flowLayoutPanel10.Name = "flowLayoutPanel10";
+            flowLayoutPanel10.Size = new System.Drawing.Size(247, 90);
+            flowLayoutPanel10.TabIndex = 3;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            label5.Location = new System.Drawing.Point(4, 0);
+            label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label5.Name = "label5";
+            label5.Size = new System.Drawing.Size(60, 23);
+            label5.TabIndex = 29;
+            label5.Text = "Gender";
+            // 
+            // cbGender
+            // 
+            cbGender.BackColor = System.Drawing.Color.White;
+            cbGender.BorderColor = System.Drawing.Color.Black;
+            cbGender.BorderSize = 1;
+            cbGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
+            cbGender.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            cbGender.ForeColor = System.Drawing.Color.Black;
+            cbGender.IconColor = System.Drawing.Color.Black;
+            cbGender.Items.AddRange(new object[] { "Male", "Female", "Prefer not to say" });
+            cbGender.ListBackColor = System.Drawing.Color.FromArgb(230, 228, 245);
+            cbGender.ListTextColor = System.Drawing.Color.DimGray;
+            cbGender.Location = new System.Drawing.Point(4, 26);
+            cbGender.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            cbGender.MinimumSize = new System.Drawing.Size(233, 35);
+            cbGender.Name = "cbGender";
+            cbGender.Padding = new System.Windows.Forms.Padding(1);
+            cbGender.Size = new System.Drawing.Size(233, 43);
+            cbGender.TabIndex = 5;
+            cbGender.Texts = "";
+            // 
+            // flowLayoutPanel11
+            // 
+            flowLayoutPanel11.Controls.Add(label8);
+            flowLayoutPanel11.Controls.Add(txtContact);
+            flowLayoutPanel11.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            flowLayoutPanel11.Location = new System.Drawing.Point(756, 3);
+            flowLayoutPanel11.Name = "flowLayoutPanel11";
+            flowLayoutPanel11.Size = new System.Drawing.Size(229, 90);
+            flowLayoutPanel11.TabIndex = 4;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            label8.Location = new System.Drawing.Point(4, 0);
+            label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label8.Name = "label8";
+            label8.Size = new System.Drawing.Size(123, 23);
+            label8.TabIndex = 10;
+            label8.Text = "Contact Number";
+            // 
+            // txtContact
+            // 
+            txtContact.BackColor = System.Drawing.SystemColors.Window;
+            txtContact.BorderColor = System.Drawing.Color.DimGray;
+            txtContact.BorderFocusColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            txtContact.BorderRadius = 5;
+            txtContact.BorderSize = 1;
+            txtContact.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            txtContact.ForeColor = System.Drawing.Color.Black;
+            txtContact.Location = new System.Drawing.Point(5, 28);
+            txtContact.Margin = new System.Windows.Forms.Padding(5);
+            txtContact.Multiline = false;
+            txtContact.Name = "txtContact";
+            txtContact.Padding = new System.Windows.Forms.Padding(10, 8, 12, 8);
+            txtContact.PasswordChar = false;
+            txtContact.PlaceholderColor = System.Drawing.Color.DarkGray;
+            txtContact.PlaceholderText = "";
+            txtContact.SelectionLength = 0;
+            txtContact.SelectionStart = 0;
+            txtContact.Size = new System.Drawing.Size(209, 43);
+            txtContact.TabIndex = 6;
+            txtContact.Texts = "+63";
+            txtContact.UnderlinedStyle = false;
+            txtContact.KeyPress += txtContact_KeyPress;
+            // 
+            // flowLayoutPanel12
+            // 
+            flowLayoutPanel12.Controls.Add(label4);
+            flowLayoutPanel12.Controls.Add(txtOccupation);
+            flowLayoutPanel12.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            flowLayoutPanel12.Location = new System.Drawing.Point(991, 3);
+            flowLayoutPanel12.Name = "flowLayoutPanel12";
+            flowLayoutPanel12.Size = new System.Drawing.Size(342, 90);
+            flowLayoutPanel12.TabIndex = 5;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            label4.Location = new System.Drawing.Point(4, 0);
+            label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label4.Name = "label4";
+            label4.Size = new System.Drawing.Size(89, 23);
+            label4.TabIndex = 31;
+            label4.Text = "Occupation";
+            // 
+            // txtOccupation
+            // 
+            txtOccupation.BackColor = System.Drawing.SystemColors.Window;
+            txtOccupation.BorderColor = System.Drawing.Color.DimGray;
+            txtOccupation.BorderFocusColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            txtOccupation.BorderRadius = 5;
+            txtOccupation.BorderSize = 1;
+            txtOccupation.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            txtOccupation.ForeColor = System.Drawing.Color.Black;
+            txtOccupation.Location = new System.Drawing.Point(5, 28);
+            txtOccupation.Margin = new System.Windows.Forms.Padding(5);
+            txtOccupation.Multiline = false;
+            txtOccupation.Name = "txtOccupation";
+            txtOccupation.Padding = new System.Windows.Forms.Padding(12, 8, 12, 8);
+            txtOccupation.PasswordChar = false;
+            txtOccupation.PlaceholderColor = System.Drawing.Color.DarkGray;
+            txtOccupation.PlaceholderText = "";
+            txtOccupation.SelectionLength = 0;
+            txtOccupation.SelectionStart = 0;
+            txtOccupation.Size = new System.Drawing.Size(210, 43);
+            txtOccupation.TabIndex = 7;
+            txtOccupation.Texts = "";
+            txtOccupation.UnderlinedStyle = false;
+            txtOccupation.KeyPress += txtOccupation_KeyPress;
+            // 
+            // flowLayoutPanel13
+            // 
+            flowLayoutPanel13.Controls.Add(flowLayoutPanel14);
+            flowLayoutPanel13.Location = new System.Drawing.Point(3, 198);
+            flowLayoutPanel13.Name = "flowLayoutPanel13";
+            flowLayoutPanel13.Size = new System.Drawing.Size(1478, 166);
+            flowLayoutPanel13.TabIndex = 11;
+            // 
+            // flowLayoutPanel14
+            // 
+            flowLayoutPanel14.Controls.Add(label9);
+            flowLayoutPanel14.Controls.Add(txtAddress);
+            flowLayoutPanel14.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            flowLayoutPanel14.Location = new System.Drawing.Point(3, 3);
+            flowLayoutPanel14.Name = "flowLayoutPanel14";
+            flowLayoutPanel14.Size = new System.Drawing.Size(1475, 163);
+            flowLayoutPanel14.TabIndex = 0;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            label9.Location = new System.Drawing.Point(4, 0);
+            label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label9.Name = "label9";
+            label9.Size = new System.Drawing.Size(66, 23);
+            label9.TabIndex = 12;
+            label9.Text = "Address";
             // 
             // txtAddress
             // 
@@ -465,7 +652,7 @@
             txtAddress.BorderSize = 1;
             txtAddress.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             txtAddress.ForeColor = System.Drawing.Color.Black;
-            txtAddress.Location = new System.Drawing.Point(59, 353);
+            txtAddress.Location = new System.Drawing.Point(5, 28);
             txtAddress.Margin = new System.Windows.Forms.Padding(5);
             txtAddress.Multiline = true;
             txtAddress.Name = "txtAddress";
@@ -480,63 +667,26 @@
             txtAddress.Texts = "";
             txtAddress.UnderlinedStyle = false;
             // 
-            // label9
+            // flowLayoutPanel15
             // 
-            label9.AutoSize = true;
-            label9.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            label9.Location = new System.Drawing.Point(55, 324);
-            label9.Margin = new System.Windows.Forms.Padding(4, 35, 4, 0);
-            label9.Name = "label9";
-            label9.Size = new System.Drawing.Size(66, 23);
-            label9.TabIndex = 12;
-            label9.Text = "Address";
+            flowLayoutPanel15.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            flowLayoutPanel15.Controls.Add(btnAddPatient);
+            flowLayoutPanel15.Controls.Add(btnClearInput);
+            flowLayoutPanel15.Location = new System.Drawing.Point(3, 370);
+            flowLayoutPanel15.Name = "flowLayoutPanel15";
+            flowLayoutPanel15.Size = new System.Drawing.Size(427, 73);
+            flowLayoutPanel15.TabIndex = 12;
             // 
-            // txtContact
+            // label12
             // 
-            txtContact.BackColor = System.Drawing.SystemColors.Window;
-            txtContact.BorderColor = System.Drawing.Color.DimGray;
-            txtContact.BorderFocusColor = System.Drawing.Color.FromArgb(18, 90, 211);
-            txtContact.BorderRadius = 5;
-            txtContact.BorderSize = 1;
-            txtContact.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            txtContact.ForeColor = System.Drawing.Color.Black;
-            txtContact.Location = new System.Drawing.Point(971, 242);
-            txtContact.Margin = new System.Windows.Forms.Padding(35, 5, 5, 5);
-            txtContact.Multiline = false;
-            txtContact.Name = "txtContact";
-            txtContact.Padding = new System.Windows.Forms.Padding(45, 8, 12, 8);
-            txtContact.PasswordChar = false;
-            txtContact.PlaceholderColor = System.Drawing.Color.DarkGray;
-            txtContact.PlaceholderText = "";
-            txtContact.SelectionLength = 0;
-            txtContact.SelectionStart = 0;
-            txtContact.Size = new System.Drawing.Size(209, 43);
-            txtContact.TabIndex = 6;
-            txtContact.Texts = "";
-            txtContact.UnderlinedStyle = false;
-            txtContact.KeyPress += txtContact_KeyPress;
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            label8.Location = new System.Drawing.Point(966, 213);
-            label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            label8.Name = "label8";
-            label8.Size = new System.Drawing.Size(123, 23);
-            label8.TabIndex = 10;
-            label8.Text = "Contact Number";
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            label7.Location = new System.Drawing.Point(55, 216);
-            label7.Margin = new System.Windows.Forms.Padding(4, 35, 4, 0);
-            label7.Name = "label7";
-            label7.Size = new System.Drawing.Size(74, 23);
-            label7.TabIndex = 8;
-            label7.Text = "Birthdate";
+            label12.AutoSize = true;
+            label12.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            label12.Location = new System.Drawing.Point(47, 28);
+            label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label12.Name = "label12";
+            label12.Size = new System.Drawing.Size(224, 34);
+            label12.TabIndex = 19;
+            label12.Text = "Personal Information";
             // 
             // btnBack
             // 
@@ -570,8 +720,6 @@
             // 
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             BackColor = System.Drawing.Color.White;
-            Controls.Add(btnClearInput);
-            Controls.Add(btnAddPatient);
             Controls.Add(label1);
             Controls.Add(panelBorder1);
             Controls.Add(btnBack);
@@ -579,11 +727,34 @@
             Controls.Add(nameHolder);
             Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             Name = "AddPatient";
-            Size = new System.Drawing.Size(1763, 973);
+            Size = new System.Drawing.Size(1763, 759);
             Load += AddPatient_Load;
             panelBorder1.ResumeLayout(false);
             panelBorder1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            flowLayoutPanel5.ResumeLayout(false);
+            flowLayoutPanel1.ResumeLayout(false);
+            flowLayoutPanel2.ResumeLayout(false);
+            flowLayoutPanel2.PerformLayout();
+            flowLayoutPanel3.ResumeLayout(false);
+            flowLayoutPanel3.PerformLayout();
+            flowLayoutPanel4.ResumeLayout(false);
+            flowLayoutPanel4.PerformLayout();
+            flowLayoutPanel6.ResumeLayout(false);
+            flowLayoutPanel6.PerformLayout();
+            flowLayoutPanel7.ResumeLayout(false);
+            flowLayoutPanel8.ResumeLayout(false);
+            flowLayoutPanel8.PerformLayout();
+            flowLayoutPanel9.ResumeLayout(false);
+            flowLayoutPanel10.ResumeLayout(false);
+            flowLayoutPanel10.PerformLayout();
+            flowLayoutPanel11.ResumeLayout(false);
+            flowLayoutPanel11.PerformLayout();
+            flowLayoutPanel12.ResumeLayout(false);
+            flowLayoutPanel12.PerformLayout();
+            flowLayoutPanel13.ResumeLayout(false);
+            flowLayoutPanel14.ResumeLayout(false);
+            flowLayoutPanel14.PerformLayout();
+            flowLayoutPanel15.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
 
@@ -616,9 +787,23 @@
         private System.Windows.Forms.Label label5;
         private CustomControls.RJControls.RJTextBox txtOccupation;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label13;
         private CustomControls.RJControls.RJComboBox cbGender;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ToolTip toolTipAge;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel6;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel7;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel8;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel9;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel10;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel11;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel12;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel13;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel14;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel15;
     }
 }

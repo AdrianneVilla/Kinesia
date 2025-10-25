@@ -499,18 +499,6 @@ namespace Kinesia.Assessment
                 dataGrid.Columns.Add(selectBtn);
             }
 
-            //Edit button
-
-            if (dataGrid.Columns["EditButton"] == null)
-            {
-                DataGridViewButtonColumn editBtn = new DataGridViewButtonColumn();
-                editBtn.Name = "EditButton";
-                editBtn.HeaderText = "Edit";
-                editBtn.UseColumnTextForButtonValue = true;
-                editBtn.Width = 80;
-                editBtn.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-                dataGrid.Columns.Add(editBtn);
-            }
 
             // Archive/Unarchive button
             if (dataGrid.Columns["ArchiveButton"] == null)
@@ -564,7 +552,7 @@ namespace Kinesia.Assessment
             {
                 string columnName = dataGrid.Columns[e.ColumnIndex].Name;
 
-                if (columnName == "SelectButton" || columnName == "EditButton" || columnName == "ArchiveButton")
+                if (columnName == "SelectButton" || columnName == "ArchiveButton")
                 {
                     bool isHovered = (hoveredCell.X == e.ColumnIndex && hoveredCell.Y == e.RowIndex);
                     Color backgroundColor = isHovered ? Color.FromArgb(220, 220, 220) : Color.White;
@@ -575,8 +563,6 @@ namespace Kinesia.Assessment
                     Image icon = null;
                     if (columnName == "SelectButton")
                         icon = Properties.Resources.newSelect;
-                    else if (columnName == "EditButton")
-                        icon = Properties.Resources.newEdit;
                     else if (columnName == "ArchiveButton")
                     {
                         // Check status from the Status column
@@ -610,7 +596,7 @@ namespace Kinesia.Assessment
                 var dataGrid = (DataGridView)sender;
                 string columnName = dataGrid.Columns[e.ColumnIndex].Name;
 
-                if (columnName == "SelectButton" || columnName == "EditButton" || columnName == "ArchiveButton")
+                if (columnName == "SelectButton" || columnName == "ArchiveButton")
                 {
                     hoveredCell = new Point(e.ColumnIndex, e.RowIndex);
                     dataGrid.InvalidateCell(e.ColumnIndex, e.RowIndex);

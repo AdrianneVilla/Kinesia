@@ -377,7 +377,15 @@ namespace CustomControls.RJControls
         protected override void OnResize(EventArgs e)
         {
             base.OnResize(e);
-            // FIXED: Remove DesignMode check so it works at runtime too
+            AdjustComboBoxDimensions();
+
+            // Force refresh of child controls
+            this.Invalidate();
+        }
+
+        protected override void OnSizeChanged(EventArgs e)
+        {
+            base.OnSizeChanged(e);
             AdjustComboBoxDimensions();
         }
         #endregion

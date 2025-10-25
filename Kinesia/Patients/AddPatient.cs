@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -12,36 +13,206 @@ namespace Kinesia.Patients
 {
     public partial class AddPatient : UserControl
     {
-        private Size designResolution = new Size(1763, 973);
-        private Dictionary<Control, Rectangle> originalControlBounds = new Dictionary<Control, Rectangle>();
-        private Rectangle originalPanelBounds;
+        private bool isInitialized = false;
         public AddPatient()
         {
             this.Anchor = AnchorStyles.Right | AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Bottom;
             this.Dock = DockStyle.Fill;
-            this.MinimumSize = new Size(800, 600);
+            this.MinimumSize = new Size(1000, 700);
             this.AutoScroll = true;
 
             InitializeComponent();
 
-            StoreOriginalSizes();
-            SetupResponsiveLayout();
         }
 
-        private void StoreOriginalSizes()
+        private void ConfigureFlowLayoutPanelsForResponsiveness()
         {
-            // Store original panel size
-            originalPanelBounds = panelBorder1.Bounds;
+            // Main FlowLayoutPanel (flowLayoutPanel5)
+            flowLayoutPanel5.AutoSize = false;
+            flowLayoutPanel5.WrapContents = false;
+            flowLayoutPanel5.FlowDirection = FlowDirection.TopDown;
+            flowLayoutPanel5.Resize += FlowLayoutPanel5_Resize;
 
-            // Store original sizes of all controls inside the panel
-            foreach (Control ctrl in panelBorder1.Controls)
+            // Container panels (flowLayoutPanel1, flowLayoutPanel7, flowLayoutPanel13)
+            ConfigureContainerPanel(flowLayoutPanel1);
+            ConfigureContainerPanel(flowLayoutPanel7);
+
+            // Configure the address section separately
+            flowLayoutPanel13.AutoSize = false;
+            flowLayoutPanel13.WrapContents = false;
+            flowLayoutPanel13.FlowDirection = FlowDirection.TopDown;
+
+            // Initial resize
+            FlowLayoutPanel5_Resize(flowLayoutPanel5, EventArgs.Empty);
+        }
+
+        private void ConfigureContainerPanel(FlowLayoutPanel containerPanel)
+        {
+            containerPanel.AutoSize = false;
+            containerPanel.WrapContents = true;
+            containerPanel.FlowDirection = FlowDirection.LeftToRight;
+        }
+
+        private void FlowLayoutPanel5_Resize(object sender, EventArgs e)
+        {
+            if (!isInitialized) return;
+
+            int availableWidth = flowLayoutPanel5.Width - flowLayoutPanel5.Padding.Left - flowLayoutPanel5.Padding.Right - 10;
+
+            // Resize container panels to fill width
+            flowLayoutPanel1.Width = availableWidth;
+            flowLayoutPanel7.Width = availableWidth;
+            flowLayoutPanel13.Width = availableWidth;
+            flowLayoutPanel15.Width = availableWidth; // Button panel
+
+            // Resize child panels inside containers
+            ResizeChildPanelsInContainer(flowLayoutPanel1, availableWidth);
+            ResizeChildPanelsInContainer(flowLayoutPanel7, availableWidth);
+
+            // Special handling for flowLayoutPanel13 (Address section)
+            ResizeAddressSection(flowLayoutPanel13, availableWidth);
+        }
+
+        private void ResizeChildPanelsInContainer(FlowLayoutPanel containerPanel, int containerWidth)
+        {
+            containerPanel.SuspendLayout();
+
+            // Count how many child flowLayoutPanels
+            List<FlowLayoutPanel> childPanels = new List<FlowLayoutPanel>();
+            foreach (Control ctrl in containerPanel.Controls)
             {
-                originalControlBounds[ctrl] = new Rectangle(ctrl.Location, ctrl.Size);
+                if (ctrl is FlowLayoutPanel childPanel)
+                {
+                    childPanels.Add(childPanel);
+                }
             }
 
-            // Store button positions
-            originalControlBounds[btnAddPatient] = new Rectangle(btnAddPatient.Location, btnAddPatient.Size);
-            originalControlBounds[btnClearInput] = new Rectangle(btnClearInput.Location, btnClearInput.Size);
+            if (childPanels.Count == 0)
+            {
+                containerPanel.ResumeLayout();
+                return;
+            }
+
+            // Calculate width for each child panel with margins
+            int margins = 5 * (childPanels.Count - 1); // Smaller margins
+            int availableWidth = containerWidth - margins - 10;
+
+            // Distribute width based on panel
+            foreach (var childPanel in childPanels)
+            {
+                int panelWidth = 0;
+
+                // Set widths based on which row/container
+                if (containerPanel == flowLayoutPanel1) // First, Last, Middle Name row
+                {
+                    panelWidth = (int)(availableWidth / 3f); // Equal distribution
+                }
+                else if (containerPanel == flowLayoutPanel7) // Birthdate, Age, Gender, Contact, Occupation row
+                {
+                    if (childPanel == flowLayoutPanel8) // Birthdate
+                        panelWidth = (int)(availableWidth * 0.26f);
+                    else if (childPanel == flowLayoutPanel9) // Age
+                        panelWidth = (int)(availableWidth * 0.11f);
+                    else if (childPanel == flowLayoutPanel10) // Gender
+                        panelWidth = (int)(availableWidth * 0.19f);
+                    else if (childPanel == flowLayoutPanel11) // Contact
+                        panelWidth = (int)(availableWidth * 0.20f);
+                    else if (childPanel == flowLayoutPanel12) // Occupation
+                        panelWidth = (int)(availableWidth * 0.20f);
+                }
+
+                childPanel.Width = panelWidth;
+
+                // Resize controls inside each child panel
+                ResizeControlsInChildPanel(childPanel, panelWidth);
+            }
+
+            containerPanel.ResumeLayout();
+        }
+
+        private void ResizeAddressSection(FlowLayoutPanel addressContainer, int containerWidth)
+        {
+            addressContainer.SuspendLayout();
+
+            // Check if address is in a nested panel (flowLayoutPanel14)
+            FlowLayoutPanel addressPanel = null;
+            foreach (Control ctrl in addressContainer.Controls)
+            {
+                if (ctrl is FlowLayoutPanel fp)
+                {
+                    addressPanel = fp;
+                    break;
+                }
+            }
+
+            if (addressPanel != null)
+            {
+                // Address is nested in flowLayoutPanel14
+                addressPanel.Width = containerWidth - 20;
+
+                foreach (Control innerCtrl in addressPanel.Controls)
+                {
+                    if (innerCtrl == txtAddress)
+                    {
+                        int addressWidth = addressPanel.Width - addressPanel.Padding.Left - addressPanel.Padding.Right - 10;
+                        txtAddress.Width = addressWidth;
+                    }
+                }
+            }
+            else
+            {
+                // Address is directly in flowLayoutPanel13
+                foreach (Control ctrl in addressContainer.Controls)
+                {
+                    if (ctrl == txtAddress)
+                    {
+                        int addressWidth = containerWidth - addressContainer.Padding.Left - addressContainer.Padding.Right - 20;
+                        txtAddress.Width = addressWidth;
+                    }
+                }
+            }
+
+            addressContainer.ResumeLayout();
+        }
+
+        private void ResizeControlsInChildPanel(FlowLayoutPanel childPanel, int panelWidth)
+        {
+            int controlWidth = panelWidth - childPanel.Padding.Left - childPanel.Padding.Right - 10;
+
+            childPanel.SuspendLayout();
+
+            foreach (Control ctrl in childPanel.Controls)
+            {
+                // Skip labels - they don't need resizing
+                if (ctrl is Label)
+                    continue;
+
+                if (ctrl is CustomControls.RJControls.RJTextBox txtBox)
+                {
+                    txtBox.Width = controlWidth;
+                }
+                else if (ctrl is CustomControls.RJControls.RJComboBox comboBox)
+                {
+                    // Set MinimumSize first to prevent size constraints
+                    comboBox.MinimumSize = new Size(50, 30);
+
+                    // Set the actual size
+                    comboBox.Width = controlWidth;
+                    comboBox.Size = new Size(controlWidth, comboBox.Height);
+
+                    // Set MaximumSize to lock the width
+                    comboBox.MaximumSize = new Size(controlWidth, 100);
+
+                    // Force the control to update
+                    comboBox.Refresh();
+                }
+                else if (ctrl is CustomControls.RJControls.RJDatePicker datePicker)
+                {
+                    datePicker.Width = controlWidth;
+                }
+            }
+
+            childPanel.ResumeLayout();
         }
 
         private void SetupResponsiveLayout()
@@ -55,103 +226,15 @@ namespace Kinesia.Patients
             // Main panel - stretch horizontally
             panelBorder1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
 
-            // Bottom buttons - anchor to bottom right
+            // Main FlowLayoutPanel - stretch horizontally
+            flowLayoutPanel5.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
+
+            // Button panel anchor
+            flowLayoutPanel15.Anchor = AnchorStyles.Top | AnchorStyles.Left;
+
+            // Bottom buttons
             btnAddPatient.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnClearInput.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-
-            // Subscribe to resize events
-            this.Resize += AddPatient_Resize;
-            panelBorder1.Resize += PanelBorder1_Resize;
-        }
-
-        private void AddPatient_Resize(object sender, EventArgs e)
-        {
-            AdjustButtonPositions();
-        }
-
-        private void PanelBorder1_Resize(object sender, EventArgs e)
-        {
-            ResizeControlsInPanel();
-        }
-
-        private void ResizeControlsInPanel()
-        {
-            if (originalControlBounds.Count == 0) return;
-
-            // Calculate scale factors
-            float scaleX = (float)panelBorder1.Width / originalPanelBounds.Width;
-            float scaleY = (float)panelBorder1.Height / originalPanelBounds.Height;
-
-            panelBorder1.SuspendLayout();
-
-            foreach (Control ctrl in panelBorder1.Controls)
-            {
-                if (originalControlBounds.ContainsKey(ctrl))
-                {
-                    Rectangle originalBounds = originalControlBounds[ctrl];
-
-                    // Calculate new position and size
-                    int newX = (int)(originalBounds.X * scaleX);
-                    int newY = (int)(originalBounds.Y * scaleY);
-                    int newWidth = (int)(originalBounds.Width * scaleX);
-                    int newHeight = (int)(originalBounds.Height * scaleY);
-
-                    // Apply new location
-                    ctrl.Location = new Point(newX, newY);
-
-                    // Special handling for custom ComboBox
-                    if (ctrl is CustomControls.RJControls.RJComboBox comboBox)
-                    {
-                        // Force resize by setting both Size and MinimumSize
-                        comboBox.MinimumSize = new Size(newWidth, newHeight);
-                        comboBox.Size = new Size(newWidth, newHeight);
-                        comboBox.MaximumSize = new Size(newWidth, newHeight);
-
-                        // Force the control to update its layout
-                        comboBox.Invalidate();
-                        comboBox.Update();
-                    }
-                    else
-                    {
-                        // Regular control resizing
-                        ctrl.Size = new Size(newWidth, newHeight);
-                    }
-
-                    // Adjust font size for labels
-                    if (ctrl is Label)
-                    {
-                        float newFontSize = ctrl.Font.Size * Math.Min(scaleX, scaleY);
-                        newFontSize = Math.Max(8, Math.Min(newFontSize, ctrl.Font.Size));
-                        ctrl.Font = new Font(ctrl.Font.FontFamily, newFontSize, ctrl.Font.Style);
-                    }
-                }
-            }
-
-            panelBorder1.ResumeLayout();
-            panelBorder1.PerformLayout(); // Force layout recalculation
-        }
-
-        private void AdjustButtonPositions()
-        {
-            if (originalControlBounds.ContainsKey(btnClearInput) && originalControlBounds.ContainsKey(btnAddPatient))
-            {
-                Rectangle origClear = originalControlBounds[btnClearInput];
-                Rectangle origAdd = originalControlBounds[btnAddPatient];
-
-                int rightMargin = designResolution.Width - origClear.Right;
-                int bottomMargin = designResolution.Height - origClear.Bottom;
-                int buttonSpacing = origClear.Left - origAdd.Right;
-
-                btnClearInput.Location = new Point(
-                    this.Width - btnClearInput.Width - rightMargin,
-                    this.Height - btnClearInput.Height - bottomMargin
-                );
-
-                btnAddPatient.Location = new Point(
-                    btnClearInput.Left - btnAddPatient.Width - buttonSpacing,
-                    this.Height - btnAddPatient.Height - bottomMargin
-                );
-            }
         }
 
 
@@ -190,6 +273,14 @@ namespace Kinesia.Patients
 
         private void AddPatient_Load(object sender, EventArgs e)
         {
+            // Setup responsive layout
+            SetupResponsiveLayout();
+
+            // Configure FlowLayoutPanels for responsiveness
+            ConfigureFlowLayoutPanelsForResponsiveness();
+
+            isInitialized = true;
+
             dpBirthDate.Text = DateTime.Now.ToString(); // will set the value of DatePicker dpBirthDate to date today
             txtAge.BackColor = System.Drawing.Color.White;
         }
@@ -345,5 +436,10 @@ namespace Kinesia.Patients
             InputValidation.CharactersOnly(sender, e);
         }
         #endregion
+
+        private void panelBorder1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

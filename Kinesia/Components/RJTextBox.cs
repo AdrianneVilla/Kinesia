@@ -212,14 +212,22 @@ namespace CustomControls.RJControls
         protected override void OnResize(EventArgs e)
         {
             base.OnResize(e);
-            if (this.DesignMode)
-                UpdateControlHeight();
+            // FIXED: Remove DesignMode check so it works at runtime too
+            UpdateControlHeight();
+
+            // Update the textbox region when resizing
+            if (borderRadius > 15)
+                SetTextBoxRoundedRegion();
+
+            this.Invalidate(); // Redraw the control
         }
+
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
             UpdateControlHeight();
         }
+
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
@@ -234,7 +242,7 @@ namespace CustomControls.RJControls
 
                 using (GraphicsPath pathBorderSmooth = GetFigurePath(rectBorderSmooth, borderRadius))
                 using (GraphicsPath pathBorder = GetFigurePath(rectBorder, borderRadius - borderSize))
-                using (Pen penBorderSmooth = new Pen(this.Parent.BackColor, smoothSize))
+                using (Pen penBorderSmooth = new Pen(this.Parent != null ? this.Parent.BackColor : Color.White, smoothSize))
                 using (Pen penBorder = new Pen(borderColor, borderSize))
                 {
                     //-Drawing
@@ -291,6 +299,7 @@ namespace CustomControls.RJControls
                     textBox1.UseSystemPasswordChar = false;
             }
         }
+
         private void RemovePlaceholder()
         {
             if (isPlaceholder && placeholderText != "")
@@ -302,6 +311,7 @@ namespace CustomControls.RJControls
                     textBox1.UseSystemPasswordChar = true;
             }
         }
+
         private GraphicsPath GetFigurePath(Rectangle rect, int radius)
         {
             GraphicsPath path = new GraphicsPath();
@@ -315,8 +325,11 @@ namespace CustomControls.RJControls
             path.CloseFigure();
             return path;
         }
+
         private void SetTextBoxRoundedRegion()
         {
+            if (textBox1 == null) return;
+
             GraphicsPath pathTxt;
             if (Multiline)
             {
@@ -330,8 +343,11 @@ namespace CustomControls.RJControls
             }
             pathTxt.Dispose();
         }
+
         private void UpdateControlHeight()
         {
+            if (textBox1 == null) return;
+
             if (textBox1.Multiline == false)
             {
                 int txtHeight = TextRenderer.MeasureText("Text", this.Font).Height + 1;
@@ -350,18 +366,22 @@ namespace CustomControls.RJControls
             if (_TextChanged != null)
                 _TextChanged.Invoke(sender, e);
         }
+
         private void textBox1_Click(object sender, EventArgs e)
         {
             this.OnClick(e);
         }
+
         private void textBox1_MouseEnter(object sender, EventArgs e)
         {
             this.OnMouseEnter(e);
         }
+
         private void textBox1_MouseLeave(object sender, EventArgs e)
         {
             this.OnMouseLeave(e);
         }
+
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
             this.OnKeyPress(e);
@@ -373,6 +393,7 @@ namespace CustomControls.RJControls
             this.Invalidate();
             RemovePlaceholder();
         }
+
         private void textBox1_Leave(object sender, EventArgs e)
         {
             isFocused = false;

@@ -366,11 +366,11 @@
             btnFinishAssessment.ForeColor = System.Drawing.Color.White;
             btnFinishAssessment.Image = Properties.Resources.newWhiteSelect;
             btnFinishAssessment.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnFinishAssessment.Location = new System.Drawing.Point(9, 338);
+            btnFinishAssessment.Location = new System.Drawing.Point(4, 338);
             btnFinishAssessment.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             btnFinishAssessment.Name = "btnFinishAssessment";
             btnFinishAssessment.Padding = new System.Windows.Forms.Padding(20, 3, 30, 0);
-            btnFinishAssessment.Size = new System.Drawing.Size(406, 51);
+            btnFinishAssessment.Size = new System.Drawing.Size(415, 51);
             btnFinishAssessment.TabIndex = 37;
             btnFinishAssessment.Text = "Finish Assessment";
             btnFinishAssessment.TextColor = System.Drawing.Color.White;
@@ -382,9 +382,10 @@
             dataGridROM.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             dataGridROM.BackgroundColor = System.Drawing.Color.White;
             dataGridROM.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridROM.Location = new System.Drawing.Point(16, 14);
+            dataGridROM.Location = new System.Drawing.Point(5, 5);
+            dataGridROM.Margin = new System.Windows.Forms.Padding(5);
             dataGridROM.Name = "dataGridROM";
-            dataGridROM.Size = new System.Drawing.Size(1062, 127);
+            dataGridROM.Size = new System.Drawing.Size(1082, 146);
             dataGridROM.TabIndex = 37;
             dataGridROM.RowsAdded += dataGridROM_RowsAdded;
             // 
@@ -534,7 +535,7 @@
             btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnPrint.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             btnPrint.ForeColor = System.Drawing.Color.White;
-            btnPrint.Image = Properties.Resources.add_btn;
+            btnPrint.Image = Properties.Resources.print_icon;
             btnPrint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             btnPrint.Location = new System.Drawing.Point(786, 439);
             btnPrint.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -558,10 +559,10 @@
             btnAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnAll.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline);
             btnAll.ForeColor = System.Drawing.Color.White;
-            btnAll.Location = new System.Drawing.Point(68, 492);
+            btnAll.Location = new System.Drawing.Point(68, 503);
             btnAll.Margin = new System.Windows.Forms.Padding(1);
             btnAll.Name = "btnAll";
-            btnAll.Size = new System.Drawing.Size(93, 46);
+            btnAll.Size = new System.Drawing.Size(93, 35);
             btnAll.TabIndex = 41;
             btnAll.Text = "All";
             btnAll.TextColor = System.Drawing.Color.White;
@@ -579,10 +580,10 @@
             btnFlexion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnFlexion.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline);
             btnFlexion.ForeColor = System.Drawing.Color.Gray;
-            btnFlexion.Location = new System.Drawing.Point(163, 492);
+            btnFlexion.Location = new System.Drawing.Point(163, 503);
             btnFlexion.Margin = new System.Windows.Forms.Padding(1);
             btnFlexion.Name = "btnFlexion";
-            btnFlexion.Size = new System.Drawing.Size(141, 46);
+            btnFlexion.Size = new System.Drawing.Size(141, 35);
             btnFlexion.TabIndex = 42;
             btnFlexion.Text = "Flexion";
             btnFlexion.TextColor = System.Drawing.Color.Gray;
@@ -600,10 +601,10 @@
             btnExtension.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnExtension.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline);
             btnExtension.ForeColor = System.Drawing.Color.Gray;
-            btnExtension.Location = new System.Drawing.Point(307, 492);
+            btnExtension.Location = new System.Drawing.Point(307, 503);
             btnExtension.Margin = new System.Windows.Forms.Padding(1);
             btnExtension.Name = "btnExtension";
-            btnExtension.Size = new System.Drawing.Size(141, 46);
+            btnExtension.Size = new System.Drawing.Size(141, 35);
             btnExtension.TabIndex = 43;
             btnExtension.Text = "Extension";
             btnExtension.TextColor = System.Drawing.Color.Gray;
@@ -621,10 +622,10 @@
             btnAbduction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnAbduction.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline);
             btnAbduction.ForeColor = System.Drawing.Color.Gray;
-            btnAbduction.Location = new System.Drawing.Point(450, 492);
+            btnAbduction.Location = new System.Drawing.Point(450, 503);
             btnAbduction.Margin = new System.Windows.Forms.Padding(1);
             btnAbduction.Name = "btnAbduction";
-            btnAbduction.Size = new System.Drawing.Size(141, 46);
+            btnAbduction.Size = new System.Drawing.Size(141, 35);
             btnAbduction.TabIndex = 44;
             btnAbduction.Text = "Abduction";
             btnAbduction.TextColor = System.Drawing.Color.Gray;
@@ -642,10 +643,10 @@
             btnAdduction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnAdduction.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline);
             btnAdduction.ForeColor = System.Drawing.Color.Gray;
-            btnAdduction.Location = new System.Drawing.Point(593, 492);
+            btnAdduction.Location = new System.Drawing.Point(593, 503);
             btnAdduction.Margin = new System.Windows.Forms.Padding(1);
             btnAdduction.Name = "btnAdduction";
-            btnAdduction.Size = new System.Drawing.Size(141, 46);
+            btnAdduction.Size = new System.Drawing.Size(141, 35);
             btnAdduction.TabIndex = 45;
             btnAdduction.Text = "Adduction";
             btnAdduction.TextColor = System.Drawing.Color.Gray;
@@ -656,7 +657,7 @@
             // 
             panelBorder1.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             panelBorder1.BackColor = System.Drawing.Color.FromArgb(207, 249, 238);
-            panelBorder1.BorderRadius = 30;
+            panelBorder1.BorderRadius = 10;
             panelBorder1.Color = System.Drawing.Color.BurlyWood;
             panelBorder1.Controls.Add(dataGridROM);
             panelBorder1.ForeColor = System.Drawing.Color.Black;
