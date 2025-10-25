@@ -123,7 +123,6 @@ namespace Kinesia.Assessment
             {
                 var newAssessment = new AddAssessmentDTO
                 {
-                    AssessmentID = await Queries.AssessmentQueries.SetAssessmentID(),
                     PatientID = PageObjects.patientAssessmentDetails.PatientID,
                     Extremity = PageObjects.patientAssessmentDetails.Extremity,
                     Joint = PageObjects.patientAssessmentDetails.Joint,

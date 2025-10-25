@@ -1,4 +1,5 @@
 ﻿using KinesiaLibrary.DTOs.AssessmentDTOs;
+using KinesiaLibrary.DTOs.UserDTOs;
 using MySqlX.XDevAPI;
 using Newtonsoft.Json;
 using System;
@@ -335,42 +336,10 @@ namespace Kinesia.Assessment
 
                 if (response.IsSuccessStatusCode)
                 {
-                    return newAssessment.AssessmentID;
-                }
-                else
-                {
-                    // will show an error dialog if it returns a badrequest from API-side.
-                    CustomDialog.Show(await response.Content.ReadAsStringAsync(),
-                                "Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
-                    return null;
-                }
-            }
-            catch (HttpRequestException)
-            {
-                // will show an error dialog if it catches a http request error from client-side.
-                CustomDialog.Show("Unable to connect to the server.\nPlease try again.",
-                            "Connection Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
-                return null;
-            }
-            catch (Exception)
-            {
-                // will show an error dialog if it catches an unexpected error from client-side.
-                CustomDialog.Show("Unexpected error occured.\nPlease try again.",
-                            "Unexpected Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
-                return null;
-            }
-        }
+                    var responseString = await response.Content.ReadAsStringAsync();
+                    var createdAssessment = JsonConvert.DeserializeObject<AssessmentDTO>(responseString);
 
-        public async Task<string> SetAssessmentID()
-        {
-            try
-            {
-                var url = "http://localhost:5000/api/assessment/generate-assessmentid";
-                var response = await client.GetAsync(url);
-
-                if (response.IsSuccessStatusCode)
-                {
-                    return await response.Content.ReadAsStringAsync();
+                    return createdAssessment.AssessmentID;
                 }
                 else
                 {
@@ -420,7 +389,7 @@ namespace Kinesia.Assessment
 
         public bool IsAssessmentDetailsComplete(AddAssessmentDTO newAssessment)
         {
-            if(newAssessment.Extremity == "Select Extremity" || newAssessment.Joint == "Select Joint" || newAssessment.Joint == "Select Joint Side")
+            if(newAssessment.Extremity == "Select Extremity" || newAssessment.Joint == "Select Joint" || newAssessment.JointSide == "Select Joint Side")
             {
                 // will show an error dialog if the assessment details was incomplete
                 CustomDialog.Show("Incomplete assessment details!\nPlease complete Joint Information.", "Add Assessment Alert",

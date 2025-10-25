@@ -330,32 +330,6 @@ namespace KinesiaAPI.Controllers
             }
         }
 
-        // GET: api/assessment/generate-assessmentid
-        [HttpGet("generate-assessmentid")]
-        public async Task<ActionResult<string>> GenerateNewAssessmentID()
-        {
-            try
-            {
-                var nextCount = await _context.Database
-                    .SqlQueryRaw<long>("SELECT NEXTVAL(assessment_id_seq) AS value")
-                    .FirstAsync();
-
-                string newAssessmentID = $"ASSESSMENT{nextCount}";
-
-                return Ok(newAssessmentID);
-            }
-            catch (DbException dbEx)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError,
-                    $"Database error: {dbEx.Message}");
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError,
-                    $"Unexpected error: {ex.Message}");
-            }
-        }
-
         // PUT: api/Assessments/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
@@ -429,21 +403,31 @@ namespace KinesiaAPI.Controllers
             if(assessmentDTO == null)
                 return BadRequest("ROM data cannot be null.");
 
-            var newAssessment = new Assessments
-            {
-                AssessmentID = assessmentDTO.AssessmentID,
-                PatientID = assessmentDTO.PatientID,
-                Extremity = assessmentDTO.Extremity,
-                Joint = assessmentDTO.Joint,
-                JointSide = assessmentDTO.JointSide,
-                AssessmentStatus = 1,
-                AssessmentDate = DateTime.Now
-            };
+            await using var transaction = await _context.Database.BeginTransactionAsync();
 
             try
             {
+                var nextCount = await _context.Database
+                    .SqlQueryRaw<long>("SELECT NEXTVAL(assessment_id_seq) AS value")
+                    .FirstAsync();
+
+                string newAssessmentID = $"ASSESSMENT{nextCount}";
+
+                var newAssessment = new Assessments
+                {
+                    AssessmentID = newAssessmentID,
+                    PatientID = assessmentDTO.PatientID,
+                    Extremity = assessmentDTO.Extremity,
+                    Joint = assessmentDTO.Joint,
+                    JointSide = assessmentDTO.JointSide,
+                    AssessmentStatus = 1,
+                    AssessmentDate = DateTime.Now
+                };
+
                 _context.Assessments.Add(newAssessment);
                 await _context.SaveChangesAsync();
+
+                await transaction.CommitAsync();
 
                 return CreatedAtAction("GetAssessments", new { id = newAssessment.AssessmentID }, newAssessment);
             }
