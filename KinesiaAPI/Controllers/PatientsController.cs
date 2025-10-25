@@ -62,14 +62,14 @@ namespace KinesiaAPI.Controllers
                         query = query.OrderBy(p => p.FirstName);
                         break;
                     case "Earliest (Date Added)":
-                        query = query.OrderByDescending(p => p.DateAdded);
+                        query = query.OrderBy(p => p.DateAdded);
                         break;
                     case "Latest (Date Added)":
-                        query = query.OrderBy(p => p.DateAdded);
+                        query = query.OrderByDescending(p => p.DateAdded);
                         desc = false;
                         break;
                     default:
-                        query = query.OrderByDescending(p => p.PatientID);
+                        query = query.OrderBy(p => p.PatientID);
                         break;
                 }
 

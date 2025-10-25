@@ -77,15 +77,19 @@ namespace Kinesia.Offline
         private SolidBrush _jointBrush;
         private Pen _bonePen;
 
+        // --- NEW: State Flags for Camera Connection ---
+        private bool _isCameraConnected = true;
+        private bool _isClosing = false; // Flag to prevent multiple close attempts
+
         public AssessmentROMOffline()
         {
             InitializeComponent();
-            this.Load += AssessmentROM_Load;
+            this.Load += AssessmentROM_Load; // Changed from AssessmentROM_Load
             this.FormClosing += AssessmentROM_FormClosing;
             _modelPath = Path.Combine(Application.StartupPath, "models", ModelFileName);
         }
 
-        private void AssessmentROM_Load(object sender, EventArgs e)
+        private void AssessmentROM_Load(object sender, EventArgs e) // Changed from AssessmentROM_Load
         {
             // Initialize drawing tools
             _font = new Font("Arial", 10, FontStyle.Bold);
@@ -114,13 +118,34 @@ namespace Kinesia.Offline
             }
 
             // Initialize Astra SDK
-            Context.Initialize();
-            _streamSet = StreamSet.Open();
-            _reader = _streamSet.CreateReader();
-            _colorStream = _reader.GetStream<ColorStream>();
-            _depthStream = _reader.GetStream<DepthStream>();
-            _colorStream.Start();
-            _depthStream.Start();
+            try
+            {
+                Context.Initialize();
+                _streamSet = StreamSet.Open();
+
+                // --- NEW: Initial Camera Check ---
+                if (!_streamSet.IsAvailable)
+                {
+                    _isCameraConnected = false;
+                    MessageBox.Show("Astra camera not detected. Please check the connection.", "Camera Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.Close(); // Close immediately if not found on load
+                    return;
+                }
+                // --- End NEW ---
+
+                _reader = _streamSet.CreateReader();
+                _colorStream = _reader.GetStream<ColorStream>();
+                _depthStream = _reader.GetStream<DepthStream>();
+                _colorStream.Start();
+                _depthStream.Start();
+            }
+            catch (Exception ex)
+            {
+                _isCameraConnected = false; // Mark as disconnected if init fails
+                MessageBox.Show($"Failed to initialize Astra SDK: {ex.Message}", "SDK Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close(); return;
+            }
+
 
             // Start the main processing timer
             _sdkTimer = new System.Windows.Forms.Timer { Interval = 33 }; // ~30 FPS
@@ -317,22 +342,54 @@ namespace Kinesia.Offline
 
         private void SdkTimer_Tick(object sender, EventArgs e)
         {
-            if (_currentState == MeasurementState.Paused || _currentMovement == MovementType.None) return;
+            // --- NEW: Prevent processing if closing ---
+            if (_isClosing) return;
 
-            Context.Update();
-
-            if (!_reader.TryOpenFrame(0, out var frame)) return;
-
-            Astra.ColorFrame cf = null;
-            Astra.DepthFrame df = null;
-
+            // --- NEW: Check for SDK communication errors ---
             try
             {
+                Context.Update();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error during Context.Update: {ex.Message}");
+                if (_isCameraConnected) // Only handle if it was previously connected
+                {
+                    HandleDisconnection("Error communicating with camera. Closing assessment.");
+                }
+                return; // Stop processing this tick if Update fails
+            }
+
+            // --- NEW: Check if camera is still available ---
+            bool currentlyAvailable = _streamSet?.IsAvailable ?? false;
+            if (!currentlyAvailable && _isCameraConnected)
+            {
+                HandleDisconnection("Camera disconnected. Closing assessment.");
+                return; // Stop the tick after handling disconnect
+            }
+
+            // --- Don't process if disconnected, paused, or no movement selected ---
+            if (!_isCameraConnected || _currentState == MeasurementState.Paused || _currentMovement == MovementType.None)
+            {
+                return;
+            }
+            // --- End NEW ---
+
+
+            // --- Frame Processing (mostly unchanged) ---
+            ReaderFrame frame = null; // Use ReaderFrame instead of var for clarity
+            try
+            {
+                if (!_reader.TryOpenFrame(0, out frame)) return; // No new frame, exit tick
+
+                Astra.ColorFrame cf = null;
+                Astra.DepthFrame df = null;
+                Point3D[] smoothedLimb3D = null; // Keep this outside cf block
+
                 cf = frame.GetFrame<ColorFrame>();
-                df = frame.GetFrame<DepthFrame>();
+                df = frame.GetFrame<DepthFrame>(); // Get depth frame regardless of color success
 
-                Point3D[] smoothedLimb3D = null;
-
+                // --- Color Frame Processing & MoveNet ---
                 if (cf != null && cf.Width > 0 && cf.DataPtr != IntPtr.Zero)
                 {
                     int colorLength = cf.Width * cf.Height * 3;
@@ -351,31 +408,34 @@ namespace Kinesia.Offline
                     var keypointsTensor = _moveNet.RunInference(_colorBuffer, cf.Width, cf.Height);
                     var rawJoints = _moveNet.ExtractKeypoints(keypointsTensor, cf.Width, cf.Height);
                     _smoothedJoints = SmoothJoints(rawJoints, 0.5f);
+                }
+                else
+                {
+                    _smoothedJoints = null; // Ensure smoothed joints are null if color fails
+                    _lastAngleWasValid = false; // Angle becomes invalid if no color/pose
+                }
 
-                    if (df != null && df.Width > 0 && df.DataPtr != IntPtr.Zero)
+
+                // --- Depth Frame Processing & 3D Pose/Angle (Only if pose exists) ---
+                if (df != null && df.Width > 0 && df.DataPtr != IntPtr.Zero && _smoothedJoints != null) // Check _smoothedJoints
+                {
+                    int depthCount = df.Width * df.Height;
+                    if (_depthBuffer == null || _depthBuffer.Length != depthCount)
+                        _depthBuffer = new short[depthCount];
+
+                    df.CopyData(ref _depthBuffer);
+                    MedianFilter(_depthBuffer, df.Width, df.Height);
+
+                    var rawLimb3D = GetLimb3DPose(_smoothedJoints, _depthBuffer, df.Width, df.Height, cf.Width, cf.Height); // cf might be null here, ensure GetLimb3DPose handles it or pass dimensions differently
+                    smoothedLimb3D = Smooth3DJointsMovingAverage(rawLimb3D);
+
+                    if (smoothedLimb3D != null && smoothedLimb3D.Length == 3 && smoothedLimb3D.All(p => p.Z > 0))
                     {
-                        int depthCount = df.Width * df.Height;
-                        if (_depthBuffer == null || _depthBuffer.Length != depthCount)
-                            _depthBuffer = new short[depthCount];
-
-                        df.CopyData(ref _depthBuffer);
-                        MedianFilter(_depthBuffer, df.Width, df.Height);
-
-                        var rawLimb3D = GetLimb3DPose(_smoothedJoints, _depthBuffer, df.Width, df.Height, cf.Width, cf.Height);
-                        smoothedLimb3D = Smooth3DJointsMovingAverage(rawLimb3D);
-
-                        if (smoothedLimb3D != null && smoothedLimb3D.Length == 3 && smoothedLimb3D.All(p => p.Z > 0))
+                        double limbAngle = CalculateAngle3D(smoothedLimb3D[0], smoothedLimb3D[1], smoothedLimb3D[2]);
+                        if (limbAngle >= 0)
                         {
-                            double limbAngle = CalculateAngle3D(smoothedLimb3D[0], smoothedLimb3D[1], smoothedLimb3D[2]);
-                            if (limbAngle >= 0)
-                            {
-                                _lastLiveAngle = SmoothAngleMovingAverage(limbAngle);
-                                _lastAngleWasValid = true;
-                            }
-                            else
-                            {
-                                _lastAngleWasValid = false;
-                            }
+                            _lastLiveAngle = SmoothAngleMovingAverage(limbAngle);
+                            _lastAngleWasValid = true;
                         }
                         else
                         {
@@ -386,28 +446,75 @@ namespace Kinesia.Offline
                     {
                         _lastAngleWasValid = false;
                     }
-                    RenderColorWithPose(cf.Width, cf.Height, _colorBuffer, _smoothedJoints, smoothedLimb3D);
                 }
-                else
+                else // Depth frame failed or no 2D pose
                 {
                     _lastAngleWasValid = false;
+                }
+
+                // --- Render (only if color buffer is valid) ---
+                if (cf != null && _colorBuffer != null)
+                {
+                    RenderColorWithPose(cf.Width, cf.Height, _colorBuffer, _smoothedJoints, smoothedLimb3D);
                 }
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"Error during frame processing: {ex.ToString()}");
-                _lastAngleWasValid = false;
+                Debug.WriteLine($"Error during frame processing: {ex}");
+                // --- NEW: Handle disconnect on processing error ---
+                if (_isCameraConnected)
+                {
+                    HandleDisconnection("An error occurred during frame processing. Closing assessment.");
+                }
+                // --- End NEW ---
+                _lastAngleWasValid = false; // Ensure angle is invalid after error
             }
             finally
             {
-                frame.Dispose();
+                frame?.Dispose(); // Use null-conditional Dispose
             }
         }
+
+        // --- NEW: HandleDisconnection Method (Copied from AssessmentROM.cs) ---
+        private void HandleDisconnection(string message)
+        {
+            if (_isClosing) return; // Prevent recursive calls if Close triggers events
+            _isClosing = true;      // Set flag immediately
+
+            _isCameraConnected = false; // Update status
+            _sdkTimer?.Stop();        // Stop timer before showing modal dialog
+
+            // Use Invoke if called from a non-UI thread (though Timer usually ticks on UI thread)
+            if (this.InvokeRequired)
+            {
+                this.Invoke((Action)(() => MessageBox.Show(message, "Camera Status", MessageBoxButtons.OK, MessageBoxIcon.Warning)));
+            }
+            else
+            {
+                MessageBox.Show(message, "Camera Status", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+
+            // Close the form safely on the UI thread
+            if (this.IsHandleCreated && !this.IsDisposed)
+            {
+                this.BeginInvoke(new Action(() => this.Close()));
+            }
+        }
+        // --- End NEW ---
 
 
         // *** UPDATED Label Text Formatting ***
         private void btnStartStopMeasurement_Click(object sender, EventArgs e)
         {
+            // --- NEW: Check camera connection ---
+            if (!_isCameraConnected)
+            {
+                MessageBox.Show("Camera is not connected.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            // --- End NEW ---
+
             string jointStr = GetSelectedJointString();
             string movementStr = GetSelectedMovementString();
 
@@ -488,6 +595,9 @@ namespace Kinesia.Offline
         private void ResetMeasurementState()
         {
             _currentState = MeasurementState.Idle;
+            // --- NEW: Enable/disable based on connection status ---
+            btnStartStopMeasurement.Enabled = _isCameraConnected;
+            // --- End NEW ---
             btnStartStopMeasurement.Text = "Start Measurement";
             // Clear result labels (Normal Range is set by combo box change)
             lblStartingPosition.Text = "";
@@ -521,17 +631,18 @@ namespace Kinesia.Offline
                         case MovementType.Abduction:
                         case MovementType.Adduction:
                             // Note: May need refinement based on accuracy
-                            return useLeftIndices ? new[] { 1, 5, 7 } : new[] { 1, 6, 8 };
-                        default: return new int[0];
+                            // Using Hip-Shoulder-Elbow for approximation
+                            return useLeftIndices ? new[] { 11, 5, 7 } : new[] { 12, 6, 8 }; // TODO: Re-evaluate indices if needed for Ab/Adduction accuracy
+                        default: return Array.Empty<int>();
                     }
 
-                case JointTypeEnum.Hip: // Flexion/Extension
-                    return useLeftIndices ? new[] { 9, 11, 13 } : new[] { 9, 12, 14 };
+                case JointTypeEnum.Hip: // Flexion/Extension - Using Shoulder-Hip-Knee
+                    return useLeftIndices ? new[] { 5, 11, 13 } : new[] { 6, 12, 14 };
 
                 case JointTypeEnum.Knee: // Flexion/Extension
                     return useLeftIndices ? new[] { 11, 13, 15 } : new[] { 12, 14, 16 };
             }
-            return new int[0];
+            return Array.Empty<int>();
         }
 
 
@@ -540,8 +651,14 @@ namespace Kinesia.Offline
             _angleHistory.Clear();
             _jointHistory3D.Clear();
             _lastGood3DJoints = null;
-            if (_jointOcclusionCounters != null)
+            if (_jointOcclusionCounters == null || _jointOcclusionCounters.Length != 3) // Initialize if null or wrong size
+            {
+                _jointOcclusionCounters = new int[3];
+            }
+            else
+            {
                 Array.Clear(_jointOcclusionCounters, 0, _jointOcclusionCounters.Length);
+            }
         }
 
         private void MedianFilter(short[] data, int width, int height)
@@ -572,47 +689,91 @@ namespace Kinesia.Offline
         // Updated CalculateAngle3D
         private double CalculateAngle3D(Point3D p1, Point3D p2_Vertex, Point3D p3)
         {
-            if (p1.Z <= 0 || p2_Vertex.Z <= 0 || p3.Z <= 0) return -1;
+            const float minValidDepth = 0.1f; // Minimum realistic depth in meters
+            if (p1.Z < minValidDepth || p2_Vertex.Z < minValidDepth || p3.Z < minValidDepth)
+            {
+                Debug.WriteLine($"Invalid depth for angle calculation: P1.Z={p1.Z:F3}, P2.Z={p2_Vertex.Z:F3}, P3.Z={p3.Z:F3}");
+                return -1; // Indicate invalid angle due to depth
+            }
+
             Point3D v1 = new Point3D { X = p1.X - p2_Vertex.X, Y = p1.Y - p2_Vertex.Y, Z = p1.Z - p2_Vertex.Z };
             Point3D v2 = new Point3D { X = p3.X - p2_Vertex.X, Y = p3.Y - p2_Vertex.Y, Z = p3.Z - p2_Vertex.Z };
-            double mag1 = Math.Sqrt(v1.X * v1.X + v1.Y * v1.Y + v1.Z * v1.Z);
-            double mag2 = Math.Sqrt(v2.X * v2.X + v2.Y * v2.Y + v2.Z * v2.Z);
-            if (mag1 == 0 || mag2 == 0) return -1;
-            double dot = v1.X * v2.X + v1.Y * v2.Y + v1.Z * v2.Z;
-            double cosTheta = Math.Max(-1.0, Math.Min(1.0, dot / (mag1 * mag2)));
-            double angleDeg = Math.Acos(cosTheta) * (180.0 / Math.PI);
 
-            // Adjust angle based on joint/movement
-            if (_currentJoint == JointTypeEnum.ElbowAndForearm) // UPDATED Enum
+            double mag1Sq = (v1.X * v1.X) + (v1.Y * v1.Y) + (v1.Z * v1.Z);
+            double mag2Sq = (v2.X * v2.X) + (v2.Y * v2.Y) + (v2.Z * v2.Z);
+
+            // Check for zero magnitude vectors
+            if (mag1Sq <= float.Epsilon || mag2Sq <= float.Epsilon)
             {
-                return 180.0 - angleDeg; // Interior angle for elbow
+                Debug.WriteLine("Magnitude is near zero, cannot calculate angle.");
+                return -1;
             }
-            // Knee calculation Hip-Knee-Ankle already gives interior angle
-            // Shoulder & Hip Flex/Ext calculation gives angle relative to trunk/vertical axis
-            // Shoulder Ab/Adduction might need further refinement based on plane
 
-            return angleDeg; // Default
+            double mag1 = Math.Sqrt(mag1Sq);
+            double mag2 = Math.Sqrt(mag2Sq);
+            double dot = v1.X * v2.X + v1.Y * v2.Y + v1.Z * v2.Z;
+            double cosTheta = dot / (mag1 * mag2);
+
+            // Clamp cosTheta to handle potential floating-point inaccuracies
+            cosTheta = Math.Max(-1.0, Math.Min(1.0, cosTheta));
+
+            double angleRad = Math.Acos(cosTheta);
+            double interiorAngle = angleRad * (180.0 / Math.PI); // Angle inside the joint vertex
+
+            // Adjust angle based on joint/movement for 0-180 ROM standard
+            if (_currentJoint == JointTypeEnum.ElbowAndForearm || _currentJoint == JointTypeEnum.Knee)
+            {
+                // For Elbow and Knee, ROM is typically measured as the deviation from full extension (180 degrees)
+                // The calculated interior angle is the bend angle. We want 180 - bend angle.
+                return 180.0 - interiorAngle;
+            }
+            // For Shoulder and Hip flexion/extension, the interior angle relative to the adjacent segments
+            // often aligns with the standard ROM measurement (relative to neutral anatomical position).
+            // Ab/Adduction might need further axis definition depending on desired plane.
+            return interiorAngle; // Default return for Shoulder/Hip (may need refinement)
         }
 
 
         private Point3D[] GetLimb3DPose(PointF[] joints2D, short[] depthBuffer, int depthW, int depthH, int colorW, int colorH)
         {
             int[] limbIndices = GetCalculationIndices();
-            if (limbIndices.Length != 3) return null;
+            if (limbIndices.Length != 3 || joints2D == null || depthBuffer == null) return null; // Ensure exactly 3 indices
+
             var outPts = new Point3D[3];
-            for (int i = 0; i < 3; i++)
+
+            for (int i = 0; i < 3; i++) // Iterate exactly 3 times
             {
                 int idx = limbIndices[i];
                 if (idx < 0 || idx >= joints2D.Length || joints2D[idx].IsEmpty)
-                { outPts[i] = new Point3D(); continue; }
+                {
+                    outPts[i] = new Point3D { X = 0, Y = 0, Z = 0 }; // Mark as invalid (Z=0)
+                    //_jointOcclusionCounters[i] = Math.Min(_jointOcclusionCounters[i] + 1, OcclusionGracePeriod + 1); // Increment counter
+                    continue; // Skip to next joint if 2D pose is missing
+                }
+
                 PointF p2d = joints2D[idx];
+                // Map color (RGB) coords to depth frame coords
                 int dx = (int)(p2d.X * depthW / (float)colorW);
                 int dy = (int)(p2d.Y * depthH / (float)colorH);
+
+                // Clamp coordinates to be within depth image bounds
                 dx = Math.Max(0, Math.Min(dx, depthW - 1));
                 dy = Math.Max(0, Math.Min(dy, depthH - 1));
+
+                // Get depth value in millimeters
                 short depthMm = depthBuffer[dy * depthW + dx];
-                float depthM = depthMm / 1000.0f;
-                outPts[i] = new Point3D { X = p2d.X, Y = p2d.Y, Z = (depthM > 0) ? depthM : 0 };
+
+                if (depthMm <= 0) // Invalid depth reading
+                {
+                    outPts[i] = new Point3D { X = p2d.X, Y = p2d.Y, Z = 0 }; // Mark as invalid (Z=0)
+                    //_jointOcclusionCounters[i] = Math.Min(_jointOcclusionCounters[i] + 1, OcclusionGracePeriod + 1);
+                }
+                else
+                {
+                    float depthM = depthMm / 1000.0f; // Convert mm to meters
+                    outPts[i] = new Point3D { X = p2d.X, Y = p2d.Y, Z = depthM };
+                    // _jointOcclusionCounters[i] = 0; // Reset counter on valid reading
+                }
             }
             return outPts;
         }
@@ -620,18 +781,37 @@ namespace Kinesia.Offline
 
         private PointF[] SmoothJoints(PointF[] newJoints, float alpha)
         {
+            if (newJoints == null) return _smoothedJoints; // Return last known if input is null
+
+            // Initialize or resize _smoothedJoints if needed
             if (_smoothedJoints == null || _smoothedJoints.Length != newJoints.Length)
             {
-                _smoothedJoints = new PointF[newJoints.Length];
-                for (int i = 0; i < newJoints.Length; i++) _smoothedJoints[i] = newJoints[i].IsEmpty ? PointF.Empty : newJoints[i];
+                _smoothedJoints = (PointF[])newJoints.Clone(); // Start with the first valid frame
                 return _smoothedJoints;
             }
+
+            // Apply exponential moving average
             for (int i = 0; i < newJoints.Length; i++)
             {
-                if (newJoints[i].IsEmpty) continue;
-                if (_smoothedJoints[i].IsEmpty) { _smoothedJoints[i] = newJoints[i]; continue; }
-                _smoothedJoints[i] = new PointF(alpha * newJoints[i].X + (1 - alpha) * _smoothedJoints[i].X,
-                                               alpha * newJoints[i].Y + (1 - alpha) * _smoothedJoints[i].Y);
+                // Skip if new joint is invalid
+                if (newJoints[i].IsEmpty)
+                {
+                    // Optionally: decay the smoothed joint towards empty or keep last known?
+                    // _smoothedJoints[i] = PointF.Empty; // Option 1: Mark as empty
+                    continue; // Option 2: Keep the last smoothed position
+                }
+
+                // If the smoothed joint was previously empty, start with the new joint
+                if (_smoothedJoints[i].IsEmpty)
+                {
+                    _smoothedJoints[i] = newJoints[i];
+                    continue;
+                }
+
+                // Apply smoothing formula
+                float newX = alpha * newJoints[i].X + (1 - alpha) * _smoothedJoints[i].X;
+                float newY = alpha * newJoints[i].Y + (1 - alpha) * _smoothedJoints[i].Y;
+                _smoothedJoints[i] = new PointF(newX, newY);
             }
             return _smoothedJoints;
         }
@@ -639,90 +819,299 @@ namespace Kinesia.Offline
 
         private Point3D[] Smooth3DJointsMovingAverage(Point3D[] newJoints)
         {
-            if (newJoints == null || newJoints.Length != 3)
+            // If new joints are completely invalid, return the last known good set (if any)
+            if (newJoints == null || newJoints.Length != 3 || newJoints.All(p => p.Z <= 0))
             {
+                // Increment occlusion counters only if the last frame was good
                 bool wasGood = _lastGood3DJoints != null && _lastGood3DJoints.All(p => p.Z > 0);
-                if (wasGood) for (int i = 0; i < 3; i++) _jointOcclusionCounters[i]++;
-                return _lastGood3DJoints;
+                if (wasGood)
+                {
+                    for (int i = 0; i < 3; i++) _jointOcclusionCounters[i]++;
+                }
+                return _lastGood3DJoints; // Return last good pose, might be null
             }
-            Point3D[] currentFrame = new Point3D[3];
-            bool frameValid = false;
+
+            // Process the current frame: Use new valid points, or fall back to last good point within grace period
+            Point3D[] currentFrameCorrected = new Point3D[3];
+            bool anyValidInCurrent = false;
             for (int i = 0; i < 3; i++)
             {
-                if (newJoints[i].Z > 0) { currentFrame[i] = newJoints[i]; _jointOcclusionCounters[i] = 0; frameValid = true; }
-                else { _jointOcclusionCounters[i]++; currentFrame[i] = (_jointOcclusionCounters[i] <= OcclusionGracePeriod && _lastGood3DJoints?.Length == 3) ? _lastGood3DJoints[i] : new Point3D(); }
+                if (newJoints[i].Z > 0) // Current joint is valid
+                {
+                    currentFrameCorrected[i] = newJoints[i];
+                    _jointOcclusionCounters[i] = 0; // Reset counter
+                    anyValidInCurrent = true;
+                }
+                else // Current joint is occluded/invalid
+                {
+                    _jointOcclusionCounters[i]++; // Increment counter
+                                                  // If within grace period AND a previous good pose exists, use the old point
+                    if (_jointOcclusionCounters[i] <= OcclusionGracePeriod && _lastGood3DJoints != null && _lastGood3DJoints.Length == 3 && _lastGood3DJoints[i].Z > 0)
+                    {
+                        currentFrameCorrected[i] = _lastGood3DJoints[i];
+                    }
+                    else
+                    {
+                        currentFrameCorrected[i] = new Point3D { X = 0, Y = 0, Z = 0 }; // Mark as invalid
+                    }
+                }
             }
-            if (frameValid)
+
+            // Add the corrected frame to history only if it contained at least one valid new point
+            if (anyValidInCurrent)
             {
-                _jointHistory3D.Enqueue(currentFrame);
-                while (_jointHistory3D.Count > MovingAverageWindowSize) _jointHistory3D.Dequeue();
-                _lastGood3DJoints = currentFrame;
+                _jointHistory3D.Enqueue(currentFrameCorrected);
+                while (_jointHistory3D.Count > MovingAverageWindowSize)
+                {
+                    _jointHistory3D.Dequeue();
+                }
+                // Update last good pose if the current frame had valid data
+                _lastGood3DJoints = currentFrameCorrected;
             }
-            else if (_jointHistory3D.Count == 0) return null;
-            if (_jointHistory3D.Count == 0) return null;
-            var average = new Point3D[3];
+            // If the current frame was entirely estimated, don't add it to history,
+            // but allow averaging to continue based on previous frames.
+
+            // Calculate the moving average from history
+            if (_jointHistory3D.Count == 0) return null; // No history yet
+
+            var averageJoints = new Point3D[3];
             for (int i = 0; i < 3; i++)
-            { float sx = 0, sy = 0, sz = 0; int vc = 0; foreach (var f in _jointHistory3D) if (f.Length > i && f[i].Z > 0) { sx += f[i].X; sy += f[i].Y; sz += f[i].Z; vc++; } average[i] = (vc > 0) ? new Point3D { X = sx / vc, Y = sy / vc, Z = sz / vc } : new Point3D(); }
-            return average;
+            {
+                float sumX = 0, sumY = 0, sumZ = 0;
+                int validCount = 0;
+                foreach (var frameJoints in _jointHistory3D)
+                {
+                    // Only include points that were valid (Z > 0) in the average
+                    if (frameJoints != null && frameJoints.Length > i && frameJoints[i].Z > 0)
+                    {
+                        sumX += frameJoints[i].X;
+                        sumY += frameJoints[i].Y;
+                        sumZ += frameJoints[i].Z;
+                        validCount++;
+                    }
+                }
+
+                if (validCount > 0)
+                {
+                    averageJoints[i] = new Point3D { X = sumX / validCount, Y = sumY / validCount, Z = sumZ / validCount };
+                }
+                else
+                {
+                    // If no valid points in history for this joint, mark as invalid
+                    averageJoints[i] = new Point3D { X = 0, Y = 0, Z = 0 };
+                }
+            }
+
+            // If the average contains valid points, it becomes the new "last good pose"
+            if (averageJoints.Any(p => p.Z > 0))
+            {
+                _lastGood3DJoints = averageJoints;
+            }
+
+            return averageJoints;
         }
 
 
         private double SmoothAngleMovingAverage(double newAngle)
         {
-            if (newAngle >= 0) { _angleHistory.Enqueue(newAngle); while (_angleHistory.Count > MovingAverageWindowSize) _angleHistory.Dequeue(); }
-            else if (_angleHistory.Count > 0) return _angleHistory.Average();
-            else return -1;
-            if (_angleHistory.Count == 0) return (newAngle >= 0) ? newAngle : -1;
-            return _angleHistory.Average();
+            // Add valid angles to history
+            if (newAngle >= 0)
+            {
+                _angleHistory.Enqueue(newAngle);
+                // Maintain window size
+                while (_angleHistory.Count > MovingAverageWindowSize)
+                {
+                    _angleHistory.Dequeue();
+                }
+            }
+            // If the new angle is invalid, rely solely on the history average if available
+            else if (_angleHistory.Count > 0)
+            {
+                return _angleHistory.Average();
+            }
+            // If new angle is invalid and history is empty, return invalid marker
+            else
+            {
+                return -1; // Indicate invalid angle
+            }
+
+            // If history is not empty after potentially adding a new angle, return average
+            if (_angleHistory.Count > 0)
+            {
+                return _angleHistory.Average();
+            }
+
+            // Should only reach here if the first angle calculation was invalid
+            return -1;
         }
 
 
         private void RenderColorWithPose(int w, int h, byte[] buffer, PointF[] joints2D, Point3D[] joints3D_smoothed)
         {
-            Bitmap bmp = null; Bitmap displayBmp = null; Graphics g = null;
+            Bitmap bmp = null;
+            Bitmap displayBmp = null;
+            Graphics g = null;
             try
             {
+                // Ensure buffer is valid
                 if (buffer == null || buffer.Length != w * h * 3) return;
+
+                // Create Bitmap pointing to the buffer memory
+                // Critical: Ensure buffer remains pinned/valid while Bitmap uses it.
+                // Marshal.UnsafeAddrOfPinnedArrayElement implies buffer won't be moved by GC.
                 bmp = new Bitmap(w, h, w * 3, System.Drawing.Imaging.PixelFormat.Format24bppRgb, Marshal.UnsafeAddrOfPinnedArrayElement(buffer, 0));
+
+                // Create Graphics object to draw on the bitmap
                 g = Graphics.FromImage(bmp);
+
+                // Perform drawing operations
                 DrawLimbPose(g, joints2D, joints3D_smoothed);
+
+                // Clone the bitmap for display. This creates a separate copy
+                // so the original can be disposed without affecting the displayed image.
                 displayBmp = (Bitmap)bmp.Clone();
-                pictureBoxRgb.Invoke((Action)(() => { pictureBoxRgb.Image?.Dispose(); pictureBoxRgb.Image = displayBmp; }));
+
+                // Update the PictureBox on the UI thread
+                pictureBoxRgb.Invoke((Action)(() =>
+                {
+                    pictureBoxRgb.Image?.Dispose(); // Dispose previous image if any
+                    pictureBoxRgb.Image = displayBmp; // Set the new image
+                }));
             }
-            catch (Exception ex) { Debug.WriteLine($"Render Error: {ex}"); displayBmp?.Dispose(); }
-            finally { g?.Dispose(); bmp?.Dispose(); }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Render Error: {ex.ToString()}");
+                displayBmp?.Dispose(); // Dispose cloned bitmap if error occurred after cloning
+            }
+            finally
+            {
+                // Ensure GDI+ resources are always released
+                g?.Dispose();
+                bmp?.Dispose(); // Dispose the original bitmap wrapper
+            }
         }
 
 
         private void DrawLimbPose(Graphics g, PointF[] joints2D, Point3D[] joints3D_smoothed)
         {
-            if (joints2D == null) return; int[] idxs = GetCalculationIndices(); if (idxs.Length != 3) return;
-            const float optStart = 0.7f, optEnd = 2.5f, margin = 0.2f; Color limbColor = Color.Red; float midDepth = 0;
-            if (joints3D_smoothed?.Length == 3) { midDepth = joints3D_smoothed[1].Z; if (midDepth > 0) { if (midDepth >= optStart && midDepth <= optEnd) limbColor = Color.LawnGreen; else if (midDepth >= optStart - margin && midDepth <= optEnd + margin) limbColor = Color.Yellow; } }
-            _lastConfidenceColor = limbColor; _bonePen.Color = limbColor;
-            string dTxt = (midDepth > 0) ? $"Dist: {midDepth:F2}m" : "Dist: N/A"; string tTxt = $"Range: {optStart:F1}-{optEnd:F1}m";
-            g.FillRectangle(_backBrush, 5, 5, 160, 50); g.DrawString(dTxt, _font, _fontBrush, 10, 10); g.DrawString(tTxt, _font, _fontBrush, 10, 30);
-            PointF p1 = GetSafeJoint2D(joints2D, idxs[0]), pV = GetSafeJoint2D(joints2D, idxs[1]), p3 = GetSafeJoint2D(joints2D, idxs[2]);
-            if (!p1.IsEmpty && !pV.IsEmpty) g.DrawLine(_bonePen, p1, pV); if (!pV.IsEmpty && !p3.IsEmpty) g.DrawLine(_bonePen, pV, p3);
-            for (int i = 0; i < 3; i++) { int jIdx = idxs[i]; PointF p2d = GetSafeJoint2D(joints2D, jIdx); if (!p2d.IsEmpty) { bool vis = joints3D_smoothed?.Length > i && joints3D_smoothed[i].Z > 0; if (vis) _jointOcclusionCounters[i] = 0; else _jointOcclusionCounters[i]++; Color jCol = (_jointOcclusionCounters[i] > OcclusionGracePeriod) ? Color.Red : Color.White; _jointBrush.Color = jCol; g.FillEllipse(_jointBrush, p2d.X - 5, p2d.Y - 5, 10, 10); } else { _jointOcclusionCounters[i]++; } }
-            if ((_currentState == MeasurementState.Measuring || _currentState == MeasurementState.Paused) && _lastAngleWasValid && !pV.IsEmpty) { double angle = (_currentState == MeasurementState.Measuring) ? _lastLiveAngle : _endAngle; string aTxt = $"{angle:F1}°"; SizeF sz = g.MeasureString(aTxt, _font); RectangleF r = new RectangleF(pV.X + 15, pV.Y - 25, sz.Width + 10, sz.Height + 5); g.FillRectangle(_backBrush, r); g.DrawString(aTxt, _font, _fontBrush, r.X + 5, r.Y + 2.5f); }
+            if (g == null || joints2D == null) return;
+
+            int[] activeIndices = GetCalculationIndices();
+            if (activeIndices.Length != 3) return; // Expecting 3 joints for angle calculation
+
+            const float optimalDepthStart = 0.7f;
+            const float optimalDepthEnd = 2.5f;
+            const float acceptableMargin = 0.2f;
+
+            Color limbColor = Color.Red; // Default color (low confidence)
+            float middleJointDepth = 0;
+
+            // Determine confidence color based on middle joint's depth
+            if (joints3D_smoothed != null && joints3D_smoothed.Length == 3 && joints3D_smoothed[1].Z > 0)
+            {
+                middleJointDepth = joints3D_smoothed[1].Z;
+                if (middleJointDepth >= optimalDepthStart && middleJointDepth <= optimalDepthEnd)
+                {
+                    limbColor = Color.LawnGreen; // Good confidence
+                }
+                else if (middleJointDepth >= optimalDepthStart - acceptableMargin &&
+                         middleJointDepth <= optimalDepthEnd + acceptableMargin)
+                {
+                    limbColor = Color.Yellow; // Fair confidence
+                }
+            }
+            _lastConfidenceColor = limbColor; // Store for measurement accuracy string
+            _bonePen.Color = limbColor;
+
+            // Draw distance feedback text
+            string depthText = (middleJointDepth > 0) ? $"Your Distance: {middleJointDepth:F2}m" : "Your Distance: N/A";
+            string targetText = $"Good Range: {optimalDepthStart:F1}m - {optimalDepthEnd:F1}m";
+            g.FillRectangle(_backBrush, 5, 5, 200, 50); // Background for text
+            g.DrawString(depthText, _font, _fontBrush, new PointF(10, 10));
+            g.DrawString(targetText, _font, _fontBrush, new PointF(10, 30));
+
+
+            // Get 2D points safely
+            PointF p1 = GetSafeJoint2D(joints2D, activeIndices[0]);
+            PointF pVertex = GetSafeJoint2D(joints2D, activeIndices[1]);
+            PointF p3 = GetSafeJoint2D(joints2D, activeIndices[2]);
+
+            // Draw bones (lines between joints) if points are valid
+            if (!p1.IsEmpty && !pVertex.IsEmpty)
+            {
+                g.DrawLine(_bonePen, p1, pVertex);
+            }
+            if (!pVertex.IsEmpty && !p3.IsEmpty)
+            {
+                g.DrawLine(_bonePen, pVertex, p3);
+            }
+
+            // Draw joints (circles) and handle occlusion visualization
+            for (int i = 0; i < 3; i++)
+            {
+                int jointIndex = activeIndices[i];
+                PointF p2d = GetSafeJoint2D(joints2D, jointIndex);
+
+                if (!p2d.IsEmpty)
+                {
+                    // Determine if joint is considered occluded based on counters
+                    bool isOccluded = (_jointOcclusionCounters != null && i < _jointOcclusionCounters.Length && _jointOcclusionCounters[i] > OcclusionGracePeriod);
+                    _jointBrush.Color = isOccluded ? Color.Red : Color.White; // Red if occluded for too long
+                    g.FillEllipse(_jointBrush, p2d.X - 5, p2d.Y - 5, 10, 10); // Draw joint circle
+                }
+                // No need to explicitly draw something if p2d is Empty
+            }
+
+
+            // Draw angle text near the vertex joint if measuring/paused and angle is valid
+            if ((_currentState == MeasurementState.Measuring || _currentState == MeasurementState.Paused) && _lastAngleWasValid && !pVertex.IsEmpty)
+            {
+                double angleToDisplay = (_currentState == MeasurementState.Measuring) ? _lastLiveAngle : _endAngle;
+                string angleText = $"{angleToDisplay:F1}°";
+                SizeF textSize = g.MeasureString(angleText, _font);
+                // Position text box near the vertex, adjust as needed
+                RectangleF textRect = new RectangleF(pVertex.X + 15, pVertex.Y - 25, textSize.Width + 10, textSize.Height + 5);
+                g.FillRectangle(_backBrush, textRect); // Background for angle text
+                g.DrawString(angleText, _font, _fontBrush, textRect.Location.X + 5, textRect.Location.Y + 2.5f);
+            }
         }
 
         private PointF GetSafeJoint2D(PointF[] joints, int index) => (joints != null && index >= 0 && index < joints.Length && !joints[index].IsEmpty) ? joints[index] : PointF.Empty;
 
         private void AssessmentROM_FormClosing(object sender, FormClosingEventArgs e)
         {
+            // --- NEW: Set closing flag ---
+            _isClosing = true; // Set flag to prevent issues during close
+
             _sdkTimer?.Stop();
-            try { _colorStream?.Stop(); _depthStream?.Stop(); _reader?.Dispose(); _streamSet?.Dispose(); Context.Terminate(); } catch { }
-            _moveNet?.Dispose(); _font?.Dispose(); _fontBrush?.Dispose(); _backBrush?.Dispose(); _jointBrush?.Dispose(); _bonePen?.Dispose();
+            // Wrap SDK disposal in try-catch to prevent errors during shutdown
+            try
+            {
+                _colorStream?.Stop();
+                _depthStream?.Stop();
+                _reader?.Dispose();
+                _streamSet?.Dispose();
+                Context.Terminate();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error during SDK cleanup: {ex.Message}");
+            }
+            // Dispose other resources
+            _moveNet?.Dispose();
+            _font?.Dispose();
+            _fontBrush?.Dispose();
+            _backBrush?.Dispose();
+            _jointBrush?.Dispose();
+            _bonePen?.Dispose();
         }
 
         private void btnSaveAssessment_Click(object sender, EventArgs e)
         {
             // 1. Check if there's valid data to save (measurement must be paused/complete)
-            if (_currentState != MeasurementState.Paused || _endAngle == 0)
+            if (_currentState != MeasurementState.Paused || _endAngle == 0) // Check _endAngle too
             {
-                MessageBox.Show("Please complete a measurement before saving.", "No Data", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Please complete a measurement (Start and then Stop) before saving.", "Measurement Not Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -731,10 +1120,21 @@ namespace Kinesia.Offline
             string side = _currentSide.ToString();
             string joint = GetSelectedJointString(); // Use helper
             string movement = GetSelectedMovementString(); // Use helper
+
+            // Ensure confidence strings are captured correctly
             string startAngleStr = $"{_initialAngle:F1}° (Accuracy: {_initialConfidence})";
             string endAngleStr = $"{_endAngle:F1}° (Accuracy: {_endConfidence})";
+
             string normalRangeStr = lblNormalRange.Text; // Get text directly from label
             string deficitStr = lblDeficit.Text;         // Get text directly from label
+
+            // Check if essential data is missing (shouldn't happen if state is Paused, but good practice)
+            if (string.IsNullOrEmpty(joint) || string.IsNullOrEmpty(movement))
+            {
+                MessageBox.Show("Cannot save: Joint or Movement information is missing.", "Data Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
 
             // 3. Prompt user for save location
             using (SaveFileDialog saveFileDialog = new SaveFileDialog())
@@ -769,16 +1169,22 @@ namespace Kinesia.Offline
                             AddHeaders(worksheet); // Add headers for new file
                         }
 
-                        // 5. Find the next empty row
-                        int nextRow = worksheet.LastRowUsed()?.RowNumber() + 1 ?? 1; // Find last used row, or start at 1
-                        if (nextRow == 1 && worksheet.Cell(1, 1).IsEmpty()) // Handle case where sheet exists but is empty
+                        // 5. Find the next empty row robustly
+                        int nextRow = 1; // Default to row 1
+                        if (worksheet.LastRowUsed() != null)
                         {
-                            AddHeaders(worksheet); // Add headers if first row is empty
-                            nextRow = 2; // Data starts on row 2
+                            nextRow = worksheet.LastRowUsed().RowNumber() + 1;
                         }
-                        else if (nextRow == 1 && !worksheet.Cell(1, 1).IsEmpty()) // Sheet has headers but no data
+
+                        // If starting a new sheet (nextRow is 1), add headers and set data row to 2
+                        if (nextRow == 1)
                         {
-                            nextRow = 2; // Data starts on row 2
+                            // Double-check if headers are truly missing even if LastRowUsed is null
+                            if (worksheet.Cell(1, 1).IsEmpty())
+                            {
+                                AddHeaders(worksheet);
+                            }
+                            nextRow = 2; // Data always starts at row 2 if headers are present/added
                         }
 
 
@@ -798,8 +1204,19 @@ namespace Kinesia.Offline
                         // 7. Save the workbook
                         workbook.SaveAs(filePath);
                         MessageBox.Show($"Assessment saved successfully to:\n{filePath}", "Save Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        // Optionally, reset after saving
+                        // ResetMeasurementState();
+                        // cmbLimbSelection.Enabled = true;
+                        // cmbJointSelection.Enabled = _currentSide != BodySide.None;
+                        // cmbMovementSelection.Enabled = _currentJoint != JointTypeEnum.None;
+
                     }
-                    catch (Exception ex)
+                    catch (IOException ioEx) // Handle file access issues specifically
+                    {
+                        MessageBox.Show($"Failed to save assessment data. The file might be open in another program.\nError: {ioEx.Message}", "File Access Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    catch (Exception ex) // General error handler
                     {
                         MessageBox.Show($"Failed to save assessment data.\nError: {ex.Message}", "Save Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }

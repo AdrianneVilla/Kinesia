@@ -87,6 +87,13 @@ namespace Kinesia
     {
         public static void ShowFocus(Form form)
         {
+            if (form == null)
+            {
+                // Throwing an exception is better for debugging.
+                // It tells you exactly where the problem started.
+                throw new ArgumentNullException(nameof(form), "The form provided to ShowFocus cannot be null.");
+            }
+
             // will try to find the currently active form.
             // If 'owner' is null, the shadow will use default settings.
             Form owner = Form.ActiveForm;
@@ -98,6 +105,11 @@ namespace Kinesia
 
         public static void ShowFocus(Form formToStyle, Form owner)
         {
+            if (formToStyle == null)
+            {
+                throw new ArgumentNullException(nameof(formToStyle), "The form to be styled cannot be null.");
+            }
+
             // will set and create a background to help show a focus for message dialogs
             formToStyle.FormBorderStyle = FormBorderStyle.None;
             formToStyle.Opacity = .80;
