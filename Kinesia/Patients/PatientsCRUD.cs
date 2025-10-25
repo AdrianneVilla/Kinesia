@@ -2,6 +2,7 @@
 using KinesiaLibrary.DTOs;
 using KinesiaLibrary.DTOs.AuthDTOs;
 using KinesiaLibrary.DTOs.PatientDTOs;
+using KinesiaLibrary.DTOs.UserDTOs;
 using Microsoft.CodeAnalysis.VisualBasic.Syntax;
 using MySql.Data.MySqlClient;
 using Newtonsoft.Json;
@@ -331,28 +332,10 @@ namespace Kinesia.Patients
             }
         }
 
-        public async Task<string> SetPatientID()
-        {
-            var url = "http://localhost:5000/api/patients/generate-patientid";
-            var response = await client.GetAsync(url);
-
-            if (response.IsSuccessStatusCode)
-            {
-                return await response.Content.ReadAsStringAsync();
-            }
-            else
-            {
-                // will throw an exception if it returns a badrequest from API-side.
-                string errorMessage = await response.Content.ReadAsStringAsync();
-                throw new Exception(errorMessage);
-            }
-        }
-
         public async Task<string> AddPatient(PatientDataHolder patientData)
         {
             var newPatient = new PatientsDTO
             {
-                PatientID = await SetPatientID(),
                 FirstName = patientData.FirstName,
                 LastName = patientData.LastName,
                 MiddleName = patientData.MiddleName,
@@ -373,7 +356,10 @@ namespace Kinesia.Patients
 
             if (response.IsSuccessStatusCode)
             {
-                return newPatient.PatientID;
+                var responseString = await response.Content.ReadAsStringAsync();
+                var createdPatient = JsonConvert.DeserializeObject<PatientsDTO>(responseString);
+
+                return createdPatient.PatientID;
             }
             else
             {

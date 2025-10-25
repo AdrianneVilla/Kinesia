@@ -173,30 +173,6 @@ namespace KinesiaAPI.Controllers
             }
         }
 
-        // GET: api/patients/generate-patientid
-        [HttpGet("generate-patientid")]
-        public async Task<ActionResult<string>> GenerateNewPatientID()
-        {
-            try
-            {
-                var nextCount = await _context.Database
-                    .SqlQueryRaw<long>("SELECT NEXTVAL(patient_id_seq) as value")
-                    .FirstAsync();
-
-                string newPatientID = $"PATIENT{nextCount}";
-
-                return Ok(newPatientID);
-            }
-            catch (DbException)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, "An error occured on database.\nPlease try again.");
-            }
-            catch (Exception)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, "An unexpected error occured.\nPlease try again.");
-            }
-        }
-
         // POST: api/patients/check-existing
         [HttpPost("check-existing")]
         public async Task<IActionResult> CheckExistingPatient(CheckExistingPatientDTO existingPatient)
@@ -342,10 +318,22 @@ namespace KinesiaAPI.Controllers
             if (patients == null)
                 return BadRequest("Patient data cannot be null.");
 
+            await using var transaction = await _context.Database.BeginTransactionAsync();
+
             try
             {
+                var nextCount = await _context.Database
+                    .SqlQueryRaw<long>("SELECT NEXTVAL(patient_id_seq) as value")
+                    .FirstAsync();
+
+                string newPatientID = $"PATIENT{nextCount}";
+
+                patients.PatientID = newPatientID;
+
                 _context.Patients.Add(patients);
                 await _context.SaveChangesAsync();
+
+                await transaction.CommitAsync();
 
                 return CreatedAtAction("GetPatients", new { id = patients.PatientID }, patients);
             }
