@@ -264,6 +264,7 @@
             txtFirstName.ForeColor = System.Drawing.Color.Black;
             txtFirstName.Location = new System.Drawing.Point(5, 28);
             txtFirstName.Margin = new System.Windows.Forms.Padding(5);
+            txtFirstName.MaxLength = 50;
             txtFirstName.Multiline = false;
             txtFirstName.Name = "txtFirstName";
             txtFirstName.Padding = new System.Windows.Forms.Padding(12, 8, 12, 8);
@@ -311,6 +312,7 @@
             txtLastName.ForeColor = System.Drawing.Color.Black;
             txtLastName.Location = new System.Drawing.Point(5, 28);
             txtLastName.Margin = new System.Windows.Forms.Padding(5);
+            txtLastName.MaxLength = 50;
             txtLastName.Multiline = false;
             txtLastName.Name = "txtLastName";
             txtLastName.Padding = new System.Windows.Forms.Padding(12, 8, 12, 8);
@@ -377,6 +379,7 @@
             txtMiddleName.ForeColor = System.Drawing.Color.Black;
             txtMiddleName.Location = new System.Drawing.Point(5, 28);
             txtMiddleName.Margin = new System.Windows.Forms.Padding(5);
+            txtMiddleName.MaxLength = 50;
             txtMiddleName.Multiline = false;
             txtMiddleName.Name = "txtMiddleName";
             txtMiddleName.Padding = new System.Windows.Forms.Padding(12, 8, 12, 8);
@@ -476,6 +479,7 @@
             txtAge.ForeColor = System.Drawing.Color.Black;
             txtAge.Location = new System.Drawing.Point(5, 28);
             txtAge.Margin = new System.Windows.Forms.Padding(5);
+            txtAge.MaxLength = 32767;
             txtAge.Multiline = false;
             txtAge.Name = "txtAge";
             txtAge.Padding = new System.Windows.Forms.Padding(12, 8, 12, 8);
@@ -563,6 +567,7 @@
             txtContact.ForeColor = System.Drawing.Color.Black;
             txtContact.Location = new System.Drawing.Point(5, 28);
             txtContact.Margin = new System.Windows.Forms.Padding(5);
+            txtContact.MaxLength = 11;
             txtContact.Multiline = false;
             txtContact.Name = "txtContact";
             txtContact.Padding = new System.Windows.Forms.Padding(10, 8, 12, 8);
@@ -609,6 +614,7 @@
             txtOccupation.ForeColor = System.Drawing.Color.Black;
             txtOccupation.Location = new System.Drawing.Point(5, 28);
             txtOccupation.Margin = new System.Windows.Forms.Padding(5);
+            txtOccupation.MaxLength = 50;
             txtOccupation.Multiline = false;
             txtOccupation.Name = "txtOccupation";
             txtOccupation.Padding = new System.Windows.Forms.Padding(12, 8, 12, 8);
@@ -617,7 +623,7 @@
             txtOccupation.PlaceholderText = "";
             txtOccupation.SelectionLength = 0;
             txtOccupation.SelectionStart = 0;
-            txtOccupation.Size = new System.Drawing.Size(210, 43);
+            txtOccupation.Size = new System.Drawing.Size(319, 43);
             txtOccupation.TabIndex = 7;
             txtOccupation.Texts = "";
             txtOccupation.UnderlinedStyle = false;
@@ -663,6 +669,7 @@
             txtAddress.ForeColor = System.Drawing.Color.Black;
             txtAddress.Location = new System.Drawing.Point(5, 28);
             txtAddress.Margin = new System.Windows.Forms.Padding(5);
+            txtAddress.MaxLength = 255;
             txtAddress.Multiline = true;
             txtAddress.Name = "txtAddress";
             txtAddress.Padding = new System.Windows.Forms.Padding(12, 8, 12, 8);

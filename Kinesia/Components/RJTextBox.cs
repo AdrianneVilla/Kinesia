@@ -115,6 +115,13 @@ namespace CustomControls.RJControls
         }
 
         [Category("RJ Code Advance")]
+        public int MaxLength
+        {
+            get { return textBox1.MaxLength; }
+            set { textBox1.MaxLength = value; }
+        }
+
+        [Category("RJ Code Advance")]
         public override Color ForeColor
         {
             get { return base.ForeColor; }
