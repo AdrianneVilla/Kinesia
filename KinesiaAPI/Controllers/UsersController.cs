@@ -303,6 +303,41 @@ namespace KinesiaAPI.Controllers
             return NoContent();
         }
 
+        // PUT: api/users/reset-password?userID={}
+        [HttpPut("reset-password")]
+        public async Task<IActionResult> ResetPassword(string id)
+        {
+            if(string.IsNullOrEmpty(id))
+            {
+                return BadRequest("User ID is required and must match the URL parameter");
+            }
+
+            var existingUser = await _context.Users.FindAsync(id);
+
+            string salt = CustomSecurity.GenerateSalt();
+            string newPassword = $"{existingUser.Username}.{existingUser.Birthdate.ToString("yyyyMMdd")}";
+            existingUser.Password = CustomSecurity.HashPassword(newPassword, salt);
+            existingUser.Salt = salt;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!UsersExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+
         // POST: api/Users
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]

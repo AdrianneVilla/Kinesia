@@ -102,7 +102,7 @@ namespace Kinesia.Users
 
         private void UserDetails_Load(object sender, EventArgs e)
         {
-            if(lblArchiveDate.Text != "N/A")
+            if (lblArchiveDate.Text != "N/A")
             {
                 if (lblStatus.Text == "Active")
                 {
@@ -111,6 +111,30 @@ namespace Kinesia.Users
                 else
                 {
                     lastArchiveUnarchiveDateLabel.Text = "Last Archive Date:";
+                }
+            }
+        }
+
+        private async void btnResetPassword_Click(object sender, EventArgs e)
+        {
+            DialogResult resetPasswordDiag = CustomDialog.Show($"Are you sure you want to reset {lblUserID.Text}'s password?\n" +
+                $"Resetting it will set its password to username.birthday (e.g., juan.20021128).\n" +
+                $"Do you want to continue?", "Reset Password", CustomDialogButtons.YesNo, CustomDialogIcons.Warning);
+
+            if(resetPasswordDiag == DialogResult.Yes)
+            {
+                var success = await Queries.UserQueries.ResetPassword(lblUserID.Text);
+
+                if (success)
+                {
+                    CustomDialog.Show($"{lblUserID.Text}'s password has been reset successfully!", "Reset Password",
+                        CustomDialogButtons.OK, CustomDialogIcons.Information);
+                    await Queries.LogsQueries.AddLog($"Reset {lblUserID.Text}'s password", "Users");
+                }
+                else
+                {
+                    CustomDialog.Show($"Failed to reset {lblUserID}'s password", "Reset Password",
+                        CustomDialogButtons.OK, CustomDialogIcons.Information);
                 }
             }
         }

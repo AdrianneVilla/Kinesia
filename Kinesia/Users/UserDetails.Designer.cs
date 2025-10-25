@@ -65,6 +65,7 @@
             btnEdit = new OrganizationProfile.CustomButton();
             label12 = new System.Windows.Forms.Label();
             lblStatus = new System.Windows.Forms.Label();
+            btnResetPassword = new OrganizationProfile.CustomButton();
             panelBorder1.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
             flowLayoutPanel2.SuspendLayout();
@@ -592,11 +593,38 @@
             lblStatus.TabIndex = 3;
             lblStatus.Text = "<status>";
             // 
+            // btnResetPassword
+            // 
+            btnResetPassword.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            btnResetPassword.BackColor = System.Drawing.Color.FromArgb(207, 249, 238);
+            btnResetPassword.BackgroundColor = System.Drawing.Color.FromArgb(207, 249, 238);
+            btnResetPassword.BorderColor = System.Drawing.Color.FromArgb(64, 210, 173);
+            btnResetPassword.BorderRadius = 10;
+            btnResetPassword.BorderSize = 1;
+            btnResetPassword.FlatAppearance.BorderSize = 0;
+            btnResetPassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnResetPassword.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            btnResetPassword.ForeColor = System.Drawing.Color.FromArgb(21, 134, 105);
+            btnResetPassword.Image = (System.Drawing.Image)resources.GetObject("btnResetPassword.Image");
+            btnResetPassword.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            btnResetPassword.Location = new System.Drawing.Point(742, 115);
+            btnResetPassword.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            btnResetPassword.Name = "btnResetPassword";
+            btnResetPassword.Padding = new System.Windows.Forms.Padding(6, 3, 18, 0);
+            btnResetPassword.Size = new System.Drawing.Size(198, 46);
+            btnResetPassword.TabIndex = 46;
+            btnResetPassword.Text = "Reset Password";
+            btnResetPassword.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            btnResetPassword.TextColor = System.Drawing.Color.FromArgb(21, 134, 105);
+            btnResetPassword.UseVisualStyleBackColor = false;
+            btnResetPassword.Click += btnResetPassword_Click;
+            // 
             // UserDetails
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             BackColor = System.Drawing.Color.White;
+            Controls.Add(btnResetPassword);
             Controls.Add(btnEdit);
             Controls.Add(flowLayoutPanel3);
             Controls.Add(label12);
@@ -667,5 +695,6 @@
         private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.Label lblUsername;
         private System.Windows.Forms.Label label15;
+        private OrganizationProfile.CustomButton btnResetPassword;
     }
 }

@@ -352,6 +352,15 @@ namespace Kinesia.Users
             return response.IsSuccessStatusCode;
         }
 
+        public async Task<bool> ResetPassword(string userID)
+        {
+            var url = $"http://localhost:5000/api/users/reset-password?id={userID}";
+
+            var response = await client.PutAsync(url, null);
+
+            return response.IsSuccessStatusCode;
+        }
+
         public async Task<bool> CheckExistingUser(UserDataHolder userData)
         {
             try
