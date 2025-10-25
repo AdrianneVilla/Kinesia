@@ -349,6 +349,7 @@ namespace Kinesia.Components
             PageObjects.addPatient = new AddPatient();
             PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.addPatient);
             PageObjects.CurrentControl = PageObjects.addPatient;
+            PageObjects.addPatient.PreviousPage = "Dashboard Page";
         }
 
         private void btnQuickAddUser_Click(object sender, EventArgs e)

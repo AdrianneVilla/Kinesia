@@ -85,6 +85,7 @@ namespace Kinesia.Patients
             PageObjects.addPatient = new AddPatient();
             PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.addPatient);
             PageObjects.CurrentControl = PageObjects.addPatient;
+            PageObjects.addPatient.PreviousPage = "Patient Page";
         }
 
         private void txtSearchBar_Enter(object sender, EventArgs e)

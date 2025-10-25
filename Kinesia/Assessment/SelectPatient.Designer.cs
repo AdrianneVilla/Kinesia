@@ -37,8 +37,9 @@
             btnClose = new OrganizationProfile.CustomButton();
             panelBorder2 = new WindowsFormsApp2.CustomButton.PanelBorder();
             btnSearch = new OrganizationProfile.CustomButton();
-            rjTextBox1 = new CustomControls.RJControls.RJTextBox();
+            txtSearchBar = new CustomControls.RJControls.RJTextBox();
             pictureBox2 = new System.Windows.Forms.PictureBox();
+            lblHiddenForFocus = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)dataGridPatientSelection).BeginInit();
             flowLayoutPanel2.SuspendLayout();
             panelBorder2.SuspendLayout();
@@ -110,6 +111,7 @@
             btnAddPatient.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             btnAddPatient.TextColor = System.Drawing.Color.White;
             btnAddPatient.UseVisualStyleBackColor = false;
+            btnAddPatient.Click += btnAddPatient_Click;
             // 
             // btnClose
             // 
@@ -140,7 +142,7 @@
             panelBorder2.BorderRadius = 30;
             panelBorder2.Color = System.Drawing.Color.BurlyWood;
             panelBorder2.Controls.Add(btnSearch);
-            panelBorder2.Controls.Add(rjTextBox1);
+            panelBorder2.Controls.Add(txtSearchBar);
             panelBorder2.Controls.Add(pictureBox2);
             panelBorder2.ForeColor = System.Drawing.Color.Black;
             panelBorder2.Location = new System.Drawing.Point(44, 99);
@@ -166,31 +168,35 @@
             btnSearch.Text = "Search";
             btnSearch.TextColor = System.Drawing.Color.Transparent;
             btnSearch.UseVisualStyleBackColor = false;
+            btnSearch.Click += btnSearch_Click;
             // 
-            // rjTextBox1
+            // txtSearchBar
             // 
-            rjTextBox1.BackColor = System.Drawing.Color.White;
-            rjTextBox1.BorderColor = System.Drawing.Color.White;
-            rjTextBox1.BorderFocusColor = System.Drawing.Color.White;
-            rjTextBox1.BorderRadius = 5;
-            rjTextBox1.BorderSize = 1;
-            rjTextBox1.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            rjTextBox1.ForeColor = System.Drawing.Color.FromArgb(64, 64, 64);
-            rjTextBox1.Location = new System.Drawing.Point(60, 6);
-            rjTextBox1.Margin = new System.Windows.Forms.Padding(5);
-            rjTextBox1.MaxLength = 32767;
-            rjTextBox1.Multiline = false;
-            rjTextBox1.Name = "rjTextBox1";
-            rjTextBox1.Padding = new System.Windows.Forms.Padding(12, 8, 12, 0);
-            rjTextBox1.PasswordChar = false;
-            rjTextBox1.PlaceholderColor = System.Drawing.Color.DarkGray;
-            rjTextBox1.PlaceholderText = "Search Patient";
-            rjTextBox1.SelectionLength = 0;
-            rjTextBox1.SelectionStart = 0;
-            rjTextBox1.Size = new System.Drawing.Size(558, 35);
-            rjTextBox1.TabIndex = 5;
-            rjTextBox1.Texts = "";
-            rjTextBox1.UnderlinedStyle = false;
+            txtSearchBar.BackColor = System.Drawing.Color.White;
+            txtSearchBar.BorderColor = System.Drawing.Color.White;
+            txtSearchBar.BorderFocusColor = System.Drawing.Color.White;
+            txtSearchBar.BorderRadius = 5;
+            txtSearchBar.BorderSize = 1;
+            txtSearchBar.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            txtSearchBar.ForeColor = System.Drawing.Color.FromArgb(64, 64, 64);
+            txtSearchBar.Location = new System.Drawing.Point(60, 6);
+            txtSearchBar.Margin = new System.Windows.Forms.Padding(5);
+            txtSearchBar.MaxLength = 50;
+            txtSearchBar.Multiline = false;
+            txtSearchBar.Name = "txtSearchBar";
+            txtSearchBar.Padding = new System.Windows.Forms.Padding(12, 8, 12, 0);
+            txtSearchBar.PasswordChar = false;
+            txtSearchBar.PlaceholderColor = System.Drawing.Color.DarkGray;
+            txtSearchBar.PlaceholderText = "";
+            txtSearchBar.SelectionLength = 0;
+            txtSearchBar.SelectionStart = 0;
+            txtSearchBar.Size = new System.Drawing.Size(558, 35);
+            txtSearchBar.TabIndex = 5;
+            txtSearchBar.Texts = "";
+            txtSearchBar.UnderlinedStyle = false;
+            txtSearchBar._TextChanged += txtSearchBar__TextChanged;
+            txtSearchBar.Enter += txtSearchBar_Enter;
+            txtSearchBar.Leave += txtSearchBar_Leave;
             // 
             // pictureBox2
             // 
@@ -203,6 +209,17 @@
             pictureBox2.TabStop = false;
             pictureBox2.Click += pictureBox2_Click;
             // 
+            // lblHiddenForFocus
+            // 
+            lblHiddenForFocus.AutoSize = true;
+            lblHiddenForFocus.ForeColor = System.Drawing.Color.White;
+            lblHiddenForFocus.Location = new System.Drawing.Point(284, 43);
+            lblHiddenForFocus.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            lblHiddenForFocus.Name = "lblHiddenForFocus";
+            lblHiddenForFocus.Size = new System.Drawing.Size(135, 15);
+            lblHiddenForFocus.TabIndex = 27;
+            lblHiddenForFocus.Text = "<Focus Label (Hidden)>";
+            // 
             // SelectPatient
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -210,6 +227,7 @@
             BackColor = System.Drawing.Color.White;
             ClientSize = new System.Drawing.Size(874, 763);
             ControlBox = false;
+            Controls.Add(lblHiddenForFocus);
             Controls.Add(panelBorder2);
             Controls.Add(btnClose);
             Controls.Add(dataGridPatientSelection);
@@ -225,6 +243,7 @@
             panelBorder2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -238,6 +257,7 @@
         private WindowsFormsApp2.CustomButton.PanelBorder panelBorder2;
         private System.Windows.Forms.PictureBox pictureBox2;
         private OrganizationProfile.CustomButton btnSearch;
-        private CustomControls.RJControls.RJTextBox rjTextBox1;
+        private CustomControls.RJControls.RJTextBox txtSearchBar;
+        private System.Windows.Forms.Label lblHiddenForFocus;
     }
 }

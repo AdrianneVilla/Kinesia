@@ -14,6 +14,9 @@ namespace Kinesia.Patients
     public partial class AddPatient : UserControl
     {
         private bool isInitialized = false;
+        private string previousPage;
+
+        public string PreviousPage { get { return previousPage; } set { previousPage = value; } }
 
         public AddPatient()
         {
@@ -252,10 +255,52 @@ namespace Kinesia.Patients
         // Keep all your existing methods below
         private void backBtn_Click(object sender, EventArgs e)
         {
+            if(previousPage == "Dashboard Page")
+            {
+                goBackToDashboardPage();
+            }
+            else if(previousPage == "Add Assessment Page")
+            {
+                goBackToAddAssessment();
+            }
+            else
+            {
+                goBackToPatientsPage();
+            }
+        }
+
+        private void goBackToDashboardPage()
+        {
+            if (areInputsBlank())
+            {
+                DialogResult backDialog = CustomDialog.Show("Are you sure you want to go back to dashboard page?\n" +
+                    "Any unsaved changes will be lost!", "Add Patient Notification", CustomDialogButtons.YesNo, CustomDialogIcons.Question);
+
+                if (backDialog == DialogResult.Yes)
+                {
+                    PageObjects.RemoveResources(ref PageObjects.CurrentControl);
+                    PageObjects.dashboardPage = new Components.DashboardPage();
+                    PageObjects.dashboard.ContentsPanel.Controls.Clear();
+                    PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.dashboardPage);
+                    PageObjects.CurrentControl = PageObjects.dashboardPage;
+                }
+            }
+            else
+            {
+                PageObjects.RemoveResources(ref PageObjects.CurrentControl);
+                PageObjects.dashboardPage = new Components.DashboardPage();
+                PageObjects.dashboard.ContentsPanel.Controls.Clear();
+                PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.dashboardPage);
+                PageObjects.CurrentControl = PageObjects.dashboardPage;
+            }
+        }
+
+        private void goBackToPatientsPage()
+        {
             if (areInputsBlank())
             {
                 DialogResult backDialog = CustomDialog.Show("Are you sure you want to go back to Patient page?\n" +
-                    "Any unsaved changes will be lost!", "Edit Patient Notification", CustomDialogButtons.YesNo, CustomDialogIcons.Question);
+                    "Any unsaved changes will be lost!", "Add Patient Notification", CustomDialogButtons.YesNo, CustomDialogIcons.Question);
 
                 if (backDialog == DialogResult.Yes)
                 {
@@ -273,6 +318,32 @@ namespace Kinesia.Patients
                 PageObjects.dashboard.ContentsPanel.Controls.Clear();
                 PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.patientsPage);
                 PageObjects.CurrentControl = PageObjects.patientsPage;
+            }
+        }
+
+        private void goBackToAddAssessment()
+        {
+            if (areInputsBlank())
+            {
+                DialogResult backDialog = CustomDialog.Show("Are you sure you want to go back to Add Assessment page?\n" +
+                    "Any unsaved changes will be lost!", "Add Patient Notification", CustomDialogButtons.YesNo, CustomDialogIcons.Question);
+
+                if (backDialog == DialogResult.Yes)
+                {
+                    PageObjects.RemoveResources(ref PageObjects.CurrentControl);
+                    PageObjects.addAssessment = new Assessment.AddAssessment();
+                    PageObjects.dashboard.ContentsPanel.Controls.Clear();
+                    PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.addAssessment);
+                    PageObjects.CurrentControl = PageObjects.addAssessment;
+                }
+            }
+            else
+            {
+                PageObjects.RemoveResources(ref PageObjects.CurrentControl);
+                PageObjects.addAssessment = new Assessment.AddAssessment();
+                PageObjects.dashboard.ContentsPanel.Controls.Clear();
+                PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.addAssessment);
+                PageObjects.CurrentControl = PageObjects.addAssessment;
             }
         }
 

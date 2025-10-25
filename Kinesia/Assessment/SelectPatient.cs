@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Kinesia.Patients;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,8 @@ namespace Kinesia.Assessment
 {
     public partial class SelectPatient : Form
     {
+        string searchData = "";
+
         List<string> patientList = new List<string>();
 
         public SelectPatient()
@@ -27,9 +30,69 @@ namespace Kinesia.Assessment
             this.Close();
         }
 
-        private void SelectPatient_Load(object sender, EventArgs e)
+        private async void SelectPatient_Load(object sender, EventArgs e)
         {
+            txtSearchBar.Texts = "Search for Patient name or Patient ID";
 
+            // will get the TextBox inside the RJTextBox
+            TextBox innerTxtSearchBar = txtSearchBar.Controls.OfType<TextBox>().FirstOrDefault();
+
+            if (innerTxtSearchBar != null)
+            {
+                innerTxtSearchBar.KeyDown += InnerTxtSearchBar_KeyDown; // will add KeyDown KeyEvent
+            }
+        }
+
+        private async void InnerTxtSearchBar_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                lblHiddenForFocus.Focus(); // will move the focus away from the txtSearchBar
+
+                e.SuppressKeyPress = true; // will prevent windows from making the beep sounds when pressing "esc"
+            }
+            else if (e.KeyCode == Keys.Enter)
+            {
+                // will do search query if "enter" was pressed
+                // while txtSearchBar was being focused
+                await Queries.PatientQueries.DisplayPatientSelection(txtSearchBar.Texts);
+
+                e.SuppressKeyPress = true; // will prevent windows from making the beep sounds when pressing "enter"
+            }
+        }
+
+        private void txtSearchBar_Enter(object sender, EventArgs e)
+        {
+            if (txtSearchBar.Texts == "Search for Patient name or Patient ID")
+            {
+                txtSearchBar.Texts = "";
+            }
+        }
+
+        private void txtSearchBar_Leave(object sender, EventArgs e)
+        {
+            if (txtSearchBar.Texts == "")
+            {
+                txtSearchBar.Texts = "Search for Patient name or Patient ID";
+                searchData = "";
+            }
+        }
+
+        private void txtSearchBar__TextChanged(object sender, EventArgs e)
+        {
+            if (txtSearchBar.Texts == "Search for Patient name or Patient ID")
+            {
+                searchData = "";
+            }
+            else
+            {
+                searchData = txtSearchBar.Texts;
+            }
+        }
+
+        private async void btnSearch_Click(object sender, EventArgs e)
+        {
+            await Queries.PatientQueries.DisplayPatientSelection(txtSearchBar.Texts);
         }
 
         private async void dataGridPatientSelection_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -48,5 +111,16 @@ namespace Kinesia.Assessment
         {
 
         }
+
+        private void btnAddPatient_Click(object sender, EventArgs e)
+        {
+            PageObjects.RemoveResources(ref PageObjects.CurrentControl);
+            PageObjects.addPatient = new AddPatient();
+            PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.addPatient);
+            PageObjects.CurrentControl = PageObjects.addPatient;
+            PageObjects.addPatient.PreviousPage = "Add Assessment Page";
+            this.Close();
+        }
+
     }
 }
