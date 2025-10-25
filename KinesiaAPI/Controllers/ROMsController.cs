@@ -43,7 +43,7 @@ namespace KinesiaAPI.Controllers
                                 Rom = r.Rom,
                                 Movement = r.Movement,
                                 NormalRange = ROMHelper.GetNormalRange(a.Joint, r.Movement),
-                                Deficit = ROMHelper.CalculateDeficit(r.Rom, a.Joint, r.Movement),
+                                Deficit = Math.Round(ROMHelper.CalculateDeficit(r.Rom, a.Joint, r.Movement), 2),
                                 Date = r.Date.ToString("yyyy-MM-dd hh:mm")
                             };
 
@@ -109,7 +109,7 @@ namespace KinesiaAPI.Controllers
                             Rom = r.Rom,
                             Movement = r.Movement,
                             MotionType = r.MotionType,
-                            Deficit = ROMHelper.CalculateDeficit(r.Rom, a.Joint, r.Movement),
+                            Deficit = Math.Round(ROMHelper.CalculateDeficit(r.Rom, a.Joint, r.Movement), 2),
                             Date = r.Date
                         };
 
