@@ -31,7 +31,7 @@
             label1 = new System.Windows.Forms.Label();
             nameHolder = new System.Windows.Forms.Label();
             panelBorder2 = new WindowsFormsApp2.CustomButton.PanelBorder();
-            rjComboBox1 = new CustomControls.RJControls.RJComboBox();
+            cbSort = new CustomControls.RJControls.RJComboBox();
             btnROM = new OrganizationProfile.CustomButton();
             btnAssessment = new OrganizationProfile.CustomButton();
             btnPatients = new OrganizationProfile.CustomButton();
@@ -41,8 +41,10 @@
             panelBorder1 = new WindowsFormsApp2.CustomButton.PanelBorder();
             dataGridLogs = new System.Windows.Forms.DataGridView();
             panelBorder3 = new WindowsFormsApp2.CustomButton.PanelBorder();
+            txtSearchBar = new CustomControls.RJControls.RJTextBox();
             pictureBox1 = new System.Windows.Forms.PictureBox();
             btnSearch = new OrganizationProfile.CustomButton();
+            lblHiddenForFocus = new System.Windows.Forms.Label();
             panelBorder2.SuspendLayout();
             panelBorder1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridLogs).BeginInit();
@@ -81,7 +83,7 @@
             panelBorder2.BackColor = System.Drawing.Color.White;
             panelBorder2.BorderRadius = 30;
             panelBorder2.Color = System.Drawing.Color.BurlyWood;
-            panelBorder2.Controls.Add(rjComboBox1);
+            panelBorder2.Controls.Add(cbSort);
             panelBorder2.Controls.Add(btnROM);
             panelBorder2.Controls.Add(btnAssessment);
             panelBorder2.Controls.Add(btnPatients);
@@ -95,25 +97,27 @@
             panelBorder2.Size = new System.Drawing.Size(1069, 67);
             panelBorder2.TabIndex = 15;
             // 
-            // rjComboBox1
+            // cbSort
             // 
-            rjComboBox1.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
-            rjComboBox1.BackColor = System.Drawing.Color.White;
-            rjComboBox1.BorderColor = System.Drawing.Color.Gray;
-            rjComboBox1.BorderSize = 1;
-            rjComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
-            rjComboBox1.Font = new System.Drawing.Font("Segoe UI", 10F);
-            rjComboBox1.ForeColor = System.Drawing.Color.DimGray;
-            rjComboBox1.IconColor = System.Drawing.Color.FromArgb(24, 90, 211);
-            rjComboBox1.ListBackColor = System.Drawing.Color.White;
-            rjComboBox1.ListTextColor = System.Drawing.Color.Black;
-            rjComboBox1.Location = new System.Drawing.Point(790, 10);
-            rjComboBox1.MinimumSize = new System.Drawing.Size(200, 30);
-            rjComboBox1.Name = "rjComboBox1";
-            rjComboBox1.Padding = new System.Windows.Forms.Padding(1);
-            rjComboBox1.Size = new System.Drawing.Size(273, 46);
-            rjComboBox1.TabIndex = 22;
-            rjComboBox1.Texts = "";
+            cbSort.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            cbSort.BackColor = System.Drawing.Color.White;
+            cbSort.BorderColor = System.Drawing.Color.Gray;
+            cbSort.BorderSize = 1;
+            cbSort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
+            cbSort.Font = new System.Drawing.Font("Segoe UI", 10F);
+            cbSort.ForeColor = System.Drawing.Color.DimGray;
+            cbSort.IconColor = System.Drawing.Color.FromArgb(24, 90, 211);
+            cbSort.Items.AddRange(new object[] { "Latest", "Earliest" });
+            cbSort.ListBackColor = System.Drawing.Color.White;
+            cbSort.ListTextColor = System.Drawing.Color.Black;
+            cbSort.Location = new System.Drawing.Point(790, 10);
+            cbSort.MinimumSize = new System.Drawing.Size(200, 30);
+            cbSort.Name = "cbSort";
+            cbSort.Padding = new System.Windows.Forms.Padding(1);
+            cbSort.Size = new System.Drawing.Size(273, 46);
+            cbSort.TabIndex = 22;
+            cbSort.Texts = "Latest";
+            cbSort.OnSelectedIndexChanged += cbSort_OnSelectedIndexChanged;
             // 
             // btnROM
             // 
@@ -122,6 +126,7 @@
             btnROM.BorderColor = System.Drawing.Color.PaleVioletRed;
             btnROM.BorderRadius = 5;
             btnROM.BorderSize = 0;
+            btnROM.Cursor = System.Windows.Forms.Cursors.Hand;
             btnROM.FlatAppearance.BorderSize = 0;
             btnROM.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnROM.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline);
@@ -143,6 +148,7 @@
             btnAssessment.BorderColor = System.Drawing.Color.PaleVioletRed;
             btnAssessment.BorderRadius = 5;
             btnAssessment.BorderSize = 0;
+            btnAssessment.Cursor = System.Windows.Forms.Cursors.Hand;
             btnAssessment.FlatAppearance.BorderSize = 0;
             btnAssessment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnAssessment.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline);
@@ -164,6 +170,7 @@
             btnPatients.BorderColor = System.Drawing.Color.PaleVioletRed;
             btnPatients.BorderRadius = 5;
             btnPatients.BorderSize = 0;
+            btnPatients.Cursor = System.Windows.Forms.Cursors.Hand;
             btnPatients.FlatAppearance.BorderSize = 0;
             btnPatients.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnPatients.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline);
@@ -185,6 +192,7 @@
             btnUsers.BorderColor = System.Drawing.Color.PaleVioletRed;
             btnUsers.BorderRadius = 5;
             btnUsers.BorderSize = 0;
+            btnUsers.Cursor = System.Windows.Forms.Cursors.Hand;
             btnUsers.FlatAppearance.BorderSize = 0;
             btnUsers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnUsers.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline);
@@ -206,6 +214,7 @@
             btnSessions.BorderColor = System.Drawing.Color.PaleVioletRed;
             btnSessions.BorderRadius = 5;
             btnSessions.BorderSize = 0;
+            btnSessions.Cursor = System.Windows.Forms.Cursors.Hand;
             btnSessions.FlatAppearance.BorderSize = 0;
             btnSessions.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnSessions.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline);
@@ -227,6 +236,7 @@
             btnAll.BorderColor = System.Drawing.Color.PaleVioletRed;
             btnAll.BorderRadius = 5;
             btnAll.BorderSize = 0;
+            btnAll.Cursor = System.Windows.Forms.Cursors.Hand;
             btnAll.FlatAppearance.BorderSize = 0;
             btnAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnAll.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline);
@@ -274,6 +284,7 @@
             panelBorder3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             panelBorder3.BorderRadius = 30;
             panelBorder3.Color = System.Drawing.Color.BurlyWood;
+            panelBorder3.Controls.Add(txtSearchBar);
             panelBorder3.Controls.Add(pictureBox1);
             panelBorder3.Controls.Add(btnSearch);
             panelBorder3.ForeColor = System.Drawing.Color.Black;
@@ -281,6 +292,35 @@
             panelBorder3.Name = "panelBorder3";
             panelBorder3.Size = new System.Drawing.Size(582, 59);
             panelBorder3.TabIndex = 17;
+            // 
+            // txtSearchBar
+            // 
+            txtSearchBar.AutoSize = true;
+            txtSearchBar.BackColor = System.Drawing.Color.White;
+            txtSearchBar.BorderColor = System.Drawing.Color.White;
+            txtSearchBar.BorderFocusColor = System.Drawing.Color.White;
+            txtSearchBar.BorderRadius = 5;
+            txtSearchBar.BorderSize = 1;
+            txtSearchBar.Cursor = System.Windows.Forms.Cursors.IBeam;
+            txtSearchBar.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            txtSearchBar.ForeColor = System.Drawing.Color.FromArgb(64, 64, 64);
+            txtSearchBar.Location = new System.Drawing.Point(57, 11);
+            txtSearchBar.Margin = new System.Windows.Forms.Padding(5);
+            txtSearchBar.Multiline = false;
+            txtSearchBar.Name = "txtSearchBar";
+            txtSearchBar.Padding = new System.Windows.Forms.Padding(12, 8, 12, 0);
+            txtSearchBar.PasswordChar = false;
+            txtSearchBar.PlaceholderColor = System.Drawing.Color.DarkGray;
+            txtSearchBar.PlaceholderText = "";
+            txtSearchBar.SelectionLength = 0;
+            txtSearchBar.SelectionStart = 0;
+            txtSearchBar.Size = new System.Drawing.Size(388, 35);
+            txtSearchBar.TabIndex = 18;
+            txtSearchBar.Texts = "";
+            txtSearchBar.UnderlinedStyle = false;
+            txtSearchBar._TextChanged += txtSearchBar__TextChanged;
+            txtSearchBar.Enter += txtSearchBar_Enter;
+            txtSearchBar.Leave += txtSearchBar_Leave;
             // 
             // pictureBox1
             // 
@@ -300,6 +340,7 @@
             btnSearch.BorderColor = System.Drawing.Color.PaleVioletRed;
             btnSearch.BorderRadius = 10;
             btnSearch.BorderSize = 0;
+            btnSearch.Cursor = System.Windows.Forms.Cursors.Hand;
             btnSearch.FlatAppearance.BorderSize = 0;
             btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnSearch.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
@@ -313,12 +354,25 @@
             btnSearch.Text = "Search";
             btnSearch.TextColor = System.Drawing.Color.White;
             btnSearch.UseVisualStyleBackColor = false;
+            btnSearch.Click += btnSearch_Click;
+            // 
+            // lblHiddenForFocus
+            // 
+            lblHiddenForFocus.AutoSize = true;
+            lblHiddenForFocus.ForeColor = System.Drawing.Color.White;
+            lblHiddenForFocus.Location = new System.Drawing.Point(339, 86);
+            lblHiddenForFocus.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            lblHiddenForFocus.Name = "lblHiddenForFocus";
+            lblHiddenForFocus.Size = new System.Drawing.Size(135, 15);
+            lblHiddenForFocus.TabIndex = 19;
+            lblHiddenForFocus.Text = "<Focus Label (Hidden)>";
             // 
             // LogsPage
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             BackColor = System.Drawing.Color.White;
+            Controls.Add(lblHiddenForFocus);
             Controls.Add(panelBorder3);
             Controls.Add(panelBorder1);
             Controls.Add(panelBorder2);
@@ -326,12 +380,13 @@
             Controls.Add(nameHolder);
             Name = "LogsPage";
             Size = new System.Drawing.Size(1231, 686);
-            Load += newLogsPage_Load;
+            Load += LogsPage_Load;
             Paint += LogsPage_Paint;
             panelBorder2.ResumeLayout(false);
             panelBorder1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridLogs).EndInit();
             panelBorder3.ResumeLayout(false);
+            panelBorder3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -346,7 +401,6 @@
         private OrganizationProfile.CustomButton btnUsers;
         private OrganizationProfile.CustomButton btnSessions;
         private OrganizationProfile.CustomButton btnAll;
-        private CustomControls.RJControls.RJComboBox cbSort;
         private WindowsFormsApp2.CustomButton.PanelBorder panelBorder1;
         private System.Windows.Forms.DataGridView dataGridLogs;
         private OrganizationProfile.CustomButton btnROM;
@@ -354,6 +408,8 @@
         private WindowsFormsApp2.CustomButton.PanelBorder panelBorder3;
         private OrganizationProfile.CustomButton btnSearch;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private CustomControls.RJControls.RJComboBox rjComboBox1;
+        private CustomControls.RJControls.RJComboBox cbSort;
+        private CustomControls.RJControls.RJTextBox txtSearchBar;
+        private System.Windows.Forms.Label lblHiddenForFocus;
     }
 }

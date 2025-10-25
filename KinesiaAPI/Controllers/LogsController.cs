@@ -27,8 +27,8 @@ namespace KinesiaAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<LogDTO>>> GetLogs(
             string? searchData,
-            string? currentTab = "All",
-            string? sortColumn = "Latest")
+            string? currentTab = null,
+            string? sortColumn = null)
         {
             var query = from l in _context.Logs
                         join u in _context.Users on l.UserID equals u.UserID
@@ -50,8 +50,7 @@ namespace KinesiaAPI.Controllers
             if (!string.IsNullOrEmpty(searchData))
             {
                 query = query.Where(x =>
-                        x.LogID.Contains(searchData) ||
-                        x.Username.Contains(searchData));
+                        x.LogID.Contains(searchData));
             }
 
             // will apply sorting
