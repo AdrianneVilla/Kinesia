@@ -209,7 +209,8 @@ namespace KinesiaAPI.Controllers
                                     a.Joint,
                                     a.JointSide,
                                     a.AssessmentStatus,
-                                    a.AssessmentDate
+                                    a.AssessmentDate,
+                                    a.AssessmentEndDate
                                 }).FirstOrDefaultAsync();
 
             var assessment = new AssessmentReportDTO
@@ -221,8 +222,14 @@ namespace KinesiaAPI.Controllers
                 Extremity = result.Extremity,
                 Joint = result.Joint,
                 JointSide = result.JointSide,
-                AssessmentStatus = result.AssessmentStatus == 1 ? "Ongoing" : "Finished",
-                AssessmentDate = result.AssessmentDate
+                AssessmentStatus = result.AssessmentStatus switch
+                {
+                    0 => "Archived",
+                    1 => "Ongoing",
+                    2 => "Finished",
+                },
+                AssessmentDate = result.AssessmentDate,
+                AssessmentEndDate = result.AssessmentEndDate.HasValue ? result.AssessmentEndDate.Value.ToString() : "N/A"
             };
 
             return Ok(assessment);
