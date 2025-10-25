@@ -65,7 +65,7 @@ namespace Kinesia.Users
                         // will add a log for archiving user
                         await Queries.LogsQueries.AddLog($"Archived {lblUserID.Text}", "Users");
 
-                        CustomDialog.Show($"Failed to archive {lblUserID.Text}", "Archive Alert", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                        CustomDialog.Show($"{lblUserID.Text} has been archived successfully!", "Archive Alert", CustomDialogButtons.OK, CustomDialogIcons.Information);
 
                         await Queries.UserQueries.GetUserDetails(lblUserID.Text);
                     }

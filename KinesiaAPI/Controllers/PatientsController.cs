@@ -294,6 +294,7 @@ namespace KinesiaAPI.Controllers
                 }
 
                 existingPatient.Status = updatedPatient.Status;
+                existingPatient.LastArchiveDate = DateTime.Now;
 
                 await _context.SaveChangesAsync();
 
