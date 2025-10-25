@@ -430,7 +430,6 @@ namespace Kinesia.Patients
                         // will show an error message
                         CustomDialog.Show("Failed to add patient!", "Add Patient Notification", CustomDialogButtons.OK, CustomDialogIcons.Error);
                     }
-
                 }
                 else
                 {

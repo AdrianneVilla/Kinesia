@@ -334,7 +334,7 @@ namespace Kinesia.Patients
 
         public async Task<string> AddPatient(PatientDataHolder patientData)
         {
-            var newPatient = new PatientsDTO
+            var newPatient = new AddPatientDTO
             {
                 FirstName = patientData.FirstName,
                 LastName = patientData.LastName,
@@ -344,9 +344,6 @@ namespace Kinesia.Patients
                 Gender = patientData.Gender,
                 Address = patientData.Address,
                 Occupation = patientData.Occupation,
-                DateAdded = DateTime.Now,
-                LastArchiveDate = null,
-                Status = 1
             };
 
             var json = JsonConvert.SerializeObject(newPatient);

@@ -70,8 +70,8 @@
             flowLayoutPanel14 = new System.Windows.Forms.FlowLayoutPanel();
             label9 = new System.Windows.Forms.Label();
             txtAddress = new CustomControls.RJControls.RJTextBox();
-            label12 = new System.Windows.Forms.Label();
             flowLayoutPanel15 = new System.Windows.Forms.FlowLayoutPanel();
+            label12 = new System.Windows.Forms.Label();
             btnBack = new OrganizationProfile.CustomButton();
             toolTipAge = new System.Windows.Forms.ToolTip(components);
             panelBorder1.SuspendLayout();
@@ -573,7 +573,7 @@
             txtContact.SelectionStart = 0;
             txtContact.Size = new System.Drawing.Size(209, 43);
             txtContact.TabIndex = 6;
-            txtContact.Texts = "+63";
+            txtContact.Texts = "";
             txtContact.UnderlinedStyle = false;
             txtContact.KeyPress += txtContact_KeyPress;
             // 
@@ -676,6 +676,16 @@
             txtAddress.Texts = "";
             txtAddress.UnderlinedStyle = false;
             // 
+            // flowLayoutPanel15
+            // 
+            flowLayoutPanel15.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            flowLayoutPanel15.Controls.Add(btnAddPatient);
+            flowLayoutPanel15.Controls.Add(btnClearInput);
+            flowLayoutPanel15.Location = new System.Drawing.Point(3, 397);
+            flowLayoutPanel15.Name = "flowLayoutPanel15";
+            flowLayoutPanel15.Size = new System.Drawing.Size(424, 71);
+            flowLayoutPanel15.TabIndex = 12;
+            // 
             // label12
             // 
             label12.AutoSize = true;
@@ -686,16 +696,6 @@
             label12.Size = new System.Drawing.Size(224, 34);
             label12.TabIndex = 19;
             label12.Text = "Personal Information";
-            // 
-            // flowLayoutPanel15
-            // 
-            flowLayoutPanel15.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
-            flowLayoutPanel15.Controls.Add(btnAddPatient);
-            flowLayoutPanel15.Controls.Add(btnClearInput);
-            flowLayoutPanel15.Location = new System.Drawing.Point(3, 397);
-            flowLayoutPanel15.Name = "flowLayoutPanel15";
-            flowLayoutPanel15.Size = new System.Drawing.Size(424, 71);
-            flowLayoutPanel15.TabIndex = 12;
             // 
             // btnBack
             // 

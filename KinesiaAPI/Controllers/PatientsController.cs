@@ -313,9 +313,9 @@ namespace KinesiaAPI.Controllers
         // POST: api/patients
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Patients>> PostPatients(Patients patients)
+        public async Task<ActionResult<Patients>> PostPatients(AddPatientDTO addPatient)
         {
-            if (patients == null)
+            if (addPatient == null)
                 return BadRequest("Patient data cannot be null.");
 
             await using var transaction = await _context.Database.BeginTransactionAsync();
@@ -328,14 +328,28 @@ namespace KinesiaAPI.Controllers
 
                 string newPatientID = $"PATIENT{nextCount}";
 
-                patients.PatientID = newPatientID;
+                var newPatient = new Patients
+                {
+                    PatientID = newPatientID,
+                    FirstName = addPatient.FirstName,
+                    LastName = addPatient.LastName,
+                    MiddleName = addPatient.MiddleName,
+                    Contact = addPatient.Contact,
+                    Birthdate = addPatient.Birthdate,
+                    Gender = addPatient.Gender,
+                    Address = addPatient.Address,
+                    Occupation = addPatient.Occupation,
+                    DateAdded = DateTime.Now,
+                    LastArchiveDate = null,
+                    Status = 1
+                };
 
-                _context.Patients.Add(patients);
+                _context.Patients.Add(newPatient);
                 await _context.SaveChangesAsync();
 
                 await transaction.CommitAsync();
 
-                return CreatedAtAction("GetPatients", new { id = patients.PatientID }, patients);
+                return CreatedAtAction("GetPatients", new { id = newPatient.PatientID }, newPatient);
             }
             catch (DbUpdateException)
             {

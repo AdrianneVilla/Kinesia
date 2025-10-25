@@ -537,7 +537,7 @@
             txtContact.SelectionStart = 0;
             txtContact.Size = new System.Drawing.Size(427, 45);
             txtContact.TabIndex = 6;
-            txtContact.Texts = "+63";
+            txtContact.Texts = "";
             txtContact.UnderlinedStyle = false;
             txtContact.KeyPress += txtContact_KeyPress;
             // 
