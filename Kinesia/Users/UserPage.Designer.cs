@@ -274,6 +274,7 @@
             txtSearchBar.ForeColor = System.Drawing.Color.FromArgb(64, 64, 64);
             txtSearchBar.Location = new System.Drawing.Point(56, 9);
             txtSearchBar.Margin = new System.Windows.Forms.Padding(5);
+            txtSearchBar.MaxLength = 50;
             txtSearchBar.Multiline = false;
             txtSearchBar.Name = "txtSearchBar";
             txtSearchBar.Padding = new System.Windows.Forms.Padding(12, 8, 12, 0);

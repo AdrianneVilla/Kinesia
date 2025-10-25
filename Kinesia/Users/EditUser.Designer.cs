@@ -238,6 +238,7 @@
             txtUsername.ForeColor = System.Drawing.Color.Black;
             txtUsername.Location = new System.Drawing.Point(5, 28);
             txtUsername.Margin = new System.Windows.Forms.Padding(5);
+            txtUsername.MaxLength = 50;
             txtUsername.Multiline = false;
             txtUsername.Name = "txtUsername";
             txtUsername.Padding = new System.Windows.Forms.Padding(12, 8, 12, 8);
@@ -284,6 +285,7 @@
             txtPassword.ForeColor = System.Drawing.Color.Black;
             txtPassword.Location = new System.Drawing.Point(5, 28);
             txtPassword.Margin = new System.Windows.Forms.Padding(5);
+            txtPassword.MaxLength = 50;
             txtPassword.Multiline = false;
             txtPassword.Name = "txtPassword";
             txtPassword.Padding = new System.Windows.Forms.Padding(12, 8, 12, 8);
@@ -330,6 +332,7 @@
             txtNewPassword.ForeColor = System.Drawing.Color.Black;
             txtNewPassword.Location = new System.Drawing.Point(5, 28);
             txtNewPassword.Margin = new System.Windows.Forms.Padding(5);
+            txtNewPassword.MaxLength = 50;
             txtNewPassword.Multiline = false;
             txtNewPassword.Name = "txtNewPassword";
             txtNewPassword.Padding = new System.Windows.Forms.Padding(12, 8, 12, 8);
@@ -376,6 +379,7 @@
             txtConfirmPassword.ForeColor = System.Drawing.Color.Black;
             txtConfirmPassword.Location = new System.Drawing.Point(5, 28);
             txtConfirmPassword.Margin = new System.Windows.Forms.Padding(5);
+            txtConfirmPassword.MaxLength = 50;
             txtConfirmPassword.Multiline = false;
             txtConfirmPassword.Name = "txtConfirmPassword";
             txtConfirmPassword.Padding = new System.Windows.Forms.Padding(12, 8, 12, 8);
@@ -423,6 +427,7 @@
             txtEmail.ForeColor = System.Drawing.Color.Black;
             txtEmail.Location = new System.Drawing.Point(56, 351);
             txtEmail.Margin = new System.Windows.Forms.Padding(5);
+            txtEmail.MaxLength = 50;
             txtEmail.Multiline = false;
             txtEmail.Name = "txtEmail";
             txtEmail.Padding = new System.Windows.Forms.Padding(12, 8, 12, 8);
@@ -493,6 +498,7 @@
             txtMiddleName.ForeColor = System.Drawing.Color.Black;
             txtMiddleName.Location = new System.Drawing.Point(989, 129);
             txtMiddleName.Margin = new System.Windows.Forms.Padding(35, 5, 5, 5);
+            txtMiddleName.MaxLength = 50;
             txtMiddleName.Multiline = false;
             txtMiddleName.Name = "txtMiddleName";
             txtMiddleName.Padding = new System.Windows.Forms.Padding(12, 8, 12, 8);
@@ -530,6 +536,7 @@
             txtLastName.ForeColor = System.Drawing.Color.Black;
             txtLastName.Location = new System.Drawing.Point(523, 129);
             txtLastName.Margin = new System.Windows.Forms.Padding(35, 5, 5, 5);
+            txtLastName.MaxLength = 50;
             txtLastName.Multiline = false;
             txtLastName.Name = "txtLastName";
             txtLastName.Padding = new System.Windows.Forms.Padding(12, 8, 12, 8);
@@ -584,6 +591,7 @@
             txtAddress.ForeColor = System.Drawing.Color.Black;
             txtAddress.Location = new System.Drawing.Point(56, 464);
             txtAddress.Margin = new System.Windows.Forms.Padding(5);
+            txtAddress.MaxLength = 255;
             txtAddress.Multiline = true;
             txtAddress.Name = "txtAddress";
             txtAddress.Padding = new System.Windows.Forms.Padding(12, 8, 12, 8);
@@ -620,6 +628,7 @@
             txtContact.ForeColor = System.Drawing.Color.Black;
             txtContact.Location = new System.Drawing.Point(989, 242);
             txtContact.Margin = new System.Windows.Forms.Padding(35, 5, 5, 5);
+            txtContact.MaxLength = 11;
             txtContact.MinimumSize = new System.Drawing.Size(233, 0);
             txtContact.Multiline = false;
             txtContact.Name = "txtContact";
@@ -669,6 +678,7 @@
             txtAge.ForeColor = System.Drawing.Color.Black;
             txtAge.Location = new System.Drawing.Point(541, 242);
             txtAge.Margin = new System.Windows.Forms.Padding(35, 5, 5, 5);
+            txtAge.MaxLength = 32767;
             txtAge.Multiline = false;
             txtAge.Name = "txtAge";
             txtAge.Padding = new System.Windows.Forms.Padding(12, 8, 12, 8);
@@ -715,6 +725,7 @@
             txtFirstName.ForeColor = System.Drawing.Color.Black;
             txtFirstName.Location = new System.Drawing.Point(56, 129);
             txtFirstName.Margin = new System.Windows.Forms.Padding(5);
+            txtFirstName.MaxLength = 50;
             txtFirstName.Multiline = false;
             txtFirstName.Name = "txtFirstName";
             txtFirstName.Padding = new System.Windows.Forms.Padding(12, 8, 12, 8);
