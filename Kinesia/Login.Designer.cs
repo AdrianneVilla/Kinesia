@@ -40,7 +40,7 @@
         private Components.Header header1;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Label label4;
-        private OrganizationProfile.CustomButton customButton1;
+        private OrganizationProfile.CustomButton btnOffline;
         private System.Windows.Forms.Label label5;
     }
 }

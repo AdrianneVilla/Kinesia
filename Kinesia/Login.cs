@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Kinesia.Components;
+using Kinesia.Offline;
 using KinesiaLibrary.DTOs.AuthDTOs;
 using MySql.Data.MySqlClient;
 using Newtonsoft.Json;
@@ -25,12 +26,12 @@ namespace Kinesia
         public Login()
         {
             InitializeComponent();
-       
+
         }
 
         public static Login getLoginInstance()
         {
-            if(loginInstance == null)
+            if (loginInstance == null)
             {
                 loginInstance = new Login();
             }
@@ -51,7 +52,7 @@ namespace Kinesia
             usernameLabel = new Label();
             header1 = new Header();
             panelBorder1 = new WindowsFormsApp2.CustomButton.PanelBorder();
-            customButton1 = new OrganizationProfile.CustomButton();
+            btnOffline = new OrganizationProfile.CustomButton();
             label4 = new Label();
             txtPassword = new CustomControls.RJControls.RJTextBox();
             txtUsername = new CustomControls.RJControls.RJTextBox();
@@ -134,7 +135,7 @@ namespace Kinesia
             panelBorder1.BackgroundImageLayout = ImageLayout.Stretch;
             panelBorder1.BorderRadius = 30;
             panelBorder1.Color = Color.White;
-            panelBorder1.Controls.Add(customButton1);
+            panelBorder1.Controls.Add(btnOffline);
             panelBorder1.Controls.Add(label4);
             panelBorder1.Controls.Add(txtPassword);
             panelBorder1.Controls.Add(txtUsername);
@@ -150,26 +151,27 @@ namespace Kinesia
             panelBorder1.TabIndex = 2;
             panelBorder1.Paint += panelBorder1_Paint;
             // 
-            // customButton1
+            // btnOffline
             // 
-            customButton1.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            customButton1.BackColor = Color.FromArgb(207, 249, 238);
-            customButton1.BackgroundColor = Color.FromArgb(207, 249, 238);
-            customButton1.BorderColor = Color.FromArgb(21, 134, 105);
-            customButton1.BorderRadius = 10;
-            customButton1.BorderSize = 1;
-            customButton1.FlatAppearance.BorderSize = 0;
-            customButton1.FlatStyle = FlatStyle.Flat;
-            customButton1.Font = new Font("Poppins", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            customButton1.ForeColor = Color.FromArgb(21, 134, 105);
-            customButton1.Location = new Point(62, 345);
-            customButton1.Name = "customButton1";
-            customButton1.Padding = new Padding(0, 1, 0, 0);
-            customButton1.Size = new Size(255, 33);
-            customButton1.TabIndex = 9;
-            customButton1.Text = "Use Camera (Offline Mode)";
-            customButton1.TextColor = Color.FromArgb(21, 134, 105);
-            customButton1.UseVisualStyleBackColor = false;
+            btnOffline.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            btnOffline.BackColor = Color.FromArgb(207, 249, 238);
+            btnOffline.BackgroundColor = Color.FromArgb(207, 249, 238);
+            btnOffline.BorderColor = Color.FromArgb(21, 134, 105);
+            btnOffline.BorderRadius = 10;
+            btnOffline.BorderSize = 1;
+            btnOffline.FlatAppearance.BorderSize = 0;
+            btnOffline.FlatStyle = FlatStyle.Flat;
+            btnOffline.Font = new Font("Poppins", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnOffline.ForeColor = Color.FromArgb(21, 134, 105);
+            btnOffline.Location = new Point(62, 345);
+            btnOffline.Name = "btnOffline";
+            btnOffline.Padding = new Padding(0, 1, 0, 0);
+            btnOffline.Size = new Size(255, 33);
+            btnOffline.TabIndex = 9;
+            btnOffline.Text = "Use Camera (Offline Mode)";
+            btnOffline.TextColor = Color.FromArgb(21, 134, 105);
+            btnOffline.UseVisualStyleBackColor = false;
+            btnOffline.Click += btnOffline_Click;
             // 
             // label4
             // 
@@ -360,19 +362,19 @@ namespace Kinesia
 
         }
 
-        
+
         private async void btnLogin_Click(object sender, EventArgs e)
         {
             // will remove white spaces before and after the textboxes input
             txtUsername.Texts.Trim();
             txtPassword.Texts.Trim();
 
-            if(txtUsername.Texts.Equals("") || txtPassword.Texts.Equals(""))
+            if (txtUsername.Texts.Equals("") || txtPassword.Texts.Equals(""))
             {
                 // will show an error dialog if the login field was incomplete
                 CustomDialog.Show("Username or Password field are empty!\n" +
                     "Please fill-out all fields to login.", "Login Alert", CustomDialogButtons.OK, CustomDialogIcons.Error);
-            } 
+            }
             else
             {
                 loadingScreen = new LoadingScreen();
@@ -393,9 +395,9 @@ namespace Kinesia
                     SessionManager.UserLastName = loginResult.UserLastName;
                     SessionManager.Role = loginResult.Role;
                     await Queries.LogsQueries.AddLog("Has Logged In", "Sessions");
-          
+
                 }
-                else if(loginResult.Message.Trim().Equals("Unable to connect to the server. Please try again."))
+                else if (loginResult.Message.Trim().Equals("Unable to connect to the server. Please try again."))
                 {
                     loadingScreen.Close();
                     // will show an error dialog if the password and hashed + salted password input is different
@@ -450,6 +452,12 @@ namespace Kinesia
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
 
+        }
+
+        private void btnOffline_Click(object sender, EventArgs e)
+        {
+            var offlineAssessment = new AssessmentROMOffline();
+            offlineAssessment.ShowDialog();
         }
     }
 }

@@ -1,4 +1,3 @@
-
 using KinesiaAPI.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,12 +11,11 @@ namespace KinesiaAPI
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-
             builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            // Load database credentials from .env
             var dbHost = Environment.GetEnvironmentVariable("DB_HOST");
             var dbName = Environment.GetEnvironmentVariable("DB_NAME");
             var dbUser = Environment.GetEnvironmentVariable("DB_USERNAME");
@@ -29,52 +27,76 @@ namespace KinesiaAPI
                 connectionString,
                 new MySqlServerVersion(new Version(10, 2, 32))));
 
-            //Cors Configuration
+            // --- CORS Configuration ---
             builder.Services.AddCors(options =>
             {
-               options.AddPolicy("AllowLocalhost",
-                   policy => policy
-                       .WithOrigins("https://kinesia.kiri8tives.com", "https://kinesia.kiri8tives.com", "https://localhost:5173", "http://localhost:5173")// adding of localhost for testing
-                      .AllowAnyHeader()
-                      .AllowAnyMethod());
+                options.AddPolicy("AllowLocalhost",
+                    policy => policy
+                        .WithOrigins(
+                            "https://kinesia.kiri8tives.com",
+                            "http://localhost:5173",
+                            "https://localhost:5173"
+                        )
+                        .AllowAnyHeader()
+                        .AllowAnyMethod());
 
                 options.AddPolicy("ProductionPolicy",
-                   policy => policy
-                        .WithOrigins("https://kinesia.kiri8tives.com" , "https://localhost:5173", "http://localhost:5173") // adding of localhost for testing
+                    policy => policy
+                        .WithOrigins("https://kinesia.kiri8tives.com")
                         .AllowAnyHeader()
                         .AllowAnyMethod());
             });
 
-            builder.WebHost.UseUrls("https://localhost:5001", "http://localhost:5000");
+            // --- Kestrel: Try HTTPS, fallback to HTTP ---
+            builder.WebHost.ConfigureKestrel(options =>
+            {
+                try
+                {
+                    // Try HTTPS (if certificate is trusted/available)
+                    options.ListenAnyIP(5001, listenOptions =>
+                    {
+                        listenOptions.UseHttps(); // Use default dev cert
+                    });
+                    Console.WriteLine("HTTPS endpoint configured on port 5001");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"HTTPS configuration failed: {ex.Message}");
+                    Console.WriteLine("Falling back to HTTP only...");
+                }
 
-            builder.Services.AddControllers();
+                // Always ensure HTTP is available
+                options.ListenAnyIP(5000);
+                Console.WriteLine("HTTP endpoint configured on port 5000");
+            });
+
             var app = builder.Build();
 
-           
-
-            // Configure the HTTP request pipeline.
+            // --- Middleware ---
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
 
-            app.UseHttpsRedirection();
+            // Try HTTPS redirection, but skip if no cert is valid
+            try
+            {
+                app.UseHttpsRedirection();
+            }
+            catch
+            {
+                Console.WriteLine("HTTPS redirection skipped (no valid certificate)");
+            }
 
             app.UseAuthorization();
 
             if (app.Environment.IsDevelopment())
-            {
-                // Only use the localhost policy when developing
                 app.UseCors("AllowLocalhost");
-            }
             else
-            {
-                // Use the flexible policy when on the live server
                 app.UseCors("ProductionPolicy");
-            }
-            app.MapControllers();
 
+            app.MapControllers();
             app.Run();
         }
     }
