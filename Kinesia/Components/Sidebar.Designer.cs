@@ -35,14 +35,13 @@
             usersModule = new OrganizationProfile.CustomButton();
             patientModule = new OrganizationProfile.CustomButton();
             dashboardModule = new OrganizationProfile.CustomButton();
-            customButton1 = new OrganizationProfile.CustomButton();
             SuspendLayout();
             // 
             // btnLogout
             // 
             btnLogout.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            btnLogout.BackColor = System.Drawing.Color.FromArgb(64, 210, 173);
-            btnLogout.BackgroundColor = System.Drawing.Color.FromArgb(64, 210, 173);
+            btnLogout.BackColor = System.Drawing.Color.FromArgb(210, 64, 66);
+            btnLogout.BackgroundColor = System.Drawing.Color.FromArgb(210, 64, 66);
             btnLogout.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             btnLogout.BorderColor = System.Drawing.Color.White;
             btnLogout.BorderRadius = 10;
@@ -199,37 +198,12 @@
             dashboardModule.UseVisualStyleBackColor = false;
             dashboardModule.Click += dashboardModule_Click;
             // 
-            // customButton1
-            // 
-            customButton1.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            customButton1.BackColor = System.Drawing.Color.FromArgb(200, 220, 255);
-            customButton1.BackgroundColor = System.Drawing.Color.FromArgb(200, 220, 255);
-            customButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            customButton1.BorderColor = System.Drawing.Color.FromArgb(18, 90, 211);
-            customButton1.BorderRadius = 10;
-            customButton1.BorderSize = 1;
-            customButton1.FlatAppearance.BorderSize = 0;
-            customButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            customButton1.Font = new System.Drawing.Font("Poppins", 8.25F, System.Drawing.FontStyle.Bold);
-            customButton1.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
-            customButton1.Image = Properties.Resources.newHelpIcon;
-            customButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            customButton1.Location = new System.Drawing.Point(24, 598);
-            customButton1.Name = "customButton1";
-            customButton1.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            customButton1.Size = new System.Drawing.Size(240, 47);
-            customButton1.TabIndex = 6;
-            customButton1.Text = "System Guide";
-            customButton1.TextColor = System.Drawing.Color.FromArgb(18, 90, 211);
-            customButton1.UseVisualStyleBackColor = false;
-            // 
             // Sidebar
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             BackColor = System.Drawing.Color.White;
             BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            Controls.Add(customButton1);
             Controls.Add(btnLogout);
             Controls.Add(btnLogs);
             Controls.Add(assessmentModule);
@@ -252,6 +226,5 @@
         private OrganizationProfile.CustomButton btnLogs;
         private OrganizationProfile.CustomButton btnLogout;
         public OrganizationProfile.CustomButton patientModule;
-        private OrganizationProfile.CustomButton customButton1;
     }
 }

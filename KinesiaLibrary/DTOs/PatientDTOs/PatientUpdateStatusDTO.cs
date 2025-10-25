@@ -10,5 +10,6 @@ namespace KinesiaLibrary.DTOs.PatientDTOs
     {
         public string PatientID { get; set; }
         public int Status { get; set; }
+        public DateTime LastArchiveDate { get; set; }
     }
 }

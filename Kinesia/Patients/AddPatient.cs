@@ -14,6 +14,7 @@ namespace Kinesia.Patients
     public partial class AddPatient : UserControl
     {
         private bool isInitialized = false;
+
         public AddPatient()
         {
             this.Anchor = AnchorStyles.Right | AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Bottom;
@@ -23,24 +24,21 @@ namespace Kinesia.Patients
 
             InitializeComponent();
 
-            ResetChildPanelLocations(); 
-
+            // CRITICAL: Subscribe to this control's Resize event
+            this.Resize += AddPatient_Resize;
         }
-        private void ResetChildPanelLocations()
+
+        // THIS IS THE MISSING EVENT HANDLER!
+        private void AddPatient_Resize(object sender, EventArgs e)
         {
-            // Reset name field panel locations to (0,0) to allow FlowLayoutPanel auto-positioning
-            if (flowLayoutPanel2 != null) flowLayoutPanel2.Location = new Point(0, 0);
-            if (flowLayoutPanel3 != null) flowLayoutPanel3.Location = new Point(0, 0);
-            if (flowLayoutPanel4 != null) flowLayoutPanel4.Location = new Point(0, 0);
+            if (!isInitialized) return;
 
-            // Reset other row panels
-            if (flowLayoutPanel8 != null) flowLayoutPanel8.Location = new Point(0, 0);
-            if (flowLayoutPanel9 != null) flowLayoutPanel9.Location = new Point(0, 0);
-            if (flowLayoutPanel10 != null) flowLayoutPanel10.Location = new Point(0, 0);
-            if (flowLayoutPanel11 != null) flowLayoutPanel11.Location = new Point(0, 0);
-            if (flowLayoutPanel12 != null) flowLayoutPanel12.Location = new Point(0, 0);
-
-            if (flowLayoutPanel14 != null) flowLayoutPanel14.Location = new Point(0, 0);
+            // Recalculate panelBorder1 width
+            int newWidth = this.ClientSize.Width - 42; // 21 margin on each side
+            if (newWidth > 600) // minimum width
+            {
+                panelBorder1.Width = newWidth;
+            }
         }
 
         private void ConfigureFlowLayoutPanelsForResponsiveness()
@@ -52,13 +50,18 @@ namespace Kinesia.Patients
             flowLayoutPanel5.Resize += FlowLayoutPanel5_Resize;
 
             // Container panels
-            ConfigureContainerPanel(flowLayoutPanel1);  // Name fields
-            ConfigureContainerPanel(flowLayoutPanel7);  // Birthdate, Age, Gender, Contact, Occupation
+            ConfigureContainerPanel(flowLayoutPanel1);
+            ConfigureContainerPanel(flowLayoutPanel7);
 
-            // Configure the address section separately
-            flowLayoutPanel13.AutoSize = false;
+            // Address section
             flowLayoutPanel13.WrapContents = false;
             flowLayoutPanel13.FlowDirection = FlowDirection.TopDown;
+
+            // Button panel
+            flowLayoutPanel15.AutoSize = false;
+            flowLayoutPanel15.FlowDirection = FlowDirection.RightToLeft;
+            flowLayoutPanel15.WrapContents = false;
+            flowLayoutPanel15.Visible = true;
 
             // Initial resize
             FlowLayoutPanel5_Resize(flowLayoutPanel5, EventArgs.Empty);
@@ -69,8 +72,6 @@ namespace Kinesia.Patients
             containerPanel.AutoSize = false;
             containerPanel.WrapContents = true;
             containerPanel.FlowDirection = FlowDirection.LeftToRight;
-            containerPanel.Padding = new Padding(0);
-            containerPanel.Margin = new Padding(0);
         }
 
         private void FlowLayoutPanel5_Resize(object sender, EventArgs e)
@@ -79,38 +80,23 @@ namespace Kinesia.Patients
 
             int availableWidth = flowLayoutPanel5.Width - flowLayoutPanel5.Padding.Left - flowLayoutPanel5.Padding.Right - 10;
 
-            // Resize container panels to fill width AND SET HEIGHT
+            // Resize container panels
             flowLayoutPanel1.Width = availableWidth;
-            flowLayoutPanel1.Height = 100; // Set explicit height
-            flowLayoutPanel1.Visible = true;
-
             flowLayoutPanel7.Width = availableWidth;
-            flowLayoutPanel7.Height = 120; // Set explicit height for 5-field row
-            flowLayoutPanel7.Visible = true;
-
             flowLayoutPanel13.Width = availableWidth;
-            flowLayoutPanel13.Height = 100; // Address section
-            flowLayoutPanel13.Visible = true;
+            flowLayoutPanel15.Width = availableWidth;
+            flowLayoutPanel15.Height = 70;
+            flowLayoutPanel15.Visible = true;
 
-            flowLayoutPanel15.Width = availableWidth; // Button panel
-            flowLayoutPanel15.Height = 80; // SET HEIGHT for button panel
-            flowLayoutPanel15.Visible = true; // CRITICAL: Make button panel visible
-
-            // Resize child panels inside containers
+            // Resize children
             ResizeChildPanelsInContainer(flowLayoutPanel1, availableWidth);
             ResizeChildPanelsInContainer(flowLayoutPanel7, availableWidth);
-
-            // Special handling for flowLayoutPanel13 (Address section)
             ResizeAddressSection(flowLayoutPanel13, availableWidth);
-
-            // Force layout update
-            flowLayoutPanel5.PerformLayout();
         }
 
         private void ResizeChildPanelsInContainer(FlowLayoutPanel containerPanel, int containerWidth)
         {
             containerPanel.SuspendLayout();
-            containerPanel.Visible = true;
 
             List<FlowLayoutPanel> childPanels = new List<FlowLayoutPanel>();
             foreach (Control ctrl in containerPanel.Controls)
@@ -118,8 +104,6 @@ namespace Kinesia.Patients
                 if (ctrl is FlowLayoutPanel childPanel)
                 {
                     childPanels.Add(childPanel);
-                    childPanel.Visible = true;
-                    childPanel.Margin = new Padding(3); // Reset margin for proper flow
                 }
             }
 
@@ -136,35 +120,62 @@ namespace Kinesia.Patients
             {
                 int panelWidth = 0;
 
-                if (containerPanel == flowLayoutPanel1) // First, Last, Middle Name row
+                if (containerPanel == flowLayoutPanel1)
                 {
-                    panelWidth = Math.Max((int)(availableWidth / 3f), 200); // Minimum 200px
+                    if (childPanel == flowLayoutPanel2)
+                        panelWidth = (int)(availableWidth * 0.31f);
+                    else if (childPanel == flowLayoutPanel3)
+                        panelWidth = (int)(availableWidth * 0.31f);
+                    else if (childPanel == flowLayoutPanel6)
+                        panelWidth = (int)(availableWidth * 0.31f);
                 }
-                else if (containerPanel == flowLayoutPanel7) // Birthdate, Age, Gender, Contact, Occupation row
+                else if (containerPanel == flowLayoutPanel7)
                 {
-                    if (childPanel == flowLayoutPanel8) // Birthdate
-                        panelWidth = Math.Max((int)(availableWidth * 0.26f), 180);
-                    else if (childPanel == flowLayoutPanel9) // Age
-                        panelWidth = Math.Max((int)(availableWidth * 0.11f), 80);
-                    else if (childPanel == flowLayoutPanel10) // Gender
-                        panelWidth = Math.Max((int)(availableWidth * 0.19f), 140);
-                    else if (childPanel == flowLayoutPanel11) // Contact
-                        panelWidth = Math.Max((int)(availableWidth * 0.20f), 150);
-                    else if (childPanel == flowLayoutPanel12) // Occupation
-                        panelWidth = Math.Max((int)(availableWidth * 0.20f), 150);
+                    if (childPanel == flowLayoutPanel8)
+                        panelWidth = (int)(availableWidth * 0.22f);
+                    else if (childPanel == flowLayoutPanel9)
+                        panelWidth = (int)(availableWidth * 0.10f);
+                    else if (childPanel == flowLayoutPanel10)
+                        panelWidth = (int)(availableWidth * 0.20f);
+                    else if (childPanel == flowLayoutPanel11)
+                        panelWidth = (int)(availableWidth * 0.20f);
+                    else if (childPanel == flowLayoutPanel12)
+                        panelWidth = (int)(availableWidth * 0.20f);
                 }
 
                 childPanel.Width = panelWidth;
-                childPanel.Height = 90; // Set explicit height
-                childPanel.MinimumSize = new Size(panelWidth, 90);
-                childPanel.MaximumSize = new Size(panelWidth, 90);
-                childPanel.Visible = true;
-
                 ResizeControlsInChildPanel(childPanel, panelWidth);
             }
 
-            containerPanel.ResumeLayout(true);
-            containerPanel.PerformLayout();
+            containerPanel.ResumeLayout();
+        }
+
+        private void ResizeControlsInChildPanel(FlowLayoutPanel childPanel, int panelWidth)
+        {
+            int controlWidth = panelWidth - childPanel.Padding.Left - childPanel.Padding.Right - 10;
+            childPanel.SuspendLayout();
+
+            foreach (Control ctrl in childPanel.Controls)
+            {
+                if (ctrl is CustomControls.RJControls.RJTextBox txtBox)
+                {
+                    txtBox.Width = controlWidth;
+                }
+                else if (ctrl is CustomControls.RJControls.RJComboBox comboBox)
+                {
+                    comboBox.MinimumSize = new Size(50, 30);
+                    comboBox.Width = controlWidth;
+                    comboBox.Size = new Size(controlWidth, comboBox.Height);
+                    comboBox.MaximumSize = new Size(controlWidth, 100);
+                    comboBox.Refresh();
+                }
+                else if (ctrl is CustomControls.RJControls.RJDatePicker datePicker)
+                {
+                    datePicker.Width = controlWidth;
+                }
+            }
+
+            childPanel.ResumeLayout();
         }
 
         private void ResizeAddressSection(FlowLayoutPanel addressContainer, int containerWidth)
@@ -184,15 +195,12 @@ namespace Kinesia.Patients
             if (addressPanel != null)
             {
                 addressPanel.Width = containerWidth - 20;
-                addressPanel.Visible = true;
-
                 foreach (Control innerCtrl in addressPanel.Controls)
                 {
                     if (innerCtrl == txtAddress)
                     {
-                        int addressWidth = Math.Max(addressPanel.Width - addressPanel.Padding.Left - addressPanel.Padding.Right - 10, 300);
+                        int addressWidth = addressPanel.Width - addressPanel.Padding.Left - addressPanel.Padding.Right - 10;
                         txtAddress.Width = addressWidth;
-                        txtAddress.Visible = true;
                     }
                 }
             }
@@ -202,55 +210,13 @@ namespace Kinesia.Patients
                 {
                     if (ctrl == txtAddress)
                     {
-                        int addressWidth = Math.Max(containerWidth - addressContainer.Padding.Left - addressContainer.Padding.Right - 20, 300);
+                        int addressWidth = containerWidth - addressContainer.Padding.Left - addressContainer.Padding.Right - 20;
                         txtAddress.Width = addressWidth;
-                        txtAddress.Visible = true;
                     }
                 }
             }
 
             addressContainer.ResumeLayout();
-        }
-
-        private void ResizeControlsInChildPanel(FlowLayoutPanel childPanel, int panelWidth)
-        {
-            int controlWidth = Math.Max(panelWidth - childPanel.Padding.Left - childPanel.Padding.Right - 10, 80);
-
-            childPanel.SuspendLayout();
-
-            foreach (Control ctrl in childPanel.Controls)
-            {
-                if (ctrl is Label lbl)
-                {
-                    lbl.Visible = true;
-                    lbl.AutoSize = true;
-                    continue;
-                }
-
-                if (ctrl is CustomControls.RJControls.RJTextBox txtBox)
-                {
-                    txtBox.Width = controlWidth;
-                    txtBox.MinimumSize = new Size(80, txtBox.Height);
-                    txtBox.Visible = true;
-                }
-                else if (ctrl is CustomControls.RJControls.RJComboBox comboBox)
-                {
-                    comboBox.MinimumSize = new Size(80, 30);
-                    comboBox.Width = controlWidth;
-                    comboBox.Size = new Size(controlWidth, comboBox.Height);
-                    comboBox.MaximumSize = new Size(controlWidth, 100);
-                    comboBox.Visible = true;
-                    comboBox.Refresh();
-                }
-                else if (ctrl is CustomControls.RJControls.RJDatePicker datePicker)
-                {
-                    datePicker.Width = controlWidth;
-                    datePicker.MinimumSize = new Size(150, datePicker.Height);
-                    datePicker.Visible = true;
-                }
-            }
-
-            childPanel.ResumeLayout();
         }
 
         private void SetupResponsiveLayout()
@@ -260,19 +226,34 @@ namespace Kinesia.Patients
             label1.Anchor = AnchorStyles.Top | AnchorStyles.Left;
             btnBack.Anchor = AnchorStyles.Top | AnchorStyles.Right;
 
+            // Main panel stretches horizontally only
             panelBorder1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            flowLayoutPanel5.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
-            flowLayoutPanel15.Anchor = AnchorStyles.Top | AnchorStyles.Left;
 
-            btnAddPatient.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnClearInput.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            // Inner flow panel fills panelBorder1
+            flowLayoutPanel5.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+
+            // Button panel flows naturally
+            flowLayoutPanel15.Anchor = AnchorStyles.None;
         }
 
+        private void AddPatient_Load(object sender, EventArgs e)
+        {
+            SetupResponsiveLayout();
+            ConfigureFlowLayoutPanelsForResponsiveness();
+            isInitialized = true;
+
+            dpBirthDate.Text = DateTime.Now.ToString();
+            txtAge.BackColor = System.Drawing.Color.White;
+
+            // Trigger initial resize
+            AddPatient_Resize(this, EventArgs.Empty);
+        }
+
+        // Keep all your existing methods below
         private void backBtn_Click(object sender, EventArgs e)
         {
             if (areInputsBlank())
             {
-                // will only show dialog if there's an unsaved input
                 DialogResult backDialog = CustomDialog.Show("Are you sure you want to go back to Patient page?\n" +
                     "Any unsaved changes will be lost!", "Edit Patient Notification", CustomDialogButtons.YesNo, CustomDialogIcons.Question);
 
@@ -287,7 +268,6 @@ namespace Kinesia.Patients
             }
             else
             {
-                // will directly go back to Patient page if there's no unsaved input    
                 PageObjects.RemoveResources(ref PageObjects.CurrentControl);
                 PageObjects.patientsPage = new PatientsPage();
                 PageObjects.dashboard.ContentsPanel.Controls.Clear();
@@ -298,26 +278,11 @@ namespace Kinesia.Patients
 
         private void dpBirthDate_ValueChanged(object sender, EventArgs e)
         {
-            txtAge.Texts = getAge().ToString(); // txtAge value will changed if the value of DatePicker dpBirthDate changed 
-        }
-
-        private void AddPatient_Load(object sender, EventArgs e)
-        {
-            // Setup responsive layout
-            SetupResponsiveLayout();
-
-            // Configure FlowLayoutPanels for responsiveness
-            ConfigureFlowLayoutPanelsForResponsiveness();
-
-            isInitialized = true;
-
-            dpBirthDate.Text = DateTime.Now.ToString(); // will set the value of DatePicker dpBirthDate to date today
-            txtAge.BackColor = System.Drawing.Color.White;
+            txtAge.Texts = getAge().ToString();
         }
 
         private void label13_Click(object sender, EventArgs e)
         {
-
         }
 
         private void clearAllInputs()
@@ -335,13 +300,10 @@ namespace Kinesia.Patients
         private int getAge()
         {
             int age = 0;
-
-            DateTime birthDate = dpBirthDate.Value; // will get the value from dpBirthDate
-            DateTime currentDate = DateTime.Now; // will get the currentDate
-
-            int totalMonths = (currentDate.Year - birthDate.Year) * 12 + currentDate.Month - birthDate.Month; // will get the total months
-            age = totalMonths / 12; // will divide the total months to 12 to get the age
-
+            DateTime birthDate = dpBirthDate.Value;
+            DateTime currentDate = DateTime.Now;
+            int totalMonths = (currentDate.Year - birthDate.Year) * 12 + currentDate.Month - birthDate.Month;
+            age = totalMonths / 12;
             return age;
         }
 
@@ -349,13 +311,12 @@ namespace Kinesia.Patients
         {
             if (areInputsBlank())
             {
-                // will only show dialog if there's an unsaved input
                 DialogResult clearDialog = CustomDialog.Show("Are you sure you want to clear inputs?\n" +
                     "Any unsaved inputs will be lost!", "Add Patient Notification", CustomDialogButtons.YesNo, CustomDialogIcons.Question);
 
                 if (clearDialog == DialogResult.Yes)
                 {
-                    clearAllInputs(); // will clear all inputs
+                    clearAllInputs();
                 }
             }
         }
@@ -377,7 +338,6 @@ namespace Kinesia.Patients
 
             if (addPatientDialog == DialogResult.Yes)
             {
-                // will remove extra whitespaces on beginning and end of the textboxes
                 txtFirstName.Texts = txtFirstName.Texts.Trim();
                 txtLastName.Texts = txtLastName.Texts.Trim();
                 txtMiddleName.Texts = txtMiddleName.Texts.Trim();
@@ -385,7 +345,7 @@ namespace Kinesia.Patients
                 txtOccupation.Texts = txtOccupation.Texts.Trim();
                 txtAddress.Texts = txtAddress.Texts.Trim();
 
-                DataHolder.PatientDataHolder = new PatientDataHolder // will create an insatnce of PatientDataHolder and set the values of it
+                DataHolder.PatientDataHolder = new PatientDataHolder
                 {
                     FirstName = txtFirstName.Texts,
                     MiddleName = txtMiddleName.Texts,
@@ -401,7 +361,6 @@ namespace Kinesia.Patients
                 if (Queries.PatientQueries.IsPatientDetailsComplete(DataHolder.PatientDataHolder) && !await Queries.PatientQueries.CheckExistingPatient(DataHolder.PatientDataHolder) &&
                     Queries.PatientQueries.IsAgeValid(DataHolder.PatientDataHolder) && Queries.PatientQueries.IsContactValid(DataHolder.PatientDataHolder))
                 {
-                    // will continue to add the patient if PatientDataHolder passed the data validations
                     string newPatientID = await this.FindForm().RunTaskWithLoading("Adding patient's data...", async () =>
                     {
                         return await Queries.PatientQueries.AddPatient(DataHolder.PatientDataHolder);
@@ -409,13 +368,7 @@ namespace Kinesia.Patients
 
                     if (!string.IsNullOrEmpty(newPatientID))
                     {
-                        // if adding patient was successful
-                        // will add a log for adding a patient
-                        // will clear all inputs
-                        // will show a success message
-                        // will redirect to Patient Details page
                         await Queries.LogsQueries.AddLog($"Added {newPatientID}", "Patients");
-
                         clearAllInputs();
                         CustomDialog.Show("Patient added successfully!",
                         "Add Patient Notification", CustomDialogButtons.OK, CustomDialogIcons.Information);
@@ -426,17 +379,14 @@ namespace Kinesia.Patients
                     }
                     else
                     {
-                        // if adding patient was not successful
-                        // will show an error message
                         CustomDialog.Show("Failed to add patient!", "Add Patient Notification", CustomDialogButtons.OK, CustomDialogIcons.Error);
                     }
                 }
                 else
                 {
-                    DataHolder.PatientDataHolder = null; // will remove the instance of PatientDataHolder if it didn't pass the data validations
+                    DataHolder.PatientDataHolder = null;
                 }
             }
-
         }
 
         #region Textboxes Input Validation
@@ -468,7 +418,14 @@ namespace Kinesia.Patients
 
         private void panelBorder1_Paint(object sender, PaintEventArgs e)
         {
+        }
 
+        private void flowLayoutPanel5_Paint(object sender, PaintEventArgs e)
+        {
+        }
+
+        private void txtAddress__TextChanged(object sender, EventArgs e)
+        {
         }
     }
 }

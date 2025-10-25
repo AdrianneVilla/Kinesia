@@ -63,7 +63,6 @@ namespace Kinesia
             label3 = new Label();
             label2 = new Label();
             backgroundWorker1 = new BackgroundWorker();
-            label5 = new Label();
             flowLayoutPanel3.SuspendLayout();
             ((ISupportInitialize)pictureBox4).BeginInit();
             panelBorder1.SuspendLayout();
@@ -308,23 +307,10 @@ namespace Kinesia
             // 
             backgroundWorker1.DoWork += backgroundWorker1_DoWork;
             // 
-            // label5
-            // 
-            label5.Anchor = AnchorStyles.Top;
-            label5.AutoSize = true;
-            label5.Font = new Font("Poppins", 10F, FontStyle.Bold);
-            label5.ForeColor = Color.FromArgb(18, 90, 211);
-            label5.Location = new Point(640, 545);
-            label5.Name = "label5";
-            label5.Size = new Size(150, 25);
-            label5.TabIndex = 4;
-            label5.Text = "View system guide";
-            // 
             // Login
             // 
             BackColor = Color.White;
             ClientSize = new Size(972, 599);
-            Controls.Add(label5);
             Controls.Add(header1);
             Controls.Add(panelBorder1);
             Controls.Add(flowLayoutPanel3);
@@ -338,7 +324,6 @@ namespace Kinesia
             panelBorder1.ResumeLayout(false);
             panelBorder1.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
 
         }
 

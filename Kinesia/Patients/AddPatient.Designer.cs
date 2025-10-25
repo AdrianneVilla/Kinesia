@@ -37,7 +37,6 @@
             btnAddPatient = new OrganizationProfile.CustomButton();
             panelBorder1 = new WindowsFormsApp2.CustomButton.PanelBorder();
             flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
-            splitter1 = new System.Windows.Forms.Splitter();
             flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             label11 = new System.Windows.Forms.Label();
@@ -45,8 +44,6 @@
             flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             label2 = new System.Windows.Forms.Label();
             txtLastName = new CustomControls.RJControls.RJTextBox();
-            flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
-            label3 = new System.Windows.Forms.Label();
             flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
             label10 = new System.Windows.Forms.Label();
             txtMiddleName = new CustomControls.RJControls.RJTextBox();
@@ -79,7 +76,6 @@
             flowLayoutPanel1.SuspendLayout();
             flowLayoutPanel2.SuspendLayout();
             flowLayoutPanel3.SuspendLayout();
-            flowLayoutPanel4.SuspendLayout();
             flowLayoutPanel6.SuspendLayout();
             flowLayoutPanel7.SuspendLayout();
             flowLayoutPanel8.SuspendLayout();
@@ -96,7 +92,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            label1.Location = new System.Drawing.Point(76, 83);
+            label1.Location = new System.Drawing.Point(31, 84);
             label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             label1.Name = "label1";
             label1.Size = new System.Drawing.Size(233, 23);
@@ -109,7 +105,7 @@
             nameHolder.AutoSize = true;
             nameHolder.Font = new System.Drawing.Font("Poppins", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             nameHolder.ForeColor = System.Drawing.Color.DarkGray;
-            nameHolder.Location = new System.Drawing.Point(71, 44);
+            nameHolder.Location = new System.Drawing.Point(26, 45);
             nameHolder.Margin = new System.Windows.Forms.Padding(0);
             nameHolder.Name = "nameHolder";
             nameHolder.Size = new System.Drawing.Size(114, 36);
@@ -124,7 +120,7 @@
             txtTitleLabel.BackColor = System.Drawing.Color.Transparent;
             txtTitleLabel.Font = new System.Drawing.Font("Poppins", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             txtTitleLabel.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
-            txtTitleLabel.Location = new System.Drawing.Point(195, 35);
+            txtTitleLabel.Location = new System.Drawing.Point(150, 36);
             txtTitleLabel.Margin = new System.Windows.Forms.Padding(0);
             txtTitleLabel.Name = "txtTitleLabel";
             txtTitleLabel.Size = new System.Drawing.Size(182, 48);
@@ -134,7 +130,6 @@
             // 
             // btnClearInput
             // 
-            btnClearInput.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
             btnClearInput.BackColor = System.Drawing.Color.FromArgb(255, 216, 216);
             btnClearInput.BackgroundColor = System.Drawing.Color.FromArgb(255, 216, 216);
             btnClearInput.BorderColor = System.Drawing.Color.FromArgb(210, 64, 66);
@@ -146,7 +141,7 @@
             btnClearInput.ForeColor = System.Drawing.Color.FromArgb(210, 64, 66);
             btnClearInput.Image = (System.Drawing.Image)resources.GetObject("btnClearInput.Image");
             btnClearInput.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnClearInput.Location = new System.Drawing.Point(214, 3);
+            btnClearInput.Location = new System.Drawing.Point(320, 3);
             btnClearInput.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             btnClearInput.Name = "btnClearInput";
             btnClearInput.Padding = new System.Windows.Forms.Padding(12, 5, 47, 0);
@@ -160,7 +155,6 @@
             // 
             // btnAddPatient
             // 
-            btnAddPatient.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
             btnAddPatient.BackColor = System.Drawing.Color.FromArgb(200, 220, 255);
             btnAddPatient.BackgroundColor = System.Drawing.Color.FromArgb(200, 220, 255);
             btnAddPatient.BorderColor = System.Drawing.Color.FromArgb(18, 90, 211);
@@ -172,7 +166,7 @@
             btnAddPatient.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
             btnAddPatient.Image = (System.Drawing.Image)resources.GetObject("btnAddPatient.Image");
             btnAddPatient.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnAddPatient.Location = new System.Drawing.Point(4, 3);
+            btnAddPatient.Location = new System.Drawing.Point(110, 3);
             btnAddPatient.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             btnAddPatient.Name = "btnAddPatient";
             btnAddPatient.Padding = new System.Windows.Forms.Padding(12, 5, 23, 0);
@@ -186,6 +180,7 @@
             // 
             // panelBorder1
             // 
+            panelBorder1.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             panelBorder1.BackColor = System.Drawing.Color.White;
             panelBorder1.BackgroundImage = Properties.Resources.Add_Patient_Background;
             panelBorder1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -194,42 +189,33 @@
             panelBorder1.Controls.Add(flowLayoutPanel5);
             panelBorder1.Controls.Add(label12);
             panelBorder1.ForeColor = System.Drawing.Color.Black;
-            panelBorder1.Location = new System.Drawing.Point(78, 132);
+            panelBorder1.Location = new System.Drawing.Point(43, 133);
             panelBorder1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             panelBorder1.Name = "panelBorder1";
-            panelBorder1.Size = new System.Drawing.Size(1658, 610);
+            panelBorder1.Size = new System.Drawing.Size(1481, 555);
             panelBorder1.TabIndex = 8;
-            panelBorder1.Paint += panelBorder1_Paint;
             // 
             // flowLayoutPanel5
             // 
             flowLayoutPanel5.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            flowLayoutPanel5.Controls.Add(splitter1);
             flowLayoutPanel5.Controls.Add(flowLayoutPanel1);
             flowLayoutPanel5.Controls.Add(flowLayoutPanel7);
             flowLayoutPanel5.Controls.Add(flowLayoutPanel13);
             flowLayoutPanel5.Controls.Add(flowLayoutPanel15);
-            flowLayoutPanel5.Location = new System.Drawing.Point(53, 83);
+            flowLayoutPanel5.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            flowLayoutPanel5.Location = new System.Drawing.Point(35, 65);
             flowLayoutPanel5.Name = "flowLayoutPanel5";
-            flowLayoutPanel5.Size = new System.Drawing.Size(1568, 479);
+            flowLayoutPanel5.Size = new System.Drawing.Size(1405, 475);
             flowLayoutPanel5.TabIndex = 35;
-            // 
-            // splitter1
-            // 
-            splitter1.Location = new System.Drawing.Point(3, 3);
-            splitter1.Name = "splitter1";
-            splitter1.Size = new System.Drawing.Size(3, 90);
-            splitter1.TabIndex = 13;
-            splitter1.TabStop = false;
             // 
             // flowLayoutPanel1
             // 
             flowLayoutPanel1.Controls.Add(flowLayoutPanel2);
             flowLayoutPanel1.Controls.Add(flowLayoutPanel3);
             flowLayoutPanel1.Controls.Add(flowLayoutPanel6);
-            flowLayoutPanel1.Location = new System.Drawing.Point(12, 3);
+            flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new System.Drawing.Size(1543, 90);
+            flowLayoutPanel1.Size = new System.Drawing.Size(1268, 90);
             flowLayoutPanel1.TabIndex = 11;
             // 
             // flowLayoutPanel2
@@ -239,7 +225,7 @@
             flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             flowLayoutPanel2.Location = new System.Drawing.Point(3, 3);
             flowLayoutPanel2.Name = "flowLayoutPanel2";
-            flowLayoutPanel2.Size = new System.Drawing.Size(442, 83);
+            flowLayoutPanel2.Size = new System.Drawing.Size(359, 83);
             flowLayoutPanel2.TabIndex = 0;
             // 
             // label11
@@ -273,7 +259,7 @@
             txtFirstName.PlaceholderText = "";
             txtFirstName.SelectionLength = 0;
             txtFirstName.SelectionStart = 0;
-            txtFirstName.Size = new System.Drawing.Size(427, 43);
+            txtFirstName.Size = new System.Drawing.Size(346, 43);
             txtFirstName.TabIndex = 1;
             txtFirstName.Texts = "";
             txtFirstName.UnderlinedStyle = false;
@@ -283,11 +269,10 @@
             // 
             flowLayoutPanel3.Controls.Add(label2);
             flowLayoutPanel3.Controls.Add(txtLastName);
-            flowLayoutPanel3.Controls.Add(flowLayoutPanel4);
             flowLayoutPanel3.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            flowLayoutPanel3.Location = new System.Drawing.Point(451, 3);
+            flowLayoutPanel3.Location = new System.Drawing.Point(368, 3);
             flowLayoutPanel3.Name = "flowLayoutPanel3";
-            flowLayoutPanel3.Size = new System.Drawing.Size(442, 83);
+            flowLayoutPanel3.Size = new System.Drawing.Size(307, 83);
             flowLayoutPanel3.TabIndex = 1;
             // 
             // label2
@@ -321,38 +306,18 @@
             txtLastName.PlaceholderText = "";
             txtLastName.SelectionLength = 0;
             txtLastName.SelectionStart = 0;
-            txtLastName.Size = new System.Drawing.Size(427, 43);
+            txtLastName.Size = new System.Drawing.Size(297, 43);
             txtLastName.TabIndex = 2;
             txtLastName.Texts = "";
             txtLastName.UnderlinedStyle = false;
             txtLastName.KeyPress += txtLastName_KeyPress;
-            // 
-            // flowLayoutPanel4
-            // 
-            flowLayoutPanel4.Controls.Add(label3);
-            flowLayoutPanel4.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            flowLayoutPanel4.Location = new System.Drawing.Point(440, 3);
-            flowLayoutPanel4.Name = "flowLayoutPanel4";
-            flowLayoutPanel4.Size = new System.Drawing.Size(442, 83);
-            flowLayoutPanel4.TabIndex = 24;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            label3.Location = new System.Drawing.Point(4, 0);
-            label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(81, 23);
-            label3.TabIndex = 23;
-            label3.Text = "Last Name";
             // 
             // flowLayoutPanel6
             // 
             flowLayoutPanel6.Controls.Add(label10);
             flowLayoutPanel6.Controls.Add(txtMiddleName);
             flowLayoutPanel6.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            flowLayoutPanel6.Location = new System.Drawing.Point(899, 3);
+            flowLayoutPanel6.Location = new System.Drawing.Point(681, 3);
             flowLayoutPanel6.Name = "flowLayoutPanel6";
             flowLayoutPanel6.Size = new System.Drawing.Size(442, 83);
             flowLayoutPanel6.TabIndex = 24;
@@ -403,7 +368,7 @@
             flowLayoutPanel7.Controls.Add(flowLayoutPanel12);
             flowLayoutPanel7.Location = new System.Drawing.Point(3, 99);
             flowLayoutPanel7.Name = "flowLayoutPanel7";
-            flowLayoutPanel7.Size = new System.Drawing.Size(1478, 93);
+            flowLayoutPanel7.Size = new System.Drawing.Size(1364, 93);
             flowLayoutPanel7.TabIndex = 11;
             // 
             // flowLayoutPanel8
@@ -542,7 +507,7 @@
             flowLayoutPanel11.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             flowLayoutPanel11.Location = new System.Drawing.Point(756, 3);
             flowLayoutPanel11.Name = "flowLayoutPanel11";
-            flowLayoutPanel11.Size = new System.Drawing.Size(229, 90);
+            flowLayoutPanel11.Size = new System.Drawing.Size(238, 90);
             flowLayoutPanel11.TabIndex = 4;
             // 
             // label8
@@ -576,7 +541,7 @@
             txtContact.PlaceholderText = "";
             txtContact.SelectionLength = 0;
             txtContact.SelectionStart = 0;
-            txtContact.Size = new System.Drawing.Size(209, 43);
+            txtContact.Size = new System.Drawing.Size(227, 43);
             txtContact.TabIndex = 6;
             txtContact.Texts = "";
             txtContact.UnderlinedStyle = false;
@@ -587,9 +552,9 @@
             flowLayoutPanel12.Controls.Add(label4);
             flowLayoutPanel12.Controls.Add(txtOccupation);
             flowLayoutPanel12.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            flowLayoutPanel12.Location = new System.Drawing.Point(991, 3);
+            flowLayoutPanel12.Location = new System.Drawing.Point(1000, 3);
             flowLayoutPanel12.Name = "flowLayoutPanel12";
-            flowLayoutPanel12.Size = new System.Drawing.Size(342, 90);
+            flowLayoutPanel12.Size = new System.Drawing.Size(338, 90);
             flowLayoutPanel12.TabIndex = 5;
             // 
             // label4
@@ -634,7 +599,7 @@
             flowLayoutPanel13.Controls.Add(flowLayoutPanel14);
             flowLayoutPanel13.Location = new System.Drawing.Point(3, 198);
             flowLayoutPanel13.Name = "flowLayoutPanel13";
-            flowLayoutPanel13.Size = new System.Drawing.Size(1478, 193);
+            flowLayoutPanel13.Size = new System.Drawing.Size(1364, 175);
             flowLayoutPanel13.TabIndex = 11;
             // 
             // flowLayoutPanel14
@@ -644,7 +609,7 @@
             flowLayoutPanel14.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             flowLayoutPanel14.Location = new System.Drawing.Point(3, 3);
             flowLayoutPanel14.Name = "flowLayoutPanel14";
-            flowLayoutPanel14.Size = new System.Drawing.Size(1475, 181);
+            flowLayoutPanel14.Size = new System.Drawing.Size(1344, 158);
             flowLayoutPanel14.TabIndex = 0;
             // 
             // label9
@@ -678,19 +643,21 @@
             txtAddress.PlaceholderText = "";
             txtAddress.SelectionLength = 0;
             txtAddress.SelectionStart = 0;
-            txtAddress.Size = new System.Drawing.Size(1198, 119);
+            txtAddress.Size = new System.Drawing.Size(1330, 119);
             txtAddress.TabIndex = 8;
             txtAddress.Texts = "";
             txtAddress.UnderlinedStyle = false;
+            txtAddress._TextChanged += txtAddress__TextChanged;
             // 
             // flowLayoutPanel15
             // 
             flowLayoutPanel15.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
-            flowLayoutPanel15.Controls.Add(btnAddPatient);
             flowLayoutPanel15.Controls.Add(btnClearInput);
-            flowLayoutPanel15.Location = new System.Drawing.Point(3, 397);
+            flowLayoutPanel15.Controls.Add(btnAddPatient);
+            flowLayoutPanel15.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
+            flowLayoutPanel15.Location = new System.Drawing.Point(841, 379);
             flowLayoutPanel15.Name = "flowLayoutPanel15";
-            flowLayoutPanel15.Size = new System.Drawing.Size(424, 71);
+            flowLayoutPanel15.Size = new System.Drawing.Size(526, 66);
             flowLayoutPanel15.TabIndex = 12;
             // 
             // label12
@@ -720,7 +687,7 @@
             btnBack.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
             btnBack.Image = Properties.Resources.back_button_icon;
             btnBack.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            btnBack.Location = new System.Drawing.Point(1520, 45);
+            btnBack.Location = new System.Drawing.Point(1305, 45);
             btnBack.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             btnBack.Name = "btnBack";
             btnBack.Padding = new System.Windows.Forms.Padding(0, 3, 35, 0);
@@ -743,7 +710,7 @@
             Controls.Add(nameHolder);
             Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             Name = "AddPatient";
-            Size = new System.Drawing.Size(1763, 814);
+            Size = new System.Drawing.Size(1548, 768);
             Load += AddPatient_Load;
             panelBorder1.ResumeLayout(false);
             panelBorder1.PerformLayout();
@@ -753,8 +720,6 @@
             flowLayoutPanel2.PerformLayout();
             flowLayoutPanel3.ResumeLayout(false);
             flowLayoutPanel3.PerformLayout();
-            flowLayoutPanel4.ResumeLayout(false);
-            flowLayoutPanel4.PerformLayout();
             flowLayoutPanel6.ResumeLayout(false);
             flowLayoutPanel6.PerformLayout();
             flowLayoutPanel7.ResumeLayout(false);
@@ -809,8 +774,6 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel6;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel7;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel8;
@@ -821,6 +784,5 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel13;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel14;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel15;
-        private System.Windows.Forms.Splitter splitter1;
     }
 }

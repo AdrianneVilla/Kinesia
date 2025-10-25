@@ -403,10 +403,14 @@ namespace Kinesia.Patients
         {
             var url = $"http://localhost:5000/api/patients/{patientID}/status";
 
-            var updatedPatient = new PatientUpdateStatusDTO();
+            var updatedPatient = new PatientUpdateStatusDTO
+            {
 
-            updatedPatient.PatientID = patientID;
-            updatedPatient.Status = status;
+                PatientID = patientID,
+                LastArchiveDate = DateTime.Now,
+                Status = status
+
+            };
 
             var json = JsonConvert.SerializeObject(updatedPatient);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
