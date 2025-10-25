@@ -70,8 +70,8 @@
             flowLayoutPanel14 = new System.Windows.Forms.FlowLayoutPanel();
             label9 = new System.Windows.Forms.Label();
             txtAddress = new CustomControls.RJControls.RJTextBox();
-            flowLayoutPanel15 = new System.Windows.Forms.FlowLayoutPanel();
             label12 = new System.Windows.Forms.Label();
+            flowLayoutPanel15 = new System.Windows.Forms.FlowLayoutPanel();
             btnBack = new OrganizationProfile.CustomButton();
             toolTipAge = new System.Windows.Forms.ToolTip(components);
             panelBorder1.SuspendLayout();
@@ -186,7 +186,6 @@
             // 
             // panelBorder1
             // 
-            panelBorder1.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             panelBorder1.BackColor = System.Drawing.Color.White;
             panelBorder1.BackgroundImage = Properties.Resources.Add_Patient_Background;
             panelBorder1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -198,7 +197,7 @@
             panelBorder1.Location = new System.Drawing.Point(78, 132);
             panelBorder1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             panelBorder1.Name = "panelBorder1";
-            panelBorder1.Size = new System.Drawing.Size(1658, 580);
+            panelBorder1.Size = new System.Drawing.Size(1658, 610);
             panelBorder1.TabIndex = 8;
             panelBorder1.Paint += panelBorder1_Paint;
             // 
@@ -212,7 +211,7 @@
             flowLayoutPanel5.Controls.Add(flowLayoutPanel15);
             flowLayoutPanel5.Location = new System.Drawing.Point(53, 83);
             flowLayoutPanel5.Name = "flowLayoutPanel5";
-            flowLayoutPanel5.Size = new System.Drawing.Size(1568, 471);
+            flowLayoutPanel5.Size = new System.Drawing.Size(1568, 479);
             flowLayoutPanel5.TabIndex = 35;
             // 
             // splitter1
@@ -677,16 +676,6 @@
             txtAddress.Texts = "";
             txtAddress.UnderlinedStyle = false;
             // 
-            // flowLayoutPanel15
-            // 
-            flowLayoutPanel15.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
-            flowLayoutPanel15.Controls.Add(btnAddPatient);
-            flowLayoutPanel15.Controls.Add(btnClearInput);
-            flowLayoutPanel15.Location = new System.Drawing.Point(3, 397);
-            flowLayoutPanel15.Name = "flowLayoutPanel15";
-            flowLayoutPanel15.Size = new System.Drawing.Size(1478, 71);
-            flowLayoutPanel15.TabIndex = 12;
-            // 
             // label12
             // 
             label12.AutoSize = true;
@@ -697,6 +686,16 @@
             label12.Size = new System.Drawing.Size(224, 34);
             label12.TabIndex = 19;
             label12.Text = "Personal Information";
+            // 
+            // flowLayoutPanel15
+            // 
+            flowLayoutPanel15.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            flowLayoutPanel15.Controls.Add(btnAddPatient);
+            flowLayoutPanel15.Controls.Add(btnClearInput);
+            flowLayoutPanel15.Location = new System.Drawing.Point(3, 397);
+            flowLayoutPanel15.Name = "flowLayoutPanel15";
+            flowLayoutPanel15.Size = new System.Drawing.Size(424, 71);
+            flowLayoutPanel15.TabIndex = 12;
             // 
             // btnBack
             // 
@@ -737,7 +736,7 @@
             Controls.Add(nameHolder);
             Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             Name = "AddPatient";
-            Size = new System.Drawing.Size(1763, 759);
+            Size = new System.Drawing.Size(1763, 814);
             Load += AddPatient_Load;
             panelBorder1.ResumeLayout(false);
             panelBorder1.PerformLayout();
