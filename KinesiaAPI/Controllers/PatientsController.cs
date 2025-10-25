@@ -21,11 +21,10 @@ namespace KinesiaAPI.Controllers
         public PatientsController(ApplicationDbContext context)
         {
             _context = context;
-        }
+        }   
 
         // GET: api/patients?searchData={}&currentTab={}&sortColumn={}
         [HttpGet]
-
         public async Task<ActionResult<IEnumerable<DisplayPatientsDTO>>> GetPatients(
             string? searchData = null,
             string? currentTab = null,

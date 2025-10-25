@@ -20,6 +20,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp2.CustomButton;
+using Kinesia.Offline;
 
 namespace Kinesia
 {
