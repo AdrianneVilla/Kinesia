@@ -1,4 +1,10 @@
-﻿using System;
+﻿using Kinesia.Assessment;
+using Kinesia.Components;
+using Kinesia.Offline;
+using KinesiaLibrary.DTOs.AuthDTOs;
+using MySql.Data.MySqlClient;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,11 +15,6 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Kinesia.Components;
-using Kinesia.Offline;
-using KinesiaLibrary.DTOs.AuthDTOs;
-using MySql.Data.MySqlClient;
-using Newtonsoft.Json;
 
 namespace Kinesia
 {
@@ -159,6 +160,7 @@ namespace Kinesia
             btnOffline.BorderColor = Color.FromArgb(21, 134, 105);
             btnOffline.BorderRadius = 10;
             btnOffline.BorderSize = 1;
+            btnOffline.Cursor = Cursors.Hand;
             btnOffline.FlatAppearance.BorderSize = 0;
             btnOffline.FlatStyle = FlatStyle.Flat;
             btnOffline.Font = new Font("Poppins", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -196,6 +198,7 @@ namespace Kinesia
             txtPassword.ForeColor = Color.FromArgb(64, 64, 64);
             txtPassword.Location = new Point(62, 199);
             txtPassword.Margin = new Padding(4);
+            txtPassword.MaxLength = 32767;
             txtPassword.Multiline = false;
             txtPassword.Name = "txtPassword";
             txtPassword.Padding = new Padding(10, 7, 10, 7);
@@ -221,6 +224,7 @@ namespace Kinesia
             txtUsername.ForeColor = Color.FromArgb(64, 64, 64);
             txtUsername.Location = new Point(62, 129);
             txtUsername.Margin = new Padding(4);
+            txtUsername.MaxLength = 32767;
             txtUsername.Multiline = false;
             txtUsername.Name = "txtUsername";
             txtUsername.Padding = new Padding(10, 7, 10, 7);
@@ -253,6 +257,7 @@ namespace Kinesia
             btnLogin.BorderColor = Color.Transparent;
             btnLogin.BorderRadius = 10;
             btnLogin.BorderSize = 0;
+            btnLogin.Cursor = Cursors.Hand;
             btnLogin.FlatAppearance.BorderSize = 0;
             btnLogin.FlatStyle = FlatStyle.Flat;
             btnLogin.Font = new Font("Poppins", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -456,8 +461,54 @@ namespace Kinesia
 
         private void btnOffline_Click(object sender, EventArgs e)
         {
-            var offlineAssessment = new AssessmentROMOffline();
-            offlineAssessment.ShowDialog();
+            if (IsCameraConnected())
+            {
+                var offlineAssessment = new AssessmentROMOffline();
+                offlineAssessment.ShowDialog();
+            }
+            else
+            {
+                CustomDialog.Show("Astra pro plus camera is not connected!", "Astra", CustomDialogButtons.OK, CustomDialogIcons.Error);
+            }
+        }
+
+        private bool IsCameraConnected()
+        {
+            Astra.StreamSet tempStreamSet = null;
+            bool initialized = false; // Keep track if Initialize was called
+            try
+            {
+                // Initialize the SDK context first
+                Astra.Context.Initialize(); //
+                initialized = true;
+
+                // Now try to open the default device stream set
+                tempStreamSet = Astra.StreamSet.Open(); //
+
+                if (tempStreamSet != null && tempStreamSet.IsAvailable) //
+                {
+                    return true; // Camera found and available
+                }
+                else
+                {
+                    return false; // Camera opened but not available
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Camera check failed: {ex.Message}");
+                return false; // Exception likely means no device or driver issue
+            }
+            finally
+            {
+                // Dispose the stream set if created
+                tempStreamSet?.Dispose(); //
+                                          // Terminate the SDK context if it was initialized
+                if (initialized)
+                {
+                    Astra.Context.Terminate(); //
+                }
+            }
         }
     }
 }

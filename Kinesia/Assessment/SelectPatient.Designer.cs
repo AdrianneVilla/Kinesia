@@ -32,14 +32,13 @@
             dataGridPatientSelection = new System.Windows.Forms.DataGridView();
             label2 = new System.Windows.Forms.Label();
             flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            rjComboBox1 = new CustomControls.RJControls.RJComboBox();
             splitter1 = new System.Windows.Forms.Splitter();
             btnAddPatient = new OrganizationProfile.CustomButton();
             btnClose = new OrganizationProfile.CustomButton();
             panelBorder2 = new WindowsFormsApp2.CustomButton.PanelBorder();
-            pictureBox2 = new System.Windows.Forms.PictureBox();
-            rjTextBox1 = new CustomControls.RJControls.RJTextBox();
             btnSearch = new OrganizationProfile.CustomButton();
+            rjTextBox1 = new CustomControls.RJControls.RJTextBox();
+            pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)dataGridPatientSelection).BeginInit();
             flowLayoutPanel2.SuspendLayout();
             panelBorder2.SuspendLayout();
@@ -71,7 +70,6 @@
             // flowLayoutPanel2
             // 
             flowLayoutPanel2.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            flowLayoutPanel2.Controls.Add(rjComboBox1);
             flowLayoutPanel2.Controls.Add(splitter1);
             flowLayoutPanel2.Controls.Add(btnAddPatient);
             flowLayoutPanel2.Location = new System.Drawing.Point(44, 169);
@@ -79,31 +77,11 @@
             flowLayoutPanel2.Size = new System.Drawing.Size(780, 51);
             flowLayoutPanel2.TabIndex = 22;
             // 
-            // rjComboBox1
-            // 
-            rjComboBox1.BackColor = System.Drawing.Color.White;
-            rjComboBox1.BorderColor = System.Drawing.Color.Black;
-            rjComboBox1.BorderSize = 1;
-            rjComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
-            rjComboBox1.Font = new System.Drawing.Font("Segoe UI", 10F);
-            rjComboBox1.ForeColor = System.Drawing.Color.DimGray;
-            rjComboBox1.IconColor = System.Drawing.Color.FromArgb(18, 90, 211);
-            rjComboBox1.Items.AddRange(new object[] { "SELECT JOINT", "Knees", "Elbow", "Shoulder", "Hips" });
-            rjComboBox1.ListBackColor = System.Drawing.Color.White;
-            rjComboBox1.ListTextColor = System.Drawing.Color.Black;
-            rjComboBox1.Location = new System.Drawing.Point(3, 3);
-            rjComboBox1.MinimumSize = new System.Drawing.Size(200, 30);
-            rjComboBox1.Name = "rjComboBox1";
-            rjComboBox1.Padding = new System.Windows.Forms.Padding(1);
-            rjComboBox1.Size = new System.Drawing.Size(397, 43);
-            rjComboBox1.TabIndex = 1;
-            rjComboBox1.Texts = "";
-            // 
             // splitter1
             // 
-            splitter1.Location = new System.Drawing.Point(406, 3);
+            splitter1.Location = new System.Drawing.Point(3, 3);
             splitter1.Name = "splitter1";
-            splitter1.Size = new System.Drawing.Size(164, 43);
+            splitter1.Size = new System.Drawing.Size(563, 43);
             splitter1.TabIndex = 2;
             splitter1.TabStop = false;
             // 
@@ -122,7 +100,7 @@
             btnAddPatient.ForeColor = System.Drawing.Color.White;
             btnAddPatient.Image = (System.Drawing.Image)resources.GetObject("btnAddPatient.Image");
             btnAddPatient.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            btnAddPatient.Location = new System.Drawing.Point(577, 3);
+            btnAddPatient.Location = new System.Drawing.Point(573, 3);
             btnAddPatient.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             btnAddPatient.Name = "btnAddPatient";
             btnAddPatient.Padding = new System.Windows.Forms.Padding(10, 3, 45, 0);
@@ -170,41 +148,6 @@
             panelBorder2.Size = new System.Drawing.Size(789, 53);
             panelBorder2.TabIndex = 26;
             // 
-            // pictureBox2
-            // 
-            pictureBox2.Image = Properties.Resources.search_icon;
-            pictureBox2.Location = new System.Drawing.Point(23, 12);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new System.Drawing.Size(29, 27);
-            pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            pictureBox2.TabIndex = 0;
-            pictureBox2.TabStop = false;
-            pictureBox2.Click += pictureBox2_Click;
-            // 
-            // rjTextBox1
-            // 
-            rjTextBox1.BackColor = System.Drawing.Color.White;
-            rjTextBox1.BorderColor = System.Drawing.Color.White;
-            rjTextBox1.BorderFocusColor = System.Drawing.Color.White;
-            rjTextBox1.BorderRadius = 5;
-            rjTextBox1.BorderSize = 1;
-            rjTextBox1.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            rjTextBox1.ForeColor = System.Drawing.Color.FromArgb(64, 64, 64);
-            rjTextBox1.Location = new System.Drawing.Point(60, 6);
-            rjTextBox1.Margin = new System.Windows.Forms.Padding(5);
-            rjTextBox1.Multiline = false;
-            rjTextBox1.Name = "rjTextBox1";
-            rjTextBox1.Padding = new System.Windows.Forms.Padding(12, 8, 12, 0);
-            rjTextBox1.PasswordChar = false;
-            rjTextBox1.PlaceholderColor = System.Drawing.Color.DarkGray;
-            rjTextBox1.PlaceholderText = "Search Patient";
-            rjTextBox1.SelectionLength = 0;
-            rjTextBox1.SelectionStart = 0;
-            rjTextBox1.Size = new System.Drawing.Size(558, 35);
-            rjTextBox1.TabIndex = 5;
-            rjTextBox1.Texts = "";
-            rjTextBox1.UnderlinedStyle = false;
-            // 
             // btnSearch
             // 
             btnSearch.BackColor = System.Drawing.Color.FromArgb(64, 210, 173);
@@ -223,6 +166,42 @@
             btnSearch.Text = "Search";
             btnSearch.TextColor = System.Drawing.Color.Transparent;
             btnSearch.UseVisualStyleBackColor = false;
+            // 
+            // rjTextBox1
+            // 
+            rjTextBox1.BackColor = System.Drawing.Color.White;
+            rjTextBox1.BorderColor = System.Drawing.Color.White;
+            rjTextBox1.BorderFocusColor = System.Drawing.Color.White;
+            rjTextBox1.BorderRadius = 5;
+            rjTextBox1.BorderSize = 1;
+            rjTextBox1.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            rjTextBox1.ForeColor = System.Drawing.Color.FromArgb(64, 64, 64);
+            rjTextBox1.Location = new System.Drawing.Point(60, 6);
+            rjTextBox1.Margin = new System.Windows.Forms.Padding(5);
+            rjTextBox1.MaxLength = 32767;
+            rjTextBox1.Multiline = false;
+            rjTextBox1.Name = "rjTextBox1";
+            rjTextBox1.Padding = new System.Windows.Forms.Padding(12, 8, 12, 0);
+            rjTextBox1.PasswordChar = false;
+            rjTextBox1.PlaceholderColor = System.Drawing.Color.DarkGray;
+            rjTextBox1.PlaceholderText = "Search Patient";
+            rjTextBox1.SelectionLength = 0;
+            rjTextBox1.SelectionStart = 0;
+            rjTextBox1.Size = new System.Drawing.Size(558, 35);
+            rjTextBox1.TabIndex = 5;
+            rjTextBox1.Texts = "";
+            rjTextBox1.UnderlinedStyle = false;
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.Image = Properties.Resources.search_icon;
+            pictureBox2.Location = new System.Drawing.Point(23, 12);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new System.Drawing.Size(29, 27);
+            pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            pictureBox2.TabIndex = 0;
+            pictureBox2.TabStop = false;
+            pictureBox2.Click += pictureBox2_Click;
             // 
             // SelectPatient
             // 
@@ -253,7 +232,6 @@
         private System.Windows.Forms.DataGridView dataGridPatientSelection;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
-        private CustomControls.RJControls.RJComboBox rjComboBox1;
         private System.Windows.Forms.Splitter splitter1;
         private OrganizationProfile.CustomButton btnAddPatient;
         private OrganizationProfile.CustomButton btnClose;

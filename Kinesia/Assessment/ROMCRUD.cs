@@ -52,7 +52,7 @@ namespace Kinesia.Assessment
                     {
                         Name = "Rom",
                         DataPropertyName = "Rom",
-                        HeaderText = "Rom"
+                        HeaderText = "ROM"
                     });
 
                     PageObjects.assessmentDetails.GetROMGrid.Columns.Add(new DataGridViewTextBoxColumn

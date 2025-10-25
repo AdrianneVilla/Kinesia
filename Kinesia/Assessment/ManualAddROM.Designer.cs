@@ -69,6 +69,7 @@
             txtStartingPosition.ForeColor = System.Drawing.Color.FromArgb(64, 64, 64);
             txtStartingPosition.Location = new System.Drawing.Point(53, 282);
             txtStartingPosition.Margin = new System.Windows.Forms.Padding(4);
+            txtStartingPosition.MaxLength = 10;
             txtStartingPosition.Multiline = false;
             txtStartingPosition.Name = "txtStartingPosition";
             txtStartingPosition.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
@@ -78,7 +79,7 @@
             txtStartingPosition.SelectionLength = 0;
             txtStartingPosition.SelectionStart = 0;
             txtStartingPosition.Size = new System.Drawing.Size(250, 41);
-            txtStartingPosition.TabIndex = 1;
+            txtStartingPosition.TabIndex = 4;
             txtStartingPosition.Texts = "";
             txtStartingPosition.UnderlinedStyle = false;
             txtStartingPosition.KeyPress += txtInitialROM_KeyPress;
@@ -94,6 +95,7 @@
             txtRom.ForeColor = System.Drawing.Color.FromArgb(64, 64, 64);
             txtRom.Location = new System.Drawing.Point(348, 282);
             txtRom.Margin = new System.Windows.Forms.Padding(4);
+            txtRom.MaxLength = 10;
             txtRom.Multiline = false;
             txtRom.Name = "txtRom";
             txtRom.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
@@ -103,7 +105,7 @@
             txtRom.SelectionLength = 0;
             txtRom.SelectionStart = 0;
             txtRom.Size = new System.Drawing.Size(250, 41);
-            txtRom.TabIndex = 3;
+            txtRom.TabIndex = 5;
             txtRom.Texts = "";
             txtRom.UnderlinedStyle = false;
             txtRom._TextChanged += txtRom__TextChanged;
@@ -117,7 +119,7 @@
             label2.Name = "label2";
             label2.Size = new System.Drawing.Size(40, 23);
             label2.TabIndex = 2;
-            label2.Text = "Rom";
+            label2.Text = "ROM";
             // 
             // label3
             // 
@@ -156,7 +158,7 @@
             cbMovement.Name = "cbMovement";
             cbMovement.Padding = new System.Windows.Forms.Padding(1);
             cbMovement.Size = new System.Drawing.Size(250, 41);
-            cbMovement.TabIndex = 6;
+            cbMovement.TabIndex = 2;
             cbMovement.Texts = "";
             cbMovement.OnSelectedIndexChanged += cbMovement_OnSelectedIndexChanged;
             // 
@@ -177,7 +179,7 @@
             cbMotionType.Name = "cbMotionType";
             cbMotionType.Padding = new System.Windows.Forms.Padding(1);
             cbMotionType.Size = new System.Drawing.Size(250, 41);
-            cbMotionType.TabIndex = 7;
+            cbMotionType.TabIndex = 3;
             cbMotionType.Texts = "";
             // 
             // label8
@@ -274,6 +276,7 @@
             txtGoniometer.ForeColor = System.Drawing.Color.FromArgb(64, 64, 64);
             txtGoniometer.Location = new System.Drawing.Point(52, 98);
             txtGoniometer.Margin = new System.Windows.Forms.Padding(4);
+            txtGoniometer.MaxLength = 50;
             txtGoniometer.Multiline = false;
             txtGoniometer.Name = "txtGoniometer";
             txtGoniometer.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
@@ -283,7 +286,7 @@
             txtGoniometer.SelectionLength = 0;
             txtGoniometer.SelectionStart = 0;
             txtGoniometer.Size = new System.Drawing.Size(545, 41);
-            txtGoniometer.TabIndex = 28;
+            txtGoniometer.TabIndex = 1;
             txtGoniometer.Texts = "";
             txtGoniometer.UnderlinedStyle = false;
             // 

@@ -170,9 +170,9 @@ namespace Kinesia.Assessment
             label3.ForeColor = SystemColors.ControlDarkDark;
             label3.Location = new Point(485, 286);
             label3.Name = "label3";
-            label3.Size = new Size(63, 34);
+            label3.Size = new Size(62, 34);
             label3.TabIndex = 12;
-            label3.Text = "Rom:";
+            label3.Text = "ROM:";
             label3.TextAlign = ContentAlignment.TopCenter;
             // 
             // btnSaveROM

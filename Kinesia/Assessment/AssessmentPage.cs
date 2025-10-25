@@ -276,7 +276,7 @@ namespace Kinesia.Assessment
                 {
                     await Queries.AssessmentQueries.GetAssessmentDetails(assessmentList[e.RowIndex]);
                 }
-                else if(e.ColumnIndex == 7) // column 7 is for archive / unarcive assessment
+                else if(e.ColumnIndex == 6) // column 6 is for archive / unarcive assessment
                 {
                     if (dataGridAssessments.Rows[e.RowIndex].Cells[4].Value.Equals("Ongoing"))
                     {

@@ -188,6 +188,10 @@ namespace Kinesia.Assessment
             {
                 lblDeficit.Text = ROMHelper.CalculateDeficit(Convert.ToDouble(txtRom.Texts), PageObjects.assessmentDetails.Joint, cbMovement.Texts).ToString();
             }
+            else if(txtRom.Texts == "")
+            {
+                lblDeficit.Text = "0";
+            }
         }
     }
 }
