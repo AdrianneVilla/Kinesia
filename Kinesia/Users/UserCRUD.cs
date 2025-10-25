@@ -250,48 +250,12 @@ namespace Kinesia.Users
             }
         }
 
-        public async Task<string> SetUserID()
-        {
-            try
-            {
-                var url = "http://localhost:5000/api/users/generate-userid";
-                var response = await client.GetAsync(url);
-
-                if (response.IsSuccessStatusCode)
-                {
-                    return await response.Content.ReadAsStringAsync();
-                }
-                else
-                {
-                    // will show an error dialog if it returns a badrequest from API
-                    CustomDialog.Show(await response.Content.ReadAsStringAsync(),
-                        "Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
-                    return null;
-                }
-            }
-            catch (HttpRequestException)
-            {
-                // will show an error dialog if it catches a http request error from client-side
-                CustomDialog.Show("Unable to connect to the server.\nPlease try again.",
-                    "Connection Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
-                return null;
-            }
-            catch (Exception)
-            {
-                // will show an error dialog if it catches an unexpected error from client-side.
-                CustomDialog.Show("An unexpected error occured.\nPlease try again.",
-                            "Unexpected Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
-                return null;
-            }
-        }
-
         public async Task<string> AddUser(UserDataHolder userData)
         {
             try
             {
                 var newUser = new AddUserDTO
                 {
-                    UserID = await SetUserID(),
                     FirstName = userData.FirstName,
                     LastName = userData.LastName,
                     MiddleName = userData.MiddleName,
@@ -312,7 +276,10 @@ namespace Kinesia.Users
 
                 if (response.IsSuccessStatusCode)
                 {
-                    return newUser.UserID;
+                    var responseString = await response.Content.ReadAsStringAsync();
+                    var createdUser = JsonConvert.DeserializeObject<UsersDTO>(responseString);
+
+                    return createdUser.UserID;
                 }
                 else
                 {

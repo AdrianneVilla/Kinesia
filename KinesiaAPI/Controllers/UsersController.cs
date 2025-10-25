@@ -140,30 +140,6 @@ namespace KinesiaAPI.Controllers
             }
         }
 
-        // GET: api/users/generate-userid
-        [HttpGet("generate-userid")]
-        public async Task<ActionResult<string>> GenerateNewUserID()
-        {
-            try
-            {
-                var nextCount = await _context.Database
-                    .SqlQueryRaw<long>("SELECT NEXTVAL(user_id_seq) as value")
-                    .FirstAsync();
-
-                string newUserID = $"USER{nextCount}";
-
-                return Ok(newUserID);
-            }
-            catch (DbException)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, "An error occured on database.\nPlease try again.");
-            }
-            catch (Exception)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, "An unexpected error occured.\nPlease try again.");
-            }
-        }
-
         // POST: api/users/check-existing
         [HttpPost("check-existing")]
         public async Task<IActionResult> CheckExistingUser(CheckExistingUserDTO existingUser)
@@ -335,8 +311,16 @@ namespace KinesiaAPI.Controllers
             if (userDTO == null)
                 return BadRequest("User data cannot be null.");
 
+            await using var transaction = await _context.Database.BeginTransactionAsync();
+
             try
             {
+                var nextCount = await _context.Database
+                    .SqlQueryRaw<long>("SELECT NEXTVAL(user_id_seq) as value")
+                    .FirstAsync();
+
+                string newUserID = $"USER{nextCount}";
+
                 // will generate salt for hashing
                 // salt will be unique for every user
                 var salt = CustomSecurity.GenerateSalt();
@@ -344,7 +328,7 @@ namespace KinesiaAPI.Controllers
 
                 var newUser = new Users
                 {
-                    UserID = userDTO.UserID,
+                    UserID = newUserID,
                     FirstName = userDTO.FirstName,
                     LastName = userDTO.LastName,
                     MiddleName = userDTO.MiddleName,
@@ -364,6 +348,9 @@ namespace KinesiaAPI.Controllers
 
                 _context.Users.Add(newUser);
                 await _context.SaveChangesAsync();
+
+                await transaction.CommitAsync();
+
                 return CreatedAtAction("GetUsers", new { id = newUser.UserID }, newUser);
             }
             catch (DbUpdateException)
