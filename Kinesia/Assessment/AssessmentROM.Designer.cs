@@ -106,6 +106,7 @@ namespace Kinesia.Assessment
             btnStartStopMeasurement.BorderColor = Color.PaleVioletRed;
             btnStartStopMeasurement.BorderRadius = 10;
             btnStartStopMeasurement.BorderSize = 0;
+            btnStartStopMeasurement.Cursor = Cursors.Hand;
             btnStartStopMeasurement.FlatAppearance.BorderSize = 0;
             btnStartStopMeasurement.FlatStyle = FlatStyle.Flat;
             btnStartStopMeasurement.Font = new Font("Poppins", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -182,6 +183,7 @@ namespace Kinesia.Assessment
             btnSaveROM.BorderColor = Color.PaleVioletRed;
             btnSaveROM.BorderRadius = 10;
             btnSaveROM.BorderSize = 0;
+            btnSaveROM.Cursor = Cursors.Hand;
             btnSaveROM.FlatAppearance.BorderSize = 0;
             btnSaveROM.FlatStyle = FlatStyle.Flat;
             btnSaveROM.Font = new Font("Poppins", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);

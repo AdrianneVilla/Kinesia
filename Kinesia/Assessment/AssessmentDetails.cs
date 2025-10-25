@@ -71,6 +71,12 @@ namespace Kinesia.Assessment
                 btnAdduction.Visible = false;
                 btnAbduction.Visible = false;
             }
+
+            romPlot.Plot.Clear();
+            romPlot.Plot.Title("No selected movement");
+            romPlot.Plot.XLabel("Date of Tracking");
+            romPlot.Plot.YLabel("Range of Motion (degrees)");
+            romPlot.Refresh();
         }
 
         private void btnPrint_Click(object sender, EventArgs e)

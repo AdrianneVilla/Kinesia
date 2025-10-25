@@ -148,6 +148,7 @@ namespace Kinesia.Offline
             btnStartStopMeasurement.BorderColor = Color.PaleVioletRed;
             btnStartStopMeasurement.BorderRadius = 10;
             btnStartStopMeasurement.BorderSize = 0;
+            btnStartStopMeasurement.Cursor = Cursors.Hand;
             btnStartStopMeasurement.FlatAppearance.BorderSize = 0;
             btnStartStopMeasurement.FlatStyle = FlatStyle.Flat;
             btnStartStopMeasurement.Font = new Font("Poppins", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -223,11 +224,12 @@ namespace Kinesia.Offline
             btnSaveAssessment.BorderColor = Color.PaleVioletRed;
             btnSaveAssessment.BorderRadius = 10;
             btnSaveAssessment.BorderSize = 0;
+            btnSaveAssessment.Cursor = Cursors.Hand;
             btnSaveAssessment.FlatAppearance.BorderSize = 0;
             btnSaveAssessment.FlatStyle = FlatStyle.Flat;
             btnSaveAssessment.Font = new Font("Poppins", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSaveAssessment.ForeColor = Color.Transparent;
-            btnSaveAssessment.Location = new Point(576, 511);
+            btnSaveAssessment.Location = new Point(603, 300);
             btnSaveAssessment.Name = "btnSaveAssessment";
             btnSaveAssessment.Size = new Size(325, 49);
             btnSaveAssessment.TabIndex = 8;

@@ -73,6 +73,7 @@
             btnLogs.BorderColor = System.Drawing.Color.White;
             btnLogs.BorderRadius = 10;
             btnLogs.BorderSize = 0;
+            btnLogs.Cursor = System.Windows.Forms.Cursors.Hand;
             btnLogs.FlatAppearance.BorderSize = 0;
             btnLogs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnLogs.Font = new System.Drawing.Font("Poppins", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
@@ -100,6 +101,7 @@
             assessmentModule.BorderColor = System.Drawing.Color.White;
             assessmentModule.BorderRadius = 10;
             assessmentModule.BorderSize = 0;
+            assessmentModule.Cursor = System.Windows.Forms.Cursors.Hand;
             assessmentModule.FlatAppearance.BorderSize = 0;
             assessmentModule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             assessmentModule.Font = new System.Drawing.Font("Poppins", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);

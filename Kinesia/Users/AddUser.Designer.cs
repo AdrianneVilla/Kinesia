@@ -894,6 +894,7 @@
             btnAddUser.BorderColor = System.Drawing.Color.FromArgb(18, 90, 211);
             btnAddUser.BorderRadius = 10;
             btnAddUser.BorderSize = 1;
+            btnAddUser.Cursor = System.Windows.Forms.Cursors.Hand;
             btnAddUser.FlatAppearance.BorderSize = 0;
             btnAddUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnAddUser.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
@@ -920,6 +921,7 @@
             btnClearInput.BorderColor = System.Drawing.Color.FromArgb(210, 64, 66);
             btnClearInput.BorderRadius = 10;
             btnClearInput.BorderSize = 1;
+            btnClearInput.Cursor = System.Windows.Forms.Cursors.Hand;
             btnClearInput.FlatAppearance.BorderSize = 0;
             btnClearInput.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnClearInput.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);

@@ -312,6 +312,7 @@
             btnArchive.BorderColor = System.Drawing.Color.FromArgb(210, 64, 66);
             btnArchive.BorderRadius = 10;
             btnArchive.BorderSize = 1;
+            btnArchive.Cursor = System.Windows.Forms.Cursors.Hand;
             btnArchive.FlatAppearance.BorderSize = 0;
             btnArchive.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnArchive.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
@@ -338,6 +339,7 @@
             btnEdit.BorderColor = System.Drawing.Color.FromArgb(64, 210, 173);
             btnEdit.BorderRadius = 10;
             btnEdit.BorderSize = 1;
+            btnEdit.Cursor = System.Windows.Forms.Cursors.Hand;
             btnEdit.FlatAppearance.BorderSize = 0;
             btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnEdit.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
@@ -536,6 +538,7 @@
             btnBack.BorderColor = System.Drawing.Color.PaleVioletRed;
             btnBack.BorderRadius = 10;
             btnBack.BorderSize = 0;
+            btnBack.Cursor = System.Windows.Forms.Cursors.Hand;
             btnBack.FlatAppearance.BorderSize = 0;
             btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnBack.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);

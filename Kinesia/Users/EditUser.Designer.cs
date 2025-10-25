@@ -127,6 +127,7 @@
             btnSaveChanges.BorderColor = System.Drawing.Color.FromArgb(18, 90, 211);
             btnSaveChanges.BorderRadius = 0;
             btnSaveChanges.BorderSize = 1;
+            btnSaveChanges.Cursor = System.Windows.Forms.Cursors.Hand;
             btnSaveChanges.FlatAppearance.BorderSize = 0;
             btnSaveChanges.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnSaveChanges.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);

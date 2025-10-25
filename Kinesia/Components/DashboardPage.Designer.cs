@@ -274,6 +274,7 @@
             btnQuickAddPatient.BorderColor = System.Drawing.Color.Silver;
             btnQuickAddPatient.BorderRadius = 20;
             btnQuickAddPatient.BorderSize = 1;
+            btnQuickAddPatient.Cursor = System.Windows.Forms.Cursors.Hand;
             btnQuickAddPatient.FlatAppearance.BorderSize = 0;
             btnQuickAddPatient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnQuickAddPatient.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
@@ -299,6 +300,7 @@
             btnQuickAddUser.BorderColor = System.Drawing.Color.Silver;
             btnQuickAddUser.BorderRadius = 20;
             btnQuickAddUser.BorderSize = 1;
+            btnQuickAddUser.Cursor = System.Windows.Forms.Cursors.Hand;
             btnQuickAddUser.FlatAppearance.BorderSize = 0;
             btnQuickAddUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnQuickAddUser.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
@@ -324,6 +326,7 @@
             btnQuickNewAssessment.BorderColor = System.Drawing.Color.Silver;
             btnQuickNewAssessment.BorderRadius = 20;
             btnQuickNewAssessment.BorderSize = 1;
+            btnQuickNewAssessment.Cursor = System.Windows.Forms.Cursors.Hand;
             btnQuickNewAssessment.FlatAppearance.BorderSize = 0;
             btnQuickNewAssessment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnQuickNewAssessment.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold);

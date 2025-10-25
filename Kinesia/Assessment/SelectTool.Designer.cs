@@ -41,6 +41,7 @@
             btnAstraProCamera.BorderColor = System.Drawing.Color.Black;
             btnAstraProCamera.BorderRadius = 20;
             btnAstraProCamera.BorderSize = 1;
+            btnAstraProCamera.Cursor = System.Windows.Forms.Cursors.Hand;
             btnAstraProCamera.FlatAppearance.BorderSize = 0;
             btnAstraProCamera.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnAstraProCamera.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
@@ -63,6 +64,7 @@
             btnGoniometer.BorderColor = System.Drawing.Color.Black;
             btnGoniometer.BorderRadius = 20;
             btnGoniometer.BorderSize = 1;
+            btnGoniometer.Cursor = System.Windows.Forms.Cursors.Hand;
             btnGoniometer.FlatAppearance.BorderSize = 0;
             btnGoniometer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnGoniometer.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
@@ -98,6 +100,7 @@
             btnClose.BorderColor = System.Drawing.Color.PaleVioletRed;
             btnClose.BorderRadius = 15;
             btnClose.BorderSize = 0;
+            btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
             btnClose.FlatAppearance.BorderSize = 0;
             btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnClose.ForeColor = System.Drawing.Color.Transparent;

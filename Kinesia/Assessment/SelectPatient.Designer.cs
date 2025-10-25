@@ -122,6 +122,7 @@
             btnClose.BorderColor = System.Drawing.Color.PaleVioletRed;
             btnClose.BorderRadius = 15;
             btnClose.BorderSize = 0;
+            btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
             btnClose.FlatAppearance.BorderSize = 0;
             btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnClose.ForeColor = System.Drawing.Color.Transparent;
@@ -157,6 +158,7 @@
             btnSearch.BorderColor = System.Drawing.Color.PaleVioletRed;
             btnSearch.BorderRadius = 10;
             btnSearch.BorderSize = 0;
+            btnSearch.Cursor = System.Windows.Forms.Cursors.Hand;
             btnSearch.FlatAppearance.BorderSize = 0;
             btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnSearch.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);

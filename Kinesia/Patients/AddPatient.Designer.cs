@@ -135,6 +135,7 @@
             btnClearInput.BorderColor = System.Drawing.Color.FromArgb(210, 64, 66);
             btnClearInput.BorderRadius = 10;
             btnClearInput.BorderSize = 1;
+            btnClearInput.Cursor = System.Windows.Forms.Cursors.Hand;
             btnClearInput.FlatAppearance.BorderSize = 0;
             btnClearInput.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnClearInput.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
@@ -160,6 +161,7 @@
             btnAddPatient.BorderColor = System.Drawing.Color.FromArgb(18, 90, 211);
             btnAddPatient.BorderRadius = 10;
             btnAddPatient.BorderSize = 1;
+            btnAddPatient.Cursor = System.Windows.Forms.Cursors.Hand;
             btnAddPatient.FlatAppearance.BorderSize = 0;
             btnAddPatient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnAddPatient.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);

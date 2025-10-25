@@ -99,6 +99,7 @@
             btnSaveAssessment.BorderColor = System.Drawing.Color.FromArgb(18, 90, 211);
             btnSaveAssessment.BorderRadius = 10;
             btnSaveAssessment.BorderSize = 1;
+            btnSaveAssessment.Cursor = System.Windows.Forms.Cursors.Hand;
             btnSaveAssessment.FlatAppearance.BorderSize = 0;
             btnSaveAssessment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnSaveAssessment.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
