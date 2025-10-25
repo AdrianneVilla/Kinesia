@@ -56,7 +56,6 @@
             dataGridROM = new System.Windows.Forms.DataGridView();
             flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
             btnArchive = new OrganizationProfile.CustomButton();
-            btnEdit = new OrganizationProfile.CustomButton();
             panelGraph = new System.Windows.Forms.Panel();
             romPlot = new ScottPlot.WinForms.FormsPlot();
             btnAddRom = new OrganizationProfile.CustomButton();
@@ -393,7 +392,6 @@
             // 
             flowLayoutPanel5.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             flowLayoutPanel5.Controls.Add(btnArchive);
-            flowLayoutPanel5.Controls.Add(btnEdit);
             flowLayoutPanel5.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
             flowLayoutPanel5.Location = new System.Drawing.Point(516, 95);
             flowLayoutPanel5.Name = "flowLayoutPanel5";
@@ -425,31 +423,6 @@
             btnArchive.TextColor = System.Drawing.Color.FromArgb(210, 64, 66);
             btnArchive.UseVisualStyleBackColor = false;
             btnArchive.Click += btnArchive_Click;
-            // 
-            // btnEdit
-            // 
-            btnEdit.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
-            btnEdit.BackColor = System.Drawing.Color.FromArgb(207, 249, 238);
-            btnEdit.BackgroundColor = System.Drawing.Color.FromArgb(207, 249, 238);
-            btnEdit.BorderColor = System.Drawing.Color.FromArgb(64, 210, 173);
-            btnEdit.BorderRadius = 10;
-            btnEdit.BorderSize = 1;
-            btnEdit.FlatAppearance.BorderSize = 0;
-            btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            btnEdit.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            btnEdit.ForeColor = System.Drawing.Color.FromArgb(21, 134, 105);
-            btnEdit.Image = (System.Drawing.Image)resources.GetObject("btnEdit.Image");
-            btnEdit.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            btnEdit.Location = new System.Drawing.Point(236, 3);
-            btnEdit.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            btnEdit.Name = "btnEdit";
-            btnEdit.Padding = new System.Windows.Forms.Padding(6, 3, 18, 0);
-            btnEdit.Size = new System.Drawing.Size(198, 46);
-            btnEdit.TabIndex = 29;
-            btnEdit.Text = "Edit Assessment";
-            btnEdit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            btnEdit.TextColor = System.Drawing.Color.FromArgb(21, 134, 105);
-            btnEdit.UseVisualStyleBackColor = false;
             // 
             // panelGraph
             // 
@@ -725,7 +698,6 @@
         private System.Windows.Forms.DataGridView dataGridROM;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
         private OrganizationProfile.CustomButton btnArchive;
-        private OrganizationProfile.CustomButton btnEdit;
         private OrganizationProfile.CustomButton btnAddRom;
         private OrganizationProfile.CustomButton btnBack;
         private System.Windows.Forms.Label label10;

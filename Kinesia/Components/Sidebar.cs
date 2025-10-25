@@ -177,14 +177,23 @@ namespace Kinesia.Components
 
             // Set dashboard as default active button on load
             HighlightButton(dashboardModule);
+
         }
 
         private void btnLogs_Paint(object sender, PaintEventArgs e)
         {
-            if (!SessionManager.Role.Equals("Admin"))
+            try
             {
-                btnLogs.Visible = false;
-                usersModule.Visible = false;
+                // Check if SessionManager and Role are initialized
+                if (SessionManager.Role != null && !SessionManager.Role.Equals("Admin", StringComparison.OrdinalIgnoreCase))
+                {
+                    btnLogs.Visible = false;
+                    usersModule.Visible = false;
+                }
+            }
+            catch (Exception)
+            {
+                // Silently ignore errors during paint
             }
         }
     }

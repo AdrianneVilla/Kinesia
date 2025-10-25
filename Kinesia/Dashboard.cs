@@ -77,11 +77,6 @@ namespace Kinesia
                 sidebar1.Width = SIDEBAR_WIDTH_LAPTOP;
                 header1.Height = HEADER_HEIGHT_LAPTOP;
 
-                // Adjust sidebar font sizes if it has buttons
-                AdjustSidebarForLaptop();
-
-                // Adjust header elements if needed
-                AdjustHeaderForLaptop();
             }
             else
             {
@@ -89,88 +84,13 @@ namespace Kinesia
                 sidebar1.Width = SIDEBAR_WIDTH_DESKTOP;
                 header1.Height = HEADER_HEIGHT_DESKTOP;
 
-                // Restore sidebar to desktop
-                AdjustSidebarForDesktop();
 
-                // Restore header to desktop
-                AdjustHeaderForDesktop();
             }
 
             this.ResumeLayout();
             this.PerformLayout();
         }
 
-        private void AdjustSidebarForLaptop()
-        {
-            // Adjust sidebar elements for laptop
-            foreach (Control ctrl in sidebar1.Controls)
-            {
-                if (ctrl is Button btn)
-                {
-                    // Reduce button height
-                    btn.Height = (int)(btn.Height * 0.85f);
-
-                    // Reduce font size
-                    if (btn.Font.Size > 9)
-                    {
-                        btn.Font = new Font(btn.Font.FontFamily, btn.Font.Size * 0.85f, btn.Font.Style);
-                    }
-                }
-                else if (ctrl is Label lbl)
-                {
-                    // Reduce label font size
-                    if (lbl.Font.Size > 8)
-                    {
-                        lbl.Font = new Font(lbl.Font.FontFamily, lbl.Font.Size * 0.85f, lbl.Font.Style);
-                    }
-                }
-                else if (ctrl is PictureBox pic)
-                {
-                    // Reduce logo/image size
-                    pic.Height = (int)(pic.Height * 0.85f);
-                    pic.Width = (int)(pic.Width * 0.85f);
-                }
-            }
-        }
-
-        private void AdjustSidebarForDesktop()
-        {
-            // Restore original sizes would require storing them
-            // For simplicity, you might want to recreate or store original sizes
-        }
-
-        private void AdjustHeaderForLaptop()
-        {
-            // Adjust header elements for laptop
-            foreach (Control ctrl in header1.Controls)
-            {
-                if (ctrl is Label lbl)
-                {
-                    // Reduce font size
-                    if (lbl.Font.Size > 10)
-                    {
-                        lbl.Font = new Font(lbl.Font.FontFamily, lbl.Font.Size * 0.85f, lbl.Font.Style);
-                    }
-                }
-                else if (ctrl is Button btn)
-                {
-                    // Reduce button size
-                    btn.Height = (int)(btn.Height * 0.85f);
-                    btn.Width = (int)(btn.Width * 0.85f);
-                }
-                else if (ctrl is PictureBox pic)
-                {
-                    // Reduce image size
-                    pic.Height = (int)(pic.Height * 0.85f);
-                    pic.Width = (int)(pic.Width * 0.85f);
-                }
-            }
-        }
-
-        private void AdjustHeaderForDesktop()
-        {
-            // Restore original sizes
-        }
 
         private void Dashboard_Load(object sender, EventArgs e)
         {

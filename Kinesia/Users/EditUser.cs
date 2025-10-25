@@ -14,13 +14,236 @@ namespace Kinesia.Users
     public partial class EditUser : UserControl
     {
         private string previousPage;
-
+        private bool isInitialized = false;
         public string PreviousPage { get { return previousPage; } set { previousPage = value; } }
         public EditUser()
         {
             this.Anchor = AnchorStyles.Right | AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Bottom;
             this.Dock = DockStyle.Fill;
+            this.MinimumSize = new Size(1000, 700);
+            this.AutoScroll = true; 
             InitializeComponent();
+
+            // Reset child panel locations for proper flow
+            ResetChildPanelLocations();
+
+
+            RemoveFixedAnchors();
+        }
+
+        private void RemoveFixedAnchors()
+        {
+            // Remove anchors from controls that need to be dynamically positioned
+            txtFirstName.Anchor = AnchorStyles.None;
+            txtLastName.Anchor = AnchorStyles.None;
+            txtMiddleName.Anchor = AnchorStyles.None;
+            dpBirthDate.Anchor = AnchorStyles.None;
+            txtAge.Anchor = AnchorStyles.None;
+            cbGender.Anchor = AnchorStyles.None;
+            txtContact.Anchor = AnchorStyles.None;
+            txtEmail.Anchor = AnchorStyles.None;
+            cbRole.Anchor = AnchorStyles.None;
+            txtAddress.Anchor = AnchorStyles.None;
+            label11.Anchor = AnchorStyles.None; // Account Information label
+            flowLayoutPanel1.Anchor = AnchorStyles.None; // Account section
+
+            // Also remove anchors from labels
+            label4.Anchor = AnchorStyles.None;
+            label2.Anchor = AnchorStyles.None;
+            label10.Anchor = AnchorStyles.None;
+            lblBirthDate.Anchor = AnchorStyles.None;
+            lblAge.Anchor = AnchorStyles.None;
+            label5.Anchor = AnchorStyles.None;
+            label8.Anchor = AnchorStyles.None;
+            label16.Anchor = AnchorStyles.None;
+            label15.Anchor = AnchorStyles.None;
+            label9.Anchor = AnchorStyles.None;
+        }
+
+        private void ResetChildPanelLocations()
+        {
+            // Reset account field panel locations to allow FlowLayoutPanel auto-positioning
+            if (flowLayoutPanel2 != null) flowLayoutPanel2.Location = new Point(0, 0);
+            if (flowLayoutPanel3 != null) flowLayoutPanel3.Location = new Point(0, 0);
+            if (flowLayoutPanel4 != null) flowLayoutPanel4.Location = new Point(0, 0);
+            if (flowLayoutPanel5 != null) flowLayoutPanel5.Location = new Point(0, 0);
+        }
+
+        private void ConfigureResponsiveness()
+        {
+            // Configure the account fields FlowLayoutPanel
+            flowLayoutPanel1.AutoSize = false;
+            flowLayoutPanel1.WrapContents = true;
+            flowLayoutPanel1.FlowDirection = FlowDirection.LeftToRight;
+            flowLayoutPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            flowLayoutPanel1.Padding = new Padding(0);
+            flowLayoutPanel1.Margin = new Padding(0);
+
+            // Set up resize event
+            this.Resize += EditUser_Resize;
+
+            // Initial resize
+            EditUser_Resize(this, EventArgs.Empty);
+        }
+
+        private void EditUser_Resize(object sender, EventArgs e)
+        {
+            if (!isInitialized) return;
+
+            int containerWidth = panelBorder1.Width;
+            int availableWidth = containerWidth - 120; // Account for margins (60px on each side)
+            int leftMargin = 56;
+
+            // Row 1: First Name, Last Name, Middle Name (3 equal columns with spacing)
+            int spacing = 30;
+            int nameFieldWidth = Math.Max((int)((availableWidth - (2 * spacing)) / 3f), 200);
+
+            txtFirstName.Location = new Point(leftMargin, 129);
+            txtFirstName.Width = nameFieldWidth;
+            label4.Location = new Point(txtFirstName.Left - 5, 103);
+
+            txtLastName.Location = new Point(txtFirstName.Right + spacing, 129);
+            txtLastName.Width = nameFieldWidth;
+            label2.Location = new Point(txtLastName.Left - 5, 103);
+
+            txtMiddleName.Location = new Point(txtLastName.Right + spacing, 129);
+            txtMiddleName.Width = nameFieldWidth;
+            label10.Location = new Point(txtMiddleName.Left - 5, 103);
+
+            // Row 2: Birthdate, Age, Gender, Contact
+            int row2Y = 242;
+
+            // Calculate widths so they fit properly
+            int row2TotalWidth = availableWidth - (3 * spacing); // Account for 3 gaps
+            int birthdateWidth = Math.Max((int)(row2TotalWidth * 0.31f), 180);
+            int ageWidth = Math.Max((int)(row2TotalWidth * 0.12f), 80);
+            int genderWidth = Math.Max((int)(row2TotalWidth * 0.22f), 140);
+            int contactWidth = row2TotalWidth - birthdateWidth - ageWidth - genderWidth; // Use remaining space
+
+            dpBirthDate.Location = new Point(leftMargin + 3, row2Y);
+            dpBirthDate.Width = birthdateWidth;
+            lblBirthDate.Location = new Point(dpBirthDate.Left - 4, row2Y - 26);
+
+            txtAge.Location = new Point(dpBirthDate.Right + spacing, row2Y);
+            txtAge.Width = ageWidth;
+            lblAge.Location = new Point(txtAge.Left - 4, row2Y - 29);
+
+            cbGender.Location = new Point(txtAge.Right + spacing, row2Y);
+            cbGender.Width = genderWidth;
+            label5.Location = new Point(cbGender.Left - 5, row2Y - 29);
+
+            txtContact.Location = new Point(cbGender.Right + spacing, row2Y);
+            txtContact.Width = Math.Max(contactWidth, 150); // Ensure minimum width
+            label8.Location = new Point(txtContact.Left - 4, row2Y - 29);
+
+            // Row 3: Email, Role
+            int row3Y = 351;
+            int emailWidth = Math.Max((int)(availableWidth * 0.60f), 300);
+            int roleWidth = Math.Max((int)(availableWidth * 0.34f), 200);
+
+            txtEmail.Location = new Point(leftMargin, row3Y);
+            txtEmail.Width = emailWidth;
+            label16.Location = new Point(txtEmail.Left - 1, row3Y - 27);
+
+            cbRole.Location = new Point(txtEmail.Right + spacing, row3Y);
+            cbRole.Width = roleWidth;
+            label15.Location = new Point(cbRole.Left - 4, row3Y - 26);
+
+            // Address (full width)
+            int addressY = 464;
+            txtAddress.Location = new Point(leftMargin, addressY);
+            txtAddress.Width = availableWidth;
+            label9.Location = new Point(txtAddress.Left - 5, addressY - 27);
+
+            // Account Information section - positioned BELOW address with proper spacing
+            int accountLabelY = addressY + 119 + 50; // Address Y + Address Height + 50px gap
+            label11.Location = new Point(leftMargin - 2, accountLabelY);
+
+            // Account section FlowLayoutPanel - positioned below label11
+            int accountPanelY = accountLabelY + 37; // Label11 Y + 37px gap
+            flowLayoutPanel1.Location = new Point(leftMargin - 3, accountPanelY);
+            flowLayoutPanel1.Width = availableWidth + 10;
+            ResizeAccountSection(availableWidth);
+
+            // Force layout update
+            panelBorder1.PerformLayout();
+        }
+
+        private void ResizeAccountSection(int containerWidth)
+        {
+            flowLayoutPanel1.SuspendLayout();
+
+            List<FlowLayoutPanel> childPanels = new List<FlowLayoutPanel>();
+            foreach (Control ctrl in flowLayoutPanel1.Controls)
+            {
+                if (ctrl is FlowLayoutPanel childPanel)
+                {
+                    childPanels.Add(childPanel);
+                    childPanel.Visible = true;
+                    childPanel.Margin = new Padding(3);
+                }
+            }
+
+            if (childPanels.Count == 0)
+            {
+                flowLayoutPanel1.ResumeLayout();
+                return;
+            }
+
+            int margins = 10 * (childPanels.Count - 1);
+            int availableWidth = containerWidth - margins;
+
+            foreach (var childPanel in childPanels)
+            {
+                int panelWidth = 0;
+
+                // Account fields: Username, Old Password, New Password, Confirm Password
+                if (childPanel == flowLayoutPanel2) // Username
+                    panelWidth = Math.Max((int)(availableWidth * 0.23f), 180);
+                else if (childPanel == flowLayoutPanel3) // Old Password
+                    panelWidth = Math.Max((int)(availableWidth * 0.23f), 180);
+                else if (childPanel == flowLayoutPanel4) // New Password
+                    panelWidth = Math.Max((int)(availableWidth * 0.24f), 180);
+                else if (childPanel == flowLayoutPanel5) // Confirm Password
+                    panelWidth = Math.Max((int)(availableWidth * 0.25f), 180);
+
+                childPanel.Width = panelWidth;
+                childPanel.Height = 90;
+                childPanel.MinimumSize = new Size(panelWidth, 90);
+                childPanel.MaximumSize = new Size(panelWidth, 90);
+                childPanel.Visible = true;
+
+                ResizeControlsInChildPanel(childPanel, panelWidth);
+            }
+
+            flowLayoutPanel1.ResumeLayout(true);
+            flowLayoutPanel1.PerformLayout();
+        }
+
+        private void ResizeControlsInChildPanel(FlowLayoutPanel childPanel, int panelWidth)
+        {
+            int controlWidth = Math.Max(panelWidth - 20, 80);
+
+            childPanel.SuspendLayout();
+
+            foreach (Control ctrl in childPanel.Controls)
+            {
+                if (ctrl is Label lbl)
+                {
+                    lbl.Visible = true;
+                    lbl.AutoSize = true;
+                    continue;
+                }
+
+                if (ctrl is CustomControls.RJControls.RJTextBox txtBox)
+                {
+                    txtBox.Width = controlWidth;
+                    txtBox.MinimumSize = new Size(80, txtBox.Height);
+                    txtBox.Visible = true;
+                }
+            }
+
+            childPanel.ResumeLayout();
         }
 
         private void EditUser_Load(object sender, EventArgs e)
@@ -59,6 +282,9 @@ namespace Kinesia.Users
             {
                 cbRole.SelectedIndex = 1; // will set the cbRole value to Therapist
             }
+
+            isInitialized = true;
+            ConfigureResponsiveness();
         }
 
         private async void btnSaveChanges_Click(object sender, EventArgs e)

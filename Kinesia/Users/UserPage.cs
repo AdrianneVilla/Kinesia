@@ -18,6 +18,8 @@ namespace Kinesia.Users
 
         List<string> userList = new List<string>();
 
+        private bool isInitialized = false;
+
         //public PanelBorder getUserHolder { get { return UserHolder; } }
         public DataGridView GetUserGrid { get { return dataGridUsers; } }
         public string CurrentTab { get { return currentTab; } }
@@ -27,8 +29,95 @@ namespace Kinesia.Users
             this.Anchor = AnchorStyles.Right | AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Bottom;
             this.Dock = DockStyle.Fill;
             InitializeComponent();
+
+            ConfigureResponsiveness();
+
         }
 
+        private void ConfigureResponsiveness()
+        {
+            // Configure DataGridView for responsiveness
+            dataGridUsers.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dataGridUsers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill; // KEY CHANGE
+            dataGridUsers.Dock = DockStyle.None; // Don't dock, we'll position manually
+
+            // Set up anchors for responsive behavior
+            nameHolder.Anchor = AnchorStyles.Top | AnchorStyles.Left;
+            label1.Anchor = AnchorStyles.Top | AnchorStyles.Left;
+            panelBorder1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            panelBorder2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            panelBorder3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+
+            // Set up resize event
+            this.Resize += UserPage_Resize;
+
+            isInitialized = true;
+
+            // Initial resize
+            UserPage_Resize(this, EventArgs.Empty);
+        }
+
+        private void UserPage_Resize(object sender, EventArgs e)
+        {
+            if (!isInitialized) return;
+
+            int formWidth = this.Width;
+            int formHeight = this.Height;
+
+            // Header section (fixed positions)
+            nameHolder.Location = new Point(69, 36);
+            label1.Location = new Point(74, 82);
+
+            // Search bar panel - FIXED: Properly anchored to right with fixed margin
+            int searchBarWidth = 582;
+            int rightMargin = 60;
+            int searchBarX = formWidth - searchBarWidth - rightMargin;
+            panelBorder1.Location = new Point(searchBarX, 51);
+            panelBorder1.Width = searchBarWidth;
+
+            // Search textbox and button stay at fixed positions inside panel
+            txtSearchBar.Width = 388;
+            txtSearchBar.Location = new Point(40, 9);
+            btnSearch.Location = new Point(453, 8);
+
+            // Filter panel (panelBorder2) - full width with margins
+            int filterPanelY = 163;
+            int filterPanelWidth = formWidth - 144; // 72px margin on each side
+            panelBorder2.Location = new Point(72, filterPanelY);
+            panelBorder2.Width = filterPanelWidth;
+
+            // Position elements inside panelBorder2
+            btnAll.Location = new Point(14, 10);
+            btnActive.Location = new Point(112, 10);
+            btnInactive.Location = new Point(210, 10);
+
+            // Position Add User button on the right
+            int addUserX = filterPanelWidth - 185;
+            btnAddPatient.Location = new Point(Math.Max(addUserX, 320), 6);
+
+            // Position Sort dropdown next to Add User button
+            int sortX = Math.Max(addUserX - 310, 310);
+            cbSort.Location = new Point(sortX, 6);
+            cbSort.Width = Math.Min(284, addUserX - sortX - 20);
+
+            // Data grid panel (panelBorder3)
+            int gridPanelY = filterPanelY + 73;
+            int gridPanelHeight = Math.Max(formHeight - gridPanelY - 11, 200);
+            panelBorder3.Location = new Point(74, gridPanelY);
+            panelBorder3.Size = new Size(filterPanelWidth - 4, gridPanelHeight);
+
+            // DataGridView inside panel - with margins
+            int gridMargin = 10;
+            dataGridUsers.Location = new Point(gridMargin, gridMargin);
+            dataGridUsers.Size = new Size(
+                Math.Max(panelBorder3.Width - (gridMargin * 2), 100),
+                Math.Max(panelBorder3.Height - (gridMargin * 2), 100)
+            );
+
+            // Force layout update
+            this.PerformLayout();
+            panelBorder3.PerformLayout();
+        }
         private async void UserPage_Load(object sender, EventArgs e)
         {
             await Queries.UserQueries.DisplayUsers(searchData, currentTab, cbSort.Texts);

@@ -30,8 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
             ContentsPanel = new System.Windows.Forms.Panel();
-            sidebar1 = new Kinesia.Components.Sidebar();
             header1 = new Kinesia.Components.Header();
+            sidebar1 = new Kinesia.Components.Sidebar();
             SuspendLayout();
             // 
             // ContentsPanel
@@ -45,18 +45,6 @@
             ContentsPanel.Size = new System.Drawing.Size(1128, 958);
             ContentsPanel.TabIndex = 2;
             // 
-            // sidebar1
-            // 
-            sidebar1.BackColor = System.Drawing.Color.White;
-            sidebar1.BackgroundImage = Properties.Resources.sidepanel;
-            sidebar1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            sidebar1.Dock = System.Windows.Forms.DockStyle.Left;
-            sidebar1.Location = new System.Drawing.Point(0, 80);
-            sidebar1.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
-            sidebar1.Name = "sidebar1";
-            sidebar1.Size = new System.Drawing.Size(314, 958);
-            sidebar1.TabIndex = 1;
-            // 
             // header1
             // 
             header1.BackColor = System.Drawing.Color.White;
@@ -69,6 +57,18 @@
             header1.Size = new System.Drawing.Size(1442, 80);
             header1.TabIndex = 0;
             header1.Load += header1_Load;
+            // 
+            // sidebar1
+            // 
+            sidebar1.BackColor = System.Drawing.Color.White;
+            sidebar1.BackgroundImage = Properties.Resources.sidepanel;
+            sidebar1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            sidebar1.Dock = System.Windows.Forms.DockStyle.Left;
+            sidebar1.Location = new System.Drawing.Point(0, 80);
+            sidebar1.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
+            sidebar1.Name = "sidebar1";
+            sidebar1.Size = new System.Drawing.Size(314, 958);
+            sidebar1.TabIndex = 1;
             // 
             // Dashboard
             // 
@@ -98,7 +98,7 @@
         #endregion
 
         private Components.Header header1;
-        private Components.Sidebar sidebar1;
         public System.Windows.Forms.Panel ContentsPanel;
+        private Components.Sidebar sidebar1;
     }
 }

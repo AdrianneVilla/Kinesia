@@ -57,10 +57,10 @@
             // 
             // label1
             // 
-            label1.AutoSize = true;
             label1.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             label1.Location = new System.Drawing.Point(74, 82);
             label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label1.MaximumSize = new System.Drawing.Size(255, 23);
             label1.Name = "label1";
             label1.Size = new System.Drawing.Size(255, 23);
             label1.TabIndex = 10;
@@ -375,12 +375,12 @@
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             BackColor = System.Drawing.Color.White;
+            Controls.Add(panelBorder1);
             Controls.Add(panelBorder3);
             Controls.Add(lblHiddenForFocus);
             Controls.Add(panelBorder2);
             Controls.Add(label1);
             Controls.Add(nameHolder);
-            Controls.Add(panelBorder1);
             Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             Name = "UserPage";
             Size = new System.Drawing.Size(1940, 875);

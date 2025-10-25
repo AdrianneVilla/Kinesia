@@ -37,6 +37,7 @@
             btnAddPatient = new OrganizationProfile.CustomButton();
             panelBorder1 = new WindowsFormsApp2.CustomButton.PanelBorder();
             flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
+            splitter1 = new System.Windows.Forms.Splitter();
             flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             label11 = new System.Windows.Forms.Label();
@@ -204,23 +205,32 @@
             // flowLayoutPanel5
             // 
             flowLayoutPanel5.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            flowLayoutPanel5.Controls.Add(splitter1);
             flowLayoutPanel5.Controls.Add(flowLayoutPanel1);
             flowLayoutPanel5.Controls.Add(flowLayoutPanel7);
             flowLayoutPanel5.Controls.Add(flowLayoutPanel13);
             flowLayoutPanel5.Controls.Add(flowLayoutPanel15);
             flowLayoutPanel5.Location = new System.Drawing.Point(53, 83);
             flowLayoutPanel5.Name = "flowLayoutPanel5";
-            flowLayoutPanel5.Size = new System.Drawing.Size(1568, 458);
+            flowLayoutPanel5.Size = new System.Drawing.Size(1568, 471);
             flowLayoutPanel5.TabIndex = 35;
+            // 
+            // splitter1
+            // 
+            splitter1.Location = new System.Drawing.Point(3, 3);
+            splitter1.Name = "splitter1";
+            splitter1.Size = new System.Drawing.Size(3, 90);
+            splitter1.TabIndex = 13;
+            splitter1.TabStop = false;
             // 
             // flowLayoutPanel1
             // 
             flowLayoutPanel1.Controls.Add(flowLayoutPanel2);
             flowLayoutPanel1.Controls.Add(flowLayoutPanel3);
             flowLayoutPanel1.Controls.Add(flowLayoutPanel6);
-            flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
+            flowLayoutPanel1.Location = new System.Drawing.Point(12, 3);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new System.Drawing.Size(1478, 90);
+            flowLayoutPanel1.Size = new System.Drawing.Size(1543, 90);
             flowLayoutPanel1.TabIndex = 11;
             // 
             // flowLayoutPanel2
@@ -376,7 +386,7 @@
             txtMiddleName.PlaceholderText = "";
             txtMiddleName.SelectionLength = 0;
             txtMiddleName.SelectionStart = 0;
-            txtMiddleName.Size = new System.Drawing.Size(427, 43);
+            txtMiddleName.Size = new System.Drawing.Size(293, 43);
             txtMiddleName.TabIndex = 3;
             txtMiddleName.Texts = "";
             txtMiddleName.UnderlinedStyle = false;
@@ -619,7 +629,7 @@
             flowLayoutPanel13.Controls.Add(flowLayoutPanel14);
             flowLayoutPanel13.Location = new System.Drawing.Point(3, 198);
             flowLayoutPanel13.Name = "flowLayoutPanel13";
-            flowLayoutPanel13.Size = new System.Drawing.Size(1478, 166);
+            flowLayoutPanel13.Size = new System.Drawing.Size(1478, 193);
             flowLayoutPanel13.TabIndex = 11;
             // 
             // flowLayoutPanel14
@@ -629,7 +639,7 @@
             flowLayoutPanel14.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             flowLayoutPanel14.Location = new System.Drawing.Point(3, 3);
             flowLayoutPanel14.Name = "flowLayoutPanel14";
-            flowLayoutPanel14.Size = new System.Drawing.Size(1475, 163);
+            flowLayoutPanel14.Size = new System.Drawing.Size(1475, 181);
             flowLayoutPanel14.TabIndex = 0;
             // 
             // label9
@@ -662,7 +672,7 @@
             txtAddress.PlaceholderText = "";
             txtAddress.SelectionLength = 0;
             txtAddress.SelectionStart = 0;
-            txtAddress.Size = new System.Drawing.Size(1357, 119);
+            txtAddress.Size = new System.Drawing.Size(1198, 119);
             txtAddress.TabIndex = 8;
             txtAddress.Texts = "";
             txtAddress.UnderlinedStyle = false;
@@ -672,9 +682,9 @@
             flowLayoutPanel15.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
             flowLayoutPanel15.Controls.Add(btnAddPatient);
             flowLayoutPanel15.Controls.Add(btnClearInput);
-            flowLayoutPanel15.Location = new System.Drawing.Point(3, 370);
+            flowLayoutPanel15.Location = new System.Drawing.Point(3, 397);
             flowLayoutPanel15.Name = "flowLayoutPanel15";
-            flowLayoutPanel15.Size = new System.Drawing.Size(427, 73);
+            flowLayoutPanel15.Size = new System.Drawing.Size(1478, 71);
             flowLayoutPanel15.TabIndex = 12;
             // 
             // label12
@@ -805,5 +815,6 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel13;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel14;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel15;
+        private System.Windows.Forms.Splitter splitter1;
     }
 }

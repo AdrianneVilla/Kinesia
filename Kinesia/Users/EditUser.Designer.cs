@@ -52,7 +52,6 @@
             txtEmail = new CustomControls.RJControls.RJTextBox();
             label16 = new System.Windows.Forms.Label();
             cbGender = new CustomControls.RJControls.RJComboBox();
-            label14 = new System.Windows.Forms.Label();
             label11 = new System.Windows.Forms.Label();
             txtMiddleName = new CustomControls.RJControls.RJTextBox();
             label10 = new System.Windows.Forms.Label();
@@ -160,7 +159,6 @@
             panelBorder1.Controls.Add(txtEmail);
             panelBorder1.Controls.Add(label16);
             panelBorder1.Controls.Add(cbGender);
-            panelBorder1.Controls.Add(label14);
             panelBorder1.Controls.Add(label11);
             panelBorder1.Controls.Add(txtMiddleName);
             panelBorder1.Controls.Add(label10);
@@ -203,9 +201,9 @@
             flowLayoutPanel1.Controls.Add(flowLayoutPanel3);
             flowLayoutPanel1.Controls.Add(flowLayoutPanel4);
             flowLayoutPanel1.Controls.Add(flowLayoutPanel5);
-            flowLayoutPanel1.Location = new System.Drawing.Point(59, 670);
+            flowLayoutPanel1.Location = new System.Drawing.Point(59, 647);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new System.Drawing.Size(1382, 90);
+            flowLayoutPanel1.Size = new System.Drawing.Size(1382, 115);
             flowLayoutPanel1.TabIndex = 43;
             // 
             // flowLayoutPanel2
@@ -472,23 +470,12 @@
             cbGender.Texts = "";
             cbGender.OnSelectedIndexChanged += cbGender_OnSelectedIndexChanged;
             // 
-            // label14
-            // 
-            label14.AutoSize = true;
-            label14.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            label14.ForeColor = System.Drawing.Color.Gray;
-            label14.Location = new System.Drawing.Point(1000, 254);
-            label14.Margin = new System.Windows.Forms.Padding(35, 0, 4, 0);
-            label14.Name = "label14";
-            label14.Size = new System.Drawing.Size(34, 23);
-            label14.TabIndex = 33;
-            label14.Text = "+63";
-            // 
             // label11
             // 
+            label11.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
             label11.AutoSize = true;
             label11.Font = new System.Drawing.Font("Poppins", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            label11.Location = new System.Drawing.Point(54, 633);
+            label11.Location = new System.Drawing.Point(66, 610);
             label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             label11.Name = "label11";
             label11.Size = new System.Drawing.Size(219, 34);
@@ -514,7 +501,7 @@
             txtMiddleName.PlaceholderText = "";
             txtMiddleName.SelectionLength = 0;
             txtMiddleName.SelectionStart = 0;
-            txtMiddleName.Size = new System.Drawing.Size(427, 43);
+            txtMiddleName.Size = new System.Drawing.Size(350, 43);
             txtMiddleName.TabIndex = 17;
             txtMiddleName.Texts = "";
             txtMiddleName.UnderlinedStyle = false;
@@ -605,7 +592,7 @@
             txtAddress.PlaceholderText = "";
             txtAddress.SelectionLength = 0;
             txtAddress.SelectionStart = 0;
-            txtAddress.Size = new System.Drawing.Size(1357, 119);
+            txtAddress.Size = new System.Drawing.Size(1357, 111);
             txtAddress.TabIndex = 11;
             txtAddress.Texts = "";
             txtAddress.UnderlinedStyle = false;
@@ -633,6 +620,7 @@
             txtContact.ForeColor = System.Drawing.Color.Black;
             txtContact.Location = new System.Drawing.Point(989, 242);
             txtContact.Margin = new System.Windows.Forms.Padding(35, 5, 5, 5);
+            txtContact.MinimumSize = new System.Drawing.Size(233, 0);
             txtContact.Multiline = false;
             txtContact.Name = "txtContact";
             txtContact.Padding = new System.Windows.Forms.Padding(12, 8, 12, 8);
@@ -641,9 +629,9 @@
             txtContact.PlaceholderText = "";
             txtContact.SelectionLength = 0;
             txtContact.SelectionStart = 0;
-            txtContact.Size = new System.Drawing.Size(424, 43);
+            txtContact.Size = new System.Drawing.Size(317, 43);
             txtContact.TabIndex = 9;
-            txtContact.Texts = "";
+            txtContact.Texts = "09";
             txtContact.UnderlinedStyle = false;
             txtContact._TextChanged += txtContact__TextChanged;
             txtContact.KeyPress += txtContact_KeyPress;
@@ -845,7 +833,6 @@
         private OrganizationProfile.CustomButton btnSaveChanges;
         private CustomControls.RJControls.RJComboBox cbRole;
         private CustomControls.RJControls.RJComboBox cbGender;
-        private System.Windows.Forms.Label label14;
         private CustomControls.RJControls.RJTextBox txtPassword;
         private System.Windows.Forms.Label label13;
         private CustomControls.RJControls.RJTextBox txtUsername;

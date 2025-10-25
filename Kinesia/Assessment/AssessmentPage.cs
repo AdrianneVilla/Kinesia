@@ -25,6 +25,8 @@ namespace Kinesia.Assessment
             this.Anchor = AnchorStyles.Right | AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Bottom;
             this.Dock = DockStyle.Fill;
             InitializeComponent();
+
+            ConfigureResponsiveness();
         }
 
         public DataGridView AssessmentGrid { get { return dataGridAssessments; } }
@@ -58,6 +60,29 @@ namespace Kinesia.Assessment
             }
         }
 
+        private void ConfigureResponsiveness()
+        {
+            // Configure DataGridView for responsiveness
+            dataGridAssessments.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridAssessments.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+
+            // Set up anchors
+            nameHolder.Anchor = AnchorStyles.Top | AnchorStyles.Left;
+            label1.Anchor = AnchorStyles.Top | AnchorStyles.Left;
+            panelBorder1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            panelBorder2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            PatientHolder.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+
+            // Set up resize event
+            this.Resize += AssessmentPage_Resize;
+
+            isInitialized = true;
+
+            // Initial resize
+            AssessmentPage_Resize(this, EventArgs.Empty);
+        }
+
+
         private void SetupResponsiveLayout()
         {
             this.Resize += AssessmentPage_Resize;
@@ -65,9 +90,74 @@ namespace Kinesia.Assessment
 
         private void AssessmentPage_Resize(object sender, EventArgs e)
         {
-            if (!isInitialized || originalSize.Width == 0 || originalSize.Height == 0) return;
+            if (!isInitialized) return;
 
-            ResizeControls();
+            int formWidth = this.Width;
+            int formHeight = this.Height;
+
+            // Header section (fixed positions)
+            nameHolder.Location = new Point(71, 37);
+            label1.Location = new Point(76, 83);
+
+            // Search bar panel - anchored to right with fixed margin
+            int searchBarWidth = 582;
+            int rightMargin = 60;
+            int searchBarX = formWidth - searchBarWidth - rightMargin;
+            panelBorder1.Location = new Point(searchBarX, 51);
+            panelBorder1.Width = searchBarWidth;
+
+            // Search elements stay at fixed positions inside panel
+            txtSearchBar.Location = new Point(56, 9);
+            txtSearchBar.Width = 388;
+            btnSearch.Location = new Point(453, 8);
+            pictureBox1.Location = new Point(16, 17);
+
+            // Filter panel (panelBorder2) - full width with margins
+            int filterPanelY = 163;
+            int filterPanelWidth = formWidth - 144; // 72px margin on each side
+            panelBorder2.Location = new Point(72, filterPanelY);
+            panelBorder2.Width = filterPanelWidth;
+
+            // Position elements inside panelBorder2
+            // Row 1: Extremity filters (left side)
+            btnAllExtremity.Location = new Point(14, 10);
+            btnUpperExtremities.Location = new Point(112, 10);
+            btnLowerExtremities.Location = new Point(273, 10);
+
+            // Row 1: Add Assessment button (right side)
+            int addAssessmentX = filterPanelWidth - 214;
+            btnAddAssessment.Location = new Point(Math.Max(addAssessmentX, 440), 7);
+
+            // Row 1: Sort dropdown (right of separator, left of Add Assessment)
+            int sortX = Math.Max(addAssessmentX - 310, 440);
+            cbSort.Location = new Point(sortX, 8);
+            cbSort.Width = Math.Min(284, addAssessmentX - sortX - 20);
+
+            // Separator
+            panelBorder3.Location = new Point(sortX - 20, 8);
+
+            // Patient holder panel (contains grid and status buttons)
+            int patientPanelY = filterPanelY + 73;
+            int patientPanelHeight = Math.Max(formHeight - patientPanelY - 11, 300);
+            PatientHolder.Location = new Point(72, patientPanelY);
+            PatientHolder.Size = new Size(filterPanelWidth, patientPanelHeight);
+
+            // FlowLayoutPanel1 - status filters at top right of PatientHolder
+            int flowPanelX = filterPanelWidth - 579 - 16; // 16px margin from right
+            flowLayoutPanel1.Location = new Point(Math.Max(flowPanelX, 400), 18);
+
+            // DataGridView - fills remaining space
+            int gridMargin = 16;
+            int gridTop = 56; // Below flowLayoutPanel1
+            dataGridAssessments.Location = new Point(gridMargin, gridTop);
+            dataGridAssessments.Size = new Size(
+                Math.Max(filterPanelWidth - (gridMargin * 2), 200),
+                Math.Max(patientPanelHeight - gridTop - gridMargin, 200)
+            );
+
+            // Force layout update
+            this.PerformLayout();
+            PatientHolder.PerformLayout();
         }
 
         private void ResizeControls()

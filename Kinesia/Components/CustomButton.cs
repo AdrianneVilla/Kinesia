@@ -44,7 +44,6 @@ namespace OrganizationProfile
                 else borderRadius = this.Height;
                 this.Invalidate();
             }
-
         }
         [Category("Advance Custom Buttons")]
         public Color BorderColor
@@ -71,7 +70,6 @@ namespace OrganizationProfile
             set { this.ForeColor = value; }
         }
 
-
         //Constructor
         public CustomButton()
         {
@@ -81,10 +79,7 @@ namespace OrganizationProfile
             this.BackColor = Color.Transparent;
             this.ForeColor = Color.Transparent;
             this.Resize += new EventHandler(Button_Resize);
-
         }
-
-
 
         private GraphicsPath getFigurePath(RectangleF rect, float radius)
         {
@@ -104,17 +99,24 @@ namespace OrganizationProfile
         {
             base.OnPaint(pevent);
 
+            // ADD: Validate dimensions
+            if (this.Width <= 0 || this.Height <= 0)
+                return;
+
             pevent.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
 
             RectangleF rectSuface = new RectangleF(0, 0, this.Width, this.Height);
             RectangleF rectBorder = new RectangleF(1, 1, this.Width - 0.8F, this.Height - 1);
 
-            if (borderRadius > 2)
-            {    // rounded button
+            // Use default color if Parent is null
+            Color parentBackColor = this.Parent != null ? this.Parent.BackColor : Color.White;
 
+            if (borderRadius > 2)
+            {
+                // Rounded button
                 using (GraphicsPath pathSurface = getFigurePath(rectSuface, borderRadius))
                 using (GraphicsPath pathBorder = getFigurePath(rectBorder, borderRadius - 1F))
-                using (Pen penSurface = new Pen(this.Parent.BackColor, 2))
+                using (Pen penSurface = new Pen(parentBackColor, 2))
                 using (Pen penBorder = new Pen(borderColor, borderSize))
                 {
                     penBorder.Alignment = PenAlignment.Inset;
@@ -126,14 +128,13 @@ namespace OrganizationProfile
                         pevent.Graphics.DrawPath(penBorder, pathBorder);
                     }
                 }
-
             }
-            else // normal button
+            else
             {
-                //button surface
+                // Normal button
                 this.Region = new Region(rectSuface);
 
-                //button border
+                // Button border
                 if (borderSize >= 1)
                 {
                     using (Pen penBorder = new Pen(borderColor, borderSize))
@@ -143,8 +144,8 @@ namespace OrganizationProfile
                     }
                 }
             }
-
         }
+
         protected override void OnHandleCreated(EventArgs e)
         {
             base.OnHandleCreated(e);
@@ -158,14 +159,13 @@ namespace OrganizationProfile
                 this.Invalidate();
             }
         }
+
         private void Button_Resize(object sender, EventArgs e)
         {
             if (borderRadius > this.Height)
             {
                 borderRadius = this.Height;
-
             }
         }
-
     }
 }

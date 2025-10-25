@@ -482,8 +482,8 @@
             AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             BackColor = System.Drawing.Color.White;
-            Controls.Add(lblHiddenForFocus);
             Controls.Add(panelBorder1);
+            Controls.Add(lblHiddenForFocus);
             Controls.Add(panelBorder2);
             Controls.Add(PatientHolder);
             Controls.Add(label1);

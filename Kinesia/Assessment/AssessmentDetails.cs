@@ -54,14 +54,14 @@ namespace Kinesia.Assessment
             if (lblAssessmentStatus.Text == "Archived")
             {
                 btnArchive.Visible = false;
-                btnEdit.Visible = false;
+               
                 btnFinishAssessment.Visible = false;
                 btnAddRom.Enabled = false;
             }
 
             if (lblAssessmentStatus.Text == "Finished")
             {
-                btnEdit.Visible = false;
+         
                 btnFinishAssessment.Visible = false;
                 btnAddRom.Enabled = false;
             }
