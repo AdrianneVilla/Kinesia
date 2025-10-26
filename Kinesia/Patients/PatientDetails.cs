@@ -56,8 +56,8 @@ namespace Kinesia.Patients
             if (lblStatus.Text == "Active")
             {
                 // will show message box for Archiving patient
-                DialogResult archiveDiag = MessageBox.Show($"Are you sure you want to archive {lblPatientID.Text}?", "Archive Patient Notification",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                DialogResult archiveDiag = CustomDialog.Show($"Are you sure you want to archive {lblPatientID.Text}?", "Archive Patient Notification",
+                CustomDialogButtons.YesNo, CustomDialogIcons.Question);
 
                 if (archiveDiag == DialogResult.Yes)
                 {
@@ -71,8 +71,8 @@ namespace Kinesia.Patients
                         // will add a log for archiving a patient;
                         await Queries.LogsQueries.AddLog($"Archived {lblPatientID.Text}", "Patients");
 
-                        MessageBox.Show($"{lblPatientID.Text} has been successfully archived!", "Archive Patient Notification",
-                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        CustomDialog.Show($"{lblPatientID.Text} has been successfully archived!", "Archive Patient Notification",
+                            CustomDialogButtons.OK, CustomDialogIcons.Information);
 
                         await this.FindForm().RunTaskWithLoading("Fetching patient's data..", async () =>
                         {
@@ -84,8 +84,8 @@ namespace Kinesia.Patients
             else
             {
                 // will show message box for Unarchiving patient
-                DialogResult unarchiveDiag = MessageBox.Show($"Are you sure you want to unarchive {lblPatientID.Text}?", "Unarchive Patient Notification",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                DialogResult unarchiveDiag = CustomDialog.Show($"Are you sure you want to unarchive {lblPatientID.Text}?", "Unarchive Patient Notification",
+                CustomDialogButtons.YesNo, CustomDialogIcons.Question);
 
                 if (unarchiveDiag == DialogResult.Yes)
                 {
@@ -99,8 +99,8 @@ namespace Kinesia.Patients
                         // will add a log for unarchiving a patient
                         await Queries.LogsQueries.AddLog($"Unarchived {lblPatientID.Text}", "Patients");
 
-                        MessageBox.Show($"{lblPatientID.Text} has been successfully unarchived!", "Unarchive Patient Notification",
-                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        CustomDialog.Show($"{lblPatientID.Text} has been successfully unarchived!", "Archive Patient Notification",
+                            CustomDialogButtons.OK, CustomDialogIcons.Information);
 
                         await this.FindForm().RunTaskWithLoading("Fetching patient's data..", async () =>
                         {
