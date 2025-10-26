@@ -43,7 +43,7 @@ namespace Kinesia.Assessment
             else if (PageObjects.assessmentDetails.Joint == "Knee")
             {
                 cbMovement.Items.Add("Flexion");
-                cbMovement.Items.Add("Reflexion");
+                cbMovement.Items.Add("Extension");
             }
         }
 

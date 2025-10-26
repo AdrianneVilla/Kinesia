@@ -370,36 +370,51 @@ namespace Kinesia
                 loadingScreen = new LoadingScreen();
                 loadingScreen.Show();
 
-                var loginResult = await LoginAsync(txtUsername.Texts, txtPassword.Texts);
-
-                if (loginResult.Success)
+                try
                 {
-                    // will close the loading screen after the loginResult was success
-                    loadingScreen.Close();
+                    var loginResult = await LoginAsync(txtUsername.Texts, txtPassword.Texts);
 
-                    // will continue to dashboard page if the password and hashed + salted password input is the same
-                    PageObjects.dashboard = new Dashboard();
-                    PageObjects.dashboard.Show();
-                    this.Hide();
-                    SessionManager.UserID = loginResult.UserID;
-                    SessionManager.UserLastName = loginResult.UserLastName;
-                    SessionManager.Role = loginResult.Role;
-                    await Queries.LogsQueries.AddLog("Has Logged In", "Sessions");
+                    if (loginResult.Success)
+                    {
+                        // will close the loading screen after the loginResult was success
+                        loadingScreen.Close();
 
+                        // will continue to dashboard page if the password and hashed + salted password input is the same
+                        PageObjects.dashboard = new Dashboard();
+                        PageObjects.dashboard.Show();
+                        this.Hide();
+                        SessionManager.UserID = loginResult.UserID;
+                        SessionManager.UserLastName = loginResult.UserLastName;
+                        SessionManager.Role = loginResult.Role;
+                        await Queries.LogsQueries.AddLog("Has Logged In", "Sessions");
+
+                    }
+                    else if (loginResult.Message.Trim().Equals("Unable to connect to the server. Please try again."))
+                    {
+                        loadingScreen.Close();
+                        // will show an error dialog if the password and hashed + salted password input is different
+                        CustomDialog.Show("Unable to connect to the server. Please try again.\n" +
+                            "Please try again.", "Login Alert", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                    }
+                    else
+                    {
+                        loadingScreen.Close();
+                        // will show an error dialog if the password and hashed + salted password input is different
+                        CustomDialog.Show("Username or Password was incorrect!\n" +
+                            "Please try again.", "Login Alert", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                    }
                 }
-                else if (loginResult.Message.Trim().Equals("Unable to connect to the server. Please try again."))
+                catch (HttpRequestException)
                 {
-                    loadingScreen.Close();
-                    // will show an error dialog if the password and hashed + salted password input is different
-                    CustomDialog.Show("Unable to connect to the server. Please try again.\n" +
-                        "Please try again.", "Login Alert", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                    // will show an error dialog if it catches a http request error from client-side.
+                    CustomDialog.Show("Unable to connect to the server.\nPlease try again.",
+                                "Connection Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
                 }
-                else
+                catch (Exception)
                 {
-                    loadingScreen.Close();
-                    // will show an error dialog if the password and hashed + salted password input is different
-                    CustomDialog.Show("Username or Password was incorrect!\n" +
-                        "Please try again.", "Login Alert", CustomDialogButtons.OK, CustomDialogIcons.Error);
+                    // will show an error dialog if it catches an unexpected error from client-side.
+                    CustomDialog.Show("Unexpected error occured.\nPlease try again.",
+                                "Unexpected Error", CustomDialogButtons.OK, CustomDialogIcons.Error);
                 }
             }
 
