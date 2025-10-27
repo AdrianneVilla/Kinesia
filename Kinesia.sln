@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KinesiaAPI", "KinesiaAPI\Ki
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KinesiaLibrary", "KinesiaLibrary\KinesiaLibrary.csproj", "{817D0B47-319C-4007-BC28-82ED8DCD3D94}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KinesiaAPI.Tests", "KinesiaAPI.Tests\KinesiaAPI.Tests.csproj", "{6E8A88FD-A9AB-4661-8BAE-C480430E8792}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,6 +42,14 @@ Global
 		{817D0B47-319C-4007-BC28-82ED8DCD3D94}.Release|Any CPU.Build.0 = Release|Any CPU
 		{817D0B47-319C-4007-BC28-82ED8DCD3D94}.Release|x64.ActiveCfg = Release|Any CPU
 		{817D0B47-319C-4007-BC28-82ED8DCD3D94}.Release|x64.Build.0 = Release|Any CPU
+		{6E8A88FD-A9AB-4661-8BAE-C480430E8792}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E8A88FD-A9AB-4661-8BAE-C480430E8792}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E8A88FD-A9AB-4661-8BAE-C480430E8792}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{6E8A88FD-A9AB-4661-8BAE-C480430E8792}.Debug|x64.Build.0 = Debug|Any CPU
+		{6E8A88FD-A9AB-4661-8BAE-C480430E8792}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E8A88FD-A9AB-4661-8BAE-C480430E8792}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E8A88FD-A9AB-4661-8BAE-C480430E8792}.Release|x64.ActiveCfg = Release|Any CPU
+		{6E8A88FD-A9AB-4661-8BAE-C480430E8792}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
