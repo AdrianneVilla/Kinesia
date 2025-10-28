@@ -5,30 +5,18 @@ using KinesiaAPI.Tests.DataTest;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using System.Threading.Tasks;
+using KinesiaLibrary.DTOs.PatientDTOs;
 
 namespace KinesiaAPI.Tests.ControllerTests
 {
     public class PatientsControllerTests
     {
-        public class RandomPatientData : IEnumerable<object[]>
-        {
-            public IEnumerator<object[]> GetEnumerator()
-            {
-                var random = new Random();
-                for (int i = 0; i <= 20; i++)
-                    yield return new object[] { random.Next(10, 200) };
-            }
-
-            System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() => GetEnumerator();
-        }
-
-        [Theory]
-        [ClassData(typeof(RandomPatientData))]
-        public async Task GetPatients_ShouldReturnActivePatientsOnly(int count)
+        [Fact]
+        public async Task GetPatients_ShouldReturnActivePatientsOnly()
         {
             // Arrange
-            var context = TestDbContextFactory.CreateDbContext($"ActivePatients_{count}");
-            var patients = DataFactory.GeneratePatients(count);
+            var context = TestDbContextFactory.CreateDbContext(nameof(GetPatients_ShouldReturnActivePatientsOnly));
+            var patients = DataFactory.GeneratePatients(20);
             context.Patients.AddRange(patients);
             await context.SaveChangesAsync();
 
@@ -44,6 +32,55 @@ namespace KinesiaAPI.Tests.ControllerTests
             // Only those with Status == 1 should be counted
             var expectedCount = patients.Count(p => p.Status == 1);
             Assert.Equal(expectedCount, returnedPatients.Count());
+        }
+
+        [Fact]
+        public async Task GetPatients_ShouldReturnInactivePatientsOnly()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(GetPatients_ShouldReturnInactivePatientsOnly));
+            var patients = DataFactory.GeneratePatients(20);
+            context.Patients.AddRange(patients);
+            await context.SaveChangesAsync();
+
+            var controller = new PatientsController(context);
+
+            // Act
+            var result = await controller.GetPatients(currentTab: "Inactive");
+
+            // Assert
+            var okResult = Assert.IsType<OkObjectResult>(result.Result);
+            var returnedPatients = okResult.Value as IEnumerable<object>;
+
+            // Only those with Status == 1 should be counted
+            var expectedCount = patients.Count(p => p.Status == 0);
+            Assert.Equal(expectedCount, returnedPatients.Count());
+        }
+
+        [Fact]
+        public async Task GetPatients_ShouldReturnAllPatientsWhenTabIsInvalid()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(GetPatients_ShouldReturnAllPatientsWhenTabIsInvalid));
+            var patients = DataFactory.GeneratePatients(20);
+            context.Patients.AddRange(patients);
+
+            await context.SaveChangesAsync();
+
+            var controller = new PatientsController(context);
+
+            // Act
+            var resultNullTab = await controller.GetPatients(currentTab: null);
+            var resultOtherTab = await controller.GetPatients(currentTab: "All");
+
+            // Assert
+            var okResultNull = Assert.IsType<OkObjectResult>(resultNullTab.Result);
+            var returnedPatientsNull = okResultNull.Value as IEnumerable<DisplayPatientsDTO>;
+            Assert.Equal(20, returnedPatientsNull.Count());
+
+            var okResultOther = Assert.IsType<OkObjectResult>(resultOtherTab.Result);
+            var returnedPatientsOther = okResultOther.Value as IEnumerable<DisplayPatientsDTO>;
+            Assert.Equal(20, returnedPatientsOther.Count());
         }
     }
 }
