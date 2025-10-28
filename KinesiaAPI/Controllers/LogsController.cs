@@ -1,6 +1,7 @@
 ﻿using KinesiaAPI.Data;
 using KinesiaAPI.Models.Entities;
 using KinesiaLibrary.DTOs.LogDTOs;
+using KinesiaLibrary.DTOs.ReportDTOs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -127,6 +128,28 @@ namespace KinesiaAPI.Controllers
             }
         }
 
+        // GET: api/logs/generate-report?month={}&year={}
+        [HttpGet("generate-report")]
+        public async Task<ActionResult<IEnumerable<LogReportDTO>>> GenerateLogReport(int month, int year)
+        {
+            var query = from l in _context.Logs
+                        join u in _context.Users on l.UserID equals u.UserID
+                        where l.LogDate.Month == month && l.LogDate.Year == year 
+                        orderby l.LogDate descending
+                        select new LogReportDTO
+                        {
+                            LogID = l.LogID,
+                            UserID = l.UserID,
+                            UserName = $"{u.FirstName} {u.MiddleName} {u.LastName}",
+                            LogType = l.LogType,
+                            LogDescription = l.Description,
+                            LogDate = l.LogDate
+                        };
+
+            var logs = await query.ToListAsync();
+
+            return Ok(logs);
+        }
 
         // PUT: api/Logs/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
