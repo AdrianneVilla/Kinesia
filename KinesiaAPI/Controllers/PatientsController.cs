@@ -174,6 +174,68 @@ namespace KinesiaAPI.Controllers
             }
         }
 
+        // GET: api/patients/total-patients?status={}
+        [HttpGet("total-patients")]
+        public async Task<ActionResult<int>> GetTotalPatientsByStatus(int? status)
+        {
+            try
+            {
+                var query = _context.Patients.AsQueryable();
+
+                if (status == 0)
+                {
+                    query = query.Where(p => p.Status == 0);
+                }
+                else if (status == 1)
+                {
+                    query = query.Where(p => p.Status == 1);
+                }
+
+                var totalCount = await query.CountAsync();
+
+                return Ok(totalCount);
+            }
+            catch (DbException)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An error occured on database.\nPlease try again.");
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An unexpected error occured.\nPlease try again.");
+            }
+        }
+
+        // GET: api/patients/most-field-of-work
+        [HttpGet("most-field-of-work")]
+        public async Task<ActionResult<string>> GetMostFieldOfWork()
+        {
+            try
+            {
+                var mostField = await _context.Patients
+                .GroupBy(p => p.Occupation)
+                .Select(g => new
+                {
+                    Occupation = g.Key,
+                    Count = g.Count()
+                })
+                .OrderByDescending(g => g.Count)
+                .FirstOrDefaultAsync();
+
+                if (mostField == null)
+                    return Ok("N/A");
+
+                return Ok(mostField.Occupation);
+            }
+            catch (DbException)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An error occured on database.\nPlease try again.");
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An unexpected error occured.\nPlease try again.");
+            }
+        }
+
         // GET: api/patients/generate-today-report
         [HttpGet("generate-today-report")]
         public async Task<ActionResult<IEnumerable<PatientReportDTO>>> GenerateTodayReport()
