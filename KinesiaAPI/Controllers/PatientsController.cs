@@ -9,6 +9,7 @@ using KinesiaAPI.Data;
 using KinesiaAPI.Models.Entities;
 using System.Data.Common;
 using KinesiaLibrary.DTOs.PatientDTOs;
+using KinesiaLibrary.DTOs.ReportDTOs;
 
 namespace KinesiaAPI.Controllers
 {
@@ -162,6 +163,113 @@ namespace KinesiaAPI.Controllers
                 }
 
                 return Ok(PatientToPatientBasicDTO(patient));
+            }
+            catch (DbException)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An error occured on database.\nPlease try again.");
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An unexpected error occured.\nPlease try again.");
+            }
+        }
+
+        // GET: api/patients/generate-today-report
+        [HttpGet("generate-today-report")]
+        public async Task<ActionResult<IEnumerable<PatientReportDTO>>> GenerateTodayReport()
+        {
+            try
+            {
+                var query = _context.Patients.AsQueryable();
+
+                query = query.Where(p => p.DateAdded == DateTime.Now);
+
+                var patients = await query
+                               .Select(p => PatientToPatientReportDTO(p))
+                               .ToListAsync();
+
+                return Ok(patients);
+            }
+            catch (DbException)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An error occured on database.\nPlease try again.");
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An unexpected error occured.\nPlease try again.");
+            }
+        }
+
+        // GET: api/patients/generate-weekly-report?startDate={}&endDate={}
+        [HttpGet("generate-weekly-report")]
+        public async Task<ActionResult<IEnumerable<PatientReportDTO>>> GenerateWeeklyReport(DateTime startDate, DateTime endDate)
+        {
+            try
+            {
+                var query = _context.Patients.AsQueryable();
+
+                var weekStart = startDate.Date;
+                var weekEnd = endDate.Date.AddDays(1);
+
+                query = query.Where(p => p.DateAdded >= weekStart && p.DateAdded < weekEnd);
+
+                var patients = await query
+                               .Select(p => PatientToPatientReportDTO(p))
+                               .ToListAsync();
+
+                return Ok(patients);
+            }
+            catch (DbException)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An error occured on database.\nPlease try again.");
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An unexpected error occured.\nPlease try again.");
+            }
+        }
+
+        // GET: api/patients/generate-monthly-report?month={}&year={}
+        [HttpGet("generate-monthly-report")]
+        public async Task<ActionResult<IEnumerable<PatientReportDTO>>> GenerateMonthReport(int month, int year)
+        {
+            try
+            {
+                var query = _context.Patients.AsQueryable();
+
+                query = query.Where(p => p.DateAdded.Month == month && p.DateAdded.Year == year);
+
+                var patients = await query
+                              .Select(p => PatientToPatientReportDTO(p))
+                              .ToListAsync();
+
+                return Ok(patients);
+            }
+            catch (DbException)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An error occured on database.\nPlease try again.");
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An unexpected error occured.\nPlease try again.");
+            }
+        }
+
+        // GET: api/patients/generate-yearly-report?year={}
+        [HttpGet("generate-yearly-report")]
+        public async Task<ActionResult<IEnumerable<PatientReportDTO>>> GenerateYearlyReport(int year)
+        {
+            try
+            {
+                var query = _context.Patients.AsQueryable();
+
+                query = query.Where(p => p.DateAdded.Year == year);
+
+                var patients = await query
+                               .Select(p => PatientToPatientReportDTO(p))
+                               .ToListAsync();
+
+                return Ok(patients);
             }
             catch (DbException)
             {
@@ -397,7 +505,7 @@ namespace KinesiaAPI.Controllers
                 Address = patients.Address,
                 Occupation = patients.Occupation,
                 DateAdded = patients.DateAdded,
-                LastArchiveDate = patients.LastArchiveDate.HasValue ? patients.LastArchiveDate.Value.ToString() : "N/A",
+                LastArchiveDate = patients.LastArchiveDate.HasValue ? patients.LastArchiveDate.Value.ToString() : "--",
                 Status = patients.Status
             };
 
@@ -427,6 +535,22 @@ namespace KinesiaAPI.Controllers
                 PatientName = $"{patient.FirstName} {patient.MiddleName} {patient.LastName}",
                 Age = (int)((DateTime.Now - patient.Birthdate).TotalDays / 365.25),
                 Gender = patient.Gender
+            };
+
+        public static PatientReportDTO PatientToPatientReportDTO(Patients patients) =>
+            new PatientReportDTO
+            {
+                PatientID = patients.PatientID,
+                PatientName = $"{patients.FirstName} {patients.MiddleName} {patients.LastName}",
+                Contact = patients.Contact,
+                Age = (int)((DateTime.Now - patients.Birthdate).TotalDays / 365.25),
+                Birthdate = patients.Birthdate,
+                Gender = patients.Gender,
+                Address = patients.Address,
+                Occupation = patients.Occupation,
+                DateAdded = patients.DateAdded,
+                LastArchiveDate = patients.LastArchiveDate.HasValue ? patients.LastArchiveDate.Value.ToString() : "--",
+                Status = patients.Status
             };
     }
 }
