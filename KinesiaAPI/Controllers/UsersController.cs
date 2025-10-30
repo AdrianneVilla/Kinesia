@@ -140,6 +140,37 @@ namespace KinesiaAPI.Controllers
             }
         }
 
+        // GET: api/users/total-users?status={}
+        [HttpGet("total-users")]
+        public async Task<ActionResult<int>> GetTotalUsersByStatus(int? status)
+        {
+            try
+            {
+                var query = _context.Users.AsQueryable();
+
+                if (status == 0)
+                {
+                    query = query.Where(u => u.Status == 0);
+                }
+                else if (status == 1)
+                {
+                    query = query.Where(u => u.Status == 1);
+                }
+
+                var totalCount = await query.CountAsync();
+
+                return Ok(totalCount);
+            }
+            catch (DbException)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An error occured on database.\nPlease try again.");
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An unexpected error occured.\nPlease try again.");
+            }
+        }
+
         // POST: api/users/check-existing
         [HttpPost("check-existing")]
         public async Task<IActionResult> CheckExistingUser(CheckExistingUserDTO existingUser)
