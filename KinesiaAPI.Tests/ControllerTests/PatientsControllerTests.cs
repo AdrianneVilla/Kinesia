@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using KinesiaLibrary.DTOs.PatientDTOs;
 using KinesiaAPI.Models.Entities;
+using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace KinesiaAPI.Tests.ControllerTests
 {
@@ -28,7 +29,7 @@ namespace KinesiaAPI.Tests.ControllerTests
 
             // Assert
             var okResult = Assert.IsType<OkObjectResult>(result.Result);
-            var returnedPatients = okResult.Value as IEnumerable<object>;
+            var returnedPatients = Assert.IsAssignableFrom<IEnumerable<object>>(okResult.Value);
 
             // Only those with Status == 1 should be counted
             var expectedCount = patients.Count(p => p.Status == 1);
@@ -51,7 +52,7 @@ namespace KinesiaAPI.Tests.ControllerTests
 
             // Assert
             var okResult = Assert.IsType<OkObjectResult>(result.Result);
-            var returnedPatients = okResult.Value as IEnumerable<object>;
+            var returnedPatients = Assert.IsAssignableFrom<IEnumerable<object>>(okResult.Value);
 
             // Only those with Status == 1 should be counted
             var expectedCount = patients.Count(p => p.Status == 0);
@@ -76,11 +77,11 @@ namespace KinesiaAPI.Tests.ControllerTests
 
             // Assert
             var okResultNull = Assert.IsType<OkObjectResult>(resultNullTab.Result);
-            var returnedPatientsNull = okResultNull.Value as IEnumerable<DisplayPatientsDTO>;
+            var returnedPatientsNull = Assert.IsAssignableFrom<IEnumerable<DisplayPatientsDTO>>(okResultNull.Value);
             Assert.Equal(20, returnedPatientsNull.Count());
 
             var okResultOther = Assert.IsType<OkObjectResult>(resultOtherTab.Result);
-            var returnedPatientsOther = okResultOther.Value as IEnumerable<DisplayPatientsDTO>;
+            var returnedPatientsOther = Assert.IsAssignableFrom<IEnumerable<DisplayPatientsDTO>>(okResultOther.Value);
             Assert.Equal(20, returnedPatientsOther.Count());
         }
 
@@ -115,9 +116,82 @@ namespace KinesiaAPI.Tests.ControllerTests
 
             // Assert
             var okResult = Assert.IsType<OkObjectResult>(result.Result);
-            var returnedPatients = okResult.Value as IEnumerable<DisplayPatientsDTO>;
+            var returnedPatients = Assert.IsAssignableFrom<IEnumerable<DisplayPatientsDTO>>(okResult.Value);
             Assert.Single(returnedPatients);
             Assert.Contains("Search", returnedPatients.First().PatientName);
+        }
+
+        [Fact]
+        public async Task GetPatients_ShouldReturnSortedPatientsByName()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(GetPatients_ShouldReturnSortedPatientsByName));
+
+            var patients = new List<Patients>
+            {
+                DataFactory.GeneratePatients(1).First(p => { p.FirstName = "Charlie"; p.PatientID = "P1"; return true; }),
+                DataFactory.GeneratePatients(1).First(p => { p.FirstName = "Alice"; p.PatientID = "P2"; return true; }),
+                DataFactory.GeneratePatients(1).First(p => { p.FirstName = "Bob"; p.PatientID = "P3"; return true; })
+            };
+
+            context.Patients.AddRange(patients);
+            await context.SaveChangesAsync();
+
+            var controller = new PatientsController(context);
+
+            // Act
+            var result = await controller.GetPatients(sortColumn: "Alphabetic (Name)");
+
+            // Assert
+            var okResult = Assert.IsType<OkObjectResult>(result.Result);
+
+            var returnedPatients = Assert.IsAssignableFrom<IEnumerable<DisplayPatientsDTO>>(okResult.Value);
+
+            var patientList = returnedPatients.ToList();
+
+            Assert.Equal(3, patientList.Count);
+            Assert.Equal("Alice", patientList[0].PatientName.Split(' ')[0]);
+            Assert.Equal("Bob", patientList[1].PatientName.Split(' ')[0]);
+            Assert.Equal("Charlie", patientList[2].PatientName.Split(' ')[0]);
+        }
+
+        [Fact]
+        public async Task GetPatients_WithValidId_ShouldReturnPatientDTO()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(GetPatients_WithValidId_ShouldReturnPatientDTO));
+            var patients = DataFactory.GeneratePatients(20);
+            var targetPatient = patients.First();
+
+            context.Patients.AddRange(patients);
+            await context.SaveChangesAsync();
+
+            var controller = new PatientsController(context);
+
+            // Act
+            var result = await controller.GetPatients(targetPatient.PatientID);
+
+            // Assert
+            var okResult = Assert.IsType<OkObjectResult>(result.Result);
+            var returnedPatient = Assert.IsType<PatientsDTO>(okResult.Value);
+
+            Assert.Equal(targetPatient.PatientID, returnedPatient.PatientID);
+            Assert.Equal(targetPatient.FirstName, returnedPatient.FirstName);
+        }
+
+        [Fact]
+        public async Task GetPatients_WithInvalidId_ShouldReturnNotFound()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(GetPatients_WithInvalidId_ShouldReturnNotFound));
+
+            var controller = new PatientsController(context);
+
+            // Act
+            var result = await controller.GetPatients("PATIENT999");
+
+            // Assert
+            Assert.IsType<NotFoundResult>(result.Result);
         }
     }
 }
