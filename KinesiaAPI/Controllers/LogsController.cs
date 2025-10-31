@@ -128,27 +128,115 @@ namespace KinesiaAPI.Controllers
             }
         }
 
+        // GET: api/logs/generate-today-report
+        [HttpGet("generate-today-report")]
+        public async Task<ActionResult<IEnumerable<LogReportDTO>>> GenerateTodayReport()
+        {
+            try
+            {
+                var query = from l in _context.Logs
+                            join u in _context.Users on l.UserID equals u.UserID
+                            where l.LogDate == DateTime.Now
+                            orderby l.LogDate descending
+                            select new LogReportDTO
+                            {
+                                LogID = l.LogID,
+                                UserID = l.UserID,
+                                UserName = $"{u.FirstName} {u.MiddleName} {u.LastName}",
+                                LogType = l.LogType,
+                                LogDescription = l.Description,
+                                LogDate = l.LogDate
+                            };
+
+                var logs = await query.ToListAsync();
+
+                return Ok(logs);
+            }
+            catch (DbException dbEx)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    $"Database error: {dbEx.Message}");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    $"Unexpected error: {ex.Message}");
+            }
+        }
+
+        // GET: api/logs/generate-weekly-report
+        [HttpGet("generate-weekly-report")]
+        public async Task<ActionResult<IEnumerable<LogReportDTO>>> GenerateWeeklyReport(DateTime startDate, DateTime endDate)
+        {
+            try
+            {
+                var weekStart = startDate;
+                var weekEnd = endDate.Date.AddDays(1);
+
+                var query = from l in _context.Logs
+                            join u in _context.Users on l.UserID equals u.UserID
+                            where l.LogDate >= weekStart && l.LogDate < weekEnd
+                            orderby l.LogDate descending
+                            select new LogReportDTO
+                            {
+                                LogID = l.LogID,
+                                UserID = l.UserID,
+                                UserName = $"{u.FirstName} {u.MiddleName} {u.LastName}",
+                                LogType = l.LogType,
+                                LogDescription = l.Description,
+                                LogDate = l.LogDate
+                            };
+
+                var logs = await query.ToListAsync();
+
+                return Ok(logs);
+            }
+            catch (DbException dbEx)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    $"Database error: {dbEx.Message}");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    $"Unexpected error: {ex.Message}");
+            }
+        }
+
         // GET: api/logs/generate-report?month={}&year={}
         [HttpGet("generate-report")]
         public async Task<ActionResult<IEnumerable<LogReportDTO>>> GenerateLogReport(int month, int year)
         {
-            var query = from l in _context.Logs
-                        join u in _context.Users on l.UserID equals u.UserID
-                        where l.LogDate.Month == month && l.LogDate.Year == year 
-                        orderby l.LogDate descending
-                        select new LogReportDTO
-                        {
-                            LogID = l.LogID,
-                            UserID = l.UserID,
-                            UserName = $"{u.FirstName} {u.MiddleName} {u.LastName}",
-                            LogType = l.LogType,
-                            LogDescription = l.Description,
-                            LogDate = l.LogDate
-                        };
+            try
+            {
+                var query = from l in _context.Logs
+                            join u in _context.Users on l.UserID equals u.UserID
+                            where l.LogDate.Month == month && l.LogDate.Year == year
+                            orderby l.LogDate descending
+                            select new LogReportDTO
+                            {
+                                LogID = l.LogID,
+                                UserID = l.UserID,
+                                UserName = $"{u.FirstName} {u.MiddleName} {u.LastName}",
+                                LogType = l.LogType,
+                                LogDescription = l.Description,
+                                LogDate = l.LogDate
+                            };
 
-            var logs = await query.ToListAsync();
+                var logs = await query.ToListAsync();
 
-            return Ok(logs);
+                return Ok(logs);
+            }
+            catch (DbException dbEx)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    $"Database error: {dbEx.Message}");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    $"Unexpected error: {ex.Message}");
+            }
         }
 
         // PUT: api/Logs/5
