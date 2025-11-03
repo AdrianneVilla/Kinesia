@@ -34,7 +34,18 @@ namespace KinesiaAPI.Controllers
         {
             try
             {
-                var query = _context.Assessments.AsQueryable();
+                var query = from a in _context.Assessments
+                            join p in _context.Patients on a.PatientID equals p.PatientID
+                            select new
+                            {
+                                a.AssessmentID,
+                                PatientName = $"{p.FirstName} {p.MiddleName} {p.LastName}",
+                                a.PatientID,
+                                a.Extremity,
+                                a.Joint,
+                                AssessmentStatus = a.AssessmentStatus,
+                                a.AssessmentDate
+                            };
 
                 // will filter by Extremity
                 if (currentExtremityTab == "Upper Extremity")
@@ -79,7 +90,18 @@ namespace KinesiaAPI.Controllers
                 }
 
                 var assessments = await query
-                    .Select(a => AssessmentToDisplayAssessmentsDTO(a))
+                    .Select(x => new DisplayAssessmentsDTO
+                    {
+                        AssessmentID = x.AssessmentID,
+                        PatientName = x.PatientName,
+                        PatientID = x.PatientID,
+                        Extremity = x.Extremity,
+                        Joint = x.Joint,
+                        AssessmentStatus = x.AssessmentStatus == 0 ? "Archived" :
+                                        x.AssessmentStatus == 1 ? "Ongoing" :
+                                        x.AssessmentStatus == 2 ? "Finished" :
+                                        "Unknown"
+                    })
                     .ToListAsync();
 
                 return Ok(assessments);
@@ -468,21 +490,6 @@ namespace KinesiaAPI.Controllers
         {
             return _context.Assessments.Any(e => e.AssessmentID == id);
         }
-
-        public static DisplayAssessmentsDTO AssessmentToDisplayAssessmentsDTO(Assessments assessment) =>
-            new DisplayAssessmentsDTO
-            {
-                AssessmentID = assessment.AssessmentID,
-                PatientID = assessment.PatientID,
-                Extremity = assessment.Extremity,
-                Joint = assessment.Joint,
-                AssessmentStatus = assessment.AssessmentStatus switch
-                {
-                    0 => "Archived",
-                    1 => "Ongoing",
-                    2 => "Finished",
-                }
-            };
 
         public static DisplayPatientAssessmentsDTO AssessmentToPatientAssessmentsDTO(Assessments assessment) =>
             new DisplayPatientAssessmentsDTO
