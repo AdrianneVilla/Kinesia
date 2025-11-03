@@ -193,5 +193,60 @@ namespace KinesiaAPI.Tests.ControllerTests
             // Assert
             Assert.IsType<NotFoundResult>(result.Result);
         }
+
+        [Fact]
+        public async Task UpdatePatientStatus_WhenPatientExists_ShouldUpdateStatusAndReturnNoContent()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(UpdatePatientStatus_WhenPatientExists_ShouldUpdateStatusAndReturnNoContent));
+
+            var patientToUpdate = DataFactory.GeneratePatients(1).First();
+            patientToUpdate.PatientID = "PATIENT123";
+            patientToUpdate.Status = 1;
+
+            context.Patients.Add(patientToUpdate);
+            await context.SaveChangesAsync();
+
+            var updatedPatient = new PatientUpdateStatusDTO
+            {
+                PatientID = "PATIENT123",
+                Status = 0
+            };
+
+            var controller = new PatientsController(context);
+
+            // Act
+            var result = await controller.UpdatePatientStatus("PATIENT123", updatedPatient);
+
+            // Assert
+            Assert.IsType<NoContentResult>(result);
+
+            var patientInDb = await context.Patients.FindAsync("PATIENT123");
+
+            Assert.NotNull(patientInDb);
+            Assert.Equal(0, patientInDb.Status);
+            Assert.NotNull(patientInDb.LastArchiveDate);
+        }
+
+        [Fact]
+        public async Task UpdatePatientStatus_WhenPatientDoesNotExists_ShouldReturnNotFound()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(UpdatePatientStatus_WhenPatientDoesNotExists_ShouldReturnNotFound));
+
+            var updatedPatient = new PatientUpdateStatusDTO
+            {
+                PatientID = "PATIENT123",
+                Status = 1
+            };
+
+            var controller = new PatientsController(context);
+
+            // Act
+            var result = await controller.UpdatePatientStatus("PATIENT123", updatedPatient);
+
+            // Assert
+            Assert.IsType<NotFoundResult>(result);
+        }
     }
 }
