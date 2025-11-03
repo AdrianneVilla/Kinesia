@@ -400,7 +400,7 @@ namespace KinesiaAPI.Controllers
                     MiddleName = userDTO.MiddleName,
                     Birthdate = userDTO.Birthdate,
                     Gender = userDTO.Gender,
-                    Contact = userDTO.Contact,
+                    Contact = ContactHelper.ContactFormatter(userDTO.Contact),
                     Address = userDTO.Address,
                     Role = userDTO.Role,
                     Username = userDTO.Username,
