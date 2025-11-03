@@ -248,5 +248,57 @@ namespace KinesiaAPI.Tests.ControllerTests
             // Assert
             Assert.IsType<NotFoundResult>(result);
         }
+
+        [Fact]
+        public async Task CheckExistingPatient_WhenPatientDoesNotExists_ShouldReturnOkResult()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(CheckExistingPatient_WhenPatientDoesNotExists_ShouldReturnOkResult));
+
+            var nonExistingPatient = new CheckExistingPatientDTO
+            {
+                FirstName = "Sample",
+                LastName = "Sample",
+                MiddleName = "Sample"
+            };
+
+            var controller = new PatientsController(context);
+
+            // Act
+            var result = await controller.CheckExistingPatient(nonExistingPatient);
+
+            // Assert
+            Assert.IsType<OkResult>(result);
+        }
+
+        [Fact]
+        public async Task CheckExistingPatient_WhenPatientExists_ShouldReturnConflict()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(CheckExistingPatient_WhenPatientExists_ShouldReturnConflict));
+
+            var patient = DataFactory.GeneratePatients(1).First();
+            patient.FirstName = "Exist";
+            patient.MiddleName = "Exist";
+            patient.LastName = "Exist";
+
+            context.Patients.Add(patient);
+            await context.SaveChangesAsync();
+
+            var existingPatient = new CheckExistingPatientDTO
+            {
+                FirstName = "Exist",
+                LastName = "Exist",
+                MiddleName = "Exist"
+            };
+
+            var controller = new PatientsController(context);
+
+            // Act
+            var result = await controller.CheckExistingPatient(existingPatient);
+
+            // Assert
+            Assert.IsType<ConflictResult>(result);
+        }
     }
 }
