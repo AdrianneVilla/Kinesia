@@ -44,7 +44,8 @@ namespace KinesiaAPI.Controllers
                                 a.Extremity,
                                 a.Joint,
                                 AssessmentStatus = a.AssessmentStatus,
-                                a.AssessmentDate
+                                a.AssessmentDate,
+                                a.AssessmentEndDate
                             };
 
                 // will filter by Extremity
@@ -100,7 +101,8 @@ namespace KinesiaAPI.Controllers
                         AssessmentStatus = x.AssessmentStatus == 0 ? "Archived" :
                                         x.AssessmentStatus == 1 ? "Ongoing" :
                                         x.AssessmentStatus == 2 ? "Finished" :
-                                        "Unknown"
+                                        "Unknown",
+                        AssessmentEndDate = x.AssessmentEndDate == null ? "--" : x.AssessmentEndDate.Value.ToString("yyyy-MM-dd hh:mm tt")
                     })
                     .ToListAsync();
 
