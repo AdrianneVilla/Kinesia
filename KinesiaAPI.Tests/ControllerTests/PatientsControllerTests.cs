@@ -250,6 +250,84 @@ namespace KinesiaAPI.Tests.ControllerTests
         }
 
         [Fact]
+        public async Task PutPatients_WhenPatientExistsAndIdsMatch_ShouldUpdatePatientAndReturnNoContent()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(PutPatients_WhenPatientExistsAndIdsMatch_ShouldUpdatePatientAndReturnNoContent));
+
+            var originalPatient = DataFactory.GeneratePatients(1).First();
+            originalPatient.PatientID = "PATIENT123";
+            originalPatient.FirstName = "Test";
+            originalPatient.Contact = "+639285321382";
+
+            context.Patients.Add(originalPatient);
+            await context.SaveChangesAsync();
+
+            var updatedPatient = new UpdatedPatientDTO
+            {
+                PatientID = "PATIENT123",
+                FirstName = "UpdatedFirstName",
+                Contact = null
+            };
+
+            var controller = new PatientsController(context);
+
+            // Act
+            var result = await controller.PutPatients("PATIENT123", updatedPatient);
+
+            // Assert
+            Assert.IsType<NoContentResult>(result);
+
+            var patientInDb = await context.Patients.FindAsync("PATIENT123");
+
+            Assert.NotNull(patientInDb);
+            Assert.Equal("UpdatedFirstName", patientInDb.FirstName);
+            Assert.Equal("+639285321382", patientInDb.Contact);
+        }
+
+        [Fact]
+        public async Task PutPatients_WhenPatientDoesNotExist_ShouldReturnNotFound()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(PutPatients_WhenPatientDoesNotExist_ShouldReturnNotFound));
+
+            var updatedPatient = new UpdatedPatientDTO
+            {
+                PatientID = "P999"
+            };
+
+            var controller = new PatientsController(context);
+
+            // Act
+            var result = await controller.PutPatients("P999", updatedPatient);
+
+            // Assert
+            var notFoundResult = Assert.IsType<NotFoundObjectResult>(result);
+            Assert.NotNull(notFoundResult.Value);
+        }
+
+        [Fact]
+        public async Task PutPatients_WhenIdMismatch_ShouldReturnBadRequest()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(PutPatients_WhenIdMismatch_ShouldReturnBadRequest));
+
+            var updatedPatient = new UpdatedPatientDTO
+            {
+                PatientID = "P999"
+            };
+
+            var controller = new PatientsController(context);
+
+            // Act
+            var result = await controller.PutPatients("P33", updatedPatient);
+
+            // Assert
+            var badRequestResult = Assert.IsType<BadRequestObjectResult>(result);
+            Assert.NotNull(badRequestResult.Value);
+        }
+
+        [Fact]
         public async Task CheckExistingPatient_WhenPatientDoesNotExists_ShouldReturnOkResult()
         {
             // Arrange
