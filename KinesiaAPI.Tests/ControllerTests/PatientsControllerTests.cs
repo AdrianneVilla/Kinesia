@@ -378,5 +378,44 @@ namespace KinesiaAPI.Tests.ControllerTests
             // Assert
             Assert.IsType<ConflictResult>(result);
         }
+
+        [Fact]
+        public async Task DeletePatients_WhenPatientExists_ShouldReturnNoContent()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(DeletePatients_WhenPatientExists_ShouldReturnNoContent));
+
+            var patient = DataFactory.GeneratePatients(1).First();
+            patient.PatientID = "PATIENT123";
+
+            context.Patients.Add(patient);
+            await context.SaveChangesAsync();
+
+            var controller = new PatientsController(context);
+
+            // Act
+            var result = await controller.DeletePatients("PATIENT123");
+
+            // Assert
+            Assert.IsType<NoContentResult>(result);
+
+            var patientInDb = await context.Patients.FindAsync("PATIENT123");
+            Assert.Null(patientInDb);
+        }
+
+        [Fact]
+        public async Task DeletePatients_WhenPatientDoesNotExists_ShouldReturnNotFound()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(DeletePatients_WhenPatientDoesNotExists_ShouldReturnNotFound));
+
+            var controller = new PatientsController(context);
+
+            // Act
+            var result = await controller.DeletePatients("PATIENT123");
+
+            // Assert
+            Assert.IsType<NotFoundResult>(result);
+        }
     }
 }
