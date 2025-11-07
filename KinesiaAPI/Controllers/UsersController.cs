@@ -370,6 +370,7 @@ namespace KinesiaAPI.Controllers
         }
 
         // PUT: api/users/change-password?userID={}
+        [HttpPut("change-password")]
         public async Task<IActionResult> ChangePassword(string id, string password)
         {
             if (string.IsNullOrEmpty(id))
