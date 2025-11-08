@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using Bogus;
@@ -34,5 +35,49 @@ namespace KinesiaAPI.Tests.DataTest
 
             return fakePatients.Generate(count);
         }
+
+        public static List<Users> GenerateUsers(int count)
+        {
+            var fakeUsers = new Faker<Users>()
+                .RuleFor(u => u.UserID, f => $"U{f.IndexFaker + 1}")
+                .RuleFor(u => u.FirstName, f => f.Name.FirstName())
+                .RuleFor(u => u.LastName, f => f.Name.LastName())
+                .RuleFor(u => u.MiddleName, f => f.Name.FirstName().Substring(0, 1))
+                .RuleFor(u => u.Status, f => f.Random.Bool() ? 1 : 0)
+                .RuleFor(u => u.Contact, f =>
+                {
+                    // Generate a PH mobile number starting with 09
+                    var prefix = f.PickRandom(new[] { "0905", "0917", "0921", "0936", "0947", "0956", "0963", "0975", "0981", "0999" });
+                    var rest = f.Random.Number(0_000_000, 9_999_999).ToString("D7");
+                    return $"{prefix}{rest}";
+                })
+                .RuleFor(u => u.Birthdate, f => f.Date.Past(30, DateTime.Now.AddYears(-20)))
+                .RuleFor(u => u.Gender, f => f.PickRandom(new[] { "Male", "Female" }))
+                .RuleFor(u => u.Address, f => f.Address.FullAddress())
+                .RuleFor(u => u.Role, f => f.PickRandom(new[] { "Admin", "Therapist" }))
+                .RuleFor(u => u.Email, (f, u) => f.Internet.Email(u.FirstName, u.LastName))
+                .RuleFor(u => u.DateAdded, f => f.Date.Past(2))
+                .RuleFor(u => u.LastArchiveDate, f => f.Random.Bool() ? f.Date.Recent() : null)
+                .RuleFor(u => u.Username, f => f.Internet.UserName())
+                .RuleFor(u => u.Salt, f => Convert.ToBase64String(f.Random.Bytes(16)))
+                .RuleFor(u => u.Password, (f, u) =>
+                {
+                    string fakePlainTextPassword = f.Internet.Password(10);
+                    string saltedPassword = fakePlainTextPassword + u.Salt;
+
+                    using (SHA256 sha256 = SHA256.Create())
+                    {
+                        byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(saltedPassword));
+                        StringBuilder builder = new StringBuilder();
+                        foreach (byte b in bytes)
+                        {
+                            builder.Append(b.ToString("x2"));
+                        }
+                        return builder.ToString();
+                    }
+                });
+
+            return fakeUsers.Generate(count);
+        }   
     }
 }
