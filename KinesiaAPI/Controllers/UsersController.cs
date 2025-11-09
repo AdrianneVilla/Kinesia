@@ -1,6 +1,7 @@
 ﻿using KinesiaAPI.Data;
 using KinesiaAPI.Models.Entities;
 using KinesiaLibrary;
+using KinesiaLibrary.DTOs.ReportDTOs;
 using KinesiaLibrary.DTOs.UserDTOs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -160,6 +161,113 @@ namespace KinesiaAPI.Controllers
                 var totalCount = await query.CountAsync();
 
                 return Ok(totalCount);
+            }
+            catch (DbException)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An error occured on database.\nPlease try again.");
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An unexpected error occured.\nPlease try again.");
+            }
+        }
+
+        // GET: api/users/generate-today-report
+        [HttpGet("generate-today-report")]
+        public async Task<ActionResult<IEnumerable<UsersReportDTO>>> GenerateTodayReport()
+        {
+            try
+            {
+                var query = _context.Users.AsQueryable();
+
+                query = query.Where(u => u.DateAdded == DateTime.Now);
+
+                var users = await query
+                                .Select(u => UsersToUsersReportDTO(u))
+                                .ToListAsync();
+
+                return Ok(users);
+            }
+            catch (DbException)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An error occured on database.\nPlease try again.");
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An unexpected error occured.\nPlease try again.");
+            }
+        }
+
+        // GET: api/users/generate-weekly-report?startDate={}&endDate={}
+        [HttpGet("generate-weekly-report")]
+        public async Task<ActionResult<IEnumerable<UsersReportDTO>>> GenerateWeeklyReport(DateTime startDate, DateTime endDate)
+        {
+            try
+            {
+                var query = _context.Users.AsQueryable();
+
+                var weekStart = startDate.Date;
+                var weekEnd = endDate.Date.AddDays(1);
+
+                query = query.Where(u => u.DateAdded >= weekStart && u.DateAdded < weekEnd);
+
+                var users = await query
+                                    .Select(u => UsersToUsersReportDTO(u))
+                                    .ToListAsync();
+
+                return Ok(users);
+            }
+            catch (DbException)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An error occured on database.\nPlease try again.");
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An unexpected error occured.\nPlease try again.");
+            }
+        }
+
+        // GET: api/users/generate-monthly-report?month={}&year={}
+        [HttpGet("generate-monthly-report")]
+        public async Task<ActionResult<IEnumerable<UsersReportDTO>>> GenerateMonthlyReport(int month, int year)
+        {
+            try
+            {
+                var query = _context.Users.AsQueryable();
+
+                query = query.Where(u => u.DateAdded.Month == month && u.DateAdded.Year == year);
+
+                var users = await query
+                            .Select(u => UsersToUsersReportDTO(u))
+                            .ToListAsync();
+
+                return Ok(users);
+            }
+            catch (DbException)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An error occured on database.\nPlease try again.");
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An unexpected error occured.\nPlease try again.");
+            }
+        }
+
+        // GET: api/users/generate-yearly-report?year={}
+        [HttpGet("generate-yearly-report")]
+        public async Task<ActionResult<IEnumerable<UsersReportDTO>>> GenerateYearlyReport(int year)
+        {
+            try
+            {
+                var query = _context.Users.AsQueryable();
+
+                query = query.Where(u => u.DateAdded.Year == year);
+
+                var users = await query
+                        .Select(u => UsersToUsersReportDTO(u))
+                        .ToListAsync();
+
+                return Ok(users);
             }
             catch (DbException)
             {
@@ -509,7 +617,7 @@ namespace KinesiaAPI.Controllers
                 Email = users.Email,
                 Username = users.Username,
                 DateAdded = users.DateAdded,
-                LastArchiveDate = users.LastArchiveDate.HasValue ? users.LastArchiveDate.Value.ToString() : "N/A",
+                LastArchiveDate = users.LastArchiveDate.HasValue ? users.LastArchiveDate.Value.ToString() : "--",
                 Status = users.Status
             };
 
@@ -519,6 +627,18 @@ namespace KinesiaAPI.Controllers
                 UserID = users.UserID,
                 UserName = $"{users.FirstName} {users.MiddleName} {users.LastName}",
                 Role = users.Role,
+                Status = users.Status == 1 ? "Active" : "Inactive"
+            };
+
+        public static UsersReportDTO UsersToUsersReportDTO(Users users) =>
+            new UsersReportDTO
+            {
+                UserID = users.UserID,
+                Name = $"{users.FirstName} {users.MiddleName} {users.LastName}",
+                Contact = users.Contact,
+                Role = users.Role,
+                DateAdded = users.DateAdded.ToString("yyyy-MM-dd"),
+                LastArchiveDate = users.LastArchiveDate.HasValue ? users.LastArchiveDate.Value.ToString("yyyy-MM-dd") : "--",
                 Status = users.Status == 1 ? "Active" : "Inactive"
             };
     }
