@@ -608,6 +608,9 @@ namespace KinesiaAPI.Controllers
                 Age = (int)((DateTime.Now - patients.Birthdate).TotalDays / 365.25),
                 Birthdate = patients.Birthdate,
                 Gender = patients.Gender,
+                Occupation = patients.Occupation,
+                DateAdded = patients.DateAdded.ToString("yyyy-MM-dd"),
+                LastArchiveDate = patients.LastArchiveDate.HasValue ? patients.LastArchiveDate.Value.ToString("yyyy-MM-dd") : "--",
                 Status = patients.Status
             };
     }
