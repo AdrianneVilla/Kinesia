@@ -111,16 +111,5 @@ namespace Kinesia.Assessment
         {
 
         }
-
-        private void btnAddPatient_Click(object sender, EventArgs e)
-        {
-            PageObjects.RemoveResources(ref PageObjects.CurrentControl);
-            PageObjects.addPatient = new AddPatient();
-            PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.addPatient);
-            PageObjects.CurrentControl = PageObjects.addPatient;
-            PageObjects.addPatient.PreviousPage = "Add Assessment Page";
-            this.Close();
-        }
-
     }
 }

@@ -28,12 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SelectPatient));
             dataGridPatientSelection = new System.Windows.Forms.DataGridView();
             label2 = new System.Windows.Forms.Label();
             flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             splitter1 = new System.Windows.Forms.Splitter();
-            btnAddPatient = new OrganizationProfile.CustomButton();
             btnClose = new OrganizationProfile.CustomButton();
             panelBorder2 = new WindowsFormsApp2.CustomButton.PanelBorder();
             btnSearch = new OrganizationProfile.CustomButton();
@@ -72,7 +70,6 @@
             // 
             flowLayoutPanel2.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             flowLayoutPanel2.Controls.Add(splitter1);
-            flowLayoutPanel2.Controls.Add(btnAddPatient);
             flowLayoutPanel2.Location = new System.Drawing.Point(44, 169);
             flowLayoutPanel2.Name = "flowLayoutPanel2";
             flowLayoutPanel2.Size = new System.Drawing.Size(780, 51);
@@ -82,36 +79,9 @@
             // 
             splitter1.Location = new System.Drawing.Point(3, 3);
             splitter1.Name = "splitter1";
-            splitter1.Size = new System.Drawing.Size(563, 43);
+            splitter1.Size = new System.Drawing.Size(563, 0);
             splitter1.TabIndex = 2;
             splitter1.TabStop = false;
-            // 
-            // btnAddPatient
-            // 
-            btnAddPatient.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
-            btnAddPatient.BackColor = System.Drawing.Color.FromArgb(18, 90, 211);
-            btnAddPatient.BackgroundColor = System.Drawing.Color.FromArgb(18, 90, 211);
-            btnAddPatient.BorderColor = System.Drawing.Color.White;
-            btnAddPatient.BorderRadius = 10;
-            btnAddPatient.BorderSize = 0;
-            btnAddPatient.Cursor = System.Windows.Forms.Cursors.Hand;
-            btnAddPatient.FlatAppearance.BorderSize = 0;
-            btnAddPatient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            btnAddPatient.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 238);
-            btnAddPatient.ForeColor = System.Drawing.Color.White;
-            btnAddPatient.Image = (System.Drawing.Image)resources.GetObject("btnAddPatient.Image");
-            btnAddPatient.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            btnAddPatient.Location = new System.Drawing.Point(573, 3);
-            btnAddPatient.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            btnAddPatient.Name = "btnAddPatient";
-            btnAddPatient.Padding = new System.Windows.Forms.Padding(10, 3, 45, 0);
-            btnAddPatient.Size = new System.Drawing.Size(199, 43);
-            btnAddPatient.TabIndex = 8;
-            btnAddPatient.Text = "Add Patient";
-            btnAddPatient.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            btnAddPatient.TextColor = System.Drawing.Color.White;
-            btnAddPatient.UseVisualStyleBackColor = false;
-            btnAddPatient.Click += btnAddPatient_Click;
             // 
             // btnClose
             // 
@@ -254,7 +224,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.Splitter splitter1;
-        private OrganizationProfile.CustomButton btnAddPatient;
         private OrganizationProfile.CustomButton btnClose;
         private WindowsFormsApp2.CustomButton.PanelBorder panelBorder2;
         private System.Windows.Forms.PictureBox pictureBox2;

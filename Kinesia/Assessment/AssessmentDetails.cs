@@ -79,17 +79,6 @@ namespace Kinesia.Assessment
             romPlot.Refresh();
         }
 
-        private void btnPrint_Click(object sender, EventArgs e)
-        {
-            using (Form shadow = new Form())
-            {
-                FormAnimation.ShowFocus(shadow);
-                var printReportPage = new PrintReport();
-                printReportPage.Owner = shadow;
-                printReportPage.ShowDialog();
-            }
-        }
-
         private void btnBack_Click(object sender, EventArgs e)
         {
             PageObjects.RemoveResources(ref PageObjects.CurrentControl);
@@ -153,14 +142,7 @@ namespace Kinesia.Assessment
 
         private void dataGridROM_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
-            if (dataGridROM.Rows.Count > 1 || (dataGridROM.Rows.Count == 1 && !dataGridROM.Rows[0].IsNewRow))
-            {
-                btnPrint.Enabled = true;
-            }
-            else
-            {
-                btnPrint.Enabled = false;
-            }
+
         }
 
         private async void btnArchive_Click(object sender, EventArgs e)
