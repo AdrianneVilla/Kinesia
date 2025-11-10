@@ -110,7 +110,7 @@ namespace KinesiaAPI.Controllers
                             Movement = r.Movement,
                             MotionType = r.MotionType,
                             Deficit = Math.Round(ROMHelper.CalculateDeficit(r.Rom, a.Joint, r.Movement), 2),
-                            Date = r.Date
+                            Date = r.Date.ToString("yyyy-MM-dd hh:mm tt")
                         };
 
             var ROMs = await query.ToListAsync();

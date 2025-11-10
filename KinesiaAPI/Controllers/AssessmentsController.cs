@@ -253,10 +253,137 @@ namespace KinesiaAPI.Controllers
                     2 => "Finished",
                 },
                 AssessmentDate = result.AssessmentDate,
-                AssessmentEndDate = result.AssessmentEndDate.HasValue ? result.AssessmentEndDate.Value.ToString() : "N/A"
+                AssessmentEndDate = result.AssessmentEndDate.HasValue ? result.AssessmentEndDate.Value.ToString() : "--"
             };
 
             return Ok(assessment);
+        }
+
+        // GET: api/assessment/generate-today-report
+        [HttpGet("generate-today-report")]
+        public async Task<ActionResult<IEnumerable<AssessmentReportDTO>>> GenerateTodayReport()
+        {
+            var query = from a in _context.Assessments
+                              join p in _context.Patients on a.PatientID equals p.PatientID
+                              where a.AssessmentDate == DateTime.Now
+                              select new { a, p };
+
+            var rawData = await query.ToListAsync();
+
+            var assessments = rawData.Select(x => new AssessmentReportDTO
+            {
+                AssessmentID = x.a.AssessmentID,
+                PatientName = $"{x.p.FirstName} {x.p.MiddleName} {x.p.LastName}",
+                Age = (int)((DateTime.Now - x.p.Birthdate).TotalDays / 365.25),
+                Gender = x.p.Gender,
+                Extremity = x.a.Extremity,
+                Joint = x.a.Joint,
+                JointSide = x.a.JointSide,
+                AssessmentStatus = x.a.AssessmentStatus == 0 ? "Archived" :
+                                        x.a.AssessmentStatus == 1 ? "Ongoing" :
+                                        x.a.AssessmentStatus == 2 ? "Finished" :
+                                        "Unknown",
+                AssessmentDate = x.a.AssessmentDate,
+                AssessmentEndDate = x.a.AssessmentEndDate.HasValue ? x.a.AssessmentEndDate.Value.ToString() : "--"
+            });
+
+            return Ok(assessments);
+        }
+
+        // GET: api/assessment/generate-weekly-report?startDate={}&endDate={}
+        [HttpGet("generate-weekly-report")]
+        public async Task<ActionResult<IEnumerable<AssessmentReportDTO>>> GenerateWeeklyReport(DateTime startDate, DateTime endDate)
+        {
+            var weekStart = startDate;
+            var weekEnd = endDate;
+
+            var query = from a in _context.Assessments
+                        join p in _context.Patients on a.PatientID equals p.PatientID
+                        where a.AssessmentDate >= startDate && a.AssessmentDate < endDate
+                        select new { a, p };
+
+            var rawData = await query.ToListAsync();
+
+            var assessments = rawData.Select(x => new AssessmentReportDTO
+            {
+                AssessmentID = x.a.AssessmentID,
+                PatientName = $"{x.p.FirstName} {x.p.MiddleName} {x.p.LastName}",
+                Age = (int)((DateTime.Now - x.p.Birthdate).TotalDays / 365.25),
+                Gender = x.p.Gender,
+                Extremity = x.a.Extremity,
+                Joint = x.a.Joint,
+                JointSide = x.a.JointSide,
+                AssessmentStatus = x.a.AssessmentStatus == 0 ? "Archived" :
+                                        x.a.AssessmentStatus == 1 ? "Ongoing" :
+                                        x.a.AssessmentStatus == 2 ? "Finished" :
+                                        "Unknown",
+                AssessmentDate = x.a.AssessmentDate,
+                AssessmentEndDate = x.a.AssessmentEndDate.HasValue ? x.a.AssessmentEndDate.Value.ToString() : "--"
+            });
+
+            return Ok(assessments);
+        }
+
+        // GET: api/assessment/generate-monthly-report?month={}&year={}
+        [HttpGet("generate-monthly-report")]
+        public async Task<ActionResult<IEnumerable<AssessmentReportDTO>>> GenerateMonthlyReport(int month, int year)
+        {
+            var query = from a in _context.Assessments
+                        join p in _context.Patients on a.PatientID equals p.PatientID
+                        where a.AssessmentDate.Month == month && a.AssessmentDate.Year == year
+                        select new { a, p };
+
+            var rawData = await query.ToListAsync();
+
+            var assessments = rawData.Select(x => new AssessmentReportDTO
+            {
+                AssessmentID = x.a.AssessmentID,
+                PatientName = $"{x.p.FirstName} {x.p.MiddleName} {x.p.LastName}",
+                Age = (int)((DateTime.Now - x.p.Birthdate).TotalDays / 365.25),
+                Gender = x.p.Gender,
+                Extremity = x.a.Extremity,
+                Joint = x.a.Joint,
+                JointSide = x.a.JointSide,
+                AssessmentStatus = x.a.AssessmentStatus == 0 ? "Archived" :
+                                        x.a.AssessmentStatus == 1 ? "Ongoing" :
+                                        x.a.AssessmentStatus == 2 ? "Finished" :
+                                        "Unknown",
+                AssessmentDate = x.a.AssessmentDate,
+                AssessmentEndDate = x.a.AssessmentEndDate.HasValue ? x.a.AssessmentEndDate.Value.ToString() : "--"
+            });
+
+            return Ok(assessments);
+        }
+
+        // GET: api/assessment/generate-yearly-report?year={}
+        [HttpGet("generate-yearly-report")]
+        public async Task<ActionResult<IEnumerable<AssessmentReportDTO>>> GenerateYearlyReport(int year)
+        {
+            var query = from a in _context.Assessments
+                        join p in _context.Patients on a.PatientID equals p.PatientID
+                        where a.AssessmentDate.Year == year
+                        select new { a, p };
+
+            var rawData = await query.ToListAsync();
+
+            var assessments = rawData.Select(x => new AssessmentReportDTO
+            {
+                AssessmentID = x.a.AssessmentID,
+                PatientName = $"{x.p.FirstName} {x.p.MiddleName} {x.p.LastName}",
+                Age = (int)((DateTime.Now - x.p.Birthdate).TotalDays / 365.25),
+                Gender = x.p.Gender,
+                Extremity = x.a.Extremity,
+                Joint = x.a.Joint,
+                JointSide = x.a.JointSide,
+                AssessmentStatus = x.a.AssessmentStatus == 0 ? "Archived" :
+                                        x.a.AssessmentStatus == 1 ? "Ongoing" :
+                                        x.a.AssessmentStatus == 2 ? "Finished" :
+                                        "Unknown",
+                AssessmentDate = x.a.AssessmentDate,
+                AssessmentEndDate = x.a.AssessmentEndDate.HasValue ? x.a.AssessmentEndDate.Value.ToString() : "--"
+            });
+
+            return Ok(assessments);
         }
 
         // GET: api/assessment/check-ongoing-assessment?patientID={}&joint={}&jointSide={}

@@ -13,6 +13,6 @@ namespace KinesiaLibrary.DTOs.ReportDTOs
         public double Deficit { get; set; }
         public string Movement { get; set; }
         public string MotionType { get; set; }
-        public DateTime Date { get; set; }
+        public string Date { get; set; }
     }
 }
