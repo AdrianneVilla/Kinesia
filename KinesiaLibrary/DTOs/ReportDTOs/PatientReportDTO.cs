@@ -15,6 +15,6 @@ namespace KinesiaLibrary.DTOs.ReportDTOs
         public string Occupation { get; set; }
         public string DateAdded { get; set; }
         public string LastArchiveDate { get; set; } = "";
-        public int Status { get; set; }
+        public string Status { get; set; }
     }
 }

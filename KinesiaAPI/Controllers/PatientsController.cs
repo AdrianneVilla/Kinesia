@@ -611,7 +611,7 @@ namespace KinesiaAPI.Controllers
                 Occupation = patients.Occupation,
                 DateAdded = patients.DateAdded.ToString("yyyy-MM-dd"),
                 LastArchiveDate = patients.LastArchiveDate.HasValue ? patients.LastArchiveDate.Value.ToString("yyyy-MM-dd") : "--",
-                Status = patients.Status
+                Status = patients.Status == 1 ? "Active" : "Inactive"
             };
     }
 }
