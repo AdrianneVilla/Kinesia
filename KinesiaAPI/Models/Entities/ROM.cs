@@ -11,6 +11,8 @@ namespace KinesiaAPI.Models.Entities
         public required string GoniometerType { get; set; }
         public required double StartingPosition { get; set; }
         public required double Rom { get; set; }
+        public required double NormalRom { get; set; }
+        public required double Deficit { get; set; }
         public required string Movement { get; set; }
         public required string MotionType { get; set; }
         public required DateTime Date { get; set; }

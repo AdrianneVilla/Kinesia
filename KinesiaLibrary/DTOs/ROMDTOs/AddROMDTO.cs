@@ -11,6 +11,8 @@ namespace KinesiaLibrary.DTOs.ROMDTOs
         public string GoniometerType { get; set; }
         public double StartingPosition { get; set; }
         public double Rom { get; set; }
+        public double NormalRom { get; set; }
+        public double Deficit { get; set; }
         public string Movement { get; set; }
         public string MotionType { get; set; }
         public DateTime Date { get; set; }

@@ -79,6 +79,8 @@ namespace Kinesia.Assessment
             newROM.GoniometerType = txtGoniometer.Texts;
             newROM.StartingPosition = Convert.ToDouble(txtStartingPosition.Texts);
             newROM.Rom = Convert.ToDouble(txtRom.Texts);
+            newROM.NormalRom = Convert.ToDouble(lblNormalRom.Text);
+            newROM.Deficit = Convert.ToDouble(lblDeficit.Text);
             newROM.Movement = cbMovement.Texts;
             newROM.MotionType = cbMotionType.Texts;
             newROM.Date = DateTime.Now;

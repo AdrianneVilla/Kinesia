@@ -42,8 +42,8 @@ namespace KinesiaAPI.Controllers
                                 StartingPosition = r.StartingPosition,
                                 Rom = r.Rom,
                                 Movement = r.Movement,
-                                NormalRange = ROMHelper.GetNormalRange(a.Joint, r.Movement),
-                                Deficit = Math.Round(ROMHelper.CalculateDeficit(r.Rom, a.Joint, r.Movement), 2),
+                                NormalRange = r.NormalRom,
+                                Deficit = r.Deficit,
                                 Date = r.Date.ToString("yyyy-MM-dd hh:mm")
                             };
 
@@ -107,9 +107,10 @@ namespace KinesiaAPI.Controllers
                             GoniometerType = r.GoniometerType,
                             StartingPosition = r.StartingPosition,
                             Rom = r.Rom,
+                            NormalRom = r.NormalRom,
+                            Deficit = r.Deficit,
                             Movement = r.Movement,
                             MotionType = r.MotionType,
-                            Deficit = Math.Round(ROMHelper.CalculateDeficit(r.Rom, a.Joint, r.Movement), 2),
                             Date = r.Date.ToString("yyyy-MM-dd hh:mm tt")
                         };
 
@@ -181,6 +182,8 @@ namespace KinesiaAPI.Controllers
                 GoniometerType = romDTO.GoniometerType,
                 StartingPosition = romDTO.StartingPosition,
                 Rom = romDTO.Rom,
+                NormalRom = romDTO.NormalRom,
+                Deficit = romDTO.Deficit,
                 Movement = romDTO.Movement,
                 MotionType = romDTO.MotionType,
                 Date = DateTime.Now
