@@ -3,9 +3,12 @@ using Kinesia.Assessment;
 using Kinesia.Components;
 using Kinesia.Components.Custom_Dialog_Boxes;
 using Kinesia.Logs;
+using Kinesia.Offline;
 using Kinesia.Patients;
+using Kinesia.Properties;
 using Kinesia.Reports;
 using Kinesia.Users;
+using KinesiaLibrary;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -20,7 +23,6 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp2.CustomButton;
-using Kinesia.Offline;
 
 namespace Kinesia
 {
@@ -35,6 +37,24 @@ namespace Kinesia
             Application.SetHighDpiMode(HighDpiMode.PerMonitorV2);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            ROMHelper.InitializeFromConfig(
+                () => ROMConfiguration.ShoulderFlexion,
+                () => ROMConfiguration.ShoulderExtension,
+                () => ROMConfiguration.ElbowFlexion,
+                () => ROMConfiguration.ElbowExtension,
+                () => ROMConfiguration.HipFlexion,
+                () => ROMConfiguration.HipExtension,
+                () => ROMConfiguration.KneeFlexion,
+                () => ROMConfiguration.KneeExtension
+            );
+
+            // will subscribe to runtime updates
+            ROMConfiguration.OnConfigurationChanged += () =>
+            {
+                ROMHelper.ReloadFrom(name => (double)Properties.Settings.Default[name]);
+            };
+
             Application.Run(new Login());
         }
     }
