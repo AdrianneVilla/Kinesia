@@ -10,6 +10,7 @@ namespace KinesiaLibrary.DTOs.ReportDTOs
         public string PatientName { get; set; }
         public int Age { get; set; }
         public string Gender { get; set; }
+        public string Occupation { get; set; }
         public string Extremity { get; set; }
         public string Joint { get; set; }
         public string JointSide { get; set; }
