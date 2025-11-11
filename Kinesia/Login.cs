@@ -386,7 +386,7 @@ namespace Kinesia
                         SessionManager.UserID = loginResult.UserID;
                         SessionManager.UserLastName = loginResult.UserLastName;
                         SessionManager.Role = loginResult.Role;
-                        await Queries.LogsQueries.AddLog("Has Logged In", "Sessions");
+                        await Queries.LogsQueries.AddLog($"User logged in: {loginResult.Role}", "Login");
 
                     }
                     else if (loginResult.Message.Trim().Equals("Unable to connect to the server. Please try again."))
