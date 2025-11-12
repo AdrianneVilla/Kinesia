@@ -703,7 +703,7 @@ namespace Kinesia.Assessment
             // Open a URL in the default browser
             System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
             {
-                FileName = "https://kinesia.kiri8tives.com/login",
+                FileName = "https://kinesia.kiri8tives.com/help-standalone",
                 UseShellExecute = true
             });
         }
