@@ -111,5 +111,10 @@ namespace Kinesia.Assessment
         {
 
         }
+
+        private async void btnRefresh_Click(object sender, EventArgs e)
+        {
+            await Queries.PatientQueries.DisplayPatientSelection(txtSearchBar.Texts);
+        }
     }
 }

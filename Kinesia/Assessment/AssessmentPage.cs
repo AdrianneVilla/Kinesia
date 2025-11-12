@@ -270,13 +270,13 @@ namespace Kinesia.Assessment
         }
         private async void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(e.RowIndex >= 0)
+            if (e.RowIndex >= 0)
             {
-                if(e.ColumnIndex == 5) // column 5 is for viewing assessment
+                if (e.ColumnIndex == 5) // column 5 is for viewing assessment
                 {
                     await Queries.AssessmentQueries.GetAssessmentDetails(assessmentList[e.RowIndex]);
                 }
-                else if(e.ColumnIndex == 6) // column 6 is for archive / unarcive assessment
+                else if (e.ColumnIndex == 6) // column 6 is for archive / unarcive assessment
                 {
                     if (dataGridAssessments.Rows[e.RowIndex].Cells[4].Value.Equals("Ongoing"))
                     {
@@ -289,7 +289,7 @@ namespace Kinesia.Assessment
                         DialogResult archiveDiag = CustomDialog.Show($"Are you sure you want to archive {assessmentList[e.RowIndex]}?",
                             "Archive Alert", CustomDialogButtons.YesNo, CustomDialogIcons.Question);
 
-                        if(archiveDiag == DialogResult.Yes)
+                        if (archiveDiag == DialogResult.Yes)
                         {
                             var success = await Queries.AssessmentQueries.UpdateAssessmentStatus(assessmentList[e.RowIndex], 0);
 
@@ -345,7 +345,7 @@ namespace Kinesia.Assessment
 
         private void txtSearchBar_Enter(object sender, EventArgs e)
         {
-            if(txtSearchBar.Texts == "Search for Assessment ID or Patient ID")
+            if (txtSearchBar.Texts == "Search for Assessment ID or Patient ID")
             {
                 txtSearchBar.Texts = "";
             }
@@ -573,6 +573,11 @@ namespace Kinesia.Assessment
                     btnArchived.ForeColor = Color.White;
                     break;
             }
+        }
+
+        private async void btnRefresh_Click(object sender, EventArgs e)
+        {
+            await Queries.AssessmentQueries.DisplayAssessments(searchData, currentExtremityTab, currentStatusTab, cbSort.Texts);
         }
     }
 }

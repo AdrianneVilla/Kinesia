@@ -52,6 +52,7 @@
             pictureBox1 = new System.Windows.Forms.PictureBox();
             txtSearchBar = new CustomControls.RJControls.RJTextBox();
             lblHiddenForFocus = new System.Windows.Forms.Label();
+            btnRefresh = new OrganizationProfile.CustomButton();
             PatientHolder.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridAssessments).BeginInit();
@@ -279,6 +280,7 @@
             panelBorder2.BackColor = System.Drawing.Color.White;
             panelBorder2.BorderRadius = 30;
             panelBorder2.Color = System.Drawing.Color.BurlyWood;
+            panelBorder2.Controls.Add(btnRefresh);
             panelBorder2.Controls.Add(panelBorder3);
             panelBorder2.Controls.Add(cbSort);
             panelBorder2.Controls.Add(btnLowerExtremities);
@@ -486,6 +488,30 @@
             lblHiddenForFocus.TabIndex = 18;
             lblHiddenForFocus.Text = "<Focus Label (Hidden)>";
             // 
+            // btnRefresh
+            // 
+            btnRefresh.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            btnRefresh.BackColor = System.Drawing.Color.FromArgb(64, 210, 173);
+            btnRefresh.BackgroundColor = System.Drawing.Color.FromArgb(64, 210, 173);
+            btnRefresh.BorderColor = System.Drawing.Color.PaleVioletRed;
+            btnRefresh.BorderRadius = 10;
+            btnRefresh.BorderSize = 0;
+            btnRefresh.Cursor = System.Windows.Forms.Cursors.Hand;
+            btnRefresh.FlatAppearance.BorderSize = 0;
+            btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnRefresh.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            btnRefresh.ForeColor = System.Drawing.Color.White;
+            btnRefresh.Location = new System.Drawing.Point(661, 16);
+            btnRefresh.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            btnRefresh.Name = "btnRefresh";
+            btnRefresh.Padding = new System.Windows.Forms.Padding(2, 3, 0, 0);
+            btnRefresh.Size = new System.Drawing.Size(118, 40);
+            btnRefresh.TabIndex = 16;
+            btnRefresh.Text = "Refresh";
+            btnRefresh.TextColor = System.Drawing.Color.White;
+            btnRefresh.UseVisualStyleBackColor = false;
+            btnRefresh.Click += btnRefresh_Click;
+            // 
             // AssessmentPage
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -536,5 +562,6 @@
         private OrganizationProfile.CustomButton btnFinished;
         private OrganizationProfile.CustomButton btnArchived;
         private WindowsFormsApp2.CustomButton.PanelBorder panelBorder3;
+        private OrganizationProfile.CustomButton btnRefresh;
     }
 }
