@@ -40,12 +40,13 @@
             btnCancel = new OrganizationProfile.CustomButton();
             btnSave = new OrganizationProfile.CustomButton();
             btnClose = new OrganizationProfile.CustomButton();
-            txtGoniometer = new CustomControls.RJControls.RJTextBox();
             label9 = new System.Windows.Forms.Label();
             label5 = new System.Windows.Forms.Label();
             lblNormalRom = new System.Windows.Forms.Label();
             lblDeficit = new System.Windows.Forms.Label();
             label7 = new System.Windows.Forms.Label();
+            btnConfigure = new OrganizationProfile.CustomButton();
+            cbGoniometer = new CustomControls.RJControls.RJComboBox();
             SuspendLayout();
             // 
             // label1
@@ -257,38 +258,13 @@
             btnClose.FlatAppearance.BorderSize = 0;
             btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnClose.ForeColor = System.Drawing.Color.Transparent;
-            btnClose.Location = new System.Drawing.Point(559, 31);
+            btnClose.Location = new System.Drawing.Point(617, 3);
             btnClose.Name = "btnClose";
             btnClose.Size = new System.Drawing.Size(39, 30);
             btnClose.TabIndex = 26;
             btnClose.TextColor = System.Drawing.Color.Transparent;
             btnClose.UseVisualStyleBackColor = false;
             btnClose.Click += btnClose_Click;
-            // 
-            // txtGoniometer
-            // 
-            txtGoniometer.BackColor = System.Drawing.Color.White;
-            txtGoniometer.BorderColor = System.Drawing.Color.Black;
-            txtGoniometer.BorderFocusColor = System.Drawing.Color.FromArgb(18, 90, 211);
-            txtGoniometer.BorderRadius = 5;
-            txtGoniometer.BorderSize = 1;
-            txtGoniometer.Font = new System.Drawing.Font("Poppins", 10.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            txtGoniometer.ForeColor = System.Drawing.Color.FromArgb(64, 64, 64);
-            txtGoniometer.Location = new System.Drawing.Point(52, 98);
-            txtGoniometer.Margin = new System.Windows.Forms.Padding(4);
-            txtGoniometer.MaxLength = 50;
-            txtGoniometer.Multiline = false;
-            txtGoniometer.Name = "txtGoniometer";
-            txtGoniometer.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            txtGoniometer.PasswordChar = false;
-            txtGoniometer.PlaceholderColor = System.Drawing.Color.DarkGray;
-            txtGoniometer.PlaceholderText = "";
-            txtGoniometer.SelectionLength = 0;
-            txtGoniometer.SelectionStart = 0;
-            txtGoniometer.Size = new System.Drawing.Size(545, 41);
-            txtGoniometer.TabIndex = 1;
-            txtGoniometer.Texts = "";
-            txtGoniometer.UnderlinedStyle = false;
             // 
             // label9
             // 
@@ -338,17 +314,60 @@
             label7.TabIndex = 31;
             label7.Text = "Deficit:";
             // 
+            // btnConfigure
+            // 
+            btnConfigure.BackColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            btnConfigure.BackgroundColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            btnConfigure.BorderColor = System.Drawing.Color.PaleVioletRed;
+            btnConfigure.BorderRadius = 10;
+            btnConfigure.BorderSize = 0;
+            btnConfigure.Cursor = System.Windows.Forms.Cursors.Hand;
+            btnConfigure.FlatAppearance.BorderSize = 0;
+            btnConfigure.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnConfigure.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            btnConfigure.ForeColor = System.Drawing.Color.Transparent;
+            btnConfigure.Location = new System.Drawing.Point(448, 31);
+            btnConfigure.Name = "btnConfigure";
+            btnConfigure.Size = new System.Drawing.Size(150, 40);
+            btnConfigure.TabIndex = 33;
+            btnConfigure.Text = "Configure ROM";
+            btnConfigure.TextColor = System.Drawing.Color.Transparent;
+            btnConfigure.UseVisualStyleBackColor = false;
+            btnConfigure.Click += btnConfigure_Click;
+            // 
+            // cbGoniometer
+            // 
+            cbGoniometer.AutoCompleteCustomSource.AddRange(new string[] { "Flexion" });
+            cbGoniometer.BackColor = System.Drawing.Color.White;
+            cbGoniometer.BorderColor = System.Drawing.Color.Black;
+            cbGoniometer.BorderSize = 1;
+            cbGoniometer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
+            cbGoniometer.Font = new System.Drawing.Font("Segoe UI", 10F);
+            cbGoniometer.ForeColor = System.Drawing.Color.DimGray;
+            cbGoniometer.IconColor = System.Drawing.Color.FromArgb(18, 90, 211);
+            cbGoniometer.Items.AddRange(new object[] { "Universal Goniometer", "Gravity-Dependent Goniometer", "Electrogoniometer" });
+            cbGoniometer.ListBackColor = System.Drawing.Color.White;
+            cbGoniometer.ListTextColor = System.Drawing.Color.Black;
+            cbGoniometer.Location = new System.Drawing.Point(53, 97);
+            cbGoniometer.MinimumSize = new System.Drawing.Size(200, 30);
+            cbGoniometer.Name = "cbGoniometer";
+            cbGoniometer.Padding = new System.Windows.Forms.Padding(1);
+            cbGoniometer.Size = new System.Drawing.Size(545, 41);
+            cbGoniometer.TabIndex = 34;
+            cbGoniometer.Texts = "";
+            // 
             // ManualAddROM
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             BackColor = System.Drawing.Color.White;
             ClientSize = new System.Drawing.Size(659, 463);
+            Controls.Add(cbGoniometer);
+            Controls.Add(btnConfigure);
             Controls.Add(lblDeficit);
             Controls.Add(label7);
             Controls.Add(lblNormalRom);
             Controls.Add(label5);
-            Controls.Add(txtGoniometer);
             Controls.Add(label9);
             Controls.Add(btnClose);
             Controls.Add(btnCancel);
@@ -385,11 +404,12 @@
         private OrganizationProfile.CustomButton btnCancel;
         private OrganizationProfile.CustomButton btnSave;
         private OrganizationProfile.CustomButton btnClose;
-        private CustomControls.RJControls.RJTextBox txtGoniometer;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lblNormalRom;
         private System.Windows.Forms.Label lblDeficit;
         private System.Windows.Forms.Label label7;
+        private OrganizationProfile.CustomButton btnConfigure;
+        private CustomControls.RJControls.RJComboBox cbGoniometer;
     }
 }

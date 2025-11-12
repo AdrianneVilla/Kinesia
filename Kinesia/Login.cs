@@ -385,14 +385,12 @@ namespace Kinesia
                     }
                     else if (loginResult.Message.Trim().Equals("Unable to connect to the server. Please try again."))
                     {
-                        loadingScreen.Close();
                         // will show an error dialog if the password and hashed + salted password input is different
                         CustomDialog.Show("Unable to connect to the server. Please try again.\n" +
                             "Please try again.", "Login Alert", CustomDialogButtons.OK, CustomDialogIcons.Error);
                     }
                     else
                     {
-                        loadingScreen.Close();
                         // will show an error dialog if the password and hashed + salted password input is different
                         CustomDialog.Show("Username or Password was incorrect!\n" +
                             "Please try again.", "Login Alert", CustomDialogButtons.OK, CustomDialogIcons.Error);

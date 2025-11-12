@@ -326,6 +326,7 @@ namespace Kinesia.Assessment
                     }
                     if (_lastAngleWasValid)
                     {
+                        btnConfigure.Enabled = false;
                         _initialAngle = _lastLiveAngle;
                         _initialConfidence = GetConfidenceString(_lastConfidenceColor);
                         lblStartingPositionValue.Text = $"{_initialAngle:F1}° ({_initialConfidence})";
@@ -339,6 +340,7 @@ namespace Kinesia.Assessment
                 case MeasurementState.Measuring:
                     if (_lastAngleWasValid)
                     {
+                        btnConfigure.Enabled = true;
                         _endAngle = _lastLiveAngle;
                         _endConfidence = GetConfidenceString(_lastConfidenceColor);
                         lblRomValue.Text = $"{_endAngle:F1}° ({_endConfidence})";
@@ -696,5 +698,21 @@ namespace Kinesia.Assessment
             try { Context.Terminate(); } catch (Exception ex) { Debug.WriteLine($"Error during Context.Terminate: {ex.Message}"); }
         }
 
+        private void linkLblGuide_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            // Open a URL in the default browser
+            System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
+            {
+                FileName = "https://kinesia.kiri8tives.com/login",
+                UseShellExecute = true
+            });
+        }
+
+        private void btnConfigure_Click(object sender, EventArgs e)
+        {
+            var configureROMPage = new ConfigureROM();
+            configureROMPage.TopMost = true;
+            configureROMPage.ShowDialog();
+        }
     } // End of AssessmentROM class
 } // End of namespace

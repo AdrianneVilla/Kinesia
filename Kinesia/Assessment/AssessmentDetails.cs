@@ -42,6 +42,7 @@ namespace Kinesia.Assessment
         {
             using (Form shadow = new Form())
             {
+                shadow.ShowInTaskbar = false;
                 FormAnimation.ShowFocus(shadow);
                 var toolSelectionPage = new SelectTool();
                 toolSelectionPage.Owner = shadow;

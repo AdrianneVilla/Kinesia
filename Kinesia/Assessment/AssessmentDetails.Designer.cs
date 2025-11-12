@@ -66,6 +66,8 @@
             btnAbduction = new OrganizationProfile.CustomButton();
             btnAdduction = new OrganizationProfile.CustomButton();
             panelBorder1 = new WindowsFormsApp2.CustomButton.PanelBorder();
+            label9 = new System.Windows.Forms.Label();
+            label7 = new System.Windows.Forms.Label();
             flowLayoutPanel1.SuspendLayout();
             flowLayoutPanel2.SuspendLayout();
             flowLayoutPanel3.SuspendLayout();
@@ -619,11 +621,38 @@
             panelBorder1.Size = new System.Drawing.Size(1092, 156);
             panelBorder1.TabIndex = 46;
             // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new System.Drawing.Font("Poppins", 10F, System.Drawing.FontStyle.Bold);
+            label9.ForeColor = System.Drawing.Color.RoyalBlue;
+            label9.Location = new System.Drawing.Point(516, 430);
+            label9.Name = "label9";
+            label9.Size = new System.Drawing.Size(129, 25);
+            label9.TabIndex = 47;
+            label9.Text = "Important Note:";
+            label9.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new System.Drawing.Font("Poppins", 10F);
+            label7.ForeColor = System.Drawing.Color.RoyalBlue;
+            label7.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            label7.Location = new System.Drawing.Point(517, 452);
+            label7.Name = "label7";
+            label7.Size = new System.Drawing.Size(371, 50);
+            label7.TabIndex = 48;
+            label7.Text = "* Normal Range value on the table will be based on \r\nthe value during the time it was recorded.\r\n";
+            label7.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // AssessmentDetails
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             BackColor = System.Drawing.Color.White;
+            Controls.Add(label7);
+            Controls.Add(label9);
             Controls.Add(panelBorder1);
             Controls.Add(btnAdduction);
             Controls.Add(panelGraph);
@@ -695,5 +724,7 @@
         private System.Windows.Forms.Panel panelGraph;
         private ScottPlot.WinForms.FormsPlot romPlot;
         private WindowsFormsApp2.CustomButton.PanelBorder panelBorder1;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label7;
     }
 }

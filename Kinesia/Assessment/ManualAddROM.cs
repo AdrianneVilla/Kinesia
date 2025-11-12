@@ -50,7 +50,6 @@ namespace Kinesia.Assessment
         private async void btnSave_Click(object sender, EventArgs e)
         {
             // will remove extra white spaces at the beginning and end of inputs
-            txtGoniometer.Texts = txtGoniometer.Texts.Trim();
             txtStartingPosition.Texts = txtStartingPosition.Texts.Trim();
             txtRom.Texts = txtRom.Texts.Trim();
 
@@ -76,7 +75,7 @@ namespace Kinesia.Assessment
 
             newROM.AssessmentID = PageObjects.assessmentDetails.AssessmentID;
             newROM.UserID = SessionManager.UserID;
-            newROM.GoniometerType = txtGoniometer.Texts;
+            newROM.GoniometerType = cbGoniometer.Texts;
             newROM.StartingPosition = Convert.ToDouble(txtStartingPosition.Texts);
             newROM.Rom = Convert.ToDouble(txtRom.Texts);
             newROM.NormalRom = Convert.ToDouble(lblNormalRom.Text);
@@ -186,14 +185,21 @@ namespace Kinesia.Assessment
 
         private void txtRom__TextChanged(object sender, EventArgs e)
         {
-            if(txtRom.Texts != "")
+            if (txtRom.Texts != "")
             {
                 lblDeficit.Text = ROMHelper.CalculateDeficit(Convert.ToDouble(txtRom.Texts), PageObjects.assessmentDetails.Joint, cbMovement.Texts).ToString();
             }
-            else if(txtRom.Texts == "")
+            else if (txtRom.Texts == "")
             {
                 lblDeficit.Text = "0";
             }
+        }
+
+        private void btnConfigure_Click(object sender, EventArgs e)
+        {
+            var configureROMPage = new ConfigureROM();
+            configureROMPage.TopMost = true;
+            configureROMPage.ShowDialog();
         }
     }
 }

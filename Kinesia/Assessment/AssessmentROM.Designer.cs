@@ -55,6 +55,12 @@ namespace Kinesia.Assessment
             lblNormalRange = new Label();
             lblDeficit = new Label();
             label10 = new Label();
+            linkLblGuide = new LinkLabel();
+            label9 = new Label();
+            label11 = new Label();
+            label12 = new Label();
+            btnConfigure = new OrganizationProfile.CustomButton();
+            label13 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBoxRgb).BeginInit();
             flowLayoutPanel1.SuspendLayout();
             SuspendLayout();
@@ -72,7 +78,7 @@ namespace Kinesia.Assessment
             flowLayoutPanel1.Controls.Add(pictureBoxRgb);
             flowLayoutPanel1.Controls.Add(cmbMovementSelection);
             flowLayoutPanel1.Controls.Add(btnStartStopMeasurement);
-            flowLayoutPanel1.Location = new Point(12, 12);
+            flowLayoutPanel1.Location = new Point(15, 138);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Size = new Size(468, 481);
             flowLayoutPanel1.TabIndex = 2;
@@ -188,7 +194,7 @@ namespace Kinesia.Assessment
             btnSaveROM.FlatStyle = FlatStyle.Flat;
             btnSaveROM.Font = new Font("Poppins", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSaveROM.ForeColor = Color.Transparent;
-            btnSaveROM.Location = new Point(588, 538);
+            btnSaveROM.Location = new Point(600, 438);
             btnSaveROM.Name = "btnSaveROM";
             btnSaveROM.Size = new Size(325, 49);
             btnSaveROM.TabIndex = 8;
@@ -341,12 +347,98 @@ namespace Kinesia.Assessment
             label10.Text = "Deficit:";
             label10.TextAlign = ContentAlignment.TopCenter;
             // 
+            // linkLblGuide
+            // 
+            linkLblGuide.AutoSize = true;
+            linkLblGuide.Font = new Font("Poppins", 12F);
+            linkLblGuide.Location = new Point(198, 105);
+            linkLblGuide.Name = "linkLblGuide";
+            linkLblGuide.Size = new Size(101, 28);
+            linkLblGuide.TabIndex = 25;
+            linkLblGuide.TabStop = true;
+            linkLblGuide.Text = "View Guide";
+            linkLblGuide.LinkClicked += linkLblGuide_LinkClicked;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new Font("Poppins", 10F, FontStyle.Bold);
+            label9.ForeColor = Color.RoyalBlue;
+            label9.Location = new Point(15, 9);
+            label9.Name = "label9";
+            label9.Size = new Size(137, 25);
+            label9.TabIndex = 26;
+            label9.Text = "Important Notes:";
+            label9.TextAlign = ContentAlignment.TopCenter;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Poppins", 10F);
+            label11.ForeColor = Color.RoyalBlue;
+            label11.Location = new Point(15, 34);
+            label11.Name = "label11";
+            label11.Size = new Size(319, 25);
+            label11.TabIndex = 27;
+            label11.Text = "* ROM values will have a 2-3 margin of error.";
+            label11.TextAlign = ContentAlignment.TopCenter;
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Font = new Font("Poppins", 10F);
+            label12.ForeColor = Color.RoyalBlue;
+            label12.Location = new Point(15, 55);
+            label12.Name = "label12";
+            label12.Size = new Size(342, 50);
+            label12.TabIndex = 28;
+            label12.Text = "* If will be used for Lower Extremity, \r\nplease make sure that the patient is lying down.";
+            // 
+            // btnConfigure
+            // 
+            btnConfigure.BackColor = Color.FromArgb(18, 90, 211);
+            btnConfigure.BackgroundColor = Color.FromArgb(18, 90, 211);
+            btnConfigure.BorderColor = Color.PaleVioletRed;
+            btnConfigure.BorderRadius = 10;
+            btnConfigure.BorderSize = 0;
+            btnConfigure.Cursor = Cursors.Hand;
+            btnConfigure.FlatAppearance.BorderSize = 0;
+            btnConfigure.FlatStyle = FlatStyle.Flat;
+            btnConfigure.Font = new Font("Poppins", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnConfigure.ForeColor = Color.Transparent;
+            btnConfigure.Location = new Point(899, 9);
+            btnConfigure.Name = "btnConfigure";
+            btnConfigure.Size = new Size(150, 40);
+            btnConfigure.TabIndex = 29;
+            btnConfigure.Text = "Configure ROM";
+            btnConfigure.TextColor = Color.Transparent;
+            btnConfigure.UseVisualStyleBackColor = false;
+            btnConfigure.Click += btnConfigure_Click;
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Font = new Font("Poppins", 10F);
+            label13.ForeColor = Color.RoyalBlue;
+            label13.Location = new Point(12, 105);
+            label13.Name = "label13";
+            label13.Size = new Size(192, 25);
+            label13.TabIndex = 30;
+            label13.Text = "For Additional Information:";
+            label13.TextAlign = ContentAlignment.TopCenter;
+            // 
             // AssessmentROM
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1061, 599);
+            ClientSize = new Size(1061, 631);
+            Controls.Add(label13);
+            Controls.Add(btnConfigure);
+            Controls.Add(label12);
+            Controls.Add(label11);
+            Controls.Add(label9);
+            Controls.Add(linkLblGuide);
             Controls.Add(lblDeficit);
             Controls.Add(label10);
             Controls.Add(lblNormalRange);
@@ -404,5 +496,11 @@ namespace Kinesia.Assessment
         private Label lblNormalRange;
         private Label lblDeficit;
         private Label label10;
+        private LinkLabel linkLblGuide;
+        private Label label9;
+        private Label label11;
+        private Label label12;
+        private OrganizationProfile.CustomButton btnConfigure;
+        private Label label13;
     }
 }
