@@ -61,6 +61,7 @@ namespace Kinesia
             label3 = new Label();
             label2 = new Label();
             backgroundWorker1 = new BackgroundWorker();
+            this.linkLblGuide = new LinkLabel();
             flowLayoutPanel3.SuspendLayout();
             ((ISupportInitialize)pictureBox4).BeginInit();
             panelBorder1.SuspendLayout();
@@ -133,6 +134,7 @@ namespace Kinesia
             panelBorder1.BackgroundImageLayout = ImageLayout.Stretch;
             panelBorder1.BorderRadius = 30;
             panelBorder1.Color = Color.White;
+            panelBorder1.Controls.Add(this.linkLblGuide);
             panelBorder1.Controls.Add(txtPassword);
             panelBorder1.Controls.Add(txtUsername);
             panelBorder1.Controls.Add(username);
@@ -268,6 +270,18 @@ namespace Kinesia
             // backgroundWorker1
             // 
             backgroundWorker1.DoWork += backgroundWorker1_DoWork;
+            // 
+            // linkLblGuide
+            // 
+            this.linkLblGuide.AutoSize = true;
+            this.linkLblGuide.Font = new Font("Poppins", 12F);
+            this.linkLblGuide.Location = new Point(140, 340);
+            this.linkLblGuide.Name = "linkLblGuide";
+            this.linkLblGuide.Size = new Size(101, 28);
+            this.linkLblGuide.TabIndex = 26;
+            this.linkLblGuide.TabStop = true;
+            this.linkLblGuide.Text = "View Guide";
+            this.linkLblGuide.LinkClicked += this.linkLblGuide_LinkClicked;
             // 
             // Login
             // 
@@ -447,6 +461,15 @@ namespace Kinesia
                     Astra.Context.Terminate(); //
                 }
             }
+        }
+
+        private void linkLblGuide_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
+            {
+                FileName = "https://kinesia.kiri8tives.com/help-standalone",
+                UseShellExecute = true
+            });
         }
     }
 }
