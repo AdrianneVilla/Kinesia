@@ -641,9 +641,9 @@
             label7.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             label7.Location = new System.Drawing.Point(517, 452);
             label7.Name = "label7";
-            label7.Size = new System.Drawing.Size(371, 50);
+            label7.Size = new System.Drawing.Size(660, 25);
             label7.TabIndex = 48;
-            label7.Text = "* Normal Range value on the table will be based on \r\nthe value during the time it was recorded.\r\n";
+            label7.Text = "* Normal Range value on the table will be based on the value during the time it was recorded.\r\n";
             label7.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // AssessmentDetails

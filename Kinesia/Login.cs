@@ -53,8 +53,6 @@ namespace Kinesia
             usernameLabel = new Label();
             header1 = new Header();
             panelBorder1 = new WindowsFormsApp2.CustomButton.PanelBorder();
-            btnOffline = new OrganizationProfile.CustomButton();
-            label4 = new Label();
             txtPassword = new CustomControls.RJControls.RJTextBox();
             txtUsername = new CustomControls.RJControls.RJTextBox();
             username = new Label();
@@ -135,8 +133,6 @@ namespace Kinesia
             panelBorder1.BackgroundImageLayout = ImageLayout.Stretch;
             panelBorder1.BorderRadius = 30;
             panelBorder1.Color = Color.White;
-            panelBorder1.Controls.Add(btnOffline);
-            panelBorder1.Controls.Add(label4);
             panelBorder1.Controls.Add(txtPassword);
             panelBorder1.Controls.Add(txtUsername);
             panelBorder1.Controls.Add(username);
@@ -150,40 +146,6 @@ namespace Kinesia
             panelBorder1.Size = new Size(366, 416);
             panelBorder1.TabIndex = 2;
             panelBorder1.Paint += panelBorder1_Paint;
-            // 
-            // btnOffline
-            // 
-            btnOffline.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            btnOffline.BackColor = Color.FromArgb(207, 249, 238);
-            btnOffline.BackgroundColor = Color.FromArgb(207, 249, 238);
-            btnOffline.BorderColor = Color.FromArgb(21, 134, 105);
-            btnOffline.BorderRadius = 10;
-            btnOffline.BorderSize = 1;
-            btnOffline.Cursor = Cursors.Hand;
-            btnOffline.FlatAppearance.BorderSize = 0;
-            btnOffline.FlatStyle = FlatStyle.Flat;
-            btnOffline.Font = new Font("Poppins", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnOffline.ForeColor = Color.FromArgb(21, 134, 105);
-            btnOffline.Location = new Point(62, 345);
-            btnOffline.Name = "btnOffline";
-            btnOffline.Padding = new Padding(0, 1, 0, 0);
-            btnOffline.Size = new Size(255, 33);
-            btnOffline.TabIndex = 9;
-            btnOffline.Text = "Use Camera (Offline Mode)";
-            btnOffline.TextColor = Color.FromArgb(21, 134, 105);
-            btnOffline.UseVisualStyleBackColor = false;
-            btnOffline.Click += btnOffline_Click;
-            // 
-            // label4
-            // 
-            label4.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            label4.AutoSize = true;
-            label4.Font = new Font("Poppins", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(141, 319);
-            label4.Name = "label4";
-            label4.Size = new Size(94, 23);
-            label4.TabIndex = 8;
-            label4.Text = "for offline use";
             // 
             // txtPassword
             // 
@@ -446,19 +408,6 @@ namespace Kinesia
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
 
-        }
-
-        private void btnOffline_Click(object sender, EventArgs e)
-        {
-            if (IsCameraConnected())
-            {
-                var offlineAssessment = new AssessmentROMOffline();
-                offlineAssessment.ShowDialog();
-            }
-            else
-            {
-                CustomDialog.Show("Astra pro plus camera is not connected!", "Astra", CustomDialogButtons.OK, CustomDialogIcons.Error);
-            }
         }
 
         private bool IsCameraConnected()

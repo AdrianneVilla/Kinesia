@@ -1,4 +1,5 @@
-﻿using Kinesia.Components;
+﻿using Kinesia.Assessment;
+using Kinesia.Components;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -63,40 +64,14 @@ namespace Kinesia
             if (shouldBeLaptopMode != isLaptopMode)
             {
                 isLaptopMode = shouldBeLaptopMode;
-                ApplyLayoutChanges();
             }
         }
-
-        private void ApplyLayoutChanges()
-        {
-            this.SuspendLayout();
-
-            if (isLaptopMode)
-            {
-                // Laptop mode - reduce sizes
-                sidebar1.Width = SIDEBAR_WIDTH_LAPTOP;
-                header1.Height = HEADER_HEIGHT_LAPTOP;
-
-            }
-            else
-            {
-                // Desktop mode - full sizes
-                sidebar1.Width = SIDEBAR_WIDTH_DESKTOP;
-                header1.Height = HEADER_HEIGHT_DESKTOP;
-
-
-            }
-
-            this.ResumeLayout();
-            this.PerformLayout();
-        }
-
 
         private void Dashboard_Load(object sender, EventArgs e)
         {
-            PageObjects.dashboardPage = new DashboardPage();
-            ContentsPanel.Controls.Add(PageObjects.dashboardPage);
-            PageObjects.CurrentControl = PageObjects.dashboardPage;
+            PageObjects.assessmentPage = new AssessmentPage();
+            PageObjects.dashboard.ContentsPanel.Controls.Add(PageObjects.assessmentPage);
+            PageObjects.CurrentControl = PageObjects.assessmentPage;
         }
 
         private void header1_Load(object sender, EventArgs e)
