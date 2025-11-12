@@ -432,10 +432,7 @@ namespace Kinesia.Patients
                 if (Queries.PatientQueries.IsPatientDetailsComplete(DataHolder.PatientDataHolder) && !await Queries.PatientQueries.CheckExistingPatient(DataHolder.PatientDataHolder) &&
                     Queries.PatientQueries.IsAgeValid(DataHolder.PatientDataHolder) && Queries.PatientQueries.IsContactValid(DataHolder.PatientDataHolder))
                 {
-                    string newPatientID = await this.FindForm().RunTaskWithLoading("Adding patient's data...", async () =>
-                    {
-                        return await Queries.PatientQueries.AddPatient(DataHolder.PatientDataHolder);
-                    });
+                    string newPatientID = await Queries.PatientQueries.AddPatient(DataHolder.PatientDataHolder);
 
                     if (!string.IsNullOrEmpty(newPatientID))
                     {
@@ -443,10 +440,7 @@ namespace Kinesia.Patients
                         clearAllInputs();
                         CustomDialog.Show("Patient added successfully!",
                         "Add Patient Notification", CustomDialogButtons.OK, CustomDialogIcons.Information);
-                        await this.FindForm().RunTaskWithLoading("Fetching patient's data...", async () =>
-                        {
-                            await Queries.PatientQueries.GetPatientDetails(newPatientID);
-                        });
+                        await Queries.PatientQueries.GetPatientDetails(newPatientID);
                     }
                     else
                     {

@@ -367,18 +367,12 @@ namespace Kinesia
             }
             else
             {
-                loadingScreen = new LoadingScreen();
-                loadingScreen.Show();
-
                 try
                 {
                     var loginResult = await LoginAsync(txtUsername.Texts, txtPassword.Texts);
 
                     if (loginResult.Success)
                     {
-                        // will close the loading screen after the loginResult was success
-                        loadingScreen.Close();
-
                         // will continue to dashboard page if the password and hashed + salted password input is the same
                         PageObjects.dashboard = new Dashboard();
                         PageObjects.dashboard.Show();
@@ -422,31 +416,28 @@ namespace Kinesia
 
         public async Task<LoginResponse> LoginAsync(string username, string password)
         {
-            return await this.RunTaskWithLoading("Logging in...", async () =>
+            var request = new LoginRequest
             {
-                var request = new LoginRequest
+                Username = username,
+                Password = password
+            };
+
+            var json = JsonConvert.SerializeObject(request);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            var response = await client.PostAsync("http://localhost:5000/api/auth/login", content);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                return new LoginResponse
                 {
-                    Username = username,
-                    Password = password
+                    Success = false,
+                    Message = $"Server error {response.StatusCode}"
                 };
+            }
 
-                var json = JsonConvert.SerializeObject(request);
-                var content = new StringContent(json, Encoding.UTF8, "application/json");
-
-                var response = await client.PostAsync("http://localhost:5000/api/auth/login", content);
-
-                if (!response.IsSuccessStatusCode)
-                {
-                    return new LoginResponse
-                    {
-                        Success = false,
-                        Message = $"Server error {response.StatusCode}"
-                    };
-                }
-
-                var responsContent = await response.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<LoginResponse>(responsContent);
-            });
+            var responsContent = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<LoginResponse>(responsContent);
         }
 
         private void header1_Load(object sender, EventArgs e)

@@ -55,10 +55,7 @@ namespace Kinesia.Patients
 
         private async void GetPatientList()
         {
-            await this.FindForm().RunTaskWithLoading("Fetching patients list...", async () =>
-            {
-                await Queries.PatientQueries.DisplayPatients(searchData, currentTab, cbSort.Texts);
-            });
+            await Queries.PatientQueries.DisplayPatients(searchData, currentTab, cbSort.Texts);
         }
 
         private async void InnerTxtSearchBar_KeyDown(object sender, KeyEventArgs e)
@@ -225,18 +222,12 @@ namespace Kinesia.Patients
             {
                 if(e.ColumnIndex == 5) // column 5 is for EMR button
                 {
-                    await this.FindForm().RunTaskWithLoading("Fetching patient's data...", async () =>
-                    {
-                        await Queries.PatientQueries.GetPatientDetails(patientList[e.RowIndex]);
-                    });
+                    await Queries.PatientQueries.GetPatientDetails(patientList[e.RowIndex]);
                 }
                 else if(e.ColumnIndex == 6) // column 6 is for Edit button
                 {
                     DataHolder.PatientDataHolder = new PatientDataHolder();
-                    await this.FindForm().RunTaskWithLoading("Fetching patient's data to edit...", async () =>
-                    {
-                        await Queries.PatientQueries.GetPatientDetails(patientList[e.RowIndex], DataHolder.PatientDataHolder);
-                    });
+                    await Queries.PatientQueries.GetPatientDetails(patientList[e.RowIndex], DataHolder.PatientDataHolder);
                     PageObjects.editPatient.PreviousPage = "Patients Page";
                 }
                 else if(e.ColumnIndex == 7) // column 7 is for Archive / Unarchive button
@@ -249,10 +240,7 @@ namespace Kinesia.Patients
 
                         if (archiveDiag == DialogResult.Yes)
                         {
-                            var success = await this.FindForm().RunTaskWithLoading("Archiving patient's data...", async () =>
-                            {
-                                return await Queries.PatientQueries.UpdatePatientStatus(patientList[e.RowIndex], 0);
-                            });
+                            var success = await Queries.PatientQueries.UpdatePatientStatus(patientList[e.RowIndex], 0);
 
                             if (success)
                             {
@@ -262,10 +250,7 @@ namespace Kinesia.Patients
                                 CustomDialog.Show($"{patientList[e.RowIndex]} has been successfully archived!", "Archive Patient Notification",
                                     CustomDialogButtons.OK, CustomDialogIcons.Information);
 
-                                await this.FindForm().RunTaskWithLoading("Fetching patients list...", async () =>
-                                {
-                                    await Queries.PatientQueries.DisplayPatients("", PageObjects.patientsPage.CurrentTab, "Default");
-                                });        
+                                await Queries.PatientQueries.DisplayPatients("", PageObjects.patientsPage.CurrentTab, "Default");
                             }
                         }
                     }
@@ -277,10 +262,7 @@ namespace Kinesia.Patients
 
                         if (unarchiveDiag == DialogResult.Yes)
                         {
-                            var success = await this.FindForm().RunTaskWithLoading("Unarchiving patient's data...", async () =>
-                            {
-                                return await Queries.PatientQueries.UpdatePatientStatus(patientList[e.RowIndex], 1);
-                            });
+                            var success = await Queries.PatientQueries.UpdatePatientStatus(patientList[e.RowIndex], 1);
 
                             if (success)
                             {
@@ -290,10 +272,7 @@ namespace Kinesia.Patients
                                 CustomDialog.Show($"{patientList[e.RowIndex]} has been successfully unarchived!", "Unarchive Patient Notification",
                                     CustomDialogButtons.OK, CustomDialogIcons.Information);
 
-                                await this.FindForm().RunTaskWithLoading("Fetching patients list...", async () =>
-                                {
-                                    await Queries.PatientQueries.DisplayPatients("", PageObjects.patientsPage.CurrentTab, "Default");
-                                });
+                                await Queries.PatientQueries.DisplayPatients("", PageObjects.patientsPage.CurrentTab, "Default");
                             }
                         }
                     }
