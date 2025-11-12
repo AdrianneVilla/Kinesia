@@ -351,7 +351,7 @@ namespace Kinesia.Assessment
             // 
             linkLblGuide.AutoSize = true;
             linkLblGuide.Font = new Font("Poppins", 12F);
-            linkLblGuide.Location = new Point(198, 105);
+            linkLblGuide.Location = new Point(200, 102);
             linkLblGuide.Name = "linkLblGuide";
             linkLblGuide.Size = new Size(101, 28);
             linkLblGuide.TabIndex = 25;
@@ -390,9 +390,9 @@ namespace Kinesia.Assessment
             label12.ForeColor = Color.RoyalBlue;
             label12.Location = new Point(15, 55);
             label12.Name = "label12";
-            label12.Size = new Size(342, 50);
+            label12.Size = new Size(411, 50);
             label12.TabIndex = 28;
-            label12.Text = "* If will be used for Lower Extremity, \r\nplease make sure that the patient is lying down.";
+            label12.Text = "* If will be used for Lower Extremity, \r\nplease make sure that the patient is laying down in a bed.";
             // 
             // btnConfigure
             // 

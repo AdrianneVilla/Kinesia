@@ -665,7 +665,7 @@ namespace Kinesia.Assessment
             {
                 MessageBox.Show("Please complete a measurement (Start and then Stop) before saving.", "Measurement Not Complete", MessageBoxButtons.OK, MessageBoxIcon.Warning); return;
             }
-            var newRomDto = new AddROMDTO { AssessmentID = PageObjects.assessmentDetails.AssessmentID, UserID = SessionManager.UserID, GoniometerType = "Astra Pro Plus + MoveNet", StartingPosition = _initialAngle, Rom = _endAngle, NormalRom = Convert.ToDouble(lblNormalRange.Text), Deficit = Convert.ToDouble(lblDeficit.Text), Movement = _currentMovement.ToString(), MotionType = "Active", };
+            var newRomDto = new AddROMDTO { AssessmentID = PageObjects.assessmentDetails.AssessmentID, UserID = SessionManager.UserID, GoniometerType = "Astra Pro Plus + MoveNet", StartingPosition = _initialAngle, Rom = _endAngle, NormalRom = Convert.ToDouble(lblNormalRange.Text.Replace("°", "").Trim()), Deficit = Convert.ToDouble(lblDeficit.Text.Replace("°", "").Trim()), Movement = _currentMovement.ToString(), MotionType = "Active", };
             bool success = false;
             try
             {
