@@ -42,6 +42,7 @@
             dataGridAssessments = new System.Windows.Forms.DataGridView();
             btnAddAssessment = new OrganizationProfile.CustomButton();
             panelBorder2 = new WindowsFormsApp2.CustomButton.PanelBorder();
+            btnRefresh = new OrganizationProfile.CustomButton();
             panelBorder3 = new WindowsFormsApp2.CustomButton.PanelBorder();
             cbSort = new CustomControls.RJControls.RJComboBox();
             btnLowerExtremities = new OrganizationProfile.CustomButton();
@@ -52,7 +53,6 @@
             pictureBox1 = new System.Windows.Forms.PictureBox();
             txtSearchBar = new CustomControls.RJControls.RJTextBox();
             lblHiddenForFocus = new System.Windows.Forms.Label();
-            btnRefresh = new OrganizationProfile.CustomButton();
             PatientHolder.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridAssessments).BeginInit();
@@ -217,7 +217,7 @@
             dataGridAssessments.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
             dataGridAssessments.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Gray;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(18, 90, 211);
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Transparent;
@@ -293,6 +293,30 @@
             panelBorder2.Name = "panelBorder2";
             panelBorder2.Size = new System.Drawing.Size(1317, 67);
             panelBorder2.TabIndex = 16;
+            // 
+            // btnRefresh
+            // 
+            btnRefresh.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            btnRefresh.BackColor = System.Drawing.Color.FromArgb(64, 210, 173);
+            btnRefresh.BackgroundColor = System.Drawing.Color.FromArgb(64, 210, 173);
+            btnRefresh.BorderColor = System.Drawing.Color.PaleVioletRed;
+            btnRefresh.BorderRadius = 10;
+            btnRefresh.BorderSize = 0;
+            btnRefresh.Cursor = System.Windows.Forms.Cursors.Hand;
+            btnRefresh.FlatAppearance.BorderSize = 0;
+            btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            btnRefresh.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            btnRefresh.ForeColor = System.Drawing.Color.White;
+            btnRefresh.Location = new System.Drawing.Point(661, 16);
+            btnRefresh.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            btnRefresh.Name = "btnRefresh";
+            btnRefresh.Padding = new System.Windows.Forms.Padding(2, 3, 0, 0);
+            btnRefresh.Size = new System.Drawing.Size(118, 40);
+            btnRefresh.TabIndex = 16;
+            btnRefresh.Text = "Refresh";
+            btnRefresh.TextColor = System.Drawing.Color.White;
+            btnRefresh.UseVisualStyleBackColor = false;
+            btnRefresh.Click += btnRefresh_Click;
             // 
             // panelBorder3
             // 
@@ -487,30 +511,6 @@
             lblHiddenForFocus.Size = new System.Drawing.Size(135, 15);
             lblHiddenForFocus.TabIndex = 18;
             lblHiddenForFocus.Text = "<Focus Label (Hidden)>";
-            // 
-            // btnRefresh
-            // 
-            btnRefresh.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
-            btnRefresh.BackColor = System.Drawing.Color.FromArgb(64, 210, 173);
-            btnRefresh.BackgroundColor = System.Drawing.Color.FromArgb(64, 210, 173);
-            btnRefresh.BorderColor = System.Drawing.Color.PaleVioletRed;
-            btnRefresh.BorderRadius = 10;
-            btnRefresh.BorderSize = 0;
-            btnRefresh.Cursor = System.Windows.Forms.Cursors.Hand;
-            btnRefresh.FlatAppearance.BorderSize = 0;
-            btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            btnRefresh.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            btnRefresh.ForeColor = System.Drawing.Color.White;
-            btnRefresh.Location = new System.Drawing.Point(661, 16);
-            btnRefresh.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            btnRefresh.Name = "btnRefresh";
-            btnRefresh.Padding = new System.Windows.Forms.Padding(2, 3, 0, 0);
-            btnRefresh.Size = new System.Drawing.Size(118, 40);
-            btnRefresh.TabIndex = 16;
-            btnRefresh.Text = "Refresh";
-            btnRefresh.TextColor = System.Drawing.Color.White;
-            btnRefresh.UseVisualStyleBackColor = false;
-            btnRefresh.Click += btnRefresh_Click;
             // 
             // AssessmentPage
             // 
