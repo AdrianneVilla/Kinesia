@@ -23,35 +23,48 @@ namespace KinesiaAPI.Controllers
         {
             var targetMonthStart = new DateTime(year, month, 1);
             var startDateInclusive = targetMonthStart.AddMonths(-5);
-            var endDateInclusive = startDateInclusive.AddMonths(1);
+            var endDateExclusive = targetMonthStart.AddMonths(1);
 
-            var query = _context.Assessments.AsQueryable();
+            var allMonths = new List<DateTime>();
+            var monthIterator = startDateInclusive;
 
-            var monthlyRates = await query
-                    .GroupBy(a => new { a.AssessmentDate.Year, a.AssessmentDate.Month })
-                    .Select(g => new
-                    {
-                        Year = g.Key.Year,
-                        Month = g.Key.Month,
-
-                        Completed = g.Count(a => a.AssessmentStatus == 2),
-
-                        Ongoing = g.Count(a => a.AssessmentStatus == 1)
-
-                    })
-                    .OrderBy(x => x.Year).ThenBy(x => x.Month)
-                    .ToListAsync();
-
-            var result = monthlyRates.Select(data =>
+            while (monthIterator <= targetMonthStart)
             {
-                int totalRelevant = data.Completed + data.Ongoing;
+                allMonths.Add(monthIterator);
+                monthIterator = monthIterator.AddMonths(1);
+            }
+
+            var dbData = await _context.Assessments
+                .Where(a =>
+                    a.AssessmentDate >= startDateInclusive &&
+                    a.AssessmentDate < endDateExclusive
+                )
+                .GroupBy(a => new { a.AssessmentDate.Year, a.AssessmentDate.Month })
+                .Select(g => new
+                {
+                    Year = g.Key.Year,
+                    Month = g.Key.Month,
+                    Completed = g.Count(a => a.AssessmentStatus == 2),
+                    Ongoing = g.Count(a => a.AssessmentStatus == 1)
+                })
+                .ToListAsync();
+
+            var result = allMonths.Select(monthDate =>
+            {
+                var dataForThisMonth = dbData.FirstOrDefault(d =>
+                    d.Year == monthDate.Year &&
+                    d.Month == monthDate.Month);
+
+                int completed = dataForThisMonth?.Completed ?? 0;
+                int ongoing = dataForThisMonth?.Ongoing ?? 0;
+                int totalRelevant = completed + ongoing;
 
                 return new CompletionRateDTO
                 {
-                    Month = new DateTime(data.Year, data.Month, 1).ToString("MMM"),
-                    Completed = data.Completed,
-                    CompletionRate = (totalRelevant == 0) ? 0 : Math.Round((((double)data.Completed / totalRelevant) * 100), 2),
-                    Ongoing = data.Ongoing
+                    Month = monthDate.ToString("MMM"),
+                    Completed = completed,
+                    Ongoing = ongoing,
+                    CompletionRate = (totalRelevant == 0) ? 0 : Math.Round((((double)completed / totalRelevant) * 100), 2)
                 };
             });
 
