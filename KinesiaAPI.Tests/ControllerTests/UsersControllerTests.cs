@@ -9,6 +9,7 @@ using KinesiaLibrary.DTOs.UserDTOs;
 using KinesiaAPI.Tests.DataTest;
 using Xunit;
 using KinesiaAPI.Controllers;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace KinesiaAPI.Tests.ControllerTests
 {
@@ -86,6 +87,30 @@ namespace KinesiaAPI.Tests.ControllerTests
             var okResultOther = Assert.IsType<OkObjectResult>(resultOtherTab.Result);
             var returnedUsersOther = Assert.IsAssignableFrom<IEnumerable<DisplayUsersDTO>>(okResultOther.Value);
             Assert.Equal(20, returnedUsersOther.Count());
+        }
+
+        [Fact]
+        public async Task GetUsers_WithValidId_ShouldReturnUserDTO()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(GetUsers_WithValidId_ShouldReturnUserDTO));
+            var users = DataFactory.GenerateUsers(20);
+            var targetUser = users.First();
+
+            context.Users.AddRange(users);
+            await context.SaveChangesAsync();
+
+            var controller = new UsersController(context);
+
+            // Act
+            var result = await controller.GetUsers(targetUser.UserID);
+
+            // Assert
+            var okResult = Assert.IsType<OkObjectResult>(result.Result);
+            var returnedUser = Assert.IsType<UsersDTO>(okResult.Value);
+
+            Assert.Equal(targetUser.UserID, returnedUser.UserID);
+            Assert.Equal(targetUser.FirstName, returnedUser.FirstName);
         }
     }
 }
