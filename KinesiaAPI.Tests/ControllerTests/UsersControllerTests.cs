@@ -90,10 +90,35 @@ namespace KinesiaAPI.Tests.ControllerTests
         }
 
         [Fact]
+        public async Task GetUsers_ShouldReturnSearchedUser()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(GetUsers_ShouldReturnSearchedUser));
+            
+            var users = DataFactory.GenerateUsers(20);
+            users.First().FirstName = "Search";
+
+            context.Users.AddRange(users);
+            await context.SaveChangesAsync();
+
+            var controller = new UsersController(context);
+
+            // Act
+            var result = await controller.GetUsers(searchData: "Search");
+
+            // Assert
+            var okResult = Assert.IsType<OkObjectResult>(result.Result);
+            var returnedUser = Assert.IsAssignableFrom<IEnumerable<DisplayUsersDTO>>(okResult.Value);
+            Assert.Single(returnedUser);
+            Assert.Contains("Search", returnedUser.First().UserName);
+        }
+
+        [Fact]
         public async Task GetUsers_WithValidId_ShouldReturnUserDTO()
         {
             // Arrange
             var context = TestDbContextFactory.CreateDbContext(nameof(GetUsers_WithValidId_ShouldReturnUserDTO));
+
             var users = DataFactory.GenerateUsers(20);
             var targetUser = users.First();
 
