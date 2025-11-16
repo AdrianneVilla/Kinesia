@@ -114,6 +114,40 @@ namespace KinesiaAPI.Tests.ControllerTests
         }
 
         [Fact]
+        public async Task GetUsers_ShouldReturnUsersSortedByName()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(GetUsers_ShouldReturnUsersSortedByName));
+
+            var users = new List<Users>
+            {
+                DataFactory.GenerateUsers(1).First(u => { u.FirstName = "Charlie"; u.UserID = "U1"; return true; }),
+                DataFactory.GenerateUsers(1).First(u => { u.FirstName = "Alice"; u.UserID = "U2"; return true; }),
+                DataFactory.GenerateUsers(1).First(u => { u.FirstName = "Bob"; u.UserID = "U3"; return true; })
+            };
+
+            context.Users.AddRange(users);
+            await context.SaveChangesAsync();
+
+            var controller = new UsersController(context);
+
+            // Act
+            var result = await controller.GetUsers(sortColumn: "Alphabetic (Name)");
+
+            // Assert
+            var okResult = Assert.IsType<OkObjectResult>(result.Result);
+
+            var returnedUsers = Assert.IsAssignableFrom<IEnumerable<DisplayUsersDTO>>(okResult.Value);
+
+            var userList = returnedUsers.ToList();
+
+            Assert.Equal(3, userList.Count());
+            Assert.Equal("Alice", userList[0].UserName.Split(' ')[0]);
+            Assert.Equal("Bob", userList[1].UserName.Split(' ')[0]);
+            Assert.Equal("Charlie", userList[2].UserName.Split(' ')[0]);
+        }
+
+        [Fact]
         public async Task GetUsers_WithValidId_ShouldReturnUserDTO()
         {
             // Arrange
