@@ -479,7 +479,7 @@ namespace KinesiaAPI.Controllers
 
         // PUT: api/users/change-password?userID={}
         [HttpPut("change-password")]
-        public async Task<IActionResult> ChangePassword(string id, string password)
+        public async Task<IActionResult> ChangePassword(string id, string password, string oldPassword)
         {
             if (string.IsNullOrEmpty(id))
             {
@@ -487,6 +487,11 @@ namespace KinesiaAPI.Controllers
             }
 
             var existingUser = await _context.Users.FindAsync(id);
+
+            if(existingUser.Password != CustomSecurity.HashPassword(oldPassword, existingUser.Salt))
+            {
+                return BadRequest("Invalid old password");
+            }
 
             string salt = CustomSecurity.GenerateSalt();
             string newPassword = CustomSecurity.HashPassword(password, salt);
