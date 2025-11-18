@@ -171,5 +171,20 @@ namespace KinesiaAPI.Tests.ControllerTests
             Assert.Equal(targetUser.UserID, returnedUser.UserID);
             Assert.Equal(targetUser.FirstName, returnedUser.FirstName);
         }
+
+        [Fact]
+        public async Task GetUsers_WithInvalidId_ShouldReturnNotFound()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(GetUsers_WithInvalidId_ShouldReturnNotFound));
+
+            var controller = new UsersController(context);
+
+            // Act
+            var result = await controller.GetUsers("USER999");
+
+            // Assert
+            Assert.IsType<NotFoundResult>(result.Result);
+        }
     }
 }
