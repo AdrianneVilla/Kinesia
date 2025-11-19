@@ -186,5 +186,39 @@ namespace KinesiaAPI.Tests.ControllerTests
             // Assert
             Assert.IsType<NotFoundResult>(result.Result);
         }
+
+        [Fact]
+        public async Task UpdateUserStatus_WhenUserExists_ShouldReturnNoContent()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(UpdateUserStatus_WhenUserExists_ShouldReturnNoContent));
+
+            var users = DataFactory.GenerateUsers(1).First();
+            users.UserID = "USER123";
+            users.Status = 1;
+
+            context.Users.Add(users);
+            await context.SaveChangesAsync();
+
+            var updatedUser = new UserUpdateStatusDTO
+            {
+                UserID = "USER123",
+                Status = 0
+            };
+
+            var controller = new UsersController(context);
+
+            // Act
+            var result = await controller.UpdateUserStatus("USER123", updatedUser);
+
+            // Assert
+            Assert.IsType<NoContentResult>(result);
+
+            var userInDb = await context.Users.FindAsync("USER123");
+
+            Assert.NotNull(userInDb);
+            Assert.Equal(0, userInDb.Status);
+            Assert.NotNull(userInDb.LastArchiveDate);
+        }
     }
 }
