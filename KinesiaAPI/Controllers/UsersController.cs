@@ -418,28 +418,30 @@ namespace KinesiaAPI.Controllers
                 return BadRequest("User ID is required and must match the URL parameter");
             }
 
-            var existingUser = await _context.Users.FindAsync(id);
-
-            existingUser.LastArchiveDate = updatedUser.LastArchiveDate;
-            existingUser.Status = updatedUser.Status;
-
             try
             {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!UsersExists(id))
+                var existingUser = await _context.Users.FindAsync(id);
+
+                if (existingUser == null)
                 {
                     return NotFound();
                 }
-                else
-                {
-                    throw;
-                }
-            }
 
-            return NoContent();
+                existingUser.LastArchiveDate = updatedUser.LastArchiveDate;
+                existingUser.Status = updatedUser.Status;
+
+                await _context.SaveChangesAsync();
+
+                return NoContent();
+            }
+            catch (DbException)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An error occured on database.\nPlease try again.");
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An unexpected error occured.\nPlease try again.");
+            }
         }
 
         // PUT: api/users/reset-password?userID={}
