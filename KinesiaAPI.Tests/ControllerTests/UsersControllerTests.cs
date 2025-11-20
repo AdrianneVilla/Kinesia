@@ -220,5 +220,62 @@ namespace KinesiaAPI.Tests.ControllerTests
             Assert.Equal(0, userInDb.Status);
             Assert.NotNull(userInDb.LastArchiveDate);
         }
+
+        [Fact]
+        public async Task UpdateUserStatus_WhenUserDoesNotExists_ShouldReturnNotFound()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(UpdateUserStatus_WhenUserDoesNotExists_ShouldReturnNotFound));
+
+            var updatedUser = new UserUpdateStatusDTO
+            {
+                UserID = "USER123",
+                Status = 1
+            };
+
+            var controller = new UsersController(context);
+
+            // Act
+            var result = await controller.UpdateUserStatus("USER123", updatedUser);
+
+            // Assert
+            Assert.IsType<NotFoundResult>(result);
+        }
+
+        [Fact]
+        public async Task PutUsers_WhenUserExistsAndIdsMatch_ShouldReturnNoContent()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(PutUsers_WhenUserExistsAndIdsMatch_ShouldReturnNoContent));
+
+            var originalUser = DataFactory.GenerateUsers(1).First();
+            originalUser.UserID = "USER123";
+            originalUser.FirstName = "Test";
+            originalUser.Contact = "+639285321382";
+
+            context.Users.Add(originalUser);
+            await context.SaveChangesAsync();
+
+            var updatedUser = new UpdateUserDTO
+            {
+                UserID = "USER123",
+                FirstName = "Test123",
+                Contact = null
+            };
+
+            var controller = new UsersController(context);
+
+            // Act
+            var result = await controller.PutUsers("USER123", updatedUser);
+
+            // Assert
+            Assert.IsType<NoContentResult>(result);
+
+            var userInDb = await context.Users.FindAsync("USER123");
+
+            Assert.NotNull(userInDb);
+            Assert.Equal("Test123", userInDb.FirstName);
+            Assert.Equal("+639285321382", userInDb.Contact);
+        }
     }
 }
