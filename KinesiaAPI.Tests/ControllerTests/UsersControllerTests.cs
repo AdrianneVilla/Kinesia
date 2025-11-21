@@ -277,5 +277,78 @@ namespace KinesiaAPI.Tests.ControllerTests
             Assert.Equal("Test123", userInDb.FirstName);
             Assert.Equal("+639285321382", userInDb.Contact);
         }
+
+        [Fact]
+        public async Task PutPatients_WhenIdsMismatch_ShouldReturnBadRequest()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(PutPatients_WhenIdsMismatch_ShouldReturnBadRequest));
+
+            var updatedUser = new UpdateUserDTO
+            {
+                UserID = "USER123"
+            };
+
+            var controller = new UsersController(context);
+
+            // Act
+            var result = await controller.PutUsers("USER456", updatedUser);
+
+            // Assert
+            var badRequestResult = Assert.IsType<BadRequestObjectResult>(result);
+            Assert.NotNull(badRequestResult);
+        }
+
+        [Fact]
+        public async Task CheckExistingUser_WhenUserDoesNotExists_ShouldReturnOkResult()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(CheckExistingUser_WhenUserDoesNotExists_ShouldReturnOkResult));
+
+            var nonExistingUser = new CheckExistingUserDTO
+            {
+                FirstName = "Sample",
+                LastName = "Sample",
+                MiddleName = "Sample"
+            };
+
+            var controller = new UsersController(context);
+
+            // Act
+            var result = await controller.CheckExistingUser(nonExistingUser);
+
+            // Assert
+            Assert.IsType<OkResult>(result);
+        }
+
+        [Fact]
+        public async Task CheckExistingUser_WhenUserExists_ShouldReturnConflict()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(CheckExistingUser_WhenUserExists_ShouldReturnConflict));
+
+            var user = DataFactory.GenerateUsers(1).First();
+            user.FirstName = "Exists";
+            user.LastName = "Exists";
+            user.MiddleName = "Exists";
+
+            context.Users.Add(user);
+            await context.SaveChangesAsync();
+
+            var existingUser = new CheckExistingUserDTO
+            {
+                FirstName = "Exists",
+                LastName = "Exists",
+                MiddleName = "Exists"
+            };
+
+            var controller = new UsersController(context);
+
+            // Act
+            var result = await controller.CheckExistingUser(existingUser);
+
+            // Assert
+            Assert.IsType<ConflictResult>(result);
+        }
     }
 }
