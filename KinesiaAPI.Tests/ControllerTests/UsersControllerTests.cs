@@ -350,5 +350,29 @@ namespace KinesiaAPI.Tests.ControllerTests
             // Assert
             Assert.IsType<ConflictResult>(result);
         }
+
+        [Fact]
+        public async Task DeleteUsers_WhenUserExists_ShouldReturnNoContent()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(DeleteUsers_WhenUserExists_ShouldReturnNoContent));
+
+            var user = DataFactory.GenerateUsers(1).First();
+            user.UserID = "USER123";
+
+            context.Users.Add(user);
+            await context.SaveChangesAsync();
+
+            var controller = new UsersController(context);
+
+            // Act
+            var result = await controller.DeleteUsers("USER123");
+
+            // Assert
+            Assert.IsType<NoContentResult>(result);
+
+            var patientInDb = await context.Users.FindAsync("USER123");
+            Assert.Null(patientInDb);
+        }
     }
 }
