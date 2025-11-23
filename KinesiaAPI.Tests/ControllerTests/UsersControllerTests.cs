@@ -374,5 +374,20 @@ namespace KinesiaAPI.Tests.ControllerTests
             var patientInDb = await context.Users.FindAsync("USER123");
             Assert.Null(patientInDb);
         }
+
+        [Fact]
+        public async Task DeleteUsers_WhenUserDoesNotExists_ShouldReturnNotFound()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(DeleteUsers_WhenUserDoesNotExists_ShouldReturnNotFound));
+
+            var controller = new UsersController(context);
+
+            // Act
+            var result = await controller.DeleteUsers("USER123");
+
+            // Assert
+            Assert.IsType<NotFoundResult>(result);
+        }
     }
 }
