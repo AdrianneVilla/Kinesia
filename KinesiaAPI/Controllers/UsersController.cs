@@ -490,6 +490,11 @@ namespace KinesiaAPI.Controllers
 
             var existingUser = await _context.Users.FindAsync(id);
 
+            if(existingUser == null)
+            {
+                return NotFound();
+            }
+
             if(existingUser.Password != CustomSecurity.HashPassword(oldPassword, existingUser.Salt))
             {
                 return BadRequest("Invalid old password");
