@@ -26,6 +26,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\KinesiaAPI\KinesiaAPI.csproj" />
+    <ProjectReference Include="..\KinesiaLibrary\KinesiaLibrary.csproj" />
   </ItemGroup>
 
   <ItemGroup>

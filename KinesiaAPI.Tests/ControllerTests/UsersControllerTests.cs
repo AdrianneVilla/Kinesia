@@ -10,6 +10,7 @@ using KinesiaAPI.Tests.DataTest;
 using Xunit;
 using KinesiaAPI.Controllers;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using KinesiaLibrary;
 
 namespace KinesiaAPI.Tests.ControllerTests
 {
@@ -388,6 +389,34 @@ namespace KinesiaAPI.Tests.ControllerTests
 
             // Assert
             Assert.IsType<NotFoundResult>(result);
+        }
+
+        [Fact]
+        public async Task ChangePassword_WhenIdsMatchAndOldPasswordMatch_ShouldReturnNoContent()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(ChangePassword_WhenIdsMatchAndOldPasswordMatch_ShouldReturnNoContent));
+
+            var user = DataFactory.GenerateUsers(1).First();
+            user.UserID = "USER123";
+            var salt = CustomSecurity.GenerateSalt();
+            user.Salt = salt;
+            user.Password = CustomSecurity.HashPassword("Password", salt);
+
+            context.Add(user);
+            await context.SaveChangesAsync();
+
+            var controller = new UsersController(context);
+
+            // Act
+            var result = await controller.ChangePassword("USER123", "NewPassword", "Password");
+
+            // Assert
+            Assert.IsType<NoContentResult>(result);
+
+            var userInDb = await context.Users.FindAsync("USER123");
+
+            Assert.Equal(userInDb.Password, CustomSecurity.HashPassword("NewPassword", userInDb.Salt));
         }
     }
 }
