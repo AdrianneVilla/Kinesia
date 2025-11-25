@@ -392,10 +392,10 @@ namespace KinesiaAPI.Tests.ControllerTests
         }
 
         [Fact]
-        public async Task ChangePassword_WhenIdsMatchAndOldPasswordMatch_ShouldReturnNoContent()
+        public async Task ChangePassword_WhenUserExistsAndOldPasswordMatch_ShouldReturnNoContent()
         {
             // Arrange
-            var context = TestDbContextFactory.CreateDbContext(nameof(ChangePassword_WhenIdsMatchAndOldPasswordMatch_ShouldReturnNoContent));
+            var context = TestDbContextFactory.CreateDbContext(nameof(ChangePassword_WhenUserExistsAndOldPasswordMatch_ShouldReturnNoContent));
 
             var user = DataFactory.GenerateUsers(1).First();
             user.UserID = "USER123";
@@ -417,6 +417,60 @@ namespace KinesiaAPI.Tests.ControllerTests
             var userInDb = await context.Users.FindAsync("USER123");
 
             Assert.Equal(userInDb.Password, CustomSecurity.HashPassword("NewPassword", userInDb.Salt));
+        }
+
+        [Fact]
+        public async Task ChangePassword_WhenUserDoesNotExists_ShouldReturnNotFound()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(ChangePassword_WhenUserDoesNotExists_ShouldReturnNotFound));
+
+            var controller = new UsersController(context);
+
+            // Act
+            var result = await controller.ChangePassword("USER123", "NewPassword", "Password");
+
+            // Assert
+            Assert.IsType<NotFoundResult>(result);
+        }
+
+        [Fact]
+        public async Task ChangePassword_WhenIdIsNull_ShouldReturnBadRequest()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(ChangePassword_WhenIdIsNull_ShouldReturnBadRequest));
+
+            var controller = new UsersController(context);
+
+            // Act
+            var result = await controller.ChangePassword("", "NewPassword", "Password");
+
+            // Assert
+            Assert.IsType<BadRequestObjectResult>(result);
+        }
+
+        [Fact]
+        public async Task ChangePassword_WhenUserExistsAndOldPasswordMismatch_ShouldReturnBadRequest()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(ChangePassword_WhenUserExistsAndOldPasswordMismatch_ShouldReturnBadRequest));
+
+            var user = DataFactory.GenerateUsers(1).First();
+            user.UserID = "USER123";
+            var salt = CustomSecurity.GenerateSalt();
+            user.Salt = salt;
+            user.Password = CustomSecurity.HashPassword("Password", salt);
+
+            context.Users.Add(user);
+            await context.SaveChangesAsync();
+
+            var controller = new UsersController(context);
+
+            // Act
+            var result = await controller.ChangePassword("USER123", "NewPassword", "Passwurd");
+
+            // Assert
+            Assert.IsType<BadRequestObjectResult>(result);
         }
     }
 }
