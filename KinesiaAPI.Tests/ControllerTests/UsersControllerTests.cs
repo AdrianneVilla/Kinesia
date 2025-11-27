@@ -472,5 +472,32 @@ namespace KinesiaAPI.Tests.ControllerTests
             // Assert
             Assert.IsType<BadRequestObjectResult>(result);
         }
+
+        [Fact]
+        public async Task ResetPassword_WhenUserExists_ShouldReturnNoContent()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(ResetPassword_WhenUserExists_ShouldReturnNoContent));
+
+            var user = DataFactory.GenerateUsers(1).First();
+            user.UserID = "USER123";
+            user.Username = "USER";
+            user.Birthdate = DateTime.Now;
+
+            context.Users.Add(user);
+            await context.SaveChangesAsync();
+
+            var controller = new UsersController(context);
+
+            // Act
+            var result = controller.ResetPassword("USER123");
+
+            // Assert
+            Assert.IsType<NoContentResult>(result.Result);
+
+            var userInDb = await context.Users.FindAsync("USER123");
+
+            Assert.Equal(userInDb.Password, CustomSecurity.HashPassword("USER.20251127", userInDb.Salt));
+        }
     }
 }
