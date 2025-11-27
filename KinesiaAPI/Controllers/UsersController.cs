@@ -455,6 +455,11 @@ namespace KinesiaAPI.Controllers
 
             var existingUser = await _context.Users.FindAsync(id);
 
+            if(existingUser == null)
+            {
+                return NotFound();
+            }
+
             string salt = CustomSecurity.GenerateSalt();
             string newPassword = $"{existingUser.Username}.{existingUser.Birthdate.ToString("yyyyMMdd")}";
             existingUser.Password = CustomSecurity.HashPassword(newPassword, salt);
