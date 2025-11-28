@@ -497,7 +497,37 @@ namespace KinesiaAPI.Tests.ControllerTests
 
             var userInDb = await context.Users.FindAsync("USER123");
 
-            Assert.Equal(userInDb.Password, CustomSecurity.HashPassword("USER.20251127", userInDb.Salt));
+            Assert.Equal(userInDb.Password, CustomSecurity.HashPassword($"USER.{DateTime.Now.ToString("yyyyMMdd")}", userInDb.Salt));
+        }
+
+        [Fact]
+        public async Task ResetPassword_WhenUserDoesNotExists_ShouldReturnNotFound()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(ResetPassword_WhenUserDoesNotExists_ShouldReturnNotFound));
+
+            var controller = new UsersController(context);
+
+            // Act
+            var result = await controller.ResetPassword("USER123");
+
+            // Assert
+            Assert.IsType<NotFoundResult>(result);
+        }
+
+        [Fact]
+        public async Task ResetPassword_WhenIdIsNull_ShouldReturnBadRequest()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(ResetPassword_WhenIdIsNull_ShouldReturnBadRequest));
+
+            var controller = new UsersController(context);
+
+            // Act
+            var result = await controller.ResetPassword("");
+
+            // Assert
+            Assert.IsType<BadRequestObjectResult>(result);
         }
     }
 }
