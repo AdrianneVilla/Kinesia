@@ -27,44 +27,57 @@ namespace KinesiaAPI.Controllers
         // GET: api/Logs
         [HttpGet]
         public async Task<ActionResult<IEnumerable<LogDTO>>> GetLogs(
-            string? searchData,
+            string? searchData = null,
             string? currentTab = null,
             string? sortColumn = null)
         {
-            var query = from l in _context.Logs
-                        join u in _context.Users on l.UserID equals u.UserID
-                        select new LogDTO
-                        {
-                            LogID = l.LogID,
-                            LogType = l.LogType,
-                            Username = $"{u.FirstName} {u.MiddleName} {u.LastName}",
-                            Description = l.Description,
-                            LogDate = l.LogDate
-                        };
-
-            // will apply filters
-            if(!string.IsNullOrEmpty(currentTab) && currentTab != "All")
+            try
             {
-                query = query.Where(x => x.LogType == currentTab);
-            }
+                var query = from l in _context.Logs
+                            join u in _context.Users on l.UserID equals u.UserID
+                            select new LogDTO
+                            {
+                                LogID = l.LogID,
+                                LogType = l.LogType,
+                                Username = $"{u.FirstName} {u.MiddleName} {u.LastName}",
+                                Description = l.Description,
+                                LogDate = l.LogDate
+                            };
 
-            if (!string.IsNullOrEmpty(searchData))
-            {
-                query = query.Where(x =>
-                        x.LogID.Contains(searchData));
-            }
+                // will apply filters
+                if (!string.IsNullOrEmpty(currentTab) && currentTab != "All")
+                {
+                    query = query.Where(x => x.LogType == currentTab);
+                }
 
-            // will apply sorting
-            if(sortColumn == "Latest")
-            {
-                query = query.OrderByDescending(x => x.LogDate);
-            }
-            else
-            {
-                query = query.OrderBy(x => x.LogDate);
-            }
+                if (!string.IsNullOrEmpty(searchData))
+                {
+                    query = query.Where(x =>
+                            x.LogID.Contains(searchData));
+                }
 
-            return await query.ToListAsync();
+                // will apply sorting
+                if (sortColumn == "Latest")
+                {
+                    query = query.OrderByDescending(x => x.LogDate);
+                }
+                else
+                {
+                    query = query.OrderBy(x => x.LogDate);
+                }
+
+                var logs =  await query.ToListAsync();
+
+                return Ok(logs);
+            }
+            catch (DbException)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An error occured on database.\nPlease try again.");
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An unexpected error occured.\nPlease try again.");
+            }
         }
 
         // GET: api/logs/dashboard
