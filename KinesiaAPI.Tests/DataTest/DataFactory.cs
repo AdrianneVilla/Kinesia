@@ -79,5 +79,20 @@ namespace KinesiaAPI.Tests.DataTest
 
             return fakeUsers.Generate(count);
         }   
+
+        public static List<Logs> GenerateLogs(int count, List<Users> existingUsers)
+        {
+            var fakeLogs = new Faker<Logs>()
+                .RuleFor(l => l.LogID, f => $"LOG{f.IndexFaker + 1}")
+                .RuleFor(l => l.UserID, f => f.PickRandom(existingUsers).UserID)
+                .RuleFor(l => l.LogType, f => f.PickRandom(new[]
+                {
+                    "Sessions", "Patients", "Users", "Assessment", "ROM",
+                }))
+                .RuleFor(l => l.Description, f => f.Lorem.Sentence())
+                .RuleFor(l => l.LogDate, f => f.Date.Past(2));
+
+            return fakeLogs.Generate(count);
+        }
     }
 }
