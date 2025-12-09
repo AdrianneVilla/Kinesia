@@ -1,16 +1,17 @@
-﻿using System;
+﻿using KinesiaAPI.Controllers;
+using KinesiaAPI.Models.Entities;
+using KinesiaAPI.Tests.DataTest;
+using KinesiaLibrary;
+using KinesiaLibrary.DTOs.UserDTOs;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using KinesiaAPI.Models.Entities;
-using KinesiaLibrary.DTOs.UserDTOs;
-using KinesiaAPI.Tests.DataTest;
 using Xunit;
-using KinesiaAPI.Controllers;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using KinesiaLibrary;
 
 namespace KinesiaAPI.Tests.ControllerTests
 {
@@ -144,6 +145,54 @@ namespace KinesiaAPI.Tests.ControllerTests
 
             var expectedCount = logs.Count(l => l.LogType == "ROM");
             Assert.Equal(expectedCount, returnedLogs.Count());
+        }
+
+        [Fact]
+        public async Task GetLogs_ShouldReturnAllLogs()
+        {
+            var context = TestDbContextFactory.CreateDbContext(nameof(GetLogs_ShouldReturnAllLogs));
+            var users = DataFactory.GenerateUsers(20);
+            var logs = DataFactory.GenerateLogs(50, users);
+
+            context.Users.AddRange(users);
+            context.Logs.AddRange(logs);
+
+            await context.SaveChangesAsync();
+
+            var controller = new LogsController(context);
+
+            // Act
+            var result = await controller.GetLogs(currentTab: "All");
+
+            // Assert
+            var okResult = Assert.IsType<OkObjectResult>(result.Result);
+            var returnedLogs = Assert.IsAssignableFrom<IEnumerable<object>>(okResult.Value);
+
+            Assert.Equal(50, returnedLogs.Count());
+        }
+
+        [Fact]
+        public async Task GetLogs_ShouldReturnAllLogsWhenCurrentTabIsNull()
+        {
+            var context = TestDbContextFactory.CreateDbContext(nameof(GetLogs_ShouldReturnAllLogsWhenCurrentTabIsNull));
+            var users = DataFactory.GenerateUsers(20);
+            var logs = DataFactory.GenerateLogs(50, users);
+
+            context.Users.AddRange(users);
+            context.Logs.AddRange(logs);
+
+            await context.SaveChangesAsync();
+
+            var controller = new LogsController(context);
+
+            // Act
+            var result = await controller.GetLogs(currentTab: null);
+
+            // Assert
+            var okResult = Assert.IsType<OkObjectResult>(result.Result);
+            var returnedLogs = Assert.IsAssignableFrom<IEnumerable<object>>(okResult.Value);
+
+            Assert.Equal(50, returnedLogs.Count());
         }
     }
 }
