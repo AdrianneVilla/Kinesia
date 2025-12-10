@@ -2,6 +2,7 @@
 using KinesiaAPI.Models.Entities;
 using KinesiaAPI.Tests.DataTest;
 using KinesiaLibrary;
+using KinesiaLibrary.DTOs.LogDTOs;
 using KinesiaLibrary.DTOs.UserDTOs;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -150,6 +151,7 @@ namespace KinesiaAPI.Tests.ControllerTests
         [Fact]
         public async Task GetLogs_ShouldReturnAllLogs()
         {
+            // Arrange
             var context = TestDbContextFactory.CreateDbContext(nameof(GetLogs_ShouldReturnAllLogs));
             var users = DataFactory.GenerateUsers(20);
             var logs = DataFactory.GenerateLogs(50, users);
@@ -174,6 +176,7 @@ namespace KinesiaAPI.Tests.ControllerTests
         [Fact]
         public async Task GetLogs_ShouldReturnAllLogsWhenCurrentTabIsNull()
         {
+            // Arrange
             var context = TestDbContextFactory.CreateDbContext(nameof(GetLogs_ShouldReturnAllLogsWhenCurrentTabIsNull));
             var users = DataFactory.GenerateUsers(20);
             var logs = DataFactory.GenerateLogs(50, users);
@@ -193,6 +196,34 @@ namespace KinesiaAPI.Tests.ControllerTests
             var returnedLogs = Assert.IsAssignableFrom<IEnumerable<object>>(okResult.Value);
 
             Assert.Equal(50, returnedLogs.Count());
+        }
+
+        [Fact]
+        public async Task GetLogs_ShouldReturnSearchedLog()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(GetLogs_ShouldReturnSearchedLog));
+            var user = DataFactory.GenerateUsers(1);
+            var log = DataFactory.GenerateLogs(1, user).First();
+
+            log.LogID = "LOG123";
+
+            context.Users.AddRange(user);
+            context.Logs.AddRange(log);
+
+            await context.SaveChangesAsync();
+
+            var controller = new LogsController(context);
+
+            // Act
+            var result = await controller.GetLogs(searchData: "LOG123");
+
+            // Assert
+            var okResult = Assert.IsType<OkObjectResult>(result.Result);
+            var returnedLog = Assert.IsAssignableFrom<IEnumerable<LogDTO>>(okResult.Value);
+
+            Assert.Single(returnedLog);
+            Assert.Equal("LOG123", returnedLog.First().LogID);
         }
     }
 }
