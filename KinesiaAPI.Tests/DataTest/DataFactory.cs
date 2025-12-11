@@ -94,5 +94,20 @@ namespace KinesiaAPI.Tests.DataTest
 
             return fakeLogs.Generate(count);
         }
+
+        public static List<Assessments> GenerateAssessments(int count, List<Patients> existingPatients)
+        {
+            var fakeAssessments = new Faker<Assessments>()
+                .RuleFor(a => a.AssessmentID, f => $"ASSESSMENT{f.IndexFaker + 1}")
+                .RuleFor(a => a.PatientID, f => f.PickRandom(existingPatients).PatientID)
+                .RuleFor(a => a.Extremity, f => f.PickRandom(new[] { "Upper Extremity", "Lower Extremity" }))
+                .RuleFor(a => a.Joint, f => f.PickRandom(new[] { "Elbow and Forearm", "Shoulder", "Hip", "Knee" }))
+                .RuleFor(a => a.JointSide, f => f.PickRandom(new[] { "Left", "Right" }))
+                .RuleFor(a => a.AssessmentStatus, f => f.Random.Bool() ? 1 : 0)
+                .RuleFor(a => a.AssessmentDate, f => f.Date.Past(2))
+                .RuleFor(a => a.AssessmentEndDate, f => f.Random.Bool() ? f.Date.Recent() : null);
+
+            return fakeAssessments.Generate(count);
+        }
     }
 }
