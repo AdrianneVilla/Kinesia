@@ -220,7 +220,7 @@ namespace KinesiaAPI.Tests.ControllerTests
 
             // Assert
             var okResult = Assert.IsType<OkObjectResult>(result.Result);
-            var returnedLog = Assert.IsAssignableFrom<IEnumerable<object>>(okResult.Value);
+            var returnedLog = Assert.IsAssignableFrom<IEnumerable<LogDTO>>(okResult.Value);
 
             Assert.Single(returnedLog);
             Assert.Equal("LOG123", returnedLog.First().LogID);

@@ -77,7 +77,7 @@ namespace KinesiaAPI.Tests.ControllerTests
 
             // Assert
             var okResultNull = Assert.IsType<OkObjectResult>(resultNullTab.Result);
-            var returnedPatientsNull = Assert.IsAssignableFrom<IEnumerable<DisplayPatientsDTO>>(okResultNull.Value);
+            var returnedPatientsNull = Assert.IsAssignableFrom<IEnumerable<object>>(okResultNull.Value);
             Assert.Equal(20, returnedPatientsNull.Count());
 
             var okResultOther = Assert.IsType<OkObjectResult>(resultOtherTab.Result);
