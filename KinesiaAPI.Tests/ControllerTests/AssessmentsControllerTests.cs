@@ -71,5 +71,83 @@ namespace KinesiaAPI.Tests.ControllerTests
             var expectedCount = assessments.Count(a => a.Extremity == "Lower Extremity");
             Assert.Equal(expectedCount, returnedAssessments.Count());
         }
+
+        [Fact]
+        public async Task GetAssessments_ShouldReturnOngoingOnly()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(GetAssessments_ShouldReturnOngoingOnly));
+            var patients = DataFactory.GeneratePatients(20);
+            var assessments = DataFactory.GenerateAssessments(50, patients);
+
+            context.Patients.AddRange(patients);
+            context.Assessments.AddRange(assessments);
+
+            await context.SaveChangesAsync();
+
+            var controller = new AssessmentsController(context);
+
+            // Act
+            var result = await controller.GetAssessments(currentStatusTab: "Ongoing");
+
+            // Assert
+            var okResult = Assert.IsType<OkObjectResult>(result.Result);
+            var returnedAssessments = Assert.IsAssignableFrom<IEnumerable<object>>(okResult.Value);
+
+            var expectedCount = assessments.Count(a => a.AssessmentStatus == 1);
+            Assert.Equal(expectedCount, returnedAssessments.Count());
+        }
+
+        [Fact]
+        public async Task GetAssessments_ShouldReturnFinishedOnly()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(GetAssessments_ShouldReturnFinishedOnly));
+            var patients = DataFactory.GeneratePatients(20);
+            var assessments = DataFactory.GenerateAssessments(50, patients);
+
+            context.Patients.AddRange(patients);
+            context.Assessments.AddRange(assessments);
+
+            await context.SaveChangesAsync();
+
+            var controller = new AssessmentsController(context);
+
+            // Act
+            var result = await controller.GetAssessments(currentStatusTab: "Finished");
+
+            // Assert
+            var okResult = Assert.IsType<OkObjectResult>(result.Result);
+            var returnedAssessments = Assert.IsAssignableFrom<IEnumerable<object>>(okResult.Value);
+
+            var expectedCount = assessments.Count(a => a.AssessmentStatus == 2);
+            Assert.Equal(expectedCount, returnedAssessments.Count());
+        }
+
+        [Fact]
+        public async Task GetAssessments_ShouldReturnArchivedOnly()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(GetAssessments_ShouldReturnArchivedOnly));
+            var patients = DataFactory.GeneratePatients(20);
+            var assessments = DataFactory.GenerateAssessments(50, patients);
+
+            context.Patients.AddRange(patients);
+            context.Assessments.AddRange(assessments);
+
+            await context.SaveChangesAsync();
+
+            var controller = new AssessmentsController(context);
+
+            // Act
+            var result = await controller.GetAssessments(currentStatusTab: "Archived");
+
+            // Assert
+            var okResult = Assert.IsType<OkObjectResult>(result.Result);
+            var returnedAssessments = Assert.IsAssignableFrom<IEnumerable<object>>(okResult.Value);
+
+            var expectedCount = assessments.Count(a => a.AssessmentStatus == 0);
+            Assert.Equal(expectedCount, returnedAssessments.Count());
+        }
     }
 }
