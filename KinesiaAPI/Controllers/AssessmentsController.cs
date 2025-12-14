@@ -144,6 +144,11 @@ namespace KinesiaAPI.Controllers
                                         a.AssessmentEndDate
                                     }).FirstOrDefaultAsync();
 
+                if (result == null)
+                {
+                    return NotFound();
+                }
+
                 var assessment = new AssessmentDTO
                 {
                     AssessmentID = result.AssessmentID,
@@ -163,11 +168,6 @@ namespace KinesiaAPI.Controllers
                     AssessmentDate = result.AssessmentDate.ToString("yyyy-MM-dd hh:mm tt"),
                     AssessmentEndDate = result.AssessmentEndDate.HasValue ? result.AssessmentEndDate.Value.ToString("yyyy-MM-dd hh:mm tt") : "N/A"
                 };
-
-                if (assessment == null)
-                {
-                    return NotFound();
-                }
 
                 return Ok(assessment);
             }
