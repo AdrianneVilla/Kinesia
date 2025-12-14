@@ -149,5 +149,46 @@ namespace KinesiaAPI.Tests.ControllerTests
             var expectedCount = assessments.Count(a => a.AssessmentStatus == 0);
             Assert.Equal(expectedCount, returnedAssessments.Count());
         }
+
+        [Fact]
+        public async Task GetAssessments_WithValidAssessmentId_ShouldReturnAssessmentDTO()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(GetAssessments_WithValidAssessmentId_ShouldReturnAssessmentDTO));
+            var patients = DataFactory.GeneratePatients(1);
+            var assessments = DataFactory.GenerateAssessments(1, patients).First();
+
+            assessments.AssessmentID = "ASSESSMENT1";
+
+            context.Patients.AddRange(patients);
+            context.Assessments.AddRange(assessments);
+            await context.SaveChangesAsync();
+
+            var controller = new AssessmentsController(context);
+
+            // Act
+            var result = await controller.GetAssessments("ASSESSMENT1");
+
+            // Assert
+            var okResult = Assert.IsType<OkObjectResult>(result.Result);
+            var returnedAssessment = Assert.IsAssignableFrom<AssessmentDTO>(okResult.Value);
+
+            Assert.Equal("ASSESSMENT1", returnedAssessment.AssessmentID);
+        }
+
+        [Fact]
+        public async Task GetAssessments_WithInvalidId_ShouldReturnNotFound()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(GetAssessments_WithInvalidId_ShouldReturnNotFound));
+
+            var controller = new AssessmentsController(context);
+
+            // Act
+            var result = await controller.GetAssessments("ASSESSMENT1");
+
+            // Assert
+            Assert.IsType<NotFoundResult>(result.Result);
+        }
     }
 }
