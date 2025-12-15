@@ -190,5 +190,62 @@ namespace KinesiaAPI.Tests.ControllerTests
             // Assert
             Assert.IsType<NotFoundResult>(result.Result);
         }
+
+        [Fact]
+        public async Task DisplayPatientAssessments_WithValidId_ShouldDisplayPatientAssessmentsDTO()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(DisplayPatientAssessments_WithValidId_ShouldDisplayPatientAssessmentsDTO));
+            var patient = DataFactory.GeneratePatients(1);
+            patient.First().PatientID = "PATIENT123";
+            var assessment = DataFactory.GenerateAssessments(1, patient);
+            assessment.First().AssessmentID = "ASSESSMENT123";
+
+            context.Patients.AddRange(patient);
+            context.Assessments.AddRange(assessment);
+
+            await context.SaveChangesAsync();
+
+            var controller = new AssessmentsController(context);
+
+            // Act
+            var result = await controller.DisplayPatientAssessments("PATIENT123");
+
+            // Assert
+            var okResult = Assert.IsType<OkObjectResult>(result.Result);
+            var returnedAssessment = Assert.IsAssignableFrom<IEnumerable<DisplayPatientAssessmentsDTO>>(okResult.Value);
+
+            Assert.Equal("ASSESSMENT123", returnedAssessment.First().AssessmentID);
+        }
+
+        [Fact]
+        public async Task DisplayPatientAssessments_WithInvalidId_ShouldReturnNotFound()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(DisplayPatientAssessments_WithInvalidId_ShouldReturnNotFound));
+
+            var controller = new AssessmentsController(context);
+
+            // Act
+            var result = await controller.DisplayPatientAssessments("PATIENT123");
+
+            // Assert
+            Assert.IsType<NotFoundObjectResult>(result.Result);
+        }
+
+        [Fact]
+        public async Task DisplayPatientAssessments_WithNullInput_ShouldReturnBadRequest()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(DisplayPatientAssessments_WithNullInput_ShouldReturnBadRequest));
+
+            var controller = new AssessmentsController(context);
+
+            // Act
+            var result = await controller.DisplayPatientAssessments("");
+
+            // Assert
+            Assert.IsType<BadRequestObjectResult>(result.Result);
+        }
     }
 }
