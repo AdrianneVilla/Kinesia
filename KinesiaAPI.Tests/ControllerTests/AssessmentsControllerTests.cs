@@ -4,10 +4,12 @@ using KinesiaAPI.Tests.DataTest;
 using KinesiaLibrary;
 using KinesiaLibrary.DTOs.AssessmentDTOs;
 using KinesiaLibrary.DTOs.LogDTOs;
+using KinesiaLibrary.DTOs.ReportDTOs;
 using KinesiaLibrary.DTOs.UserDTOs;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using NuGet.ContentModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -246,6 +248,47 @@ namespace KinesiaAPI.Tests.ControllerTests
 
             // Assert
             Assert.IsType<BadRequestObjectResult>(result.Result);
+        }
+
+        [Fact]
+        public async Task GenerateAssessmentReport_WithValidId_ShouldReturnAssessmentReportDTO()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(GenerateAssessmentReport_WithValidId_ShouldReturnAssessmentReportDTO));
+            var patient = DataFactory.GeneratePatients(1);
+            var assessment = DataFactory.GenerateAssessments(1, patient);
+            assessment.First().AssessmentID = "ASSESSMENT123";
+
+            context.Patients.AddRange(patient);
+            context.Assessments.AddRange(assessment);
+
+            await context.SaveChangesAsync();
+
+            var controller = new AssessmentsController(context);
+
+            // Act
+            var result = await controller.GenerateAssessmentReport("ASSESSMENT123");
+
+            // Assert
+            var okResult = Assert.IsType<OkObjectResult>(result.Result);
+            var returnedAssessment = Assert.IsAssignableFrom<AssessmentReportDTO>(okResult.Value);
+
+            Assert.Equal("ASSESSMENT123", returnedAssessment.AssessmentID);
+        }
+
+        [Fact]
+        public async Task GenerateAssessmentReport_WithInvalidId_ShouldReturnNotFound()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(GenerateAssessmentReport_WithInvalidId_ShouldReturnNotFound));
+
+            var controller = new AssessmentsController(context);
+
+            // Act
+            var result = await controller.GenerateAssessmentReport("ASSESSMENT123");
+
+            // Assert
+            Assert.IsType<NotFoundObjectResult>(result.Result);
         }
     }
 }
