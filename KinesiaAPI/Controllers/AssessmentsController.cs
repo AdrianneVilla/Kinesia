@@ -238,6 +238,11 @@ namespace KinesiaAPI.Controllers
                                     a.AssessmentEndDate
                                 }).FirstOrDefaultAsync();
 
+            if (result == null)
+            {
+                return NotFound("Assessment not found");
+            }
+
             var assessment = new AssessmentReportDTO
             {
                 AssessmentID = assessmentID,
