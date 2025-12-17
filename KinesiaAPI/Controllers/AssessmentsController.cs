@@ -285,7 +285,7 @@ namespace KinesiaAPI.Controllers
             {
                 var query = from a in _context.Assessments
                             join p in _context.Patients on a.PatientID equals p.PatientID
-                            where a.AssessmentDate == DateTime.Now
+                            where a.AssessmentDate == DateTime.Today
                             select new { a, p };
 
                 var rawData = await query.ToListAsync();
