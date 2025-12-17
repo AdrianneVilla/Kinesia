@@ -244,7 +244,7 @@ namespace KinesiaAPI.Controllers
             {
                 var query = _context.Patients.AsQueryable();
 
-                query = query.Where(p => p.DateAdded == DateTime.Now);
+                query = query.Where(p => p.DateAdded == DateTime.Today);
 
                 var patients = await query
                                .Select(p => PatientToPatientReportDTO(p))
