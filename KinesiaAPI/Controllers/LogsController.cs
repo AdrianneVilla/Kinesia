@@ -149,7 +149,7 @@ namespace KinesiaAPI.Controllers
             {
                 var query = from l in _context.Logs
                             join u in _context.Users on l.UserID equals u.UserID
-                            where l.LogDate == DateTime.Now
+                            where l.LogDate == DateTime.Today
                             orderby l.LogDate descending
                             select new LogReportDTO
                             {
