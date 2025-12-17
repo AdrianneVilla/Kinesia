@@ -180,7 +180,7 @@ namespace KinesiaAPI.Controllers
             {
                 var query = _context.Users.AsQueryable();
 
-                query = query.Where(u => u.DateAdded == DateTime.Now);
+                query = query.Where(u => u.DateAdded == DateTime.Today);
 
                 var users = await query
                                 .Select(u => UsersToUsersReportDTO(u))
