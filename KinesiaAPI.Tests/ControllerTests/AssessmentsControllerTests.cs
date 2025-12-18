@@ -290,5 +290,109 @@ namespace KinesiaAPI.Tests.ControllerTests
             // Assert
             Assert.IsType<NotFoundObjectResult>(result.Result);
         }
+
+        [Fact]
+        public async Task GenerateTodayReport_ShouldReturnAssessmentReportDTO()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(GenerateTodayReport_ShouldReturnAssessmentReportDTO));
+            var patients = DataFactory.GeneratePatients(20);
+            var assessments = DataFactory.GenerateAssessments(50, patients);
+            assessments.ForEach(assessments => { assessments.AssessmentDate = DateTime.Today; });
+
+            context.Patients.AddRange(patients);
+            context.Assessments.AddRange(assessments);
+            await context.SaveChangesAsync();
+
+            var controller = new AssessmentsController(context);
+
+            // Act
+            var result = await controller.GenerateTodayReport();
+
+            // Assert
+            var okResult = Assert.IsType<OkObjectResult>(result.Result);
+            var returnedAssessments = Assert.IsAssignableFrom<IEnumerable<AssessmentReportDTO>>(okResult.Value);
+
+            var todayAssessmentsCount = assessments.Count();
+            Assert.Equal(todayAssessmentsCount, returnedAssessments.Count());
+        }
+
+        [Fact]
+        public async Task GenerateWeeklyReport_ShouldReturnAssessmentReportDTO()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(GenerateWeeklyReport_ShouldReturnAssessmentReportDTO));
+            var patients = DataFactory.GeneratePatients(20);
+            var assessments = DataFactory.GenerateAssessments(50, patients);
+            assessments.ForEach(assessments => { assessments.AssessmentDate = DateTime.Today.AddDays(-2); });
+
+            context.Patients.AddRange(patients);
+            context.Assessments.AddRange(assessments);
+            await context.SaveChangesAsync();
+
+            var controller = new AssessmentsController(context);
+
+            // Act
+            var result = await controller.GenerateWeeklyReport(DateTime.Today.AddDays(-7), DateTime.Today);
+
+            // Assert
+            var okResult = Assert.IsType<OkObjectResult>(result.Result);
+            var returnedAssessments = Assert.IsAssignableFrom<IEnumerable<AssessmentReportDTO>>(okResult.Value);
+
+            var weekAssessmentsCount = assessments.Count();
+            Assert.Equal(weekAssessmentsCount, returnedAssessments.Count());
+        }
+
+        [Fact]
+        public async Task GenerateMonthlyReport_ShouldReturnAssessmentReportDTO()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(GenerateMonthlyReport_ShouldReturnAssessmentReportDTO));
+            var patients = DataFactory.GeneratePatients(20);
+            var assessments = DataFactory.GenerateAssessments(50, patients);
+            assessments.ForEach(assessments => { assessments.AssessmentDate = DateTime.Today; });
+
+            context.Patients.AddRange(patients);
+            context.Assessments.AddRange(assessments);
+            await context.SaveChangesAsync();
+
+            var controller = new AssessmentsController(context);
+
+            // Act
+            var result = await controller.GenerateMonthlyReport(DateTime.Today.Month, DateTime.Today.Year);
+
+            // Assert
+            var okResult = Assert.IsType<OkObjectResult>(result.Result);
+            var returnedAssessments = Assert.IsAssignableFrom<IEnumerable<AssessmentReportDTO>>(okResult.Value);
+
+            var monthAssessmentsCount = assessments.Count();
+            Assert.Equal(monthAssessmentsCount, returnedAssessments.Count());
+        }
+
+        [Fact]
+        public async Task GenerateYearlyReport_ShouldReturnAssessmentReportDTO()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(GenerateYearlyReport_ShouldReturnAssessmentReportDTO));
+            var patients = DataFactory.GeneratePatients(20);
+            var assessments = DataFactory.GenerateAssessments(50, patients);
+            assessments.ForEach(assessments => { assessments.AssessmentDate = DateTime.Today; });
+
+            context.Patients.AddRange(patients);
+            context.Assessments.AddRange(assessments);
+            await context.SaveChangesAsync();
+
+            var controller = new AssessmentsController(context);
+
+            // Act
+            var result = await controller.GenerateYearlyReport(DateTime.Today.Year);
+
+            // Assert
+            var okResult = Assert.IsType<OkObjectResult>(result.Result);
+            var returnedAssessment = Assert.IsAssignableFrom<IEnumerable<AssessmentReportDTO>>(okResult.Value);
+
+            var yearAssessmentsCount = assessments.Count();
+            Assert.Equal(yearAssessmentsCount, returnedAssessment.Count())  ;
+        }
     }
 }
