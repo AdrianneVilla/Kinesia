@@ -394,5 +394,55 @@ namespace KinesiaAPI.Tests.ControllerTests
             var yearAssessmentsCount = assessments.Count();
             Assert.Equal(yearAssessmentsCount, returnedAssessment.Count())  ;
         }
+
+        [Fact]
+        public async Task CheckOngoingAssessment_ShouldReturnTrue()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(CheckOngoingAssessment_ShouldReturnTrue));
+            var patient = DataFactory.GeneratePatients(1);
+            patient.First().PatientID = "PATIENT123";
+            var assessment = DataFactory.GenerateAssessments(1, patient);
+            assessment.First().AssessmentStatus = 1;
+            assessment.First().Joint = "Shoulder";
+            assessment.First().JointSide = "Left";
+
+            context.Patients.AddRange(patient);
+            context.Assessments.AddRange(assessment);
+            await context.SaveChangesAsync();
+
+            var controller = new AssessmentsController(context);
+
+            // Act
+            var result = await controller.CheckOngoingAssessment("PATIENT123", "Shoulder", "Left");
+
+            // Assert
+            Assert.True(result.Value);
+        }
+
+        [Fact]
+        public async Task CheckOngoingAssessment_ShouldReturnFalse()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(CheckOngoingAssessment_ShouldReturnFalse));
+            var patient = DataFactory.GeneratePatients(1);
+            patient.First().PatientID = "PATIENT123";
+            var assessment = DataFactory.GenerateAssessments(1, patient);
+            assessment.First().AssessmentStatus = 2;
+            assessment.First().Joint = "Shoulder";
+            assessment.First().JointSide = "Left";
+
+            context.Patients.AddRange(patient);
+            context.Assessments.AddRange(assessment);
+            await context.SaveChangesAsync();
+
+            var controller = new AssessmentsController(context);
+
+            // Act
+            var result = await controller.CheckOngoingAssessment("PATIENT123", "Shoulder", "Left");
+
+            // Assert
+            Assert.False(result.Value);
+        }
     }
 }
