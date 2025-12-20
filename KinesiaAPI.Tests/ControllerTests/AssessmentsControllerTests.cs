@@ -444,5 +444,101 @@ namespace KinesiaAPI.Tests.ControllerTests
             // Assert
             Assert.False(result.Value);
         }
+
+        [Fact]
+        public async Task GetTotalOngoingAssessments_ShouldReturnOngoingAssessmentsCountOfTheMonthOnly()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(GetTotalOngoingAssessments_ShouldReturnOngoingAssessmentsCountOfTheMonthOnly));
+            var patientsOfThisMonth = DataFactory.GeneratePatients(5);
+            var ongoingAssessmentsOfThisMonth = DataFactory.GenerateAssessments(20, patientsOfThisMonth);
+            ongoingAssessmentsOfThisMonth.ForEach(assessments => { assessments.AssessmentDate = DateTime.Today; assessments.AssessmentStatus = 1; });
+            context.Patients.AddRange(patientsOfThisMonth);
+            context.Assessments.AddRange(ongoingAssessmentsOfThisMonth);
+
+            var patientsOfPastMonth = DataFactory.GeneratePatients(5);
+            patientsOfPastMonth.ForEach(p => p.PatientID += 100);
+            var ongoingAssessmentsOfPastMonth = DataFactory.GenerateAssessments(20, patientsOfPastMonth);
+            ongoingAssessmentsOfPastMonth.ForEach(assessments => { assessments.AssessmentID += 100; assessments.AssessmentDate = DateTime.Today.AddMonths(-1); assessments.AssessmentStatus = 1; });
+            context.Patients.AddRange(patientsOfPastMonth);
+            context.Assessments.AddRange(ongoingAssessmentsOfPastMonth);
+                
+            await context.SaveChangesAsync();
+
+            var controller = new AssessmentsController(context);
+
+            // Act
+            var result = await controller.GetTotalOngoingAssessments(DateTime.Today.Month, DateTime.Today.Year);
+
+            // Assert
+            var okResult = Assert.IsType<OkObjectResult>(result.Result);
+            var actualCount = Assert.IsType<int>(okResult.Value);
+
+            Assert.Equal(ongoingAssessmentsOfThisMonth.Count, actualCount);
+        }
+
+        [Fact]
+        public async Task GetTotalAssessments_ShouldReturnTotalAssessmentsCountOfTheMonthOnly()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(GetTotalAssessments_ShouldReturnTotalAssessmentsCountOfTheMonthOnly));
+            var patientsOfThisMonth = DataFactory.GeneratePatients(5);
+            var ongoingAssessmentsOfThisMonth = DataFactory.GenerateAssessments(20, patientsOfThisMonth);
+            ongoingAssessmentsOfThisMonth.ForEach(assessments => { assessments.AssessmentDate = DateTime.Today; });
+            context.Patients.AddRange(patientsOfThisMonth);
+            context.Assessments.AddRange(ongoingAssessmentsOfThisMonth);
+
+            var patientsOfPastMonth = DataFactory.GeneratePatients(5);
+            patientsOfPastMonth.ForEach(p => p.PatientID += 100);
+            var ongoingAssessmentsOfPastMonth = DataFactory.GenerateAssessments(20, patientsOfPastMonth);
+            ongoingAssessmentsOfPastMonth.ForEach(assessments => { assessments.AssessmentID += 100; assessments.AssessmentDate = DateTime.Today.AddMonths(-1); });
+            context.Patients.AddRange(patientsOfPastMonth);
+            context.Assessments.AddRange(ongoingAssessmentsOfPastMonth);
+
+            await context.SaveChangesAsync();
+
+            var controller = new AssessmentsController(context);
+
+            // Act
+            var result = await controller.GetTotalAssessments(DateTime.Today.Month, DateTime.Today.Year);
+
+            // Assert
+            var okResult = Assert.IsType<OkObjectResult>(result.Result);
+            var actualCount = Assert.IsType<int>(okResult.Value);
+
+            Assert.Equal(ongoingAssessmentsOfThisMonth.Count, actualCount);
+        }
+
+        [Fact]
+        public async Task GetMostTrackedJoint_ShouldReturnMostTrackedJointOfTheMonthOnly()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(GetMostTrackedJoint_ShouldReturnMostTrackedJointOfTheMonthOnly));
+            var patientsOfThisMonth = DataFactory.GeneratePatients(5);
+            var assessmentsOfThisMonth = DataFactory.GenerateAssessments(20, patientsOfThisMonth);
+            assessmentsOfThisMonth.ForEach(assessments => { assessments.AssessmentDate = DateTime.Today; assessments.Joint = "Shoulder"; });
+            context.Patients.AddRange(patientsOfThisMonth);
+            context.Assessments.AddRange(assessmentsOfThisMonth);
+
+            var patientsOfPastMonth = DataFactory.GeneratePatients(5);
+            patientsOfPastMonth.ForEach(p => p.PatientID += 100);
+            var assessmentsOfPastMonth = DataFactory.GenerateAssessments(20, patientsOfPastMonth);
+            assessmentsOfPastMonth.ForEach(assessments => { assessments.AssessmentID += 100; assessments.Joint = "Elbow and Forearm"; });
+            context.Patients.AddRange(patientsOfPastMonth);
+            context.Assessments.AddRange(assessmentsOfPastMonth);
+
+            await context.SaveChangesAsync();
+
+            var controller = new AssessmentsController(context);
+
+            // Act
+            var result = await controller.GetMostTrackedJoint(DateTime.Today.Month, DateTime.Today.Year);
+
+            // Assert
+            var okResult = Assert.IsType<OkObjectResult>(result.Result);
+            var mostTrackedJoint = Assert.IsType<string>(okResult.Value);
+
+            Assert.Equal("Shoulder", mostTrackedJoint);
+        }
     }
 }
