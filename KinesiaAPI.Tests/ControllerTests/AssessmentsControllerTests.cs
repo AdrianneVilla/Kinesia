@@ -417,7 +417,10 @@ namespace KinesiaAPI.Tests.ControllerTests
             var result = await controller.CheckOngoingAssessment("PATIENT123", "Shoulder", "Left");
 
             // Assert
-            Assert.True(result.Value);
+            var okResult = Assert.IsType<OkObjectResult>(result.Result);
+            var boolResult = Assert.IsType<bool>(okResult.Value);
+
+            Assert.True(boolResult);
         }
 
         [Fact]
@@ -442,7 +445,10 @@ namespace KinesiaAPI.Tests.ControllerTests
             var result = await controller.CheckOngoingAssessment("PATIENT123", "Shoulder", "Left");
 
             // Assert
-            Assert.False(result.Value);
+            var okResult = Assert.IsType<OkObjectResult>(result.Result);
+            var boolResult = Assert.IsType<bool>(okResult.Value);
+
+            Assert.False(boolResult);
         }
 
         [Fact]
