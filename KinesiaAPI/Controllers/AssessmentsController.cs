@@ -464,7 +464,7 @@ namespace KinesiaAPI.Controllers
                             a.JointSide == jointSide &&
                             a.AssessmentStatus == 1);
 
-                return hasOngoingAssessment;
+                return Ok(hasOngoingAssessment);
             }
             catch (DbException)
             {
