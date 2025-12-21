@@ -546,5 +546,103 @@ namespace KinesiaAPI.Tests.ControllerTests
 
             Assert.Equal("Shoulder", mostTrackedJoint);
         }
+
+        [Fact]
+        public async Task UpdateAssessmentStatus_WhenIdIsValidAndAssessmentExists_ShouldReturnNoContent()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(UpdateAssessmentStatus_WhenIdIsValidAndAssessmentExists_ShouldReturnNoContent));
+            var patient = DataFactory.GeneratePatients(1);
+            var assessment = DataFactory.GenerateAssessments(1, patient);
+            assessment.First().AssessmentID = "ASSESSMENT123";
+            assessment.First().AssessmentStatus = 1;
+
+            context.Patients.AddRange(patient);
+            context.Assessments.AddRange(assessment);
+            await context.SaveChangesAsync();
+
+            var updatedAssessment = new AssessmentUpdateStatusDTO
+            {
+                AssessmentID = "ASSESSMENT123",
+                AssessmentStatus = 2,
+            };
+
+            var controller = new AssessmentsController(context);
+
+            // Act
+            var result = await controller.UpdateAssessmentStatus("ASSESSMENT123", updatedAssessment);
+
+            // Assert
+            Assert.IsType<NoContentResult>(result);
+
+            var assessmentInDb = await context.Assessments.FindAsync("ASSESSMENT123");
+
+            Assert.NotNull(assessmentInDb);
+            Assert.Equal(2, assessmentInDb.AssessmentStatus);
+            Assert.NotNull(assessmentInDb.AssessmentEndDate);
+        }
+
+        [Fact]
+        public async Task UpdateAssessmentStatus_WhenIdIsInvalid_ShouldReturnBadRequest()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(UpdateAssessmentStatus_WhenIdIsInvalid_ShouldReturnBadRequest));
+            
+            var updatedAssessment = new AssessmentUpdateStatusDTO
+            {
+                AssessmentID = "ASSESSMENT456",
+                AssessmentStatus = 2
+            };
+
+            var controller = new AssessmentsController(context);
+
+            // Act
+            var result = await controller.UpdateAssessmentStatus("ASSESSMENT123", updatedAssessment);
+
+            // Assert
+            Assert.IsType<BadRequestObjectResult>(result);
+        }
+
+        [Fact]
+        public async Task UpdateAssessmentStatus_WhenIdIsNull_ShouldReturnBadRequest()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(UpdateAssessmentStatus_WhenIdIsNull_ShouldReturnBadRequest));
+
+            var updatedAssessment = new AssessmentUpdateStatusDTO
+            {
+                AssessmentID = "ASSESSMENT456",
+                AssessmentStatus = 2
+            };
+
+            var controller = new AssessmentsController(context);
+
+            // Act
+            var result = await controller.UpdateAssessmentStatus("", updatedAssessment);
+
+            // Assert
+            Assert.IsType<BadRequestObjectResult>(result);
+        }
+
+        [Fact]
+        public async Task UpdateAssessmentStatus_WhenAssessmentDoesNotExists_ShouldReturnNotFound()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(UpdateAssessmentStatus_WhenAssessmentDoesNotExists_ShouldReturnNotFound));
+
+            var updatedAssessment = new AssessmentUpdateStatusDTO
+            {
+                AssessmentID = "ASSESSMENT456",
+                AssessmentStatus = 2
+            };
+
+            var controller = new AssessmentsController(context);
+
+            // Act
+            var result = await controller.UpdateAssessmentStatus("ASSESSMENT456", updatedAssessment);
+
+            // Assert
+            Assert.IsType<NotFoundObjectResult>(result);
+        }
     }
 }
