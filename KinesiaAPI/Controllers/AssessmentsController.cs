@@ -598,6 +598,11 @@ namespace KinesiaAPI.Controllers
             {
                 var existingAssessment = await _context.Assessments.FindAsync(id);
 
+                if(existingAssessment == null)
+                {
+                    return NotFound("Assessment not found");
+                }
+
                 if (updatedAssessment.AssessmentEndDate.HasValue)
                     existingAssessment.AssessmentEndDate = updatedAssessment.AssessmentEndDate.Value;
 
