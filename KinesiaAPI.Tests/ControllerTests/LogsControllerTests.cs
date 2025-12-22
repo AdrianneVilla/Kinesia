@@ -225,5 +225,45 @@ namespace KinesiaAPI.Tests.ControllerTests
             Assert.Single(returnedLog);
             Assert.Equal("LOG123", returnedLog.First().LogID);
         }
+
+        [Fact]
+        public async Task GetDashboardLogs_WhenLogsIsNotEmpty_ShouldReturnDisplayDashboardLogsDTO()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(GetDashboardLogs_WhenLogsIsNotEmpty_ShouldReturnDisplayDashboardLogsDTO));
+            var users = DataFactory.GenerateUsers(20);
+            var logs = DataFactory.GenerateLogs(50, users);
+
+            context.Users.AddRange(users);
+            context.Logs.AddRange(logs);
+            await context.SaveChangesAsync();
+
+            var controller = new LogsController(context);
+
+            // Act
+            var result = await controller.GetDashboardLogs();
+
+            // Assert
+            var okResult = Assert.IsType<OkObjectResult>(result.Result);
+            var returnedLogs = Assert.IsAssignableFrom<IEnumerable<DisplayDashboardLogsDTO>>(okResult.Value);
+        }
+
+        [Fact]
+        public async Task GetDashboardLogs_WhenLogsIsEmpty_ShouldReturnDisplayDashboardLogsDTOAndIsEmpty()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(GetDashboardLogs_WhenLogsIsEmpty_ShouldReturnDisplayDashboardLogsDTOAndIsEmpty));
+
+            var controller = new LogsController(context);
+
+            // Act
+            var result = await controller.GetDashboardLogs();
+
+            // Assert
+            var okResult = Assert.IsType<OkObjectResult>(result.Result);
+            var returnedLogs = Assert.IsAssignableFrom<IEnumerable<DisplayDashboardLogsDTO>>(okResult.Value);
+
+            Assert.Empty(returnedLogs);
+        }
     }
 }
