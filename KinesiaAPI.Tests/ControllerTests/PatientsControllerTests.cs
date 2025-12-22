@@ -195,10 +195,10 @@ namespace KinesiaAPI.Tests.ControllerTests
         }
 
         [Fact]
-        public async Task UpdatePatientStatus_WhenPatientExists_ShouldUpdateStatusAndReturnNoContent()
+        public async Task UpdatePatientStatus_WhenIdIsValidAndPatientExists_ShouldReturnNoContent()
         {
             // Arrange
-            var context = TestDbContextFactory.CreateDbContext(nameof(UpdatePatientStatus_WhenPatientExists_ShouldUpdateStatusAndReturnNoContent));
+            var context = TestDbContextFactory.CreateDbContext(nameof(UpdatePatientStatus_WhenIdIsValidAndPatientExists_ShouldReturnNoContent));
 
             var patientToUpdate = DataFactory.GeneratePatients(1).First();
             patientToUpdate.PatientID = "PATIENT123";
@@ -229,6 +229,48 @@ namespace KinesiaAPI.Tests.ControllerTests
         }
 
         [Fact]
+        public async Task UpdatePatientStatus_WhenIdIsInvalid_ShouldReturnBadRequest()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(UpdatePatientStatus_WhenIdIsInvalid_ShouldReturnBadRequest));
+
+            var updatedPatient = new PatientUpdateStatusDTO
+            {
+                PatientID = "PATIENT123",
+                Status = 1
+            };
+
+            var controller = new PatientsController(context);
+
+            // Act
+            var result = await controller.UpdatePatientStatus("PATIENT456", updatedPatient);
+
+            // Assert
+            Assert.IsType<BadRequestObjectResult>(result);
+        }
+
+        [Fact]
+        public async Task UpdatePatientStatus_WhenIdIsNull_ShouldReturnBadRequest()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(UpdatePatientStatus_WhenIdIsNull_ShouldReturnBadRequest));
+
+            var updatedPatient = new PatientUpdateStatusDTO
+            {
+                PatientID = "PATIENT123",
+                Status = 1
+            };
+
+            var controller = new PatientsController(context);
+
+            // Act
+            var result = await controller.UpdatePatientStatus("", updatedPatient);
+
+            // Assert
+            Assert.IsType<BadRequestObjectResult>(result);
+        }
+
+        [Fact]
         public async Task UpdatePatientStatus_WhenPatientDoesNotExists_ShouldReturnNotFound()
         {
             // Arrange
@@ -246,7 +288,7 @@ namespace KinesiaAPI.Tests.ControllerTests
             var result = await controller.UpdatePatientStatus("PATIENT123", updatedPatient);
 
             // Assert
-            Assert.IsType<NotFoundResult>(result);
+            Assert.IsType<NotFoundObjectResult>(result);
         }
 
         [Fact]
