@@ -565,6 +565,7 @@ namespace KinesiaAPI.Tests.ControllerTests
             {
                 AssessmentID = "ASSESSMENT123",
                 AssessmentStatus = 2,
+                AssessmentEndDate = DateTime.Now
             };
 
             var controller = new AssessmentsController(context);
