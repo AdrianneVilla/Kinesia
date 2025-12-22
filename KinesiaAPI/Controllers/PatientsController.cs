@@ -460,7 +460,7 @@ namespace KinesiaAPI.Controllers
 
                 if (existingPatient == null)
                 {
-                    return NotFound();
+                    return NotFound("Patient not found");
                 }
 
                 existingPatient.Status = updatedPatient.Status;
