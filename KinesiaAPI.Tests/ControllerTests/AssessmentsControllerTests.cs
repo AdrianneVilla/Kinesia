@@ -292,16 +292,20 @@ namespace KinesiaAPI.Tests.ControllerTests
         }
 
         [Fact]
-        public async Task GenerateTodayReport_ShouldReturnAssessmentReportDTO()
+        public async Task GenerateTodayReport_ShouldReturnAssessmentReportDTOAndAssessmentsTodayOnly()
         {
             // Arrange
-            var context = TestDbContextFactory.CreateDbContext(nameof(GenerateTodayReport_ShouldReturnAssessmentReportDTO));
+            var context = TestDbContextFactory.CreateDbContext(nameof(GenerateTodayReport_ShouldReturnAssessmentReportDTOAndAssessmentsTodayOnly));
             var patients = DataFactory.GeneratePatients(20);
-            var assessments = DataFactory.GenerateAssessments(50, patients);
-            assessments.ForEach(assessments => { assessments.AssessmentDate = DateTime.Today; });
-
             context.Patients.AddRange(patients);
-            context.Assessments.AddRange(assessments);
+
+            var todayAssessments = DataFactory.GenerateAssessments(50, patients);
+            todayAssessments.ForEach(assessments => { assessments.AssessmentDate = DateTime.Today; });
+            context.Assessments.AddRange(todayAssessments);
+
+            var pastAssessments = DataFactory.GenerateAssessments(50, patients);
+            pastAssessments.ForEach(assessments => { assessments.AssessmentID += 100; assessments.AssessmentDate = DateTime.Today.AddDays(-1); });
+            context.Assessments.AddRange(pastAssessments);
             await context.SaveChangesAsync();
 
             var controller = new AssessmentsController(context);
@@ -313,47 +317,56 @@ namespace KinesiaAPI.Tests.ControllerTests
             var okResult = Assert.IsType<OkObjectResult>(result.Result);
             var returnedAssessments = Assert.IsAssignableFrom<IEnumerable<AssessmentReportDTO>>(okResult.Value);
 
-            var todayAssessmentsCount = assessments.Count();
-            Assert.Equal(todayAssessmentsCount, returnedAssessments.Count());
+            var todayAssessmentsCount = todayAssessments.Count();
+            Assert.Equal(50, returnedAssessments.Count());
         }
 
         [Fact]
-        public async Task GenerateWeeklyReport_ShouldReturnAssessmentReportDTO()
+        public async Task GenerateWeeklyReport_ShouldReturnAssessmentReportDTOAndAssessmentsOfTheWeekOnly()
         {
             // Arrange
-            var context = TestDbContextFactory.CreateDbContext(nameof(GenerateWeeklyReport_ShouldReturnAssessmentReportDTO));
+            var context = TestDbContextFactory.CreateDbContext(nameof(GenerateWeeklyReport_ShouldReturnAssessmentReportDTOAndAssessmentsOfTheWeekOnly));
             var patients = DataFactory.GeneratePatients(20);
-            var assessments = DataFactory.GenerateAssessments(50, patients);
-            assessments.ForEach(assessments => { assessments.AssessmentDate = DateTime.Today.AddDays(-2); });
-
             context.Patients.AddRange(patients);
-            context.Assessments.AddRange(assessments);
+
+            var thisWeekAssessments = DataFactory.GenerateAssessments(50, patients);
+            thisWeekAssessments.ForEach(assessments => { assessments.AssessmentDate = DateTime.Today; });
+            context.Assessments.AddRange(thisWeekAssessments);
+
+            var pastAssessments = DataFactory.GenerateAssessments(50, patients);
+            pastAssessments.ForEach(assessments => { assessments.AssessmentID += 100; assessments.AssessmentDate = DateTime.Today.AddDays(-9); });
+            context.Assessments.AddRange(pastAssessments);
             await context.SaveChangesAsync();
 
             var controller = new AssessmentsController(context);
 
+
             // Act
-            var result = await controller.GenerateWeeklyReport(DateTime.Today.AddDays(-7), DateTime.Today);
+            var result = await controller.GenerateWeeklyReport(DateTime.Today.AddDays(-7), DateTime.Today.AddDays(1));
 
             // Assert
             var okResult = Assert.IsType<OkObjectResult>(result.Result);
             var returnedAssessments = Assert.IsAssignableFrom<IEnumerable<AssessmentReportDTO>>(okResult.Value);
 
-            var weekAssessmentsCount = assessments.Count();
+            var weekAssessmentsCount = thisWeekAssessments.Count();
             Assert.Equal(weekAssessmentsCount, returnedAssessments.Count());
         }
 
         [Fact]
-        public async Task GenerateMonthlyReport_ShouldReturnAssessmentReportDTO()
+        public async Task GenerateMonthlyReport_ShouldReturnAssessmentReportDTOAndAssessmentsOfTheMonthOnly()
         {
             // Arrange
-            var context = TestDbContextFactory.CreateDbContext(nameof(GenerateMonthlyReport_ShouldReturnAssessmentReportDTO));
+            var context = TestDbContextFactory.CreateDbContext(nameof(GenerateMonthlyReport_ShouldReturnAssessmentReportDTOAndAssessmentsOfTheMonthOnly));
             var patients = DataFactory.GeneratePatients(20);
-            var assessments = DataFactory.GenerateAssessments(50, patients);
-            assessments.ForEach(assessments => { assessments.AssessmentDate = DateTime.Today; });
-
             context.Patients.AddRange(patients);
-            context.Assessments.AddRange(assessments);
+
+            var thisMonthAssessments = DataFactory.GenerateAssessments(50, patients);
+            thisMonthAssessments.ForEach(assessments => { assessments.AssessmentDate = DateTime.Today; });
+            context.Assessments.AddRange(thisMonthAssessments);
+
+            var pastAssessments = DataFactory.GenerateAssessments(50, patients);
+            pastAssessments.ForEach(assessments => { assessments.AssessmentID += 100; assessments.AssessmentDate = DateTime.Today.AddMonths(-1); });
+            context.Assessments.AddRange(pastAssessments);
             await context.SaveChangesAsync();
 
             var controller = new AssessmentsController(context);
@@ -365,21 +378,25 @@ namespace KinesiaAPI.Tests.ControllerTests
             var okResult = Assert.IsType<OkObjectResult>(result.Result);
             var returnedAssessments = Assert.IsAssignableFrom<IEnumerable<AssessmentReportDTO>>(okResult.Value);
 
-            var monthAssessmentsCount = assessments.Count();
+            var monthAssessmentsCount = thisMonthAssessments.Count();
             Assert.Equal(monthAssessmentsCount, returnedAssessments.Count());
         }
 
         [Fact]
-        public async Task GenerateYearlyReport_ShouldReturnAssessmentReportDTO()
+        public async Task GenerateYearlyReport_ShouldReturnAssessmentReportDTOAndAssessmentsOfTheYearOnly()
         {
             // Arrange
-            var context = TestDbContextFactory.CreateDbContext(nameof(GenerateYearlyReport_ShouldReturnAssessmentReportDTO));
+            var context = TestDbContextFactory.CreateDbContext(nameof(GenerateYearlyReport_ShouldReturnAssessmentReportDTOAndAssessmentsOfTheYearOnly));
             var patients = DataFactory.GeneratePatients(20);
-            var assessments = DataFactory.GenerateAssessments(50, patients);
-            assessments.ForEach(assessments => { assessments.AssessmentDate = DateTime.Today; });
-
             context.Patients.AddRange(patients);
-            context.Assessments.AddRange(assessments);
+
+            var thisYearAssessments = DataFactory.GenerateAssessments(50, patients);
+            thisYearAssessments.ForEach(assessments => { assessments.AssessmentDate = DateTime.Today; });
+            context.Assessments.AddRange(thisYearAssessments);
+
+            var pastAssessments = DataFactory.GenerateAssessments(50, patients);
+            pastAssessments.ForEach(assessments => { assessments.AssessmentID += 100; assessments.AssessmentDate = DateTime.Today.AddYears(-1); });
+            context.Assessments.AddRange(pastAssessments);
             await context.SaveChangesAsync();
 
             var controller = new AssessmentsController(context);
@@ -391,7 +408,7 @@ namespace KinesiaAPI.Tests.ControllerTests
             var okResult = Assert.IsType<OkObjectResult>(result.Result);
             var returnedAssessment = Assert.IsAssignableFrom<IEnumerable<AssessmentReportDTO>>(okResult.Value);
 
-            var yearAssessmentsCount = assessments.Count();
+            var yearAssessmentsCount = thisYearAssessments.Count();
             Assert.Equal(yearAssessmentsCount, returnedAssessment.Count())  ;
         }
 
@@ -456,17 +473,15 @@ namespace KinesiaAPI.Tests.ControllerTests
         {
             // Arrange
             var context = TestDbContextFactory.CreateDbContext(nameof(GetTotalOngoingAssessments_ShouldReturnOngoingAssessmentsCountOfTheMonthOnly));
-            var patientsOfThisMonth = DataFactory.GeneratePatients(5);
-            var ongoingAssessmentsOfThisMonth = DataFactory.GenerateAssessments(20, patientsOfThisMonth);
+            var patients = DataFactory.GeneratePatients(5);
+            context.Patients.AddRange(patients);
+
+            var ongoingAssessmentsOfThisMonth = DataFactory.GenerateAssessments(20, patients);
             ongoingAssessmentsOfThisMonth.ForEach(assessments => { assessments.AssessmentDate = DateTime.Today; assessments.AssessmentStatus = 1; });
-            context.Patients.AddRange(patientsOfThisMonth);
             context.Assessments.AddRange(ongoingAssessmentsOfThisMonth);
 
-            var patientsOfPastMonth = DataFactory.GeneratePatients(5);
-            patientsOfPastMonth.ForEach(p => p.PatientID += 100);
-            var ongoingAssessmentsOfPastMonth = DataFactory.GenerateAssessments(20, patientsOfPastMonth);
+            var ongoingAssessmentsOfPastMonth = DataFactory.GenerateAssessments(20, patients);
             ongoingAssessmentsOfPastMonth.ForEach(assessments => { assessments.AssessmentID += 100; assessments.AssessmentDate = DateTime.Today.AddMonths(-1); assessments.AssessmentStatus = 1; });
-            context.Patients.AddRange(patientsOfPastMonth);
             context.Assessments.AddRange(ongoingAssessmentsOfPastMonth);
                 
             await context.SaveChangesAsync();
@@ -488,17 +503,15 @@ namespace KinesiaAPI.Tests.ControllerTests
         {
             // Arrange
             var context = TestDbContextFactory.CreateDbContext(nameof(GetTotalAssessments_ShouldReturnTotalAssessmentsCountOfTheMonthOnly));
-            var patientsOfThisMonth = DataFactory.GeneratePatients(5);
-            var ongoingAssessmentsOfThisMonth = DataFactory.GenerateAssessments(20, patientsOfThisMonth);
+            var patients = DataFactory.GeneratePatients(5);
+            context.Patients.AddRange(patients);
+
+            var ongoingAssessmentsOfThisMonth = DataFactory.GenerateAssessments(20, patients);
             ongoingAssessmentsOfThisMonth.ForEach(assessments => { assessments.AssessmentDate = DateTime.Today; });
-            context.Patients.AddRange(patientsOfThisMonth);
             context.Assessments.AddRange(ongoingAssessmentsOfThisMonth);
 
-            var patientsOfPastMonth = DataFactory.GeneratePatients(5);
-            patientsOfPastMonth.ForEach(p => p.PatientID += 100);
-            var ongoingAssessmentsOfPastMonth = DataFactory.GenerateAssessments(20, patientsOfPastMonth);
+            var ongoingAssessmentsOfPastMonth = DataFactory.GenerateAssessments(20, patients);
             ongoingAssessmentsOfPastMonth.ForEach(assessments => { assessments.AssessmentID += 100; assessments.AssessmentDate = DateTime.Today.AddMonths(-1); });
-            context.Patients.AddRange(patientsOfPastMonth);
             context.Assessments.AddRange(ongoingAssessmentsOfPastMonth);
 
             await context.SaveChangesAsync();
@@ -520,17 +533,15 @@ namespace KinesiaAPI.Tests.ControllerTests
         {
             // Arrange
             var context = TestDbContextFactory.CreateDbContext(nameof(GetMostTrackedJoint_ShouldReturnMostTrackedJointOfTheMonthOnly));
-            var patientsOfThisMonth = DataFactory.GeneratePatients(5);
-            var assessmentsOfThisMonth = DataFactory.GenerateAssessments(20, patientsOfThisMonth);
+            var patients = DataFactory.GeneratePatients(5);
+            context.Patients.AddRange(patients);
+
+            var assessmentsOfThisMonth = DataFactory.GenerateAssessments(20, patients);
             assessmentsOfThisMonth.ForEach(assessments => { assessments.AssessmentDate = DateTime.Today; assessments.Joint = "Shoulder"; });
-            context.Patients.AddRange(patientsOfThisMonth);
             context.Assessments.AddRange(assessmentsOfThisMonth);
 
-            var patientsOfPastMonth = DataFactory.GeneratePatients(5);
-            patientsOfPastMonth.ForEach(p => p.PatientID += 100);
-            var assessmentsOfPastMonth = DataFactory.GenerateAssessments(20, patientsOfPastMonth);
+            var assessmentsOfPastMonth = DataFactory.GenerateAssessments(20, patients);
             assessmentsOfPastMonth.ForEach(assessments => { assessments.AssessmentID += 100; assessments.Joint = "Elbow and Forearm"; });
-            context.Patients.AddRange(patientsOfPastMonth);
             context.Assessments.AddRange(assessmentsOfPastMonth);
 
             await context.SaveChangesAsync();
