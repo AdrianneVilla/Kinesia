@@ -218,7 +218,7 @@ namespace KinesiaAPI.Controllers
 
         // GET: api/logs/generate-report?month={}&year={}
         [HttpGet("generate-monthly-report")]
-        public async Task<ActionResult<IEnumerable<LogReportDTO>>> GenerateLogReport(int month, int year)
+        public async Task<ActionResult<IEnumerable<LogReportDTO>>> GenerateMonthlyReport(int month, int year)
         {
             try
             {
