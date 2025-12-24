@@ -3,6 +3,7 @@ using KinesiaAPI.Models.Entities;
 using KinesiaAPI.Tests.DataTest;
 using KinesiaLibrary;
 using KinesiaLibrary.DTOs.LogDTOs;
+using KinesiaLibrary.DTOs.ReportDTOs;
 using KinesiaLibrary.DTOs.UserDTOs;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -264,6 +265,126 @@ namespace KinesiaAPI.Tests.ControllerTests
             var returnedLogs = Assert.IsAssignableFrom<IEnumerable<DisplayDashboardLogsDTO>>(okResult.Value);
 
             Assert.Empty(returnedLogs);
+        }
+
+        [Fact]
+        public async Task GenerateTodayReport_ShouldReturnLogReportDTOAndTodayLogsOnly()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(GenerateTodayReport_ShouldReturnLogReportDTOAndTodayLogsOnly));
+            var users = DataFactory.GenerateUsers(20);
+            context.Users.AddRange(users);
+
+            var todayLogs = DataFactory.GenerateLogs(50, users);
+            todayLogs.ForEach(logs => logs.LogDate = DateTime.Today);
+            context.Logs.AddRange(todayLogs);
+
+            var pastLogs = DataFactory.GenerateLogs(50, users);
+            pastLogs.ForEach(logs => { logs.LogID += 100; logs.LogDate = DateTime.Today.AddDays(-1); });
+            context.Logs.AddRange(pastLogs);
+            await context.SaveChangesAsync();
+
+            var controller = new LogsController(context);
+
+            // Act
+            var result = await controller.GenerateTodayReport();
+
+            // Assert
+            var okResult = Assert.IsType<OkObjectResult>(result.Result);
+            var returnedLogs = Assert.IsAssignableFrom<IEnumerable<LogReportDTO>>(okResult.Value);
+
+            var todayLogsCount = todayLogs.Count();
+            Assert.Equal(todayLogsCount, returnedLogs.Count());
+        }
+
+        [Fact]
+        public async Task GenerateWeeklyReport_ShouldReturnLogReportDTOAndWeekLogsOnly()
+        {
+            // Arrange 
+            var context = TestDbContextFactory.CreateDbContext(nameof(GenerateWeeklyReport_ShouldReturnLogReportDTOAndWeekLogsOnly));
+            var users = DataFactory.GenerateUsers(20);
+            context.Users.AddRange(users);
+
+            var thisWeekLogs = DataFactory.GenerateLogs(50, users);
+            thisWeekLogs.ForEach(logs => logs.LogDate = DateTime.Today);
+            context.Logs.AddRange(thisWeekLogs);
+
+            var pastLogs = DataFactory.GenerateLogs(50, users);
+            pastLogs.ForEach(logs => { logs.LogID += 100; logs.LogDate = DateTime.Today.AddDays(-9); });
+            context.Logs.AddRange(pastLogs);
+            await context.SaveChangesAsync();
+
+            var controller = new LogsController(context);
+
+            // Act
+            var result = await controller.GenerateWeeklyReport(DateTime.Today.AddDays(-8), DateTime.Today.AddDays(+2));
+
+            // Assert
+            var okResult = Assert.IsType<OkObjectResult>(result.Result);
+            var returnedLogs = Assert.IsAssignableFrom<IEnumerable<LogReportDTO>>(okResult.Value);
+
+            var thisWeekLogsCount = thisWeekLogs.Count();
+            Assert.Equal(thisWeekLogsCount, returnedLogs.Count());
+        }
+
+        [Fact]
+        public async Task GenerateMonthlyReport_ShouldReturnLogReportDTOAndMonthLogsOnly()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(GenerateMonthlyReport_ShouldReturnLogReportDTOAndMonthLogsOnly));
+            var users = DataFactory.GenerateUsers(20);
+            context.Users.AddRange(users);
+
+            var thisMonthLogs = DataFactory.GenerateLogs(50, users);
+            thisMonthLogs.ForEach(logs => logs.LogDate = DateTime.Today);
+            context.Logs.AddRange(thisMonthLogs);
+
+            var pastLogs = DataFactory.GenerateLogs(50, users);
+            pastLogs.ForEach(logs => { logs.LogID += 100; logs.LogDate = DateTime.Today.AddMonths(-1); });
+            context.Logs.AddRange(pastLogs);
+            await context.SaveChangesAsync();
+
+            var controller = new LogsController(context);
+
+            // Act
+            var result = await controller.GenerateMonthlyReport(DateTime.Today.Month, DateTime.Today.Year);
+
+            // Assert
+            var okResult = Assert.IsType<OkObjectResult>(result.Result);
+            var returnedLogs = Assert.IsAssignableFrom<IEnumerable<LogReportDTO>>(okResult.Value);
+
+            var thisMonthLogsCount = thisMonthLogs.Count();
+            Assert.Equal(thisMonthLogsCount, returnedLogs.Count());
+        }
+
+        [Fact]
+        public async Task GenerateYearlyReport_ShouldReturnLogReportDTOAndYearLogsOnly()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(GenerateYearlyReport_ShouldReturnLogReportDTOAndYearLogsOnly));
+            var users = DataFactory.GenerateUsers(20);
+            context.Users.AddRange(users);
+
+            var thisYearLogs = DataFactory.GenerateLogs(50, users);
+            thisYearLogs.ForEach(logs => logs.LogDate = DateTime.Today);
+            context.Logs.AddRange(thisYearLogs);
+
+            var pastLogs = DataFactory.GenerateLogs(50, users);
+            pastLogs.ForEach(logs => { logs.LogID += 100; logs.LogDate = DateTime.Today.AddYears(-1); });
+            context.Logs.AddRange(pastLogs);
+            await context.SaveChangesAsync();
+
+            var controller = new LogsController(context);
+
+            // Act
+            var result = await controller.GenerateYearlyReport(DateTime.Today.Year);
+
+            // Assert
+            var okResult = Assert.IsType<OkObjectResult>(result.Result);
+            var returnedLogs = Assert.IsAssignableFrom<IEnumerable<LogReportDTO>>(okResult.Value);
+
+            var thisYearLogsCount = thisYearLogs.Count();
+            Assert.Equal(thisYearLogsCount, returnedLogs.Count());
         }
     }
 }
