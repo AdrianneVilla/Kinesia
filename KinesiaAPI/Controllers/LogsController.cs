@@ -348,10 +348,16 @@ namespace KinesiaAPI.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteLogs(string id)
         {
+            if (string.IsNullOrEmpty(id))
+            {
+                return BadRequest("Invalid log id");
+            }
+
             var logs = await _context.Logs.FindAsync(id);
+
             if (logs == null)
             {
-                return NotFound();
+                return NotFound("Log not found");
             }
 
             _context.Logs.Remove(logs);
