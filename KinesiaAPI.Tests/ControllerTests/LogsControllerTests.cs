@@ -386,5 +386,57 @@ namespace KinesiaAPI.Tests.ControllerTests
             var thisYearLogsCount = thisYearLogs.Count();
             Assert.Equal(thisYearLogsCount, returnedLogs.Count());
         }
+
+        [Fact]
+        public async Task DeleteLogs_WhenIdIsValid_ShouldReturnNoContent()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(DeleteLogs_WhenIdIsValid_ShouldReturnNoContent));
+            var user = DataFactory.GenerateUsers(1);
+            var log = DataFactory.GenerateLogs(1, user);
+            log.First().LogID = "LOG123";
+
+            context.Users.AddRange(user);
+            context.Logs.AddRange(log);
+            await context.SaveChangesAsync();
+
+            var controller = new LogsController(context);
+
+            // Act
+            var result = await controller.DeleteLogs("LOG123");
+
+            // Assert
+            Assert.IsType<NoContentResult>(result);
+        }
+
+        [Fact]
+        public async Task DeleteLogs_WhenIdIsNullOrEmpty_ShouldReturnBadRequest()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(DeleteLogs_WhenIdIsNullOrEmpty_ShouldReturnBadRequest));
+
+            var controller = new LogsController(context);
+
+            // Act
+            var result = await controller.DeleteLogs("");
+
+            // Assert
+            Assert.IsType<BadRequestObjectResult>(result);
+        }
+
+        [Fact]
+        public async Task DeleteLogs_WhenIdIsInvalid_ShouldReturnNotFound()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(DeleteLogs_WhenIdIsInvalid_ShouldReturnNotFound));
+
+            var controller = new LogsController(context);
+
+            // Act
+            var result = await controller.DeleteLogs("LOG456");
+
+            // Assert
+            Assert.IsType<NotFoundObjectResult>(result);
+        }
     }
 }
