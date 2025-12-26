@@ -189,6 +189,59 @@ namespace KinesiaAPI.Tests.ControllerTests
         }
 
         [Fact]
+        public async Task GetUserToEdit_WithValidId_ShouldReturnUserToEditDTO()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(GetUserToEdit_WithValidId_ShouldReturnUserToEditDTO));
+            var user = DataFactory.GenerateUsers(1);
+            user.First().UserID = "USER123";
+
+            context.Users.AddRange(user);
+            await context.SaveChangesAsync();
+
+            var controller = new UsersController(context);
+
+            // Act
+            var result = await controller.GetUserToEdit("USER123");
+
+            // Assert
+            var okResult = Assert.IsType<OkObjectResult>(result.Result);
+            var returnedUser = Assert.IsAssignableFrom<UserToEditDTO>(okResult.Value);
+
+            Assert.Equal("USER123", returnedUser.UserID);
+        }
+
+        [Fact]
+        public async Task GetUserToEdit_WhenIdIsNull_ShouldReturnBadRequest()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(GetUserToEdit_WhenIdIsNull_ShouldReturnBadRequest));
+
+            var controller = new UsersController(context);
+
+            // Act
+            var result = await controller.GetUserToEdit("");
+
+            // Assert
+            Assert.IsType<BadRequestObjectResult>(result.Result);
+        }
+
+        [Fact]
+        public async Task GetUserToEdit_WithInvalidId_ShouldReturnNotFound()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(GetUserToEdit_WithInvalidId_ShouldReturnNotFound));
+
+            var controller = new UsersController(context);
+
+            // Act
+            var result = await controller.GetUserToEdit("USER456");
+
+            // Assert
+            Assert.IsType<NotFoundObjectResult>(result.Result);
+        }
+
+        [Fact]
         public async Task UpdateUserStatus_WhenUserExists_ShouldReturnNoContent()
         {
             // Arrange
