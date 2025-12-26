@@ -122,14 +122,18 @@ namespace KinesiaAPI.Controllers
         {
             try
             {
+                if (string.IsNullOrEmpty(userID))
+                {
+                    return BadRequest("Invalid user ID");
+                }
                 var user = await _context.Users.FindAsync(userID);
 
                 if (user == null)
                 {
-                    return NotFound();
+                    return NotFound("User not found");
                 }
 
-                return Ok(user);
+                return Ok(UserToUserEditDTO(user));
             }
             catch (DbException)
             {
@@ -657,6 +661,23 @@ namespace KinesiaAPI.Controllers
                 DateAdded = users.DateAdded.ToString("yyyy-MM-dd"),
                 LastArchiveDate = users.LastArchiveDate.HasValue ? users.LastArchiveDate.Value.ToString("yyyy-MM-dd") : "--",
                 Status = users.Status == 1 ? "Active" : "Inactive"
+            };
+
+        public static UserToEditDTO UserToUserEditDTO(Users users) =>
+            new UserToEditDTO
+            {
+                UserID = users.UserID,
+                FirstName = users.FirstName,
+                LastName = users.LastName,
+                MiddleName = users.MiddleName,
+                Birthdate = users.Birthdate,
+                Gender = users.Gender,
+                Contact = users.Contact,
+                Address = users.Address,
+                Role = users.Role,
+                Email = users.Email,
+                Salt = users.Salt,
+                Username = users.Username
             };
     }
 }
