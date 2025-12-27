@@ -242,6 +242,52 @@ namespace KinesiaAPI.Tests.ControllerTests
         }
 
         [Fact]
+        public async Task GetTotalUsersByStatus_ShouldOnlyReturnActiveUsersCount()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(GetTotalUsersByStatus_ShouldOnlyReturnActiveUsersCount));
+            var users = DataFactory.GenerateUsers(50);
+
+            context.Users.AddRange(users);
+            await context.SaveChangesAsync();
+
+            var controller = new UsersController(context);
+
+            // Act
+            var result = await controller.GetTotalUsersByStatus(1);
+
+            // Assert
+            var okResult = Assert.IsType<OkObjectResult>(result.Result);
+            var returnedUsers = Assert.IsType<int>(okResult.Value);
+
+            var activeUsersCount = users.Count(u => u.Status == 1);
+            Assert.Equal(activeUsersCount, returnedUsers);
+        }
+
+        [Fact]
+        public async Task GetTotalUsersByStatus_ShouldOnlyReturnInactiveUsersCount()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(GetTotalUsersByStatus_ShouldOnlyReturnInactiveUsersCount));
+            var users = DataFactory.GenerateUsers(50);
+
+            context.Users.AddRange(users);
+            await context.SaveChangesAsync();
+
+            var controller = new UsersController(context);
+
+            // Act
+            var result = await controller.GetTotalUsersByStatus(0);
+
+            // Assert
+            var okResult = Assert.IsType<OkObjectResult>(result.Result);
+            var returnedUsers = Assert.IsType<int>(okResult.Value);
+
+            var inactiveUsersCount = users.Count(u => u.Status == 0);
+            Assert.Equal(inactiveUsersCount, returnedUsers);
+        }
+
+        [Fact]
         public async Task UpdateUserStatus_WhenUserExists_ShouldReturnNoContent()
         {
             // Arrange
