@@ -11,6 +11,7 @@ using Xunit;
 using KinesiaAPI.Controllers;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using KinesiaLibrary;
+using KinesiaLibrary.DTOs.ReportDTOs;
 
 namespace KinesiaAPI.Tests.ControllerTests
 {
@@ -285,6 +286,114 @@ namespace KinesiaAPI.Tests.ControllerTests
 
             var inactiveUsersCount = users.Count(u => u.Status == 0);
             Assert.Equal(inactiveUsersCount, returnedUsers);
+        }
+
+        [Fact]
+        public async Task GenerateTodayReport_ShouldReturnUsersReportDTOAndTodayUsersOnly()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(GenerateTodayReport_ShouldReturnUsersReportDTOAndTodayUsersOnly));
+            var todayUsers = DataFactory.GenerateUsers(50);
+            todayUsers.ForEach(users => users.DateAdded = DateTime.Today);
+            context.Users.AddRange(todayUsers);
+
+            var pastUsers = DataFactory.GenerateUsers(50);
+            pastUsers.ForEach(users => { users.UserID += 100; users.DateAdded = DateTime.Today.AddDays(-1); });
+            context.Users.AddRange(pastUsers);
+            await context.SaveChangesAsync();
+
+            var controller = new UsersController(context);
+
+            // Act
+            var result = await controller.GenerateTodayReport();
+
+            // Assert
+            var okResult = Assert.IsType<OkObjectResult>(result.Result);
+            var returnedUsers = Assert.IsAssignableFrom<IEnumerable<UsersReportDTO>>(okResult.Value);
+
+            var todayUsersCount = todayUsers.Count();
+            Assert.Equal(todayUsersCount, returnedUsers.Count());
+        }
+
+        [Fact]
+        public async Task GenerateWeeklyReport_ShouldReturnUsersReportDTOAndWeekUsersOnly()
+        {
+            // Assert
+            var context = TestDbContextFactory.CreateDbContext(nameof(GenerateWeeklyReport_ShouldReturnUsersReportDTOAndWeekUsersOnly));
+            var thisWeekUsers = DataFactory.GenerateUsers(50);
+            thisWeekUsers.ForEach(users => users.DateAdded = DateTime.Today);
+            context.Users.AddRange(thisWeekUsers);
+
+            var pastUsers = DataFactory.GenerateUsers(50);
+            pastUsers.ForEach(users => { users.UserID += 100; users.DateAdded = DateTime.Today.AddDays(-9); });
+            context.Users.AddRange(pastUsers);
+            await context.SaveChangesAsync();
+
+            var controller = new UsersController(context);
+
+            // Act
+            var result = await controller.GenerateWeeklyReport(DateTime.Today.AddDays(-7), DateTime.Today.AddDays(2));
+
+            // Assert
+            var okResult = Assert.IsType<OkObjectResult>(result.Result);
+            var returnedUsers = Assert.IsAssignableFrom<IEnumerable<UsersReportDTO>>(okResult.Value);
+
+            var thisWeekUsersCount = thisWeekUsers.Count();
+            Assert.Equal(thisWeekUsersCount, returnedUsers.Count());
+        }
+
+        [Fact]
+        public async Task GenerateMonthlyReport_ShouldReturnUsersReportDTOAndMonthUsersOnly()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(GenerateMonthlyReport_ShouldReturnUsersReportDTOAndMonthUsersOnly));
+            var thisMonthUsers = DataFactory.GenerateUsers(50);
+            thisMonthUsers.ForEach(users => users.DateAdded = DateTime.Today);
+            context.Users.AddRange(thisMonthUsers);
+
+            var pastUsers = DataFactory.GenerateUsers(50);
+            pastUsers.ForEach(users => { users.UserID += 100; users.DateAdded = DateTime.Today.AddMonths(-1); });
+            context.Users.AddRange(pastUsers);
+            await context.SaveChangesAsync();
+
+            var controller = new UsersController(context);
+
+            // Act
+            var result = await controller.GenerateMonthlyReport(DateTime.Today.Month, DateTime.Today.Year);
+
+            // Assert
+            var okResult = Assert.IsType<OkObjectResult>(result.Result);
+            var returnedUsers = Assert.IsAssignableFrom<IEnumerable<UsersReportDTO>>(okResult.Value);
+
+            var thisMonthUsersCount = thisMonthUsers.Count();
+            Assert.Equal(thisMonthUsersCount, returnedUsers.Count());
+        }
+
+        [Fact]
+        public async Task GenerateYearlyReport_ShouldReturnUsersReportDTOAndYearUsersOnly()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(GenerateYearlyReport_ShouldReturnUsersReportDTOAndYearUsersOnly));
+            var thisYearUsers = DataFactory.GenerateUsers(50);
+            thisYearUsers.ForEach(users => users.DateAdded = DateTime.Today);
+            context.Users.AddRange(thisYearUsers);
+
+            var pastUsers = DataFactory.GenerateUsers(50);
+            pastUsers.ForEach(users => { users.UserID += 100; users.DateAdded = DateTime.Today.AddYears(-1); });
+            context.Users.AddRange(pastUsers);
+            await context.SaveChangesAsync();
+
+            var controller = new UsersController(context);
+
+            // Act
+            var result = await controller.GenerateYearlyReport(DateTime.Today.Year);
+
+            // Assert
+            var okResult = Assert.IsType<OkObjectResult>(result.Result);
+            var returnedUsers = Assert.IsAssignableFrom<IEnumerable<UsersReportDTO>>(okResult.Value);
+
+            var thisYearUsersCount = thisYearUsers.Count();
+            Assert.Equal(thisYearUsersCount, returnedUsers.Count());
         }
 
         [Fact]
