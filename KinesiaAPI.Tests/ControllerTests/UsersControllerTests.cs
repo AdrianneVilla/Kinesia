@@ -737,5 +737,55 @@ namespace KinesiaAPI.Tests.ControllerTests
             // Assert
             Assert.IsType<BadRequestObjectResult>(result);
         }
+
+        [Fact]
+        public async Task CheckExistingAccount_WhenAccountDoesNotExistsAndUsernameIsValid_ShouldReturnOkResult()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(CheckExistingAccount_WhenAccountDoesNotExistsAndUsernameIsValid_ShouldReturnOkResult));
+
+            var controller = new UsersController(context);
+
+            // Act
+            var result = await controller.CheckExistingAccount("USER123");
+
+            // Assert
+            Assert.IsType<OkResult>(result);
+        }
+
+        [Fact]
+        public async Task CheckExistingAccount_WhenAccountExistsAndUsernameIsValid_ShouldReturnConflictResult()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(CheckExistingAccount_WhenAccountExistsAndUsernameIsValid_ShouldReturnConflictResult));
+            var user = DataFactory.GenerateUsers(1);
+            user.First().Username = "USER123";
+
+            context.Users.AddRange(user);
+            await context.SaveChangesAsync();
+
+            var controller = new UsersController(context);
+
+            // Act
+            var result = await controller.CheckExistingAccount("USER123");
+
+            // Assert
+            Assert.IsType<ConflictResult>(result);
+        }
+
+        [Fact]
+        public async Task CheckExistingAccount_WhenUsernameIsNull_ShouldReturnBadRequest()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(CheckExistingAccount_WhenUsernameIsNull_ShouldReturnBadRequest));
+
+            var controller = new UsersController(context);
+
+            // Act
+            var result = await controller.CheckExistingAccount("");
+
+            // Assert
+            Assert.IsType<BadRequestObjectResult>(result);
+        }
     }
 }
