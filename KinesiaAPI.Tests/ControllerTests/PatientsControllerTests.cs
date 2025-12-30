@@ -195,6 +195,59 @@ namespace KinesiaAPI.Tests.ControllerTests
         }
 
         [Fact]
+        public async Task GetPatientBasicDetails_WhenIdIsValidAndPatientExists_ShouldReturnPatientBasicDTO()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(GetPatientBasicDetails_WhenIdIsValidAndPatientExists_ShouldReturnPatientBasicDTO));
+            var patient = DataFactory.GeneratePatients(1);
+            patient.First().PatientID = "PATIENT123";
+
+            context.Patients.AddRange(patient);
+            await context.SaveChangesAsync();
+
+            var controller = new PatientsController(context);
+
+            // Act
+            var result = await controller.GetPatientBasicDetails("PATIENT123");
+
+            // Assert
+            var okResult = Assert.IsType<OkObjectResult>(result.Result);
+            var returnedPatient = Assert.IsType<PatientBasicDTO>(okResult.Value);
+
+            Assert.Equal("PATIENT123", returnedPatient.PatientID);
+        }
+
+        [Fact]
+        public async Task GetPatientBasicDetails_WhenIdIsValidAndPatientDoesNotExists_ShouldReturnNotFound()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(GetPatientBasicDetails_WhenIdIsValidAndPatientDoesNotExists_ShouldReturnNotFound));
+            
+            var controller = new PatientsController(context);
+
+            // Act
+            var result = await controller.GetPatientBasicDetails("PATIENT456");
+
+            // Assert
+            Assert.IsType<NotFoundObjectResult>(result.Result);
+        }
+
+        [Fact]
+        public async Task GetPatientBasicDetails_WhenIdIsNull_ShouldReturnBadRequest()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(GetPatientBasicDetails_WhenIdIsNull_ShouldReturnBadRequest));
+
+            var controller = new PatientsController(context);
+
+            // Act
+            var result = await controller.GetPatientBasicDetails("");
+
+            // Assert
+            Assert.IsType<BadRequestObjectResult>(result.Result);   
+        }
+
+        [Fact]
         public async Task UpdatePatientStatus_WhenIdIsValidAndPatientExists_ShouldReturnNoContent()
         {
             // Arrange
