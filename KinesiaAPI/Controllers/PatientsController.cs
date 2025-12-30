@@ -155,11 +155,15 @@ namespace KinesiaAPI.Controllers
         {
             try
             {
+                if (string.IsNullOrEmpty(patientID))
+                {
+                    return BadRequest("Invalid patient ID");
+                }
                 var patient = await _context.Patients.FindAsync(patientID);
 
                 if (patient == null)
                 {
-                    return NotFound();
+                    return NotFound("Patient not found");
                 }
 
                 return Ok(PatientToPatientBasicDTO(patient));
