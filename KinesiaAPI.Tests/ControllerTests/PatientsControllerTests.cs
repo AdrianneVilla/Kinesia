@@ -248,6 +248,52 @@ namespace KinesiaAPI.Tests.ControllerTests
         }
 
         [Fact]
+        public async Task GetTotalPatientsByStatus_ShouldReturnActiveCountOnly()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(GetTotalPatientsByStatus_ShouldReturnActiveCountOnly));
+            var patients = DataFactory.GeneratePatients(50);
+
+            context.Patients.AddRange(patients);
+            await context.SaveChangesAsync();
+
+            var controller = new PatientsController(context);
+
+            // Act
+            var result = await controller.GetTotalPatientsByStatus(1);
+
+            // Assert
+            var okResult = Assert.IsType<OkObjectResult>(result.Result);
+            var returnedPatientsCount = Assert.IsType<int>(okResult.Value);
+
+            var activePatientsCount = context.Patients.Count(p => p.Status == 1);
+            Assert.Equal(activePatientsCount, returnedPatientsCount);
+        }
+
+        [Fact]
+        public async Task GetTotalPatientsByStatus_ShouldReturnInactiveCountOnly()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(GetTotalPatientsByStatus_ShouldReturnInactiveCountOnly));
+            var patients = DataFactory.GeneratePatients(50);
+
+            context.Patients.AddRange(patients);
+            await context.SaveChangesAsync();
+
+            var controller = new PatientsController(context);
+
+            // Act
+            var result = await controller.GetTotalPatientsByStatus(0);
+
+            // Assert
+            var okResult = Assert.IsType<OkObjectResult>(result.Result);
+            var returnedPatientsCount = Assert.IsType<int>(okResult.Value);
+
+            var inactivePatientsCount = context.Patients.Count(p => p.Status == 0);
+            Assert.Equal(inactivePatientsCount, returnedPatientsCount);
+        }
+
+        [Fact]
         public async Task UpdatePatientStatus_WhenIdIsValidAndPatientExists_ShouldReturnNoContent()
         {
             // Arrange
