@@ -1,13 +1,16 @@
-﻿using Xunit;
-using KinesiaAPI.Controllers;
+﻿using KinesiaAPI.Controllers;
 using KinesiaAPI.Data;
+using KinesiaAPI.Models.Entities;
 using KinesiaAPI.Tests.DataTest;
+using KinesiaLibrary.DTOs.PatientDTOs;
+using KinesiaLibrary.DTOs.ReportDTOs;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using NuGet.ContentModel;
 using System.Linq;
 using System.Threading.Tasks;
-using KinesiaLibrary.DTOs.PatientDTOs;
-using KinesiaAPI.Models.Entities;
-using Microsoft.AspNetCore.Http.HttpResults;
+using Xunit;
 
 namespace KinesiaAPI.Tests.ControllerTests
 {
@@ -291,6 +294,146 @@ namespace KinesiaAPI.Tests.ControllerTests
 
             var inactivePatientsCount = context.Patients.Count(p => p.Status == 0);
             Assert.Equal(inactivePatientsCount, returnedPatientsCount);
+        }
+
+        [Fact]
+        public async Task GetMostFieldOfWork_ShouldReturnOkResult()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(GetMostFieldOfWork_ShouldReturnOkResult));
+            var patients = DataFactory.GeneratePatients(50);
+
+            context.Patients.AddRange(patients);
+            await context.SaveChangesAsync();
+
+            var controller = new PatientsController(context);
+
+            // Act
+            var result = await controller.GetMostFieldOfWork();
+
+            // Assert
+            var okResult = Assert.IsType<OkObjectResult>(result.Result);
+            var returnedMostFieldOfWork = Assert.IsType<string>(okResult.Value);
+
+            var mostFieldOfWork = await context.Patients
+                .GroupBy(p => p.Occupation)
+                .Select(g => new
+                {
+                    Occupation = g.Key,
+                    Count = g.Count()
+                })
+                .OrderByDescending(g => g.Count)
+                .FirstOrDefaultAsync();
+
+            Assert.Equal(mostFieldOfWork.Occupation, returnedMostFieldOfWork);
+        }
+
+        [Fact]
+        public async Task GenerateTodayReport_ShouldReturnPatientReportDTOAndTodayPatientsOnly()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(GenerateTodayReport_ShouldReturnPatientReportDTOAndTodayPatientsOnly));
+            var todayPatients = DataFactory.GeneratePatients(50);
+            todayPatients.ForEach(patients => patients.DateAdded = DateTime.Today);
+            context.Patients.AddRange(todayPatients);
+
+            var pastPatients = DataFactory.GeneratePatients(50);
+            pastPatients.ForEach(patients => { patients.PatientID += 100; patients.DateAdded = DateTime.Today.AddDays(-1); });
+            context.Patients.AddRange(pastPatients);
+            await context.SaveChangesAsync();
+
+            var controller = new PatientsController(context);
+
+            // Act
+            var result = await controller.GenerateTodayReport();
+
+            // Assert
+            var okResult = Assert.IsType<OkObjectResult>(result.Result);
+            var returnedPatients = Assert.IsAssignableFrom<IEnumerable<PatientReportDTO>>(okResult.Value);
+
+            var todayPatientsCount = todayPatients.Count();
+            Assert.Equal(todayPatientsCount, returnedPatients.Count());
+        }
+
+        [Fact]
+        public async Task GenerateWeeklyReport_ShouldReturnPatientReportDTOAndWeekPatientsOnly()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(GenerateWeeklyReport_ShouldReturnPatientReportDTOAndWeekPatientsOnly));
+            var thisWeekPatients = DataFactory.GeneratePatients(50);
+            thisWeekPatients.ForEach(patients => patients.DateAdded = DateTime.Today);
+            context.Patients.AddRange(thisWeekPatients);
+
+            var pastPatients = DataFactory.GeneratePatients(50);
+            pastPatients.ForEach(patients => { patients.PatientID += 100; patients.DateAdded = DateTime.Today.AddDays(-9); });
+            context.Patients.AddRange(pastPatients);
+            await context.SaveChangesAsync();
+
+            var controller = new PatientsController(context);
+
+            // Act
+            var result = await controller.GenerateWeeklyReport(DateTime.Today.AddDays(-7), DateTime.Today.AddDays(2));
+
+            // Assert
+            var okResult = Assert.IsType<OkObjectResult>(result.Result);
+            var returnedPatients = Assert.IsAssignableFrom<IEnumerable<PatientReportDTO>>(okResult.Value);
+
+            var thisWeekPatientsCount = thisWeekPatients.Count();
+            Assert.Equal(thisWeekPatientsCount, returnedPatients.Count());
+        }
+
+        [Fact]
+        public async Task GenerateMonthReport_ShouldReturnPatientReportDTOAndMonthPatientsOnly()
+        {
+            // Arrange
+            var context = TestDbContextFactory.CreateDbContext(nameof(GenerateMonthReport_ShouldReturnPatientReportDTOAndMonthPatientsOnly));
+            var thisMonthPatients = DataFactory.GeneratePatients(50);
+            thisMonthPatients.ForEach(patients => patients.DateAdded = DateTime.Today);
+            context.Patients.AddRange(thisMonthPatients);
+
+            var pastPatients = DataFactory.GeneratePatients(50);
+            pastPatients.ForEach(patients => { patients.PatientID += 100; patients.DateAdded = DateTime.Today.AddMonths(-1); });
+            context.Patients.AddRange(pastPatients);
+            await context.SaveChangesAsync();
+
+            var controller = new PatientsController(context);
+
+            // Act
+            var result = await controller.GenerateMonthReport(DateTime.Today.Month, DateTime.Today.Year);
+
+            // Assert
+            var okResult = Assert.IsType<OkObjectResult>(result.Result);
+            var returnedPatients = Assert.IsAssignableFrom<IEnumerable<PatientReportDTO>>(okResult.Value);
+
+            var thisMonthPatientsCount = thisMonthPatients.Count();
+            Assert.Equal(thisMonthPatientsCount, returnedPatients.Count());
+        }
+
+        [Fact]
+        public async Task GenerateYearlyReport_ShouldReturnPatientReportDTOAndYearPatientsOnly()
+        {
+            // Assert
+            var context = TestDbContextFactory.CreateDbContext(nameof(GenerateYearlyReport_ShouldReturnPatientReportDTOAndYearPatientsOnly));
+            var thisYearPatients = DataFactory.GeneratePatients(50);
+            thisYearPatients.ForEach(patients => patients.DateAdded = DateTime.Today);
+            context.Patients.AddRange(thisYearPatients);
+
+            var pastPatients = DataFactory.GeneratePatients(50);
+            pastPatients.ForEach(patients => { patients.PatientID += 100; patients.DateAdded = DateTime.Today.AddYears(-1); });
+            context.Patients.AddRange(pastPatients);
+            await context.SaveChangesAsync();
+
+            var controller = new PatientsController(context);
+
+            // Act
+            var result = await controller.GenerateYearlyReport(DateTime.Today.Year);
+
+            // Assert
+            var okResult = Assert.IsType<OkObjectResult>(result.Result);
+            var returnedPatients = Assert.IsAssignableFrom<IEnumerable<PatientReportDTO>>(okResult.Value);
+
+            var thisYearPatientsCount = thisYearPatients.Count();
+            Assert.Equal(thisYearPatientsCount, returnedPatients.Count());
         }
 
         [Fact]
