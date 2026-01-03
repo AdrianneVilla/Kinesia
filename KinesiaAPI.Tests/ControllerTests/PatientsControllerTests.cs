@@ -701,5 +701,99 @@ namespace KinesiaAPI.Tests.ControllerTests
             // Assert
             Assert.IsType<NotFoundResult>(result);
         }
+
+        [Fact]
+        public void PatientToDTO_ShouldReturnPatientsDTO()
+        {
+            // Arrange
+            var patient = DataFactory.GeneratePatients(1).First();
+
+            // Act
+            var result = PatientsController.PatientToDTO(patient);
+
+            // Assert
+            Assert.IsType<PatientsDTO>(result);
+            Assert.Equal(patient.PatientID, result.PatientID);
+            Assert.Equal(patient.FirstName, result.FirstName);
+            Assert.Equal(patient.MiddleName, result.MiddleName);
+            Assert.Equal(patient.LastName, result.LastName);
+            Assert.Equal(patient.Contact, result.Contact);
+            Assert.Equal(patient.Gender, result.Gender);
+            Assert.Equal(patient.Address, result.Address);
+            Assert.Equal(patient.Occupation, result.Occupation);
+            Assert.Equal(patient.DateAdded, result.DateAdded);
+            Assert.Equal(patient.Status, result.Status);
+        }
+
+        [Fact]
+        public void PatientToDisplayPatientsDTO_ShouldReturnDisplayPatientsDTO()
+        {
+            // Arrange
+            var patient = DataFactory.GeneratePatients(1).First();
+
+            // Act
+            var result = PatientsController.PatientToDisplayPatientsDTO(patient);
+
+            // Assert
+            Assert.IsType<DisplayPatientsDTO>(result);
+            Assert.Equal(patient.PatientID, result.PatientID);
+            Assert.Equal($"{patient.FirstName} {patient.MiddleName} {patient.LastName}", result.PatientName);
+            Assert.Equal((int)((DateTime.Now - patient.Birthdate).TotalDays / 365.25), result.Age);
+            Assert.Equal(patient.Contact, result.Contact);
+        }
+
+        [Fact]
+        public void PatientToDisplayPatientSelectionDTO_ShouldReturnDisplayPatientSelectionDTO()
+        {
+            // Arrange
+            var patient = DataFactory.GeneratePatients(1).First();
+
+            // Act
+            var result = PatientsController.PatientToDisplayPatientSelectionDTO(patient);
+
+            // Assert
+            Assert.IsType<DisplayPatientSelectionDTO>(result);
+            Assert.Equal(patient.PatientID, result.PatientID);
+            Assert.Equal($"{patient.FirstName} {patient.MiddleName} {patient.LastName}", result.PatientName);
+            Assert.Equal((int)((DateTime.Now - patient.Birthdate).TotalDays / 365.25), result.Age);
+            Assert.Equal(patient.Gender, result.Gender);
+        }
+
+        [Fact]
+        public void PatientToPatientBasicDTO_ShouldReturnPatientBasicDTO()
+        {
+            // Arrange
+            var patient = DataFactory.GeneratePatients(1).First();
+
+            // Act
+            var result = PatientsController.PatientToPatientBasicDTO(patient);
+
+            // Assert
+            Assert.IsType<PatientBasicDTO>(result);
+            Assert.Equal(patient.PatientID, result.PatientID);
+            Assert.Equal($"{patient.FirstName} {patient.MiddleName} {patient.LastName}", result.PatientName);
+            Assert.Equal((int)((DateTime.Now - patient.Birthdate).TotalDays / 365.25), result.Age);
+            Assert.Equal(patient.Gender, result.Gender);
+        }
+
+        [Fact]
+        public void PatientToPatientReportDTO_ShouldReturnPatientReportDTO()
+        {
+            // Arrange
+            var patient = DataFactory.GeneratePatients(1).First();
+
+            // Act
+            var result = PatientsController.PatientToPatientReportDTO(patient);
+
+            // Assert
+            Assert.IsType<PatientReportDTO>(result);
+            Assert.Equal(patient.PatientID, result.PatientID);
+            Assert.Equal($"{patient.FirstName} {patient.MiddleName} {patient.LastName}", result.PatientName);
+            Assert.Equal((int)((DateTime.Now - patient.Birthdate).TotalDays / 365.25), result.Age);
+            Assert.Equal(patient.Contact, result.Contact);
+            Assert.Equal(patient.Gender, result.Gender);
+            Assert.Equal(patient.Occupation, result.Occupation);
+            Assert.Equal(patient.DateAdded.ToString("yyyy-MM-dd"), result.DateAdded);
+        }
     }
 }
