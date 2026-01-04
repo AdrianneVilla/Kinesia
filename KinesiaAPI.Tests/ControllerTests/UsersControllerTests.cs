@@ -787,5 +787,90 @@ namespace KinesiaAPI.Tests.ControllerTests
             // Assert
             Assert.IsType<BadRequestObjectResult>(result);
         }
+
+        [Fact]
+        public void UsersToDTO_ShouldReturnUsersDTO()
+        {
+            // Arrange
+            var user = DataFactory.GenerateUsers(1).First();
+
+            // Act
+            var result = UsersController.UsersToDTO(user);
+
+            // Assert
+            Assert.IsType<UsersDTO>(result);
+            Assert.Equal(user.UserID, result.UserID);
+            Assert.Equal(user.FirstName, result.FirstName);
+            Assert.Equal(user.LastName, result.LastName);
+            Assert.Equal(user.MiddleName, result.MiddleName);
+            Assert.Equal(user.Birthdate, result.Birthdate);
+            Assert.Equal((int)((DateTime.Now - user.Birthdate).TotalDays / 365.25), result.Age);
+            Assert.Equal(user.Gender, result.Gender);
+            Assert.Equal(user.Contact, result.Contact);
+            Assert.Equal(user.Address, result.Address);
+            Assert.Equal(user.Role, result.Role);
+            Assert.Equal(user.Email, result.Email);
+            Assert.Equal(user.Username, result.Username);
+            Assert.Equal(user.DateAdded, result.DateAdded);
+            Assert.Equal(user.Status, result.Status);
+        }
+
+        [Fact]
+        public void UsersToDisplayUsersDTO_ShouldReturnDisplayUsersDTO()
+        {
+            // Arrange
+            var user = DataFactory.GenerateUsers(1).First();
+
+            // Act
+            var result = UsersController.UsersToDisplayUsersDTO(user);
+
+            // Assert
+            Assert.IsType<DisplayUsersDTO>(result);
+            Assert.Equal(user.UserID, result.UserID);
+            Assert.Equal($"{user.FirstName} {user.MiddleName} {user.LastName}", result.UserName);
+            Assert.Equal(user.Role, result.Role);
+        }
+
+        [Fact]
+        public void UsersToUsersReportDTO_ShouldReturnUsersReportDTO()
+        {
+            // Arrange
+            var user = DataFactory.GenerateUsers(1).First();
+
+            // Act
+            var result = UsersController.UsersToUsersReportDTO(user);
+
+            // Assert
+            Assert.IsType<UsersReportDTO>(result);
+            Assert.Equal(user.UserID, result.UserID);
+            Assert.Equal($"{user.FirstName} {user.MiddleName} {user.LastName}", result.Name);
+            Assert.Equal(user.Contact, result.Contact);
+            Assert.Equal(user.Role, result.Role);
+            Assert.Equal(user.DateAdded.ToString("yyyy-MM-dd"), result.DateAdded);
+        }
+
+        [Fact]
+        public void UserToUserEditDTO_ShouldReturnUserToEditDTO()
+        {
+            // Arrange
+            var user = DataFactory.GenerateUsers(1).First();
+
+            // Act
+            var result = UsersController.UserToUserEditDTO(user);
+
+            // Assert
+            Assert.IsType<UserToEditDTO>(result);
+            Assert.Equal(user.UserID, result.UserID);
+            Assert.Equal(user.FirstName, result.FirstName);
+            Assert.Equal(user.LastName, result.LastName);
+            Assert.Equal(user.MiddleName, result.MiddleName);
+            Assert.Equal(user.Birthdate, result.Birthdate);
+            Assert.Equal(user.Gender, result.Gender);
+            Assert.Equal(user.Contact, result.Contact);
+            Assert.Equal(user.Address, result.Address);
+            Assert.Equal(user.Role, result.Role);
+            Assert.Equal(user.Email, result.Email);
+            Assert.Equal(user.Username, result.Username);
+        }
     }
 }
