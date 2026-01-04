@@ -622,7 +622,7 @@ namespace KinesiaAPI.Controllers
             return _context.Users.Any(e => e.UserID == id);
         }
 
-        private static UsersDTO UsersToDTO(Users users) =>
+        public static UsersDTO UsersToDTO(Users users) =>
             new UsersDTO
             {
                 UserID = users.UserID,
