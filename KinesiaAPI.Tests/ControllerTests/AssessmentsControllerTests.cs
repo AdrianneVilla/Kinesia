@@ -656,5 +656,23 @@ namespace KinesiaAPI.Tests.ControllerTests
             // Assert
             Assert.IsType<NotFoundObjectResult>(result);
         }
+
+        [Fact]
+        public void AssessmentToPatientAssessmentDTO_ShouldReturnDisplayPatientAssessmentsDTO()
+        {
+            // Arrange
+            var patient = DataFactory.GeneratePatients(1);
+            var assessment = DataFactory.GenerateAssessments(1, patient).First();
+
+            // Act
+            var result = AssessmentsController.AssessmentToPatientAssessmentsDTO(assessment);
+
+            // Assert
+            Assert.IsType<DisplayPatientAssessmentsDTO>(result);
+            Assert.Equal(assessment.AssessmentID, result.AssessmentID);
+            Assert.Equal(assessment.Extremity, result.Extremity);
+            Assert.Equal(assessment.Joint, result.Joint);
+            Assert.Equal(assessment.AssessmentDate.ToString("yyyy-MM-dd hh:mm tt"), result.AssessmentStartDate);
+        }
     }
 }
