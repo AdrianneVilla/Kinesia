@@ -109,5 +109,23 @@ namespace KinesiaAPI.Tests.DataTest
 
             return fakeAssessments.Generate(count);
         }
+
+        public static List<ROM> GenerateROM(int count, List<Assessments> existingAssessments, List<Users> existingUsers)
+        {
+            var fakeROMs = new Faker<ROM>()
+                .RuleFor(r => r.ROMID, f => f.Random.Int())
+                .RuleFor(r => r.AssessmentID, f => f.PickRandom(existingAssessments).AssessmentID)
+                .RuleFor(r => r.UserID, f => f.PickRandom(existingUsers).UserID)
+                .RuleFor(r => r.GoniometerType, f => f.PickRandom(new[] { "Universal", "Gravity" }))
+                .RuleFor(r => r.StartingPosition, f => f.Random.Double())
+                .RuleFor(r => r.Rom, f => f.Random.Double())
+                .RuleFor(r => r.Deficit, f => f.Random.Double())
+                .RuleFor(r => r.NormalRom, f => f.Random.Double())
+                .RuleFor(r => r.Movement, f => f.PickRandom(new[] { "Flexion", "Reflexion" }))
+                .RuleFor(r => r.MotionType, f => f.PickRandom(new[] { "Active", "Passive" }))
+                .RuleFor(r => r.Date, f => f.Date.Past(2));
+
+            return fakeROMs.Generate(count); ;
+        }
     }
 }
