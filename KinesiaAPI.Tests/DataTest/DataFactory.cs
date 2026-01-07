@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Bogus;
+using KinesiaAPI.Models.Entities;
+using KinesiaLibrary;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
-using Bogus;
-using KinesiaAPI.Models.Entities;
 
 namespace KinesiaAPI.Tests.DataTest
 {
@@ -112,16 +113,31 @@ namespace KinesiaAPI.Tests.DataTest
 
         public static List<ROM> GenerateROM(int count, List<Assessments> existingAssessments, List<Users> existingUsers)
         {
+            ROMHelper.InitializeFromConfig(
+                () => 180, // ShoulderFlexion
+                () => 60,  // ShoulderExtension
+                () => 150, // ElbowFlexion
+                () => 0,   // ElbowExtension
+                () => 120, // HipFlexion
+                () => 30,  // HipExtension
+                () => 135, // KneeFlexion
+                () => 0    // KneeExtension
+            );
             var fakeROMs = new Faker<ROM>()
                 .RuleFor(r => r.ROMID, f => f.Random.Int())
                 .RuleFor(r => r.AssessmentID, f => f.PickRandom(existingAssessments).AssessmentID)
                 .RuleFor(r => r.UserID, f => f.PickRandom(existingUsers).UserID)
                 .RuleFor(r => r.GoniometerType, f => f.PickRandom(new[] { "Universal", "Gravity" }))
                 .RuleFor(r => r.StartingPosition, f => f.Random.Double())
-                .RuleFor(r => r.Rom, f => f.Random.Double())
-                .RuleFor(r => r.Deficit, f => f.Random.Double())
-                .RuleFor(r => r.NormalRom, f => f.Random.Double())
-                .RuleFor(r => r.Movement, f => f.PickRandom(new[] { "Flexion", "Reflexion" }))
+                .RuleFor(r => r.Rom, f => f.Random.Double(0, 180))
+                .RuleFor(r => r.Deficit, (f, r) => r.NormalRom - r.Rom)
+                .RuleFor(r => r.NormalRom, (f, r) =>
+                {
+                    var assessment = existingAssessments.First(a => a.AssessmentID == r.AssessmentID);
+
+                    return ROMHelper.GetNormalRange(assessment.Joint, r.Movement);
+                })
+                .RuleFor(r => r.Movement, f => f.PickRandom(new[] { "Flexion", "Extension" }))
                 .RuleFor(r => r.MotionType, f => f.PickRandom(new[] { "Active", "Passive" }))
                 .RuleFor(r => r.Date, f => f.Date.Past(2));
 
